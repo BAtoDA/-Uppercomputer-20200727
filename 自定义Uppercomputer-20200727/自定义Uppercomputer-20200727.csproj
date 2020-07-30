@@ -1,0 +1,350 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{DFCAAA72-68A3-4304-9D1A-615DCA585A05}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>自定义Uppercomputer_20200727</RootNamespace>
+    <AssemblyName>自定义Uppercomputer-20200727</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CSkin">
+      <HintPath>D:\C#项目\CSkin 16.1.14.3 .NET控件\CSkin 4.0\CSkin.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="PLC选择\PLCselect.cs" />
+    <Compile Include="修改参数界面\Modification_Button.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="修改参数界面\Modification_Button.Designer.cs">
+      <DependentUpon>Modification_Button.cs</DependentUpon>
+    </Compile>
+    <Compile Include="修改参数界面\Modification_Button_Class.cs" />
+    <Compile Include="修改参数界面\Modification_numerical.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="修改参数界面\Modification_numerical.Designer.cs">
+      <DependentUpon>Modification_numerical.cs</DependentUpon>
+    </Compile>
+    <Compile Include="参数设置画面\Form9.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="参数设置画面\Form9.Designer.cs">
+      <DependentUpon>Form9.cs</DependentUpon>
+    </Compile>
+    <Compile Include="图库\ListView_show.cs" />
+    <Compile Include="图库\Mapdepot .cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="图库\Mapdepot .Designer.cs">
+      <DependentUpon>Mapdepot .cs</DependentUpon>
+    </Compile>
+    <Compile Include="异常界面\Form5.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="异常界面\Form5.Designer.cs">
+      <DependentUpon>Form5.cs</DependentUpon>
+    </Compile>
+    <Compile Include="手动控制页面\Form4.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="手动控制页面\Form4.Designer.cs">
+      <DependentUpon>Form4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="控件重做\Button_reform.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="控件重做\SkinPictureBox_reform.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="控件重做\TextBox_reform.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="控件重做\SkinContextMenuStrip_reform.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="控件重做\SkinLabel_reform.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="控制主页面\Form3.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="控制主页面\Form3.Designer.cs">
+      <DependentUpon>Form3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="控制主页面模板\Button_Add.cs" />
+    <Compile Include="控制主页面模板\Form2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="控制主页面模板\Form2.Designer.cs">
+      <DependentUpon>Form2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EF实体模型\Model1.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF实体模型\Model1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF实体模型\Model1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="EF实体模型\Profile.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="主页面\Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="主页面\Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="主页面\Homepag-class.cs" />
+    <Compile Include="控制主页面模板\Skinlabel_Add.cs" />
+    <Compile Include="控制主页面模板\SkinPictureBox_Add.cs" />
+    <Compile Include="控制主页面模板\SkinTextBox_Add.cs" />
+    <Compile Include="控制主页面模板\Windowclass.cs" />
+    <Compile Include="生产设置画面\Form8.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="生产设置画面\Form8.Designer.cs">
+      <DependentUpon>Form8.cs</DependentUpon>
+    </Compile>
+    <Compile Include="监视画面\Form6.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="监视画面\Form6.Designer.cs">
+      <DependentUpon>Form6.cs</DependentUpon>
+    </Compile>
+    <Compile Include="运转控制画面\Form7.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="运转控制画面\Form7.Designer.cs">
+      <DependentUpon>Form7.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="主页面\Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="修改参数界面\Modification_Button.resx">
+      <DependentUpon>Modification_Button.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="修改参数界面\Modification_numerical.resx">
+      <DependentUpon>Modification_numerical.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="参数设置画面\Form9.resx">
+      <DependentUpon>Form9.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="图库\Mapdepot .resx">
+      <DependentUpon>Mapdepot .cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="异常界面\Form5.resx">
+      <DependentUpon>Form5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="手动控制页面\Form4.resx">
+      <DependentUpon>Form4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="控制主页面\Form3.resx">
+      <DependentUpon>Form3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="控制主页面模板\Form2.resx">
+      <DependentUpon>Form2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="生产设置画面\Form8.resx">
+      <DependentUpon>Form8.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="监视画面\Form6.resx">
+      <DependentUpon>Form6.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="运转控制画面\Form7.resx">
+      <DependentUpon>Form7.cs</DependentUpon>
+    </EmbeddedResource>
+    <EntityDeploy Include="EF实体模型\Model1.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="EF实体模型\Model1.edmx.diagram">
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\主页面.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\主页面1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="EF实体模型\Model1.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="EF实体模型\Model1.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.cs</LastGenOutput>
+    </Content>
+    <Content Include="图库\按钮图标\5834\102.ico" />
+    <Content Include="图库\按钮图标\5834\112.ico" />
+    <Content Include="图库\按钮图标\5834\12.ico" />
+    <Content Include="图库\按钮图标\5834\122.ico" />
+    <Content Include="图库\按钮图标\5834\132.ico" />
+    <Content Include="图库\按钮图标\5834\142.ico" />
+    <Content Include="图库\按钮图标\5834\152.ico" />
+    <Content Include="图库\按钮图标\5834\162.ico" />
+    <Content Include="图库\按钮图标\5834\172.ico" />
+    <Content Include="图库\按钮图标\5834\182.ico" />
+    <Content Include="图库\按钮图标\5834\192.ico" />
+    <Content Include="图库\按钮图标\5834\202.ico" />
+    <Content Include="图库\按钮图标\5834\212.ico" />
+    <Content Include="图库\按钮图标\5834\22.ico" />
+    <Content Include="图库\按钮图标\5834\222.ico" />
+    <Content Include="图库\按钮图标\5834\232.ico" />
+    <Content Include="图库\按钮图标\5834\242.ico" />
+    <Content Include="图库\按钮图标\5834\252.ico" />
+    <Content Include="图库\按钮图标\5834\262.ico" />
+    <Content Include="图库\按钮图标\5834\272.ico" />
+    <Content Include="图库\按钮图标\5834\282.ico" />
+    <Content Include="图库\按钮图标\5834\292.ico" />
+    <Content Include="图库\按钮图标\5834\302.ico" />
+    <Content Include="图库\按钮图标\5834\312.ico" />
+    <Content Include="图库\按钮图标\5834\32.ico" />
+    <Content Include="图库\按钮图标\5834\322.ico" />
+    <Content Include="图库\按钮图标\5834\332.ico" />
+    <Content Include="图库\按钮图标\5834\42.ico" />
+    <Content Include="图库\按钮图标\5834\52.ico" />
+    <Content Include="图库\按钮图标\5834\62.ico" />
+    <Content Include="图库\按钮图标\5834\72.ico" />
+    <Content Include="图库\按钮图标\5834\82.ico" />
+    <Content Include="图库\按钮图标\5834\92.ico" />
+    <Content Include="图库\按钮图标\7020\b1.ico" />
+    <Content Include="图库\按钮图标\7020\b10.ico" />
+    <Content Include="图库\按钮图标\7020\b11.ico" />
+    <Content Include="图库\按钮图标\7020\b12.ico" />
+    <Content Include="图库\按钮图标\7020\b13.ico" />
+    <Content Include="图库\按钮图标\7020\b14.ico" />
+    <Content Include="图库\按钮图标\7020\b15.ico" />
+    <Content Include="图库\按钮图标\7020\b16.ico" />
+    <Content Include="图库\按钮图标\7020\b2.ico" />
+    <Content Include="图库\按钮图标\7020\b3.ico" />
+    <Content Include="图库\按钮图标\7020\b4.ico" />
+    <Content Include="图库\按钮图标\7020\b5.ico" />
+    <Content Include="图库\按钮图标\7020\b6.ico" />
+    <Content Include="图库\按钮图标\7020\b7.ico" />
+    <Content Include="图库\按钮图标\7020\b8.ico" />
+    <Content Include="图库\按钮图标\7020\b9.ico" />
+    <Content Include="图库\按钮图标\7020\h1.ico" />
+    <Content Include="图库\按钮图标\7020\h10.ico" />
+    <Content Include="图库\按钮图标\7020\h11.ico" />
+    <Content Include="图库\按钮图标\7020\h12.ico" />
+    <Content Include="图库\按钮图标\7020\h13.ico" />
+    <Content Include="图库\按钮图标\7020\h14.ico" />
+    <Content Include="图库\按钮图标\7020\h15.ico" />
+    <Content Include="图库\按钮图标\7020\h16.ico" />
+    <Content Include="图库\按钮图标\7020\h17.ico" />
+    <Content Include="图库\按钮图标\7020\h18.ico" />
+    <Content Include="图库\按钮图标\7020\h19.ico" />
+    <Content Include="图库\按钮图标\7020\h2.ico" />
+    <Content Include="图库\按钮图标\7020\h3.ico" />
+    <Content Include="图库\按钮图标\7020\h4.ico" />
+    <Content Include="图库\按钮图标\7020\h5.ico" />
+    <Content Include="图库\按钮图标\7020\h6.ico" />
+    <Content Include="图库\按钮图标\7020\h7.ico" />
+    <Content Include="图库\按钮图标\7020\h8.ico" />
+    <Content Include="图库\按钮图标\7020\h9.ico" />
+    <Content Include="图库\按钮图标\7780\k1.ico" />
+    <Content Include="图库\按钮图标\7780\k10.ico" />
+    <Content Include="图库\按钮图标\7780\k11.ico" />
+    <Content Include="图库\按钮图标\7780\k12.ico" />
+    <Content Include="图库\按钮图标\7780\k13.ico" />
+    <Content Include="图库\按钮图标\7780\k14.ico" />
+    <Content Include="图库\按钮图标\7780\k2.ico" />
+    <Content Include="图库\按钮图标\7780\k3.ico" />
+    <Content Include="图库\按钮图标\7780\k4.ico" />
+    <Content Include="图库\按钮图标\7780\k5.ico" />
+    <Content Include="图库\按钮图标\7780\k6.ico" />
+    <Content Include="图库\按钮图标\7780\k7.ico" />
+    <Content Include="图库\按钮图标\7780\k8.ico" />
+    <Content Include="图库\按钮图标\7780\k9.ico" />
+    <None Include="Resources\运行主页面.png" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
