@@ -1,0 +1,53 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30309.148
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "自定义Uppercomputer-20200727", "自定义Uppercomputer-20200727\自定义Uppercomputer-20200727.csproj", "{DFCAAA72-68A3-4304-9D1A-615DCA585A05}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HslCommunicationDemo", "HslCommunicationDemo-master\HslCommunicationDemo\HslCommunicationDemo.csproj", "{3878075B-B8D7-4090-B094-29622581442F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UI_Library_da", "UI_Library_da\UI_Library_da.csproj", "{90956435-00C0-45A2-A74E-AC9E3871CE85}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSEngineTest", "C#Dynamic macro instruction\CSEngineTest.csproj", "{994E3EE9-10F4-461D-8F4A-0BEB6294395C}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "自定义Uppercomputer-20200727安装部署", "自定义Uppercomputer-20200727安装部署\自定义Uppercomputer-20200727安装部署.vdproj", "{881F4692-BA2B-4D0E-8AED-77069C3B7B36}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Install_deployment", "Install_deployment\Install_deployment.csproj", "{CF0A3078-0E2B-4A30-A915-DF9B1E1242E4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DFCAAA72-68A3-4304-9D1A-615DCA585A05}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DFCAAA72-68A3-4304-9D1A-615DCA585A05}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DFCAAA72-68A3-4304-9D1A-615DCA585A05}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DFCAAA72-68A3-4304-9D1A-615DCA585A05}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3878075B-B8D7-4090-B094-29622581442F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3878075B-B8D7-4090-B094-29622581442F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3878075B-B8D7-4090-B094-29622581442F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3878075B-B8D7-4090-B094-29622581442F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{90956435-00C0-45A2-A74E-AC9E3871CE85}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{90956435-00C0-45A2-A74E-AC9E3871CE85}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{90956435-00C0-45A2-A74E-AC9E3871CE85}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{90956435-00C0-45A2-A74E-AC9E3871CE85}.Release|Any CPU.Build.0 = Release|Any CPU
+		{994E3EE9-10F4-461D-8F4A-0BEB6294395C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{994E3EE9-10F4-461D-8F4A-0BEB6294395C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{994E3EE9-10F4-461D-8F4A-0BEB6294395C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{994E3EE9-10F4-461D-8F4A-0BEB6294395C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{881F4692-BA2B-4D0E-8AED-77069C3B7B36}.Debug|Any CPU.ActiveCfg = Debug
+		{881F4692-BA2B-4D0E-8AED-77069C3B7B36}.Release|Any CPU.ActiveCfg = Release
+		{CF0A3078-0E2B-4A30-A915-DF9B1E1242E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF0A3078-0E2B-4A30-A915-DF9B1E1242E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF0A3078-0E2B-4A30-A915-DF9B1E1242E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF0A3078-0E2B-4A30-A915-DF9B1E1242E4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6F284CF8-CB15-486A-8095-783E8954F180}
+	EndGlobalSection
+EndGlobal

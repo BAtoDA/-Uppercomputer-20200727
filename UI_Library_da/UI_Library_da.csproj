@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{90956435-00C0-45A2-A74E-AC9E3871CE85}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>UI_Library_da</RootNamespace>
+    <AssemblyName>UI_Library_da</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CSkin">
+      <HintPath>..\..\C#重要项目\CSkin 16.1.14.3 .NET控件\CSkin 2.0\CSkin.dll</HintPath>
+    </Reference>
+    <Reference Include="SunnyUI">
+      <HintPath>.\SunnyUI.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="zxing, Version=0.16.5.0, Culture=neutral, PublicKeyToken=4e88037ac681fe60, processorArchitecture=MSIL">
+      <HintPath>..\packages\ZXing.Net.0.16.5\lib\net40\zxing.dll</HintPath>
+    </Reference>
+    <Reference Include="zxing.presentation, Version=0.16.5.0, Culture=neutral, PublicKeyToken=4e88037ac681fe60, processorArchitecture=MSIL">
+      <HintPath>..\packages\ZXing.Net.0.16.5\lib\net40\zxing.presentation.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="doughnut_Chart.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="histogram_Chart.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="oscillogram_Chart.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UIComboBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UIRadioButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI_AnalogMeter.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI_BarChart.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI_Button.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI_DoughnutChart.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI_GroupBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UI_ihatetheqrcode.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI_ImageButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI_LedBulb.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI_LedDisplay.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI_ScrollingText.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI_Switch.cs">
+      <SubType>Component</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

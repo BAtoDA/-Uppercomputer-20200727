@@ -1,0 +1,6 @@
+    <add name="UppercomputerEntities" connectionString="metadata=res://*/Model1.csdl|res://*/Model1.ssdl|res://*/Model1.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=DESKTOP-E3JO5HA\WINCC;initial catalog=Uppercomputer;persist security info=True;user id=sa;password=3131458;MultipleActiveResultSets=True;App=EntityFramework&quot;" providerName="System.Data.EntityClient" />
+    <add name="UppercomputerEntities1" connectionString="metadata=res://*/Model1.csdl|res://*/Model1.ssdl|res://*/Model1.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=DESKTOP-E3JO5HA\WINCC;initial catalog=Uppercomputer;persist security info=True;user id=sa;password=3131458;MultipleActiveResultSets=True;App=EntityFramework&quot;" providerName="System.Data.EntityClient" />
+///项目正在使用
+DESKTOP-OTGRMAI
+//正在使用的：
+  <add name="UppercomputerEntities2" connectionString="metadata=res://*/EF实体模型.Model1.csdl|res://*/EF实体模型.Model1.ssdl|res://*/EF实体模型.Model1.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=DESKTOP-E3JO5HA\WINCC;initial catalog=Uppercomputer;persist security info=True;user id=sa;password=3131458;MultipleActiveResultSets=True;App=EntityFramework&quot;" providerName="System.Data.EntityClient" />

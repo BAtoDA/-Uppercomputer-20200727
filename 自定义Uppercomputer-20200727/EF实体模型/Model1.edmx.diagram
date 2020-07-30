@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="095104ce7cb240058429df65558e30a3" Name="Diagram1" ZoomLevel="94">
+        <EntityTypeShape EntityType="UppercomputerModel.AnalogMeter_parameter" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="UppercomputerModel.Button_colour" Width="1.5" PointX="2.75" PointY="0.75" />
+        <EntityTypeShape EntityType="UppercomputerModel.Button_parameter" Width="1.5" PointX="2.75" PointY="3.75" />
+        <EntityTypeShape EntityType="UppercomputerModel.Control_layer" Width="1.5" PointX="4.75" PointY="0.75" />
+        <EntityTypeShape EntityType="UppercomputerModel.control_location" Width="1.5" PointX="4.75" PointY="3.75" />
+        <EntityTypeShape EntityType="UppercomputerModel.doughnut_Chart_parameter" Width="1.5" PointX="6.75" PointY="0.75" />
+        <EntityTypeShape EntityType="UppercomputerModel.Event_message" Width="1.5" PointX="4.75" PointY="6.75" />
+        <EntityTypeShape EntityType="UppercomputerModel.function_key_parameter" Width="1.5" PointX="6.75" PointY="5.75" />
+        <EntityTypeShape EntityType="UppercomputerModel.General_parameters_of_picture" Width="1.5" PointX="8.75" PointY="0.75" />
+        <EntityTypeShape EntityType="UppercomputerModel.GroupBox_parameter" Width="1.5" PointX="0.75" PointY="8.75" />
+        <EntityTypeShape EntityType="UppercomputerModel.histogram_Chart_parameter" Width="1.5" PointX="8.75" PointY="4.75" />
+        <EntityTypeShape EntityType="UppercomputerModel.HScrollBar_parameter" Width="1.5" PointX="6.75" PointY="9.75" />
+        <EntityTypeShape EntityType="UppercomputerModel.ihatetheqrcode_parameter" Width="1.5" PointX="8.75" PointY="9.75" />
+        <EntityTypeShape EntityType="UppercomputerModel.ImageButton_parameter" Width="1.5" PointX="10.75" PointY="0.75" />
+        <EntityTypeShape EntityType="UppercomputerModel.label_parameter" Width="1.5" PointX="2.75" PointY="10.75" />
+        <EntityTypeShape EntityType="UppercomputerModel.LedBulb_parameter" Width="1.5" PointX="10.75" PointY="5.75" />
+        <EntityTypeShape EntityType="UppercomputerModel.LedDisplay_parameter" Width="1.5" PointX="10.75" PointY="10.75" />
+        <EntityTypeShape EntityType="UppercomputerModel.numerical_parameter" Width="1.5" PointX="12.75" PointY="0.75" />
+        <EntityTypeShape EntityType="UppercomputerModel.oscillogram_Chart_parameter" Width="1.5" PointX="12.75" PointY="5.75" />
+        <EntityTypeShape EntityType="UppercomputerModel.picture_parameter" Width="1.5" PointX="12.75" PointY="11.75" />
+        <EntityTypeShape EntityType="UppercomputerModel.PLC_macroinstruction" Width="1.5" PointX="0.75" PointY="13.75" />
+        <EntityTypeShape EntityType="UppercomputerModel.PLC_parameter" Width="1.5" PointX="2.75" PointY="13.75" />
+        <EntityTypeShape EntityType="UppercomputerModel.Profile" Width="1.5" PointX="14.75" PointY="0.75" />
+        <EntityTypeShape EntityType="UppercomputerModel.pull_down_menu_parameter" Width="1.5" PointX="14.75" PointY="3.75" />
+        <EntityTypeShape EntityType="UppercomputerModel.pull_down_menuName" Width="1.5" PointX="4.75" PointY="14.75" />
+        <EntityTypeShape EntityType="UppercomputerModel.RadioButton_parameter" Width="1.5" PointX="6.75" PointY="14.75" />
+        <EntityTypeShape EntityType="UppercomputerModel.ScrollingText_parameter" Width="1.5" PointX="14.75" PointY="9.75" />
+        <EntityTypeShape EntityType="UppercomputerModel.Switch_parameter" Width="1.5" PointX="14.75" PointY="12.75" />
+        <EntityTypeShape EntityType="UppercomputerModel.Tag_common_parameters" Width="1.5" PointX="8.75" PointY="15.75" />
+        <EntityTypeShape EntityType="UppercomputerModel.AnalogMeter_Class" Width="1.5" PointX="10.75" PointY="15.75" />
+        <EntityTypeShape EntityType="UppercomputerModel.Button_Class" Width="1.5" PointX="16.75" PointY="0.75" />
+        <EntityTypeShape EntityType="UppercomputerModel.doughnut_Chart_Class" Width="1.5" PointX="16.75" PointY="9.75" />
+        <EntityTypeShape EntityType="UppercomputerModel.function_key_Class" Width="1.5" PointX="12.75" PointY="17.75" />
+        <EntityTypeShape EntityType="UppercomputerModel.GroupBox_Class" Width="1.5" PointX="18.75" PointY="0.75" />
+        <EntityTypeShape EntityType="UppercomputerModel.histogram_Chart_Class" Width="1.5" PointX="0.75" PointY="18.75" />
+        <EntityTypeShape EntityType="UppercomputerModel.HScrollBar_Class" Width="1.5" PointX="2.75" PointY="18.75" />
+        <EntityTypeShape EntityType="UppercomputerModel.ihatetheqrcode_Class" Width="1.5" PointX="18.75" PointY="6.75" />
+        <EntityTypeShape EntityType="UppercomputerModel.ImageButton_Class" Width="1.5" PointX="18.75" PointY="14.75" />
+        <EntityTypeShape EntityType="UppercomputerModel.label_Class" Width="1.5" PointX="14.75" PointY="18.75" />
+        <EntityTypeShape EntityType="UppercomputerModel.LedBulb_Class" Width="1.5" PointX="4.75" PointY="19.75" />
+        <EntityTypeShape EntityType="UppercomputerModel.LedDisplay_Class" Width="1.5" PointX="20.75" PointY="0.75" />
+        <EntityTypeShape EntityType="UppercomputerModel.numerical_Class" Width="1.5" PointX="6.75" PointY="20.75" />
+        <EntityTypeShape EntityType="UppercomputerModel.oscillogram_Chart_Class" Width="1.5" PointX="20.75" PointY="8.75" />
+        <EntityTypeShape EntityType="UppercomputerModel.picture_Class" Width="1.5" PointX="20.75" PointY="17.75" />
+        <EntityTypeShape EntityType="UppercomputerModel.pull_down_menu_Class" Width="1.5" PointX="20.75" PointY="21.75" />
+        <EntityTypeShape EntityType="UppercomputerModel.RadioButton_Class" Width="1.5" PointX="22.75" PointY="0.75" />
+        <EntityTypeShape EntityType="UppercomputerModel.ScrollingText_Class" Width="1.5" PointX="22.75" PointY="8.75" />
+        <EntityTypeShape EntityType="UppercomputerModel.Switch_Class" Width="1.5" PointX="12.75" PointY="22.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

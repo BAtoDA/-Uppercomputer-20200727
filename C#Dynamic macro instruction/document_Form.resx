@@ -1,0 +1,2761 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="resource.Text12" xml:space="preserve">
+    <value>            ///线程的使用
+            Thread thread = new Thread();//实例化线程--需要创建一个无参数的方法
+            thread.Start();//启动线程
+            thread.Abort();//停止线程--销毁
+            thread.Join();//暂停线程
+            //thread.IsAlive;//线程状态--BOOL值
+            Thread.Sleep();//延时线程
+            Thread thread1 = new Thread(() =&gt;//实例化一个匿名线程
+              {
+                  //内容
+              });
+            thread1.Start();//启动线程
+            //线程池
+            ThreadPool.QueueUserWorkItem(new WaitCallback(-回调方法名称 - ), 方法());
+            ThreadPool.QueueUserWorkItem((run) =&gt;
+            {
+                //内容
+            });</value>
+  </data>
+  <data name="skinTextBox14.Text" xml:space="preserve">
+    <value>            ///线程的使用
+            Thread thread = new Thread();//实例化线程--需要创建一个无参数的方法
+            thread.Start();//启动线程
+            thread.Abort();//停止线程--销毁
+            thread.Join();//暂停线程
+            //thread.IsAlive;//线程状态--BOOL值
+            Thread.Sleep();//延时线程
+            Thread thread1 = new Thread(() =&gt;//实例化一个匿名线程
+              {
+                  //内容
+              });
+            thread1.Start();//启动线程
+            //线程池
+            ThreadPool.QueueUserWorkItem(new WaitCallback(-回调方法名称 - ), 方法());
+            ThreadPool.QueueUserWorkItem((run) =&gt;
+            {
+                //内容
+            });
+//使用上位机内部线程 与无类型 存储区
+macroinstruction_data&lt;Thread&gt;.thread thread_1 =new Thread(方法名);--可以使用匿名线程
+//匿名线程使用
+macroinstruction_data&lt;Thread&gt;.thread[0] = new Thread (()=&gt;
+ {
+//内容
+});</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="skinTabControl1.PageArrowDown" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABUAAAAiCAYAAACwaJKDAAAABGdBTUEAALGPC/xhBQAAABl0RVh0U29m
+        dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAD9SURBVEhL1dO7CoJQGMDxtu73+1CBzY31Ck0NvkOb
+        gzi6+QaCEDgLTqKCEPQIIUGbb+Gui+YXBIc4WcP3DQ0/OJfv/LdTyfO8iu2/ojVsZNE6NrJoAxtZtIkN
+        oi1sZNE2NrJoBxtEu9gg2vvE9/2JLMtrURQ3LEmSBMdxprw3oDQKwTiOT8X6zirOTAjDDA9E+58EQTBV
+        FGWbJMm52D+DaZpeVFXdeZ43Y2dZEB2UMQxjaVnWPsuya+Hmuu5B1/UVb/blaxRomiaEYXiMokiBNW+G
+        BdHhL2zbXpimueTdvYPoCBtZdIwNohNsZFH4bqjIovDdUJFF59j+JZrPH4oDa+C9e8hUAAAAAElFTkSu
+        QmCC
+</value>
+  </data>
+  <data name="skinTabControl1.PageArrowHover" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABUAAAAiCAYAAACwaJKDAAAABGdBTUEAALGPC/xhBQAAABl0RVh0U29m
+        dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAEwSURBVEhLtdNNS4RAAMbxvkBtLxu9UFT0skUv1rZ7
+        7h77HfZkH0QPeu0mePQgnsSrhCCCN+8e99DVayKhNk+wUDFWh2eFH8yMzh9kmKW2bZfZEF1hW1i0x4bo
+        Khuia2yIrrMhusGGaJ8N0U02RLfYEN1mQ3SHDdFdNkT32BDd7xLH8amu6/eqqj58JdZGURSdyfYAogdd
+        TNMcFUXxIsbfHrEWGYYxFkPpPkQPu6RpOtA07bEsy5mYfz5VVb2K4CRJknMxle5D9Og3rusqnudN67p+
+        a5rmPQiCJ8dxbmXfziF6/BfbtsdZlml5nj9bloXfln43h+jJf4RhqPi+fyd79xOiOEUqRAdsiOIUqRC9
+        YEP0kg3RKzZEr9kQvWFDVGFDFPeYClFcPSpEh2wLiLbDDwVKnf7UO7t5AAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="skinTabControl1.PageCloseHover" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAYAAABWdVznAAAABGdBTUEAALGPC/xhBQAAAH9JREFUKFNj
+        +P//P0kYmcMKxXjFYIwzaBiXGFgDyIQzHB2n/4MwiA3DaGJgm1A0cHad+88//T6Q+/8MiAbxsWmAWw9S
+        JLH653+p9f/BNEwzFMOdhKIJpBiGYWJADFeHophYG0j2A1wDkiQYo4lhehoJ4xJD8TTIBLApuMX+MwAA
+        JO7ByqoT8QIAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="skinTabControl1.PageCloseNormal" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAYAAABWdVznAAAABGdBTUEAALGPC/xhBQAAAItJREFUKFOd
+        kbENgDAMBCNRIFExAAUtbYoMQc8A7EHBFKxrfJGxUERjkJ7E9r/fSZKIhMCvUwyK0cC+/8jBqwKCSZEV
+        RbEoZluJyVOHVwV0yOtxCdBvV2ysrxwieC4oT9EIZxPj5AKssPeODRlH6j4SB2Rmxmg7n5anDu+fQ/gM
+        bEK3hFXoHQIvLekGBLunGoMvIJEAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="skinTabControl1.PageDown" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAADsAAAAiCAYAAADh/KHgAAAABGdBTUEAALGPC/xhBQAAAOZJREFUaEPl
+        2KsKQlEURdHrG996BYNgMBgMFoPBYrAYDBaDwWAwGARBEAT//bpXWHC+YXpghhVHPDuLVyqKokFPTmOb
+        9FJsm16K7dJLsQN6KXZEL8WO6RlbjjGhJ6exU3opdkYvxc7pGVuJsaAnp7FLesZWY6zoyWnsmp6xtRgb
+        enIKW4+xpSensPrc7ujJaeyenrH6yR/oySlsK8aRnpzC6mxxoiensJ0YZ3pyCqsbzYWenML2YlzpySls
+        P8aNnpzG3ukZq1Pjg56cwg5jPOnJaeyLnrF5jDc9OY390EuxX3p/hs3yH+t9kV6QtrMcAAAAAElFTkSu
+        QmCC
+</value>
+  </data>
+  <data name="skinTabControl1.PageHover" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAADsAAAAiCAYAAADh/KHgAAAABGdBTUEAALGPC/xhBQAAABl0RVh0U29m
+        dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAEISURBVGhD3dirTkNRFEXRy7NAICGkaaAhvIpC4ZB1
+        lTgsEolF1lZWIrFIHBKHw2FQqIoKfuGyptjJ/YZ5kimWHHKfJm+lbdtdezgLu2+vi+3bK+xqxpE9nIU9
+        sdfFXtrrYq/sFXYt49oezsLe2CvsesbYHs7CTuwVdiPj1h5OsJsZd/Zwgu1l3NvDCXYr48EeTrDbGY/2
+        cILdyXiyhxMsx+3UHk6wexkzezjBcsnP7eEEe5DxbA8nWL4tXuzhBDvIeLWHE+xhxps9nGCHGe/2cII9
+        zviwh7Own/YKy1fjlz2cYE8zvu3hBHuW8WMPJ9jzjF97OMFeZCzs4Szs0l5hRxl/9pqmGf0Dp89NtaTt
+        b1AAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="resource.Text1" xml:space="preserve">
+    <value>   /// &lt;summary&gt;
+        /// 转换类型---shorot--string
+        /// &lt;/summary&gt;
+        /// &lt;param name="Name"&gt;&lt;/param&gt;
+        /// &lt;param name="format"&gt;&lt;/param&gt;
+        /// &lt;returns&gt;&lt;/returns&gt;
+        public string Mitsubishi_to_numerical(int[] Name, numerical_format format)//转换类型---shorot--string
+        {
+            string numerical = Name[0].ToString();//初始化寄存器
+            switch (format)
+            {
+                case numerical_format.BCD_16_Bit:
+                    numerical = Hex_to_BCD(Name[0]).ToString();//转换成BCD吗
+                    break;
+                case numerical_format.BCD_32_Bit:
+                    numerical = Hex_to_BCD(merge(new short[] { (short)Name[0], (short)Name[1] })).ToString();//转换成BCD吗
+                    break;
+                case numerical_format.Binary_16_Bit:
+                    numerical = Convert.ToString(Name[0],2);//转换成16位二进制数
+                    break;
+                case numerical_format.Binary_32_Bit:
+                    numerical = Convert.ToString(merge(new short[] { (short)Name[0], (short)Name[1] }),2);//转换成32位二进制数
+                    break;
+                case numerical_format.Float_32_Bit:
+                    numerical = merge_to_Double(new short[] { (short)Name[0], (short)Name[1] }).ToString();//转换成浮点小数
+                    break;
+                case numerical_format.Hex_16_Bit:
+                    numerical = Name[0].ToString("X");//16进制转换--16位
+                    break;
+                case numerical_format.Hex_32_Bit:
+                    numerical = merge(new short[] { (short)Name[0], (short)Name[1] }).ToString("X");//16进制转换-32位
+                    break;
+                case numerical_format.Signed_16_Bit:
+                    numerical = Convert.ToInt16(Name[0]).ToString();//有符号-16位
+                    break;
+                case numerical_format.Signed_32_Bit:
+                    numerical = Convert.ToInt32(merge(new short[] { (short)Name[0], (short)Name[1] })).ToString();//有符号 32位
+                    break;
+                case numerical_format.Unsigned_16_Bit:
+                    numerical = Convert.ToUInt16(Name[0]).ToString();//无符号-16位
+                    break;
+                case numerical_format.Unsigned_32_Bit:
+                    numerical = Convert.ToUInt32(merge(new short[] { (short)Name[0], (short)Name[1] })).ToString();//无符号-32位
+                    break;
+            }
+            return numerical;//返回数据
+        }
+      /// &lt;summary&gt;
+        /// 转换类型---string--shorot
+        /// &lt;/summary&gt;
+        /// &lt;param name="Name"&gt;&lt;/param&gt;
+        /// &lt;param name="format"&gt;&lt;/param&gt;
+        /// &lt;returns&gt;&lt;/returns&gt;
+        public short[] numerical_to_Mitsubishi(string Name, numerical_format format)//转换类型---string--shorot
+        {
+            short[] numerical =new short[32];//初始化寄存器
+            switch (format)
+            {
+                case numerical_format.BCD_16_Bit:
+                     numerical = bit32_to_bit32(stringToShort(Name, numerical));//string-转short
+                    break;
+                case numerical_format.BCD_32_Bit:
+                    numerical = stringToShort(Name, numerical);//string-转short
+                    break;
+                case numerical_format.Binary_16_Bit:
+                    numerical = bit32_to_bit32(stringToShort(Convert.ToInt32(Name,2).ToString(), numerical));//16位二进制数-转short
+                    break;
+                case numerical_format.Binary_32_Bit:
+                    numerical = stringToShort(Convert.ToInt32(Name, 2).ToString(), numerical);//16位二进制数-转short
+                    break;
+                case numerical_format.Float_32_Bit:
+                    numerical = float_to_short(Convert.ToSingle(Name));//浮点小数-转short
+                    break;
+                case numerical_format.Hex_16_Bit:
+                    numerical = bit32_to_bit32(stringToShort(Convert.ToInt32(Name,16).ToString(), numerical));//16位二进制数-转short
+                    break;
+                case numerical_format.Hex_32_Bit:
+                    numerical = stringToShort(Convert.ToInt32(Name,16).ToString(),  numerical);//16位二进制数-转short
+                    break;
+                case numerical_format.Signed_16_Bit:
+                    numerical = bit32_to_bit32(stringToShort(Convert.ToInt32(Name).ToString(), numerical));//16位二进制数-转short
+                    break;
+                case numerical_format.Signed_32_Bit:
+                    numerical = stringToShort(Convert.ToInt32(Name).ToString(), numerical);//16位二进制数-转short
+                    break;
+                case numerical_format.Unsigned_16_Bit:
+                    numerical = bit32_to_bit32(stringToShort(Convert.ToInt32(Name).ToString(), numerical));//16位二进制数-转short
+                    break;
+                case numerical_format.Unsigned_32_Bit:
+                    numerical = stringToShort(Convert.ToInt32(Name).ToString(), numerical);//16位二进制数-转short
+                    break;
+            }
+            return numerical;//返回数据
+        }
+
+     public bool[] ConvertIntToBoolArray(int result, int len)//int转B00L
+        {
+
+            if (len &gt; 32 || len &lt; 0)
+            {
+                Console.WriteLine("bool数组长度应该在0到32之间。");
+            }
+
+            bool[] barray2 = new bool[len];
+
+            for (int i = 0; i &lt; len; i++)
+            {
+                barray2[len - i - 1] = ((result &gt;&gt; i) % 2) == 1;
+            }
+            return barray2;
+        }
+        /// &lt;summary&gt;
+        /// 处理bit位数据 公有方法
+        /// &lt;/summary&gt;
+        /// &lt;param name="import"&gt;&lt;/param&gt;
+        /// &lt;returns&gt;&lt;/returns&gt;
+        public List&lt;bool&gt; bit_public(short[] import)//处理bit位数据 公有方法
+        {
+            List&lt;bool&gt; data = new List&lt;bool&gt;();//创建表
+            bool[] Inputtheresults = ConvertIntToBoolArray(import[0], 16);//强转BOOL类型
+            Array.Reverse(Inputtheresults);//翻转数组
+            foreach (bool i in Inputtheresults) data.Add(i);//填充表
+            return data;
+        }
+        /// &lt;summary&gt;
+        /// 从新合并INT类型
+        /// &lt;/summary&gt;
+        /// &lt;param name="Resistancedata"&gt;&lt;/param&gt;
+        /// &lt;returns&gt;&lt;/returns&gt;
+        public int merge(short[] Resistancedata) //从新合并INT类型
+        {
+            //合并PLC电阻数据操作
+            byte[] transform = BitConverter.GetBytes(Resistancedata[0]);
+            byte[] transform_1 = BitConverter.GetBytes(Resistancedata[1]);
+            byte[] taran = new byte[transform.Length + transform_1.Length];
+            for (int i = 0; i &lt; taran.Length; i++)
+            {
+                if (i &lt; transform.Length) taran[i] = transform[i]; else taran[i] = transform_1[i - transform.Length];
+            }
+            return BitConverter.ToInt32(taran,0);
+        }
+        /// &lt;summary&gt;
+        /// 从新合并INT类型
+        /// &lt;/summary&gt;
+        /// &lt;param name="Resistancedata"&gt;&lt;/param&gt;
+        /// &lt;returns&gt;&lt;/returns&gt;
+        public Double merge_to_Double(short[] Resistancedata) //从新合并INT类型
+        {
+            //合并PLC电阻数据操作
+            byte[] transform = BitConverter.GetBytes(Resistancedata[0]);
+            byte[] transform_1 = BitConverter.GetBytes(Resistancedata[1]);
+            byte[] taran = new byte[transform.Length + transform_1.Length];
+            for (int i = 0; i &lt; taran.Length; i++)
+            {
+                if (i &lt; transform.Length) taran[i] = transform[i]; else taran[i] = transform_1[i - transform.Length];
+            }
+            return BitConverter.ToSingle(taran, 0);//转换成浮点小数
+        }
+        //byte数组变为 float数值
+        /// &lt;summary&gt;
+        /// byte数组变为 float数值 不推荐代码--
+        /// &lt;/summary&gt;
+        /// &lt;param name="data"&gt;&lt;/param&gt;
+        /// &lt;returns&gt;&lt;/returns&gt;
+        private float ToFloat(byte[] data)//---不推荐代码--
+        {
+            unsafe//开启不安全代码
+            {
+                float a = 0.0F;
+                byte i;
+                byte[] x = data;
+                void* pf;
+                fixed (byte* px = x)
+                {
+                    pf = &amp;a;
+                    for (i = 0; i &lt; data.Length; i++)
+                    {
+                        *((byte*)pf + i) = *(px + i);
+                    }
+                }
+                return a;
+            }
+        }
+
+   /// &lt;summary&gt;
+        /// float-转-short
+        /// &lt;/summary&gt;
+        /// &lt;param name="Name"&gt;&lt;/param&gt;
+        /// &lt;returns&gt;&lt;/returns&gt;
+        public short[] float_to_short(float Name)//float-转-short
+        {
+            byte[] data = new byte[32];//寄存器
+            data = BitConverter.GetBytes(Name);//解析数据
+            return new short[] { BitConverter.ToInt16(data, 0), BitConverter.ToInt16(data, 2) };//合并数据返回数据
+        }
+        /// &lt;summary&gt;
+        /// string-to-short
+        /// &lt;/summary&gt;
+        /// &lt;param name="inString"&gt;&lt;/param&gt;
+        /// &lt;param name="outShort"&gt;&lt;/param&gt;
+        /// &lt;returns&gt;&lt;/returns&gt;
+        public short[] stringToShort(string inString, short[] outShort)//string-to-short
+        {
+            byte[] data = new byte[32];//寄存器
+            data = BitConverter.GetBytes(inString.ToInt32());//解析数据
+            return new short[] { BitConverter.ToInt16(data, 0), BitConverter.ToInt16(data, 2) };//合并数据返回数据
+        }</value>
+  </data>
+  <data name="skinTextBox13.Text" xml:space="preserve">
+    <value>   /// &lt;summary&gt;
+        /// 转换类型---shorot--string
+        /// &lt;/summary&gt;
+        /// &lt;param name="Name"&gt;&lt;/param&gt;
+        /// &lt;param name="format"&gt;&lt;/param&gt;
+        /// &lt;returns&gt;&lt;/returns&gt;
+        public string Mitsubishi_to_numerical(int[] Name, numerical_format format)//转换类型---shorot--string
+        {
+            string numerical = Name[0].ToString();//初始化寄存器
+            switch (format)
+            {
+                case numerical_format.BCD_16_Bit:
+                    numerical = Hex_to_BCD(Name[0]).ToString();//转换成BCD吗
+                    break;
+                case numerical_format.BCD_32_Bit:
+                    numerical = Hex_to_BCD(merge(new short[] { (short)Name[0], (short)Name[1] })).ToString();//转换成BCD吗
+                    break;
+                case numerical_format.Binary_16_Bit:
+                    numerical = Convert.ToString(Name[0],2);//转换成16位二进制数
+                    break;
+                case numerical_format.Binary_32_Bit:
+                    numerical = Convert.ToString(merge(new short[] { (short)Name[0], (short)Name[1] }),2);//转换成32位二进制数
+                    break;
+                case numerical_format.Float_32_Bit:
+                    numerical = merge_to_Double(new short[] { (short)Name[0], (short)Name[1] }).ToString();//转换成浮点小数
+                    break;
+                case numerical_format.Hex_16_Bit:
+                    numerical = Name[0].ToString("X");//16进制转换--16位
+                    break;
+                case numerical_format.Hex_32_Bit:
+                    numerical = merge(new short[] { (short)Name[0], (short)Name[1] }).ToString("X");//16进制转换-32位
+                    break;
+                case numerical_format.Signed_16_Bit:
+                    numerical = Convert.ToInt16(Name[0]).ToString();//有符号-16位
+                    break;
+                case numerical_format.Signed_32_Bit:
+                    numerical = Convert.ToInt32(merge(new short[] { (short)Name[0], (short)Name[1] })).ToString();//有符号 32位
+                    break;
+                case numerical_format.Unsigned_16_Bit:
+                    numerical = Convert.ToUInt16(Name[0]).ToString();//无符号-16位
+                    break;
+                case numerical_format.Unsigned_32_Bit:
+                    numerical = Convert.ToUInt32(merge(new short[] { (short)Name[0], (short)Name[1] })).ToString();//无符号-32位
+                    break;
+            }
+            return numerical;//返回数据
+        }
+      /// &lt;summary&gt;
+        /// 转换类型---string--shorot
+        /// &lt;/summary&gt;
+        /// &lt;param name="Name"&gt;&lt;/param&gt;
+        /// &lt;param name="format"&gt;&lt;/param&gt;
+        /// &lt;returns&gt;&lt;/returns&gt;
+        public short[] numerical_to_Mitsubishi(string Name, numerical_format format)//转换类型---string--shorot
+        {
+            short[] numerical =new short[32];//初始化寄存器
+            switch (format)
+            {
+                case numerical_format.BCD_16_Bit:
+                     numerical = bit32_to_bit32(stringToShort(Name, numerical));//string-转short
+                    break;
+                case numerical_format.BCD_32_Bit:
+                    numerical = stringToShort(Name, numerical);//string-转short
+                    break;
+                case numerical_format.Binary_16_Bit:
+                    numerical = bit32_to_bit32(stringToShort(Convert.ToInt32(Name,2).ToString(), numerical));//16位二进制数-转short
+                    break;
+                case numerical_format.Binary_32_Bit:
+                    numerical = stringToShort(Convert.ToInt32(Name, 2).ToString(), numerical);//16位二进制数-转short
+                    break;
+                case numerical_format.Float_32_Bit:
+                    numerical = float_to_short(Convert.ToSingle(Name));//浮点小数-转short
+                    break;
+                case numerical_format.Hex_16_Bit:
+                    numerical = bit32_to_bit32(stringToShort(Convert.ToInt32(Name,16).ToString(), numerical));//16位二进制数-转short
+                    break;
+                case numerical_format.Hex_32_Bit:
+                    numerical = stringToShort(Convert.ToInt32(Name,16).ToString(),  numerical);//16位二进制数-转short
+                    break;
+                case numerical_format.Signed_16_Bit:
+                    numerical = bit32_to_bit32(stringToShort(Convert.ToInt32(Name).ToString(), numerical));//16位二进制数-转short
+                    break;
+                case numerical_format.Signed_32_Bit:
+                    numerical = stringToShort(Convert.ToInt32(Name).ToString(), numerical);//16位二进制数-转short
+                    break;
+                case numerical_format.Unsigned_16_Bit:
+                    numerical = bit32_to_bit32(stringToShort(Convert.ToInt32(Name).ToString(), numerical));//16位二进制数-转short
+                    break;
+                case numerical_format.Unsigned_32_Bit:
+                    numerical = stringToShort(Convert.ToInt32(Name).ToString(), numerical);//16位二进制数-转short
+                    break;
+            }
+            return numerical;//返回数据
+        }
+
+     public bool[] ConvertIntToBoolArray(int result, int len)//int转B00L
+        {
+
+            if (len &gt; 32 || len &lt; 0)
+            {
+                Console.WriteLine("bool数组长度应该在0到32之间。");
+            }
+
+            bool[] barray2 = new bool[len];
+
+            for (int i = 0; i &lt; len; i++)
+            {
+                barray2[len - i - 1] = ((result &gt;&gt; i) % 2) == 1;
+            }
+            return barray2;
+        }
+        /// &lt;summary&gt;
+        /// 处理bit位数据 公有方法
+        /// &lt;/summary&gt;
+        /// &lt;param name="import"&gt;&lt;/param&gt;
+        /// &lt;returns&gt;&lt;/returns&gt;
+        public List&lt;bool&gt; bit_public(short[] import)//处理bit位数据 公有方法
+        {
+            List&lt;bool&gt; data = new List&lt;bool&gt;();//创建表
+            bool[] Inputtheresults = ConvertIntToBoolArray(import[0], 16);//强转BOOL类型
+            Array.Reverse(Inputtheresults);//翻转数组
+            foreach (bool i in Inputtheresults) data.Add(i);//填充表
+            return data;
+        }
+        /// &lt;summary&gt;
+        /// 从新合并INT类型
+        /// &lt;/summary&gt;
+        /// &lt;param name="Resistancedata"&gt;&lt;/param&gt;
+        /// &lt;returns&gt;&lt;/returns&gt;
+        public int merge(short[] Resistancedata) //从新合并INT类型
+        {
+            //合并PLC电阻数据操作
+            byte[] transform = BitConverter.GetBytes(Resistancedata[0]);
+            byte[] transform_1 = BitConverter.GetBytes(Resistancedata[1]);
+            byte[] taran = new byte[transform.Length + transform_1.Length];
+            for (int i = 0; i &lt; taran.Length; i++)
+            {
+                if (i &lt; transform.Length) taran[i] = transform[i]; else taran[i] = transform_1[i - transform.Length];
+            }
+            return BitConverter.ToInt32(taran,0);
+        }
+        /// &lt;summary&gt;
+        /// 从新合并INT类型
+        /// &lt;/summary&gt;
+        /// &lt;param name="Resistancedata"&gt;&lt;/param&gt;
+        /// &lt;returns&gt;&lt;/returns&gt;
+        public Double merge_to_Double(short[] Resistancedata) //从新合并INT类型
+        {
+            //合并PLC电阻数据操作
+            byte[] transform = BitConverter.GetBytes(Resistancedata[0]);
+            byte[] transform_1 = BitConverter.GetBytes(Resistancedata[1]);
+            byte[] taran = new byte[transform.Length + transform_1.Length];
+            for (int i = 0; i &lt; taran.Length; i++)
+            {
+                if (i &lt; transform.Length) taran[i] = transform[i]; else taran[i] = transform_1[i - transform.Length];
+            }
+            return BitConverter.ToSingle(taran, 0);//转换成浮点小数
+        }
+        //byte数组变为 float数值
+        /// &lt;summary&gt;
+        /// byte数组变为 float数值 不推荐代码--
+        /// &lt;/summary&gt;
+        /// &lt;param name="data"&gt;&lt;/param&gt;
+        /// &lt;returns&gt;&lt;/returns&gt;
+        private float ToFloat(byte[] data)//---不推荐代码--
+        {
+            unsafe//开启不安全代码
+            {
+                float a = 0.0F;
+                byte i;
+                byte[] x = data;
+                void* pf;
+                fixed (byte* px = x)
+                {
+                    pf = &amp;a;
+                    for (i = 0; i &lt; data.Length; i++)
+                    {
+                        *((byte*)pf + i) = *(px + i);
+                    }
+                }
+                return a;
+            }
+        }
+
+   /// &lt;summary&gt;
+        /// float-转-short
+        /// &lt;/summary&gt;
+        /// &lt;param name="Name"&gt;&lt;/param&gt;
+        /// &lt;returns&gt;&lt;/returns&gt;
+        public short[] float_to_short(float Name)//float-转-short
+        {
+            byte[] data = new byte[32];//寄存器
+            data = BitConverter.GetBytes(Name);//解析数据
+            return new short[] { BitConverter.ToInt16(data, 0), BitConverter.ToInt16(data, 2) };//合并数据返回数据
+        }
+        /// &lt;summary&gt;
+        /// string-to-short
+        /// &lt;/summary&gt;
+        /// &lt;param name="inString"&gt;&lt;/param&gt;
+        /// &lt;param name="outShort"&gt;&lt;/param&gt;
+        /// &lt;returns&gt;&lt;/returns&gt;
+        public short[] stringToShort(string inString, short[] outShort)//string-to-short
+        {
+            byte[] data = new byte[32];//寄存器
+            data = BitConverter.GetBytes(inString.ToInt32());//解析数据
+            return new short[] { BitConverter.ToInt16(data, 0), BitConverter.ToInt16(data, 2) };//合并数据返回数据
+        }</value>
+  </data>
+  <data name="resource.Text2" xml:space="preserve">
+    <value> public class macroinstruction_SerialPort : SerialPort
+    {
+        /// &lt;summary&gt;
+        ///   指示端口是否正常  
+        /// &lt;/summary&gt;
+        public bool Port_OK { get; set; }//指示端口是否正常
+        /// &lt;summary&gt;
+        /// 构造函数
+        /// &lt;/summary&gt;
+        /// &lt;param name="BaudRate"&gt;&lt;/param&gt;
+        /// &lt;param name="DataBits"&gt;&lt;/param&gt;
+        /// &lt;param name="PortName"&gt;&lt;/param&gt;
+        /// &lt;param name="stopBits"&gt;&lt;/param&gt;
+        /// &lt;param name="parity"&gt;&lt;/param&gt;
+        public macroinstruction_SerialPort(int BaudRate,int DataBits,string PortName,StopBits stopBits,Parity parity)
+        {
+            this.BaudRate = BaudRate;//设置波特率
+            this.DataBits = DataBits;//数据长度
+            this.Encoding = Encoding.UTF8;//设置解码类型
+            this.PortName = PortName;//端口号
+            this.StopBits = stopBits;//停止位数--枚举---StopBits
+            this.Parity = parity;//校验-枚举 -parity
+        }
+        /// &lt;summary&gt;
+        /// 打开串口
+        /// &lt;/summary&gt;
+        public void Open_Port()
+        {
+            try
+            {
+                if (this.IsOpen != true)
+                    this.Open();//串口串口
+                Port_OK = true;
+            }
+            catch { Port_OK = false; }
+        }
+        public void send_Port(string Data)
+        {
+            try
+            {
+                this.Write(Data);//发送数据
+                Port_OK = true;
+            }
+            catch
+            { Port_OK = false; }
+        }
+        public byte[] read_Port()
+        {
+            byte[] Data = new byte[this.BytesToRead];//获取要接收的长度
+            try
+            {
+                this.Read(Data, 0, Data.Length);//读取数据
+                Port_OK = true;
+                return Data;
+            }
+            catch { Port_OK = false; return new byte[] { 0 }; }
+           
+
+        }
+    }</value>
+  </data>
+  <data name="skinTextBox11.Text" xml:space="preserve">
+    <value> public class macroinstruction_SerialPort : SerialPort
+    {
+        /// &lt;summary&gt;
+        ///   指示端口是否正常  
+        /// &lt;/summary&gt;
+        public bool Port_OK { get; set; }//指示端口是否正常
+        /// &lt;summary&gt;
+        /// 构造函数
+        /// &lt;/summary&gt;
+        /// &lt;param name="BaudRate"&gt;&lt;/param&gt;
+        /// &lt;param name="DataBits"&gt;&lt;/param&gt;
+        /// &lt;param name="PortName"&gt;&lt;/param&gt;
+        /// &lt;param name="stopBits"&gt;&lt;/param&gt;
+        /// &lt;param name="parity"&gt;&lt;/param&gt;
+        public macroinstruction_SerialPort(int BaudRate,int DataBits,string PortName,StopBits stopBits,Parity parity)
+        {
+            this.BaudRate = BaudRate;//设置波特率
+            this.DataBits = DataBits;//数据长度
+            this.Encoding = Encoding.UTF8;//设置解码类型
+            this.PortName = PortName;//端口号
+            this.StopBits = stopBits;//停止位数--枚举---StopBits
+            this.Parity = parity;//校验-枚举 -parity
+        }
+        /// &lt;summary&gt;
+        /// 打开串口
+        /// &lt;/summary&gt;
+        public void Open_Port()
+        {
+            try
+            {
+                if (this.IsOpen != true)
+                    this.Open();//串口串口
+                Port_OK = true;
+            }
+            catch { Port_OK = false; }
+        }
+        public void send_Port(string Data)
+        {
+            try
+            {
+                this.Write(Data);//发送数据
+                Port_OK = true;
+            }
+            catch
+            { Port_OK = false; }
+        }
+        public byte[] read_Port()
+        {
+            byte[] Data = new byte[this.BytesToRead];//获取要接收的长度
+            try
+            {
+                this.Read(Data, 0, Data.Length);//读取数据
+                Port_OK = true;
+                return Data;
+            }
+            catch { Port_OK = false; return new byte[] { 0 }; }
+           
+
+        }
+    }</value>
+  </data>
+  <data name="resource.Text3" xml:space="preserve">
+    <value>C# 支持以下预定义整型类型：
+整型类型的特征
+C# 类型/关键字	范围	大小	.NET 类型
+sbyte	-128 到 127	8 位带符号整数	System.SByte
+byte	0 到 255	无符号的 8 位整数	System.Byte
+short	-32,768 到 32,767	有符号 16 位整数	System.Int16
+ushort	0 到 65,535	无符号 16 位整数	System.UInt16
+int	-2,147,483,648 到 2,147,483,647	带符号的 32 位整数	System.Int32
+uint	0 到 4,294,967,295	无符号的 32 位整数	System.UInt32
+long	-9,223,372,036,854,775,808 到 9,223,372,036,854,775,807	64 位带符号整数	System.Int64
+ulong	0 到 18,446,744,073,709,551,615	无符号 64 位整数	System.UInt64
+
+浮点类型的特征
+C# 支持以下预定义浮点类型：
+浮点类型的特征
+C# 类型/关键字	大致范围	精度	大小	.NET 类型
+float	±1.5 x 10−45 至 ±3.4 x 1038	大约 6-9 位数字	4 个字节	System.Single
+double	±5.0 × 10−324 到 ±1.7 × 10308	大约 15-17 位数字	8 个字节	System.Double
+decimal	±1.0 x 10-28 至 ±7.9228 x 1028	28-29 位	16 个字节	System.Decimal
+
+隐式数值转换
+下表显示内置数值类型之间的预定义隐式转换：
+隐式数值转换
+From	到
+sbyte	short、int、long、float、double 或 decimal
+byte	short、ushort、int、uint、long、ulong、float、double 或 decimal
+short	int、long、float、double 或 decimal
+ushort	int、uint、long、ulong、float、double 或 decimal。
+int	long、float、double 或 decimal
+uint	long、ulong、float、double 或 decimal
+long	float、double 或 decimal
+ulong	float、double 或 decimal
+float	double
+
+C# 类型的默认值（C# 参考）
+2019/12/18
+ 
+下表显示 C# 类型的默认值：
+C# 类型的默认值（C# 参考）
+类型	默认值
+任何引用类型	null
+任何内置整数数值类型	0（零）
+任何内置浮点型数值类型	0（零）
+bool	false
+char	'\0' (U + 0000)
+enum	表达式 (E)0 生成的值，其中 E 是枚举标识符。
+struct	通过如下设置生成的值：将所有值类型的字段设置为其默认值，将所有引用类型的字段设置为 null。
+任何可以为 null 的值类型	HasValue 属性为 false 且 Value 属性未定义的实例。 该默认值也称为可以为 null 的值类型的“null” 值。</value>
+  </data>
+  <data name="skinTextBox1.Text" xml:space="preserve">
+    <value>C# 支持以下预定义整型类型：
+整型类型的特征
+C# 类型/关键字	范围	大小	.NET 类型
+sbyte	-128 到 127	8 位带符号整数	System.SByte
+byte	0 到 255	无符号的 8 位整数	System.Byte
+short	-32,768 到 32,767	有符号 16 位整数	System.Int16
+ushort	0 到 65,535	无符号 16 位整数	System.UInt16
+int	-2,147,483,648 到 2,147,483,647	带符号的 32 位整数	System.Int32
+uint	0 到 4,294,967,295	无符号的 32 位整数	System.UInt32
+long	-9,223,372,036,854,775,808 到 9,223,372,036,854,775,807	64 位带符号整数	System.Int64
+ulong	0 到 18,446,744,073,709,551,615	无符号 64 位整数	System.UInt64
+
+浮点类型的特征
+C# 支持以下预定义浮点类型：
+浮点类型的特征
+C# 类型/关键字	大致范围	精度	大小	.NET 类型
+float	±1.5 x 10−45 至 ±3.4 x 1038	大约 6-9 位数字	4 个字节	System.Single
+double	±5.0 × 10−324 到 ±1.7 × 10308	大约 15-17 位数字	8 个字节	System.Double
+decimal	±1.0 x 10-28 至 ±7.9228 x 1028	28-29 位	16 个字节	System.Decimal
+
+隐式数值转换
+下表显示内置数值类型之间的预定义隐式转换：
+隐式数值转换
+From	到
+sbyte	short、int、long、float、double 或 decimal
+byte	short、ushort、int、uint、long、ulong、float、double 或 decimal
+short	int、long、float、double 或 decimal
+ushort	int、uint、long、ulong、float、double 或 decimal。
+int	long、float、double 或 decimal
+uint	long、ulong、float、double 或 decimal
+long	float、double 或 decimal
+ulong	float、double 或 decimal
+float	double
+
+C# 类型的默认值（C# 参考）
+2019/12/18
+ 
+下表显示 C# 类型的默认值：
+C# 类型的默认值（C# 参考）
+类型	默认值
+任何引用类型	null
+任何内置整数数值类型	0（零）
+任何内置浮点型数值类型	0（零）
+bool	false
+char	'\0' (U + 0000)
+enum	表达式 (E)0 生成的值，其中 E 是枚举标识符。
+struct	通过如下设置生成的值：将所有值类型的字段设置为其默认值，将所有引用类型的字段设置为 null。
+任何可以为 null 的值类型	HasValue 属性为 false 且 Value 属性未定义的实例。 该默认值也称为可以为 null 的值类型的“null” 值。</value>
+  </data>
+  <data name="resource.Text4" xml:space="preserve">
+    <value>访问修饰符（C# 参考）
+   
+访问修饰符是关键字，用于指定成员或类型已声明的可访问性。 本部分介绍四个访问修饰符：
+public
+protected
+internal
+private
+可使用访问修饰符指定以下六个可访问性级别：
+public：访问不受限制。
+protected：访问限于包含类或派生自包含类的类型。
+internal：访问限于当前程序集。
+protected internal：访问限于当前程序集或派生自包含类的类型。
+private：访问限于包含类型。
+private protected：访问限于包含类或派生自当前程序集中包含类的类型。
+本部分还介绍以下内容：
+可访问性级别：使用四种访问修饰符，声明六个可访问性级别。
+可访问性域：指定可在程序段中的何处引用成员。
+对使用可访问性级别的限制：概括对使用已声明的可访问性级别的限制。
+</value>
+  </data>
+  <data name="skinTextBox2.Text" xml:space="preserve">
+    <value>访问修饰符（C# 参考）
+   
+访问修饰符是关键字，用于指定成员或类型已声明的可访问性。 本部分介绍四个访问修饰符：
+public
+protected
+internal
+private
+可使用访问修饰符指定以下六个可访问性级别：
+public：访问不受限制。
+protected：访问限于包含类或派生自包含类的类型。
+internal：访问限于当前程序集。
+protected internal：访问限于当前程序集或派生自包含类的类型。
+private：访问限于包含类型。
+private protected：访问限于包含类或派生自当前程序集中包含类的类型。
+本部分还介绍以下内容：
+可访问性级别：使用四种访问修饰符，声明六个可访问性级别。
+可访问性域：指定可在程序段中的何处引用成员。
+对使用可访问性级别的限制：概括对使用已声明的可访问性级别的限制。
+</value>
+  </data>
+  <data name="resource.Text5" xml:space="preserve">
+    <value>语句关键字（C# 参考）
+   
+语句是程序指令。 除了下表中的引用主题介绍的内容外，语句都是按照顺序执行。 下表列出了 C# 语句关键字。 有关不用任何关键字表示的语句的详细信息，请参阅语句。
+语句关键字（C# 参考）
+类别	C# 关键字
+选择语句	if、else、switch、case
+迭代语句	do、for、foreach、in、while
+跳转语句	break、continue、default、goto、return、yield
+异常处理语句	throw、try-catch、try-finally、try-catch-finally
+Checked 和 unchecked	checked、unchecked
+fixed 语句	fixed
+lock 语句	lock</value>
+  </data>
+  <data name="skinTextBox3.Text" xml:space="preserve">
+    <value>语句关键字（C# 参考）
+   
+语句是程序指令。 除了下表中的引用主题介绍的内容外，语句都是按照顺序执行。 下表列出了 C# 语句关键字。 有关不用任何关键字表示的语句的详细信息，请参阅语句。
+语句关键字（C# 参考）
+类别	C# 关键字
+选择语句	if、else、switch、case
+迭代语句	do、for、foreach、in、while
+跳转语句	break、continue、default、goto、return、yield
+异常处理语句	throw、try-catch、try-finally、try-catch-finally
+Checked 和 unchecked	checked、unchecked
+fixed 语句	fixed
+lock 语句	lock</value>
+  </data>
+  <data name="resource.Text6" xml:space="preserve">
+    <value>方法参数（C# 参考）
+   
+为不具有 in、ref 或 out 的方法声明的参数会按值传递给调用的方法。 可以在方法中更改该值，但当控制传递回调用过程时，不会保留更改后的值。 可以通过使用方法参数关键字更改此行为。
+本部分介绍声明方法参数时可以使用的关键字：
+params 指定此参数采用可变数量的参数。
+in 指定此参数由引用传递，但只由调用方法读取。
+ref 指定此参数由引用传递，可能由调用方法读取或写入。
+out 指定此参数由引用传递，由调用方法写入。</value>
+  </data>
+  <data name="skinTextBox4.Text" xml:space="preserve">
+    <value>方法参数（C# 参考）
+   
+为不具有 in、ref 或 out 的方法声明的参数会按值传递给调用的方法。 可以在方法中更改该值，但当控制传递回调用过程时，不会保留更改后的值。 可以通过使用方法参数关键字更改此行为。
+本部分介绍声明方法参数时可以使用的关键字：
+params 指定此参数采用可变数量的参数。
+in 指定此参数由引用传递，但只由调用方法读取。
+ref 指定此参数由引用传递，可能由调用方法读取或写入。
+out 指定此参数由引用传递，由调用方法写入。</value>
+  </data>
+  <data name="resource.Text7" xml:space="preserve">
+    <value>using（C# 参考）
+2019/04/05
+   
+using 关键字有三个主要用途：
+using 语句定义一个范围，在此范围的末尾将释放对象。
+using 指令为命名空间创建别名，或导入在其他命名空间中定义的类型。
+using static 指令导入单个类的成员。
+
+is（C# 参考）
+2019/06/21
+    
+is 运算符检查表达式的结果是否与给定类型兼容，或（从 C# 7.0 开始）针对某个模式测试表达式。 有关类型测试 is 运算符的信息，请参阅文章类型测试和强制转换运算符的 is 运算符部分。
+
+new 约束（C# 参考）
+2015/07/20
+    
+new 约束指定泛型类声明中的类型实参必须有公共的无参数构造函数。 若要使用 new 约束，则该类型不能为抽象类型。
+
+where（泛型类型约束）（C# 参考）
+2020/04/15
+    
+泛型定义中的 where 子句指定对用作泛型类型、方法、委托或本地函数中类型参数的参数类型的约束。 约束可指定接口、基类或要求泛型类型为引用、值或非托管类型。 它们声明类型参数必须具备的功能。
+
+base（C# 参考）
+2015/07/20
+    
+base 关键字用于从派生类中访问基类的成员：
+调用基类上已被其他方法重写的方法。
+指定创建派生类实例时应调用的基类构造函数。
+仅允许基类访问在构造函数、实例方法或实例属性访问器中进行。
+从静态方法中使用 base 关键字是错误的。
+所访问的基类是类声明中指定的基类。 例如，如果指定 class ClassB : ClassA，则从 ClassB 访问 ClassA 的成员，而不考虑 ClassA 的基类。
+
+搜索
+按标题筛选
+C# 文档
+概述
+配置语言版本
+概述
+base
+this
+编译器错误
+C# 6.0 草稿规范
+C# 7.0 - 9.0 建议
+演练
+this（C# 参考）
+2015/07/20
+    
+this 关键字指代类的当前实例，还可用作扩展方法的第一个参数的修饰符。
+
+null（C# 参考）
+2015/07/20
+    
+null 关键字是表示不引用任何对象的空引用的文字值。 null 是引用类型变量的默认值。 普通值类型不能为 NULL，可为空的值类型除外。
+
+bool（C# 参考）
+2019/11/26
+ 
+bool 类型关键字是 .NET System.Boolean 结构类型的别名，它表示一个布尔值，可为 true 或 false。
+若要使用 bool 类型的值执行逻辑运算，请使用布尔逻辑运算符。 bool 类型是 比较和相等运算符的结果类型。 bool 表达式可以是 if、do、while 和 for 语句中以及条件运算符 ?: 中的控制条件表达式。
+bool 类型的默认值为 false。
+
+default（C# 参考）
+2017/08/04
+   
+default 关键字有两种用法：
+指定 switch 语句中的默认标签。
+作为 default 默认运算符或文本生成类型的默认值。
+
+上下文关键字（C# 参考）
+2017/03/07
+    
+上下文关键字用于在代码中提供特定含义，但不是 C# 中的保留字。 本部分介绍下面这些上下文关键字：
+上下文关键字（C# 参考）
+关键字	说明
+add	定义一个自定义事件访问器，客户端代码订阅事件时会调用该访问器。
+async	指示修改后的方法、lambda 表达式或匿名方法是异步的。
+await	挂起异步方法，直到等待的任务完成。
+dynamic	定义一个引用类型，实现发生绕过编译时类型检查的操作。
+get	为属性或索引器定义访问器方法。
+global	未以其他方式命名的全局命名空间的别名。
+partial	在整个同一编译单元内定义分部类、结构和接口。
+remove	定义一个自定义事件访问器，客户端代码取消订阅事件时会调用该访问器。
+set	为属性或索引器定义访问器方法。
+value	用于设置访问器和添加或删除事件处理程序。
+var	使编译器能够确定在方法作用域中声明的变量类型。
+when	指定 catch 块的筛选条件或 switch 语句的 case 标签。
+where	将约束添加到泛型声明。 （另请参阅 where）。
+yield	在迭代器块中使用，用于向枚举数对象返回值或用于表示迭代结束。
+
+查询关键字（C# 参考）
+2015/07/20
+   
+本部分包含在查询表达式中使用的上下文关键字。
+本节内容
+本节内容
+子句	说明
+from	指定数据源和范围变量（类似于迭代变量）。
+where	基于由逻辑 AND 和 OR 运算符（&amp;&amp; 或 ||）分隔的一个或多个布尔表达式筛选源元素。
+select	指定执行查询时，所返回序列中元素的类型和形状。
+group	根据指定的密钥值对查询结果分组。
+into	提供可作为对 join、group 或 select 子句结果引用的标识符。
+orderby	根据元素类型的默认比较器对查询结果进行升序或降序排序。
+join	基于两个指定匹配条件间的相等比较而联接两个数据源。
+let	引入范围变量，在查询表达式中存储子表达式结果。
+in	join 子句中的上下文关键字。
+on	join 子句中的上下文关键字。
+equals	join 子句中的上下文关键字。
+by	group 子句中的上下文关键字。
+ascending	orderby 子句中的上下文关键字。
+descending	orderby 子句中的上下文关键字。
+</value>
+  </data>
+  <data name="skinTextBox5.Text" xml:space="preserve">
+    <value>using（C# 参考）
+2019/04/05
+   
+using 关键字有三个主要用途：
+using 语句定义一个范围，在此范围的末尾将释放对象。
+using 指令为命名空间创建别名，或导入在其他命名空间中定义的类型。
+using static 指令导入单个类的成员。
+
+is（C# 参考）
+2019/06/21
+    
+is 运算符检查表达式的结果是否与给定类型兼容，或（从 C# 7.0 开始）针对某个模式测试表达式。 有关类型测试 is 运算符的信息，请参阅文章类型测试和强制转换运算符的 is 运算符部分。
+
+new 约束（C# 参考）
+2015/07/20
+    
+new 约束指定泛型类声明中的类型实参必须有公共的无参数构造函数。 若要使用 new 约束，则该类型不能为抽象类型。
+
+where（泛型类型约束）（C# 参考）
+2020/04/15
+    
+泛型定义中的 where 子句指定对用作泛型类型、方法、委托或本地函数中类型参数的参数类型的约束。 约束可指定接口、基类或要求泛型类型为引用、值或非托管类型。 它们声明类型参数必须具备的功能。
+
+base（C# 参考）
+2015/07/20
+    
+base 关键字用于从派生类中访问基类的成员：
+调用基类上已被其他方法重写的方法。
+指定创建派生类实例时应调用的基类构造函数。
+仅允许基类访问在构造函数、实例方法或实例属性访问器中进行。
+从静态方法中使用 base 关键字是错误的。
+所访问的基类是类声明中指定的基类。 例如，如果指定 class ClassB : ClassA，则从 ClassB 访问 ClassA 的成员，而不考虑 ClassA 的基类。
+
+搜索
+按标题筛选
+C# 文档
+概述
+配置语言版本
+概述
+base
+this
+编译器错误
+C# 6.0 草稿规范
+C# 7.0 - 9.0 建议
+演练
+this（C# 参考）
+2015/07/20
+    
+this 关键字指代类的当前实例，还可用作扩展方法的第一个参数的修饰符。
+
+null（C# 参考）
+2015/07/20
+    
+null 关键字是表示不引用任何对象的空引用的文字值。 null 是引用类型变量的默认值。 普通值类型不能为 NULL，可为空的值类型除外。
+
+bool（C# 参考）
+2019/11/26
+ 
+bool 类型关键字是 .NET System.Boolean 结构类型的别名，它表示一个布尔值，可为 true 或 false。
+若要使用 bool 类型的值执行逻辑运算，请使用布尔逻辑运算符。 bool 类型是 比较和相等运算符的结果类型。 bool 表达式可以是 if、do、while 和 for 语句中以及条件运算符 ?: 中的控制条件表达式。
+bool 类型的默认值为 false。
+
+default（C# 参考）
+2017/08/04
+   
+default 关键字有两种用法：
+指定 switch 语句中的默认标签。
+作为 default 默认运算符或文本生成类型的默认值。
+
+上下文关键字（C# 参考）
+2017/03/07
+    
+上下文关键字用于在代码中提供特定含义，但不是 C# 中的保留字。 本部分介绍下面这些上下文关键字：
+上下文关键字（C# 参考）
+关键字	说明
+add	定义一个自定义事件访问器，客户端代码订阅事件时会调用该访问器。
+async	指示修改后的方法、lambda 表达式或匿名方法是异步的。
+await	挂起异步方法，直到等待的任务完成。
+dynamic	定义一个引用类型，实现发生绕过编译时类型检查的操作。
+get	为属性或索引器定义访问器方法。
+global	未以其他方式命名的全局命名空间的别名。
+partial	在整个同一编译单元内定义分部类、结构和接口。
+remove	定义一个自定义事件访问器，客户端代码取消订阅事件时会调用该访问器。
+set	为属性或索引器定义访问器方法。
+value	用于设置访问器和添加或删除事件处理程序。
+var	使编译器能够确定在方法作用域中声明的变量类型。
+when	指定 catch 块的筛选条件或 switch 语句的 case 标签。
+where	将约束添加到泛型声明。 （另请参阅 where）。
+yield	在迭代器块中使用，用于向枚举数对象返回值或用于表示迭代结束。
+
+查询关键字（C# 参考）
+2015/07/20
+   
+本部分包含在查询表达式中使用的上下文关键字。
+本节内容
+本节内容
+子句	说明
+from	指定数据源和范围变量（类似于迭代变量）。
+where	基于由逻辑 AND 和 OR 运算符（&amp;&amp; 或 ||）分隔的一个或多个布尔表达式筛选源元素。
+select	指定执行查询时，所返回序列中元素的类型和形状。
+group	根据指定的密钥值对查询结果分组。
+into	提供可作为对 join、group 或 select 子句结果引用的标识符。
+orderby	根据元素类型的默认比较器对查询结果进行升序或降序排序。
+join	基于两个指定匹配条件间的相等比较而联接两个数据源。
+let	引入范围变量，在查询表达式中存储子表达式结果。
+in	join 子句中的上下文关键字。
+on	join 子句中的上下文关键字。
+equals	join 子句中的上下文关键字。
+by	group 子句中的上下文关键字。
+ascending	orderby 子句中的上下文关键字。
+descending	orderby 子句中的上下文关键字。
+</value>
+  </data>
+  <data name="skinTextBox6.Lines" xml:space="preserve">
+    <value>对于整型类型，这些运算符（除 ++ 和 -- 运算符以外）是为 int、uint、long 和 ulong 类型定义的。 如果操作数都是其他整型类型（sbyte、byte、short、ushort 或 char），它们的值将转换为 int 类型，这也是一个运算的结果类型。 如果操作数是不同的整型类型或浮点类型，它们的值将转换为最接近的包含类型（如果存在该类型）。 有关详细信息，请参阅 C# 语言规范的数值提升部分。 ++ 和 -- 运算符是为所有整型和浮点数值类型以及 char 类型定义的。</value>
+  </data>
+  <data name="skinTextBox6.Lines1" xml:space="preserve">
+    <value>任何 Lambda 表达式都可以转换为委托类型。 Lambda 表达式可以转换的委托类型由其参数和返回值的类型定义。 如果 lambda 表达式不返回值，则可以将其转换为 Action 委托类型之一；否则，可将其转换为 Func 委托类型之一。 例如，有 2 个参数且不返回值的 Lambda 表达式可转换为 Action&lt;T1,T2&gt; 委托。 有 1 个参数且不返回值的 Lambda 表达式可转换为 Func&lt;T,TResult&gt; 委托。 以下示例中，lambda 表达式 x =&gt; x * x（指定名为 x 的参数并返回 x 平方值）将分配给委托类型的变量：</value>
+  </data>
+  <data name="resource.Text8" xml:space="preserve">
+    <value>算术运算符（C# 参考）
+2020/05/11
+ 
+以下运算符对数值类型的操作数执行算术运算：
+一元 ++（增量）、--（减量）、+（加）和 -（减）运算符
+二元 *（乘法）、/（除法）、%（余数）、+（加法）和 -（减法）运算符
+所有整型和浮点数值类型都支持这些运算符。
+对于整型类型，这些运算符（除 ++ 和 -- 运算符以外）是为 int、uint、long 和 ulong 类型定义的。 如果操作数都是其他整型类型（sbyte、byte、short、ushort 或 char），它们的值将转换为 int 类型，这也是一个运算的结果类型。 如果操作数是不同的整型类型或浮点类型，它们的值将转换为最接近的包含类型（如果存在该类型）。 有关详细信息，请参阅 C# 语言规范的数值提升部分。 ++ 和 -- 运算符是为所有整型和浮点数值类型以及 char 类型定义的。
+
+布尔逻辑运算符（C# 参考）
+2020/06/29
+ 
+以下运算符使用 bool 操作数执行逻辑运算：
+一元 !（逻辑非）运算符。
+二元 &amp;（逻辑与）、|（逻辑或）和 ^（逻辑异或）运算符。 这些运算符始终计算两个操作数。
+二元 &amp;&amp;（条件逻辑与）和 ||（条件逻辑或）运算符。 这些运算符仅在必要时才计算右侧操作数。
+对于整型数值类型的操作数，&amp;、| 和 ^ 运算符执行位逻辑运算。 有关详细信息，请参阅位运算符和移位运算符。
+
+位运算符和移位运算符（C# 参考）
+2019/04/18
+  
+以下运算符使用整数类型或 char 类型的操作数执行位运算或移位运算：
+一元 ~（按位求补）运算符
+二进制 &lt;&lt;（向左移位）和 &gt;&gt;（向右移位）移位运算符
+二进制 &amp;（逻辑 AND）、|（逻辑 OR）和 ^（逻辑异或）运算符
+这些运算符是针对 int、uint、long 和 ulong 类型定义的。 如果两个操作数都是其他整数类型（sbyte、byte、short、ushort 或 char），它们的值将转换为 int 类型，这也是一个运算的结果类型。 如果操作数是不同的整数类型，它们的值将转换为最接近的包含整数类型。 有关详细信息，请参阅 C# 语言规范的数值提升部分。
+&amp;、| 和 ^ 运算符也是为 bool 类型的操作数定义的。 有关详细信息，请参阅布尔逻辑运算符。
+位运算和移位运算永远不会导致溢出，并且不会在已检查和未检查的上下文中产生相同的结果。
+
+相等运算符（C# 参考）
+2019/06/26
+ 
+==（相等） 和 !=（不等） 运算符检查其操作数是否相等。
+相等运算符 ==
+如果操作数相等，等于运算符 == 返回 true，否则返回 false。
+
+比较运算符（C# 参考）
+2020/05/11
+ 
+&lt;（小于）、&gt;（大于）、&lt;=（小于或等于）和 &gt;=（大于或等于）比较（也称为关系）运算符比较其操作数。 所有整型和浮点数值类型都支持这些运算符。
+
+成员访问运算符和表达式（C# 参考）
+2020/04/17
+   
+访问类型成员时，可以使用以下运算符和表达式：
+.（成员访问）：用于访问命名空间或类型的成员
+[]（数组元素或索引器访问）：用于访问数组元素或类型索引器
+?. 和 ?[]（null 条件运算符）：仅当操作数为非 null 时才用于执行成员或元素访问运算
+()（调用）：用于调用被访问的方法或调用委托
+^（从末尾开始索引）：指示元素位置来自序列的末尾
+..（范围）：指定可用于获取一系列序列元素的索引范围
+
+类型测试运算符和强制转换表达式（C# 引用）
+2019/06/21
+ 
+可以使用以下运算符和表达式来执行类型检查或类型转换：
+is 运算符：用于检查表达式的运行时类型是否与给定类型兼容
+as 运算符：用于将表达式显式转换为给定类型（如果其运行时类型与该类型兼容）
+强制转换表达式：执行显式转换
+typeof 运算符：用于获取某个类型的 System.Type 实例
+
+Lambda 表达式（C# 引用）
+2019/07/29
+ 
+“Lambda 表达式”是采用以下任意一种形式的表达式：
+表达式 lambda，表达式为其主体：
+C#
+
+复制
+(input-parameters) =&gt; expression
+语句 lambda，语句块作为其主体：
+C#
+
+复制
+(input-parameters) =&gt; { &lt;sequence-of-statements&gt; }
+使用 lambda 声明运算符=&gt; 从其主体中分离 lambda 参数列表。 若要创建 Lambda 表达式，需要在 Lambda 运算符左侧指定输入参数（如果有），然后在另一侧输入表达式或语句块。
+任何 Lambda 表达式都可以转换为委托类型。 Lambda 表达式可以转换的委托类型由其参数和返回值的类型定义。 如果 lambda 表达式不返回值，则可以将其转换为 Action 委托类型之一；否则，可将其转换为 Func 委托类型之一。 例如，有 2 个参数且不返回值的 Lambda 表达式可转换为 Action&lt;T1,T2&gt; 委托。 有 1 个参数且不返回值的 Lambda 表达式可转换为 Func&lt;T,TResult&gt; 委托。 以下示例中，lambda 表达式 x =&gt; x * x（指定名为 x 的参数并返回 x 平方值）将分配给委托类型的变量：
+
++ 和 += 运算符（C# 参考）
+2020/04/23
+    
+内置整型和浮点数值类型、字符串类型以及委托类型支持 + 和 += 运算符。
+有关算术 + 运算符的信息，请参阅一元加和减运算符和算术运算符文章的加法运算符 + 部分。
+
+- 和 -= 运算符（C# 参考）
+2019/05/27
+     +2
+内置整型和浮点数字类型以及委托类型支持 - 和 -= 运算符。
+有关算术 - 运算符的信息，请参阅一元加和减运算符和算术运算符文章的减法运算符 - 部分。
+
+?: 运算符（C# 参考）
+2020/03/06
+    
+条件运算符 (?:) 也被称为三元条件运算符，用于计算布尔表达式，并根据布尔表达式的计算结果为 true 还是 false 来返回两个表达式中的一个结果。
+
+! （null 包容）运算符（C# 参考）
+2019/10/11
+ 
+在 C# 8.0 及更高版本中可用，一元后缀 ! 运算符是 null 包容运算符。 在已启用的可为空的注释上下文中，可以使用 null 包容运算符来声明可为空的引用类型的表达式 x 不为 null：x!。 一元前缀 ! 运算符是逻辑非运算符。
+null 包容运算符在运行时不起作用。 它仅通过更改表达式的 null 状态来影响编译器的静态流分析。 在运行时，表达式 x! 的计算结果为基础表达式 x 的结果。
+
+?? 和 ??= 运算符（C# 参考）
+2019/09/10
+     +1
+如果左操作数的值不为 null，则 null 合并运算符 ?? 返回该值；否则，它会计算右操作数并返回其结果。 如果左操作数的计算结果为非 null，则 ?? 运算符不会计算其右操作数。
+
+=&gt; 运算符（C# 参考）
+2019/01/22
+   
+=&gt; 令牌支持两种形式：作为 lambda 运算符、作为成员名称的分隔符和表达式主体定义中的成员实现。
+
+:: 运算符（C# 参考）
+2019/08/09
+ 
+使用命名空间别名限定符 :: 访问已设置别名的命名空间的成员。 只能使用两个标识符之间的 :: 限定符。 左侧标识符可以是以下任意别名：
+
+await 运算符（C# 参考）
+2020/07/13
+  
+await 运算符暂停对其所属的 async 方法的求值，直到其操作数表示的异步操作完成。 异步操作完成后，await 运算符将返回操作的结果（如果有）。 当 await 运算符应用到表示已完成操作的操作数时，它将立即返回操作的结果，而不会暂停其所属的方法。 await 运算符不会阻止计算异步方法的线程。 当 await 运算符暂停其所属的异步方法时，控件将返回到方法的调用方。
+
+default value 表达式（C# 参考）
+2020/03/13
+ 
+default value 表达式生成类型的默认值。 有两种类型的 default value 表达式：default 运算符调用和 default 文本。
+你还可以将 default 关键字用作 switch 语句中的默认用例标签。
+
+delegate 运算符 -（C# 参考）
+2019/07/18
+ 
+delegate 运算符创建一个可以转换为委托类型的匿名方法：
+
+nameof 表达式（C# 参考）
+2020/04/23
+ 
+nameof 表达式可生成变量、类型或成员的名称作为字符串常量：
+
+new 运算符（C# 参考）
+2019/06/25
+ 
+new 运算符创建类型的新实例。
+new 关键字还可用作成员声明修饰符或泛型类型约束。
+
+sizeof 运算符（C# 参考）
+2019/07/25
+ 
+sizeof 运算符返回给定类型的变量所占用的字节数。 sizeof 运算符的参数必须是一个非托管类型的名称，或是一个限定为非托管类型的类型参数。
+
+stackalloc 表达式（C# 参考）
+2020/03/13
+ 
+stackalloc 表达式在堆栈上分配内存块。 该方法返回时，将自动丢弃在方法执行期间创建的堆栈中分配的内存块。 不能显式释放使用 stackalloc 分配的内存。 堆栈中分配的内存块不受垃圾回收的影响，也不必通过 fixed 语句固定。
+
+switch 表达式（C# 参考）
+2020/03/19
+ 
+本文介绍 C# 8.0 中引入的 switch 表达式。 有关 switch 语句的详细信息，请参阅语句部分中关于 switch 语句的文章。
+
+true 和 false 运算符（C# 参考）
+2018/12/10
+ 
+true 运算符返回 bool 值 true，以指明其操作数一定为 true。 false 运算符返回 bool 值 true，以指明其操作数一定为 false。 无法确保 true 和 false 运算符互补。 也就是说，true 和 false 运算符可能同时针对同一个操作数返回 bool 值 false。 如果某类型定义这两个运算符之一，它还必须定义另一个运算符。
+
+运算符重载（C# 引用）
+2019/07/05
+ 
+用户定义的类型可重载预定义的 C# 运算符。 也就是说，当一个或两个操作数都是某类型时，此类型可提供操作的自定义实现。 可重载运算符部分介绍了哪些 C# 运算符可重载。
+使用 operator 关键字来声明运算符。 运算符声明必须符合以下规则：
+同时包含 public 和 static 修饰符。
+一元运算符有一个输入参数。 二元运算符有两个输入参数。 在每种情况下，都至少有一个参数必须具有类型 T 或 T?，其中 T 是包含运算符声明的类型。</value>
+  </data>
+  <data name="skinTextBox6.Text" xml:space="preserve">
+    <value>算术运算符（C# 参考）
+2020/05/11
+ 
+以下运算符对数值类型的操作数执行算术运算：
+一元 ++（增量）、--（减量）、+（加）和 -（减）运算符
+二元 *（乘法）、/（除法）、%（余数）、+（加法）和 -（减法）运算符
+所有整型和浮点数值类型都支持这些运算符。
+对于整型类型，这些运算符（除 ++ 和 -- 运算符以外）是为 int、uint、long 和 ulong 类型定义的。 如果操作数都是其他整型类型（sbyte、byte、short、ushort 或 char），它们的值将转换为 int 类型，这也是一个运算的结果类型。 如果操作数是不同的整型类型或浮点类型，它们的值将转换为最接近的包含类型（如果存在该类型）。 有关详细信息，请参阅 C# 语言规范的数值提升部分。 ++ 和 -- 运算符是为所有整型和浮点数值类型以及 char 类型定义的。
+
+布尔逻辑运算符（C# 参考）
+2020/06/29
+ 
+以下运算符使用 bool 操作数执行逻辑运算：
+一元 !（逻辑非）运算符。
+二元 &amp;（逻辑与）、|（逻辑或）和 ^（逻辑异或）运算符。 这些运算符始终计算两个操作数。
+二元 &amp;&amp;（条件逻辑与）和 ||（条件逻辑或）运算符。 这些运算符仅在必要时才计算右侧操作数。
+对于整型数值类型的操作数，&amp;、| 和 ^ 运算符执行位逻辑运算。 有关详细信息，请参阅位运算符和移位运算符。
+
+位运算符和移位运算符（C# 参考）
+2019/04/18
+  
+以下运算符使用整数类型或 char 类型的操作数执行位运算或移位运算：
+一元 ~（按位求补）运算符
+二进制 &lt;&lt;（向左移位）和 &gt;&gt;（向右移位）移位运算符
+二进制 &amp;（逻辑 AND）、|（逻辑 OR）和 ^（逻辑异或）运算符
+这些运算符是针对 int、uint、long 和 ulong 类型定义的。 如果两个操作数都是其他整数类型（sbyte、byte、short、ushort 或 char），它们的值将转换为 int 类型，这也是一个运算的结果类型。 如果操作数是不同的整数类型，它们的值将转换为最接近的包含整数类型。 有关详细信息，请参阅 C# 语言规范的数值提升部分。
+&amp;、| 和 ^ 运算符也是为 bool 类型的操作数定义的。 有关详细信息，请参阅布尔逻辑运算符。
+位运算和移位运算永远不会导致溢出，并且不会在已检查和未检查的上下文中产生相同的结果。
+
+相等运算符（C# 参考）
+2019/06/26
+ 
+==（相等） 和 !=（不等） 运算符检查其操作数是否相等。
+相等运算符 ==
+如果操作数相等，等于运算符 == 返回 true，否则返回 false。
+
+比较运算符（C# 参考）
+2020/05/11
+ 
+&lt;（小于）、&gt;（大于）、&lt;=（小于或等于）和 &gt;=（大于或等于）比较（也称为关系）运算符比较其操作数。 所有整型和浮点数值类型都支持这些运算符。
+
+成员访问运算符和表达式（C# 参考）
+2020/04/17
+   
+访问类型成员时，可以使用以下运算符和表达式：
+.（成员访问）：用于访问命名空间或类型的成员
+[]（数组元素或索引器访问）：用于访问数组元素或类型索引器
+?. 和 ?[]（null 条件运算符）：仅当操作数为非 null 时才用于执行成员或元素访问运算
+()（调用）：用于调用被访问的方法或调用委托
+^（从末尾开始索引）：指示元素位置来自序列的末尾
+..（范围）：指定可用于获取一系列序列元素的索引范围
+
+类型测试运算符和强制转换表达式（C# 引用）
+2019/06/21
+ 
+可以使用以下运算符和表达式来执行类型检查或类型转换：
+is 运算符：用于检查表达式的运行时类型是否与给定类型兼容
+as 运算符：用于将表达式显式转换为给定类型（如果其运行时类型与该类型兼容）
+强制转换表达式：执行显式转换
+typeof 运算符：用于获取某个类型的 System.Type 实例
+
+Lambda 表达式（C# 引用）
+2019/07/29
+ 
+“Lambda 表达式”是采用以下任意一种形式的表达式：
+表达式 lambda，表达式为其主体：
+C#
+
+复制
+(input-parameters) =&gt; expression
+语句 lambda，语句块作为其主体：
+C#
+
+复制
+(input-parameters) =&gt; { &lt;sequence-of-statements&gt; }
+使用 lambda 声明运算符=&gt; 从其主体中分离 lambda 参数列表。 若要创建 Lambda 表达式，需要在 Lambda 运算符左侧指定输入参数（如果有），然后在另一侧输入表达式或语句块。
+任何 Lambda 表达式都可以转换为委托类型。 Lambda 表达式可以转换的委托类型由其参数和返回值的类型定义。 如果 lambda 表达式不返回值，则可以将其转换为 Action 委托类型之一；否则，可将其转换为 Func 委托类型之一。 例如，有 2 个参数且不返回值的 Lambda 表达式可转换为 Action&lt;T1,T2&gt; 委托。 有 1 个参数且不返回值的 Lambda 表达式可转换为 Func&lt;T,TResult&gt; 委托。 以下示例中，lambda 表达式 x =&gt; x * x（指定名为 x 的参数并返回 x 平方值）将分配给委托类型的变量：
+
++ 和 += 运算符（C# 参考）
+2020/04/23
+    
+内置整型和浮点数值类型、字符串类型以及委托类型支持 + 和 += 运算符。
+有关算术 + 运算符的信息，请参阅一元加和减运算符和算术运算符文章的加法运算符 + 部分。
+
+- 和 -= 运算符（C# 参考）
+2019/05/27
+     +2
+内置整型和浮点数字类型以及委托类型支持 - 和 -= 运算符。
+有关算术 - 运算符的信息，请参阅一元加和减运算符和算术运算符文章的减法运算符 - 部分。
+
+?: 运算符（C# 参考）
+2020/03/06
+    
+条件运算符 (?:) 也被称为三元条件运算符，用于计算布尔表达式，并根据布尔表达式的计算结果为 true 还是 false 来返回两个表达式中的一个结果。
+
+! （null 包容）运算符（C# 参考）
+2019/10/11
+ 
+在 C# 8.0 及更高版本中可用，一元后缀 ! 运算符是 null 包容运算符。 在已启用的可为空的注释上下文中，可以使用 null 包容运算符来声明可为空的引用类型的表达式 x 不为 null：x!。 一元前缀 ! 运算符是逻辑非运算符。
+null 包容运算符在运行时不起作用。 它仅通过更改表达式的 null 状态来影响编译器的静态流分析。 在运行时，表达式 x! 的计算结果为基础表达式 x 的结果。
+
+?? 和 ??= 运算符（C# 参考）
+2019/09/10
+     +1
+如果左操作数的值不为 null，则 null 合并运算符 ?? 返回该值；否则，它会计算右操作数并返回其结果。 如果左操作数的计算结果为非 null，则 ?? 运算符不会计算其右操作数。
+
+=&gt; 运算符（C# 参考）
+2019/01/22
+   
+=&gt; 令牌支持两种形式：作为 lambda 运算符、作为成员名称的分隔符和表达式主体定义中的成员实现。
+
+:: 运算符（C# 参考）
+2019/08/09
+ 
+使用命名空间别名限定符 :: 访问已设置别名的命名空间的成员。 只能使用两个标识符之间的 :: 限定符。 左侧标识符可以是以下任意别名：
+
+await 运算符（C# 参考）
+2020/07/13
+  
+await 运算符暂停对其所属的 async 方法的求值，直到其操作数表示的异步操作完成。 异步操作完成后，await 运算符将返回操作的结果（如果有）。 当 await 运算符应用到表示已完成操作的操作数时，它将立即返回操作的结果，而不会暂停其所属的方法。 await 运算符不会阻止计算异步方法的线程。 当 await 运算符暂停其所属的异步方法时，控件将返回到方法的调用方。
+
+default value 表达式（C# 参考）
+2020/03/13
+ 
+default value 表达式生成类型的默认值。 有两种类型的 default value 表达式：default 运算符调用和 default 文本。
+你还可以将 default 关键字用作 switch 语句中的默认用例标签。
+
+delegate 运算符 -（C# 参考）
+2019/07/18
+ 
+delegate 运算符创建一个可以转换为委托类型的匿名方法：
+
+nameof 表达式（C# 参考）
+2020/04/23
+ 
+nameof 表达式可生成变量、类型或成员的名称作为字符串常量：
+
+new 运算符（C# 参考）
+2019/06/25
+ 
+new 运算符创建类型的新实例。
+new 关键字还可用作成员声明修饰符或泛型类型约束。
+
+sizeof 运算符（C# 参考）
+2019/07/25
+ 
+sizeof 运算符返回给定类型的变量所占用的字节数。 sizeof 运算符的参数必须是一个非托管类型的名称，或是一个限定为非托管类型的类型参数。
+
+stackalloc 表达式（C# 参考）
+2020/03/13
+ 
+stackalloc 表达式在堆栈上分配内存块。 该方法返回时，将自动丢弃在方法执行期间创建的堆栈中分配的内存块。 不能显式释放使用 stackalloc 分配的内存。 堆栈中分配的内存块不受垃圾回收的影响，也不必通过 fixed 语句固定。
+
+switch 表达式（C# 参考）
+2020/03/19
+ 
+本文介绍 C# 8.0 中引入的 switch 表达式。 有关 switch 语句的详细信息，请参阅语句部分中关于 switch 语句的文章。
+
+true 和 false 运算符（C# 参考）
+2018/12/10
+ 
+true 运算符返回 bool 值 true，以指明其操作数一定为 true。 false 运算符返回 bool 值 true，以指明其操作数一定为 false。 无法确保 true 和 false 运算符互补。 也就是说，true 和 false 运算符可能同时针对同一个操作数返回 bool 值 false。 如果某类型定义这两个运算符之一，它还必须定义另一个运算符。
+
+运算符重载（C# 引用）
+2019/07/05
+ 
+用户定义的类型可重载预定义的 C# 运算符。 也就是说，当一个或两个操作数都是某类型时，此类型可提供操作的自定义实现。 可重载运算符部分介绍了哪些 C# 运算符可重载。
+使用 operator 关键字来声明运算符。 运算符声明必须符合以下规则：
+同时包含 public 和 static 修饰符。
+一元运算符有一个输入参数。 二元运算符有两个输入参数。 在每种情况下，都至少有一个参数必须具有类型 T 或 T?，其中 T 是包含运算符声明的类型。</value>
+  </data>
+  <data name="resource.Text9" xml:space="preserve">
+    <value>C# 预处理器指令
+2015/07/20
+   
+本节介绍了以下 C# 预处理器指令：
+#if
+#else
+#elif
+#endif
+#define
+#undef
+#warning
+#error
+#line
+#region
+#endregion
+#pragma
+#pragma warning
+#pragma checksum
+请参阅各个主题了解更多信息和示例。
+尽管编译器没有单独的预处理器，但本节中所述指令的处理方式与有预处理器时一样。 这些指令用于帮助条件编译。 不同于 C 和 C++ 指令，不能使用这些指令来创建宏。
+预处理器指令必须是一行中唯一的说明。</value>
+  </data>
+  <data name="skinTextBox8.Text" xml:space="preserve">
+    <value>C# 预处理器指令
+2015/07/20
+   
+本节介绍了以下 C# 预处理器指令：
+#if
+#else
+#elif
+#endif
+#define
+#undef
+#warning
+#error
+#line
+#region
+#endregion
+#pragma
+#pragma warning
+#pragma checksum
+请参阅各个主题了解更多信息和示例。
+尽管编译器没有单独的预处理器，但本节中所述指令的处理方式与有预处理器时一样。 这些指令用于帮助条件编译。 不同于 C 和 C++ 指令，不能使用这些指令来创建宏。
+预处理器指令必须是一行中唯一的说明。</value>
+  </data>
+  <data name="resource.Text10" xml:space="preserve">
+    <value>Thread.Sleep 方法
+定义
+命名空间:
+System.Threading
+程序集:
+System.Threading.Thread.dll
+将当前线程挂起指定的时间。
+重载
+重载
+Sleep(Int32)	
+将当前线程挂起指定的毫秒数。
+Sleep(TimeSpan)	
+将当前线程挂起指定的时间。
+
+MessageBox.Show 方法
+定义
+命名空间:
+System.Windows
+程序集:
+PresentationFramework.dll
+显示消息框。
+//弹出窗口-并且获取用户是否 点击确定
+ if(MessageBox.Show("是否确定","Err",MessageBoxButtons.YesNo)==DialogResult.Yes)
+{
+//用户点击了确定
+ }
+else
+ {
+ //用户点击了退出
+ }
+
+Show(String) 
+显示一个消息框，该消息框包含消息并返回结果。
+ public static System.Windows.MessageBoxResult Show (string messageBoxText);
+  MessageBoxResult result = MessageBox.Show(message);
+
+Show(String, String) 
+显示一个消息框，该消息框包含消息和标题栏标题，并且返回结果。
+public static System.Windows.MessageBoxResult Show (string messageBoxText, string caption);
+ MessageBoxResult result = MessageBox.Show(message, caption);
+
+Show(String, String, MessageBoxButton)
+显示一个消息框，该消息框包含消息、标题栏标题和按钮，并且返回结果。
+public static System.Windows.MessageBoxResult Show (string messageBoxText, string caption, System.Windows.MessageBoxButton button);
+
+常用控件
+1、窗体（Form）
+
+2、Label (标签)控件
+
+3、TextBox（文本框）控件
+
+4、RichTextBox控件
+
+5、NumericUpDown控件
+
+6、Button（按钮）控件
+
+7、GroupBox（分组框）控件
+
+8、RadioButton（单选按钮）控件
+
+9、CheckBox（复选框）控件
+
+10、ListBox（列表框）控件
+
+11、ComboBox（组合框）控件
+
+12、CheckedListBox（复选列表框）控件
+
+13、PictureBox（图片框）控件
+
+14、Timer（定时器控件或计时器控件）控件
+
+15、ProgressBar（进度条控件）控件和TrackBar 控件
+
+16、HScrollBar控件和VScrollBar控件的使用
+
+17、OpenFileDialog（打开文件对话框）控件
+
+18、SaveFileDialog（保存文件对话框）控件
+
+19、FontDialog（字体对话框）控件
+
+20、ColorDialog（颜色对话框）控件
+
+21、PrintDialog控件和PrintDocument 控件</value>
+  </data>
+  <data name="skinTextBox9.Text" xml:space="preserve">
+    <value>Thread.Sleep 方法
+定义
+命名空间:
+System.Threading
+程序集:
+System.Threading.Thread.dll
+将当前线程挂起指定的时间。
+重载
+重载
+Sleep(Int32)	
+将当前线程挂起指定的毫秒数。
+Sleep(TimeSpan)	
+将当前线程挂起指定的时间。
+
+MessageBox.Show 方法
+定义
+命名空间:
+System.Windows
+程序集:
+PresentationFramework.dll
+显示消息框。
+//弹出窗口-并且获取用户是否 点击确定
+ if(MessageBox.Show("是否确定","Err",MessageBoxButtons.YesNo)==DialogResult.Yes)
+{
+//用户点击了确定
+ }
+else
+ {
+ //用户点击了退出
+ }
+
+Show(String) 
+显示一个消息框，该消息框包含消息并返回结果。
+ public static System.Windows.MessageBoxResult Show (string messageBoxText);
+  MessageBoxResult result = MessageBox.Show(message);
+
+Show(String, String) 
+显示一个消息框，该消息框包含消息和标题栏标题，并且返回结果。
+public static System.Windows.MessageBoxResult Show (string messageBoxText, string caption);
+ MessageBoxResult result = MessageBox.Show(message, caption);
+
+Show(String, String, MessageBoxButton)
+显示一个消息框，该消息框包含消息、标题栏标题和按钮，并且返回结果。
+public static System.Windows.MessageBoxResult Show (string messageBoxText, string caption, System.Windows.MessageBoxButton button);
+
+常用控件
+1、窗体（Form）
+
+2、Label (标签)控件
+
+3、TextBox（文本框）控件
+
+4、RichTextBox控件
+
+5、NumericUpDown控件
+
+6、Button（按钮）控件
+
+7、GroupBox（分组框）控件
+
+8、RadioButton（单选按钮）控件
+
+9、CheckBox（复选框）控件
+
+10、ListBox（列表框）控件
+
+11、ComboBox（组合框）控件
+
+12、CheckedListBox（复选列表框）控件
+
+13、PictureBox（图片框）控件
+
+14、Timer（定时器控件或计时器控件）控件
+
+15、ProgressBar（进度条控件）控件和TrackBar 控件
+
+16、HScrollBar控件和VScrollBar控件的使用
+
+17、OpenFileDialog（打开文件对话框）控件
+
+18、SaveFileDialog（保存文件对话框）控件
+
+19、FontDialog（字体对话框）控件
+
+20、ColorDialog（颜色对话框）控件
+
+21、PrintDialog控件和PrintDocument 控件</value>
+  </data>
+  <data name="resource.Text11" xml:space="preserve">
+    <value>   /// &lt;summary&gt;
+    /// 重写 套接字
+    /// &lt;/summary&gt;
+    public class macroinstruction_Socket : Socket
+    {
+        /// &lt;summary&gt;
+        /// 套接字链接 结果
+        /// &lt;/summary&gt;
+        public bool socket_OK { get; set; }
+        public macroinstruction_Socket(AddressFamily family, SocketType socket, ProtocolType protocol) : base(family, socket, protocol)
+        {
+
+        }
+        /// &lt;summary&gt;
+        /// 打开连接套接字
+        /// &lt;/summary&gt;
+        /// &lt;param name="iPEndPoint"&gt;&lt;/param&gt;
+        public bool Open(IPEndPoint iPEndPoint)//打开套接字
+        {
+            try
+            {
+                this.Connect(iPEndPoint);//连接
+                socket_OK = true;
+                return true;
+            }
+            catch { socket_OK = false; return false; }
+        }
+        public void send(byte[] Data)
+        {
+            try
+            {
+                this.Send(Data);//发送数据
+                socket_OK = true;
+            }
+            catch { socket_OK = false; }
+        }
+        public void send(string Data)
+        {
+            try
+            {
+                this.SendFile(Data);//发送数据
+                socket_OK = true;
+            }
+            catch { socket_OK = false; }
+        }
+        public byte[] reception(byte[] Data)
+        {
+            try
+            {
+                this.Receive(Data, Data.Length, 0);//接收数据
+                socket_OK = true;
+                return Data;
+            }
+            catch { socket_OK = false; return Data; }
+        }
+    }
+    </value>
+  </data>
+  <data name="skinTextBox10.Text" xml:space="preserve">
+    <value>   /// &lt;summary&gt;
+    /// 重写 套接字
+    /// &lt;/summary&gt;
+    public class macroinstruction_Socket : Socket
+    {
+        /// &lt;summary&gt;
+        /// 套接字链接 结果
+        /// &lt;/summary&gt;
+        public bool socket_OK { get; set; }
+        public macroinstruction_Socket(AddressFamily family, SocketType socket, ProtocolType protocol) : base(family, socket, protocol)
+        {
+
+        }
+        /// &lt;summary&gt;
+        /// 打开连接套接字
+        /// &lt;/summary&gt;
+        /// &lt;param name="iPEndPoint"&gt;&lt;/param&gt;
+        public bool Open(IPEndPoint iPEndPoint)//打开套接字
+        {
+            try
+            {
+                this.Connect(iPEndPoint);//连接
+                socket_OK = true;
+                return true;
+            }
+            catch { socket_OK = false; return false; }
+        }
+        public void send(byte[] Data)
+        {
+            try
+            {
+                this.Send(Data);//发送数据
+                socket_OK = true;
+            }
+            catch { socket_OK = false; }
+        }
+        public void send(string Data)
+        {
+            try
+            {
+                this.SendFile(Data);//发送数据
+                socket_OK = true;
+            }
+            catch { socket_OK = false; }
+        }
+        public byte[] reception(byte[] Data)
+        {
+            try
+            {
+                this.Receive(Data, Data.Length, 0);//接收数据
+                socket_OK = true;
+                return Data;
+            }
+            catch { socket_OK = false; return Data; }
+        }
+    }
+    </value>
+  </data>
+  <data name="resource.Text" xml:space="preserve">
+    <value>//使用方法--静态类名&lt;约束&gt;.属性=值;  
+//实例化：静态类名&lt;约束&gt;.属性 名称 =new 静态类名&lt;约束&gt;.属性(传入约束);
+//使用上位机内部辅助触点与寄存器案例
+macroinstruction_data&lt;int&gt;. D_Data[0]=20;//编译器自动决定类型
+macroinstruction_data&lt;bool&gt;. M_Data[0]=true;//置位
+//使用上位机内部线程 与无类型 存储区
+macroinstruction_data&lt;Thread&gt;.thread thread_1 =new Thread(方法名);--可以使用匿名线程
+//匿名线程使用
+macroinstruction_data&lt;Thread&gt;.thread[0] = new Thread (()=&gt;
+ {
+//内容
+});
+//无类型 存储区 使用
+macroinstruction_data&lt;int&gt; data =new macroinstruction_data&lt;int&gt;(20);
+macroinstruction_data&lt;int&gt;.Data [0];//填充后的泛型值
+
+ /// &lt;summary&gt;
+    /// 宏指令 数据保存静态区
+    /// &lt;/summary&gt;
+    public class macroinstruction_data&lt;T&gt;
+    {
+        /// &lt;summary&gt;
+        /// 泛型区--使用前要记得地址
+        /// &lt;/summary&gt;
+        public static List&lt;T&gt; Data = new List&lt;T&gt;();
+        /// &lt;summary&gt;
+        ///宏指令默认线程区 -- 最大线程数量100
+        /// &lt;/summary&gt;
+        public static Thread[] thread = new Thread[100];//最大线程数量
+        /// &lt;summary&gt;
+        /// 创建寄存器--默认无类型约束--使用前
+        /// &lt;/summary&gt;
+        public static object[] D_Data = new object[1024];
+        /// &lt;summary&gt;
+        /// 创建标志位--默认全是false
+        /// &lt;/summary&gt;
+        public static bool[] M_Data = new bool[1024];
+        /// &lt;summary&gt;
+        /// 构造函数--使用泛型前 记得 使用此类实例化 
+        /// &lt;/summary&gt;
+        /// &lt;param name="Name"&gt;&lt;/param&gt;
+        public macroinstruction_data(T Name)
+        {
+            Data.Add(Name);//添加对象
+        }
+
+    }</value>
+  </data>
+  <data name="skinTextBox15.Text" xml:space="preserve">
+    <value>//使用方法--静态类名&lt;约束&gt;.属性=值;  
+//实例化：静态类名&lt;约束&gt;.属性 名称 =new 静态类名&lt;约束&gt;.属性(传入约束);
+//使用上位机内部辅助触点与寄存器案例
+macroinstruction_data&lt;int&gt;. D_Data[0]=20;//编译器自动决定类型
+macroinstruction_data&lt;bool&gt;. M_Data[0]=true;//置位
+//使用上位机内部线程 与无类型 存储区
+macroinstruction_data&lt;Thread&gt;.thread thread_1 =new Thread(方法名);--可以使用匿名线程
+//匿名线程使用
+macroinstruction_data&lt;Thread&gt;.thread[0] = new Thread (()=&gt;
+ {
+//内容
+});
+//无类型 存储区 使用
+macroinstruction_data&lt;int&gt; data =new macroinstruction_data&lt;int&gt;(20);
+macroinstruction_data&lt;int&gt;.Data [0];//填充后的泛型值
+
+ /// &lt;summary&gt;
+    /// 宏指令 数据保存静态区
+    /// &lt;/summary&gt;
+    public class macroinstruction_data&lt;T&gt;
+    {
+        /// &lt;summary&gt;
+        /// 泛型区--使用前要记得地址
+        /// &lt;/summary&gt;
+        public static List&lt;T&gt; Data = new List&lt;T&gt;();
+        /// &lt;summary&gt;
+        ///宏指令默认线程区 -- 最大线程数量100
+        /// &lt;/summary&gt;
+        public static Thread[] thread = new Thread[100];//最大线程数量
+        /// &lt;summary&gt;
+        /// 创建寄存器--默认无类型约束--使用前
+        /// &lt;/summary&gt;
+        public static object[] D_Data = new object[1024];
+        /// &lt;summary&gt;
+        /// 创建标志位--默认全是false
+        /// &lt;/summary&gt;
+        public static bool[] M_Data = new bool[1024];
+        /// &lt;summary&gt;
+        /// 构造函数--使用泛型前 记得 使用此类实例化 
+        /// &lt;/summary&gt;
+        /// &lt;param name="Name"&gt;&lt;/param&gt;
+        public macroinstruction_data(T Name)
+        {
+            Data.Add(Name);//添加对象
+        }
+
+    }</value>
+  </data>
+  <data name="resource.Text14" xml:space="preserve">
+    <value>//使用 方法--以三菱PLC为例 若要访问其他PLC 把Mitsubishi_axActUtlType
+ 替代成其他PLC名称 
+三菱在线: Mitsubishi  三菱仿真: Mitsubishi_axActUtlType 
+MODBUS TCP: MODBUD_TCP 西门子：Siemens 
+PLC.Mitsubishi_axActUtlType. PLC_read_M_bit("Y","0");//读取位--名称--地址
+PLC.Mitsubishi_axActUtlType. PLC_write_M_bit("Y","0",true);//写入位--名称--地址
+PLC.Mitsubishi_axActUtlType. PLC_read_D_register("D","0",“Signed_32_Bit”);//读取有符号32位双字-名称--地址--类型
+PLC.Mitsubishi_axActUtlType. PLC_write_D_register("D","0",“0”,“Signed_32_Bit”);//写入有符号32位双字---名称--地址--内容--类型
+  /// &lt;summary&gt;
+    /// 宏指令与PLC的接口--PLC端必须继承与实现接口
+    /// &lt;/summary&gt;
+
+    public interface macroinstruction_PLC_interface
+    {
+        /// &lt;summary&gt;
+        /// PLC准备好
+        /// &lt;/summary&gt;
+        bool PLC_ready { get; }//PLC准备好
+        /// &lt;summary&gt;
+        /// PLC报警代码
+        /// &lt;/summary&gt;
+        int PLCerr_code { get; }//PLC报警代码
+        /// &lt;summary&gt;
+        /// PLC报警内容
+        /// &lt;/summary&gt;
+        string PLCerr_content { get; }//PLC报警内容
+        /// &lt;summary&gt;
+        /// 打开PLC
+        /// &lt;/summary&gt;
+        /// &lt;returns&gt;&lt;/returns&gt;
+        List&lt;bool&gt; PLC_read_M_bit(string Name, string id);//读取--位
+        /// &lt;summary&gt;
+        /// /写入--位
+        /// &lt;/summary&gt;
+        /// &lt;param name="Name"&gt;&lt;/param&gt;
+        /// &lt;param name="id"&gt;&lt;/param&gt;
+        /// &lt;param name="bon-off "&gt;&lt;/param&gt;
+        /// &lt;returns&gt;&lt;/returns&gt;
+        List&lt;bool&gt; PLC_write_M_bit(string Name, string id, bool on_off );//写入--位
+        /// &lt;summary&gt;
+        /// /读取--字
+        /// &lt;/summary&gt;
+        /// &lt;param name="Name"&gt;&lt;/param&gt;
+        /// &lt;param name="id"&gt;&lt;/param&gt;
+        /// &lt;param name="format"&gt;数据格式&lt;/param&gt;
+        /// &lt;returns&gt;&lt;/returns&gt;
+        string PLC_read_D_register(string Name, string id, string format);//读取--字
+        /// &lt;summary&gt;
+        /// 写--字
+        /// &lt;/summary&gt;
+        /// &lt;param name="Name"&gt;&lt;/param&gt;
+        /// &lt;param name="id"&gt;&lt;/param&gt;
+        /// &lt;param name="content"&gt;&lt;/param&gt;
+        /// &lt;param name="format"&gt;&lt;/param&gt;
+        /// &lt;returns&gt;&lt;/returns&gt;
+        string PLC_write_D_register(string Name, string id, string content, string format);//读写--字
+        /// &lt;summary&gt;
+        /// 读取--字--多个读取-自动判断类型改变地址索引
+        /// &lt;/summary&gt;
+        /// &lt;param name="id"&gt;&lt;/param&gt;
+        /// &lt;returns&gt;&lt;/returns&gt;
+        List&lt;int&gt; PLC_read_D_register_bit(string Name, string id, string format, string Index);//读取--字--多个读取
+        /// &lt;summary&gt;
+        /// 读写--字
+        /// &lt;/summary&gt;
+        /// &lt;param name="id"&gt;&lt;/param&gt;
+        /// &lt;returns&gt;&lt;/returns&gt;
+        List&lt;int&gt; PLC_write_D_register_bit(string id);//读写--字
+    }
+   /// &lt;summary&gt;
+    /// 数值显示类型
+    /// &lt;/summary&gt;
+    public enum numerical_format
+    {
+        BCD_16_Bit, BCD_32_Bit, Hex_16_Bit, Hex_32_Bit, Binary_16_Bit, Binary_32_Bit, Unsigned_16_Bit, Signed_16_Bit
+            , Unsigned_32_Bit, Signed_32_Bit, Float_32_Bit
+    }
+   /// &lt;summary&gt;
+    /// 本类主要用于-宏指令到
+    /// &lt;/summary&gt;
+    public class PLC
+    {
+        /// &lt;summary&gt;
+        /// 三菱Mitsubishi PLC仿真
+        /// &lt;/summary&gt;
+        public static macroinstruction_PLC_interface Mitsubishi_axActUtlType { get; set; }
+        /// &lt;summary&gt;
+        /// 三菱Mitsubishi PLC在线访问 
+        /// &lt;/summary&gt;
+        public static macroinstruction_PLC_interface Mitsubishi { get; set; }
+        /// &lt;summary&gt;
+        /// MODBUD_TCP 在线访问
+        /// &lt;/summary&gt;
+        public static macroinstruction_PLC_interface MODBUD_TCP { get; set; }
+        /// &lt;summary&gt;
+        /// 西门子Siemens 在线访问
+        /// &lt;/summary&gt;
+        public static macroinstruction_PLC_interface Siemens { get; set; }
+
+    }
+  /// &lt;summary&gt;
+    /// PLC硬件选择
+    /// PLC选择枚举&gt;
+    /// &lt;/summary&gt;
+
+    public enum PLC
+    {
+        Mitsubishi,
+        Siemens,
+        Modbus_TCP,
+        HMI
+    }
+    /// &lt;summary&gt;
+    /// PLC各可访问软元件  三菱-bit位
+    /// &lt;/summary&gt;
+    public enum Mitsubishi_bit
+    { 
+        LCS,LCC,SM,X,Y,M,L,F,B,TS,SS,SC,CS,CC,SB,S,D_Bit,SD_Bit,R_Bit,SW_Bit,W_Bit
+    }
+    /// &lt;summary&gt;
+    /// PLC各可访问软元件 三菱 -WORD 字
+    /// &lt;/summary&gt;
+    public enum Mitsubishi_D
+    {
+        LCN,LZ,SD,D,R,W,TN,SN,CN,SW,Z
+    }
+    /// &lt;summary&gt;
+    ///  PLC各可访问软元件 西门子 -bit位
+    /// &lt;/summary&gt;
+    public enum Siemens_bit
+    {
+       I, Q, M
+    }
+    /// &lt;summary&gt;
+    /// PLC各可访问软元件 西门子-WORD 字
+    /// &lt;/summary&gt;
+    public enum Siemens_D
+    {
+       DB
+    }
+    /// &lt;summary&gt;
+    ///  PLC各可访问软元件 Modbus_TCP -bit位
+    /// &lt;/summary&gt;
+    public enum Modbus_TCP_bit
+    {
+         X, Y, M
+    }
+    /// &lt;summary&gt;
+    /// PLC各可访问软元件 Modbus_TCP-WORD 字
+    /// &lt;/summary&gt;
+    public enum Modbus_TCP_D
+    {
+         D
+    }
+    /// &lt;summary&gt;
+    /// PLC各可访问软元件  三菱-bit位
+    /// &lt;/summary&gt;
+    public enum HMI_bit
+    {
+        Data_Bit
+    }
+    /// &lt;summary&gt;
+    /// PLC各可访问软元件 三菱 -WORD 字
+    /// &lt;/summary&gt;
+    public enum HMI_D
+    {
+         Data_D
+    }
+    /// &lt;summary&gt;
+    ///  PLC--按钮状态
+    /// &lt;/summary&gt;
+    public enum Button_state
+    {
+        Off,ON
+    }
+    /// &lt;summary&gt;
+    /// 数值显示类型
+    /// &lt;/summary&gt;
+    public enum numerical_format
+    {
+        BCD_16_Bit, BCD_32_Bit, Hex_16_Bit, Hex_32_Bit, Binary_16_Bit, Binary_32_Bit, Unsigned_16_Bit, Signed_16_Bit
+            , Unsigned_32_Bit, Signed_32_Bit, Float_32_Bit
+    }
+    /// &lt;summary&gt;
+    /// 数值显示类型
+    /// &lt;/summary&gt;
+    public enum numerical_type
+    {
+        数值
+    }
+    class PLCselect
+    {
+
+    }</value>
+  </data>
+  <data name="skinTextBox16.Text" xml:space="preserve">
+    <value>//使用 方法--以三菱PLC为例 若要访问其他PLC 把Mitsubishi_axActUtlType
+ 替代成其他PLC名称 
+三菱在线: Mitsubishi  三菱仿真: Mitsubishi_axActUtlType 
+MODBUS TCP: MODBUD_TCP 西门子：Siemens 
+PLC.Mitsubishi_axActUtlType. PLC_read_M_bit("Y","0");//读取位--名称--地址
+PLC.Mitsubishi_axActUtlType. PLC_write_M_bit("Y","0",true);//写入位--名称--地址
+PLC.Mitsubishi_axActUtlType. PLC_read_D_register("D","0",“Signed_32_Bit”);//读取有符号32位双字-名称--地址--类型
+PLC.Mitsubishi_axActUtlType. PLC_write_D_register("D","0",“0”,“Signed_32_Bit”);//写入有符号32位双字---名称--地址--内容--类型
+  /// &lt;summary&gt;
+    /// 宏指令与PLC的接口--PLC端必须继承与实现接口
+    /// &lt;/summary&gt;
+
+    public interface macroinstruction_PLC_interface
+    {
+        /// &lt;summary&gt;
+        /// PLC准备好
+        /// &lt;/summary&gt;
+        bool PLC_ready { get; }//PLC准备好
+        /// &lt;summary&gt;
+        /// PLC报警代码
+        /// &lt;/summary&gt;
+        int PLCerr_code { get; }//PLC报警代码
+        /// &lt;summary&gt;
+        /// PLC报警内容
+        /// &lt;/summary&gt;
+        string PLCerr_content { get; }//PLC报警内容
+        /// &lt;summary&gt;
+        /// 打开PLC
+        /// &lt;/summary&gt;
+        /// &lt;returns&gt;&lt;/returns&gt;
+        List&lt;bool&gt; PLC_read_M_bit(string Name, string id);//读取--位
+        /// &lt;summary&gt;
+        /// /写入--位
+        /// &lt;/summary&gt;
+        /// &lt;param name="Name"&gt;&lt;/param&gt;
+        /// &lt;param name="id"&gt;&lt;/param&gt;
+        /// &lt;param name="bon-off "&gt;&lt;/param&gt;
+        /// &lt;returns&gt;&lt;/returns&gt;
+        List&lt;bool&gt; PLC_write_M_bit(string Name, string id, bool on_off );//写入--位
+        /// &lt;summary&gt;
+        /// /读取--字
+        /// &lt;/summary&gt;
+        /// &lt;param name="Name"&gt;&lt;/param&gt;
+        /// &lt;param name="id"&gt;&lt;/param&gt;
+        /// &lt;param name="format"&gt;数据格式&lt;/param&gt;
+        /// &lt;returns&gt;&lt;/returns&gt;
+        string PLC_read_D_register(string Name, string id, string format);//读取--字
+        /// &lt;summary&gt;
+        /// 写--字
+        /// &lt;/summary&gt;
+        /// &lt;param name="Name"&gt;&lt;/param&gt;
+        /// &lt;param name="id"&gt;&lt;/param&gt;
+        /// &lt;param name="content"&gt;&lt;/param&gt;
+        /// &lt;param name="format"&gt;&lt;/param&gt;
+        /// &lt;returns&gt;&lt;/returns&gt;
+        string PLC_write_D_register(string Name, string id, string content, string format);//读写--字
+        /// &lt;summary&gt;
+        /// 读取--字--多个读取-自动判断类型改变地址索引
+        /// &lt;/summary&gt;
+        /// &lt;param name="id"&gt;&lt;/param&gt;
+        /// &lt;returns&gt;&lt;/returns&gt;
+        List&lt;int&gt; PLC_read_D_register_bit(string Name, string id, string format, string Index);//读取--字--多个读取
+        /// &lt;summary&gt;
+        /// 读写--字
+        /// &lt;/summary&gt;
+        /// &lt;param name="id"&gt;&lt;/param&gt;
+        /// &lt;returns&gt;&lt;/returns&gt;
+        List&lt;int&gt; PLC_write_D_register_bit(string id);//读写--字
+    }
+   /// &lt;summary&gt;
+    /// 数值显示类型
+    /// &lt;/summary&gt;
+    public enum numerical_format
+    {
+        BCD_16_Bit, BCD_32_Bit, Hex_16_Bit, Hex_32_Bit, Binary_16_Bit, Binary_32_Bit, Unsigned_16_Bit, Signed_16_Bit
+            , Unsigned_32_Bit, Signed_32_Bit, Float_32_Bit
+    }
+   /// &lt;summary&gt;
+    /// 本类主要用于-宏指令到
+    /// &lt;/summary&gt;
+    public class PLC
+    {
+        /// &lt;summary&gt;
+        /// 三菱Mitsubishi PLC仿真
+        /// &lt;/summary&gt;
+        public static macroinstruction_PLC_interface Mitsubishi_axActUtlType { get; set; }
+        /// &lt;summary&gt;
+        /// 三菱Mitsubishi PLC在线访问 
+        /// &lt;/summary&gt;
+        public static macroinstruction_PLC_interface Mitsubishi { get; set; }
+        /// &lt;summary&gt;
+        /// MODBUD_TCP 在线访问
+        /// &lt;/summary&gt;
+        public static macroinstruction_PLC_interface MODBUD_TCP { get; set; }
+        /// &lt;summary&gt;
+        /// 西门子Siemens 在线访问
+        /// &lt;/summary&gt;
+        public static macroinstruction_PLC_interface Siemens { get; set; }
+
+    }
+  /// &lt;summary&gt;
+    /// PLC硬件选择
+    /// PLC选择枚举&gt;
+    /// &lt;/summary&gt;
+
+    public enum PLC
+    {
+        Mitsubishi,
+        Siemens,
+        Modbus_TCP,
+        HMI
+    }
+    /// &lt;summary&gt;
+    /// PLC各可访问软元件  三菱-bit位
+    /// &lt;/summary&gt;
+    public enum Mitsubishi_bit
+    { 
+        LCS,LCC,SM,X,Y,M,L,F,B,TS,SS,SC,CS,CC,SB,S,D_Bit,SD_Bit,R_Bit,SW_Bit,W_Bit
+    }
+    /// &lt;summary&gt;
+    /// PLC各可访问软元件 三菱 -WORD 字
+    /// &lt;/summary&gt;
+    public enum Mitsubishi_D
+    {
+        LCN,LZ,SD,D,R,W,TN,SN,CN,SW,Z
+    }
+    /// &lt;summary&gt;
+    ///  PLC各可访问软元件 西门子 -bit位
+    /// &lt;/summary&gt;
+    public enum Siemens_bit
+    {
+       I, Q, M
+    }
+    /// &lt;summary&gt;
+    /// PLC各可访问软元件 西门子-WORD 字
+    /// &lt;/summary&gt;
+    public enum Siemens_D
+    {
+       DB
+    }
+    /// &lt;summary&gt;
+    ///  PLC各可访问软元件 Modbus_TCP -bit位
+    /// &lt;/summary&gt;
+    public enum Modbus_TCP_bit
+    {
+         X, Y, M
+    }
+    /// &lt;summary&gt;
+    /// PLC各可访问软元件 Modbus_TCP-WORD 字
+    /// &lt;/summary&gt;
+    public enum Modbus_TCP_D
+    {
+         D
+    }
+    /// &lt;summary&gt;
+    /// PLC各可访问软元件  三菱-bit位
+    /// &lt;/summary&gt;
+    public enum HMI_bit
+    {
+        Data_Bit
+    }
+    /// &lt;summary&gt;
+    /// PLC各可访问软元件 三菱 -WORD 字
+    /// &lt;/summary&gt;
+    public enum HMI_D
+    {
+         Data_D
+    }
+    /// &lt;summary&gt;
+    ///  PLC--按钮状态
+    /// &lt;/summary&gt;
+    public enum Button_state
+    {
+        Off,ON
+    }
+    /// &lt;summary&gt;
+    /// 数值显示类型
+    /// &lt;/summary&gt;
+    public enum numerical_format
+    {
+        BCD_16_Bit, BCD_32_Bit, Hex_16_Bit, Hex_32_Bit, Binary_16_Bit, Binary_32_Bit, Unsigned_16_Bit, Signed_16_Bit
+            , Unsigned_32_Bit, Signed_32_Bit, Float_32_Bit
+    }
+    /// &lt;summary&gt;
+    /// 数值显示类型
+    /// &lt;/summary&gt;
+    public enum numerical_type
+    {
+        数值
+    }
+    class PLCselect
+    {
+
+    }</value>
+  </data>
+  <data name="resource.Text13" xml:space="preserve">
+    <value>//使用 方法--以三菱PLC为例 若要访问其他PLC 把Mitsubishi_axActUtlType
+ 替代成其他PLC名称 --注意不能有空格
+三菱在线: Mitsubishi  三菱仿真: Mitsubishi_axActUtlType 
+MODBUS TCP: MODBUD_TCP 西门子：Siemens 
+PLC.Mitsubishi_axActUtlType.PLC_read_M_bit("Y","0");//读取位--名称--地址
+PLC.Mitsubishi_axActUtlType.PLC_write_M_bit("Y","0",true);//写入位--名称--地址
+PLC.Mitsubishi_axActUtlType.PLC_read_D_register("D","0",“Signed_32_Bit”);//读取有符号32位双字-名称--地址--类型
+PLC.Mitsubishi_axActUtlType.PLC_write_D_register("D","0",“0”,“Signed_32_Bit”);//写入有符号32位双字---名称--地址--内容--类型
+  /// &lt;summary&gt;
+    /// 宏指令与PLC的接口--PLC端必须继承与实现接口
+    /// &lt;/summary&gt;
+
+    public interface macroinstruction_PLC_interface
+    {
+        /// &lt;summary&gt;
+        /// PLC准备好
+        /// &lt;/summary&gt;
+        bool PLC_ready { get; }//PLC准备好
+        /// &lt;summary&gt;
+        /// PLC报警代码
+        /// &lt;/summary&gt;
+        int PLCerr_code { get; }//PLC报警代码
+        /// &lt;summary&gt;
+        /// PLC报警内容
+        /// &lt;/summary&gt;
+        string PLCerr_content { get; }//PLC报警内容
+        /// &lt;summary&gt;
+        /// 打开PLC
+        /// &lt;/summary&gt;
+        /// &lt;returns&gt;&lt;/returns&gt;
+        List&lt;bool&gt; PLC_read_M_bit(string Name, string id);//读取--位
+        /// &lt;summary&gt;
+        /// /写入--位
+        /// &lt;/summary&gt;
+        /// &lt;param name="Name"&gt;&lt;/param&gt;
+        /// &lt;param name="id"&gt;&lt;/param&gt;
+        /// &lt;param name="bon-off "&gt;&lt;/param&gt;
+        /// &lt;returns&gt;&lt;/returns&gt;
+        List&lt;bool&gt; PLC_write_M_bit(string Name, string id, bool on_off );//写入--位
+        /// &lt;summary&gt;
+        /// /读取--字
+        /// &lt;/summary&gt;
+        /// &lt;param name="Name"&gt;&lt;/param&gt;
+        /// &lt;param name="id"&gt;&lt;/param&gt;
+        /// &lt;param name="format"&gt;数据格式&lt;/param&gt;
+        /// &lt;returns&gt;&lt;/returns&gt;
+        string PLC_read_D_register(string Name, string id, string format);//读取--字
+        /// &lt;summary&gt;
+        /// 写--字
+        /// &lt;/summary&gt;
+        /// &lt;param name="Name"&gt;&lt;/param&gt;
+        /// &lt;param name="id"&gt;&lt;/param&gt;
+        /// &lt;param name="content"&gt;&lt;/param&gt;
+        /// &lt;param name="format"&gt;&lt;/param&gt;
+        /// &lt;returns&gt;&lt;/returns&gt;
+        string PLC_write_D_register(string Name, string id, string content, string format);//读写--字
+        /// &lt;summary&gt;
+        /// 读取--字--多个读取-自动判断类型改变地址索引
+        /// &lt;/summary&gt;
+        /// &lt;param name="id"&gt;&lt;/param&gt;
+        /// &lt;returns&gt;&lt;/returns&gt;
+        List&lt;int&gt; PLC_read_D_register_bit(string Name, string id, string format, string Index);//读取--字--多个读取
+        /// &lt;summary&gt;
+        /// 读写--字
+        /// &lt;/summary&gt;
+        /// &lt;param name="id"&gt;&lt;/param&gt;
+        /// &lt;returns&gt;&lt;/returns&gt;
+        List&lt;int&gt; PLC_write_D_register_bit(string id);//读写--字
+    }
+   /// &lt;summary&gt;
+    /// 数值显示类型
+    /// &lt;/summary&gt;
+    public enum numerical_format
+    {
+        BCD_16_Bit, BCD_32_Bit, Hex_16_Bit, Hex_32_Bit, Binary_16_Bit, Binary_32_Bit, Unsigned_16_Bit, Signed_16_Bit
+            , Unsigned_32_Bit, Signed_32_Bit, Float_32_Bit
+    }
+   /// &lt;summary&gt;
+    /// 本类主要用于-宏指令到
+    /// &lt;/summary&gt;
+    public class PLC
+    {
+        /// &lt;summary&gt;
+        /// 三菱Mitsubishi PLC仿真
+        /// &lt;/summary&gt;
+        public static macroinstruction_PLC_interface Mitsubishi_axActUtlType { get; set; }
+        /// &lt;summary&gt;
+        /// 三菱Mitsubishi PLC在线访问 
+        /// &lt;/summary&gt;
+        public static macroinstruction_PLC_interface Mitsubishi { get; set; }
+        /// &lt;summary&gt;
+        /// MODBUD_TCP 在线访问
+        /// &lt;/summary&gt;
+        public static macroinstruction_PLC_interface MODBUD_TCP { get; set; }
+        /// &lt;summary&gt;
+        /// 西门子Siemens 在线访问
+        /// &lt;/summary&gt;
+        public static macroinstruction_PLC_interface Siemens { get; set; }
+
+    }
+  /// &lt;summary&gt;
+    /// PLC硬件选择
+    /// PLC选择枚举&gt;
+    /// &lt;/summary&gt;
+
+    public enum PLC
+    {
+        Mitsubishi,
+        Siemens,
+        Modbus_TCP,
+        HMI
+    }
+    /// &lt;summary&gt;
+    /// PLC各可访问软元件  三菱-bit位
+    /// &lt;/summary&gt;
+    public enum Mitsubishi_bit
+    { 
+        LCS,LCC,SM,X,Y,M,L,F,B,TS,SS,SC,CS,CC,SB,S,D_Bit,SD_Bit,R_Bit,SW_Bit,W_Bit
+    }
+    /// &lt;summary&gt;
+    /// PLC各可访问软元件 三菱 -WORD 字
+    /// &lt;/summary&gt;
+    public enum Mitsubishi_D
+    {
+        LCN,LZ,SD,D,R,W,TN,SN,CN,SW,Z
+    }
+    /// &lt;summary&gt;
+    ///  PLC各可访问软元件 西门子 -bit位
+    /// &lt;/summary&gt;
+    public enum Siemens_bit
+    {
+       I, Q, M
+    }
+    /// &lt;summary&gt;
+    /// PLC各可访问软元件 西门子-WORD 字
+    /// &lt;/summary&gt;
+    public enum Siemens_D
+    {
+       DB
+    }
+    /// &lt;summary&gt;
+    ///  PLC各可访问软元件 Modbus_TCP -bit位
+    /// &lt;/summary&gt;
+    public enum Modbus_TCP_bit
+    {
+         X, Y, M
+    }
+    /// &lt;summary&gt;
+    /// PLC各可访问软元件 Modbus_TCP-WORD 字
+    /// &lt;/summary&gt;
+    public enum Modbus_TCP_D
+    {
+         D
+    }
+    /// &lt;summary&gt;
+    /// PLC各可访问软元件  三菱-bit位
+    /// &lt;/summary&gt;
+    public enum HMI_bit
+    {
+        Data_Bit
+    }
+    /// &lt;summary&gt;
+    /// PLC各可访问软元件 三菱 -WORD 字
+    /// &lt;/summary&gt;
+    public enum HMI_D
+    {
+         Data_D
+    }
+    /// &lt;summary&gt;
+    ///  PLC--按钮状态
+    /// &lt;/summary&gt;
+    public enum Button_state
+    {
+        Off,ON
+    }
+    /// &lt;summary&gt;
+    /// 数值显示类型
+    /// &lt;/summary&gt;
+    public enum numerical_format
+    {
+        BCD_16_Bit, BCD_32_Bit, Hex_16_Bit, Hex_32_Bit, Binary_16_Bit, Binary_32_Bit, Unsigned_16_Bit, Signed_16_Bit
+            , Unsigned_32_Bit, Signed_32_Bit, Float_32_Bit
+    }
+    /// &lt;summary&gt;
+    /// 数值显示类型
+    /// &lt;/summary&gt;
+    public enum numerical_type
+    {
+        数值
+    }
+    class PLCselect
+    {
+
+    }</value>
+  </data>
+  <data name="skinTextBox17.Text" xml:space="preserve">
+    <value>//使用 方法--以三菱PLC为例 若要访问其他PLC 把Mitsubishi_axActUtlType
+ 替代成其他PLC名称 --注意不能有空格
+三菱在线: Mitsubishi  三菱仿真: Mitsubishi_axActUtlType 
+MODBUS TCP: MODBUD_TCP 西门子：Siemens 
+PLC.Mitsubishi_axActUtlType.PLC_read_M_bit("Y","0");//读取位--名称--地址
+PLC.Mitsubishi_axActUtlType.PLC_write_M_bit("Y","0",true);//写入位--名称--地址
+PLC.Mitsubishi_axActUtlType.PLC_read_D_register("D","0",“Signed_32_Bit”);//读取有符号32位双字-名称--地址--类型
+PLC.Mitsubishi_axActUtlType.PLC_write_D_register("D","0",“0”,“Signed_32_Bit”);//写入有符号32位双字---名称--地址--内容--类型
+  /// &lt;summary&gt;
+    /// 宏指令与PLC的接口--PLC端必须继承与实现接口
+    /// &lt;/summary&gt;
+
+    public interface macroinstruction_PLC_interface
+    {
+        /// &lt;summary&gt;
+        /// PLC准备好
+        /// &lt;/summary&gt;
+        bool PLC_ready { get; }//PLC准备好
+        /// &lt;summary&gt;
+        /// PLC报警代码
+        /// &lt;/summary&gt;
+        int PLCerr_code { get; }//PLC报警代码
+        /// &lt;summary&gt;
+        /// PLC报警内容
+        /// &lt;/summary&gt;
+        string PLCerr_content { get; }//PLC报警内容
+        /// &lt;summary&gt;
+        /// 打开PLC
+        /// &lt;/summary&gt;
+        /// &lt;returns&gt;&lt;/returns&gt;
+        List&lt;bool&gt; PLC_read_M_bit(string Name, string id);//读取--位
+        /// &lt;summary&gt;
+        /// /写入--位
+        /// &lt;/summary&gt;
+        /// &lt;param name="Name"&gt;&lt;/param&gt;
+        /// &lt;param name="id"&gt;&lt;/param&gt;
+        /// &lt;param name="bon-off "&gt;&lt;/param&gt;
+        /// &lt;returns&gt;&lt;/returns&gt;
+        List&lt;bool&gt; PLC_write_M_bit(string Name, string id, bool on_off );//写入--位
+        /// &lt;summary&gt;
+        /// /读取--字
+        /// &lt;/summary&gt;
+        /// &lt;param name="Name"&gt;&lt;/param&gt;
+        /// &lt;param name="id"&gt;&lt;/param&gt;
+        /// &lt;param name="format"&gt;数据格式&lt;/param&gt;
+        /// &lt;returns&gt;&lt;/returns&gt;
+        string PLC_read_D_register(string Name, string id, string format);//读取--字
+        /// &lt;summary&gt;
+        /// 写--字
+        /// &lt;/summary&gt;
+        /// &lt;param name="Name"&gt;&lt;/param&gt;
+        /// &lt;param name="id"&gt;&lt;/param&gt;
+        /// &lt;param name="content"&gt;&lt;/param&gt;
+        /// &lt;param name="format"&gt;&lt;/param&gt;
+        /// &lt;returns&gt;&lt;/returns&gt;
+        string PLC_write_D_register(string Name, string id, string content, string format);//读写--字
+        /// &lt;summary&gt;
+        /// 读取--字--多个读取-自动判断类型改变地址索引
+        /// &lt;/summary&gt;
+        /// &lt;param name="id"&gt;&lt;/param&gt;
+        /// &lt;returns&gt;&lt;/returns&gt;
+        List&lt;int&gt; PLC_read_D_register_bit(string Name, string id, string format, string Index);//读取--字--多个读取
+        /// &lt;summary&gt;
+        /// 读写--字
+        /// &lt;/summary&gt;
+        /// &lt;param name="id"&gt;&lt;/param&gt;
+        /// &lt;returns&gt;&lt;/returns&gt;
+        List&lt;int&gt; PLC_write_D_register_bit(string id);//读写--字
+    }
+   /// &lt;summary&gt;
+    /// 数值显示类型
+    /// &lt;/summary&gt;
+    public enum numerical_format
+    {
+        BCD_16_Bit, BCD_32_Bit, Hex_16_Bit, Hex_32_Bit, Binary_16_Bit, Binary_32_Bit, Unsigned_16_Bit, Signed_16_Bit
+            , Unsigned_32_Bit, Signed_32_Bit, Float_32_Bit
+    }
+   /// &lt;summary&gt;
+    /// 本类主要用于-宏指令到
+    /// &lt;/summary&gt;
+    public class PLC
+    {
+        /// &lt;summary&gt;
+        /// 三菱Mitsubishi PLC仿真
+        /// &lt;/summary&gt;
+        public static macroinstruction_PLC_interface Mitsubishi_axActUtlType { get; set; }
+        /// &lt;summary&gt;
+        /// 三菱Mitsubishi PLC在线访问 
+        /// &lt;/summary&gt;
+        public static macroinstruction_PLC_interface Mitsubishi { get; set; }
+        /// &lt;summary&gt;
+        /// MODBUD_TCP 在线访问
+        /// &lt;/summary&gt;
+        public static macroinstruction_PLC_interface MODBUD_TCP { get; set; }
+        /// &lt;summary&gt;
+        /// 西门子Siemens 在线访问
+        /// &lt;/summary&gt;
+        public static macroinstruction_PLC_interface Siemens { get; set; }
+
+    }
+  /// &lt;summary&gt;
+    /// PLC硬件选择
+    /// PLC选择枚举&gt;
+    /// &lt;/summary&gt;
+
+    public enum PLC
+    {
+        Mitsubishi,
+        Siemens,
+        Modbus_TCP,
+        HMI
+    }
+    /// &lt;summary&gt;
+    /// PLC各可访问软元件  三菱-bit位
+    /// &lt;/summary&gt;
+    public enum Mitsubishi_bit
+    { 
+        LCS,LCC,SM,X,Y,M,L,F,B,TS,SS,SC,CS,CC,SB,S,D_Bit,SD_Bit,R_Bit,SW_Bit,W_Bit
+    }
+    /// &lt;summary&gt;
+    /// PLC各可访问软元件 三菱 -WORD 字
+    /// &lt;/summary&gt;
+    public enum Mitsubishi_D
+    {
+        LCN,LZ,SD,D,R,W,TN,SN,CN,SW,Z
+    }
+    /// &lt;summary&gt;
+    ///  PLC各可访问软元件 西门子 -bit位
+    /// &lt;/summary&gt;
+    public enum Siemens_bit
+    {
+       I, Q, M
+    }
+    /// &lt;summary&gt;
+    /// PLC各可访问软元件 西门子-WORD 字
+    /// &lt;/summary&gt;
+    public enum Siemens_D
+    {
+       DB
+    }
+    /// &lt;summary&gt;
+    ///  PLC各可访问软元件 Modbus_TCP -bit位
+    /// &lt;/summary&gt;
+    public enum Modbus_TCP_bit
+    {
+         X, Y, M
+    }
+    /// &lt;summary&gt;
+    /// PLC各可访问软元件 Modbus_TCP-WORD 字
+    /// &lt;/summary&gt;
+    public enum Modbus_TCP_D
+    {
+         D
+    }
+    /// &lt;summary&gt;
+    /// PLC各可访问软元件  三菱-bit位
+    /// &lt;/summary&gt;
+    public enum HMI_bit
+    {
+        Data_Bit
+    }
+    /// &lt;summary&gt;
+    /// PLC各可访问软元件 三菱 -WORD 字
+    /// &lt;/summary&gt;
+    public enum HMI_D
+    {
+         Data_D
+    }
+    /// &lt;summary&gt;
+    ///  PLC--按钮状态
+    /// &lt;/summary&gt;
+    public enum Button_state
+    {
+        Off,ON
+    }
+    /// &lt;summary&gt;
+    /// 数值显示类型
+    /// &lt;/summary&gt;
+    public enum numerical_format
+    {
+        BCD_16_Bit, BCD_32_Bit, Hex_16_Bit, Hex_32_Bit, Binary_16_Bit, Binary_32_Bit, Unsigned_16_Bit, Signed_16_Bit
+            , Unsigned_32_Bit, Signed_32_Bit, Float_32_Bit
+    }
+    /// &lt;summary&gt;
+    /// 数值显示类型
+    /// &lt;/summary&gt;
+    public enum numerical_type
+    {
+        数值
+    }
+    class PLCselect
+    {
+
+    }</value>
+  </data>
+</root>
