@@ -1,0 +1,1002 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{DFCAAA72-68A3-4304-9D1A-615DCA585A05}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>自定义Uppercomputer_20200727</RootNamespace>
+    <AssemblyName>自定义Uppercomputer-20200727</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>F:\安装包\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Unc</InstallFrom>
+    <UpdateEnabled>true</UpdateEnabled>
+    <UpdateMode>Background</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <InstallUrl>\\Desktop-e3jo5ha\scriptfct\</InstallUrl>
+    <ApplicationRevision>42</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <DocumentationFile>bin\Debug\自定义Uppercomputer-20200727.xml</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>2F801F078C05B5BB2CFD0C4923831A94416BE360</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>自定义Uppercomputer-20200727_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>h7.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup />
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <PropertyGroup />
+  <PropertyGroup>
+    <NoWin32Manifest>true</NoWin32Manifest>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CSkin, Version=16.1.14.3, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\CSkin 16.1.14.3 .NET控件\CSkin 4.0\CSkin.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.Extended, Version=6.0.0.0, Culture=neutral, PublicKeyToken=05b7e29bdd433584, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.Extended.6.1.0.168\lib\net45\EntityFramework.Extended.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="HslCommunication, Version=4.3.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Users\daying\Desktop\HslCommunicationDemo-master\HslCommunicationDemo\bin\Debug\HslCommunication.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Graph, Version=3.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Graph.3.9.0\lib\net461\Microsoft.Graph.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Graph.Core, Version=1.21.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Graph.Core.1.21.0\lib\net45\Microsoft.Graph.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="SunnyUI">
+      <HintPath>..\..\C#第三方控件项目\SunnyUI-master\SunnyUI.Demo\Bin\SunnyUI.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.4.0\lib\netstandard2.0\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Diagnostics.DiagnosticSource, Version=4.0.4.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Diagnostics.DiagnosticSource.4.6.0\lib\net46\System.Diagnostics.DiagnosticSource.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.3\lib\netstandard2.0\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.4.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.2\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.ValueTuple, Version=4.0.1.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.3.0\lib\netstandard1.0\System.ValueTuple.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="EF实体模型\AnalogMeter_Class.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF实体模型\AnalogMeter_EF.cs" />
+    <Compile Include="EF实体模型\AnalogMeter_parameter.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF实体模型\Button_Class.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF实体模型\Button_colour.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF实体模型\Button_EF.cs" />
+    <Compile Include="EF实体模型\Button_parameter.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF实体模型\Control_layer.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF实体模型\Control_layer_EF.cs" />
+    <Compile Include="EF实体模型\control_location.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF实体模型\doughnut_Chart_Class.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF实体模型\doughnut_Chart_EF.cs" />
+    <Compile Include="EF实体模型\doughnut_Chart_parameter.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF实体模型\Event_EF.cs" />
+    <Compile Include="EF实体模型\Event_message.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF实体模型\function_key_Class.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF实体模型\function_key_EF.cs" />
+    <Compile Include="EF实体模型\function_key_parameter.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF实体模型\General_parameters_of_picture.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF实体模型\GroupBox_Class.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF实体模型\GroupBox_EF.cs" />
+    <Compile Include="EF实体模型\GroupBox_parameter.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF实体模型\histogram_Chart_Class.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF实体模型\histogram_Chart_EF.cs" />
+    <Compile Include="EF实体模型\histogram_Chart_parameter.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF实体模型\HScrollBar_Class.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF实体模型\HScrollBar_EF.cs" />
+    <Compile Include="EF实体模型\HScrollBar_parameter.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF实体模型\ihatetheqrcode_Class.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF实体模型\ihatetheqrcode_EF.cs" />
+    <Compile Include="EF实体模型\ihatetheqrcode_parameter.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF实体模型\ImageButton_Class.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF实体模型\ImageButton_EF.cs" />
+    <Compile Include="EF实体模型\ImageButton_parameter.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF实体模型\label_Class.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF实体模型\label_EF.cs" />
+    <Compile Include="EF实体模型\label_parameter.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF实体模型\LedBulb_Class.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF实体模型\LedBulb_EF.cs" />
+    <Compile Include="EF实体模型\LedBulb_parameter.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF实体模型\LedDisplay_Class.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF实体模型\LedDisplay_EF.cs" />
+    <Compile Include="EF实体模型\LedDisplay_parameter.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF实体模型\numerical_Class.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF实体模型\numerical_EF.cs" />
+    <Compile Include="EF实体模型\numerical_parameter.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF实体模型\oscillogram_Chart_Class.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF实体模型\oscillogram_Chart_EF.cs" />
+    <Compile Include="EF实体模型\oscillogram_Chart_parameter.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF实体模型\Parameter_Query_Add.cs" />
+    <Compile Include="EF实体模型\picture_Class.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF实体模型\picture_EF.cs" />
+    <Compile Include="EF实体模型\picture_parameter.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF实体模型\PLC_EF.cs" />
+    <Compile Include="EF实体模型\PLC_macroinstruction.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF实体模型\PLC_macroinstruction_EF.cs" />
+    <Compile Include="EF实体模型\PLC_parameter.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF实体模型\pull_down_menuName.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF实体模型\pull_down_menu_Class.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF实体模型\pull_down_menu_EF.cs" />
+    <Compile Include="EF实体模型\pull_down_menu_parameter.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF实体模型\RadioButton_Class.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF实体模型\RadioButton_EF.cs" />
+    <Compile Include="EF实体模型\RadioButton_parameter.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF实体模型\ScrollingText_Class.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF实体模型\ScrollingText_EF.cs" />
+    <Compile Include="EF实体模型\ScrollingText_parameter.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF实体模型\Switch_Class.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF实体模型\Switch_EF.cs" />
+    <Compile Include="EF实体模型\Switch_parameter.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF实体模型\Tag_common_parameters.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF实体模型\数据库连接字符串读取\XML.cs" />
+    <Compile Include="PLC选择\Mitsubishi_realize.cs" />
+    <Compile Include="PLC选择\MODBUD_TCP.cs" />
+    <Compile Include="PLC选择\MODBUS_TCP监控窗口\modbus_Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PLC选择\MODBUS_TCP监控窗口\modbus_Form.Designer.cs">
+      <DependentUpon>modbus_Form.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PLC选择\Siemens_realize.cs" />
+    <Compile Include="修改参数界面\AnalogMeter百分百表盘参数\Modification_AnalogMeter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="修改参数界面\AnalogMeter百分百表盘参数\Modification_AnalogMeter.Designer.cs">
+      <DependentUpon>Modification_AnalogMeter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="修改参数界面\doughnut_Chart图形控件参数\Modification_doughnut_Chart.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="修改参数界面\doughnut_Chart图形控件参数\Modification_doughnut_Chart.Designer.cs">
+      <DependentUpon>Modification_doughnut_Chart.cs</DependentUpon>
+    </Compile>
+    <Compile Include="修改参数界面\function_key功能键参数\Modification_function_key.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="修改参数界面\function_key功能键参数\Modification_function_key.Designer.cs">
+      <DependentUpon>Modification_function_key.cs</DependentUpon>
+    </Compile>
+    <Compile Include="修改参数界面\GroupBox四边形方框\Modification_GroupBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="修改参数界面\GroupBox四边形方框\Modification_GroupBox.Designer.cs">
+      <DependentUpon>Modification_GroupBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="修改参数界面\histogram_Chart柱形图控件参数\Modification_histogram_Chart.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="修改参数界面\histogram_Chart柱形图控件参数\Modification_histogram_Chart.Designer.cs">
+      <DependentUpon>Modification_histogram_Chart.cs</DependentUpon>
+    </Compile>
+    <Compile Include="修改参数界面\HScrollBar移动图形参数\Modification_HScrollBar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="修改参数界面\HScrollBar移动图形参数\Modification_HScrollBar.Designer.cs">
+      <DependentUpon>Modification_HScrollBar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="修改参数界面\ihatetheqrcode二维码与条形码控件参数\Modification_ihatetheqrcode.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="修改参数界面\ihatetheqrcode二维码与条形码控件参数\Modification_ihatetheqrcode.Designer.cs">
+      <DependentUpon>Modification_ihatetheqrcode.cs</DependentUpon>
+    </Compile>
+    <Compile Include="修改参数界面\ImageButton按钮参数\Modification_ImageButton.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="修改参数界面\ImageButton按钮参数\Modification_ImageButton.Designer.cs">
+      <DependentUpon>Modification_ImageButton.cs</DependentUpon>
+    </Compile>
+    <Compile Include="修改参数界面\LedBulb_指示灯参数\Modification_Ledbulb.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="修改参数界面\LedBulb_指示灯参数\Modification_Ledbulb.Designer.cs">
+      <DependentUpon>Modification_Ledbulb.cs</DependentUpon>
+    </Compile>
+    <Compile Include="修改参数界面\LedDisplay数值显示参数\Modification_LedDisplay.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="修改参数界面\LedDisplay数值显示参数\Modification_LedDisplay.Designer.cs">
+      <DependentUpon>Modification_LedDisplay.cs</DependentUpon>
+    </Compile>
+    <Compile Include="修改参数界面\pull_down_menu下拉菜单参数\Modification_pull_down_menu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="修改参数界面\pull_down_menu下拉菜单参数\Modification_pull_down_menu.Designer.cs">
+      <DependentUpon>Modification_pull_down_menu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="修改参数界面\oscillogram_Chart折线图波形图参数\Modification_oscillogram_Chart.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="修改参数界面\oscillogram_Chart折线图波形图参数\Modification_oscillogram_Chart.Designer.cs">
+      <DependentUpon>Modification_oscillogram_Chart.cs</DependentUpon>
+    </Compile>
+    <Compile Include="修改参数界面\pull_down_menu下拉菜单参数\下拉菜单修改项目数据窗口\Project_Parameters.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="修改参数界面\pull_down_menu下拉菜单参数\下拉菜单修改项目数据窗口\Project_Parameters.Designer.cs">
+      <DependentUpon>Project_Parameters.cs</DependentUpon>
+    </Compile>
+    <Compile Include="修改参数界面\RadioButton单选按钮参数\Modification_RadioButton.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="修改参数界面\RadioButton单选按钮参数\Modification_RadioButton.Designer.cs">
+      <DependentUpon>Modification_RadioButton.cs</DependentUpon>
+    </Compile>
+    <Compile Include="修改参数界面\切换开关参数\Modification_Switch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="修改参数界面\切换开关参数\Modification_Switch.Designer.cs">
+      <DependentUpon>Modification_Switch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="修改参数界面\参数公用类\Public_attributeCalss.cs" />
+    <Compile Include="修改参数界面\报警条参数\Modification_ScrollingText.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="修改参数界面\报警条参数\Modification_ScrollingText.Designer.cs">
+      <DependentUpon>Modification_ScrollingText.cs</DependentUpon>
+    </Compile>
+    <Compile Include="修改参数界面\控件确认后数据检查\Check_Class.cs" />
+    <Compile Include="宏指令实现与对接\macroinstruction_Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="宏指令实现与对接\macroinstruction_Form.Designer.cs">
+      <DependentUpon>macroinstruction_Form.cs</DependentUpon>
+    </Compile>
+    <Compile Include="异常界面\Event_message.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="异常界面\Event_message.Designer.cs">
+      <DependentUpon>Event_message.cs</DependentUpon>
+    </Compile>
+    <Compile Include="异常界面\Event_message_Load.cs" />
+    <Compile Include="异常界面\Event_registration.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="异常界面\Event_registration.Designer.cs">
+      <DependentUpon>Event_registration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="控件重做\AnalogMeter_reform.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="控件重做\BarChart_reform.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="控件重做\ComboBox_reform.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="控件重做\function_key_reform.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="控件重做\HScrollBar_reform.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="控件重做\ihatetheqrcode_reform.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="控件重做\LedDisplay_reform.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="控件重做\RadioButton_reform.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="控件重做\按钮类与宏指令通用类\Button_HMI_public.cs" />
+    <Compile Include="控件重做\doughnut_Chart_reform.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="控件重做\Event_time.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="控件重做\GroupBox_reform.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="控件重做\histogram_Chart_reform.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="控件重做\ImageButton_reform.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="控件重做\LedBulb_reform.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="控件重做\oscillogram_Chart_reform.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="控件重做\ScrollingText_reform.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="控件重做\Switch_reform.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="控件重做\按钮类与宏指令通用类\numerical_public .cs" />
+    <Compile Include="控件重做\控件移动改变大小实现\DragResizeControl.cs" />
+    <Compile Include="控件重做\获取控件的全部属性\Control_property.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="控件重做\获取控件的全部属性\Control_property.Designer.cs">
+      <DependentUpon>Control_property.cs</DependentUpon>
+    </Compile>
+    <Compile Include="控制主页面模板\AnalogMeter_Add.cs" />
+    <Compile Include="控制主页面模板\doughnut_Chart_Add.cs" />
+    <Compile Include="控制主页面模板\function_key_Add.cs" />
+    <Compile Include="控制主页面模板\GroupBox_Add.cs" />
+    <Compile Include="控制主页面模板\histogram_Chart_Add.cs" />
+    <Compile Include="控制主页面模板\HScrollBar_Add.cs" />
+    <Compile Include="控制主页面模板\ihatetheqrcode_Add.cs" />
+    <Compile Include="控制主页面模板\ImageButton_Add.cs" />
+    <Compile Include="控制主页面模板\LedBulb_Add.cs" />
+    <Compile Include="控制主页面模板\LedDisplay_Add.cs" />
+    <Compile Include="控制主页面模板\oscillogram_Chart_Add.cs" />
+    <Compile Include="控制主页面模板\pull_down_menu_Add.cs" />
+    <Compile Include="控制主页面模板\RadioButton_Add.cs" />
+    <Compile Include="控制主页面模板\ScrollingText_Add.cs" />
+    <Compile Include="控制主页面模板\Switch_Add.cs" />
+    <Compile Include="控制主页面模板\控件自动改变大小\Resize.cs" />
+    <Compile Include="文本输入键盘\keyboard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="文本输入键盘\keyboard.Designer.cs">
+      <DependentUpon>keyboard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PLC选择\Mitsubishi_axActUtlType.cs" />
+    <Compile Include="PLC选择\PLCselect.cs" />
+    <Compile Include="PLC选择\PLCselect_Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PLC选择\PLCselect_Form.Designer.cs">
+      <DependentUpon>PLCselect_Form.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PLC选择\PLCselect_Form_class.cs" />
+    <Compile Include="PLC选择\PLC_err.cs" />
+    <Compile Include="PLC选择\PLC_public_Class.cs" />
+    <Compile Include="修改参数界面\参数公用类\Close_Window.cs" />
+    <Compile Include="修改参数界面\Button按钮参数\Modification_Button.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="修改参数界面\Button按钮参数\Modification_Button.Designer.cs">
+      <DependentUpon>Modification_Button.cs</DependentUpon>
+    </Compile>
+    <Compile Include="修改参数界面\Button按钮参数\Modification_Button_Class.cs" />
+    <Compile Include="修改参数界面\参数公用类\Modification_General-parameters.cs" />
+    <Compile Include="修改参数界面\参数公用类\Modification_label-parameter.cs" />
+    <Compile Include="修改参数界面\Label文本参数\Modification_label.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="修改参数界面\Label文本参数\Modification_label.Designer.cs">
+      <DependentUpon>Modification_label.cs</DependentUpon>
+    </Compile>
+    <Compile Include="修改参数界面\Label文本参数\Modification_label_Class.cs" />
+    <Compile Include="修改参数界面\TextBox文本类参数\Modification_numerical.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="修改参数界面\TextBox文本类参数\Modification_numerical.Designer.cs">
+      <DependentUpon>Modification_numerical.cs</DependentUpon>
+    </Compile>
+    <Compile Include="修改参数界面\TextBox文本类参数\Modification_numerical_Class.cs" />
+    <Compile Include="修改参数界面\图片类参数\Modification_picture.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="修改参数界面\图片类参数\Modification_picture.Designer.cs">
+      <DependentUpon>Modification_picture.cs</DependentUpon>
+    </Compile>
+    <Compile Include="修改参数界面\参数公用类\parameter_indexes.cs" />
+    <Compile Include="参数设置画面\Form9.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="参数设置画面\Form9.Designer.cs">
+      <DependentUpon>Form9.cs</DependentUpon>
+    </Compile>
+    <Compile Include="图库\ListView_show.cs" />
+    <Compile Include="图库\Mapdepot .cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="图库\Mapdepot .Designer.cs">
+      <DependentUpon>Mapdepot .cs</DependentUpon>
+    </Compile>
+    <Compile Include="字体\typeface.cs" />
+    <Compile Include="异常界面\Form5.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="异常界面\Form5.Designer.cs">
+      <DependentUpon>Form5.cs</DependentUpon>
+    </Compile>
+    <Compile Include="手动控制页面\Form4.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="手动控制页面\Form4.Designer.cs">
+      <DependentUpon>Form4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="控件重做\Button_reform.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="控件重做\ColorComboBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="控件重做\SkinPictureBox_reform.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="控件重做\TextBox_reform.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="控件重做\SkinContextMenuStrip_reform.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="控件重做\SkinLabel_reform.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="控件重做\Time_reform.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="控制主页面\Form3.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="控制主页面\Form3.Designer.cs">
+      <DependentUpon>Form3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="控制主页面模板\Button_Add.cs" />
+    <Compile Include="控制主页面模板\Form2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="控制主页面模板\Form2.Designer.cs">
+      <DependentUpon>Form2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EF实体模型\Model1.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF实体模型\Model1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF实体模型\Model1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="EF实体模型\Profile.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="主页面\Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="主页面\Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="主页面\Homepag-class.cs" />
+    <Compile Include="控制主页面模板\From_Load_Add.cs" />
+    <Compile Include="控制主页面模板\Skinlabel_Add.cs" />
+    <Compile Include="控制主页面模板\SkinPictureBox_Add.cs" />
+    <Compile Include="控制主页面模板\SkinTextBox_Add.cs" />
+    <Compile Include="控制主页面模板\Windowclass.cs" />
+    <Compile Include="文本输入键盘\keyboard_Hex.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="文本输入键盘\keyboard_Hex.Designer.cs">
+      <DependentUpon>keyboard_Hex.cs</DependentUpon>
+    </Compile>
+    <Compile Include="生产设置画面\Form8.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="生产设置画面\Form8.Designer.cs">
+      <DependentUpon>Form8.cs</DependentUpon>
+    </Compile>
+    <Compile Include="监视画面\Form6.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="监视画面\Form6.Designer.cs">
+      <DependentUpon>Form6.cs</DependentUpon>
+    </Compile>
+    <Compile Include="软件说明\Software_specifications.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="软件说明\Software_specifications.Designer.cs">
+      <DependentUpon>Software_specifications.cs</DependentUpon>
+    </Compile>
+    <Compile Include="运转控制画面\Form7.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="运转控制画面\Form7.Designer.cs">
+      <DependentUpon>Form7.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="PLC选择\MODBUS_TCP监控窗口\modbus_Form.resx">
+      <DependentUpon>modbus_Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PLC选择\PLCselect_Form.resx">
+      <DependentUpon>PLCselect_Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="主页面\Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="修改参数界面\AnalogMeter百分百表盘参数\Modification_AnalogMeter.resx">
+      <DependentUpon>Modification_AnalogMeter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="修改参数界面\Button按钮参数\Modification_Button.resx">
+      <DependentUpon>Modification_Button.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="修改参数界面\doughnut_Chart图形控件参数\Modification_doughnut_Chart.resx">
+      <DependentUpon>Modification_doughnut_Chart.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="修改参数界面\function_key功能键参数\Modification_function_key.resx">
+      <DependentUpon>Modification_function_key.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="修改参数界面\GroupBox四边形方框\Modification_GroupBox.resx">
+      <DependentUpon>Modification_GroupBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="修改参数界面\histogram_Chart柱形图控件参数\Modification_histogram_Chart.resx">
+      <DependentUpon>Modification_histogram_Chart.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="修改参数界面\HScrollBar移动图形参数\Modification_HScrollBar.resx">
+      <DependentUpon>Modification_HScrollBar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="修改参数界面\ihatetheqrcode二维码与条形码控件参数\Modification_ihatetheqrcode.resx">
+      <DependentUpon>Modification_ihatetheqrcode.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="修改参数界面\ImageButton按钮参数\Modification_ImageButton.resx">
+      <DependentUpon>Modification_ImageButton.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="修改参数界面\Label文本参数\Modification_label.resx">
+      <DependentUpon>Modification_label.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="修改参数界面\LedBulb_指示灯参数\Modification_Ledbulb.resx">
+      <DependentUpon>Modification_Ledbulb.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="修改参数界面\LedDisplay数值显示参数\Modification_LedDisplay.resx">
+      <DependentUpon>Modification_LedDisplay.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="修改参数界面\oscillogram_Chart折线图波形图参数\Modification_oscillogram_Chart.resx">
+      <DependentUpon>Modification_oscillogram_Chart.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="修改参数界面\pull_down_menu下拉菜单参数\Modification_pull_down_menu.resx">
+      <DependentUpon>Modification_pull_down_menu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="修改参数界面\pull_down_menu下拉菜单参数\下拉菜单修改项目数据窗口\Project_Parameters.resx">
+      <DependentUpon>Project_Parameters.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="修改参数界面\RadioButton单选按钮参数\Modification_RadioButton.resx">
+      <DependentUpon>Modification_RadioButton.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="修改参数界面\TextBox文本类参数\Modification_numerical.resx">
+      <DependentUpon>Modification_numerical.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="修改参数界面\图片类参数\Modification_picture.resx">
+      <DependentUpon>Modification_picture.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="修改参数界面\切换开关参数\Modification_Switch.resx">
+      <DependentUpon>Modification_Switch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="修改参数界面\报警条参数\Modification_ScrollingText.resx">
+      <DependentUpon>Modification_ScrollingText.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="参数设置画面\Form9.resx">
+      <DependentUpon>Form9.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="图库\Mapdepot .resx">
+      <DependentUpon>Mapdepot .cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="宏指令实现与对接\macroinstruction_Form.resx">
+      <DependentUpon>macroinstruction_Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="异常界面\Event_message.resx">
+      <DependentUpon>Event_message.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="异常界面\Event_registration.resx">
+      <DependentUpon>Event_registration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="异常界面\Form5.resx">
+      <DependentUpon>Form5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="手动控制页面\Form4.resx">
+      <DependentUpon>Form4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="控件重做\获取控件的全部属性\Control_property.resx">
+      <DependentUpon>Control_property.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="控制主页面\Form3.resx">
+      <DependentUpon>Form3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="控制主页面模板\Form2.resx">
+      <DependentUpon>Form2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="文本输入键盘\keyboard.resx">
+      <DependentUpon>keyboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="文本输入键盘\keyboard_Hex.resx">
+      <DependentUpon>keyboard_Hex.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="生产设置画面\Form8.resx">
+      <DependentUpon>Form8.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="监视画面\Form6.resx">
+      <DependentUpon>Form6.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="软件说明\Software_specifications.resx">
+      <DependentUpon>Software_specifications.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="运转控制画面\Form7.resx">
+      <DependentUpon>Form7.cs</DependentUpon>
+    </EmbeddedResource>
+    <EntityDeploy Include="EF实体模型\Model1.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="EF实体模型\Model1.edmx.diagram">
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <None Include="自定义Uppercomputer-20200727_TemporaryKey.pfx" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\主页面.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\主页面1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="EF实体模型\Model1.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="EF实体模型\Model1.edmx.sql" />
+    <Content Include="EF实体模型\Model1.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.cs</LastGenOutput>
+    </Content>
+    <None Include="Resources\键盘图片.png" />
+    <Content Include="h7.ico" />
+    <None Include="Resources\h11.ico" />
+    <None Include="Resources\49176.jpg" />
+    <None Include="Resources\大数据图片_b.jpg" />
+    <None Include="Resources\3046502_105311288000_2.jpg" />
+    <Content Include="图库\按钮图标\5834\102.ico" />
+    <Content Include="图库\按钮图标\5834\112.ico" />
+    <Content Include="图库\按钮图标\5834\12.ico" />
+    <Content Include="图库\按钮图标\5834\122.ico" />
+    <Content Include="图库\按钮图标\5834\132.ico" />
+    <Content Include="图库\按钮图标\5834\142.ico" />
+    <Content Include="图库\按钮图标\5834\152.ico" />
+    <Content Include="图库\按钮图标\5834\162.ico" />
+    <Content Include="图库\按钮图标\5834\172.ico" />
+    <Content Include="图库\按钮图标\5834\182.ico" />
+    <Content Include="图库\按钮图标\5834\192.ico" />
+    <Content Include="图库\按钮图标\5834\202.ico" />
+    <Content Include="图库\按钮图标\5834\212.ico" />
+    <Content Include="图库\按钮图标\5834\22.ico" />
+    <Content Include="图库\按钮图标\5834\222.ico" />
+    <Content Include="图库\按钮图标\5834\232.ico" />
+    <Content Include="图库\按钮图标\5834\242.ico" />
+    <Content Include="图库\按钮图标\5834\252.ico" />
+    <Content Include="图库\按钮图标\5834\262.ico" />
+    <Content Include="图库\按钮图标\5834\272.ico" />
+    <Content Include="图库\按钮图标\5834\282.ico" />
+    <Content Include="图库\按钮图标\5834\292.ico" />
+    <Content Include="图库\按钮图标\5834\302.ico" />
+    <Content Include="图库\按钮图标\5834\312.ico" />
+    <Content Include="图库\按钮图标\5834\32.ico" />
+    <Content Include="图库\按钮图标\5834\322.ico" />
+    <Content Include="图库\按钮图标\5834\332.ico" />
+    <Content Include="图库\按钮图标\5834\42.ico" />
+    <Content Include="图库\按钮图标\5834\52.ico" />
+    <Content Include="图库\按钮图标\5834\62.ico" />
+    <Content Include="图库\按钮图标\5834\72.ico" />
+    <Content Include="图库\按钮图标\5834\82.ico" />
+    <Content Include="图库\按钮图标\5834\92.ico" />
+    <Content Include="图库\按钮图标\7020\b1.ico" />
+    <Content Include="图库\按钮图标\7020\b10.ico" />
+    <Content Include="图库\按钮图标\7020\b11.ico" />
+    <Content Include="图库\按钮图标\7020\b12.ico" />
+    <Content Include="图库\按钮图标\7020\b13.ico" />
+    <Content Include="图库\按钮图标\7020\b14.ico" />
+    <Content Include="图库\按钮图标\7020\b15.ico" />
+    <Content Include="图库\按钮图标\7020\b16.ico" />
+    <Content Include="图库\按钮图标\7020\b2.ico" />
+    <Content Include="图库\按钮图标\7020\b3.ico" />
+    <Content Include="图库\按钮图标\7020\b4.ico" />
+    <Content Include="图库\按钮图标\7020\b5.ico" />
+    <Content Include="图库\按钮图标\7020\b6.ico" />
+    <Content Include="图库\按钮图标\7020\b7.ico" />
+    <Content Include="图库\按钮图标\7020\b8.ico" />
+    <Content Include="图库\按钮图标\7020\b9.ico" />
+    <Content Include="图库\按钮图标\7020\h1.ico" />
+    <Content Include="图库\按钮图标\7020\h10.ico" />
+    <Content Include="图库\按钮图标\7020\h11.ico" />
+    <Content Include="图库\按钮图标\7020\h12.ico" />
+    <Content Include="图库\按钮图标\7020\h13.ico" />
+    <Content Include="图库\按钮图标\7020\h14.ico" />
+    <Content Include="图库\按钮图标\7020\h15.ico" />
+    <Content Include="图库\按钮图标\7020\h16.ico" />
+    <Content Include="图库\按钮图标\7020\h17.ico" />
+    <Content Include="图库\按钮图标\7020\h18.ico" />
+    <Content Include="图库\按钮图标\7020\h19.ico" />
+    <Content Include="图库\按钮图标\7020\h2.ico" />
+    <Content Include="图库\按钮图标\7020\h3.ico" />
+    <Content Include="图库\按钮图标\7020\h4.ico" />
+    <Content Include="图库\按钮图标\7020\h5.ico" />
+    <Content Include="图库\按钮图标\7020\h6.ico" />
+    <Content Include="图库\按钮图标\7020\h7.ico" />
+    <Content Include="图库\按钮图标\7020\h8.ico" />
+    <Content Include="图库\按钮图标\7020\h9.ico" />
+    <Content Include="图库\按钮图标\7780\k1.ico" />
+    <Content Include="图库\按钮图标\7780\k10.ico" />
+    <Content Include="图库\按钮图标\7780\k11.ico" />
+    <Content Include="图库\按钮图标\7780\k12.ico" />
+    <Content Include="图库\按钮图标\7780\k13.ico" />
+    <Content Include="图库\按钮图标\7780\k14.ico" />
+    <Content Include="图库\按钮图标\7780\k2.ico" />
+    <Content Include="图库\按钮图标\7780\k3.ico" />
+    <Content Include="图库\按钮图标\7780\k4.ico" />
+    <Content Include="图库\按钮图标\7780\k5.ico" />
+    <Content Include="图库\按钮图标\7780\k6.ico" />
+    <Content Include="图库\按钮图标\7780\k7.ico" />
+    <Content Include="图库\按钮图标\7780\k8.ico" />
+    <Content Include="图库\按钮图标\7780\k9.ico" />
+    <None Include="Resources\运行主页面.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="ActUtlTypeLib">
+      <Guid>{D217E54E-4A26-4A76-B0AB-57166B90F9AF}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="ACTUWZDLib">
+      <Guid>{B5D4B421-AD6E-11D3-BE97-0090FE014643}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="AxActUtlTypeLib">
+      <Guid>{D217E54E-4A26-4A76-B0AB-57166B90F9AF}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>aximp</WrapperTool>
+      <Isolated>False</Isolated>
+    </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\C#Dynamic macro instruction\CSEngineTest.csproj">
+      <Project>{994E3EE9-10F4-461D-8F4A-0BEB6294395C}</Project>
+      <Name>CSEngineTest</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HslCommunicationDemo-master\HslCommunicationDemo\HslCommunicationDemo.csproj">
+      <Project>{3878075B-B8D7-4090-B094-29622581442F}</Project>
+      <Name>HslCommunicationDemo</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UI_Library_da\UI_Library_da.csproj">
+      <Project>{90956435-00C0-45A2-A74E-AC9E3871CE85}</Project>
+      <Name>UI_Library_da</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.7.2 %28x86 和 x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="修改参数界面\文本类参数模板\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
