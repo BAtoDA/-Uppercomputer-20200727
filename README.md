@@ -1,2 +1,6 @@
 # -Uppercomputer-20200727
-This software is mainly used in industrial upper computer - similar to The Touch screen mode of Wilton - can be added to the line configuration button to realize the function at will - is still under development
+                                    软件说明
+  本软件适用于工业自动化作为上位机对下位设备进行监控与控制使用简易通过拖拽控件修改参数实现对设备的监控。
+  后续会持续添加控件实现多元化,更贴合，更方便，更快捷的设计理念目前支持简单常用的控件-支持三菱PLC--MC协议(3E帧)--西门子S7协议MODBUS TCP协议--或者通过宏指令简易的编写代码实现串口--以太网特定协议的通讯。
+  关于对其他设备的数据库对接目前可以通过宏指令实现简易的去处理后续会做一个特定的控件去对接实现。
+
