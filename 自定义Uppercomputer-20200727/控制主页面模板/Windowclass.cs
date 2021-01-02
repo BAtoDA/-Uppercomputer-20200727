@@ -44,7 +44,7 @@ namespace 自定义Uppercomputer_20200727.控制主页面模板
             this.Openfrom_1 = Openfrom;
             Openfrom.Show();
             Openfrom.WindowState = FormWindowState.Normal;//居中显示
-            Openfrom.Size = new System.Drawing.Size(1071, 745);//设置窗口大小
+            //Openfrom.Size = new System.Drawing.Size(1071, 745);//设置窗口大小
             Openfrom.BackgroundImageLayout = ImageLayout.Stretch; //自动适应
             Openfrom.Text = Name;
             SkinLabel Label_Text = (SkinLabel)(from Control pi in Openfrom.Controls where pi is SkinLabel select pi).First();
@@ -52,6 +52,7 @@ namespace 自定义Uppercomputer_20200727.控制主页面模板
         }
         static public void Release(Form Openfrom)
         {
+            if (Openfrom.IsNull()) return;
             FormCollection formCollection = Application.OpenForms;//获取窗口集合
             for (int i = 0; i < formCollection.Count; i++)
             {

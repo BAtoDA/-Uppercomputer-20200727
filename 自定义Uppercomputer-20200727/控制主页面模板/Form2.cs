@@ -307,13 +307,14 @@ namespace 自定义Uppercomputer_20200727
             this.timer3.Start();
             this.BeginInvoke((EventHandler)delegate
             {
+                UI_Schedule("开始加载控件", 30, true);
                 var se = Task.Run(() =>
                   {
                       using (From_Load_Add load_Add = new From_Load_Add(this.Name, this.Controls, new List<ImageList>() { this.imageList1, this.imageList2, this.imageList3 }, this)) ;//添加报警条
                       using (From_Load_Add add = new From_Load_Add(this.Name, this.Controls, new List<ImageList>() { this.imageList1, this.imageList2, this.imageList3 }, this, true)) ;//添加普通文本
                   });
                 se.Wait();
-
+                UI_Schedule("开始加载设置参数", 60, true);
                 time_Reform.Form = this.Name;//获取当前窗口名称
                 time_Reform.Interval = 500;//遍历控件时间
                 time_Reform.Start();//运行定时器
@@ -331,6 +332,7 @@ namespace 自定义Uppercomputer_20200727
         private void Form2_Shown(object sender, EventArgs e)//添加控件
         {
             this.timer2.Start();//运行定时器监控
+            UI_Schedule("开始正在显示UI", 90, true);
             if (edit_mode) this.toolStripMenuItem5.Text = "退出编辑模式"; else this.toolStripMenuItem5.Text = "开启编辑模式";//改变显示文本  
         }
 
@@ -466,14 +468,16 @@ namespace 自定义Uppercomputer_20200727
             foreach (var i in inr)
                 i.Enabled = true;
             this.timer3.Stop();
-            //Task.Run(() =>
-            //{
-            //    Windowclass.Dispose(this);
-            //    GC.Collect(2);
-            //});
-           
+            UI_Schedule("加载完成", 100, true);
+            Thread.Sleep(500);
+            UI_Schedule("加载完成", 100, false);
         }
-
+        public void UI_Schedule(string Text,int Vaule,bool Visible)//加载UI控件控制
+        {
+            this.userControl11.Display = Visible;
+            this.userControl11.Schedule = Vaule;
+            this.userControl11.Schedule_Text = Text;
+        }
         private void Form2_FormClosing(object sender, FormClosingEventArgs e)
         {
 

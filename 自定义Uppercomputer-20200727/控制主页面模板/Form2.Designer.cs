@@ -108,6 +108,7 @@
             this.imageList2 = new System.Windows.Forms.ImageList(this.components);
             this.imageList3 = new System.Windows.Forms.ImageList(this.components);
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.userControl11 = new UI_Library_da.UI加载进度条.UserControl1();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.skinContextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -122,12 +123,12 @@
             this.skinButton1.DownBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(148)))), ((int)(((byte)(182)))), ((int)(((byte)(231)))));
             this.skinButton1.Enabled = false;
             this.skinButton1.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.skinButton1.Location = new System.Drawing.Point(144, 545);
+            this.skinButton1.Location = new System.Drawing.Point(9, 545);
             this.skinButton1.MouseBack = null;
             this.skinButton1.Name = "skinButton1";
             this.skinButton1.NormlBack = null;
             this.skinButton1.RoundStyle = CCWin.SkinClass.RoundStyle.All;
-            this.skinButton1.Size = new System.Drawing.Size(93, 50);
+            this.skinButton1.Size = new System.Drawing.Size(122, 50);
             this.skinButton1.TabIndex = 0;
             this.skinButton1.Text = "主画面";
             this.skinButton1.UseVisualStyleBackColor = false;
@@ -143,12 +144,12 @@
             this.skinButton2.DownBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(148)))), ((int)(((byte)(182)))), ((int)(((byte)(231)))));
             this.skinButton2.Enabled = false;
             this.skinButton2.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.skinButton2.Location = new System.Drawing.Point(241, 545);
+            this.skinButton2.Location = new System.Drawing.Point(143, 545);
             this.skinButton2.MouseBack = null;
             this.skinButton2.Name = "skinButton2";
             this.skinButton2.NormlBack = null;
             this.skinButton2.RoundStyle = CCWin.SkinClass.RoundStyle.All;
-            this.skinButton2.Size = new System.Drawing.Size(93, 50);
+            this.skinButton2.Size = new System.Drawing.Size(122, 50);
             this.skinButton2.TabIndex = 1;
             this.skinButton2.Text = "手动画面";
             this.skinButton2.UseVisualStyleBackColor = false;
@@ -164,12 +165,12 @@
             this.skinButton3.DownBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(148)))), ((int)(((byte)(182)))), ((int)(((byte)(231)))));
             this.skinButton3.Enabled = false;
             this.skinButton3.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.skinButton3.Location = new System.Drawing.Point(340, 545);
+            this.skinButton3.Location = new System.Drawing.Point(279, 545);
             this.skinButton3.MouseBack = null;
             this.skinButton3.Name = "skinButton3";
             this.skinButton3.NormlBack = null;
             this.skinButton3.RoundStyle = CCWin.SkinClass.RoundStyle.All;
-            this.skinButton3.Size = new System.Drawing.Size(93, 50);
+            this.skinButton3.Size = new System.Drawing.Size(122, 50);
             this.skinButton3.TabIndex = 2;
             this.skinButton3.Text = "异常画面";
             this.skinButton3.UseVisualStyleBackColor = false;
@@ -185,12 +186,12 @@
             this.skinButton4.DownBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(148)))), ((int)(((byte)(182)))), ((int)(((byte)(231)))));
             this.skinButton4.Enabled = false;
             this.skinButton4.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.skinButton4.Location = new System.Drawing.Point(439, 545);
+            this.skinButton4.Location = new System.Drawing.Point(415, 545);
             this.skinButton4.MouseBack = null;
             this.skinButton4.Name = "skinButton4";
             this.skinButton4.NormlBack = null;
             this.skinButton4.RoundStyle = CCWin.SkinClass.RoundStyle.All;
-            this.skinButton4.Size = new System.Drawing.Size(93, 50);
+            this.skinButton4.Size = new System.Drawing.Size(122, 50);
             this.skinButton4.TabIndex = 3;
             this.skinButton4.Text = "监视画面";
             this.skinButton4.UseVisualStyleBackColor = false;
@@ -206,12 +207,12 @@
             this.skinButton5.DownBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(148)))), ((int)(((byte)(182)))), ((int)(((byte)(231)))));
             this.skinButton5.Enabled = false;
             this.skinButton5.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.skinButton5.Location = new System.Drawing.Point(538, 545);
+            this.skinButton5.Location = new System.Drawing.Point(547, 545);
             this.skinButton5.MouseBack = null;
             this.skinButton5.Name = "skinButton5";
             this.skinButton5.NormlBack = null;
             this.skinButton5.RoundStyle = CCWin.SkinClass.RoundStyle.All;
-            this.skinButton5.Size = new System.Drawing.Size(93, 50);
+            this.skinButton5.Size = new System.Drawing.Size(122, 50);
             this.skinButton5.TabIndex = 4;
             this.skinButton5.Text = "运转控制";
             this.skinButton5.UseVisualStyleBackColor = false;
@@ -227,12 +228,12 @@
             this.skinButton6.DownBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(148)))), ((int)(((byte)(182)))), ((int)(((byte)(231)))));
             this.skinButton6.Enabled = false;
             this.skinButton6.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.skinButton6.Location = new System.Drawing.Point(637, 545);
+            this.skinButton6.Location = new System.Drawing.Point(682, 545);
             this.skinButton6.MouseBack = null;
             this.skinButton6.Name = "skinButton6";
             this.skinButton6.NormlBack = null;
             this.skinButton6.RoundStyle = CCWin.SkinClass.RoundStyle.All;
-            this.skinButton6.Size = new System.Drawing.Size(93, 50);
+            this.skinButton6.Size = new System.Drawing.Size(122, 50);
             this.skinButton6.TabIndex = 5;
             this.skinButton6.Text = "生产设置";
             this.skinButton6.UseVisualStyleBackColor = false;
@@ -248,12 +249,12 @@
             this.skinButton7.DownBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(148)))), ((int)(((byte)(182)))), ((int)(((byte)(231)))));
             this.skinButton7.Enabled = false;
             this.skinButton7.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.skinButton7.Location = new System.Drawing.Point(736, 545);
+            this.skinButton7.Location = new System.Drawing.Point(818, 545);
             this.skinButton7.MouseBack = null;
             this.skinButton7.Name = "skinButton7";
             this.skinButton7.NormlBack = null;
             this.skinButton7.RoundStyle = CCWin.SkinClass.RoundStyle.All;
-            this.skinButton7.Size = new System.Drawing.Size(93, 50);
+            this.skinButton7.Size = new System.Drawing.Size(122, 50);
             this.skinButton7.TabIndex = 6;
             this.skinButton7.Text = "参数设置";
             this.skinButton7.UseVisualStyleBackColor = false;
@@ -262,13 +263,13 @@
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox1.BackgroundImage = global::自定义Uppercomputer_20200727.Properties.Resources._49176;
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox1.Location = new System.Drawing.Point(835, 545);
+            this.pictureBox1.Location = new System.Drawing.Point(448, 34);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(100, 50);
+            this.pictureBox1.Size = new System.Drawing.Size(100, 25);
             this.pictureBox1.TabIndex = 7;
             this.pictureBox1.TabStop = false;
+            this.pictureBox1.Visible = false;
             // 
             // skinLabel1
             // 
@@ -276,11 +277,12 @@
             this.skinLabel1.BackColor = System.Drawing.Color.Transparent;
             this.skinLabel1.BorderColor = System.Drawing.Color.White;
             this.skinLabel1.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.skinLabel1.Location = new System.Drawing.Point(472, 150);
+            this.skinLabel1.Location = new System.Drawing.Point(463, 34);
             this.skinLabel1.Name = "skinLabel1";
             this.skinLabel1.Size = new System.Drawing.Size(69, 25);
             this.skinLabel1.TabIndex = 8;
             this.skinLabel1.Text = "主页面";
+            this.skinLabel1.Visible = false;
             // 
             // skinContextMenuStrip1
             // 
@@ -744,16 +746,26 @@
             this.imageList1.ImageSize = new System.Drawing.Size(16, 16);
             this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
             // 
+            // userControl11
+            // 
+            this.userControl11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            this.userControl11.Display = true;
+            this.userControl11.Location = new System.Drawing.Point(303, 157);
+            this.userControl11.Name = "userControl11";
+            this.userControl11.Schedule_Text = "窗口加载中";
+            this.userControl11.Size = new System.Drawing.Size(362, 225);
+            this.userControl11.TabIndex = 9;
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.BackgroundImage = global::自定义Uppercomputer_20200727.Properties.Resources.运行主页面;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1071, 745);
-            this.CloseBoxSize = new System.Drawing.Size(40, 25);
+            this.ClientSize = new System.Drawing.Size(950, 600);
+            this.CloseBoxSize = new System.Drawing.Size(25, 25);
             this.ContextMenuStrip = this.skinContextMenuStrip1;
+            this.Controls.Add(this.userControl11);
             this.Controls.Add(this.skinLabel1);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.skinButton7);
@@ -768,7 +780,7 @@
             this.MaximizeBox = false;
             this.MaxSize = new System.Drawing.Size(60, 60);
             this.MinimumSize = new System.Drawing.Size(25, 25);
-            this.MiniSize = new System.Drawing.Size(60, 25);
+            this.MiniSize = new System.Drawing.Size(25, 25);
             this.Name = "Form2";
             this.Text = "Form2";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form2_FormClosing);
@@ -859,5 +871,6 @@
         private System.Windows.Forms.ImageList imageList2;
         private System.Windows.Forms.ImageList imageList3;
         private System.Windows.Forms.ImageList imageList1;
+        private UI_Library_da.UI加载进度条.UserControl1 userControl11;
     }
 }

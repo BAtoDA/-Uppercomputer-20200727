@@ -34,6 +34,9 @@
     <Reference Include="CSkin">
       <HintPath>..\..\C#重要项目\CSkin 16.1.14.3 .NET控件\CSkin 2.0\CSkin.dll</HintPath>
     </Reference>
+    <Reference Include="HZH_Controls">
+      <HintPath>..\自定义Uppercomputer-20200727\第三方控件DLL\HZH_Controls.dll</HintPath>
+    </Reference>
     <Reference Include="SunnyUI">
       <HintPath>.\SunnyUI.dll</HintPath>
     </Reference>
@@ -104,9 +107,20 @@
     <Compile Include="UI_Switch.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="UI加载进度条\UserControl1.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI加载进度条\UserControl1.Designer.cs">
+      <DependentUpon>UserControl1.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="UI加载进度条\UserControl1.resx">
+      <DependentUpon>UserControl1.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
