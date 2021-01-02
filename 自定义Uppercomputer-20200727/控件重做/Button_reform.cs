@@ -258,7 +258,6 @@ namespace 自定义Uppercomputer_20200727.控件重做
                     state = true;//标志位                      
                     break;
                     case "复归型_Off":
-                    //Thread.Sleep(200);//延时300ms复位
                     if (Button_Class.读写不同地址_ON_OFF == 0)
                         pLC_Interface.PLC_write_M_bit(Button_Class.读写设备_地址.Trim(), Button_Class.读写设备_地址_具体地址.Trim(), Button_state.Off);//先写入ON--后用事件复位-off
                     else
@@ -303,7 +302,6 @@ namespace 自定义Uppercomputer_20200727.控件重做
                     state = true;//标志位                      
                     break;
                 case "复归型_Off":
-                    //Thread.Sleep(200);//延时300ms复位
                     if (Button_Class.读写不同地址_ON_OFF == 0)
                         pLC_Interface.IPLC_interface_PLC_write_M_bit(Button_Class.读写设备_地址.Trim(), Button_Class.读写设备_地址_具体地址.Trim(), Button_state.Off);//先写入ON--后用事件复位-off
                     else

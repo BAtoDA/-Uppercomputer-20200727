@@ -76,8 +76,8 @@ namespace 自定义Uppercomputer_20200727.PLC选择
             if (this.skinComboBox1.Text.Trim() != "在线访问")//PLC模式选择
             {
                 if (MessageBox.Show(Mitsubishi_ree, "Err", MessageBoxButtons.YesNo) == DialogResult.No) return;//返回方法
-                if (axActUtlType1 == null) return;//返回方法
-                IPLC_interface axActUtlType = new Mitsubishi_axActUtlType(new System.Net.IPEndPoint(IPAddress.Parse(this.skinTextBox1.Text), int.Parse(this.skinTextBox2.Text)), "三菱", this.axActUtlType1);
+                if (Home.ActUtlType == null) return;//返回方法
+                IPLC_interface axActUtlType = new Mitsubishi_axActUtlType(new System.Net.IPEndPoint(IPAddress.Parse(this.skinTextBox1.Text), int.Parse(this.skinTextBox2.Text)), "三菱", Home.ActUtlType);
                 axActUtlType.PLC_open();//打开端口
                 if (axActUtlType.PLC_ready)
                 {

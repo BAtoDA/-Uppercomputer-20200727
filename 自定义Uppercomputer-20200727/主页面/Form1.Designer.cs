@@ -35,6 +35,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.axActUtlType1 = new AxActUtlTypeLib.AxActUtlType();
+            ((System.ComponentModel.ISupportInitialize)(this.axActUtlType1)).BeginInit();
             this.SuspendLayout();
             // 
             // skinLabel1
@@ -93,11 +95,21 @@
             this.timer1.Interval = 3000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // axActUtlType1
+            // 
+            this.axActUtlType1.Enabled = true;
+            this.axActUtlType1.Location = new System.Drawing.Point(216, 9);
+            this.axActUtlType1.Name = "axActUtlType1";
+            this.axActUtlType1.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axActUtlType1.OcxState")));
+            this.axActUtlType1.Size = new System.Drawing.Size(32, 32);
+            this.axActUtlType1.TabIndex = 5;
+            // 
             // Home
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
             this.ClientSize = new System.Drawing.Size(422, 200);
+            this.Controls.Add(this.axActUtlType1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.ucProcessLineExt1);
@@ -110,6 +122,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Home";
             this.Shown += new System.EventHandler(this.Home_Shown);
+            ((System.ComponentModel.ISupportInitialize)(this.axActUtlType1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -122,6 +135,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Timer timer1;
+        private AxActUtlTypeLib.AxActUtlType axActUtlType1;
     }
 }
 

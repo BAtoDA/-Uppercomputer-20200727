@@ -60,11 +60,9 @@
             this.skinLabel11 = new CCWin.SkinControl.SkinLabel();
             this.skinTextBox9 = new CCWin.SkinControl.SkinTextBox();
             this.skinLabel12 = new CCWin.SkinControl.SkinLabel();
-            this.axActUtlType1 = new AxActUtlTypeLib.AxActUtlType();
             this.skinGroupBox1.SuspendLayout();
             this.skinGroupBox2.SuspendLayout();
             this.skinGroupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.axActUtlType1)).BeginInit();
             this.SuspendLayout();
             // 
             // skinGroupBox1
@@ -775,22 +773,12 @@
             this.skinLabel12.TabIndex = 0;
             this.skinLabel12.Text = "地址-IP：";
             // 
-            // axActUtlType1
-            // 
-            this.axActUtlType1.Enabled = true;
-            this.axActUtlType1.Location = new System.Drawing.Point(151, 5);
-            this.axActUtlType1.Name = "axActUtlType1";
-            this.axActUtlType1.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axActUtlType1.OcxState")));
-            this.axActUtlType1.Size = new System.Drawing.Size(32, 32);
-            this.axActUtlType1.TabIndex = 9;
-            // 
             // PLCselect_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Silver;
             this.ClientSize = new System.Drawing.Size(1027, 450);
-            this.Controls.Add(this.axActUtlType1);
             this.Controls.Add(this.skinGroupBox3);
             this.Controls.Add(this.skinGroupBox2);
             this.Controls.Add(this.skinGroupBox1);
@@ -805,7 +793,6 @@
             this.skinGroupBox2.PerformLayout();
             this.skinGroupBox3.ResumeLayout(false);
             this.skinGroupBox3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.axActUtlType1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -843,6 +830,5 @@
         private CCWin.SkinControl.SkinLabel skinLabel11;
         private CCWin.SkinControl.SkinTextBox skinTextBox9;
         private CCWin.SkinControl.SkinLabel skinLabel12;
-        private AxActUtlTypeLib.AxActUtlType axActUtlType1;
     }
 }

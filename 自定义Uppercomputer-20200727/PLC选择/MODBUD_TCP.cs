@@ -409,7 +409,7 @@ namespace 自定义Uppercomputer_20200727.PLC选择
                 Data = result.Content.ToString();//读取到的数据
                 retry = 0;
             }
-            Thread.Sleep(20);
+            Thread.Sleep(5);
             PLC_busy = false;//允许访问
             
         }
@@ -430,7 +430,7 @@ namespace 自定义Uppercomputer_20200727.PLC选择
                     Message_run = true;
                 }
             }
-            Thread.Sleep(20);
+            Thread.Sleep(5);
             PLC_busy = false;//允许访问
         }
         #endregion

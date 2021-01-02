@@ -240,17 +240,22 @@ namespace 自定义Uppercomputer_20200727.控件重做
             if (Form_Tick.IsHandleCreated != true) return;//判断创建是否加载完成   
             Form_Tick.BeginInvoke((EventHandler)delegate
             {
-                Time_Tick_button(send, e);//注册按钮类刷新事件
-                Time_Tick_Textbox(send, e);//注册文本输入类刷新事件
-                Time_Tick_Switch(send, e);//注册切换开关类刷新事件
-                Time_Tick_LedBulb(send, e);//注册指示灯类刷新事件
-                Time_Tick_ImageButton(send, e);//注册无图片按钮类刷新事件
-                Time_Tick_doughnut_Chart(send, e);//注册圆形图刷新事件
-                Time_Tick_histogram_Chart(send, e);//注册柱形图事件
-                Time_Tick_oscillogram_Chart(send, e);//注册柱形图事件
-                Time_Tick_AnalogMeter(send, e);//注册百分百表盘事件
-                Time_Tick_LedDisplay(send, e);//注册数值显示事件
-                Time_Tick_ihatetheqrcode(send, e);//注册二维码/条形码事件
+                lock (this)
+                {
+                    this.Stop();
+                    Time_Tick_button(send, e);//注册按钮类刷新事件
+                    Time_Tick_Textbox(send, e);//注册文本输入类刷新事件
+                    Time_Tick_Switch(send, e);//注册切换开关类刷新事件
+                    Time_Tick_LedBulb(send, e);//注册指示灯类刷新事件
+                    Time_Tick_ImageButton(send, e);//注册无图片按钮类刷新事件
+                    Time_Tick_doughnut_Chart(send, e);//注册圆形图刷新事件
+                    Time_Tick_histogram_Chart(send, e);//注册柱形图事件
+                    Time_Tick_oscillogram_Chart(send, e);//注册柱形图事件
+                    Time_Tick_AnalogMeter(send, e);//注册百分百表盘事件
+                    Time_Tick_LedDisplay(send, e);//注册数值显示事件
+                    Time_Tick_ihatetheqrcode(send, e);//注册二维码/条形码事件
+                    this.Start();
+                }
             });
         }
         /// <summary>

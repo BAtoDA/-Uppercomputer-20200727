@@ -90,7 +90,7 @@ namespace 自定义Uppercomputer_20200727.PLC选择
         /// </summary>
         public IPEndPoint IPEndPoint { get; set; }//IP地址
         string pattern;
-        static AxActUtlType axActUtlType;//COM组件控件
+        static AxActUtlTypeLib.AxActUtlType axActUtlType;//COM组件控件
         static private bool PLC_ready;//内部PLC状态
         static private int PLCerr_code;//内部报警代码
         static private string PLCerr_content;//内部报警内容
@@ -129,6 +129,7 @@ namespace 自定义Uppercomputer_20200727.PLC选择
         {
             this.IPEndPoint = iPEndPoint;
             this.pattern = pattern;
+            //Mitsubishi_axActUtlType.axActUtlType = axActUtlType;
             Mitsubishi_axActUtlType.axActUtlType = axActUtlType;
         }
         /// <summary>

@@ -29,6 +29,8 @@ namespace 自定义Uppercomputer_20200727
             InitializeComponent();
             CheckForIllegalCrossThreadCalls = false;
         }
+        ///三菱仿真COM组件对象传递
+        public static AxActUtlTypeLib.AxActUtlType ActUtlType { get; set; }
         /// <summary>
         /// 数据库实例化
         /// </summary>
@@ -47,7 +49,7 @@ namespace 自定义Uppercomputer_20200727
         public static string SQLpassword { get; set; } = "3131458";
         private void Home_Shown(object sender, EventArgs e)
         {
-      
+            ActUtlType = this.axActUtlType1;
         }
         public void BindingProcessMsg(string strText, int intValue)
         {
