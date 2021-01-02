@@ -17,7 +17,7 @@ using CCWin.SkinClass;
 
 namespace CSEngineTest
 {
-    public partial class Form1 :Skin_Mac
+    public partial class Form1 : Skin_Mac
     {
         /// <summary>
         /// 编译报警内容

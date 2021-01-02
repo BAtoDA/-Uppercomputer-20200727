@@ -44,9 +44,9 @@
             // 
             this.groupBox1.BackColor = System.Drawing.Color.White;
             this.groupBox1.Controls.Add(this.skinLabel2);
-            this.groupBox1.Location = new System.Drawing.Point(140, 471);
+            this.groupBox1.Location = new System.Drawing.Point(7, 480);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(794, 56);
+            this.groupBox1.Size = new System.Drawing.Size(931, 56);
             this.groupBox1.TabIndex = 10;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "groupBox1";
@@ -57,7 +57,7 @@
             this.skinLabel2.BackColor = System.Drawing.Color.Transparent;
             this.skinLabel2.BorderColor = System.Drawing.Color.White;
             this.skinLabel2.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.skinLabel2.Location = new System.Drawing.Point(709, 23);
+            this.skinLabel2.Location = new System.Drawing.Point(866, 24);
             this.skinLabel2.Name = "skinLabel2";
             this.skinLabel2.Size = new System.Drawing.Size(56, 17);
             this.skinLabel2.TabIndex = 0;
@@ -73,11 +73,11 @@
             this.Column8,
             this.Column9,
             this.Column10});
-            this.skinDataGridView1.Location = new System.Drawing.Point(140, 199);
+            this.skinDataGridView1.Location = new System.Drawing.Point(5, 36);
             this.skinDataGridView1.Name = "skinDataGridView1";
             this.skinDataGridView1.ReadOnly = true;
             this.skinDataGridView1.RowTemplate.Height = 23;
-            this.skinDataGridView1.Size = new System.Drawing.Size(795, 279);
+            this.skinDataGridView1.Size = new System.Drawing.Size(938, 503);
             this.skinDataGridView1.TabIndex = 11;
             // 
             // Column6
@@ -92,28 +92,28 @@
             this.Column7.HeaderText = "时间";
             this.Column7.Name = "Column7";
             this.Column7.ReadOnly = true;
-            this.Column7.Width = 150;
+            this.Column7.Width = 180;
             // 
             // Column8
             // 
             this.Column8.HeaderText = "日期";
             this.Column8.Name = "Column8";
             this.Column8.ReadOnly = true;
-            this.Column8.Width = 150;
+            this.Column8.Width = 180;
             // 
             // Column9
             // 
             this.Column9.HeaderText = "文本";
             this.Column9.Name = "Column9";
             this.Column9.ReadOnly = true;
-            this.Column9.Width = 310;
+            this.Column9.Width = 380;
             // 
             // Column10
             // 
             this.Column10.HeaderText = "确认组";
             this.Column10.Name = "Column10";
             this.Column10.ReadOnly = true;
-            this.Column10.Width = 70;
+            this.Column10.Width = 90;
             // 
             // Form5
             // 
