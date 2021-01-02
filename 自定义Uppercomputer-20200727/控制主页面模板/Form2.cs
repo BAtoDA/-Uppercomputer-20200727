@@ -304,7 +304,6 @@ namespace 自定义Uppercomputer_20200727
         #endregion
         private void Form2_Load(object sender, EventArgs e)//加载窗口
         {
-            this.timer3.Start();
             this.BeginInvoke((EventHandler)delegate
             {
                 UI_Schedule("开始加载控件", 30, true);
@@ -315,6 +314,7 @@ namespace 自定义Uppercomputer_20200727
                   });
                 se.Wait();
                 UI_Schedule("开始加载设置参数", 60, true);
+                this.timer3.Start();
                 time_Reform.Form = this.Name;//获取当前窗口名称
                 time_Reform.Interval = 500;//遍历控件时间
                 time_Reform.Start();//运行定时器
@@ -464,12 +464,12 @@ namespace 自定义Uppercomputer_20200727
 
         private void timer3_Tick(object sender, EventArgs e)
         {
+            UI_Schedule("加载完成", 100, true);
             var inr =(from Control pi in this.Controls where pi is SkinButton select pi).Select(pi => pi).ToList();
             foreach (var i in inr)
                 i.Enabled = true;
             this.timer3.Stop();
-            UI_Schedule("加载完成", 100, true);
-            Thread.Sleep(500);
+            Thread.Sleep(200);
             UI_Schedule("加载完成", 100, false);
         }
         public void UI_Schedule(string Text,int Vaule,bool Visible)//加载UI控件控制
