@@ -22,7 +22,7 @@ namespace 自定义Uppercomputer_20200727.控件重做
     /// </summary>
     class Button_reform : SkinButton
     {
-        Button_Class Button_Class;//控件参数
+        public Button_Class Button_Class;//控件参数
         public enum Button_pattern//按钮模式类型枚举
         {
             Set_as_on , Set_as_off, 切换开关, 复归型

@@ -492,6 +492,12 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="控件重做\按钮类与宏指令通用类\numerical_public .cs" />
+    <Compile Include="控件重做\控件移动改变大小实现\Canvas.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="控件重做\控件移动改变大小实现\Canvas.Designer.cs">
+      <DependentUpon>Canvas.cs</DependentUpon>
+    </Compile>
     <Compile Include="控件重做\控件移动改变大小实现\DragResizeControl.cs" />
     <Compile Include="控件重做\获取控件的全部属性\Control_property.cs">
       <SubType>Form</SubType>
@@ -779,6 +785,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="手动控制页面\Form4.resx">
       <DependentUpon>Form4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="控件重做\控件移动改变大小实现\Canvas.resx">
+      <DependentUpon>Canvas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="控件重做\获取控件的全部属性\Control_property.resx">
       <DependentUpon>Control_property.cs</DependentUpon>

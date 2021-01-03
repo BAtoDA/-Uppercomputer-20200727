@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 using System.Drawing;
 using System.Windows.Forms;
 using 自定义Uppercomputer_20200727;
+using 自定义Uppercomputer_20200727.EF实体模型;
+using 自定义Uppercomputer_20200727.修改参数界面;
+using 自定义Uppercomputer_20200727.控件重做.控件移动改变大小实现;
+using 自定义Uppercomputer_20200727.控件重做;
 
 namespace DragResizeControlWindowsDrawDemo
 {
@@ -53,8 +57,14 @@ namespace DragResizeControlWindowsDrawDemo
                 control.MouseDown += new MouseEventHandler(control_MouseDown);
                 control.MouseLeave += new EventHandler(control_MouseLeave);
                 control.MouseMove += new MouseEventHandler(control_MouseMove);
+                control.MouseUp += new MouseEventHandler(control_MouseUP);
             }
         }
+        /// <summary>
+        /// 获取需要出现的窗口名称
+        /// </summary>
+        private static string Name;
+        private static Graphics graphics;
         public static void UnRegisterControl(Control control)
         {
             if (control != null)
@@ -62,15 +72,71 @@ namespace DragResizeControlWindowsDrawDemo
                 control.MouseDown -= new MouseEventHandler(control_MouseDown);
                 control.MouseLeave -= new EventHandler(control_MouseLeave);
                 control.MouseMove -= new MouseEventHandler(control_MouseMove);
+                control.MouseUp -= new MouseEventHandler(control_MouseUP);
             }
         }
         #endregion
+        /// <summary>
+        /// 需要绘制窗口的画布
+        /// </summary>
+        private static Canvas UserControl;
+        /// <summary>
+        /// 跟随显示坐标标签
+        /// </summary>
+        private static Label LabelControl;
         private static void control_MouseDown(object sender, MouseEventArgs e)
         {
             p.X = e.X;
             p.Y = e.Y;
             p1.X = e.X;
             p1.Y = e.Y;
+            //测试代码
+            if (Form2.edit_mode != true) return;//返回方法
+            Control control = sender as Control;//强转控件类基
+            FormCollection formCollection = Application.OpenForms;//获取活动的窗口
+            for (int i = 0; i < formCollection.Count; i++)
+            {
+                if (parameter_indexes.Button_from_name(control.Parent.ToString())== formCollection[i].Name)
+                {
+                    UserControl = new Canvas();
+                    UserControl.Size = new Size()
+                    {
+                        Width = formCollection[i].Size.Width,
+                        Height = formCollection[i].Size.Height
+                    };
+                    //添加画布
+                    formCollection[i].SetBounds(formCollection[i].Location.X, formCollection[i].Location.Y, formCollection[i].Size.Width, formCollection[i].Size.Height);
+                    formCollection[i].Controls.Add(UserControl);
+                    //添加坐标显示
+                    LabelControl = new Label();
+                    formCollection[i].SetBounds(formCollection[i].Location.X, formCollection[i].Location.Y, formCollection[i].Size.Width, formCollection[i].Size.Height);
+                    formCollection[i].Controls.Add(LabelControl);
+                    UserControl.SendToBack();
+                    foreach (Control ix in formCollection[i].Controls)
+                    {
+                        if (ix is GroupBox_reform)
+                            ix.SendToBack();
+                    }
+                    control.BringToFront();
+                    LabelControl.BringToFront();
+                    graphics = UserControl.CreateGraphics();//获取需要绘制窗口的GDI+
+                }
+            }
+        }
+        private static void control_MouseUP(object sender, MouseEventArgs e)
+        {
+            //测试代码
+            Control control = sender as Control;//强转控件类基
+            FormCollection formCollection = Application.OpenForms;//获取活动的窗口
+            for (int i = 0; i < formCollection.Count; i++)
+            {
+                if (parameter_indexes.Button_from_name(control.Parent.ToString()) == formCollection[i].Name)
+                {
+                    formCollection[i].Controls.Remove(UserControl);
+                    formCollection[i].Controls.Remove(LabelControl);
+                    UserControl.Dispose();
+                }
+            }
         }
         private static void control_MouseLeave(object sender, EventArgs e)
         {
@@ -84,6 +150,34 @@ namespace DragResizeControlWindowsDrawDemo
             Control lCtrl = (sender as Control);
             if (e.Button == MouseButtons.Left)
             {
+                ///绘制直线
+                ///
+                graphics.Clear(Color.FromName("AppWorkspace"));
+                lCtrl.BeginInvoke((EventHandler)delegate
+                {
+                    lCtrl.SuspendLayout();
+                    LabelControl.SuspendLayout();
+                    using (Pen pen = new Pen(Color.Red, 3))
+                    {
+                        //绘制X轴坐标
+                        Point point1 = new Point(lCtrl.Location.X - 1000, lCtrl.Top - 1);
+                        Point point2 = new Point(lCtrl.Location.X + 1000, lCtrl.Top - 1);
+                        graphics.DrawLine(pen, point1, point2);
+                        //绘制Y轴坐标
+                        Point point3 = new Point(lCtrl.Left - 1, lCtrl.Location.Y - 1000);
+                        Point point4 = new Point(lCtrl.Left - 1, lCtrl.Location.Y + 1000);
+                        graphics.DrawLine(pen, point3, point4);
+                    }
+                    //显示坐标标签控件跟随
+                    LabelControl.Location = new Point()
+                    {
+                        X = lCtrl.Location.X+3,
+                        Y = lCtrl.Top-25
+                    };
+                    LabelControl.Text = $"X：{lCtrl.Location.X} Y：{lCtrl.Location.Y}";
+                    lCtrl.ResumeLayout();
+                    LabelControl.ResumeLayout();
+                });
                 switch (m_MousePointPosition)
                 {
                     case EnumMousePointPosition.MouseDrag:
@@ -182,6 +276,11 @@ namespace DragResizeControlWindowsDrawDemo
                         break;
                 }
             }
+        }
+        private static void From_graphics()
+        {
+
+          
         }
         private static EnumMousePointPosition MousePointPosition(Size size, System.Windows.Forms.MouseEventArgs e)
         {

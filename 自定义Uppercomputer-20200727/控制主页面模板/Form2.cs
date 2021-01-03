@@ -58,13 +58,13 @@ namespace 自定义Uppercomputer_20200727
             InitializeComponent();
             time_Reform = new Time_reform(this);//实例化读取定时器--开启读取PLC
             ////开启双缓冲
-            //this.SetStyle(ControlStyles.OptimizedDoubleBuffer
-            //     | ControlStyles.ResizeRedraw
-            //     | ControlStyles.Selectable
-            //     | ControlStyles.AllPaintingInWmPaint
-            //     | ControlStyles.UserPaint
-            //     | ControlStyles.SupportsTransparentBackColor,
-            //   true);
+            this.SetStyle(ControlStyles.OptimizedDoubleBuffer
+                 | ControlStyles.ResizeRedraw
+                 | ControlStyles.Selectable
+                 | ControlStyles.AllPaintingInWmPaint
+                 | ControlStyles.UserPaint
+                 | ControlStyles.SupportsTransparentBackColor,
+               true);
 
         }
         private void skinButton1_Click(object sender, EventArgs e)//公用页面处理
