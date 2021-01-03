@@ -316,7 +316,7 @@ namespace 自定义Uppercomputer_20200727
                 UI_Schedule("开始加载设置参数", 60, true);
                 this.timer3.Start();
                 time_Reform.Form = this.Name;//获取当前窗口名称
-                time_Reform.Interval = 250;//遍历控件时间
+                time_Reform.Interval = 100;//遍历控件时间
                 time_Reform.Start();//运行定时器
                 asc.RenewControlRect(this);
                 //传递PLC参数到宏指令

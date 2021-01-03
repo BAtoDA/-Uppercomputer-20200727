@@ -126,6 +126,7 @@ namespace DragResizeControlWindowsDrawDemo
         private static void control_MouseUP(object sender, MouseEventArgs e)
         {
             //测试代码
+            if (Form2.edit_mode != true) return;//返回方法
             Control control = sender as Control;//强转控件类基
             FormCollection formCollection = Application.OpenForms;//获取活动的窗口
             for (int i = 0; i < formCollection.Count; i++)
