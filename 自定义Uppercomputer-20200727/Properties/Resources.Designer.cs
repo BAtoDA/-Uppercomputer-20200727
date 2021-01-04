@@ -83,6 +83,16 @@ namespace 自定义Uppercomputer_20200727.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
+        internal static System.Drawing.Bitmap h1 {
+            get {
+                object obj = ResourceManager.GetObject("h1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
         internal static System.Drawing.Bitmap h11 {
             get {
                 object obj = ResourceManager.GetObject("h11", resourceCulture);

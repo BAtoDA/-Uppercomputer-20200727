@@ -109,7 +109,6 @@ namespace DragResizeControlWindowsDrawDemo
                     formCollection[i].Controls.Add(UserControl);
                     //添加坐标显示
                     LabelControl = new Label();
-                    formCollection[i].SetBounds(formCollection[i].Location.X, formCollection[i].Location.Y, formCollection[i].Size.Width, formCollection[i].Size.Height);
                     formCollection[i].Controls.Add(LabelControl);
                     UserControl.SendToBack();
                     foreach (Control ix in formCollection[i].Controls)
@@ -136,6 +135,8 @@ namespace DragResizeControlWindowsDrawDemo
                     formCollection[i].Controls.Remove(UserControl);
                     formCollection[i].Controls.Remove(LabelControl);
                     UserControl.Dispose();
+                    if (control is GroupBox_reform)
+                        control.SendToBack();
                 }
             }
         }

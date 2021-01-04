@@ -44,9 +44,9 @@
             // 
             this.groupBox1.BackColor = System.Drawing.Color.White;
             this.groupBox1.Controls.Add(this.skinLabel2);
-            this.groupBox1.Location = new System.Drawing.Point(7, 480);
+            this.groupBox1.Location = new System.Drawing.Point(2, 532);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(931, 56);
+            this.groupBox1.Size = new System.Drawing.Size(947, 56);
             this.groupBox1.TabIndex = 10;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "groupBox1";
@@ -57,7 +57,7 @@
             this.skinLabel2.BackColor = System.Drawing.Color.Transparent;
             this.skinLabel2.BorderColor = System.Drawing.Color.White;
             this.skinLabel2.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.skinLabel2.Location = new System.Drawing.Point(866, 24);
+            this.skinLabel2.Location = new System.Drawing.Point(874, 24);
             this.skinLabel2.Name = "skinLabel2";
             this.skinLabel2.Size = new System.Drawing.Size(56, 17);
             this.skinLabel2.TabIndex = 0;
@@ -73,11 +73,11 @@
             this.Column8,
             this.Column9,
             this.Column10});
-            this.skinDataGridView1.Location = new System.Drawing.Point(5, 36);
+            this.skinDataGridView1.Location = new System.Drawing.Point(2, 81);
             this.skinDataGridView1.Name = "skinDataGridView1";
             this.skinDataGridView1.ReadOnly = true;
             this.skinDataGridView1.RowTemplate.Height = 23;
-            this.skinDataGridView1.Size = new System.Drawing.Size(938, 503);
+            this.skinDataGridView1.Size = new System.Drawing.Size(947, 509);
             this.skinDataGridView1.TabIndex = 11;
             // 
             // Column6
@@ -119,7 +119,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(950, 600);
+            this.ClientSize = new System.Drawing.Size(950, 654);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.skinDataGridView1);
             this.Name = "Form5";

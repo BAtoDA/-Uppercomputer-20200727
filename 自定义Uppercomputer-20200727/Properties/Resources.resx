@@ -118,17 +118,20 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="替换运行主页面" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\替换运行主页面.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="主页面3" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\主页面1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="3046502_105311288000_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\3046502_105311288000_2.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="h11" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\h11.ico;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="49176" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\49176.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="主页面" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\主页面.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="运行主页面" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\运行主页面.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="键盘图片" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\键盘图片.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -139,16 +142,16 @@
   <data name="主页面1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\主页面1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="主页面" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\主页面.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="主页面2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\主页面.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="h11" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\h11.ico;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="3046502_105311288000_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\3046502_105311288000_2.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="运行主页面" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\运行主页面.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="替换运行主页面" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\替换运行主页面.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="h1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\h1.ico;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
