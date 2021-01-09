@@ -1,6 +1,7 @@
 ﻿using CCWin.SkinClass;
 using CCWin.SkinControl;
 using CCWin.Win32.Const;
+using HZH_Controls.Controls;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -13,6 +14,7 @@ using System.Windows.Forms.VisualStyles;
 using 自定义Uppercomputer_20200727.EF实体模型;
 using 自定义Uppercomputer_20200727.图库;
 using 自定义Uppercomputer_20200727.控件重做;
+using 自定义Uppercomputer_20200727.控件重做.工业图形控件;
 using static System.Windows.Forms.Control;
 
 namespace 自定义Uppercomputer_20200727.控制主页面模板
@@ -39,6 +41,8 @@ namespace 自定义Uppercomputer_20200727.控制主页面模板
         List<RadioButton_Class> RadioButton = new List<RadioButton_Class>();//单选按钮类泛型表
         List<pull_down_menu_Class> pull_down_menu = new List<pull_down_menu_Class>();//下拉菜单类泛型表
         List<HScrollBar_Class> HScrollBar = new List<HScrollBar_Class>();//纵向移动图形类泛型表
+        List<Conveyor_Class> Conveyor = new List<Conveyor_Class>();//运输带类泛型表
+        List<Valve_Class> Valve = new List<Valve_Class>();//液体阀门类泛型表
         ControlCollection control;//当前窗口控件集合
         List<ImageList> imageLists_1 { get; set; } //图库类集合--不可修改
         //报警条需要参数
@@ -81,7 +85,9 @@ namespace 自定义Uppercomputer_20200727.控制主页面模板
                 this.function_key = parameter_Query_Add.all_Parameter_Query_function_key(From_Name);//查询功能键类
                 this.RadioButton = parameter_Query_Add.all_Parameter_Query_RadioButton(From_Name);//查询单选按钮类
                 this.pull_down_menu = parameter_Query_Add.all_Parameter_Query_pull_down_menu(From_Name);//查询下拉菜单类
-                this.HScrollBar = parameter_Query_Add.all_Parameter_Query_HScrollBar(From_Name);//查询纵向移动图形类
+                this.Conveyor = parameter_Query_Add.all_Parameter_Query_Conveyor(From_Name);//查询运输带类
+                this.Valve = parameter_Query_Add.all_Parameter_Query_Valve(From_Name);//查询运输带类
+
                 this.imageLists_1 = imageLists_1;//获取图库
                 Load_Add(this.histogram);
                 Load_Add(this.oscillogram);
@@ -92,6 +98,8 @@ namespace 自定义Uppercomputer_20200727.控制主页面模板
                 Load_Add(this.RadioButton);
                 Load_Add(this.pull_down_menu);
                 Load_Add(this.HScrollBar);
+                Load_Add(this.Conveyor);
+                Load_Add(this.Valve);
             });
             Task.WaitAll(T, T1, T2);
             Load_Add(this.GroupBox);
@@ -450,7 +458,7 @@ namespace 自定义Uppercomputer_20200727.控制主页面模板
                 reform.SelectedItem = 0;
             }
         }
-        public void Load_Add(List<HScrollBar_Class> HScrollBar_Classes)//百分百表盘类--参数修改
+        public void Load_Add(List<HScrollBar_Class> HScrollBar_Classes)//移动图形类--参数修改
         {
             //遍历数组
             foreach (HScrollBar_Class add in HScrollBar_Classes)
@@ -468,6 +476,62 @@ namespace 自定义Uppercomputer_20200727.控制主页面模板
                 reform.SkinBackColor = Color.FromName(add.Control_state_0_colour.Trim());//获取底色
                 reform.BorderColor = Color.FromName(add.Control_state_1_colour.Trim());//获取颜色
                 Form_event.BeginInvoke((EventHandler)delegate { control.Add(reform); });
+            }
+        }
+        public void Load_Add(List<Conveyor_Class> Conveyor_Classes)//运输带类--参数修改
+        {
+            //遍历数组
+            foreach (Conveyor_Class add in Conveyor_Classes)
+            {
+                Form_event.BeginInvoke((EventHandler)delegate
+                {
+                    Conveyor_reform reform = new Conveyor_reform();//实例化百分百表盘
+                    reform.Size = new Size(point_or_Size(add.size)[0], point_or_Size(add.size)[1]);//设置大小
+                    reform.Location = new Point(point_or_Size(add.location)[0], point_or_Size(add.location)[1]);//设置按钮位置
+                    reform.Name = add.Control_type.Trim();//设置名称
+                    reform.Text = add.Control_state_0_content.Trim();//设置文本
+                    reform.ForeColor = Color.FromName("ControlText");//获取数据库中颜色名称进行设置
+                    reform.BackColor = Color.FromName("Transparent");
+                    reform.BackgroundImageLayout = ImageLayout.Tile;
+                    reform.Font = new Font(add.Control_state_0_typeface.Trim(), add.Control_state_0_size.ToInt32(), FontStyle.Bold);//设置字体与大小
+                    //图形属性
+                    reform.ConveyorColor = Color.FromName(add.运输带颜色.Trim());
+                    reform.ConveyorDirection = Enumeration<ConveyorDirection>(add.运输带方向.Trim());
+                    reform.ConveyorHeight = add.运输带高度;
+                    reform.ConveyorSpeed = add.运输带速度;
+                    reform.Inclination = add.运输带角度;
+                    control.Add(reform);
+                });
+            }
+        }
+        public void Load_Add(List<Valve_Class> Valve_Classes)//液体阀门类--参数修改
+        {
+            //遍历数组
+            foreach (Valve_Class add in Valve_Classes)
+            {
+                Form_event.BeginInvoke((EventHandler)delegate
+                {
+                    Valve_reform reform = new Valve_reform();//实例化百分百表盘
+                    reform.Size = new Size(point_or_Size(add.size)[0], point_or_Size(add.size)[1]);//设置大小
+                    reform.Location = new Point(point_or_Size(add.location)[0], point_or_Size(add.location)[1]);//设置按钮位置
+                    reform.Name = add.Control_type.Trim();//设置名称
+                    reform.Text = add.Control_state_0_content.Trim();//设置文本
+                    reform.ForeColor = Color.FromName("ActiveBorder");//获取数据库中颜色名称进行设置
+                    reform.BackColor = Color.FromName("ActiveBorder");
+                    reform.BackgroundImageLayout = ImageLayout.Tile;
+                    reform.Font = new Font(add.Control_state_0_typeface.Trim(), add.Control_state_0_size.ToInt32(), FontStyle.Bold);//设置字体与大小
+                    //图形属性
+                    reform.AsisBottomColor = Color.FromName(add.轴底座颜色.Trim());
+                    reform.AxisColor = Color.FromName(add.轴颜色.Trim());
+                    reform.LiquidColor = Color.FromName(add.液体颜色.Trim());
+                    reform.LiquidDirection = Enumeration<LiquidDirection>(add.液体流动方向.Trim());
+                    reform.LiquidSpeed = add.液体流速;
+                    reform.Opened = Convert.ToBoolean(add.阀门);
+                    reform.SwitchColor = Color.FromName(add.开关把手颜色.Trim());
+                    reform.ValveColor = Color.FromName(add.阀门颜色.Trim());
+                    reform.ValveStyle = Enumeration<ValveStyle>(add.阀门样式.Trim());
+                    control.Add(reform);
+                });
             }
         }
         private System.Drawing.ContentAlignment ContentAlignment_1(string Name)//获取字体的对齐方式--按钮-文本类
@@ -512,6 +576,32 @@ namespace 自定义Uppercomputer_20200727.控制主页面模板
                 if (Colo_Name.Trim().Equals(c.Name)) return c;//返回数据
             }
             return propInfoList[0];//如果查询失败返回默认
+        }
+        private ConveyorDirection ConveyorDirection(string Name)
+        {
+            ConveyorDirection Direction = HZH_Controls.Controls.ConveyorDirection.Forward;
+            switch (Name.Trim())
+            {
+                case "None":
+                    Direction = HZH_Controls.Controls.ConveyorDirection.None;
+                    break;
+                case "Forward":
+                    Direction = HZH_Controls.Controls.ConveyorDirection.Forward;
+                    break;
+                case "Backward":
+                    Direction = HZH_Controls.Controls.ConveyorDirection.Backward;
+                    break;
+            }
+            return Direction;//返回数据
+        }
+        private T Enumeration<T>(string Name)
+        {
+            foreach (var suit in Enum.GetValues(typeof(T)))
+            {
+                if (suit.ToString() == Name.Trim())
+                    return (T)suit;
+            }
+            return (T)Enum.GetValues(typeof(T)).GetValue(0);
         }
         private int[] point_or_Size(string Name)//分割-来自数据库的-位置与大小数据
         {
@@ -574,6 +664,7 @@ namespace 自定义Uppercomputer_20200727.控制主页面模板
                 pull_down_menu.Clear();
                 HScrollBar.Clear();
                 imageLists_1.Clear();
+                Conveyor.Clear();
             }
             //TODO:释放非托管资源，设置对象为null
             _disposed = true;

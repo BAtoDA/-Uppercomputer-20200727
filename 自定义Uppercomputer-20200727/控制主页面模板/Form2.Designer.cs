@@ -33,6 +33,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form2));
             HZH_Controls.Controls.NavigationMenuItem navigationMenuItem1 = new HZH_Controls.Controls.NavigationMenuItem();
             HZH_Controls.Controls.NavigationMenuItem navigationMenuItem2 = new HZH_Controls.Controls.NavigationMenuItem();
             HZH_Controls.Controls.NavigationMenuItem navigationMenuItem3 = new HZH_Controls.Controls.NavigationMenuItem();
@@ -68,7 +69,9 @@
             HZH_Controls.Controls.NavigationMenuItem navigationMenuItem33 = new HZH_Controls.Controls.NavigationMenuItem();
             HZH_Controls.Controls.NavigationMenuItem navigationMenuItem34 = new HZH_Controls.Controls.NavigationMenuItem();
             HZH_Controls.Controls.NavigationMenuItem navigationMenuItem35 = new HZH_Controls.Controls.NavigationMenuItem();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form2));
+            HZH_Controls.Controls.NavigationMenuItem navigationMenuItem36 = new HZH_Controls.Controls.NavigationMenuItem();
+            HZH_Controls.Controls.NavigationMenuItem navigationMenuItem37 = new HZH_Controls.Controls.NavigationMenuItem();
+            HZH_Controls.Controls.NavigationMenuItem navigationMenuItem38 = new HZH_Controls.Controls.NavigationMenuItem();
             this.skinButton1 = new CCWin.SkinControl.SkinButton();
             this.skinButton2 = new CCWin.SkinControl.SkinButton();
             this.skinButton3 = new CCWin.SkinControl.SkinButton();
@@ -121,6 +124,8 @@
             this.toolStripSeparator28 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripMenuItem24 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator29 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripMenuItem25 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator30 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripSeparator27 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripMenuItem();
@@ -145,6 +150,7 @@
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.ucNavigationMenu1 = new HZH_Controls.Controls.UCNavigationMenu();
             this.userControl11 = new UI_Library_da.UI加载进度条.UserControl1();
+            this.toolStripMenuItem26 = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.skinContextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -356,7 +362,7 @@
             this.skinContextMenuStrip1.ItemSplitter = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(148)))), ((int)(((byte)(212)))));
             this.skinContextMenuStrip1.Name = "skinContextMenuStrip1";
             this.skinContextMenuStrip1.RadiusStyle = CCWin.SkinClass.RoundStyle.All;
-            this.skinContextMenuStrip1.Size = new System.Drawing.Size(149, 228);
+            this.skinContextMenuStrip1.Size = new System.Drawing.Size(181, 250);
             this.skinContextMenuStrip1.SkinAllColor = true;
             this.skinContextMenuStrip1.TitleAnamorphosis = true;
             this.skinContextMenuStrip1.TitleColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(228)))), ((int)(((byte)(236)))));
@@ -407,10 +413,13 @@
             this.toolStripSeparator28,
             this.toolStripMenuItem24,
             this.toolStripSeparator29,
+            this.toolStripMenuItem25,
+            this.toolStripSeparator30,
+            this.toolStripMenuItem26,
             this.toolStripSeparator27});
             this.toolStripMenuItem1.Enabled = false;
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(148, 22);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.toolStripMenuItem1.Text = "添加控件";
             // 
             // buttton按钮ToolStripMenuItem
@@ -652,6 +661,18 @@
             this.toolStripSeparator29.Name = "toolStripSeparator29";
             this.toolStripSeparator29.Size = new System.Drawing.Size(213, 6);
             // 
+            // toolStripMenuItem25
+            // 
+            this.toolStripMenuItem25.Name = "toolStripMenuItem25";
+            this.toolStripMenuItem25.Size = new System.Drawing.Size(216, 22);
+            this.toolStripMenuItem25.Text = "Conveyor运输带";
+            this.toolStripMenuItem25.Click += new System.EventHandler(this.toolStripMenuItem25_Click);
+            // 
+            // toolStripSeparator30
+            // 
+            this.toolStripSeparator30.Name = "toolStripSeparator30";
+            this.toolStripSeparator30.Size = new System.Drawing.Size(213, 6);
+            // 
             // toolStripSeparator27
             // 
             this.toolStripSeparator27.Name = "toolStripSeparator27";
@@ -660,92 +681,92 @@
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(145, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
             // 
             // toolStripMenuItem6
             // 
             this.toolStripMenuItem6.Enabled = false;
             this.toolStripMenuItem6.Name = "toolStripMenuItem6";
-            this.toolStripMenuItem6.Size = new System.Drawing.Size(148, 22);
+            this.toolStripMenuItem6.Size = new System.Drawing.Size(180, 22);
             this.toolStripMenuItem6.Text = "报警注册";
             this.toolStripMenuItem6.Click += new System.EventHandler(this.toolStripMenuItem6_Click);
             // 
             // toolStripSeparator6
             // 
             this.toolStripSeparator6.Name = "toolStripSeparator6";
-            this.toolStripSeparator6.Size = new System.Drawing.Size(145, 6);
+            this.toolStripSeparator6.Size = new System.Drawing.Size(177, 6);
             // 
             // toolStripMenuItem16
             // 
             this.toolStripMenuItem16.Enabled = false;
             this.toolStripMenuItem16.Name = "toolStripMenuItem16";
-            this.toolStripMenuItem16.Size = new System.Drawing.Size(148, 22);
+            this.toolStripMenuItem16.Size = new System.Drawing.Size(180, 22);
             this.toolStripMenuItem16.Text = "编辑宏指令";
             this.toolStripMenuItem16.Click += new System.EventHandler(this.toolStripMenuItem16_Click);
             // 
             // toolStripSeparator20
             // 
             this.toolStripSeparator20.Name = "toolStripSeparator20";
-            this.toolStripSeparator20.Size = new System.Drawing.Size(145, 6);
+            this.toolStripSeparator20.Size = new System.Drawing.Size(177, 6);
             // 
             // toolStripMenuItem4
             // 
             this.toolStripMenuItem4.Name = "toolStripMenuItem4";
-            this.toolStripMenuItem4.Size = new System.Drawing.Size(148, 22);
+            this.toolStripMenuItem4.Size = new System.Drawing.Size(180, 22);
             this.toolStripMenuItem4.Text = "链接设备";
             this.toolStripMenuItem4.Click += new System.EventHandler(this.toolStripMenuItem4_Click);
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(145, 6);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(177, 6);
             // 
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(148, 22);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(180, 22);
             this.toolStripMenuItem2.Text = "通讯测试工具";
             this.toolStripMenuItem2.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
             // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(145, 6);
+            this.toolStripSeparator4.Size = new System.Drawing.Size(177, 6);
             // 
             // toolStripMenuItem5
             // 
             this.toolStripMenuItem5.Name = "toolStripMenuItem5";
-            this.toolStripMenuItem5.Size = new System.Drawing.Size(148, 22);
+            this.toolStripMenuItem5.Size = new System.Drawing.Size(180, 22);
             this.toolStripMenuItem5.Text = "开启编辑模式";
             this.toolStripMenuItem5.Click += new System.EventHandler(this.toolStripMenuItem5_Click);
             // 
             // toolStripSeparator5
             // 
             this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(145, 6);
+            this.toolStripSeparator5.Size = new System.Drawing.Size(177, 6);
             // 
             // toolStripMenuItem3
             // 
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(148, 22);
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(180, 22);
             this.toolStripMenuItem3.Text = "帮助文档";
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(145, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(177, 6);
             // 
             // toolStripMenuItem15
             // 
             this.toolStripMenuItem15.Name = "toolStripMenuItem15";
-            this.toolStripMenuItem15.Size = new System.Drawing.Size(148, 22);
+            this.toolStripMenuItem15.Size = new System.Drawing.Size(180, 22);
             this.toolStripMenuItem15.Text = "关于本软件";
             this.toolStripMenuItem15.Click += new System.EventHandler(this.toolStripMenuItem15_Click);
             // 
             // toolStripSeparator19
             // 
             this.toolStripSeparator19.Name = "toolStripSeparator19";
-            this.toolStripSeparator19.Size = new System.Drawing.Size(145, 6);
+            this.toolStripSeparator19.Size = new System.Drawing.Size(177, 6);
             // 
             // timer2
             // 
@@ -778,9 +799,43 @@
             // 
             // imageList1
             // 
-            this.imageList1.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
-            this.imageList1.ImageSize = new System.Drawing.Size(16, 16);
+            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
             this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList1.Images.SetKeyName(0, "b1.ico");
+            this.imageList1.Images.SetKeyName(1, "b2.ico");
+            this.imageList1.Images.SetKeyName(2, "b3.ico");
+            this.imageList1.Images.SetKeyName(3, "b4.ico");
+            this.imageList1.Images.SetKeyName(4, "b5.ico");
+            this.imageList1.Images.SetKeyName(5, "b6.ico");
+            this.imageList1.Images.SetKeyName(6, "b7.ico");
+            this.imageList1.Images.SetKeyName(7, "b8.ico");
+            this.imageList1.Images.SetKeyName(8, "b9.ico");
+            this.imageList1.Images.SetKeyName(9, "b10.ico");
+            this.imageList1.Images.SetKeyName(10, "b11.ico");
+            this.imageList1.Images.SetKeyName(11, "b12.ico");
+            this.imageList1.Images.SetKeyName(12, "b13.ico");
+            this.imageList1.Images.SetKeyName(13, "b14.ico");
+            this.imageList1.Images.SetKeyName(14, "b15.ico");
+            this.imageList1.Images.SetKeyName(15, "b16.ico");
+            this.imageList1.Images.SetKeyName(16, "h1.ico");
+            this.imageList1.Images.SetKeyName(17, "h2.ico");
+            this.imageList1.Images.SetKeyName(18, "h3.ico");
+            this.imageList1.Images.SetKeyName(19, "h4.ico");
+            this.imageList1.Images.SetKeyName(20, "h5.ico");
+            this.imageList1.Images.SetKeyName(21, "h6.ico");
+            this.imageList1.Images.SetKeyName(22, "h7.ico");
+            this.imageList1.Images.SetKeyName(23, "h8.ico");
+            this.imageList1.Images.SetKeyName(24, "h9.ico");
+            this.imageList1.Images.SetKeyName(25, "h10.ico");
+            this.imageList1.Images.SetKeyName(26, "h11.ico");
+            this.imageList1.Images.SetKeyName(27, "h12.ico");
+            this.imageList1.Images.SetKeyName(28, "h13.ico");
+            this.imageList1.Images.SetKeyName(29, "h14.ico");
+            this.imageList1.Images.SetKeyName(30, "h15.ico");
+            this.imageList1.Images.SetKeyName(31, "h16.ico");
+            this.imageList1.Images.SetKeyName(32, "h17.ico");
+            this.imageList1.Images.SetKeyName(33, "h18.ico");
+            this.imageList1.Images.SetKeyName(34, "h19.ico");
             // 
             // ucNavigationMenu1
             // 
@@ -1063,6 +1118,35 @@
             navigationMenuItem27.ShowTip = false;
             navigationMenuItem27.Text = "功能键";
             navigationMenuItem27.TipText = "画";
+            navigationMenuItem30.AnchorRight = false;
+            navigationMenuItem30.DataSource = null;
+            navigationMenuItem30.HasSplitLintAtTop = false;
+            navigationMenuItem30.Icon = null;
+            navigationMenuItem31.AnchorRight = false;
+            navigationMenuItem31.DataSource = null;
+            navigationMenuItem31.HasSplitLintAtTop = false;
+            navigationMenuItem31.Icon = null;
+            navigationMenuItem31.Items = null;
+            navigationMenuItem31.ItemWidth = 100;
+            navigationMenuItem31.ShowTip = false;
+            navigationMenuItem31.Text = "Conveyor运输带";
+            navigationMenuItem31.TipText = null;
+            navigationMenuItem32.AnchorRight = false;
+            navigationMenuItem32.DataSource = null;
+            navigationMenuItem32.HasSplitLintAtTop = false;
+            navigationMenuItem32.Icon = null;
+            navigationMenuItem32.Items = null;
+            navigationMenuItem32.ItemWidth = 100;
+            navigationMenuItem32.ShowTip = false;
+            navigationMenuItem32.Text = "Valve流体阀门";
+            navigationMenuItem32.TipText = null;
+            navigationMenuItem30.Items = new HZH_Controls.Controls.NavigationMenuItem[] {
+        navigationMenuItem31,
+        navigationMenuItem32};
+            navigationMenuItem30.ItemWidth = 100;
+            navigationMenuItem30.ShowTip = false;
+            navigationMenuItem30.Text = "工业图形类";
+            navigationMenuItem30.TipText = null;
             navigationMenuItem1.Items = new HZH_Controls.Controls.NavigationMenuItem[] {
         navigationMenuItem2,
         navigationMenuItem7,
@@ -1071,73 +1155,74 @@
         navigationMenuItem15,
         navigationMenuItem23,
         navigationMenuItem25,
-        navigationMenuItem27};
+        navigationMenuItem27,
+        navigationMenuItem30};
             navigationMenuItem1.ItemWidth = 100;
             navigationMenuItem1.ShowTip = true;
             navigationMenuItem1.Text = "添加控件";
             navigationMenuItem1.TipText = "控";
-            navigationMenuItem30.AnchorRight = false;
-            navigationMenuItem30.DataSource = null;
-            navigationMenuItem30.HasSplitLintAtTop = false;
-            navigationMenuItem30.Icon = null;
-            navigationMenuItem30.Items = null;
-            navigationMenuItem30.ItemWidth = 100;
-            navigationMenuItem30.ShowTip = true;
-            navigationMenuItem30.Text = "报警注册";
-            navigationMenuItem30.TipText = "报警";
-            navigationMenuItem31.AnchorRight = false;
-            navigationMenuItem31.DataSource = null;
-            navigationMenuItem31.HasSplitLintAtTop = false;
-            navigationMenuItem31.Icon = null;
-            navigationMenuItem31.Items = null;
-            navigationMenuItem31.ItemWidth = 100;
-            navigationMenuItem31.ShowTip = true;
-            navigationMenuItem31.Text = "宏指令";
-            navigationMenuItem31.TipText = "宏";
-            navigationMenuItem32.AnchorRight = false;
-            navigationMenuItem32.DataSource = null;
-            navigationMenuItem32.HasSplitLintAtTop = false;
-            navigationMenuItem32.Icon = null;
-            navigationMenuItem32.Items = null;
-            navigationMenuItem32.ItemWidth = 100;
-            navigationMenuItem32.ShowTip = true;
-            navigationMenuItem32.Text = "链接设备";
-            navigationMenuItem32.TipText = "PLC";
-            navigationMenuItem33.AnchorRight = true;
+            navigationMenuItem33.AnchorRight = false;
             navigationMenuItem33.DataSource = null;
             navigationMenuItem33.HasSplitLintAtTop = false;
             navigationMenuItem33.Icon = null;
             navigationMenuItem33.Items = null;
             navigationMenuItem33.ItemWidth = 100;
             navigationMenuItem33.ShowTip = true;
-            navigationMenuItem33.Text = "关于";
-            navigationMenuItem33.TipText = "DA";
-            navigationMenuItem34.AnchorRight = true;
+            navigationMenuItem33.Text = "报警注册";
+            navigationMenuItem33.TipText = "报警";
+            navigationMenuItem34.AnchorRight = false;
             navigationMenuItem34.DataSource = null;
             navigationMenuItem34.HasSplitLintAtTop = false;
             navigationMenuItem34.Icon = null;
             navigationMenuItem34.Items = null;
             navigationMenuItem34.ItemWidth = 100;
             navigationMenuItem34.ShowTip = true;
-            navigationMenuItem34.Text = "通讯测试";
-            navigationMenuItem34.TipText = "PING";
-            navigationMenuItem35.AnchorRight = true;
+            navigationMenuItem34.Text = "宏指令";
+            navigationMenuItem34.TipText = "宏";
+            navigationMenuItem35.AnchorRight = false;
             navigationMenuItem35.DataSource = null;
             navigationMenuItem35.HasSplitLintAtTop = false;
             navigationMenuItem35.Icon = null;
             navigationMenuItem35.Items = null;
             navigationMenuItem35.ItemWidth = 100;
             navigationMenuItem35.ShowTip = true;
-            navigationMenuItem35.Text = "编辑模式";
-            navigationMenuItem35.TipText = "改";
+            navigationMenuItem35.Text = "链接设备";
+            navigationMenuItem35.TipText = "PLC";
+            navigationMenuItem36.AnchorRight = true;
+            navigationMenuItem36.DataSource = null;
+            navigationMenuItem36.HasSplitLintAtTop = false;
+            navigationMenuItem36.Icon = null;
+            navigationMenuItem36.Items = null;
+            navigationMenuItem36.ItemWidth = 100;
+            navigationMenuItem36.ShowTip = true;
+            navigationMenuItem36.Text = "关于";
+            navigationMenuItem36.TipText = "DA";
+            navigationMenuItem37.AnchorRight = true;
+            navigationMenuItem37.DataSource = null;
+            navigationMenuItem37.HasSplitLintAtTop = false;
+            navigationMenuItem37.Icon = null;
+            navigationMenuItem37.Items = null;
+            navigationMenuItem37.ItemWidth = 100;
+            navigationMenuItem37.ShowTip = true;
+            navigationMenuItem37.Text = "通讯测试";
+            navigationMenuItem37.TipText = "PING";
+            navigationMenuItem38.AnchorRight = true;
+            navigationMenuItem38.DataSource = null;
+            navigationMenuItem38.HasSplitLintAtTop = false;
+            navigationMenuItem38.Icon = null;
+            navigationMenuItem38.Items = null;
+            navigationMenuItem38.ItemWidth = 100;
+            navigationMenuItem38.ShowTip = true;
+            navigationMenuItem38.Text = "编辑模式";
+            navigationMenuItem38.TipText = "改";
             this.ucNavigationMenu1.Items = new HZH_Controls.Controls.NavigationMenuItem[] {
         navigationMenuItem1,
-        navigationMenuItem30,
-        navigationMenuItem31,
-        navigationMenuItem32,
         navigationMenuItem33,
         navigationMenuItem34,
-        navigationMenuItem35};
+        navigationMenuItem35,
+        navigationMenuItem36,
+        navigationMenuItem37,
+        navigationMenuItem38};
             this.ucNavigationMenu1.Location = new System.Drawing.Point(-1, 34);
             this.ucNavigationMenu1.Name = "ucNavigationMenu1";
             this.ucNavigationMenu1.Padding = new System.Windows.Forms.Padding(30, 0, 0, 0);
@@ -1155,6 +1240,13 @@
             this.userControl11.Schedule_Text = "窗口加载中";
             this.userControl11.Size = new System.Drawing.Size(362, 225);
             this.userControl11.TabIndex = 9;
+            // 
+            // toolStripMenuItem26
+            // 
+            this.toolStripMenuItem26.Name = "toolStripMenuItem26";
+            this.toolStripMenuItem26.Size = new System.Drawing.Size(216, 22);
+            this.toolStripMenuItem26.Text = "Valve流体阀门";
+            this.toolStripMenuItem26.Click += new System.EventHandler(this.toolStripMenuItem26_Click);
             // 
             // Form2
             // 
@@ -1274,5 +1366,8 @@
         private System.Windows.Forms.ImageList imageList1;
         private UI_Library_da.UI加载进度条.UserControl1 userControl11;
         private HZH_Controls.Controls.UCNavigationMenu ucNavigationMenu1;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem25;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator30;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem26;
     }
 }

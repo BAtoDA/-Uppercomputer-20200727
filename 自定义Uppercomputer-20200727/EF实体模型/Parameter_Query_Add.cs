@@ -148,5 +148,19 @@ namespace 自定义Uppercomputer_20200727.EF实体模型
                 return model.HScrollBar_Class.Where(pi => pi.FORM == From).Select(PI => PI).ToList();//查询数据库是否有该FROM返回查询结果                
             }
         }
+        public List<Conveyor_Class> all_Parameter_Query_Conveyor(string From)//查询项目资料类全部参数
+        {
+            using (UppercomputerEntities2 model = new UppercomputerEntities2())
+            {
+                return model.Conveyor_Class.Where(pi => pi.FORM == From).Select(PI => PI).ToList();//查询数据库是否有该FROM返回查询结果                
+            }
+        }
+        public List<Valve_Class> all_Parameter_Query_Valve(string From)//查询项目资料类全部参数
+        {
+            using (UppercomputerEntities2 model = new UppercomputerEntities2())
+            {
+                return model.Valve_Class.Where(pi => pi.FORM == From).Select(PI => PI).ToList();//查询数据库是否有该FROM返回查询结果                
+            }
+        }
     }
 }

@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using 自定义Uppercomputer_20200727.EF实体模型;
+using 自定义Uppercomputer_20200727.EF实体模型.工业图形控件参数;
 using 自定义Uppercomputer_20200727.修改参数界面;
 using 自定义Uppercomputer_20200727.修改参数界面.AnalogMeter百分百表盘参数;
 using 自定义Uppercomputer_20200727.修改参数界面.doughnut_Chart图形控件参数;
@@ -19,7 +20,9 @@ using 自定义Uppercomputer_20200727.修改参数界面.LedBulb_指示灯参数
 using 自定义Uppercomputer_20200727.修改参数界面.LedDisplay数值显示参数;
 using 自定义Uppercomputer_20200727.修改参数界面.oscillogram_Chart折线图波形图参数;
 using 自定义Uppercomputer_20200727.修改参数界面.RadioButton单选按钮参数;
+using 自定义Uppercomputer_20200727.修改参数界面.工业图形汇总;
 using 自定义Uppercomputer_20200727.修改参数界面.报警条参数;
+using 自定义Uppercomputer_20200727.控件重做.工业图形控件;
 using 自定义Uppercomputer_20200727.控件重做.获取控件的全部属性;
 
 namespace 自定义Uppercomputer_20200727.控件重做
@@ -43,7 +46,7 @@ namespace 自定义Uppercomputer_20200727.控件重做
             toolStrip.Text = "修改参数";
             this.Items.Add(toolStrip);
             toolStrip.Click += toolStrip_Click_reform;//注册修改参数事件
-                                                      //查看控件属性
+            //查看控件属性
             toolStrip_4 = new ToolStripMenuItem();
             toolStrip_4.Text = "查看属性";
             this.Items.Add(toolStrip_4);
@@ -146,6 +149,14 @@ namespace 自定义Uppercomputer_20200727.控件重做
                 case "HScrollBar_reform":
                     Modification_HScrollBar HScrollBar = new Modification_HScrollBar(SkinContextMenuStrip_Button_ID, this.all_purpose);//弹出修改参数传递
                     HScrollBar.ShowDialog();//弹出修改参数窗口
+                    break;
+                case "Conveyor_reform":
+                    Modification_Conveyor Conveyor = new Modification_Conveyor(SkinContextMenuStrip_Button_ID, this.all_purpose);//弹出修改参数传递
+                    Conveyor.ShowDialog();//弹出修改参数窗口
+                    break;
+                case "Valve_reform":
+                    Modification_Valve Valve = new Modification_Valve(SkinContextMenuStrip_Button_ID, this.all_purpose);//弹出修改参数传递
+                    Valve.ShowDialog();//弹出修改参数窗口
                     break;
             }
         }
@@ -272,6 +283,18 @@ namespace 自定义Uppercomputer_20200727.控件重做
                     HScrollBar_EF HScrollBar_EF = new HScrollBar_EF();//实例化EF对象
                     HScrollBar_EF.HScrollBar_Parameter_delete(SkinContextMenuStrip_Button_ID + "- " + ((HScrollBar_reform)all_purpose).Name);//执行SQL删除操作
                     break;
+                case "Conveyor_reform":
+                    if (MessageBox.Show("确定要删除" + ((Conveyor_reform)all_purpose).Name.Trim() + "吗？", "错误：", MessageBoxButtons.YesNo) == DialogResult.No) return;
+                    ((Conveyor_reform)all_purpose).Visible = false;//隐藏控件
+                    Conveyor_EF Conveyor_F = new Conveyor_EF();//实例化EF对象
+                    Conveyor_F.Conveyor_Parameter_delete(SkinContextMenuStrip_Button_ID + "- " + ((Conveyor_reform)all_purpose).Name);//执行SQL删除操作
+                    break;
+                case "Valve_reform":
+                    if (MessageBox.Show("确定要删除" + ((Valve_reform)all_purpose).Name.Trim() + "吗？", "错误：", MessageBoxButtons.YesNo) == DialogResult.No) return;
+                    ((Valve_reform)all_purpose).Visible = false;//隐藏控件
+                    Valve_EF Valve_F = new Valve_EF();//实例化EF对象
+                    Valve_F.Valve_Parameter_delete(SkinContextMenuStrip_Button_ID + "- " + ((Valve_reform)all_purpose).Name);//执行SQL删除操作
+                    break;
             }
         }
         /// <summary>2Q
@@ -357,6 +380,14 @@ namespace 自定义Uppercomputer_20200727.控件重做
                 case "HScrollBar_reform":
                     ((HScrollBar_reform)all_purpose).BringToFront();//将控件放置所有控件最顶层 
                     layer_EF.all_Parameter_Query_Add(SkinContextMenuStrip_Button_ID + "- " + ((HScrollBar_reform)all_purpose).Name, ((HScrollBar_reform)all_purpose).Name, 1);
+                    break;
+                case "Conveyor_reform":
+                    ((Conveyor_reform)all_purpose).BringToFront();//将控件放置所有控件最顶层 
+                    layer_EF.all_Parameter_Query_Add(SkinContextMenuStrip_Button_ID + "- " + ((Conveyor_reform)all_purpose).Name, ((Conveyor_reform)all_purpose).Name, 1);
+                    break;
+                case "Valve_reform":
+                    ((Valve_reform)all_purpose).BringToFront();//将控件放置所有控件最顶层 
+                    layer_EF.all_Parameter_Query_Add(SkinContextMenuStrip_Button_ID + "- " + ((Valve_reform)all_purpose).Name, ((Valve_reform)all_purpose).Name, 1);
                     break;
             }
         }
@@ -444,6 +475,14 @@ namespace 自定义Uppercomputer_20200727.控件重做
                     ((HScrollBar_reform)all_purpose).SendToBack();//将控件放置所有控件最底层   
                     layer_EF.all_Parameter_Query_Add(SkinContextMenuStrip_Button_ID + "- " + ((HScrollBar_reform)all_purpose).Name, ((HScrollBar_reform)all_purpose).Name, 0);
                     break;
+                case "Conveyor_reform":
+                    ((Conveyor_reform)all_purpose).SendToBack();//将控件放置所有控件最底层   
+                    layer_EF.all_Parameter_Query_Add(SkinContextMenuStrip_Button_ID + "- " + ((Conveyor_reform)all_purpose).Name, ((Conveyor_reform)all_purpose).Name, 0);
+                    break;
+                case "Valve_reform":
+                    ((Valve_reform)all_purpose).SendToBack();//将控件放置所有控件最底层   
+                    layer_EF.all_Parameter_Query_Add(SkinContextMenuStrip_Button_ID + "- " + ((Valve_reform)all_purpose).Name, ((Valve_reform)all_purpose).Name, 0);
+                    break;
             }
         }
         /// <summary>
@@ -510,6 +549,12 @@ namespace 自定义Uppercomputer_20200727.控件重做
                     break;
                 case "HScrollBar_reform":
                     propertyGrid.SelectedObject = ((HScrollBar_reform)all_purpose);
+                    break;
+                case "Conveyor_reform":
+                    propertyGrid.SelectedObject = ((Conveyor_reform)all_purpose);
+                    break;
+                case "Valve_reform":
+                    propertyGrid.SelectedObject = ((Valve_reform)all_purpose);
                     break;
             }
             Control_property control_Property = new Control_property(propertyGrid);

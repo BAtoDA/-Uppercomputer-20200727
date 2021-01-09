@@ -1,5 +1,6 @@
 ﻿using CCWin.SkinClass;
 using CCWin.SkinControl;
+using HZH_Controls.Controls;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -9,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using 自定义Uppercomputer_20200727.EF实体模型;
 using 自定义Uppercomputer_20200727.控件重做;
+using 自定义Uppercomputer_20200727.控件重做.工业图形控件;
 
 namespace 自定义Uppercomputer_20200727.修改参数界面
 {
@@ -218,6 +220,45 @@ namespace 自定义Uppercomputer_20200727.修改参数界面
             reform.SkinBackColor = Color.FromName(add.Control_state_0_colour.Trim());//获取底色
             reform.BorderColor = Color.FromName(add.Control_state_1_colour.Trim());//获取颜色
         }
+        public void Conveyor(Conveyor_reform reform, Conveyor_Class add)//百分百表盘类--参数修改
+        {
+            reform.Size = new Size(point_or_Size(add.size)[0], point_or_Size(add.size)[1]);//设置大小
+            reform.Location = new Point(point_or_Size(add.location)[0], point_or_Size(add.location)[1]);//设置按钮位置
+            reform.Name = add.Control_type.Trim();//设置名称
+            reform.Text = add.Control_state_0_content.Trim();//设置文本
+            reform.ForeColor = Color.FromName("ActiveBorder");//获取数据库中颜色名称进行设置
+            reform.BackColor = Color.FromName("ActiveBorder");
+            reform.BackgroundImageLayout = ImageLayout.Tile;
+            reform.Font = new Font(add.Control_state_0_typeface.Trim(), add.Control_state_0_size.ToInt32(), FontStyle.Bold);//设置字体与大小
+            //图形属性
+            reform.ConveyorColor = Color.FromName(add.运输带颜色.Trim());
+            reform.ConveyorDirection = ConveyorDirection(add.运输带方向.Trim());
+            reform.ConveyorHeight = add.运输带高度;
+            reform.ConveyorSpeed = add.运输带速度;
+            reform.Inclination = add.运输带角度;
+        }
+        public void Valve(Valve_reform reform, Valve_Class add)//百分百表盘类--参数修改
+        {
+            reform.Size = new Size(point_or_Size(add.size)[0], point_or_Size(add.size)[1]);//设置大小
+            reform.Location = new Point(point_or_Size(add.location)[0], point_or_Size(add.location)[1]);//设置按钮位置
+            reform.Name = add.Control_type.Trim();//设置名称
+            reform.Text = add.Control_state_0_content.Trim();//设置文本
+            reform.ForeColor = Color.FromName("ActiveBorder");//获取数据库中颜色名称进行设置
+            reform.BackColor = Color.FromName("ActiveBorder");
+            reform.BackgroundImageLayout = ImageLayout.Tile;
+            reform.Font = new Font(add.Control_state_0_typeface.Trim(), add.Control_state_0_size.ToInt32(), FontStyle.Bold);//设置字体与大小
+            //图形属性
+            reform.AsisBottomColor = Color.FromName(add.轴底座颜色.Trim());
+            reform.AxisColor = Color.FromName(add.轴颜色.Trim());
+            reform.LiquidColor = Color.FromName(add.液体颜色.Trim());
+            reform.LiquidDirection = Enumeration<LiquidDirection>(add.液体流动方向.Trim());
+            reform.LiquidSpeed = add.液体流速;
+            reform.Opened = Convert.ToBoolean(add.阀门);
+            reform.SwitchColor = Color.FromName(add.开关把手颜色.Trim());
+            reform.ValveColor = Color.FromName(add.阀门颜色.Trim());
+            reform.ValveStyle= Enumeration<ValveStyle>(add.阀门样式.Trim());
+
+        }
         private System.Drawing.ContentAlignment ContentAlignment_1(string Name)//获取字体的对齐方式--按钮-文本类
         {
             System.Drawing.ContentAlignment contentAlignment = System.Drawing.ContentAlignment.MiddleCenter;//定义对齐方式
@@ -251,6 +292,32 @@ namespace 自定义Uppercomputer_20200727.修改参数界面
                     break;
             }
             return horizontalAlignment;//返回数据
+        }
+        private ConveyorDirection ConveyorDirection(string Name)
+        {
+            ConveyorDirection Direction = HZH_Controls.Controls.ConveyorDirection.Forward;
+            switch (Name.Trim())
+            {
+                case "None":
+                    Direction = HZH_Controls.Controls.ConveyorDirection.None;
+                    break;
+                case "Forward":
+                    Direction = HZH_Controls.Controls.ConveyorDirection.Forward;
+                    break;
+                case "Backward":
+                    Direction = HZH_Controls.Controls.ConveyorDirection.Backward;
+                    break;
+            }
+            return Direction;//返回数据
+        }
+        private T Enumeration<T>(string Name)
+        {
+            foreach (var suit in Enum.GetValues(typeof(T)))
+            {
+                if (suit.ToString() == Name.Trim())
+                    return (T)suit;
+            }
+            return (T)Enum.GetValues(typeof(T)).GetValue(0);
         }
         private int[] point_or_Size(string Name)//分割-来自数据库的-位置与大小数据
         {

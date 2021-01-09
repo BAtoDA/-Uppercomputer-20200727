@@ -171,6 +171,12 @@
     <Compile Include="EF实体模型\control_location.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="EF实体模型\Conveyor_Class.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF实体模型\Conveyor_parameter.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="EF实体模型\doughnut_Chart_Class.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -312,6 +318,14 @@
     <Compile Include="EF实体模型\Tag_common_parameters.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="EF实体模型\Valve_Class.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF实体模型\Valve_parameter.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF实体模型\工业图形控件参数\Conveyor_EF.cs" />
+    <Compile Include="EF实体模型\工业图形控件参数\Valve_EF.cs" />
     <Compile Include="EF实体模型\数据库连接字符串读取\XML.cs" />
     <Compile Include="PLC选择\Mitsubishi_realize.cs" />
     <Compile Include="PLC选择\MODBUD_TCP.cs" />
@@ -413,6 +427,24 @@
       <DependentUpon>Modification_Switch.cs</DependentUpon>
     </Compile>
     <Compile Include="修改参数界面\参数公用类\Public_attributeCalss.cs" />
+    <Compile Include="修改参数界面\工业图形汇总\Modification_Conveyor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="修改参数界面\工业图形汇总\Modification_Conveyor.Designer.cs">
+      <DependentUpon>Modification_Conveyor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="修改参数界面\工业图形汇总\Modification_Valve.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="修改参数界面\工业图形汇总\Modification_Valve.Designer.cs">
+      <DependentUpon>Modification_Valve.cs</DependentUpon>
+    </Compile>
+    <Compile Include="修改参数界面\工业图形汇总\控件样式选项\StyleForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="修改参数界面\工业图形汇总\控件样式选项\StyleForm.Designer.cs">
+      <DependentUpon>StyleForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="修改参数界面\报警条参数\Modification_ScrollingText.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -462,6 +494,15 @@
     </Compile>
     <Compile Include="控件重做\RadioButton_reform.cs">
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="控件重做\工业图形控件\Conveyor_reform.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="控件重做\工业图形控件\Valve_reform.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="控件重做\工业图形控件\Valve_reform.Designer.cs">
+      <DependentUpon>Valve_reform.cs</DependentUpon>
     </Compile>
     <Compile Include="控件重做\按钮类与宏指令通用类\Button_HMI_public.cs" />
     <Compile Include="控件重做\doughnut_Chart_reform.cs">
@@ -520,6 +561,8 @@
     <Compile Include="控制主页面模板\RadioButton_Add.cs" />
     <Compile Include="控制主页面模板\ScrollingText_Add.cs" />
     <Compile Include="控制主页面模板\Switch_Add.cs" />
+    <Compile Include="控制主页面模板\工业图形ADD\Conveyor_Add.cs" />
+    <Compile Include="控制主页面模板\工业图形ADD\Valve_Add.cs" />
     <Compile Include="控制主页面模板\控件自动改变大小\Resize.cs" />
     <Compile Include="文本输入键盘\keyboard.cs">
       <SubType>Form</SubType>
@@ -761,6 +804,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="修改参数界面\切换开关参数\Modification_Switch.resx">
       <DependentUpon>Modification_Switch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="修改参数界面\工业图形汇总\Modification_Conveyor.resx">
+      <DependentUpon>Modification_Conveyor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="修改参数界面\工业图形汇总\Modification_Valve.resx">
+      <DependentUpon>Modification_Valve.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="修改参数界面\工业图形汇总\控件样式选项\StyleForm.resx">
+      <DependentUpon>StyleForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="修改参数界面\报警条参数\Modification_ScrollingText.resx">
       <DependentUpon>Modification_ScrollingText.cs</DependentUpon>
@@ -1010,8 +1062,6 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="修改参数界面\文本类参数模板\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

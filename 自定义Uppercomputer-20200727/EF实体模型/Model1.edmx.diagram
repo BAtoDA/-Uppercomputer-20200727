@@ -53,6 +53,10 @@
         <EntityTypeShape EntityType="UppercomputerModel.RadioButton_Class" Width="1.5" PointX="22.75" PointY="0.75" />
         <EntityTypeShape EntityType="UppercomputerModel.ScrollingText_Class" Width="1.5" PointX="22.75" PointY="8.75" />
         <EntityTypeShape EntityType="UppercomputerModel.Switch_Class" Width="1.5" PointX="12.75" PointY="22.75" />
+        <EntityTypeShape EntityType="UppercomputerModel.Conveyor_parameter" Width="1.5" PointX="15.375" PointY="22.75" />
+        <EntityTypeShape EntityType="UppercomputerModel.Conveyor_Class" Width="1.5" PointX="17.375" PointY="22.75" />
+        <EntityTypeShape EntityType="UppercomputerModel.Valve_parameter" Width="1.5" PointX="23.375" PointY="14.75" />
+        <EntityTypeShape EntityType="UppercomputerModel.Valve_Class" Width="1.5" PointX="23.375" PointY="21.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

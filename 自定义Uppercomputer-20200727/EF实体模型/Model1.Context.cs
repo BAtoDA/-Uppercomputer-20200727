@@ -73,5 +73,9 @@ namespace 自定义Uppercomputer_20200727.EF实体模型
         public virtual DbSet<RadioButton_Class> RadioButton_Class { get; set; }
         public virtual DbSet<ScrollingText_Class> ScrollingText_Class { get; set; }
         public virtual DbSet<Switch_Class> Switch_Class { get; set; }
+        public virtual DbSet<Conveyor_parameter> Conveyor_parameter { get; set; }
+        public virtual DbSet<Conveyor_Class> Conveyor_Class { get; set; }
+        public virtual DbSet<Valve_parameter> Valve_parameter { get; set; }
+        public virtual DbSet<Valve_Class> Valve_Class { get; set; }
     }
 }

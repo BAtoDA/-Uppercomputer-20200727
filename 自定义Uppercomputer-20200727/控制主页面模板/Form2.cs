@@ -42,6 +42,9 @@ using 自定义Uppercomputer_20200727.修改参数界面.RadioButton单选按钮
 using 自定义Uppercomputer_20200727.软件说明;
 using 自定义Uppercomputer_20200727.修改参数界面.HScrollBar移动图形参数;
 using HZH_Controls.Controls;
+using 自定义Uppercomputer_20200727.控制主页面模板.工业图形ADD;
+using 自定义Uppercomputer_20200727.控件重做.工业图形控件;
+using 自定义Uppercomputer_20200727.修改参数界面.工业图形汇总;
 
 namespace 自定义Uppercomputer_20200727
 {
@@ -82,7 +85,6 @@ namespace 自定义Uppercomputer_20200727
         }
         private void skinContextMenuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
-
         }
 
         int X = 0, Y = 0;//窗口与鼠标的相对位置
@@ -282,7 +284,26 @@ namespace 自定义Uppercomputer_20200727
             modification_HScrollBar.ShowDialog();
             if (modification_HScrollBar.Add_to_allow == false) this.Controls.Remove(skinButton);//不允许添加异常对象
         }
-
+        private void toolStripMenuItem25_Click(object sender, EventArgs e)//添加Conveyor运输带
+        {
+            Conveyor_Add button = new Conveyor_Add();
+            Conveyor_reform skinButton = button.Add(this.Controls, new Point(X, Y));
+            this.Controls.Add(skinButton);//添加控件
+            skinButton.BringToFront();//将控件放置所有控件最顶层   
+            Modification_Conveyor modification_Conveyor = new Modification_Conveyor(skinButton.Parent.ToString(), skinButton);
+            modification_Conveyor.ShowDialog();
+            if (modification_Conveyor.Add_to_allow == false) this.Controls.Remove(skinButton);//不允许添加异常对象
+        }
+        private void toolStripMenuItem26_Click(object sender, EventArgs e)//添加Valve流体阀门
+        {
+            Valve_Add button = new Valve_Add();
+            Valve_reform skinButton = button.Add(this.Controls, new Point(X, Y));
+            this.Controls.Add(skinButton);//添加控件
+            skinButton.BringToFront();//将控件放置所有控件最顶层   
+            Modification_Valve modification_Valve = new Modification_Valve(skinButton.Parent.ToString(), skinButton);
+            modification_Valve.ShowDialog();
+            if (modification_Valve.Add_to_allow == false) this.Controls.Remove(skinButton);//不允许添加异常对象
+        }
         private void Form2_MouseMove(object sender, MouseEventArgs e)
         {
             X = e.X; Y = e.Y;//获取屏幕位置
@@ -578,6 +599,13 @@ namespace 自定义Uppercomputer_20200727
                 case "VScrollBar_横向移动图形":
                     MessageBox.Show("未开发改功能");
                     break;
+                case "Conveyor运输带":
+                    toolStripMenuItem25_Click(sender, e);
+                    break;
+                case "Valve流体阀门":
+                    toolStripMenuItem26_Click(sender, e);
+                    break;
+
             }
             #endregion
             #region 其他功能选项需要开启编辑模式
@@ -592,6 +620,7 @@ namespace 自定义Uppercomputer_20200727
             }
             #endregion
         }
+
 
         private void Form2_FormClosing(object sender, FormClosingEventArgs e)
         {

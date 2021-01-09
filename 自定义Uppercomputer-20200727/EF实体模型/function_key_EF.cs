@@ -219,6 +219,8 @@ namespace 自定义Uppercomputer_20200727.EF实体模型
                 model.General_parameters_of_picture.Delete(pi => pi.FORM.Trim() == Form.Trim());//移除图片信息
                 model.Button_colour.Delete(pi => pi.FORM.Trim() == Form.Trim());//移除控件背景颜色
                 model.HScrollBar_parameter.Delete(pi => pi.FORM.Trim() == Form.Trim());//移除HScrollBar控件
+                model.Conveyor_parameter.Delete(pi => pi.FORM.Trim() == Form.Trim());//移除HScrollBar控件
+
 
                 model.pull_down_menu_parameter.Delete(pi => pi.FORM.Trim() == Form.Trim());//移除下拉菜单控件
                 model.pull_down_menuName.Delete(pi => pi.FORM.Trim() == Form.Trim());//移除下拉菜单控件
