@@ -145,11 +145,34 @@ namespace DragResizeControlWindowsDrawDemo
             m_MousePointPosition = EnumMousePointPosition.MouseSizeNone;
             Control control = sender as Control;
             control.Cursor = Cursors.Arrow;
+            //当鼠标移出可见范围
+            if ((Form2.edit_mode != true)|| (control is GroupBox_reform)) return;//返回方法
+            using (Graphics graphics = control.CreateGraphics())
+            {
+                using (Pen pen = new Pen(control.BackColor, 1))
+                {
+                    pen.Color = control is LedBulb_reform ? Color.FromName("AppWorkspace") : control.BackColor;
+                    Brush brush = pen.Brush;//创建形状
+                    graphics.DrawRectangle(pen, 0, 0, control.Size.Width-1 , control.Size.Height-1);//绘制边框
+                }
+            }
         }
         private static void control_MouseMove(object sender, MouseEventArgs e)
         {
             if (Form2.edit_mode != true) return;//返回方法
             Control lCtrl = (sender as Control);
+            //当鼠标出现控件上方 控件四边出现边框
+            if (!(lCtrl is GroupBox_reform))//四边框控件不再绘制
+            {
+                using (Graphics graphics = lCtrl.CreateGraphics())
+                {
+                    using (Pen pen = new Pen(Color.Red, 1))
+                    {
+                        Brush brush = pen.Brush;//创建形状
+                        graphics.DrawRectangle(pen, 0, 0, lCtrl.Size.Width - 1, lCtrl.Size.Height - 1);//绘制边框
+                    }
+                }
+            }
             if (e.Button == MouseButtons.Left)
             {
                 ///绘制直线
