@@ -1797,7 +1797,7 @@ namespace 自定义Uppercomputer_20200727.控件重做
             segmentation = Name.Split('-');
             return new int[] { Convert.ToInt32(segmentation[0] ?? "81"), Convert.ToInt32(segmentation[1] ?? "31") };
         }
-        ~Time_reform()//析构函数
+        protected override void Dispose(bool disposing)
         {
             this.Tick -= Time_Tick_button;//注册按钮类刷新事件
             this.Tick -= Time_Tick_Textbox;//注册文本输入类刷新事件
@@ -1810,7 +1810,7 @@ namespace 自定义Uppercomputer_20200727.控件重做
             this.Tick -= Time_Tick_AnalogMeter;//注册百分百表盘事件
             this.Tick -= Time_Tick_LedDisplay;//注册数值显示事件
             this.Tick -= Time_Tick_ihatetheqrcode;//注册二维码/条形码事件
-            this.Dispose();
+            base.Dispose(disposing);
         }
     }
 }

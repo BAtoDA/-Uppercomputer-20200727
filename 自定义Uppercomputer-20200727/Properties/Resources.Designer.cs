@@ -153,6 +153,26 @@ namespace 自定义Uppercomputer_20200727.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
+        internal static System.Drawing.Bitmap 左对齐启用 {
+            get {
+                object obj = ResourceManager.GetObject("左对齐启用", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap 左对齐未启用 {
+            get {
+                object obj = ResourceManager.GetObject("左对齐未启用", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
         internal static System.Drawing.Bitmap 替换运行主页面 {
             get {
                 object obj = ResourceManager.GetObject("替换运行主页面", resourceCulture);

@@ -62,18 +62,6 @@ namespace 自定义Uppercomputer_20200727.控件重做
             SkinLabel Label_Text = (SkinLabel)(from Control pi in form2.Controls where pi is SkinLabel select pi).First();
             Label_Text.Text = this.Text.Trim();//设置窗口名称
             form2.Show();//显示窗口
-            //for (int i1 = 0; i1 < 2; i1++)
-            //{
-            //    FormCollection formCollection = Application.OpenForms;//获取窗口集合
-            //    for (int i = 0; i < formCollection.Count; i++)
-            //    {
-            //        if (formCollection[i].Text != "Home" & formCollection[i].Text != form2.Text)//关闭其余窗口
-            //        {
-            //            formCollection[i].Close();//关闭窗口
-            //        }
-            //    }
-            //    GC.Collect();//通知GC开始垃圾清理
-            //}
         }
         /// <方法重写当鼠标移到控件时获取——ID>
         private void MouseEnter_reform(object send, EventArgs e)
@@ -130,16 +118,14 @@ namespace 自定义Uppercomputer_20200727.控件重做
             this.Text = this.Text.Trim();//去除空白
             this.AutoSize = true;//控件大小根据字体改变
         }
-        ~function_key_reform()
+        protected override void Dispose(bool disposing)
         {
-            this.MouseDown -= MouseDown_reform;//注册事件
-            this.MouseUp -= MouseUp_reform;//注册事件
-            this.MouseMove -= MouseMove__reform;//注册事件
-            this.MouseEnter -= MouseEnter_reform;//注册事件--获取控件信息
-            this.TextChanged -= TextChanged_reform;//注册事件
+            this.MouseDown -= MouseDown_reform;//移除事件
+            this.MouseUp -= MouseUp_reform;//移除事件
+            this.MouseMove -= MouseMove__reform;//移除事件
             DragResizeControl.UnRegisterControl(this);//实现控件改变大小与拖拽位置
             this.menuStrip_Reform.Dispose();
-            this.Dispose();
+            base.Dispose(disposing);
         }
     }
 }

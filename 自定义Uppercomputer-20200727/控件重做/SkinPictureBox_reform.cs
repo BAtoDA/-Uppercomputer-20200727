@@ -90,10 +90,17 @@ namespace 自定义Uppercomputer_20200727.控件重做
                 //this.Location = new Point(x, y);
             }
         }
-
-        ~SkinPictureBox_reform()//析构函数
+        protected override void Dispose(bool disposing)
         {
-            this.Dispose();
+            this.menuStrip_Reform.Dispose();
+            this.MouseEnter -= MouseEnter_reform;//注册事件
+            this.Click -= Click_reform;//注册事件
+            this.MouseDown -= MouseDown_reform;//注册事件
+            this.MouseUp -= MouseUp_reform;//注册事件
+            this.MouseMove -= MouseMove__reform;//注册事件
+            this.DoubleClick -= DoubleClick_reform;//注册事件
+            DragResizeControl.UnRegisterControl(this);
+            base.Dispose(disposing);
         }
     }
 }

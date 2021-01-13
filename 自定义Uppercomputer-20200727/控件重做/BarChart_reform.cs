@@ -57,9 +57,9 @@ namespace 自定义Uppercomputer_20200727.控件重做
             emptyOption = this.option;
 
         }
-        ~BarChart_reform()
+        protected override void Dispose(bool disposing)
         {
-            this.Dispose();
+            base.Dispose(disposing);
         }
     }
 }

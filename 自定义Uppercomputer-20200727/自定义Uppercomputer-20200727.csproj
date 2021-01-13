@@ -917,6 +917,15 @@
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
     <None Include="Resources\键盘图片.png" />
+    <None Include="Resources\左对齐未启用.png" />
+    <None Include="Resources\左对齐启用.png" />
+    <Content Include="上位机数据库文件-开发专用\Uppercomputer.mdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="上位机数据库文件-开发专用\Uppercomputer_log.ldf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <DependentUpon>Uppercomputer.mdf</DependentUpon>
+    </Content>
     <Content Include="h7.ico" />
     <None Include="Resources\h11.ico" />
     <None Include="Resources\49176.jpg" />

@@ -310,8 +310,7 @@ namespace 自定义Uppercomputer_20200727.控件重做
                     break;
             }
         }
-
-       ~Button_reform()//析构函数
+        protected override void Dispose(bool disposing)
         {
             this.Click -= Click_reform;//移除事件
             this.MouseDown -= MouseDown_reform;//移除事件
@@ -321,7 +320,7 @@ namespace 自定义Uppercomputer_20200727.控件重做
             DragResizeControl.UnRegisterControl(this);//实现控件改变大小与拖拽位置
             Button_Class = null;
             this.menuStrip_Reform.Dispose();
-            this.Dispose();
+            base.Dispose(disposing);
         }
 
     }

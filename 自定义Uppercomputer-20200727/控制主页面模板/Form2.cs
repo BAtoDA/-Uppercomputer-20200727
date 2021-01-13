@@ -79,8 +79,8 @@ namespace 自定义Uppercomputer_20200727
             using (Windowclass windowclass = new Windowclass(this, new SkinButton[] { this.skinButton1, this.skinButton2, this.skinButton3,
                 this.skinButton4, this.skinButton5, this.skinButton6,this.skinButton7}, new Form[] {new Form3(), new Form4(),new Form5()
                 , new Form6(),new Form7(), new 生产设置画面.Form8(), new 参数设置画面.Form9()}, this.skinLabel1, skinButton))
-            { 
-            
+            {
+
             }
         }
         private void skinContextMenuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
@@ -247,7 +247,7 @@ namespace 自定义Uppercomputer_20200727
         private void toolStripMenuItem20_Click(object sender, EventArgs e)//添加画面切换
         {
             function_key_Add button = new function_key_Add();
-            function_key_reform skinButton = button.Add(this.Name,this.Controls, new Point(X, Y));
+            function_key_reform skinButton = button.Add(this.Name, this.Controls, new Point(X, Y));
             this.Controls.Add(skinButton);//添加控件
             skinButton.BringToFront();//将控件放置所有控件最顶层   
             Modification_function_key modification_function_key = new Modification_function_key(skinButton.Parent.ToString(), skinButton);
@@ -324,6 +324,7 @@ namespace 自定义Uppercomputer_20200727
         private const int AW_SLIDE = 0x40000;//使用滑动类型动画效果，默认为滚动动画类型，当使用AW_CENTER标志时，这个标志就被忽略
         private const int AW_BLEND = 0x80000;//使用淡入淡出效果
         #endregion
+
         private void Form2_Load(object sender, EventArgs e)//加载窗口
         {
             this.BeginInvoke((EventHandler)delegate
@@ -348,7 +349,6 @@ namespace 自定义Uppercomputer_20200727
                 CSEngineTest.PLC.MODBUD_TCP = new MODBUD_TCP();//实例化接口
                 CSEngineTest.PLC.Siemens = new Siemens_realize();//实例化接口;
             });
-           // AnimateWindow(this.Handle, 800, AW_BLEND | AW_ACTIVE | AW_VER_NEGATIVE);
         }
 
         private void Form2_Shown(object sender, EventArgs e)//添加控件
@@ -407,52 +407,52 @@ namespace 自定义Uppercomputer_20200727
                    || time_Reform.LedBulb_read_status != false || time_Reform.doughnut_Chart_read_status != false || time_Reform.histogram_Chart_read_status != false
                    || time_Reform.oscillogram_Chart_read_status != false || time_Reform.AnalogMeter_read_status != false ||
                    time_Reform.LedDisplay_read_status != false || time_Reform.ihatetheqrcode_read_status != false || edit_mode) return;//直接返回方法--指示当前控件正在遍历
-                  if (PLC_read_ok != true)
+                   if (PLC_read_ok != true)
                    {
                        PLC_read_Tick = false;//指示定时器不可以开始遍历
-                      ConcurrentBag<Button_reform> button_Reforms = new ConcurrentBag<Button_reform>();//按钮类集合
-                      ConcurrentBag<SkinTextBox_reform> skinTextBox_Reforms = new ConcurrentBag<SkinTextBox_reform>();//文本输入类集合
-                      ConcurrentBag<Switch_reform> Switch_reforms = new ConcurrentBag<Switch_reform>();//切换开关类集合
-                      ConcurrentBag<LedBulb_reform> LedBulb_reforms = new ConcurrentBag<LedBulb_reform>();//指示灯类集合
-                      ConcurrentBag<ImageButton_reform> ImageButton_reforms = new ConcurrentBag<ImageButton_reform>();//指示灯类集合
-                      ConcurrentBag<doughnut_Chart_reform> doughnut_Chart_reforms = new ConcurrentBag<doughnut_Chart_reform>();//圆形图类集合
-                      ConcurrentBag<histogram_Chart_reform> histogram_Chart_reforms = new ConcurrentBag<histogram_Chart_reform>();//柱形图图类集合
-                      ConcurrentBag<oscillogram_Chart_reform> oscillogram_Chart_reforms = new ConcurrentBag<oscillogram_Chart_reform>();//折线图类集合
-                      ConcurrentBag<AnalogMeter_reform> AnalogMeter_reforms = new ConcurrentBag<AnalogMeter_reform>();//百分百表盘类集合
-                      ConcurrentBag<LedDisplay_reform> LedDisplay_reforms = new ConcurrentBag<LedDisplay_reform>();//数值显示类集合
-                      ConcurrentBag<ihatetheqrcode_reform> ihatetheqrcode_reforms = new ConcurrentBag<ihatetheqrcode_reform>();//二维码/条形码类集合
+                       ConcurrentBag<Button_reform> button_Reforms = new ConcurrentBag<Button_reform>();//按钮类集合
+                       ConcurrentBag<SkinTextBox_reform> skinTextBox_Reforms = new ConcurrentBag<SkinTextBox_reform>();//文本输入类集合
+                       ConcurrentBag<Switch_reform> Switch_reforms = new ConcurrentBag<Switch_reform>();//切换开关类集合
+                       ConcurrentBag<LedBulb_reform> LedBulb_reforms = new ConcurrentBag<LedBulb_reform>();//指示灯类集合
+                       ConcurrentBag<ImageButton_reform> ImageButton_reforms = new ConcurrentBag<ImageButton_reform>();//指示灯类集合
+                       ConcurrentBag<doughnut_Chart_reform> doughnut_Chart_reforms = new ConcurrentBag<doughnut_Chart_reform>();//圆形图类集合
+                       ConcurrentBag<histogram_Chart_reform> histogram_Chart_reforms = new ConcurrentBag<histogram_Chart_reform>();//柱形图图类集合
+                       ConcurrentBag<oscillogram_Chart_reform> oscillogram_Chart_reforms = new ConcurrentBag<oscillogram_Chart_reform>();//折线图类集合
+                       ConcurrentBag<AnalogMeter_reform> AnalogMeter_reforms = new ConcurrentBag<AnalogMeter_reform>();//百分百表盘类集合
+                       ConcurrentBag<LedDisplay_reform> LedDisplay_reforms = new ConcurrentBag<LedDisplay_reform>();//数值显示类集合
+                       ConcurrentBag<ihatetheqrcode_reform> ihatetheqrcode_reforms = new ConcurrentBag<ihatetheqrcode_reform>();//二维码/条形码类集合
 
-                      foreach (var In in this.Controls)//遍历窗口控件
-                      {
-                          if (In is Button_reform) button_Reforms.Add((Button_reform)In);//添加按钮对象
-                          if (In is SkinTextBox_reform) skinTextBox_Reforms.Add((SkinTextBox_reform)In);//添加文本输入对象
-                          if (In is Switch_reform) Switch_reforms.Add((Switch_reform)In);//切换开关对象
-                          if (In is LedBulb_reform) LedBulb_reforms.Add((LedBulb_reform)In);//添加对象
-                          if (In is ImageButton_reform) ImageButton_reforms.Add((ImageButton_reform)In);//添加对象
-                          if (In is doughnut_Chart_reform) doughnut_Chart_reforms.Add((doughnut_Chart_reform)In);//添加对象
-                          if (In is histogram_Chart_reform) histogram_Chart_reforms.Add((histogram_Chart_reform)In);//添加对象
-                          if (In is oscillogram_Chart_reform) oscillogram_Chart_reforms.Add((oscillogram_Chart_reform)In);//添加对象
-                          if (In is AnalogMeter_reform) AnalogMeter_reforms.Add((AnalogMeter_reform)In);//添加对象
-                          if (In is LedDisplay_reform) LedDisplay_reforms.Add((LedDisplay_reform)In);//添加对象
-                          if (In is ihatetheqrcode_reform) ihatetheqrcode_reforms.Add((ihatetheqrcode_reform)In);//添加对象
+                       foreach (var In in this.Controls)//遍历窗口控件
+                       {
+                           if (In is Button_reform) button_Reforms.Add((Button_reform)In);//添加按钮对象
+                           if (In is SkinTextBox_reform) skinTextBox_Reforms.Add((SkinTextBox_reform)In);//添加文本输入对象
+                           if (In is Switch_reform) Switch_reforms.Add((Switch_reform)In);//切换开关对象
+                           if (In is LedBulb_reform) LedBulb_reforms.Add((LedBulb_reform)In);//添加对象
+                           if (In is ImageButton_reform) ImageButton_reforms.Add((ImageButton_reform)In);//添加对象
+                           if (In is doughnut_Chart_reform) doughnut_Chart_reforms.Add((doughnut_Chart_reform)In);//添加对象
+                           if (In is histogram_Chart_reform) histogram_Chart_reforms.Add((histogram_Chart_reform)In);//添加对象
+                           if (In is oscillogram_Chart_reform) oscillogram_Chart_reforms.Add((oscillogram_Chart_reform)In);//添加对象
+                           if (In is AnalogMeter_reform) AnalogMeter_reforms.Add((AnalogMeter_reform)In);//添加对象
+                           if (In is LedDisplay_reform) LedDisplay_reforms.Add((LedDisplay_reform)In);//添加对象
+                           if (In is ihatetheqrcode_reform) ihatetheqrcode_reforms.Add((ihatetheqrcode_reform)In);//添加对象
 
-                      }
-                      time_Reform.Button_list_1 = button_Reforms;//获取集合
-                      time_Reform.TextBox_list_1 = skinTextBox_Reforms;//获取集合
-                      time_Reform.Switch_list_1 = Switch_reforms;//获取集合
-                      time_Reform.LedBulb_list_1 = LedBulb_reforms;//获取集合
-                      time_Reform.ImageButton_list_1 = ImageButton_reforms;//获取集合
-                      time_Reform.doughnut_Chart_list_1 = doughnut_Chart_reforms;//获取集合
-                      time_Reform.histogram_Chart_list_1 = histogram_Chart_reforms;//获取集合
-                      time_Reform.oscillogram_Chart_list_1 = oscillogram_Chart_reforms;//获取集合
-                      time_Reform.AnalogMeter_list_1 = AnalogMeter_reforms;//获取集合
-                      time_Reform.LedDisplay_list_1 = LedDisplay_reforms;//获取集合
-                      time_Reform.ihatetheqrcode_list_1 = ihatetheqrcode_reforms;//获取集合
-                      PLC_read_ok = true;
-                      PLC_read_Tick = true;//指示定时器可以开始遍历
-                      button_Reforms = null;
+                       }
+                       time_Reform.Button_list_1 = button_Reforms;//获取集合
+                       time_Reform.TextBox_list_1 = skinTextBox_Reforms;//获取集合
+                       time_Reform.Switch_list_1 = Switch_reforms;//获取集合
+                       time_Reform.LedBulb_list_1 = LedBulb_reforms;//获取集合
+                       time_Reform.ImageButton_list_1 = ImageButton_reforms;//获取集合
+                       time_Reform.doughnut_Chart_list_1 = doughnut_Chart_reforms;//获取集合
+                       time_Reform.histogram_Chart_list_1 = histogram_Chart_reforms;//获取集合
+                       time_Reform.oscillogram_Chart_list_1 = oscillogram_Chart_reforms;//获取集合
+                       time_Reform.AnalogMeter_list_1 = AnalogMeter_reforms;//获取集合
+                       time_Reform.LedDisplay_list_1 = LedDisplay_reforms;//获取集合
+                       time_Reform.ihatetheqrcode_list_1 = ihatetheqrcode_reforms;//获取集合
+                       PLC_read_ok = true;
+                       PLC_read_Tick = true;//指示定时器可以开始遍历
+                       button_Reforms = null;
                    }
-            });
+               });
 
         }
 
@@ -471,7 +471,7 @@ namespace 自定义Uppercomputer_20200727
         private void Form2_SizeChanged(object sender, EventArgs e)
         {
             //如果不是在控件上面最大化--不进行标志位记录       
-            if (this.Capture != true||this.CanSelect!=true||this.CanFocus!=true) return;
+            if (this.Capture != true || this.CanSelect != true || this.CanFocus != true) return;
             //处理窗口最大化与最小化标志位
             //if (this.Size.Height > 900)
             //    Size_Max = true;
@@ -481,7 +481,7 @@ namespace 自定义Uppercomputer_20200727
             //{
             //    asc.ControlAutoSize(this);
             //});
-       
+
         }
 
         private void toolStripMenuItem15_Click(object sender, EventArgs e)
@@ -500,7 +500,7 @@ namespace 自定义Uppercomputer_20200727
                 i.Enabled = true;
             this.timer3.Stop();
         }
-        public void UI_Schedule(string Text,int Vaule,bool Visible)//加载UI控件控制
+        public void UI_Schedule(string Text, int Vaule, bool Visible)//加载UI控件控制
         {
             this.userControl11.Display = Visible;
             this.userControl11.Schedule = Vaule;
@@ -609,7 +609,7 @@ namespace 自定义Uppercomputer_20200727
             }
             #endregion
             #region 其他功能选项需要开启编辑模式
-            switch(this.ucNavigationMenu1.SelectItem.Text)
+            switch (this.ucNavigationMenu1.SelectItem.Text)
             {
                 case "报警注册":
                     toolStripMenuItem6_Click(sender, e);
@@ -617,6 +617,16 @@ namespace 自定义Uppercomputer_20200727
                 case "宏指令":
                     toolStripMenuItem16_Click(sender, e);
                     break;
+            }
+            #endregion
+            #region 控件对齐模式
+            switch (this.ucNavigationMenu1.SelectItem.TipText)
+            {
+                case "左对齐":
+
+                    this.ucNavigationMenu1.SelectItem.Icon = this.Aligning.Images[0];
+
+                    return;
             }
             #endregion
         }
@@ -639,6 +649,6 @@ namespace 自定义Uppercomputer_20200727
                 }
             }
             catch { }
-        }   
+        }
     }
 }

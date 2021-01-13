@@ -200,7 +200,7 @@ namespace 自定义Uppercomputer_20200727.控件重做
             }
             return numerical_format.Unsigned_32_Bit;//如果不匹配则返回默认无符号类型
         }
-        ~SkinTextBox_reform()//析构函数
+        protected override void Dispose(bool disposing)
         {
             this.MouseDown -= MouseDown_reform;//注册事件
             this.MouseUp -= MouseUp_reform;//注册事件
@@ -210,7 +210,8 @@ namespace 自定义Uppercomputer_20200727.控件重做
             this.MouseDown -= numerical_MouseDown;//注册事件 
             this.DoubleClick -= numerical_DoubleClick;//注册事件
             this.menuStrip_Reform.Dispose();
-            this.Dispose();
+            DragResizeControl.UnRegisterControl(this);
+            base.Dispose(disposing);
         }
     }
 }

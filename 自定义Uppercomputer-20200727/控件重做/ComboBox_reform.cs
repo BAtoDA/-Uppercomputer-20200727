@@ -158,14 +158,14 @@ namespace 自定义Uppercomputer_20200727.控件重做
             }
             return numerical_format.Unsigned_32_Bit;//如果不匹配则返回默认无符号类型
         }
-        ~pull_down_menu_reform()//析构函数
+        protected override void Dispose(bool disposing)
         {
-            this.MouseDown -= MouseDown_reform;//注册事件
-            this.MouseUp -= MouseUp_reform;//注册事件
-            this.MouseMove -= MouseMove__reform;//注册事件
-            this.MouseEnter -= MouseEnter_reform;//注册事件--获取控件信息
-            this.TextChanged -= TextChanged_reform;//注册事件
-            this.Dispose();
+            this.MouseDown -= MouseDown_reform;//移除事件
+            this.MouseUp -= MouseUp_reform;//移除事件
+            this.MouseMove -= MouseMove__reform;//移除事件
+            DragResizeControl.UnRegisterControl(this);//实现控件改变大小与拖拽位置
+            this.menuStrip_Reform.Dispose();
+            base.Dispose(disposing);
         }
 
     }

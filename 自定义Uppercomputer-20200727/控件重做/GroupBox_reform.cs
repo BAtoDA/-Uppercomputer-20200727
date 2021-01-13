@@ -84,7 +84,7 @@ namespace 自定义Uppercomputer_20200727.控件重做
             this.Text = this.Text.Trim();//去除空白
             this.AutoSize = true;//控件大小根据字体改变
         }
-        ~GroupBox_reform()//析构函数
+        protected override void Dispose(bool disposing)
         {
             this.MouseDown -= MouseDown_reform;//注册事件
             this.MouseUp -= MouseUp_reform;//注册事件
@@ -92,7 +92,7 @@ namespace 自定义Uppercomputer_20200727.控件重做
             this.MouseEnter -= MouseEnter_reform;//注册事件--获取控件信息
             this.TextChanged -= TextChanged_reform;//注册事件
             this.menuStrip_Reform.Dispose();
-            this.Dispose();
+            base.Dispose(disposing);
         }
     }
 }

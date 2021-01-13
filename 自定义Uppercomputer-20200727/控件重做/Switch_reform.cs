@@ -308,7 +308,7 @@ namespace 自定义Uppercomputer_20200727.控件重做
                     break;
             }
         }
-        ~Switch_reform()//析构函数
+        protected override void Dispose(bool disposing)
         {
             this.MouseEnter -= MouseEnter_reform;//移除事件
             this.Click -= Click_reform;//移除事件
@@ -316,7 +316,9 @@ namespace 自定义Uppercomputer_20200727.控件重做
             this.MouseUp -= MouseUp_reform;//移除事件
             this.MouseMove -= MouseMove__reform;//移除事件
             this.DoubleClick -= DoubleClick_reform;//移除事件
-            this.Dispose();
+            menuStrip_Reform.Dispose();
+            DragResizeControl.UnRegisterControl(this);
+            base.Dispose(disposing);
         }
     }
 }

@@ -485,9 +485,16 @@ namespace 自定义Uppercomputer_20200727.控件重做
             }
             Event_quantity = register_Event.Count;//记录保持            
         }
-        ~Event_time()
+        protected override void Dispose(bool disposing)
         {
-            this.Dispose();
+            base.Dispose(disposing);
+            //实例化一些对象
+            register_Event = null;
+            Event = null;
+            Event_EF = null;
+            //注册刷新事件
+            this.Tick -= Event_Tick;//注册事件
         }
+        
     }
 }

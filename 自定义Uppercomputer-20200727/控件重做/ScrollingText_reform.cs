@@ -89,7 +89,7 @@ namespace 自定义Uppercomputer_20200727.控件重做
             this.Text = this.Text.Trim();//去除空白
             this.AutoSize = true;//控件大小根据字体改变
         }
-        ~ScrollingText_reform()//析构函数
+        protected override void Dispose(bool disposing)
         {
             event_Time.Stop();//停止定时器
             this.MouseDown -= MouseDown_reform;//注册事件
@@ -97,7 +97,10 @@ namespace 自定义Uppercomputer_20200727.控件重做
             this.MouseMove -= MouseMove__reform;//注册事件
             this.MouseEnter -= MouseEnter_reform;//注册事件--获取控件信息
             this.TextChanged -= TextChanged_reform;//注册事件
-            this.Dispose();
+            DragResizeControl.UnRegisterControl(this);
+            menuStrip_Reform.Dispose();
+            event_Time.Dispose();
+            base.Dispose(disposing);
         }
     }
 }

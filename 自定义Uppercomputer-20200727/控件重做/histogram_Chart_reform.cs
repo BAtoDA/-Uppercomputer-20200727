@@ -91,14 +91,15 @@ namespace 自定义Uppercomputer_20200727.控件重做
             this.Text = this.Text.Trim();//去除空白
             this.AutoSize = true;//控件大小根据字体改变
         }
-        ~histogram_Chart_reform()
+        protected override void Dispose(bool disposing)
         {
             this.MouseDown -= MouseDown_reform;//注册事件
             this.MouseUp -= MouseUp_reform;//注册事件
             this.MouseMove -= MouseMove__reform;//注册事件
             this.MouseEnter -= MouseEnter_reform;//注册事件--获取控件信息
             this.TextChanged -= TextChanged_reform;//注册事件
-            this.Dispose();
+            menuStrip_Reform.Dispose();
+            base.Dispose(disposing);
         }
     }
 }

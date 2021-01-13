@@ -101,16 +101,19 @@ namespace 自定义Uppercomputer_20200727.控件重做
                 int y = e.Y + this.Location.Y - clickY;
                 //this.Location = new Point(x, y);
             }
-        }  
-        ~LedBulb_reform()//析构函数
-        {
+        }
+        protected override void Dispose(bool disposing)//释放控件托管资源
+        {         
             this.MouseEnter -= MouseEnter_reform;//移除事件
             this.Click -= Click_reform;//移除事件
             this.MouseDown -= MouseDown_reform;//移除事件
             this.MouseUp -= MouseUp_reform;//移除事件
             this.MouseMove -= MouseMove__reform;//移除事件
-            this.DoubleClick -= DoubleClick_reform;//移除事件
-            this.Dispose();
+            this.DoubleClick -= DoubleClick_reform;//移除事件       
+            DragResizeControl.UnRegisterControl(this);
+            LedBulb_Class = null;
+            menuStrip_Reform.Dispose();
+            base.Dispose(disposing);
         }
     
     }

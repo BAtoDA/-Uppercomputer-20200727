@@ -165,7 +165,7 @@ namespace 自定义Uppercomputer_20200727.控件重做
             }
             return numerical_format.Unsigned_32_Bit;//如果不匹配则返回默认无符号类型
         }
-        ~HScrollBar_reform()
+        protected override void Dispose(bool disposing)
         {
             this.MouseDown -= MouseDown_reform;//注册事件
             this.MouseUp -= MouseUp_reform;//注册事件
@@ -173,7 +173,8 @@ namespace 自定义Uppercomputer_20200727.控件重做
             this.MouseEnter -= MouseEnter_reform;//注册事件--获取控件信息
             this.TextChanged -= TextChanged_reform;//注册事件
             this.ValueChanged -= VisibleChanged_1;//注册事件
-            this.Dispose();
+            menuStrip_Reform.Dispose();
+            base.Dispose(disposing);
         }
     }
 }
