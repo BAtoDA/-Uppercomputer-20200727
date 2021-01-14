@@ -61,6 +61,19 @@ namespace 自定义Uppercomputer_20200727.控件重做
             SkinLabel Label_Text = (SkinLabel)(from Control pi in form2.Controls where pi is SkinLabel select pi).First();
             Label_Text.Text = this.Text.Trim();//设置窗口名称
             form2.Show();//显示窗口
+            Release(form2);
+        }
+        static public void Release(Form Openfrom)
+        {
+            if (Openfrom.IsNull()) return;
+            FormCollection formCollection = Application.OpenForms;//获取窗口集合
+            for (int i = 0; i < formCollection.Count; i++)
+            {
+                if (formCollection[i].Text != "Home" & formCollection[i].Text != Openfrom.Text)//关闭其余窗口
+                {
+                    formCollection[i].Close();//关闭窗口     
+                }
+            }
         }
         /// <方法重写当鼠标移到控件时获取——ID>
         private void MouseEnter_reform(object send, EventArgs e)

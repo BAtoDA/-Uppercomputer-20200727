@@ -334,10 +334,11 @@ namespace 自定义Uppercomputer_20200727
                   {
                       using (From_Load_Add load_Add = new From_Load_Add(this.Name, this.Controls, new List<ImageList>() { this.imageList1, this.imageList2, this.imageList3 }, this)) ;//添加报警条
                       using (From_Load_Add add = new From_Load_Add(this.Name, this.Controls, new List<ImageList>() { this.imageList1, this.imageList2, this.imageList3 }, this, true)) ;//添加普通文本
-                  });
+                      UI_Schedule("开始正在显示UI", 90, true);
+                  });            
                 se.Wait();
-                UI_Schedule("开始加载设置参数", 60, true);
                 this.timer3.Start();
+                timer3.Interval = 100;
                 time_Reform.Form = this.Name;//获取当前窗口名称
                 time_Reform.Interval = 100;//遍历控件时间
                 time_Reform.Start();//运行定时器
@@ -354,7 +355,7 @@ namespace 自定义Uppercomputer_20200727
         private void Form2_Shown(object sender, EventArgs e)//添加控件
         {
             this.timer2.Start();//运行定时器监控
-            UI_Schedule("开始正在显示UI", 90, true);
+            //UI_Schedule("开始正在显示UI", 90, true);
             if (edit_mode) this.toolStripMenuItem5.Text = "退出编辑模式"; else this.toolStripMenuItem5.Text = "开启编辑模式";//改变显示文本  
         }
 
@@ -500,7 +501,7 @@ namespace 自定义Uppercomputer_20200727
                 i.SendToBack();
             }
             UI_Schedule("加载完成", 100, true);
-            Thread.Sleep(200);
+            Thread.Sleep(50);
             UI_Schedule("加载完成", 100, false);
             this.timer3.Stop();
         }
