@@ -110,6 +110,7 @@ namespace DragResizeControlWindowsDrawDemo
                     //添加坐标显示
                     LabelControl = new Label();
                     formCollection[i].Controls.Add(LabelControl);
+
                     UserControl.SendToBack();
                     foreach (Control ix in formCollection[i].Controls)
                     {
@@ -176,7 +177,6 @@ namespace DragResizeControlWindowsDrawDemo
             if (e.Button == MouseButtons.Left)
             {
                 ///绘制直线
-                ///
                 graphics.Clear(Color.FromName("AppWorkspace"));
                 lCtrl.BeginInvoke((EventHandler)delegate
                 {
@@ -203,6 +203,7 @@ namespace DragResizeControlWindowsDrawDemo
                     lCtrl.ResumeLayout();
                     LabelControl.ResumeLayout();
                 });
+
                 switch (m_MousePointPosition)
                 {
                     case EnumMousePointPosition.MouseDrag:
@@ -221,7 +222,7 @@ namespace DragResizeControlWindowsDrawDemo
                         p1.Y = e.Y; //'记录光标拖动的当前点
                         break;
                     case EnumMousePointPosition.MouseSizeRight:
-                        lCtrl.Width = lCtrl.Width + e.X - p1.X;       //
+                        lCtrl.Width = lCtrl.Width + e.X - p1.X;       
                         lCtrl.Height = lCtrl.Height + e.Y - p1.Y;
                         p1.X = e.X;
                         p1.Y = e.Y; //'记录光标拖动的当前点
@@ -259,6 +260,32 @@ namespace DragResizeControlWindowsDrawDemo
                 }
                 if (lCtrl.Width < MinWidth) lCtrl.Width = MinWidth;
                 if (lCtrl.Height < MinHeight) lCtrl.Height = MinHeight;
+                //判断是否有该类型控件在同一XY轴上
+                Control control = sender as Control;//强转控件类基
+                FormCollection formCollection = Application.OpenForms;//获取活动的窗口
+                for (int i = 0; i < formCollection.Count; i++)
+                {
+                    if (parameter_indexes.Button_from_name(control.Parent.ToString()) == formCollection[i].Name)
+                    {
+                        //获取同一类型控件
+                        var trol = from Control pi in formCollection[i].Controls where pi.GetType() == sender.GetType() select pi;
+                        foreach (var ix in trol)
+                        {
+                            int x = ix.Location.X - control.Location.X;//计算偏差
+                            int y = ix.Location.Y - control.Location.Y;//计算偏差
+                            if ((x > 0 & x < 10) || (x < 0 & x > -10))
+                            {
+                                control.Location = new Point() { X = ix.Location.X, Y = control.Location.Y };
+                                return;
+                            }
+                            if ((y > 0 & y < 10) || (y < 0 & y > -10))
+                            {
+                                control.Location = new Point() { X = control.Location.X, Y = ix.Location.Y };
+                                return;
+                            }
+                        }
+                    }
+                }
             }
             else
             {

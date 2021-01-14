@@ -347,7 +347,7 @@ namespace 自定义Uppercomputer_20200727
                 CSEngineTest.PLC.Mitsubishi_axActUtlType = new Mitsubishi_axActUtlType();//实例化接口
                 CSEngineTest.PLC.Mitsubishi = new Mitsubishi_realize();//实例化接口
                 CSEngineTest.PLC.MODBUD_TCP = new MODBUD_TCP();//实例化接口
-                CSEngineTest.PLC.Siemens = new Siemens_realize();//实例化接口;
+                CSEngineTest.PLC.Siemens = new Siemens_realize();//实例化接口;            
             });
         }
 
@@ -495,9 +495,13 @@ namespace 自定义Uppercomputer_20200727
             UI_Schedule("加载完成", 100, true);
             Thread.Sleep(200);
             UI_Schedule("加载完成", 100, false);
-            var inr = (from Control pi in this.Controls where pi is SkinButton select pi).Select(pi => pi).ToList();
+            //模糊查询导航栏固定功能键
+            var inr = (from Control pi in this.Controls where pi.Name.Contains("skinButton") select pi).Select(pi => pi).ToList();
             foreach (var i in inr)
+            {
                 i.Enabled = true;
+                i.SendToBack();
+            }
             this.timer3.Stop();
         }
         public void UI_Schedule(string Text, int Vaule, bool Visible)//加载UI控件控制

@@ -253,7 +253,7 @@
             this.skinButton5.DownBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(148)))), ((int)(((byte)(182)))), ((int)(((byte)(231)))));
             this.skinButton5.Enabled = false;
             this.skinButton5.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.skinButton5.Location = new System.Drawing.Point(547, 596);
+            this.skinButton5.Location = new System.Drawing.Point(549, 596);
             this.skinButton5.MouseBack = null;
             this.skinButton5.Name = "skinButton5";
             this.skinButton5.NormlBack = null;
@@ -274,7 +274,7 @@
             this.skinButton6.DownBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(148)))), ((int)(((byte)(182)))), ((int)(((byte)(231)))));
             this.skinButton6.Enabled = false;
             this.skinButton6.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.skinButton6.Location = new System.Drawing.Point(682, 596);
+            this.skinButton6.Location = new System.Drawing.Point(684, 597);
             this.skinButton6.MouseBack = null;
             this.skinButton6.Name = "skinButton6";
             this.skinButton6.NormlBack = null;
