@@ -57,7 +57,6 @@ namespace 自定义Uppercomputer_20200727.控件重做
             form2.Text = this.Name.Trim();//设置窗口名称
             form2.Name = this.Name.Trim();//设置窗口标识
             form2.WindowState = FormWindowState.Normal;//居中显示
-            form2.Size = new System.Drawing.Size(1071, 745);//设置窗口大小
             form2.BackgroundImageLayout = ImageLayout.Stretch; //自动适应
             SkinLabel Label_Text = (SkinLabel)(from Control pi in form2.Controls where pi is SkinLabel select pi).First();
             Label_Text.Text = this.Text.Trim();//设置窗口名称

@@ -492,9 +492,6 @@ namespace 自定义Uppercomputer_20200727
 
         private void timer3_Tick(object sender, EventArgs e)
         {
-            UI_Schedule("加载完成", 100, true);
-            Thread.Sleep(200);
-            UI_Schedule("加载完成", 100, false);
             //模糊查询导航栏固定功能键
             var inr = (from Control pi in this.Controls where pi.Name.Contains("skinButton") select pi).Select(pi => pi).ToList();
             foreach (var i in inr)
@@ -502,6 +499,9 @@ namespace 自定义Uppercomputer_20200727
                 i.Enabled = true;
                 i.SendToBack();
             }
+            UI_Schedule("加载完成", 100, true);
+            Thread.Sleep(200);
+            UI_Schedule("加载完成", 100, false);
             this.timer3.Stop();
         }
         public void UI_Schedule(string Text, int Vaule, bool Visible)//加载UI控件控制
@@ -623,16 +623,16 @@ namespace 自定义Uppercomputer_20200727
                     break;
             }
             #endregion
-            #region 控件对齐模式
-            switch (this.ucNavigationMenu1.SelectItem.TipText)
-            {
-                case "左对齐":
+            //#region 控件对齐模式
+            //switch (this.ucNavigationMenu1.SelectItem.TipText)
+            //{
+            //    case "左对齐":
 
-                    this.ucNavigationMenu1.SelectItem.Icon = this.Aligning.Images[0];
+            //        this.ucNavigationMenu1.SelectItem.Icon = this.Aligning.Images[0];
 
-                    return;
-            }
-            #endregion
+            //        return;
+            //}
+            //#endregion
         }
 
 
