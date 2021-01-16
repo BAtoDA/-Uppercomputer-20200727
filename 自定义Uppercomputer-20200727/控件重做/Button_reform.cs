@@ -72,7 +72,6 @@ namespace 自定义Uppercomputer_20200727.控件重做
         /// <方法重写当触发双击>
         private void DoubleClick_reform(object send, EventArgs e)
         {
-
         }
         /// <方法重写实现拖放功能—>
         bool startMove = false;
@@ -96,7 +95,7 @@ namespace 自定义Uppercomputer_20200727.控件重做
                 button_EF.Button_Parameter_modification(this.Parent + "-" + this.Name
                     , new control_location
                     {
-                        location = (numerical_public.Size_X(this.Location.X) + e.X - clickX).ToString() + "-" + (numerical_public.Size_Y(this.Location.Y) + e.Y - clickY).ToString(),
+                        location = (numerical_public.Size_X(this.Left)).ToString() + "-" + (numerical_public.Size_Y(this.Top)).ToString(),
                         size = (numerical_public.Size_X(this.Size.Width) + "-" + numerical_public.Size_Y(this.Size.Height))
                     });
                 startMove = false;

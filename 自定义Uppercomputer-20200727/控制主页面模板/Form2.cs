@@ -383,7 +383,6 @@ namespace 自定义Uppercomputer_20200727
             this.ucNavigationMenu1.Items[6].TipText = edit_mode == true ? "开" : "关";//改变状态栏提示文字
             this.ucNavigationMenu1.Enabled = true;
         }
-
         private void timer2_Tick(object sender, EventArgs e)//实时刷新用户是否进入 与退出编辑模式
         {
             if (edit_mode) this.toolStripMenuItem5.Text = "退出编辑模式"; else this.toolStripMenuItem5.Text = "开启编辑模式";//改变显示文本
@@ -453,7 +452,7 @@ namespace 自定义Uppercomputer_20200727
                        PLC_read_Tick = true;//指示定时器可以开始遍历
                        button_Reforms = null;
                    }
-               });
+             });
 
         }
 

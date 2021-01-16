@@ -69,7 +69,7 @@ namespace 自定义Uppercomputer_20200727.控件重做
 
         }
         /// <本方法重写右键点击菜单事件--触发相应修改参数操作>
-        private void toolStrip_Click_reform(object sender, EventArgs e)
+        public void toolStrip_Click_reform(object sender, EventArgs e)
         {
             switch (SkinContextMenuStrip_Button_type)//判断传递父级的类型
             {

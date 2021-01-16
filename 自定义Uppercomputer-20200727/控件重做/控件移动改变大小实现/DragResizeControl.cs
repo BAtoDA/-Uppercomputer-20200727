@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
 using System.Windows.Forms;
+using System.Threading;
 using 自定义Uppercomputer_20200727;
 using 自定义Uppercomputer_20200727.EF实体模型;
 using 自定义Uppercomputer_20200727.修改参数界面;
@@ -203,7 +204,6 @@ namespace DragResizeControlWindowsDrawDemo
                     lCtrl.ResumeLayout();
                     LabelControl.ResumeLayout();
                 });
-
                 switch (m_MousePointPosition)
                 {
                     case EnumMousePointPosition.MouseDrag:
@@ -273,16 +273,63 @@ namespace DragResizeControlWindowsDrawDemo
                         {
                             int x = ix.Location.X - control.Location.X;//计算偏差
                             int y = ix.Location.Y - control.Location.Y;//计算偏差
-                            if ((x > 0 & x < 10) || (x < 0 & x > -10))
+                            if ((x > 3 & x < 10) || (x < -3 & x > -10))
                             {
                                 control.Location = new Point() { X = ix.Location.X, Y = control.Location.Y };
                                 return;
                             }
-                            if ((y > 0 & y < 10) || (y < 0 & y > -10))
+                            if ((y > 3 & y < 10) || (y < -3 & y > -10))
                             {
                                 control.Location = new Point() { X = control.Location.X, Y = ix.Location.Y };
                                 return;
                             }
+                        }
+                        //同时达到下边界时
+                        if (lCtrl.Left < 15 && lCtrl.Top > formCollection[i].Size.Height - 35)
+                        {
+                            lCtrl.Left = 15;
+                            lCtrl.Top = formCollection[i].Size.Height - 35;
+                            return;
+                        }
+                        if (lCtrl.Left > formCollection[i].Size.Width - 80 && lCtrl.Top > formCollection[i].Size.Height - 30)
+                        {
+                            lCtrl.Left = formCollection[i].Size.Width - 90;
+                            lCtrl.Top = formCollection[i].Size.Height - 35;
+                            return;
+                        }
+                        //同时到达上边界时
+                        if (lCtrl.Top < 80&& lCtrl.Left < 10)
+                        {
+                            lCtrl.Left = 15;
+                            lCtrl.Top = 85;
+                            return;
+                        }
+                        if (lCtrl.Top < 80 && lCtrl.Left >formCollection[i].Size.Width - 80)
+                        {
+                            lCtrl.Left = formCollection[i].Size.Width - 90;
+                            lCtrl.Top = 85;
+                            return;
+                        }
+                        //不允许控件超越边界
+                        if (lCtrl.Left < 10)
+                        {
+                            lCtrl.Left = 15;
+                            return;
+                        }
+                        if (lCtrl.Top < 80)
+                        {
+                            lCtrl.Top = 85;
+                            return;
+                        }
+                        if (lCtrl.Left > formCollection[i].Size.Width-80)
+                        {
+                            lCtrl.Left = formCollection[i].Size.Width-90;
+                            return;
+                        }
+                        if (lCtrl.Top > formCollection[i].Size.Height-30)
+                        {
+                            lCtrl.Top = formCollection[i].Size.Height -35;
+                            return;
                         }
                     }
                 }

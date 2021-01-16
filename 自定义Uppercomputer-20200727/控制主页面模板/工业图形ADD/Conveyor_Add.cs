@@ -20,7 +20,7 @@ namespace 自定义Uppercomputer_20200727.控制主页面模板.工业图形ADD
             _ = control.Owner.Name;//获取创建的窗口名称
             this.Button_serial = Button_Name(control);//获得名称
             Conveyor_reform reform = new Conveyor_reform();//实例化按钮
-            reform.Size = new Size(300, 105);//设置大小
+            reform.Size = new Size(150, 155);//设置大小
             reform.Location = point;//设置按钮位置
             reform.Name = Button_serial;//设置名称
             reform.Text = Button_serial;//设置文本
