@@ -20,7 +20,7 @@ namespace 自定义Uppercomputer_20200727.PLC选择
     public partial class PLCselect_Form :Skin_VS
     {
         string Mitsubishi_ree= "本软件需要提前配置Communication Setup Utility 由三菱官网下载 按照主页面提示的站号进行配置--并且要运行相应的软件模拟启动模式-方可以使用--否则软件会出现闪退等现象";
-
+        public bool Hiel { get; set; } = false;
         public PLCselect_Form()
         {
             InitializeComponent();
@@ -28,6 +28,7 @@ namespace 自定义Uppercomputer_20200727.PLC选择
 
         private void PLCselect_Form_Load(object sender, EventArgs e)
         {
+            Hiel = true;
             PLCselect_Form_class pLCselect_Form_Class = new PLCselect_Form_class();//实例化加载对象
             pLCselect_Form_Class.Load(PLCselect_Form_class.PLC_configuration.Mitsubishi, this.skinTextBox1, this.skinTextBox2, this.skinTextBox3, this.skinComboBox1);//填充三菱选项
             pLCselect_Form_Class.Load(PLCselect_Form_class.PLC_configuration.Siemens, this.skinTextBox6, this.skinTextBox5, this.skinTextBox4, this.skinComboBox2);//填充西门子选项
@@ -179,6 +180,12 @@ namespace 自定义Uppercomputer_20200727.PLC选择
                 MODBUS_TCP_PLC_类型 = this.skinTextBox7.Text,
                 MODBUS_TCP_PLC_链接类型 = this.skinComboBox3.Text
             };                        
+        }
+
+        private void PLCselect_Form_FormClosing(object sender, FormClosingEventArgs e)//关闭窗口
+        {
+            Hiel = false;
+
         }
     }
 }

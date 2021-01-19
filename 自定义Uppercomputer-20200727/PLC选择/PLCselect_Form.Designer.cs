@@ -786,6 +786,7 @@
             this.MaximizeBox = false;
             this.Name = "PLCselect_Form";
             this.Text = "PLCselect_Form";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.PLCselect_Form_FormClosing);
             this.Load += new System.EventHandler(this.PLCselect_Form_Load);
             this.skinGroupBox1.ResumeLayout(false);
             this.skinGroupBox1.PerformLayout();

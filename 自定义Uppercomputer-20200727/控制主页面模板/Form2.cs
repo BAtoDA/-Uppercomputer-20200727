@@ -80,7 +80,6 @@ namespace 自定义Uppercomputer_20200727
                 this.skinButton4, this.skinButton5, this.skinButton6,this.skinButton7}, new Form[] {new Form3(), new Form4(),new Form5()
                 , new Form6(),new Form7(), new 生产设置画面.Form8(), new 参数设置画面.Form9()}, this.skinLabel1, skinButton))
             {
-
             }
         }
         private void skinContextMenuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
@@ -368,6 +367,14 @@ namespace 自定义Uppercomputer_20200727
         PLCselect_Form pLCselect_Form;
         private void toolStripMenuItem4_Click(object sender, EventArgs e)//开始链接设备--PLC
         {
+            if (!pLCselect_Form.IsNull())
+            {
+                if (pLCselect_Form.Hiel)
+                {
+                    pLCselect_Form.Activate();
+                    return;
+                }
+            }
             pLCselect_Form = new PLCselect_Form();
             pLCselect_Form.Show();
         }

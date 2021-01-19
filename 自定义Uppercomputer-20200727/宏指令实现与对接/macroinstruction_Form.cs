@@ -68,7 +68,7 @@ namespace 自定义Uppercomputer_20200727.宏指令实现与对接
         {
             if (service) { MessageBox.Show("任务运行中请停止任务再执行操作"); return; }
             CSEngineTest.Form1 Form1_Message = new CSEngineTest.Form1();//弹出窗口
-            Form1_Message.serial = PLC_macroinstruction_EF.PLC_macroinstruction_Max();//查询数据库最大值
+            Form1_Message.serial = PLC_macroinstruction_EF.PLC_macroinstruction_Max()+1;//查询数据库最大值
             Form1_Message.Name_1 = "Mian"+ Form1_Message.serial.ToString();//获取宏指令名称
             Form1_Message.ShowDialog();//显示窗口
             pLC_Macroinstruction_Refresh(Form1_Message.serial, Form1_Message);//保存到数据库

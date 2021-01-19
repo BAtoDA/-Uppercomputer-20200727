@@ -30,8 +30,10 @@ namespace CSEngineTest
                                                    "    public int Sum(int a, int b)//主函数\r\n"+
                                                    "    {\r\n"+
                                                             "ThreadPool.QueueUserWorkItem((data_run) =>//线程池--默认把当前任务加到序列中-注意不要死循环否则出现资源抢夺问题-要死循环请使用内部线程 \r\n"+
-                                                       "{\r\n"+
-                                                          "\r\n"+
+                                                       "{\r\n //使用死循环一定要用内部线程"+
+                                                          "\r\n//macroinstruction_data<Thread>.thread[0] = new Thread (()=>"+
+                                                            "\r\n //{  循环内容  }); macroinstruction_data<Thread>.thread[0].Start();"
+                                                            +"\r\n"+ 
                                                           "\r\n"+
                                                         "});\r\n"+ 
                                                        "        return a+b;//返回数据int类型\r\n"+
