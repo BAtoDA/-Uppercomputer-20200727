@@ -64,8 +64,13 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\Debug\CSScriptLibrary.dll</HintPath>
     </Reference>
+    <Reference Include="SunnyUI">
+      <HintPath>C:\Users\daying\Desktop\WindowsFormsApp3\SunnyUI.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Management" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -99,6 +104,24 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SampleManager.cs" />
+    <Compile Include="重构帮助文档\Explain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="重构帮助文档\Explain.Designer.cs">
+      <DependentUpon>Explain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="重构帮助文档\说明控件\UserControl1.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="重构帮助文档\说明控件\UserControl1.Designer.cs">
+      <DependentUpon>UserControl1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="重构帮助文档\说明控件\UserControl2.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="重构帮助文档\说明控件\UserControl2.Designer.cs">
+      <DependentUpon>UserControl2.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="document_Form.resx">
       <DependentUpon>document_Form.cs</DependentUpon>
     </EmbeddedResource>
@@ -113,7 +136,17 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="重构帮助文档\Explain.resx">
+      <DependentUpon>Explain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="重构帮助文档\说明控件\UserControl1.resx">
+      <DependentUpon>UserControl1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="重构帮助文档\说明控件\UserControl2.resx">
+      <DependentUpon>UserControl2.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\app.manifest" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -139,6 +172,12 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\宏指令主页面.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\宏指令编译器界面.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
