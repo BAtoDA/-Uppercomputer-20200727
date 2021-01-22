@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using CCWin;
+using CSEngineTest.重构帮助文档.说明控件;
+
 namespace CSEngineTest.重构帮助文档
 {
     public partial class Explain : Skin_Mac
@@ -15,6 +17,36 @@ namespace CSEngineTest.重构帮助文档
         public Explain()
         {
             InitializeComponent();
+        }
+        
+        private void uiTreeView1_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
+        {
+            switch(e.Node.Text)
+            {
+                case "宏指令":
+                    TreeViewAdd(new UserControl1());
+                    return;
+                case "宏指令编译器":
+                    TreeViewAdd(new UserControl2());
+                    return;
+                case "宏指令语法":
+                    TreeViewAdd(new UserControl3());
+                    return;
+            } 
+        }
+
+        private void Explain_Load(object sender, EventArgs e)
+        {
+            this.panel1.Controls.Add(new UserControl1());
+        }
+        private void TreeViewAdd(Control  control)
+        {
+            this.panel1.Controls.Clear();
+            this.panel1.Controls.Add(control);
+        }
+        private void Explain_MouseUp(object sender, MouseEventArgs e)
+        {
+            MessageBox.Show("d");
         }
     }
 }

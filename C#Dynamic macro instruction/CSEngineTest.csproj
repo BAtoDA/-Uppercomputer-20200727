@@ -122,6 +122,18 @@
     <Compile Include="重构帮助文档\说明控件\UserControl2.Designer.cs">
       <DependentUpon>UserControl2.cs</DependentUpon>
     </Compile>
+    <Compile Include="重构帮助文档\说明控件\UserControl3.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="重构帮助文档\说明控件\UserControl3.Designer.cs">
+      <DependentUpon>UserControl3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="重构帮助文档\说明控件\UserControl4.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="重构帮助文档\说明控件\UserControl4.Designer.cs">
+      <DependentUpon>UserControl4.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="document_Form.resx">
       <DependentUpon>document_Form.cs</DependentUpon>
     </EmbeddedResource>
@@ -146,6 +158,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="重构帮助文档\说明控件\UserControl2.resx">
       <DependentUpon>UserControl2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="重构帮助文档\说明控件\UserControl3.resx">
+      <DependentUpon>UserControl3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="重构帮助文档\说明控件\UserControl4.resx">
+      <DependentUpon>UserControl4.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\app.manifest" />
     <None Include="Properties\Settings.settings">

@@ -28,21 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("宏指令");
-            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("宏指令编译器");
-            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("宏指令语法");
-            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("宏函数");
-            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("自定义函数");
-            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("宏内置元件");
-            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("宏指令注意事项");
-            System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("宏指令说明", new System.Windows.Forms.TreeNode[] {
-            treeNode1,
-            treeNode2,
-            treeNode3,
-            treeNode4,
-            treeNode5,
-            treeNode6,
-            treeNode7});
+            System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("宏指令");
+            System.Windows.Forms.TreeNode treeNode10 = new System.Windows.Forms.TreeNode("宏指令编译器");
+            System.Windows.Forms.TreeNode treeNode11 = new System.Windows.Forms.TreeNode("宏指令语法");
+            System.Windows.Forms.TreeNode treeNode12 = new System.Windows.Forms.TreeNode("宏函数");
+            System.Windows.Forms.TreeNode treeNode13 = new System.Windows.Forms.TreeNode("自定义函数");
+            System.Windows.Forms.TreeNode treeNode14 = new System.Windows.Forms.TreeNode("宏内置元件");
+            System.Windows.Forms.TreeNode treeNode15 = new System.Windows.Forms.TreeNode("宏指令注意事项");
+            System.Windows.Forms.TreeNode treeNode16 = new System.Windows.Forms.TreeNode("宏指令说明", new System.Windows.Forms.TreeNode[] {
+            treeNode9,
+            treeNode10,
+            treeNode11,
+            treeNode12,
+            treeNode13,
+            treeNode14,
+            treeNode15});
             this.uiTreeView1 = new Sunny.UI.UITreeView();
             this.panel1 = new System.Windows.Forms.Panel();
             this.SuspendLayout();
@@ -56,33 +56,35 @@
             this.uiTreeView1.Location = new System.Drawing.Point(8, 37);
             this.uiTreeView1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.uiTreeView1.Name = "uiTreeView1";
-            treeNode1.Name = "节点0";
-            treeNode1.Text = "宏指令";
-            treeNode2.Name = "节点1";
-            treeNode2.Text = "宏指令编译器";
-            treeNode3.Name = "节点2";
-            treeNode3.Text = "宏指令语法";
-            treeNode4.Name = "节点3";
-            treeNode4.Text = "宏函数";
-            treeNode5.Name = "节点2";
-            treeNode5.Text = "自定义函数";
-            treeNode6.Name = "节点3";
-            treeNode6.Text = "宏内置元件";
-            treeNode7.Name = "节点4";
-            treeNode7.Text = "宏指令注意事项";
-            treeNode8.Checked = true;
-            treeNode8.Name = "节点0";
-            treeNode8.Text = "宏指令说明";
+            treeNode9.Name = "节点0";
+            treeNode9.Text = "宏指令";
+            treeNode10.Name = "节点1";
+            treeNode10.Text = "宏指令编译器";
+            treeNode11.Name = "节点2";
+            treeNode11.Text = "宏指令语法";
+            treeNode12.Name = "节点3";
+            treeNode12.Text = "宏函数";
+            treeNode13.Name = "节点2";
+            treeNode13.Text = "自定义函数";
+            treeNode14.Name = "节点3";
+            treeNode14.Text = "宏内置元件";
+            treeNode15.Name = "节点4";
+            treeNode15.Text = "宏指令注意事项";
+            treeNode16.Checked = true;
+            treeNode16.Name = "节点0";
+            treeNode16.Text = "宏指令说明";
             this.uiTreeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode8});
+            treeNode16});
             this.uiTreeView1.SelectedNode = null;
             this.uiTreeView1.Size = new System.Drawing.Size(163, 676);
             this.uiTreeView1.Style = Sunny.UI.UIStyle.Custom;
             this.uiTreeView1.TabIndex = 0;
             this.uiTreeView1.Text = "uiTreeView1";
+            this.uiTreeView1.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.uiTreeView1_NodeMouseClick);
             // 
             // panel1
             // 
+            this.panel1.AutoScroll = true;
             this.panel1.Location = new System.Drawing.Point(178, 37);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(889, 678);
@@ -97,6 +99,8 @@
             this.Controls.Add(this.uiTreeView1);
             this.Name = "Explain";
             this.Text = "Explain";
+            this.Load += new System.EventHandler(this.Explain_Load);
+            this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Explain_MouseUp);
             this.ResumeLayout(false);
 
         }

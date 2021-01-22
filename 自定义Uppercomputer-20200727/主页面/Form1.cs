@@ -49,7 +49,7 @@ namespace 自定义Uppercomputer_20200727
         public static string SQLpassword { get; set; } = "3131458";
         private void Home_Shown(object sender, EventArgs e)
         {
-            ActUtlType = this.axActUtlType1;
+            ActUtlType = this.axActUtlType1;        
         }
         public void BindingProcessMsg(string strText, int intValue)
         {

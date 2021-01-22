@@ -14,6 +14,7 @@ using System.Windows.Forms;
 using CCWin;
 using CCWin.SkinControl;
 using CCWin.SkinClass;
+using CSEngineTest.重构帮助文档;
 
 namespace CSEngineTest
 {
@@ -464,12 +465,12 @@ namespace CSEngineTest
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        document_Form document_Form;
+        Explain document_Form;
         private void toolStripMenuItem3_Click(object sender, EventArgs e)//用户点击了函数文档
         {
             if (document_Form.IsNull())
             {
-                document_Form = new document_Form();
+                document_Form = new Explain();
                 document_Form.Show();//打开文档
             }
             else
