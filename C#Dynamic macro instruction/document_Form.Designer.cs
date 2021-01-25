@@ -30,6 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(document_Form));
             this.skinTabControl1 = new CCWin.SkinControl.SkinTabControl();
+            this.skinTabPage15 = new CCWin.SkinControl.SkinTabPage();
+            this.skinTextBox15 = new CCWin.SkinControl.SkinTextBox();
             this.skinTabPage13 = new CCWin.SkinControl.SkinTabPage();
             this.skinTextBox13 = new CCWin.SkinControl.SkinTextBox();
             this.skinTabPage11 = new CCWin.SkinControl.SkinTabPage();
@@ -58,12 +60,11 @@
             this.skinTextBox10 = new CCWin.SkinControl.SkinTextBox();
             this.skinTabPage14 = new CCWin.SkinControl.SkinTabPage();
             this.skinTextBox14 = new CCWin.SkinControl.SkinTextBox();
-            this.skinTabPage15 = new CCWin.SkinControl.SkinTabPage();
-            this.skinTextBox15 = new CCWin.SkinControl.SkinTextBox();
             this.skinTabPage16 = new CCWin.SkinControl.SkinTabPage();
-            this.skinTextBox16 = new CCWin.SkinControl.SkinTextBox();
             this.skinTextBox17 = new CCWin.SkinControl.SkinTextBox();
+            this.skinTextBox16 = new CCWin.SkinControl.SkinTextBox();
             this.skinTabControl1.SuspendLayout();
+            this.skinTabPage15.SuspendLayout();
             this.skinTabPage13.SuspendLayout();
             this.skinTabPage11.SuspendLayout();
             this.skinTabPage12.SuspendLayout();
@@ -78,7 +79,6 @@
             this.skinTabPage9.SuspendLayout();
             this.skinTabPage10.SuspendLayout();
             this.skinTabPage14.SuspendLayout();
-            this.skinTabPage15.SuspendLayout();
             this.skinTabPage16.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -86,6 +86,7 @@
             // 
             this.skinTabControl1.AnimatorType = CCWin.SkinControl.AnimationType.HorizSlide;
             this.skinTabControl1.CloseRect = new System.Drawing.Rectangle(2, 2, 12, 12);
+            this.skinTabControl1.Controls.Add(this.skinTabPage10);
             this.skinTabControl1.Controls.Add(this.skinTabPage15);
             this.skinTabControl1.Controls.Add(this.skinTabPage13);
             this.skinTabControl1.Controls.Add(this.skinTabPage11);
@@ -99,7 +100,6 @@
             this.skinTabControl1.Controls.Add(this.skinTabPage7);
             this.skinTabControl1.Controls.Add(this.skinTabPage8);
             this.skinTabControl1.Controls.Add(this.skinTabPage9);
-            this.skinTabControl1.Controls.Add(this.skinTabPage10);
             this.skinTabControl1.Controls.Add(this.skinTabPage14);
             this.skinTabControl1.Controls.Add(this.skinTabPage16);
             this.skinTabControl1.HeadBack = null;
@@ -115,10 +115,116 @@
             this.skinTabControl1.PageHover = ((System.Drawing.Image)(resources.GetObject("skinTabControl1.PageHover")));
             this.skinTabControl1.PageImagePosition = CCWin.SkinControl.SkinTabControl.ePageImagePosition.Left;
             this.skinTabControl1.PageNorml = null;
-            this.skinTabControl1.SelectedIndex = 13;
+            this.skinTabControl1.SelectedIndex = 0;
             this.skinTabControl1.Size = new System.Drawing.Size(786, 407);
             this.skinTabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.skinTabControl1.TabIndex = 1;
+            // 
+            // skinTabPage15
+            // 
+            this.skinTabPage15.BackColor = System.Drawing.Color.White;
+            this.skinTabPage15.Controls.Add(this.skinTextBox15);
+            this.skinTabPage15.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.skinTabPage15.Location = new System.Drawing.Point(0, 36);
+            this.skinTabPage15.Name = "skinTabPage15";
+            this.skinTabPage15.Size = new System.Drawing.Size(786, 371);
+            this.skinTabPage15.TabIndex = 14;
+            this.skinTabPage15.TabItemImage = null;
+            this.skinTabPage15.Text = "宏指令保存区";
+            // 
+            // skinTextBox15
+            // 
+            this.skinTextBox15.BackColor = System.Drawing.Color.Transparent;
+            this.skinTextBox15.DownBack = null;
+            this.skinTextBox15.Icon = null;
+            this.skinTextBox15.IconIsButton = false;
+            this.skinTextBox15.IconMouseState = CCWin.SkinClass.ControlState.Normal;
+            this.skinTextBox15.IsPasswordChat = '\0';
+            this.skinTextBox15.IsSystemPasswordChar = false;
+            this.skinTextBox15.Lines = new string[] {
+        "//使用方法--静态类名<约束>.属性=值;  ",
+        "//实例化：静态类名<约束>.属性 名称 =new 静态类名<约束>.属性(传入约束);",
+        "//使用上位机内部辅助触点与寄存器案例",
+        "macroinstruction_data<int>. D_Data[0]=20;//编译器自动决定类型",
+        "macroinstruction_data<bool>. M_Data[0]=true;//置位",
+        "//使用上位机内部线程 与无类型 存储区",
+        "macroinstruction_data<Thread>.thread thread_1 =new Thread(方法名);--可以使用匿名线程",
+        "//匿名线程使用",
+        "macroinstruction_data<Thread>.thread[0] = new Thread (()=>",
+        " {",
+        "//内容",
+        "});",
+        "macroinstruction_data<Thread>.thread[0].Start();",
+        "//无类型 存储区 使用",
+        "macroinstruction_data<int> data =new macroinstruction_data<int>(20);",
+        "macroinstruction_data<int>.Data [0];//填充后的泛型值",
+        "",
+        " /// <summary>",
+        "    /// 宏指令 数据保存静态区",
+        "    /// </summary>",
+        "    public class macroinstruction_data<T>",
+        "    {",
+        "        /// <summary>",
+        "        /// 泛型区--使用前要记得地址",
+        "        /// </summary>",
+        "        public static List<T> Data = new List<T>();",
+        "        /// <summary>",
+        "        ///宏指令默认线程区 -- 最大线程数量100",
+        "        /// </summary>",
+        "        public static Thread[] thread = new Thread[100];//最大线程数量",
+        "        /// <summary>",
+        "        /// 创建寄存器--默认无类型约束--使用前",
+        "        /// </summary>",
+        "        public static object[] D_Data = new object[1024];",
+        "        /// <summary>",
+        "        /// 创建标志位--默认全是false",
+        "        /// </summary>",
+        "        public static bool[] M_Data = new bool[1024];",
+        "        /// <summary>",
+        "        /// 构造函数--使用泛型前 记得 使用此类实例化 ",
+        "        /// </summary>",
+        "        /// <param name=\"Name\"></param>",
+        "        public macroinstruction_data(T Name)",
+        "        {",
+        "            Data.Add(Name);//添加对象",
+        "        }",
+        "",
+        "    }"};
+            this.skinTextBox15.Location = new System.Drawing.Point(1, 0);
+            this.skinTextBox15.Margin = new System.Windows.Forms.Padding(0);
+            this.skinTextBox15.MaxLength = 32767;
+            this.skinTextBox15.MinimumSize = new System.Drawing.Size(28, 28);
+            this.skinTextBox15.MouseBack = null;
+            this.skinTextBox15.MouseState = CCWin.SkinClass.ControlState.Normal;
+            this.skinTextBox15.Multiline = true;
+            this.skinTextBox15.Name = "skinTextBox15";
+            this.skinTextBox15.NormlBack = null;
+            this.skinTextBox15.Padding = new System.Windows.Forms.Padding(5);
+            this.skinTextBox15.ReadOnly = true;
+            this.skinTextBox15.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.skinTextBox15.Size = new System.Drawing.Size(786, 371);
+            // 
+            // 
+            // 
+            this.skinTextBox15.SkinTxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.skinTextBox15.SkinTxt.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.skinTextBox15.SkinTxt.Font = new System.Drawing.Font("微软雅黑", 9.75F);
+            this.skinTextBox15.SkinTxt.Location = new System.Drawing.Point(5, 5);
+            this.skinTextBox15.SkinTxt.Multiline = true;
+            this.skinTextBox15.SkinTxt.Name = "BaseText";
+            this.skinTextBox15.SkinTxt.ReadOnly = true;
+            this.skinTextBox15.SkinTxt.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.skinTextBox15.SkinTxt.Size = new System.Drawing.Size(776, 361);
+            this.skinTextBox15.SkinTxt.TabIndex = 0;
+            this.skinTextBox15.SkinTxt.Text = resources.GetString("resource.Text1");
+            this.skinTextBox15.SkinTxt.WaterColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(127)))), ((int)(((byte)(127)))));
+            this.skinTextBox15.SkinTxt.WaterText = "";
+            this.skinTextBox15.TabIndex = 4;
+            this.skinTextBox15.Text = resources.GetString("skinTextBox15.Text");
+            this.skinTextBox15.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.skinTextBox15.WaterColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(127)))), ((int)(((byte)(127)))));
+            this.skinTextBox15.WaterText = "";
+            this.skinTextBox15.WordWrap = true;
             // 
             // skinTabPage13
             // 
@@ -399,7 +505,7 @@
             this.skinTextBox13.SkinTxt.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.skinTextBox13.SkinTxt.Size = new System.Drawing.Size(776, 361);
             this.skinTextBox13.SkinTxt.TabIndex = 0;
-            this.skinTextBox13.SkinTxt.Text = resources.GetString("resource.Text1");
+            this.skinTextBox13.SkinTxt.Text = resources.GetString("resource.Text2");
             this.skinTextBox13.SkinTxt.WaterColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(127)))), ((int)(((byte)(127)))));
             this.skinTextBox13.SkinTxt.WaterText = "";
             this.skinTextBox13.TabIndex = 2;
@@ -518,7 +624,7 @@
             this.skinTextBox11.SkinTxt.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.skinTextBox11.SkinTxt.Size = new System.Drawing.Size(776, 361);
             this.skinTextBox11.SkinTxt.TabIndex = 0;
-            this.skinTextBox11.SkinTxt.Text = resources.GetString("resource.Text2");
+            this.skinTextBox11.SkinTxt.Text = resources.GetString("resource.Text3");
             this.skinTextBox11.SkinTxt.WaterColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(127)))), ((int)(((byte)(127)))));
             this.skinTextBox11.SkinTxt.WaterText = "";
             this.skinTextBox11.TabIndex = 1;
@@ -682,7 +788,7 @@
             this.skinTextBox1.SkinTxt.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.skinTextBox1.SkinTxt.Size = new System.Drawing.Size(776, 361);
             this.skinTextBox1.SkinTxt.TabIndex = 0;
-            this.skinTextBox1.SkinTxt.Text = resources.GetString("resource.Text3");
+            this.skinTextBox1.SkinTxt.Text = resources.GetString("resource.Text4");
             this.skinTextBox1.SkinTxt.WaterColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(127)))), ((int)(((byte)(127)))));
             this.skinTextBox1.SkinTxt.WaterText = "";
             this.skinTextBox1.TabIndex = 0;
@@ -759,7 +865,7 @@
             this.skinTextBox2.SkinTxt.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.skinTextBox2.SkinTxt.Size = new System.Drawing.Size(776, 361);
             this.skinTextBox2.SkinTxt.TabIndex = 0;
-            this.skinTextBox2.SkinTxt.Text = resources.GetString("resource.Text4");
+            this.skinTextBox2.SkinTxt.Text = resources.GetString("resource.Text5");
             this.skinTextBox2.SkinTxt.WaterColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(127)))), ((int)(((byte)(127)))));
             this.skinTextBox2.SkinTxt.WaterText = "";
             this.skinTextBox2.TabIndex = 0;
@@ -829,7 +935,7 @@
             this.skinTextBox3.SkinTxt.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.skinTextBox3.SkinTxt.Size = new System.Drawing.Size(776, 357);
             this.skinTextBox3.SkinTxt.TabIndex = 0;
-            this.skinTextBox3.SkinTxt.Text = resources.GetString("resource.Text5");
+            this.skinTextBox3.SkinTxt.Text = resources.GetString("resource.Text6");
             this.skinTextBox3.SkinTxt.WaterColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(127)))), ((int)(((byte)(127)))));
             this.skinTextBox3.SkinTxt.WaterText = "";
             this.skinTextBox3.TabIndex = 0;
@@ -896,7 +1002,7 @@
             this.skinTextBox4.SkinTxt.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.skinTextBox4.SkinTxt.Size = new System.Drawing.Size(778, 361);
             this.skinTextBox4.SkinTxt.TabIndex = 0;
-            this.skinTextBox4.SkinTxt.Text = resources.GetString("resource.Text6");
+            this.skinTextBox4.SkinTxt.Text = resources.GetString("resource.Text7");
             this.skinTextBox4.SkinTxt.WaterColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(127)))), ((int)(((byte)(127)))));
             this.skinTextBox4.SkinTxt.WaterText = "";
             this.skinTextBox4.TabIndex = 0;
@@ -1070,7 +1176,7 @@
             this.skinTextBox5.SkinTxt.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.skinTextBox5.SkinTxt.Size = new System.Drawing.Size(779, 360);
             this.skinTextBox5.SkinTxt.TabIndex = 0;
-            this.skinTextBox5.SkinTxt.Text = resources.GetString("resource.Text7");
+            this.skinTextBox5.SkinTxt.Text = resources.GetString("resource.Text8");
             this.skinTextBox5.SkinTxt.WaterColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(127)))), ((int)(((byte)(127)))));
             this.skinTextBox5.SkinTxt.WaterText = "";
             this.skinTextBox5.TabIndex = 0;
@@ -1310,7 +1416,7 @@
             this.skinTextBox6.SkinTxt.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.skinTextBox6.SkinTxt.Size = new System.Drawing.Size(778, 360);
             this.skinTextBox6.SkinTxt.TabIndex = 0;
-            this.skinTextBox6.SkinTxt.Text = resources.GetString("resource.Text8");
+            this.skinTextBox6.SkinTxt.Text = resources.GetString("resource.Text9");
             this.skinTextBox6.SkinTxt.WaterColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(127)))), ((int)(((byte)(127)))));
             this.skinTextBox6.SkinTxt.WaterText = "";
             this.skinTextBox6.TabIndex = 0;
@@ -1456,7 +1562,7 @@
             this.skinTextBox8.SkinTxt.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.skinTextBox8.SkinTxt.Size = new System.Drawing.Size(779, 364);
             this.skinTextBox8.SkinTxt.TabIndex = 0;
-            this.skinTextBox8.SkinTxt.Text = resources.GetString("resource.Text9");
+            this.skinTextBox8.SkinTxt.Text = resources.GetString("resource.Text10");
             this.skinTextBox8.SkinTxt.WaterColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(127)))), ((int)(((byte)(127)))));
             this.skinTextBox8.SkinTxt.WaterText = "";
             this.skinTextBox8.TabIndex = 0;
@@ -1603,7 +1709,7 @@
             this.skinTextBox9.SkinTxt.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.skinTextBox9.SkinTxt.Size = new System.Drawing.Size(779, 364);
             this.skinTextBox9.SkinTxt.TabIndex = 0;
-            this.skinTextBox9.SkinTxt.Text = resources.GetString("resource.Text10");
+            this.skinTextBox9.SkinTxt.Text = resources.GetString("resource.Text11");
             this.skinTextBox9.SkinTxt.WaterColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(127)))), ((int)(((byte)(127)))));
             this.skinTextBox9.SkinTxt.WaterText = "";
             this.skinTextBox9.TabIndex = 0;
@@ -1719,7 +1825,7 @@
             this.skinTextBox10.SkinTxt.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.skinTextBox10.SkinTxt.Size = new System.Drawing.Size(776, 361);
             this.skinTextBox10.SkinTxt.TabIndex = 0;
-            this.skinTextBox10.SkinTxt.Text = resources.GetString("resource.Text11");
+            this.skinTextBox10.SkinTxt.Text = resources.GetString("resource.Text");
             this.skinTextBox10.SkinTxt.WaterColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(127)))), ((int)(((byte)(127)))));
             this.skinTextBox10.SkinTxt.WaterText = "";
             this.skinTextBox10.TabIndex = 0;
@@ -1812,111 +1918,6 @@
             this.skinTextBox14.WaterText = "";
             this.skinTextBox14.WordWrap = true;
             // 
-            // skinTabPage15
-            // 
-            this.skinTabPage15.BackColor = System.Drawing.Color.White;
-            this.skinTabPage15.Controls.Add(this.skinTextBox15);
-            this.skinTabPage15.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.skinTabPage15.Location = new System.Drawing.Point(0, 36);
-            this.skinTabPage15.Name = "skinTabPage15";
-            this.skinTabPage15.Size = new System.Drawing.Size(786, 371);
-            this.skinTabPage15.TabIndex = 14;
-            this.skinTabPage15.TabItemImage = null;
-            this.skinTabPage15.Text = "宏指令保存区";
-            // 
-            // skinTextBox15
-            // 
-            this.skinTextBox15.BackColor = System.Drawing.Color.Transparent;
-            this.skinTextBox15.DownBack = null;
-            this.skinTextBox15.Icon = null;
-            this.skinTextBox15.IconIsButton = false;
-            this.skinTextBox15.IconMouseState = CCWin.SkinClass.ControlState.Normal;
-            this.skinTextBox15.IsPasswordChat = '\0';
-            this.skinTextBox15.IsSystemPasswordChar = false;
-            this.skinTextBox15.Lines = new string[] {
-        "//使用方法--静态类名<约束>.属性=值;  ",
-        "//实例化：静态类名<约束>.属性 名称 =new 静态类名<约束>.属性(传入约束);",
-        "//使用上位机内部辅助触点与寄存器案例",
-        "macroinstruction_data<int>. D_Data[0]=20;//编译器自动决定类型",
-        "macroinstruction_data<bool>. M_Data[0]=true;//置位",
-        "//使用上位机内部线程 与无类型 存储区",
-        "macroinstruction_data<Thread>.thread thread_1 =new Thread(方法名);--可以使用匿名线程",
-        "//匿名线程使用",
-        "macroinstruction_data<Thread>.thread[0] = new Thread (()=>",
-        " {",
-        "//内容",
-        "});",
-        "//无类型 存储区 使用",
-        "macroinstruction_data<int> data =new macroinstruction_data<int>(20);",
-        "macroinstruction_data<int>.Data [0];//填充后的泛型值",
-        "",
-        " /// <summary>",
-        "    /// 宏指令 数据保存静态区",
-        "    /// </summary>",
-        "    public class macroinstruction_data<T>",
-        "    {",
-        "        /// <summary>",
-        "        /// 泛型区--使用前要记得地址",
-        "        /// </summary>",
-        "        public static List<T> Data = new List<T>();",
-        "        /// <summary>",
-        "        ///宏指令默认线程区 -- 最大线程数量100",
-        "        /// </summary>",
-        "        public static Thread[] thread = new Thread[100];//最大线程数量",
-        "        /// <summary>",
-        "        /// 创建寄存器--默认无类型约束--使用前",
-        "        /// </summary>",
-        "        public static object[] D_Data = new object[1024];",
-        "        /// <summary>",
-        "        /// 创建标志位--默认全是false",
-        "        /// </summary>",
-        "        public static bool[] M_Data = new bool[1024];",
-        "        /// <summary>",
-        "        /// 构造函数--使用泛型前 记得 使用此类实例化 ",
-        "        /// </summary>",
-        "        /// <param name=\"Name\"></param>",
-        "        public macroinstruction_data(T Name)",
-        "        {",
-        "            Data.Add(Name);//添加对象",
-        "        }",
-        "",
-        "    }"};
-            this.skinTextBox15.Location = new System.Drawing.Point(1, 0);
-            this.skinTextBox15.Margin = new System.Windows.Forms.Padding(0);
-            this.skinTextBox15.MaxLength = 32767;
-            this.skinTextBox15.MinimumSize = new System.Drawing.Size(28, 28);
-            this.skinTextBox15.MouseBack = null;
-            this.skinTextBox15.MouseState = CCWin.SkinClass.ControlState.Normal;
-            this.skinTextBox15.Multiline = true;
-            this.skinTextBox15.Name = "skinTextBox15";
-            this.skinTextBox15.NormlBack = null;
-            this.skinTextBox15.Padding = new System.Windows.Forms.Padding(5);
-            this.skinTextBox15.ReadOnly = true;
-            this.skinTextBox15.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.skinTextBox15.Size = new System.Drawing.Size(786, 371);
-            // 
-            // 
-            // 
-            this.skinTextBox15.SkinTxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.skinTextBox15.SkinTxt.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.skinTextBox15.SkinTxt.Font = new System.Drawing.Font("微软雅黑", 9.75F);
-            this.skinTextBox15.SkinTxt.Location = new System.Drawing.Point(5, 5);
-            this.skinTextBox15.SkinTxt.Multiline = true;
-            this.skinTextBox15.SkinTxt.Name = "BaseText";
-            this.skinTextBox15.SkinTxt.ReadOnly = true;
-            this.skinTextBox15.SkinTxt.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.skinTextBox15.SkinTxt.Size = new System.Drawing.Size(776, 361);
-            this.skinTextBox15.SkinTxt.TabIndex = 0;
-            this.skinTextBox15.SkinTxt.Text = resources.GetString("resource.Text");
-            this.skinTextBox15.SkinTxt.WaterColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(127)))), ((int)(((byte)(127)))));
-            this.skinTextBox15.SkinTxt.WaterText = "";
-            this.skinTextBox15.TabIndex = 4;
-            this.skinTextBox15.Text = resources.GetString("skinTextBox15.Text");
-            this.skinTextBox15.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.skinTextBox15.WaterColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(127)))), ((int)(((byte)(127)))));
-            this.skinTextBox15.WaterText = "";
-            this.skinTextBox15.WordWrap = true;
-            // 
             // skinTabPage16
             // 
             this.skinTabPage16.BackColor = System.Drawing.Color.White;
@@ -1928,255 +1929,6 @@
             this.skinTabPage16.TabIndex = 15;
             this.skinTabPage16.TabItemImage = null;
             this.skinTabPage16.Text = "PLC使用";
-            // 
-            // skinTextBox16
-            // 
-            this.skinTextBox16.BackColor = System.Drawing.Color.Transparent;
-            this.skinTextBox16.DownBack = null;
-            this.skinTextBox16.Icon = null;
-            this.skinTextBox16.IconIsButton = false;
-            this.skinTextBox16.IconMouseState = CCWin.SkinClass.ControlState.Normal;
-            this.skinTextBox16.IsPasswordChat = '\0';
-            this.skinTextBox16.IsSystemPasswordChar = false;
-            this.skinTextBox16.Lines = new string[] {
-        "//使用 方法--以三菱PLC为例 若要访问其他PLC 把Mitsubishi_axActUtlType",
-        " 替代成其他PLC名称 ",
-        "三菱在线: Mitsubishi  三菱仿真: Mitsubishi_axActUtlType ",
-        "MODBUS TCP: MODBUD_TCP 西门子：Siemens ",
-        "PLC.Mitsubishi_axActUtlType. PLC_read_M_bit(\"Y\",\"0\");//读取位--名称--地址",
-        "PLC.Mitsubishi_axActUtlType. PLC_write_M_bit(\"Y\",\"0\",true);//写入位--名称--地址",
-        "PLC.Mitsubishi_axActUtlType. PLC_read_D_register(\"D\",\"0\",“Signed_32_Bit”);//读取有符号" +
-            "32位双字-名称--地址--类型",
-        "PLC.Mitsubishi_axActUtlType. PLC_write_D_register(\"D\",\"0\",“0”,“Signed_32_Bit”);//" +
-            "写入有符号32位双字---名称--地址--内容--类型",
-        "  /// <summary>",
-        "    /// 宏指令与PLC的接口--PLC端必须继承与实现接口",
-        "    /// </summary>",
-        "",
-        "    public interface macroinstruction_PLC_interface",
-        "    {",
-        "        /// <summary>",
-        "        /// PLC准备好",
-        "        /// </summary>",
-        "        bool PLC_ready { get; }//PLC准备好",
-        "        /// <summary>",
-        "        /// PLC报警代码",
-        "        /// </summary>",
-        "        int PLCerr_code { get; }//PLC报警代码",
-        "        /// <summary>",
-        "        /// PLC报警内容",
-        "        /// </summary>",
-        "        string PLCerr_content { get; }//PLC报警内容",
-        "        /// <summary>",
-        "        /// 打开PLC",
-        "        /// </summary>",
-        "        /// <returns></returns>",
-        "        List<bool> PLC_read_M_bit(string Name, string id);//读取--位",
-        "        /// <summary>",
-        "        /// /写入--位",
-        "        /// </summary>",
-        "        /// <param name=\"Name\"></param>",
-        "        /// <param name=\"id\"></param>",
-        "        /// <param name=\"bon-off \"></param>",
-        "        /// <returns></returns>",
-        "        List<bool> PLC_write_M_bit(string Name, string id, bool on_off );//写入--位",
-        "        /// <summary>",
-        "        /// /读取--字",
-        "        /// </summary>",
-        "        /// <param name=\"Name\"></param>",
-        "        /// <param name=\"id\"></param>",
-        "        /// <param name=\"format\">数据格式</param>",
-        "        /// <returns></returns>",
-        "        string PLC_read_D_register(string Name, string id, string format);//读取--字" +
-            "",
-        "        /// <summary>",
-        "        /// 写--字",
-        "        /// </summary>",
-        "        /// <param name=\"Name\"></param>",
-        "        /// <param name=\"id\"></param>",
-        "        /// <param name=\"content\"></param>",
-        "        /// <param name=\"format\"></param>",
-        "        /// <returns></returns>",
-        "        string PLC_write_D_register(string Name, string id, string content, strin" +
-            "g format);//读写--字",
-        "        /// <summary>",
-        "        /// 读取--字--多个读取-自动判断类型改变地址索引",
-        "        /// </summary>",
-        "        /// <param name=\"id\"></param>",
-        "        /// <returns></returns>",
-        "        List<int> PLC_read_D_register_bit(string Name, string id, string format, " +
-            "string Index);//读取--字--多个读取",
-        "        /// <summary>",
-        "        /// 读写--字",
-        "        /// </summary>",
-        "        /// <param name=\"id\"></param>",
-        "        /// <returns></returns>",
-        "        List<int> PLC_write_D_register_bit(string id);//读写--字",
-        "    }",
-        "   /// <summary>",
-        "    /// 数值显示类型",
-        "    /// </summary>",
-        "    public enum numerical_format",
-        "    {",
-        "        BCD_16_Bit, BCD_32_Bit, Hex_16_Bit, Hex_32_Bit, Binary_16_Bit, Binary_32_" +
-            "Bit, Unsigned_16_Bit, Signed_16_Bit",
-        "            , Unsigned_32_Bit, Signed_32_Bit, Float_32_Bit",
-        "    }",
-        "   /// <summary>",
-        "    /// 本类主要用于-宏指令到",
-        "    /// </summary>",
-        "    public class PLC",
-        "    {",
-        "        /// <summary>",
-        "        /// 三菱Mitsubishi PLC仿真",
-        "        /// </summary>",
-        "        public static macroinstruction_PLC_interface Mitsubishi_axActUtlType { ge" +
-            "t; set; }",
-        "        /// <summary>",
-        "        /// 三菱Mitsubishi PLC在线访问 ",
-        "        /// </summary>",
-        "        public static macroinstruction_PLC_interface Mitsubishi { get; set; }",
-        "        /// <summary>",
-        "        /// MODBUD_TCP 在线访问",
-        "        /// </summary>",
-        "        public static macroinstruction_PLC_interface MODBUD_TCP { get; set; }",
-        "        /// <summary>",
-        "        /// 西门子Siemens 在线访问",
-        "        /// </summary>",
-        "        public static macroinstruction_PLC_interface Siemens { get; set; }",
-        "",
-        "    }",
-        "  /// <summary>",
-        "    /// PLC硬件选择",
-        "    /// PLC选择枚举>",
-        "    /// </summary>",
-        "",
-        "    public enum PLC",
-        "    {",
-        "        Mitsubishi,",
-        "        Siemens,",
-        "        Modbus_TCP,",
-        "        HMI",
-        "    }",
-        "    /// <summary>",
-        "    /// PLC各可访问软元件  三菱-bit位",
-        "    /// </summary>",
-        "    public enum Mitsubishi_bit",
-        "    { ",
-        "        LCS,LCC,SM,X,Y,M,L,F,B,TS,SS,SC,CS,CC,SB,S,D_Bit,SD_Bit,R_Bit,SW_Bit,W_Bi" +
-            "t",
-        "    }",
-        "    /// <summary>",
-        "    /// PLC各可访问软元件 三菱 -WORD 字",
-        "    /// </summary>",
-        "    public enum Mitsubishi_D",
-        "    {",
-        "        LCN,LZ,SD,D,R,W,TN,SN,CN,SW,Z",
-        "    }",
-        "    /// <summary>",
-        "    ///  PLC各可访问软元件 西门子 -bit位",
-        "    /// </summary>",
-        "    public enum Siemens_bit",
-        "    {",
-        "       I, Q, M",
-        "    }",
-        "    /// <summary>",
-        "    /// PLC各可访问软元件 西门子-WORD 字",
-        "    /// </summary>",
-        "    public enum Siemens_D",
-        "    {",
-        "       DB",
-        "    }",
-        "    /// <summary>",
-        "    ///  PLC各可访问软元件 Modbus_TCP -bit位",
-        "    /// </summary>",
-        "    public enum Modbus_TCP_bit",
-        "    {",
-        "         X, Y, M",
-        "    }",
-        "    /// <summary>",
-        "    /// PLC各可访问软元件 Modbus_TCP-WORD 字",
-        "    /// </summary>",
-        "    public enum Modbus_TCP_D",
-        "    {",
-        "         D",
-        "    }",
-        "    /// <summary>",
-        "    /// PLC各可访问软元件  三菱-bit位",
-        "    /// </summary>",
-        "    public enum HMI_bit",
-        "    {",
-        "        Data_Bit",
-        "    }",
-        "    /// <summary>",
-        "    /// PLC各可访问软元件 三菱 -WORD 字",
-        "    /// </summary>",
-        "    public enum HMI_D",
-        "    {",
-        "         Data_D",
-        "    }",
-        "    /// <summary>",
-        "    ///  PLC--按钮状态",
-        "    /// </summary>",
-        "    public enum Button_state",
-        "    {",
-        "        Off,ON",
-        "    }",
-        "    /// <summary>",
-        "    /// 数值显示类型",
-        "    /// </summary>",
-        "    public enum numerical_format",
-        "    {",
-        "        BCD_16_Bit, BCD_32_Bit, Hex_16_Bit, Hex_32_Bit, Binary_16_Bit, Binary_32_" +
-            "Bit, Unsigned_16_Bit, Signed_16_Bit",
-        "            , Unsigned_32_Bit, Signed_32_Bit, Float_32_Bit",
-        "    }",
-        "    /// <summary>",
-        "    /// 数值显示类型",
-        "    /// </summary>",
-        "    public enum numerical_type",
-        "    {",
-        "        数值",
-        "    }",
-        "    class PLCselect",
-        "    {",
-        "",
-        "    }"};
-            this.skinTextBox16.Location = new System.Drawing.Point(4, 72);
-            this.skinTextBox16.Margin = new System.Windows.Forms.Padding(0);
-            this.skinTextBox16.MaxLength = 32767;
-            this.skinTextBox16.MinimumSize = new System.Drawing.Size(28, 28);
-            this.skinTextBox16.MouseBack = null;
-            this.skinTextBox16.MouseState = CCWin.SkinClass.ControlState.Normal;
-            this.skinTextBox16.Multiline = true;
-            this.skinTextBox16.Name = "skinTextBox16";
-            this.skinTextBox16.NormlBack = null;
-            this.skinTextBox16.Padding = new System.Windows.Forms.Padding(5);
-            this.skinTextBox16.ReadOnly = true;
-            this.skinTextBox16.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.skinTextBox16.Size = new System.Drawing.Size(786, 371);
-            // 
-            // 
-            // 
-            this.skinTextBox16.SkinTxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.skinTextBox16.SkinTxt.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.skinTextBox16.SkinTxt.Font = new System.Drawing.Font("微软雅黑", 9.75F);
-            this.skinTextBox16.SkinTxt.Location = new System.Drawing.Point(5, 5);
-            this.skinTextBox16.SkinTxt.Multiline = true;
-            this.skinTextBox16.SkinTxt.Name = "BaseText";
-            this.skinTextBox16.SkinTxt.ReadOnly = true;
-            this.skinTextBox16.SkinTxt.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.skinTextBox16.SkinTxt.Size = new System.Drawing.Size(776, 361);
-            this.skinTextBox16.SkinTxt.TabIndex = 0;
-            this.skinTextBox16.SkinTxt.Text = resources.GetString("resource.Text14");
-            this.skinTextBox16.SkinTxt.WaterColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(127)))), ((int)(((byte)(127)))));
-            this.skinTextBox16.SkinTxt.WaterText = "";
-            this.skinTextBox16.TabIndex = 5;
-            this.skinTextBox16.Text = resources.GetString("skinTextBox16.Text");
-            this.skinTextBox16.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.skinTextBox16.WaterColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(127)))), ((int)(((byte)(127)))));
-            this.skinTextBox16.WaterText = "";
-            this.skinTextBox16.WordWrap = true;
             // 
             // skinTextBox17
             // 
@@ -2427,6 +2179,255 @@
             this.skinTextBox17.WaterText = "";
             this.skinTextBox17.WordWrap = true;
             // 
+            // skinTextBox16
+            // 
+            this.skinTextBox16.BackColor = System.Drawing.Color.Transparent;
+            this.skinTextBox16.DownBack = null;
+            this.skinTextBox16.Icon = null;
+            this.skinTextBox16.IconIsButton = false;
+            this.skinTextBox16.IconMouseState = CCWin.SkinClass.ControlState.Normal;
+            this.skinTextBox16.IsPasswordChat = '\0';
+            this.skinTextBox16.IsSystemPasswordChar = false;
+            this.skinTextBox16.Lines = new string[] {
+        "//使用 方法--以三菱PLC为例 若要访问其他PLC 把Mitsubishi_axActUtlType",
+        " 替代成其他PLC名称 ",
+        "三菱在线: Mitsubishi  三菱仿真: Mitsubishi_axActUtlType ",
+        "MODBUS TCP: MODBUD_TCP 西门子：Siemens ",
+        "PLC.Mitsubishi_axActUtlType. PLC_read_M_bit(\"Y\",\"0\");//读取位--名称--地址",
+        "PLC.Mitsubishi_axActUtlType. PLC_write_M_bit(\"Y\",\"0\",true);//写入位--名称--地址",
+        "PLC.Mitsubishi_axActUtlType. PLC_read_D_register(\"D\",\"0\",“Signed_32_Bit”);//读取有符号" +
+            "32位双字-名称--地址--类型",
+        "PLC.Mitsubishi_axActUtlType. PLC_write_D_register(\"D\",\"0\",“0”,“Signed_32_Bit”);//" +
+            "写入有符号32位双字---名称--地址--内容--类型",
+        "  /// <summary>",
+        "    /// 宏指令与PLC的接口--PLC端必须继承与实现接口",
+        "    /// </summary>",
+        "",
+        "    public interface macroinstruction_PLC_interface",
+        "    {",
+        "        /// <summary>",
+        "        /// PLC准备好",
+        "        /// </summary>",
+        "        bool PLC_ready { get; }//PLC准备好",
+        "        /// <summary>",
+        "        /// PLC报警代码",
+        "        /// </summary>",
+        "        int PLCerr_code { get; }//PLC报警代码",
+        "        /// <summary>",
+        "        /// PLC报警内容",
+        "        /// </summary>",
+        "        string PLCerr_content { get; }//PLC报警内容",
+        "        /// <summary>",
+        "        /// 打开PLC",
+        "        /// </summary>",
+        "        /// <returns></returns>",
+        "        List<bool> PLC_read_M_bit(string Name, string id);//读取--位",
+        "        /// <summary>",
+        "        /// /写入--位",
+        "        /// </summary>",
+        "        /// <param name=\"Name\"></param>",
+        "        /// <param name=\"id\"></param>",
+        "        /// <param name=\"bon-off \"></param>",
+        "        /// <returns></returns>",
+        "        List<bool> PLC_write_M_bit(string Name, string id, bool on_off );//写入--位",
+        "        /// <summary>",
+        "        /// /读取--字",
+        "        /// </summary>",
+        "        /// <param name=\"Name\"></param>",
+        "        /// <param name=\"id\"></param>",
+        "        /// <param name=\"format\">数据格式</param>",
+        "        /// <returns></returns>",
+        "        string PLC_read_D_register(string Name, string id, string format);//读取--字" +
+            "",
+        "        /// <summary>",
+        "        /// 写--字",
+        "        /// </summary>",
+        "        /// <param name=\"Name\"></param>",
+        "        /// <param name=\"id\"></param>",
+        "        /// <param name=\"content\"></param>",
+        "        /// <param name=\"format\"></param>",
+        "        /// <returns></returns>",
+        "        string PLC_write_D_register(string Name, string id, string content, strin" +
+            "g format);//读写--字",
+        "        /// <summary>",
+        "        /// 读取--字--多个读取-自动判断类型改变地址索引",
+        "        /// </summary>",
+        "        /// <param name=\"id\"></param>",
+        "        /// <returns></returns>",
+        "        List<int> PLC_read_D_register_bit(string Name, string id, string format, " +
+            "string Index);//读取--字--多个读取",
+        "        /// <summary>",
+        "        /// 读写--字",
+        "        /// </summary>",
+        "        /// <param name=\"id\"></param>",
+        "        /// <returns></returns>",
+        "        List<int> PLC_write_D_register_bit(string id);//读写--字",
+        "    }",
+        "   /// <summary>",
+        "    /// 数值显示类型",
+        "    /// </summary>",
+        "    public enum numerical_format",
+        "    {",
+        "        BCD_16_Bit, BCD_32_Bit, Hex_16_Bit, Hex_32_Bit, Binary_16_Bit, Binary_32_" +
+            "Bit, Unsigned_16_Bit, Signed_16_Bit",
+        "            , Unsigned_32_Bit, Signed_32_Bit, Float_32_Bit",
+        "    }",
+        "   /// <summary>",
+        "    /// 本类主要用于-宏指令到",
+        "    /// </summary>",
+        "    public class PLC",
+        "    {",
+        "        /// <summary>",
+        "        /// 三菱Mitsubishi PLC仿真",
+        "        /// </summary>",
+        "        public static macroinstruction_PLC_interface Mitsubishi_axActUtlType { ge" +
+            "t; set; }",
+        "        /// <summary>",
+        "        /// 三菱Mitsubishi PLC在线访问 ",
+        "        /// </summary>",
+        "        public static macroinstruction_PLC_interface Mitsubishi { get; set; }",
+        "        /// <summary>",
+        "        /// MODBUD_TCP 在线访问",
+        "        /// </summary>",
+        "        public static macroinstruction_PLC_interface MODBUD_TCP { get; set; }",
+        "        /// <summary>",
+        "        /// 西门子Siemens 在线访问",
+        "        /// </summary>",
+        "        public static macroinstruction_PLC_interface Siemens { get; set; }",
+        "",
+        "    }",
+        "  /// <summary>",
+        "    /// PLC硬件选择",
+        "    /// PLC选择枚举>",
+        "    /// </summary>",
+        "",
+        "    public enum PLC",
+        "    {",
+        "        Mitsubishi,",
+        "        Siemens,",
+        "        Modbus_TCP,",
+        "        HMI",
+        "    }",
+        "    /// <summary>",
+        "    /// PLC各可访问软元件  三菱-bit位",
+        "    /// </summary>",
+        "    public enum Mitsubishi_bit",
+        "    { ",
+        "        LCS,LCC,SM,X,Y,M,L,F,B,TS,SS,SC,CS,CC,SB,S,D_Bit,SD_Bit,R_Bit,SW_Bit,W_Bi" +
+            "t",
+        "    }",
+        "    /// <summary>",
+        "    /// PLC各可访问软元件 三菱 -WORD 字",
+        "    /// </summary>",
+        "    public enum Mitsubishi_D",
+        "    {",
+        "        LCN,LZ,SD,D,R,W,TN,SN,CN,SW,Z",
+        "    }",
+        "    /// <summary>",
+        "    ///  PLC各可访问软元件 西门子 -bit位",
+        "    /// </summary>",
+        "    public enum Siemens_bit",
+        "    {",
+        "       I, Q, M",
+        "    }",
+        "    /// <summary>",
+        "    /// PLC各可访问软元件 西门子-WORD 字",
+        "    /// </summary>",
+        "    public enum Siemens_D",
+        "    {",
+        "       DB",
+        "    }",
+        "    /// <summary>",
+        "    ///  PLC各可访问软元件 Modbus_TCP -bit位",
+        "    /// </summary>",
+        "    public enum Modbus_TCP_bit",
+        "    {",
+        "         X, Y, M",
+        "    }",
+        "    /// <summary>",
+        "    /// PLC各可访问软元件 Modbus_TCP-WORD 字",
+        "    /// </summary>",
+        "    public enum Modbus_TCP_D",
+        "    {",
+        "         D",
+        "    }",
+        "    /// <summary>",
+        "    /// PLC各可访问软元件  三菱-bit位",
+        "    /// </summary>",
+        "    public enum HMI_bit",
+        "    {",
+        "        Data_Bit",
+        "    }",
+        "    /// <summary>",
+        "    /// PLC各可访问软元件 三菱 -WORD 字",
+        "    /// </summary>",
+        "    public enum HMI_D",
+        "    {",
+        "         Data_D",
+        "    }",
+        "    /// <summary>",
+        "    ///  PLC--按钮状态",
+        "    /// </summary>",
+        "    public enum Button_state",
+        "    {",
+        "        Off,ON",
+        "    }",
+        "    /// <summary>",
+        "    /// 数值显示类型",
+        "    /// </summary>",
+        "    public enum numerical_format",
+        "    {",
+        "        BCD_16_Bit, BCD_32_Bit, Hex_16_Bit, Hex_32_Bit, Binary_16_Bit, Binary_32_" +
+            "Bit, Unsigned_16_Bit, Signed_16_Bit",
+        "            , Unsigned_32_Bit, Signed_32_Bit, Float_32_Bit",
+        "    }",
+        "    /// <summary>",
+        "    /// 数值显示类型",
+        "    /// </summary>",
+        "    public enum numerical_type",
+        "    {",
+        "        数值",
+        "    }",
+        "    class PLCselect",
+        "    {",
+        "",
+        "    }"};
+            this.skinTextBox16.Location = new System.Drawing.Point(4, 72);
+            this.skinTextBox16.Margin = new System.Windows.Forms.Padding(0);
+            this.skinTextBox16.MaxLength = 32767;
+            this.skinTextBox16.MinimumSize = new System.Drawing.Size(28, 28);
+            this.skinTextBox16.MouseBack = null;
+            this.skinTextBox16.MouseState = CCWin.SkinClass.ControlState.Normal;
+            this.skinTextBox16.Multiline = true;
+            this.skinTextBox16.Name = "skinTextBox16";
+            this.skinTextBox16.NormlBack = null;
+            this.skinTextBox16.Padding = new System.Windows.Forms.Padding(5);
+            this.skinTextBox16.ReadOnly = true;
+            this.skinTextBox16.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.skinTextBox16.Size = new System.Drawing.Size(786, 371);
+            // 
+            // 
+            // 
+            this.skinTextBox16.SkinTxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.skinTextBox16.SkinTxt.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.skinTextBox16.SkinTxt.Font = new System.Drawing.Font("微软雅黑", 9.75F);
+            this.skinTextBox16.SkinTxt.Location = new System.Drawing.Point(5, 5);
+            this.skinTextBox16.SkinTxt.Multiline = true;
+            this.skinTextBox16.SkinTxt.Name = "BaseText";
+            this.skinTextBox16.SkinTxt.ReadOnly = true;
+            this.skinTextBox16.SkinTxt.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.skinTextBox16.SkinTxt.Size = new System.Drawing.Size(776, 361);
+            this.skinTextBox16.SkinTxt.TabIndex = 0;
+            this.skinTextBox16.SkinTxt.Text = resources.GetString("resource.Text14");
+            this.skinTextBox16.SkinTxt.WaterColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(127)))), ((int)(((byte)(127)))));
+            this.skinTextBox16.SkinTxt.WaterText = "";
+            this.skinTextBox16.TabIndex = 5;
+            this.skinTextBox16.Text = resources.GetString("skinTextBox16.Text");
+            this.skinTextBox16.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.skinTextBox16.WaterColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(127)))), ((int)(((byte)(127)))));
+            this.skinTextBox16.WaterText = "";
+            this.skinTextBox16.WordWrap = true;
+            // 
             // document_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -2437,6 +2438,7 @@
             this.Name = "document_Form";
             this.Text = "document_Form";
             this.skinTabControl1.ResumeLayout(false);
+            this.skinTabPage15.ResumeLayout(false);
             this.skinTabPage13.ResumeLayout(false);
             this.skinTabPage11.ResumeLayout(false);
             this.skinTabPage12.ResumeLayout(false);
@@ -2451,7 +2453,6 @@
             this.skinTabPage9.ResumeLayout(false);
             this.skinTabPage10.ResumeLayout(false);
             this.skinTabPage14.ResumeLayout(false);
-            this.skinTabPage15.ResumeLayout(false);
             this.skinTabPage16.ResumeLayout(false);
             this.ResumeLayout(false);
 

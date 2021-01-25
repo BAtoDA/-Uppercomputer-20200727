@@ -117,114 +117,225 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="resource.Text12" xml:space="preserve">
-    <value>            ///线程的使用
-            Thread thread = new Thread();//实例化线程--需要创建一个无参数的方法
-            thread.Start();//启动线程
-            thread.Abort();//停止线程--销毁
-            thread.Join();//暂停线程
-            //thread.IsAlive;//线程状态--BOOL值
-            Thread.Sleep();//延时线程
-            Thread thread1 = new Thread(() =&gt;//实例化一个匿名线程
-              {
-                  //内容
-              });
-            thread1.Start();//启动线程
-            //线程池
-            ThreadPool.QueueUserWorkItem(new WaitCallback(-回调方法名称 - ), 方法());
-            ThreadPool.QueueUserWorkItem((run) =&gt;
+  <data name="resource.Text" xml:space="preserve">
+    <value>   /// &lt;summary&gt;
+    /// 重写 套接字
+    /// &lt;/summary&gt;
+    public class macroinstruction_Socket : Socket
+    {
+        /// &lt;summary&gt;
+        /// 套接字链接 结果
+        /// &lt;/summary&gt;
+        public bool socket_OK { get; set; }
+        public macroinstruction_Socket(AddressFamily family, SocketType socket, ProtocolType protocol) : base(family, socket, protocol)
+        {
+
+        }
+        /// &lt;summary&gt;
+        /// 打开连接套接字
+        /// &lt;/summary&gt;
+        /// &lt;param name="iPEndPoint"&gt;&lt;/param&gt;
+        public bool Open(IPEndPoint iPEndPoint)//打开套接字
+        {
+            try
             {
-                //内容
-            });</value>
+                this.Connect(iPEndPoint);//连接
+                socket_OK = true;
+                return true;
+            }
+            catch { socket_OK = false; return false; }
+        }
+        public void send(byte[] Data)
+        {
+            try
+            {
+                this.Send(Data);//发送数据
+                socket_OK = true;
+            }
+            catch { socket_OK = false; }
+        }
+        public void send(string Data)
+        {
+            try
+            {
+                this.SendFile(Data);//发送数据
+                socket_OK = true;
+            }
+            catch { socket_OK = false; }
+        }
+        public byte[] reception(byte[] Data)
+        {
+            try
+            {
+                this.Receive(Data, Data.Length, 0);//接收数据
+                socket_OK = true;
+                return Data;
+            }
+            catch { socket_OK = false; return Data; }
+        }
+    }
+    </value>
   </data>
-  <data name="skinTextBox14.Text" xml:space="preserve">
-    <value>            ///线程的使用
-            Thread thread = new Thread();//实例化线程--需要创建一个无参数的方法
-            thread.Start();//启动线程
-            thread.Abort();//停止线程--销毁
-            thread.Join();//暂停线程
-            //thread.IsAlive;//线程状态--BOOL值
-            Thread.Sleep();//延时线程
-            Thread thread1 = new Thread(() =&gt;//实例化一个匿名线程
-              {
-                  //内容
-              });
-            thread1.Start();//启动线程
-            //线程池
-            ThreadPool.QueueUserWorkItem(new WaitCallback(-回调方法名称 - ), 方法());
-            ThreadPool.QueueUserWorkItem((run) =&gt;
+  <data name="skinTextBox10.Text" xml:space="preserve">
+    <value>   /// &lt;summary&gt;
+    /// 重写 套接字
+    /// &lt;/summary&gt;
+    public class macroinstruction_Socket : Socket
+    {
+        /// &lt;summary&gt;
+        /// 套接字链接 结果
+        /// &lt;/summary&gt;
+        public bool socket_OK { get; set; }
+        public macroinstruction_Socket(AddressFamily family, SocketType socket, ProtocolType protocol) : base(family, socket, protocol)
+        {
+
+        }
+        /// &lt;summary&gt;
+        /// 打开连接套接字
+        /// &lt;/summary&gt;
+        /// &lt;param name="iPEndPoint"&gt;&lt;/param&gt;
+        public bool Open(IPEndPoint iPEndPoint)//打开套接字
+        {
+            try
             {
-                //内容
-            });
+                this.Connect(iPEndPoint);//连接
+                socket_OK = true;
+                return true;
+            }
+            catch { socket_OK = false; return false; }
+        }
+        public void send(byte[] Data)
+        {
+            try
+            {
+                this.Send(Data);//发送数据
+                socket_OK = true;
+            }
+            catch { socket_OK = false; }
+        }
+        public void send(string Data)
+        {
+            try
+            {
+                this.SendFile(Data);//发送数据
+                socket_OK = true;
+            }
+            catch { socket_OK = false; }
+        }
+        public byte[] reception(byte[] Data)
+        {
+            try
+            {
+                this.Receive(Data, Data.Length, 0);//接收数据
+                socket_OK = true;
+                return Data;
+            }
+            catch { socket_OK = false; return Data; }
+        }
+    }
+    </value>
+  </data>
+  <data name="resource.Text1" xml:space="preserve">
+    <value>//使用方法--静态类名&lt;约束&gt;.属性=值;  
+//实例化：静态类名&lt;约束&gt;.属性 名称 =new 静态类名&lt;约束&gt;.属性(传入约束);
+//使用上位机内部辅助触点与寄存器案例
+macroinstruction_data&lt;int&gt;. D_Data[0]=20;//编译器自动决定类型
+macroinstruction_data&lt;bool&gt;. M_Data[0]=true;//置位
 //使用上位机内部线程 与无类型 存储区
 macroinstruction_data&lt;Thread&gt;.thread thread_1 =new Thread(方法名);--可以使用匿名线程
 //匿名线程使用
 macroinstruction_data&lt;Thread&gt;.thread[0] = new Thread (()=&gt;
  {
 //内容
-});</value>
+});
+macroinstruction_data&lt;Thread&gt;.thread[0].Start();
+//无类型 存储区 使用
+macroinstruction_data&lt;int&gt; data =new macroinstruction_data&lt;int&gt;(20);
+macroinstruction_data&lt;int&gt;.Data [0];//填充后的泛型值
+
+ /// &lt;summary&gt;
+    /// 宏指令 数据保存静态区
+    /// &lt;/summary&gt;
+    public class macroinstruction_data&lt;T&gt;
+    {
+        /// &lt;summary&gt;
+        /// 泛型区--使用前要记得地址
+        /// &lt;/summary&gt;
+        public static List&lt;T&gt; Data = new List&lt;T&gt;();
+        /// &lt;summary&gt;
+        ///宏指令默认线程区 -- 最大线程数量100
+        /// &lt;/summary&gt;
+        public static Thread[] thread = new Thread[100];//最大线程数量
+        /// &lt;summary&gt;
+        /// 创建寄存器--默认无类型约束--使用前
+        /// &lt;/summary&gt;
+        public static object[] D_Data = new object[1024];
+        /// &lt;summary&gt;
+        /// 创建标志位--默认全是false
+        /// &lt;/summary&gt;
+        public static bool[] M_Data = new bool[1024];
+        /// &lt;summary&gt;
+        /// 构造函数--使用泛型前 记得 使用此类实例化 
+        /// &lt;/summary&gt;
+        /// &lt;param name="Name"&gt;&lt;/param&gt;
+        public macroinstruction_data(T Name)
+        {
+            Data.Add(Name);//添加对象
+        }
+
+    }</value>
   </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="skinTabControl1.PageArrowDown" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABUAAAAiCAYAAACwaJKDAAAABGdBTUEAALGPC/xhBQAAABl0RVh0U29m
-        dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAD9SURBVEhL1dO7CoJQGMDxtu73+1CBzY31Ck0NvkOb
-        gzi6+QaCEDgLTqKCEPQIIUGbb+Gui+YXBIc4WcP3DQ0/OJfv/LdTyfO8iu2/ojVsZNE6NrJoAxtZtIkN
-        oi1sZNE2NrJoBxtEu9gg2vvE9/2JLMtrURQ3LEmSBMdxprw3oDQKwTiOT8X6zirOTAjDDA9E+58EQTBV
-        FGWbJMm52D+DaZpeVFXdeZ43Y2dZEB2UMQxjaVnWPsuya+Hmuu5B1/UVb/blaxRomiaEYXiMokiBNW+G
-        BdHhL2zbXpimueTdvYPoCBtZdIwNohNsZFH4bqjIovDdUJFF59j+JZrPH4oDa+C9e8hUAAAAAElFTkSu
-        QmCC
-</value>
+  <data name="skinTextBox15.Text" xml:space="preserve">
+    <value>//使用方法--静态类名&lt;约束&gt;.属性=值;  
+//实例化：静态类名&lt;约束&gt;.属性 名称 =new 静态类名&lt;约束&gt;.属性(传入约束);
+//使用上位机内部辅助触点与寄存器案例
+macroinstruction_data&lt;int&gt;. D_Data[0]=20;//编译器自动决定类型
+macroinstruction_data&lt;bool&gt;. M_Data[0]=true;//置位
+//使用上位机内部线程 与无类型 存储区
+macroinstruction_data&lt;Thread&gt;.thread thread_1 =new Thread(方法名);--可以使用匿名线程
+//匿名线程使用
+macroinstruction_data&lt;Thread&gt;.thread[0] = new Thread (()=&gt;
+ {
+//内容
+});
+macroinstruction_data&lt;Thread&gt;.thread[0].Start();
+//无类型 存储区 使用
+macroinstruction_data&lt;int&gt; data =new macroinstruction_data&lt;int&gt;(20);
+macroinstruction_data&lt;int&gt;.Data [0];//填充后的泛型值
+
+ /// &lt;summary&gt;
+    /// 宏指令 数据保存静态区
+    /// &lt;/summary&gt;
+    public class macroinstruction_data&lt;T&gt;
+    {
+        /// &lt;summary&gt;
+        /// 泛型区--使用前要记得地址
+        /// &lt;/summary&gt;
+        public static List&lt;T&gt; Data = new List&lt;T&gt;();
+        /// &lt;summary&gt;
+        ///宏指令默认线程区 -- 最大线程数量100
+        /// &lt;/summary&gt;
+        public static Thread[] thread = new Thread[100];//最大线程数量
+        /// &lt;summary&gt;
+        /// 创建寄存器--默认无类型约束--使用前
+        /// &lt;/summary&gt;
+        public static object[] D_Data = new object[1024];
+        /// &lt;summary&gt;
+        /// 创建标志位--默认全是false
+        /// &lt;/summary&gt;
+        public static bool[] M_Data = new bool[1024];
+        /// &lt;summary&gt;
+        /// 构造函数--使用泛型前 记得 使用此类实例化 
+        /// &lt;/summary&gt;
+        /// &lt;param name="Name"&gt;&lt;/param&gt;
+        public macroinstruction_data(T Name)
+        {
+            Data.Add(Name);//添加对象
+        }
+
+    }</value>
   </data>
-  <data name="skinTabControl1.PageArrowHover" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABUAAAAiCAYAAACwaJKDAAAABGdBTUEAALGPC/xhBQAAABl0RVh0U29m
-        dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAEwSURBVEhLtdNNS4RAAMbxvkBtLxu9UFT0skUv1rZ7
-        7h77HfZkH0QPeu0mePQgnsSrhCCCN+8e99DVayKhNk+wUDFWh2eFH8yMzh9kmKW2bZfZEF1hW1i0x4bo
-        Khuia2yIrrMhusGGaJ8N0U02RLfYEN1mQ3SHDdFdNkT32BDd7xLH8amu6/eqqj58JdZGURSdyfYAogdd
-        TNMcFUXxIsbfHrEWGYYxFkPpPkQPu6RpOtA07bEsy5mYfz5VVb2K4CRJknMxle5D9Og3rusqnudN67p+
-        a5rmPQiCJ8dxbmXfziF6/BfbtsdZlml5nj9bloXfln43h+jJf4RhqPi+fyd79xOiOEUqRAdsiOIUqRC9
-        YEP0kg3RKzZEr9kQvWFDVGFDFPeYClFcPSpEh2wLiLbDDwVKnf7UO7t5AAAAAElFTkSuQmCC
-</value>
-  </data>
-  <data name="skinTabControl1.PageCloseHover" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAYAAABWdVznAAAABGdBTUEAALGPC/xhBQAAAH9JREFUKFNj
-        +P//P0kYmcMKxXjFYIwzaBiXGFgDyIQzHB2n/4MwiA3DaGJgm1A0cHad+88//T6Q+/8MiAbxsWmAWw9S
-        JLH653+p9f/BNEwzFMOdhKIJpBiGYWJADFeHophYG0j2A1wDkiQYo4lhehoJ4xJD8TTIBLApuMX+MwAA
-        JO7ByqoT8QIAAAAASUVORK5CYII=
-</value>
-  </data>
-  <data name="skinTabControl1.PageCloseNormal" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAYAAABWdVznAAAABGdBTUEAALGPC/xhBQAAAItJREFUKFOd
-        kbENgDAMBCNRIFExAAUtbYoMQc8A7EHBFKxrfJGxUERjkJ7E9r/fSZKIhMCvUwyK0cC+/8jBqwKCSZEV
-        RbEoZluJyVOHVwV0yOtxCdBvV2ysrxwieC4oT9EIZxPj5AKssPeODRlH6j4SB2Rmxmg7n5anDu+fQ/gM
-        bEK3hFXoHQIvLekGBLunGoMvIJEAAAAASUVORK5CYII=
-</value>
-  </data>
-  <data name="skinTabControl1.PageDown" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAADsAAAAiCAYAAADh/KHgAAAABGdBTUEAALGPC/xhBQAAAOZJREFUaEPl
-        2KsKQlEURdHrG996BYNgMBgMFoPBYrAYDBaDwWAwGARBEAT//bpXWHC+YXpghhVHPDuLVyqKokFPTmOb
-        9FJsm16K7dJLsQN6KXZEL8WO6RlbjjGhJ6exU3opdkYvxc7pGVuJsaAnp7FLesZWY6zoyWnsmp6xtRgb
-        enIKW4+xpSensPrc7ujJaeyenrH6yR/oySlsK8aRnpzC6mxxoiensJ0YZ3pyCqsbzYWenML2YlzpySls
-        P8aNnpzG3ukZq1Pjg56cwg5jPOnJaeyLnrF5jDc9OY390EuxX3p/hs3yH+t9kV6QtrMcAAAAAElFTkSu
-        QmCC
-</value>
-  </data>
-  <data name="skinTabControl1.PageHover" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAADsAAAAiCAYAAADh/KHgAAAABGdBTUEAALGPC/xhBQAAABl0RVh0U29m
-        dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAEISURBVGhD3dirTkNRFEXRy7NAICGkaaAhvIpC4ZB1
-        lTgsEolF1lZWIrFIHBKHw2FQqIoKfuGyptjJ/YZ5kimWHHKfJm+lbdtdezgLu2+vi+3bK+xqxpE9nIU9
-        sdfFXtrrYq/sFXYt49oezsLe2CvsesbYHs7CTuwVdiPj1h5OsJsZd/Zwgu1l3NvDCXYr48EeTrDbGY/2
-        cILdyXiyhxMsx+3UHk6wexkzezjBcsnP7eEEe5DxbA8nWL4tXuzhBDvIeLWHE+xhxps9nGCHGe/2cII9
-        zviwh7Own/YKy1fjlz2cYE8zvu3hBHuW8WMPJ9jzjF97OMFeZCzs4Szs0l5hRxl/9pqmGf0Dp89NtaTt
-        b1AAAAAASUVORK5CYII=
-</value>
-  </data>
-  <data name="resource.Text1" xml:space="preserve">
+  <data name="resource.Text2" xml:space="preserve">
     <value>   /// &lt;summary&gt;
         /// 转换类型---shorot--string
         /// &lt;/summary&gt;
@@ -642,7 +753,7 @@ macroinstruction_data&lt;Thread&gt;.thread[0] = new Thread (()=&gt;
             return new short[] { BitConverter.ToInt16(data, 0), BitConverter.ToInt16(data, 2) };//合并数据返回数据
         }</value>
   </data>
-  <data name="resource.Text2" xml:space="preserve">
+  <data name="resource.Text3" xml:space="preserve">
     <value> public class macroinstruction_SerialPort : SerialPort
     {
         /// &lt;summary&gt;
@@ -766,7 +877,7 @@ macroinstruction_data&lt;Thread&gt;.thread[0] = new Thread (()=&gt;
         }
     }</value>
   </data>
-  <data name="resource.Text3" xml:space="preserve">
+  <data name="resource.Text4" xml:space="preserve">
     <value>C# 支持以下预定义整型类型：
 整型类型的特征
 C# 类型/关键字	范围	大小	.NET 类型
@@ -866,7 +977,7 @@ enum	表达式 (E)0 生成的值，其中 E 是枚举标识符。
 struct	通过如下设置生成的值：将所有值类型的字段设置为其默认值，将所有引用类型的字段设置为 null。
 任何可以为 null 的值类型	HasValue 属性为 false 且 Value 属性未定义的实例。 该默认值也称为可以为 null 的值类型的“null” 值。</value>
   </data>
-  <data name="resource.Text4" xml:space="preserve">
+  <data name="resource.Text5" xml:space="preserve">
     <value>访问修饰符（C# 参考）
    
 访问修饰符是关键字，用于指定成员或类型已声明的可访问性。 本部分介绍四个访问修饰符：
@@ -908,7 +1019,7 @@ private protected：访问限于包含类或派生自当前程序集中包含类
 对使用可访问性级别的限制：概括对使用已声明的可访问性级别的限制。
 </value>
   </data>
-  <data name="resource.Text5" xml:space="preserve">
+  <data name="resource.Text6" xml:space="preserve">
     <value>语句关键字（C# 参考）
    
 语句是程序指令。 除了下表中的引用主题介绍的内容外，语句都是按照顺序执行。 下表列出了 C# 语句关键字。 有关不用任何关键字表示的语句的详细信息，请参阅语句。
@@ -936,7 +1047,7 @@ Checked 和 unchecked	checked、unchecked
 fixed 语句	fixed
 lock 语句	lock</value>
   </data>
-  <data name="resource.Text6" xml:space="preserve">
+  <data name="resource.Text7" xml:space="preserve">
     <value>方法参数（C# 参考）
    
 为不具有 in、ref 或 out 的方法声明的参数会按值传递给调用的方法。 可以在方法中更改该值，但当控制传递回调用过程时，不会保留更改后的值。 可以通过使用方法参数关键字更改此行为。
@@ -956,7 +1067,7 @@ in 指定此参数由引用传递，但只由调用方法读取。
 ref 指定此参数由引用传递，可能由调用方法读取或写入。
 out 指定此参数由引用传递，由调用方法写入。</value>
   </data>
-  <data name="resource.Text7" xml:space="preserve">
+  <data name="resource.Text8" xml:space="preserve">
     <value>using（C# 参考）
 2019/04/05
    
@@ -1190,7 +1301,7 @@ descending	orderby 子句中的上下文关键字。
   <data name="skinTextBox6.Lines1" xml:space="preserve">
     <value>任何 Lambda 表达式都可以转换为委托类型。 Lambda 表达式可以转换的委托类型由其参数和返回值的类型定义。 如果 lambda 表达式不返回值，则可以将其转换为 Action 委托类型之一；否则，可将其转换为 Func 委托类型之一。 例如，有 2 个参数且不返回值的 Lambda 表达式可转换为 Action&lt;T1,T2&gt; 委托。 有 1 个参数且不返回值的 Lambda 表达式可转换为 Func&lt;T,TResult&gt; 委托。 以下示例中，lambda 表达式 x =&gt; x * x（指定名为 x 的参数并返回 x 平方值）将分配给委托类型的变量：</value>
   </data>
-  <data name="resource.Text8" xml:space="preserve">
+  <data name="resource.Text9" xml:space="preserve">
     <value>算术运算符（C# 参考）
 2020/05/11
  
@@ -1534,7 +1645,7 @@ true 运算符返回 bool 值 true，以指明其操作数一定为 true。 fals
 同时包含 public 和 static 修饰符。
 一元运算符有一个输入参数。 二元运算符有两个输入参数。 在每种情况下，都至少有一个参数必须具有类型 T 或 T?，其中 T 是包含运算符声明的类型。</value>
   </data>
-  <data name="resource.Text9" xml:space="preserve">
+  <data name="resource.Text10" xml:space="preserve">
     <value>C# 预处理器指令
 2015/07/20
    
@@ -1580,7 +1691,7 @@ true 运算符返回 bool 值 true，以指明其操作数一定为 true。 fals
 尽管编译器没有单独的预处理器，但本节中所述指令的处理方式与有预处理器时一样。 这些指令用于帮助条件编译。 不同于 C 和 C++ 指令，不能使用这些指令来创建宏。
 预处理器指令必须是一行中唯一的说明。</value>
   </data>
-  <data name="resource.Text10" xml:space="preserve">
+  <data name="resource.Text11" xml:space="preserve">
     <value>Thread.Sleep 方法
 定义
 命名空间:
@@ -1758,613 +1869,59 @@ public static System.Windows.MessageBoxResult Show (string messageBoxText, strin
 
 21、PrintDialog控件和PrintDocument 控件</value>
   </data>
-  <data name="resource.Text11" xml:space="preserve">
-    <value>   /// &lt;summary&gt;
-    /// 重写 套接字
-    /// &lt;/summary&gt;
-    public class macroinstruction_Socket : Socket
-    {
-        /// &lt;summary&gt;
-        /// 套接字链接 结果
-        /// &lt;/summary&gt;
-        public bool socket_OK { get; set; }
-        public macroinstruction_Socket(AddressFamily family, SocketType socket, ProtocolType protocol) : base(family, socket, protocol)
-        {
-
-        }
-        /// &lt;summary&gt;
-        /// 打开连接套接字
-        /// &lt;/summary&gt;
-        /// &lt;param name="iPEndPoint"&gt;&lt;/param&gt;
-        public bool Open(IPEndPoint iPEndPoint)//打开套接字
-        {
-            try
+  <data name="resource.Text12" xml:space="preserve">
+    <value>            ///线程的使用
+            Thread thread = new Thread();//实例化线程--需要创建一个无参数的方法
+            thread.Start();//启动线程
+            thread.Abort();//停止线程--销毁
+            thread.Join();//暂停线程
+            //thread.IsAlive;//线程状态--BOOL值
+            Thread.Sleep();//延时线程
+            Thread thread1 = new Thread(() =&gt;//实例化一个匿名线程
+              {
+                  //内容
+              });
+            thread1.Start();//启动线程
+            //线程池
+            ThreadPool.QueueUserWorkItem(new WaitCallback(-回调方法名称 - ), 方法());
+            ThreadPool.QueueUserWorkItem((run) =&gt;
             {
-                this.Connect(iPEndPoint);//连接
-                socket_OK = true;
-                return true;
-            }
-            catch { socket_OK = false; return false; }
-        }
-        public void send(byte[] Data)
-        {
-            try
-            {
-                this.Send(Data);//发送数据
-                socket_OK = true;
-            }
-            catch { socket_OK = false; }
-        }
-        public void send(string Data)
-        {
-            try
-            {
-                this.SendFile(Data);//发送数据
-                socket_OK = true;
-            }
-            catch { socket_OK = false; }
-        }
-        public byte[] reception(byte[] Data)
-        {
-            try
-            {
-                this.Receive(Data, Data.Length, 0);//接收数据
-                socket_OK = true;
-                return Data;
-            }
-            catch { socket_OK = false; return Data; }
-        }
-    }
-    </value>
-  </data>
-  <data name="skinTextBox10.Text" xml:space="preserve">
-    <value>   /// &lt;summary&gt;
-    /// 重写 套接字
-    /// &lt;/summary&gt;
-    public class macroinstruction_Socket : Socket
-    {
-        /// &lt;summary&gt;
-        /// 套接字链接 结果
-        /// &lt;/summary&gt;
-        public bool socket_OK { get; set; }
-        public macroinstruction_Socket(AddressFamily family, SocketType socket, ProtocolType protocol) : base(family, socket, protocol)
-        {
-
-        }
-        /// &lt;summary&gt;
-        /// 打开连接套接字
-        /// &lt;/summary&gt;
-        /// &lt;param name="iPEndPoint"&gt;&lt;/param&gt;
-        public bool Open(IPEndPoint iPEndPoint)//打开套接字
-        {
-            try
-            {
-                this.Connect(iPEndPoint);//连接
-                socket_OK = true;
-                return true;
-            }
-            catch { socket_OK = false; return false; }
-        }
-        public void send(byte[] Data)
-        {
-            try
-            {
-                this.Send(Data);//发送数据
-                socket_OK = true;
-            }
-            catch { socket_OK = false; }
-        }
-        public void send(string Data)
-        {
-            try
-            {
-                this.SendFile(Data);//发送数据
-                socket_OK = true;
-            }
-            catch { socket_OK = false; }
-        }
-        public byte[] reception(byte[] Data)
-        {
-            try
-            {
-                this.Receive(Data, Data.Length, 0);//接收数据
-                socket_OK = true;
-                return Data;
-            }
-            catch { socket_OK = false; return Data; }
-        }
-    }
-    </value>
-  </data>
-  <data name="resource.Text" xml:space="preserve">
-    <value>//使用方法--静态类名&lt;约束&gt;.属性=值;  
-//实例化：静态类名&lt;约束&gt;.属性 名称 =new 静态类名&lt;约束&gt;.属性(传入约束);
-//使用上位机内部辅助触点与寄存器案例
-macroinstruction_data&lt;int&gt;. D_Data[0]=20;//编译器自动决定类型
-macroinstruction_data&lt;bool&gt;. M_Data[0]=true;//置位
+                //内容
+            });
 //使用上位机内部线程 与无类型 存储区
 macroinstruction_data&lt;Thread&gt;.thread thread_1 =new Thread(方法名);--可以使用匿名线程
 //匿名线程使用
 macroinstruction_data&lt;Thread&gt;.thread[0] = new Thread (()=&gt;
  {
 //内容
-});
-//无类型 存储区 使用
-macroinstruction_data&lt;int&gt; data =new macroinstruction_data&lt;int&gt;(20);
-macroinstruction_data&lt;int&gt;.Data [0];//填充后的泛型值
-
- /// &lt;summary&gt;
-    /// 宏指令 数据保存静态区
-    /// &lt;/summary&gt;
-    public class macroinstruction_data&lt;T&gt;
-    {
-        /// &lt;summary&gt;
-        /// 泛型区--使用前要记得地址
-        /// &lt;/summary&gt;
-        public static List&lt;T&gt; Data = new List&lt;T&gt;();
-        /// &lt;summary&gt;
-        ///宏指令默认线程区 -- 最大线程数量100
-        /// &lt;/summary&gt;
-        public static Thread[] thread = new Thread[100];//最大线程数量
-        /// &lt;summary&gt;
-        /// 创建寄存器--默认无类型约束--使用前
-        /// &lt;/summary&gt;
-        public static object[] D_Data = new object[1024];
-        /// &lt;summary&gt;
-        /// 创建标志位--默认全是false
-        /// &lt;/summary&gt;
-        public static bool[] M_Data = new bool[1024];
-        /// &lt;summary&gt;
-        /// 构造函数--使用泛型前 记得 使用此类实例化 
-        /// &lt;/summary&gt;
-        /// &lt;param name="Name"&gt;&lt;/param&gt;
-        public macroinstruction_data(T Name)
-        {
-            Data.Add(Name);//添加对象
-        }
-
-    }</value>
+});</value>
   </data>
-  <data name="skinTextBox15.Text" xml:space="preserve">
-    <value>//使用方法--静态类名&lt;约束&gt;.属性=值;  
-//实例化：静态类名&lt;约束&gt;.属性 名称 =new 静态类名&lt;约束&gt;.属性(传入约束);
-//使用上位机内部辅助触点与寄存器案例
-macroinstruction_data&lt;int&gt;. D_Data[0]=20;//编译器自动决定类型
-macroinstruction_data&lt;bool&gt;. M_Data[0]=true;//置位
+  <data name="skinTextBox14.Text" xml:space="preserve">
+    <value>            ///线程的使用
+            Thread thread = new Thread();//实例化线程--需要创建一个无参数的方法
+            thread.Start();//启动线程
+            thread.Abort();//停止线程--销毁
+            thread.Join();//暂停线程
+            //thread.IsAlive;//线程状态--BOOL值
+            Thread.Sleep();//延时线程
+            Thread thread1 = new Thread(() =&gt;//实例化一个匿名线程
+              {
+                  //内容
+              });
+            thread1.Start();//启动线程
+            //线程池
+            ThreadPool.QueueUserWorkItem(new WaitCallback(-回调方法名称 - ), 方法());
+            ThreadPool.QueueUserWorkItem((run) =&gt;
+            {
+                //内容
+            });
 //使用上位机内部线程 与无类型 存储区
 macroinstruction_data&lt;Thread&gt;.thread thread_1 =new Thread(方法名);--可以使用匿名线程
 //匿名线程使用
 macroinstruction_data&lt;Thread&gt;.thread[0] = new Thread (()=&gt;
  {
 //内容
-});
-//无类型 存储区 使用
-macroinstruction_data&lt;int&gt; data =new macroinstruction_data&lt;int&gt;(20);
-macroinstruction_data&lt;int&gt;.Data [0];//填充后的泛型值
-
- /// &lt;summary&gt;
-    /// 宏指令 数据保存静态区
-    /// &lt;/summary&gt;
-    public class macroinstruction_data&lt;T&gt;
-    {
-        /// &lt;summary&gt;
-        /// 泛型区--使用前要记得地址
-        /// &lt;/summary&gt;
-        public static List&lt;T&gt; Data = new List&lt;T&gt;();
-        /// &lt;summary&gt;
-        ///宏指令默认线程区 -- 最大线程数量100
-        /// &lt;/summary&gt;
-        public static Thread[] thread = new Thread[100];//最大线程数量
-        /// &lt;summary&gt;
-        /// 创建寄存器--默认无类型约束--使用前
-        /// &lt;/summary&gt;
-        public static object[] D_Data = new object[1024];
-        /// &lt;summary&gt;
-        /// 创建标志位--默认全是false
-        /// &lt;/summary&gt;
-        public static bool[] M_Data = new bool[1024];
-        /// &lt;summary&gt;
-        /// 构造函数--使用泛型前 记得 使用此类实例化 
-        /// &lt;/summary&gt;
-        /// &lt;param name="Name"&gt;&lt;/param&gt;
-        public macroinstruction_data(T Name)
-        {
-            Data.Add(Name);//添加对象
-        }
-
-    }</value>
-  </data>
-  <data name="resource.Text14" xml:space="preserve">
-    <value>//使用 方法--以三菱PLC为例 若要访问其他PLC 把Mitsubishi_axActUtlType
- 替代成其他PLC名称 
-三菱在线: Mitsubishi  三菱仿真: Mitsubishi_axActUtlType 
-MODBUS TCP: MODBUD_TCP 西门子：Siemens 
-PLC.Mitsubishi_axActUtlType. PLC_read_M_bit("Y","0");//读取位--名称--地址
-PLC.Mitsubishi_axActUtlType. PLC_write_M_bit("Y","0",true);//写入位--名称--地址
-PLC.Mitsubishi_axActUtlType. PLC_read_D_register("D","0",“Signed_32_Bit”);//读取有符号32位双字-名称--地址--类型
-PLC.Mitsubishi_axActUtlType. PLC_write_D_register("D","0",“0”,“Signed_32_Bit”);//写入有符号32位双字---名称--地址--内容--类型
-  /// &lt;summary&gt;
-    /// 宏指令与PLC的接口--PLC端必须继承与实现接口
-    /// &lt;/summary&gt;
-
-    public interface macroinstruction_PLC_interface
-    {
-        /// &lt;summary&gt;
-        /// PLC准备好
-        /// &lt;/summary&gt;
-        bool PLC_ready { get; }//PLC准备好
-        /// &lt;summary&gt;
-        /// PLC报警代码
-        /// &lt;/summary&gt;
-        int PLCerr_code { get; }//PLC报警代码
-        /// &lt;summary&gt;
-        /// PLC报警内容
-        /// &lt;/summary&gt;
-        string PLCerr_content { get; }//PLC报警内容
-        /// &lt;summary&gt;
-        /// 打开PLC
-        /// &lt;/summary&gt;
-        /// &lt;returns&gt;&lt;/returns&gt;
-        List&lt;bool&gt; PLC_read_M_bit(string Name, string id);//读取--位
-        /// &lt;summary&gt;
-        /// /写入--位
-        /// &lt;/summary&gt;
-        /// &lt;param name="Name"&gt;&lt;/param&gt;
-        /// &lt;param name="id"&gt;&lt;/param&gt;
-        /// &lt;param name="bon-off "&gt;&lt;/param&gt;
-        /// &lt;returns&gt;&lt;/returns&gt;
-        List&lt;bool&gt; PLC_write_M_bit(string Name, string id, bool on_off );//写入--位
-        /// &lt;summary&gt;
-        /// /读取--字
-        /// &lt;/summary&gt;
-        /// &lt;param name="Name"&gt;&lt;/param&gt;
-        /// &lt;param name="id"&gt;&lt;/param&gt;
-        /// &lt;param name="format"&gt;数据格式&lt;/param&gt;
-        /// &lt;returns&gt;&lt;/returns&gt;
-        string PLC_read_D_register(string Name, string id, string format);//读取--字
-        /// &lt;summary&gt;
-        /// 写--字
-        /// &lt;/summary&gt;
-        /// &lt;param name="Name"&gt;&lt;/param&gt;
-        /// &lt;param name="id"&gt;&lt;/param&gt;
-        /// &lt;param name="content"&gt;&lt;/param&gt;
-        /// &lt;param name="format"&gt;&lt;/param&gt;
-        /// &lt;returns&gt;&lt;/returns&gt;
-        string PLC_write_D_register(string Name, string id, string content, string format);//读写--字
-        /// &lt;summary&gt;
-        /// 读取--字--多个读取-自动判断类型改变地址索引
-        /// &lt;/summary&gt;
-        /// &lt;param name="id"&gt;&lt;/param&gt;
-        /// &lt;returns&gt;&lt;/returns&gt;
-        List&lt;int&gt; PLC_read_D_register_bit(string Name, string id, string format, string Index);//读取--字--多个读取
-        /// &lt;summary&gt;
-        /// 读写--字
-        /// &lt;/summary&gt;
-        /// &lt;param name="id"&gt;&lt;/param&gt;
-        /// &lt;returns&gt;&lt;/returns&gt;
-        List&lt;int&gt; PLC_write_D_register_bit(string id);//读写--字
-    }
-   /// &lt;summary&gt;
-    /// 数值显示类型
-    /// &lt;/summary&gt;
-    public enum numerical_format
-    {
-        BCD_16_Bit, BCD_32_Bit, Hex_16_Bit, Hex_32_Bit, Binary_16_Bit, Binary_32_Bit, Unsigned_16_Bit, Signed_16_Bit
-            , Unsigned_32_Bit, Signed_32_Bit, Float_32_Bit
-    }
-   /// &lt;summary&gt;
-    /// 本类主要用于-宏指令到
-    /// &lt;/summary&gt;
-    public class PLC
-    {
-        /// &lt;summary&gt;
-        /// 三菱Mitsubishi PLC仿真
-        /// &lt;/summary&gt;
-        public static macroinstruction_PLC_interface Mitsubishi_axActUtlType { get; set; }
-        /// &lt;summary&gt;
-        /// 三菱Mitsubishi PLC在线访问 
-        /// &lt;/summary&gt;
-        public static macroinstruction_PLC_interface Mitsubishi { get; set; }
-        /// &lt;summary&gt;
-        /// MODBUD_TCP 在线访问
-        /// &lt;/summary&gt;
-        public static macroinstruction_PLC_interface MODBUD_TCP { get; set; }
-        /// &lt;summary&gt;
-        /// 西门子Siemens 在线访问
-        /// &lt;/summary&gt;
-        public static macroinstruction_PLC_interface Siemens { get; set; }
-
-    }
-  /// &lt;summary&gt;
-    /// PLC硬件选择
-    /// PLC选择枚举&gt;
-    /// &lt;/summary&gt;
-
-    public enum PLC
-    {
-        Mitsubishi,
-        Siemens,
-        Modbus_TCP,
-        HMI
-    }
-    /// &lt;summary&gt;
-    /// PLC各可访问软元件  三菱-bit位
-    /// &lt;/summary&gt;
-    public enum Mitsubishi_bit
-    { 
-        LCS,LCC,SM,X,Y,M,L,F,B,TS,SS,SC,CS,CC,SB,S,D_Bit,SD_Bit,R_Bit,SW_Bit,W_Bit
-    }
-    /// &lt;summary&gt;
-    /// PLC各可访问软元件 三菱 -WORD 字
-    /// &lt;/summary&gt;
-    public enum Mitsubishi_D
-    {
-        LCN,LZ,SD,D,R,W,TN,SN,CN,SW,Z
-    }
-    /// &lt;summary&gt;
-    ///  PLC各可访问软元件 西门子 -bit位
-    /// &lt;/summary&gt;
-    public enum Siemens_bit
-    {
-       I, Q, M
-    }
-    /// &lt;summary&gt;
-    /// PLC各可访问软元件 西门子-WORD 字
-    /// &lt;/summary&gt;
-    public enum Siemens_D
-    {
-       DB
-    }
-    /// &lt;summary&gt;
-    ///  PLC各可访问软元件 Modbus_TCP -bit位
-    /// &lt;/summary&gt;
-    public enum Modbus_TCP_bit
-    {
-         X, Y, M
-    }
-    /// &lt;summary&gt;
-    /// PLC各可访问软元件 Modbus_TCP-WORD 字
-    /// &lt;/summary&gt;
-    public enum Modbus_TCP_D
-    {
-         D
-    }
-    /// &lt;summary&gt;
-    /// PLC各可访问软元件  三菱-bit位
-    /// &lt;/summary&gt;
-    public enum HMI_bit
-    {
-        Data_Bit
-    }
-    /// &lt;summary&gt;
-    /// PLC各可访问软元件 三菱 -WORD 字
-    /// &lt;/summary&gt;
-    public enum HMI_D
-    {
-         Data_D
-    }
-    /// &lt;summary&gt;
-    ///  PLC--按钮状态
-    /// &lt;/summary&gt;
-    public enum Button_state
-    {
-        Off,ON
-    }
-    /// &lt;summary&gt;
-    /// 数值显示类型
-    /// &lt;/summary&gt;
-    public enum numerical_format
-    {
-        BCD_16_Bit, BCD_32_Bit, Hex_16_Bit, Hex_32_Bit, Binary_16_Bit, Binary_32_Bit, Unsigned_16_Bit, Signed_16_Bit
-            , Unsigned_32_Bit, Signed_32_Bit, Float_32_Bit
-    }
-    /// &lt;summary&gt;
-    /// 数值显示类型
-    /// &lt;/summary&gt;
-    public enum numerical_type
-    {
-        数值
-    }
-    class PLCselect
-    {
-
-    }</value>
-  </data>
-  <data name="skinTextBox16.Text" xml:space="preserve">
-    <value>//使用 方法--以三菱PLC为例 若要访问其他PLC 把Mitsubishi_axActUtlType
- 替代成其他PLC名称 
-三菱在线: Mitsubishi  三菱仿真: Mitsubishi_axActUtlType 
-MODBUS TCP: MODBUD_TCP 西门子：Siemens 
-PLC.Mitsubishi_axActUtlType. PLC_read_M_bit("Y","0");//读取位--名称--地址
-PLC.Mitsubishi_axActUtlType. PLC_write_M_bit("Y","0",true);//写入位--名称--地址
-PLC.Mitsubishi_axActUtlType. PLC_read_D_register("D","0",“Signed_32_Bit”);//读取有符号32位双字-名称--地址--类型
-PLC.Mitsubishi_axActUtlType. PLC_write_D_register("D","0",“0”,“Signed_32_Bit”);//写入有符号32位双字---名称--地址--内容--类型
-  /// &lt;summary&gt;
-    /// 宏指令与PLC的接口--PLC端必须继承与实现接口
-    /// &lt;/summary&gt;
-
-    public interface macroinstruction_PLC_interface
-    {
-        /// &lt;summary&gt;
-        /// PLC准备好
-        /// &lt;/summary&gt;
-        bool PLC_ready { get; }//PLC准备好
-        /// &lt;summary&gt;
-        /// PLC报警代码
-        /// &lt;/summary&gt;
-        int PLCerr_code { get; }//PLC报警代码
-        /// &lt;summary&gt;
-        /// PLC报警内容
-        /// &lt;/summary&gt;
-        string PLCerr_content { get; }//PLC报警内容
-        /// &lt;summary&gt;
-        /// 打开PLC
-        /// &lt;/summary&gt;
-        /// &lt;returns&gt;&lt;/returns&gt;
-        List&lt;bool&gt; PLC_read_M_bit(string Name, string id);//读取--位
-        /// &lt;summary&gt;
-        /// /写入--位
-        /// &lt;/summary&gt;
-        /// &lt;param name="Name"&gt;&lt;/param&gt;
-        /// &lt;param name="id"&gt;&lt;/param&gt;
-        /// &lt;param name="bon-off "&gt;&lt;/param&gt;
-        /// &lt;returns&gt;&lt;/returns&gt;
-        List&lt;bool&gt; PLC_write_M_bit(string Name, string id, bool on_off );//写入--位
-        /// &lt;summary&gt;
-        /// /读取--字
-        /// &lt;/summary&gt;
-        /// &lt;param name="Name"&gt;&lt;/param&gt;
-        /// &lt;param name="id"&gt;&lt;/param&gt;
-        /// &lt;param name="format"&gt;数据格式&lt;/param&gt;
-        /// &lt;returns&gt;&lt;/returns&gt;
-        string PLC_read_D_register(string Name, string id, string format);//读取--字
-        /// &lt;summary&gt;
-        /// 写--字
-        /// &lt;/summary&gt;
-        /// &lt;param name="Name"&gt;&lt;/param&gt;
-        /// &lt;param name="id"&gt;&lt;/param&gt;
-        /// &lt;param name="content"&gt;&lt;/param&gt;
-        /// &lt;param name="format"&gt;&lt;/param&gt;
-        /// &lt;returns&gt;&lt;/returns&gt;
-        string PLC_write_D_register(string Name, string id, string content, string format);//读写--字
-        /// &lt;summary&gt;
-        /// 读取--字--多个读取-自动判断类型改变地址索引
-        /// &lt;/summary&gt;
-        /// &lt;param name="id"&gt;&lt;/param&gt;
-        /// &lt;returns&gt;&lt;/returns&gt;
-        List&lt;int&gt; PLC_read_D_register_bit(string Name, string id, string format, string Index);//读取--字--多个读取
-        /// &lt;summary&gt;
-        /// 读写--字
-        /// &lt;/summary&gt;
-        /// &lt;param name="id"&gt;&lt;/param&gt;
-        /// &lt;returns&gt;&lt;/returns&gt;
-        List&lt;int&gt; PLC_write_D_register_bit(string id);//读写--字
-    }
-   /// &lt;summary&gt;
-    /// 数值显示类型
-    /// &lt;/summary&gt;
-    public enum numerical_format
-    {
-        BCD_16_Bit, BCD_32_Bit, Hex_16_Bit, Hex_32_Bit, Binary_16_Bit, Binary_32_Bit, Unsigned_16_Bit, Signed_16_Bit
-            , Unsigned_32_Bit, Signed_32_Bit, Float_32_Bit
-    }
-   /// &lt;summary&gt;
-    /// 本类主要用于-宏指令到
-    /// &lt;/summary&gt;
-    public class PLC
-    {
-        /// &lt;summary&gt;
-        /// 三菱Mitsubishi PLC仿真
-        /// &lt;/summary&gt;
-        public static macroinstruction_PLC_interface Mitsubishi_axActUtlType { get; set; }
-        /// &lt;summary&gt;
-        /// 三菱Mitsubishi PLC在线访问 
-        /// &lt;/summary&gt;
-        public static macroinstruction_PLC_interface Mitsubishi { get; set; }
-        /// &lt;summary&gt;
-        /// MODBUD_TCP 在线访问
-        /// &lt;/summary&gt;
-        public static macroinstruction_PLC_interface MODBUD_TCP { get; set; }
-        /// &lt;summary&gt;
-        /// 西门子Siemens 在线访问
-        /// &lt;/summary&gt;
-        public static macroinstruction_PLC_interface Siemens { get; set; }
-
-    }
-  /// &lt;summary&gt;
-    /// PLC硬件选择
-    /// PLC选择枚举&gt;
-    /// &lt;/summary&gt;
-
-    public enum PLC
-    {
-        Mitsubishi,
-        Siemens,
-        Modbus_TCP,
-        HMI
-    }
-    /// &lt;summary&gt;
-    /// PLC各可访问软元件  三菱-bit位
-    /// &lt;/summary&gt;
-    public enum Mitsubishi_bit
-    { 
-        LCS,LCC,SM,X,Y,M,L,F,B,TS,SS,SC,CS,CC,SB,S,D_Bit,SD_Bit,R_Bit,SW_Bit,W_Bit
-    }
-    /// &lt;summary&gt;
-    /// PLC各可访问软元件 三菱 -WORD 字
-    /// &lt;/summary&gt;
-    public enum Mitsubishi_D
-    {
-        LCN,LZ,SD,D,R,W,TN,SN,CN,SW,Z
-    }
-    /// &lt;summary&gt;
-    ///  PLC各可访问软元件 西门子 -bit位
-    /// &lt;/summary&gt;
-    public enum Siemens_bit
-    {
-       I, Q, M
-    }
-    /// &lt;summary&gt;
-    /// PLC各可访问软元件 西门子-WORD 字
-    /// &lt;/summary&gt;
-    public enum Siemens_D
-    {
-       DB
-    }
-    /// &lt;summary&gt;
-    ///  PLC各可访问软元件 Modbus_TCP -bit位
-    /// &lt;/summary&gt;
-    public enum Modbus_TCP_bit
-    {
-         X, Y, M
-    }
-    /// &lt;summary&gt;
-    /// PLC各可访问软元件 Modbus_TCP-WORD 字
-    /// &lt;/summary&gt;
-    public enum Modbus_TCP_D
-    {
-         D
-    }
-    /// &lt;summary&gt;
-    /// PLC各可访问软元件  三菱-bit位
-    /// &lt;/summary&gt;
-    public enum HMI_bit
-    {
-        Data_Bit
-    }
-    /// &lt;summary&gt;
-    /// PLC各可访问软元件 三菱 -WORD 字
-    /// &lt;/summary&gt;
-    public enum HMI_D
-    {
-         Data_D
-    }
-    /// &lt;summary&gt;
-    ///  PLC--按钮状态
-    /// &lt;/summary&gt;
-    public enum Button_state
-    {
-        Off,ON
-    }
-    /// &lt;summary&gt;
-    /// 数值显示类型
-    /// &lt;/summary&gt;
-    public enum numerical_format
-    {
-        BCD_16_Bit, BCD_32_Bit, Hex_16_Bit, Hex_32_Bit, Binary_16_Bit, Binary_32_Bit, Unsigned_16_Bit, Signed_16_Bit
-            , Unsigned_32_Bit, Signed_32_Bit, Float_32_Bit
-    }
-    /// &lt;summary&gt;
-    /// 数值显示类型
-    /// &lt;/summary&gt;
-    public enum numerical_type
-    {
-        数值
-    }
-    class PLCselect
-    {
-
-    }</value>
+});</value>
   </data>
   <data name="resource.Text13" xml:space="preserve">
     <value>//使用 方法--以三菱PLC为例 若要访问其他PLC 把Mitsubishi_axActUtlType
@@ -2571,6 +2128,458 @@ PLC.Mitsubishi_axActUtlType.PLC_read_M_bit("Y","0");//读取位--名称--地址
 PLC.Mitsubishi_axActUtlType.PLC_write_M_bit("Y","0",true);//写入位--名称--地址
 PLC.Mitsubishi_axActUtlType.PLC_read_D_register("D","0",“Signed_32_Bit”);//读取有符号32位双字-名称--地址--类型
 PLC.Mitsubishi_axActUtlType.PLC_write_D_register("D","0",“0”,“Signed_32_Bit”);//写入有符号32位双字---名称--地址--内容--类型
+  /// &lt;summary&gt;
+    /// 宏指令与PLC的接口--PLC端必须继承与实现接口
+    /// &lt;/summary&gt;
+
+    public interface macroinstruction_PLC_interface
+    {
+        /// &lt;summary&gt;
+        /// PLC准备好
+        /// &lt;/summary&gt;
+        bool PLC_ready { get; }//PLC准备好
+        /// &lt;summary&gt;
+        /// PLC报警代码
+        /// &lt;/summary&gt;
+        int PLCerr_code { get; }//PLC报警代码
+        /// &lt;summary&gt;
+        /// PLC报警内容
+        /// &lt;/summary&gt;
+        string PLCerr_content { get; }//PLC报警内容
+        /// &lt;summary&gt;
+        /// 打开PLC
+        /// &lt;/summary&gt;
+        /// &lt;returns&gt;&lt;/returns&gt;
+        List&lt;bool&gt; PLC_read_M_bit(string Name, string id);//读取--位
+        /// &lt;summary&gt;
+        /// /写入--位
+        /// &lt;/summary&gt;
+        /// &lt;param name="Name"&gt;&lt;/param&gt;
+        /// &lt;param name="id"&gt;&lt;/param&gt;
+        /// &lt;param name="bon-off "&gt;&lt;/param&gt;
+        /// &lt;returns&gt;&lt;/returns&gt;
+        List&lt;bool&gt; PLC_write_M_bit(string Name, string id, bool on_off );//写入--位
+        /// &lt;summary&gt;
+        /// /读取--字
+        /// &lt;/summary&gt;
+        /// &lt;param name="Name"&gt;&lt;/param&gt;
+        /// &lt;param name="id"&gt;&lt;/param&gt;
+        /// &lt;param name="format"&gt;数据格式&lt;/param&gt;
+        /// &lt;returns&gt;&lt;/returns&gt;
+        string PLC_read_D_register(string Name, string id, string format);//读取--字
+        /// &lt;summary&gt;
+        /// 写--字
+        /// &lt;/summary&gt;
+        /// &lt;param name="Name"&gt;&lt;/param&gt;
+        /// &lt;param name="id"&gt;&lt;/param&gt;
+        /// &lt;param name="content"&gt;&lt;/param&gt;
+        /// &lt;param name="format"&gt;&lt;/param&gt;
+        /// &lt;returns&gt;&lt;/returns&gt;
+        string PLC_write_D_register(string Name, string id, string content, string format);//读写--字
+        /// &lt;summary&gt;
+        /// 读取--字--多个读取-自动判断类型改变地址索引
+        /// &lt;/summary&gt;
+        /// &lt;param name="id"&gt;&lt;/param&gt;
+        /// &lt;returns&gt;&lt;/returns&gt;
+        List&lt;int&gt; PLC_read_D_register_bit(string Name, string id, string format, string Index);//读取--字--多个读取
+        /// &lt;summary&gt;
+        /// 读写--字
+        /// &lt;/summary&gt;
+        /// &lt;param name="id"&gt;&lt;/param&gt;
+        /// &lt;returns&gt;&lt;/returns&gt;
+        List&lt;int&gt; PLC_write_D_register_bit(string id);//读写--字
+    }
+   /// &lt;summary&gt;
+    /// 数值显示类型
+    /// &lt;/summary&gt;
+    public enum numerical_format
+    {
+        BCD_16_Bit, BCD_32_Bit, Hex_16_Bit, Hex_32_Bit, Binary_16_Bit, Binary_32_Bit, Unsigned_16_Bit, Signed_16_Bit
+            , Unsigned_32_Bit, Signed_32_Bit, Float_32_Bit
+    }
+   /// &lt;summary&gt;
+    /// 本类主要用于-宏指令到
+    /// &lt;/summary&gt;
+    public class PLC
+    {
+        /// &lt;summary&gt;
+        /// 三菱Mitsubishi PLC仿真
+        /// &lt;/summary&gt;
+        public static macroinstruction_PLC_interface Mitsubishi_axActUtlType { get; set; }
+        /// &lt;summary&gt;
+        /// 三菱Mitsubishi PLC在线访问 
+        /// &lt;/summary&gt;
+        public static macroinstruction_PLC_interface Mitsubishi { get; set; }
+        /// &lt;summary&gt;
+        /// MODBUD_TCP 在线访问
+        /// &lt;/summary&gt;
+        public static macroinstruction_PLC_interface MODBUD_TCP { get; set; }
+        /// &lt;summary&gt;
+        /// 西门子Siemens 在线访问
+        /// &lt;/summary&gt;
+        public static macroinstruction_PLC_interface Siemens { get; set; }
+
+    }
+  /// &lt;summary&gt;
+    /// PLC硬件选择
+    /// PLC选择枚举&gt;
+    /// &lt;/summary&gt;
+
+    public enum PLC
+    {
+        Mitsubishi,
+        Siemens,
+        Modbus_TCP,
+        HMI
+    }
+    /// &lt;summary&gt;
+    /// PLC各可访问软元件  三菱-bit位
+    /// &lt;/summary&gt;
+    public enum Mitsubishi_bit
+    { 
+        LCS,LCC,SM,X,Y,M,L,F,B,TS,SS,SC,CS,CC,SB,S,D_Bit,SD_Bit,R_Bit,SW_Bit,W_Bit
+    }
+    /// &lt;summary&gt;
+    /// PLC各可访问软元件 三菱 -WORD 字
+    /// &lt;/summary&gt;
+    public enum Mitsubishi_D
+    {
+        LCN,LZ,SD,D,R,W,TN,SN,CN,SW,Z
+    }
+    /// &lt;summary&gt;
+    ///  PLC各可访问软元件 西门子 -bit位
+    /// &lt;/summary&gt;
+    public enum Siemens_bit
+    {
+       I, Q, M
+    }
+    /// &lt;summary&gt;
+    /// PLC各可访问软元件 西门子-WORD 字
+    /// &lt;/summary&gt;
+    public enum Siemens_D
+    {
+       DB
+    }
+    /// &lt;summary&gt;
+    ///  PLC各可访问软元件 Modbus_TCP -bit位
+    /// &lt;/summary&gt;
+    public enum Modbus_TCP_bit
+    {
+         X, Y, M
+    }
+    /// &lt;summary&gt;
+    /// PLC各可访问软元件 Modbus_TCP-WORD 字
+    /// &lt;/summary&gt;
+    public enum Modbus_TCP_D
+    {
+         D
+    }
+    /// &lt;summary&gt;
+    /// PLC各可访问软元件  三菱-bit位
+    /// &lt;/summary&gt;
+    public enum HMI_bit
+    {
+        Data_Bit
+    }
+    /// &lt;summary&gt;
+    /// PLC各可访问软元件 三菱 -WORD 字
+    /// &lt;/summary&gt;
+    public enum HMI_D
+    {
+         Data_D
+    }
+    /// &lt;summary&gt;
+    ///  PLC--按钮状态
+    /// &lt;/summary&gt;
+    public enum Button_state
+    {
+        Off,ON
+    }
+    /// &lt;summary&gt;
+    /// 数值显示类型
+    /// &lt;/summary&gt;
+    public enum numerical_format
+    {
+        BCD_16_Bit, BCD_32_Bit, Hex_16_Bit, Hex_32_Bit, Binary_16_Bit, Binary_32_Bit, Unsigned_16_Bit, Signed_16_Bit
+            , Unsigned_32_Bit, Signed_32_Bit, Float_32_Bit
+    }
+    /// &lt;summary&gt;
+    /// 数值显示类型
+    /// &lt;/summary&gt;
+    public enum numerical_type
+    {
+        数值
+    }
+    class PLCselect
+    {
+
+    }</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="skinTabControl1.PageArrowDown" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABUAAAAiCAYAAACwaJKDAAAABGdBTUEAALGPC/xhBQAAABl0RVh0U29m
+        dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAD9SURBVEhL1dO7CoJQGMDxtu73+1CBzY31Ck0NvkOb
+        gzi6+QaCEDgLTqKCEPQIIUGbb+Gui+YXBIc4WcP3DQ0/OJfv/LdTyfO8iu2/ojVsZNE6NrJoAxtZtIkN
+        oi1sZNE2NrJoBxtEu9gg2vvE9/2JLMtrURQ3LEmSBMdxprw3oDQKwTiOT8X6zirOTAjDDA9E+58EQTBV
+        FGWbJMm52D+DaZpeVFXdeZ43Y2dZEB2UMQxjaVnWPsuya+Hmuu5B1/UVb/blaxRomiaEYXiMokiBNW+G
+        BdHhL2zbXpimueTdvYPoCBtZdIwNohNsZFH4bqjIovDdUJFF59j+JZrPH4oDa+C9e8hUAAAAAElFTkSu
+        QmCC
+</value>
+  </data>
+  <data name="skinTabControl1.PageArrowHover" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABUAAAAiCAYAAACwaJKDAAAABGdBTUEAALGPC/xhBQAAABl0RVh0U29m
+        dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAEwSURBVEhLtdNNS4RAAMbxvkBtLxu9UFT0skUv1rZ7
+        7h77HfZkH0QPeu0mePQgnsSrhCCCN+8e99DVayKhNk+wUDFWh2eFH8yMzh9kmKW2bZfZEF1hW1i0x4bo
+        Khuia2yIrrMhusGGaJ8N0U02RLfYEN1mQ3SHDdFdNkT32BDd7xLH8amu6/eqqj58JdZGURSdyfYAogdd
+        TNMcFUXxIsbfHrEWGYYxFkPpPkQPu6RpOtA07bEsy5mYfz5VVb2K4CRJknMxle5D9Og3rusqnudN67p+
+        a5rmPQiCJ8dxbmXfziF6/BfbtsdZlml5nj9bloXfln43h+jJf4RhqPi+fyd79xOiOEUqRAdsiOIUqRC9
+        YEP0kg3RKzZEr9kQvWFDVGFDFPeYClFcPSpEh2wLiLbDDwVKnf7UO7t5AAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="skinTabControl1.PageCloseHover" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAYAAABWdVznAAAABGdBTUEAALGPC/xhBQAAAH9JREFUKFNj
+        +P//P0kYmcMKxXjFYIwzaBiXGFgDyIQzHB2n/4MwiA3DaGJgm1A0cHad+88//T6Q+/8MiAbxsWmAWw9S
+        JLH653+p9f/BNEwzFMOdhKIJpBiGYWJADFeHophYG0j2A1wDkiQYo4lhehoJ4xJD8TTIBLApuMX+MwAA
+        JO7ByqoT8QIAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="skinTabControl1.PageCloseNormal" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAYAAABWdVznAAAABGdBTUEAALGPC/xhBQAAAItJREFUKFOd
+        kbENgDAMBCNRIFExAAUtbYoMQc8A7EHBFKxrfJGxUERjkJ7E9r/fSZKIhMCvUwyK0cC+/8jBqwKCSZEV
+        RbEoZluJyVOHVwV0yOtxCdBvV2ysrxwieC4oT9EIZxPj5AKssPeODRlH6j4SB2Rmxmg7n5anDu+fQ/gM
+        bEK3hFXoHQIvLekGBLunGoMvIJEAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="skinTabControl1.PageDown" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAADsAAAAiCAYAAADh/KHgAAAABGdBTUEAALGPC/xhBQAAAOZJREFUaEPl
+        2KsKQlEURdHrG996BYNgMBgMFoPBYrAYDBaDwWAwGARBEAT//bpXWHC+YXpghhVHPDuLVyqKokFPTmOb
+        9FJsm16K7dJLsQN6KXZEL8WO6RlbjjGhJ6exU3opdkYvxc7pGVuJsaAnp7FLesZWY6zoyWnsmp6xtRgb
+        enIKW4+xpSensPrc7ujJaeyenrH6yR/oySlsK8aRnpzC6mxxoiensJ0YZ3pyCqsbzYWenML2YlzpySls
+        P8aNnpzG3ukZq1Pjg56cwg5jPOnJaeyLnrF5jDc9OY390EuxX3p/hs3yH+t9kV6QtrMcAAAAAElFTkSu
+        QmCC
+</value>
+  </data>
+  <data name="skinTabControl1.PageHover" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAADsAAAAiCAYAAADh/KHgAAAABGdBTUEAALGPC/xhBQAAABl0RVh0U29m
+        dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAEISURBVGhD3dirTkNRFEXRy7NAICGkaaAhvIpC4ZB1
+        lTgsEolF1lZWIrFIHBKHw2FQqIoKfuGyptjJ/YZ5kimWHHKfJm+lbdtdezgLu2+vi+3bK+xqxpE9nIU9
+        sdfFXtrrYq/sFXYt49oezsLe2CvsesbYHs7CTuwVdiPj1h5OsJsZd/Zwgu1l3NvDCXYr48EeTrDbGY/2
+        cILdyXiyhxMsx+3UHk6wexkzezjBcsnP7eEEe5DxbA8nWL4tXuzhBDvIeLWHE+xhxps9nGCHGe/2cII9
+        zviwh7Own/YKy1fjlz2cYE8zvu3hBHuW8WMPJ9jzjF97OMFeZCzs4Szs0l5hRxl/9pqmGf0Dp89NtaTt
+        b1AAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="resource.Text14" xml:space="preserve">
+    <value>//使用 方法--以三菱PLC为例 若要访问其他PLC 把Mitsubishi_axActUtlType
+ 替代成其他PLC名称 
+三菱在线: Mitsubishi  三菱仿真: Mitsubishi_axActUtlType 
+MODBUS TCP: MODBUD_TCP 西门子：Siemens 
+PLC.Mitsubishi_axActUtlType. PLC_read_M_bit("Y","0");//读取位--名称--地址
+PLC.Mitsubishi_axActUtlType. PLC_write_M_bit("Y","0",true);//写入位--名称--地址
+PLC.Mitsubishi_axActUtlType. PLC_read_D_register("D","0",“Signed_32_Bit”);//读取有符号32位双字-名称--地址--类型
+PLC.Mitsubishi_axActUtlType. PLC_write_D_register("D","0",“0”,“Signed_32_Bit”);//写入有符号32位双字---名称--地址--内容--类型
+  /// &lt;summary&gt;
+    /// 宏指令与PLC的接口--PLC端必须继承与实现接口
+    /// &lt;/summary&gt;
+
+    public interface macroinstruction_PLC_interface
+    {
+        /// &lt;summary&gt;
+        /// PLC准备好
+        /// &lt;/summary&gt;
+        bool PLC_ready { get; }//PLC准备好
+        /// &lt;summary&gt;
+        /// PLC报警代码
+        /// &lt;/summary&gt;
+        int PLCerr_code { get; }//PLC报警代码
+        /// &lt;summary&gt;
+        /// PLC报警内容
+        /// &lt;/summary&gt;
+        string PLCerr_content { get; }//PLC报警内容
+        /// &lt;summary&gt;
+        /// 打开PLC
+        /// &lt;/summary&gt;
+        /// &lt;returns&gt;&lt;/returns&gt;
+        List&lt;bool&gt; PLC_read_M_bit(string Name, string id);//读取--位
+        /// &lt;summary&gt;
+        /// /写入--位
+        /// &lt;/summary&gt;
+        /// &lt;param name="Name"&gt;&lt;/param&gt;
+        /// &lt;param name="id"&gt;&lt;/param&gt;
+        /// &lt;param name="bon-off "&gt;&lt;/param&gt;
+        /// &lt;returns&gt;&lt;/returns&gt;
+        List&lt;bool&gt; PLC_write_M_bit(string Name, string id, bool on_off );//写入--位
+        /// &lt;summary&gt;
+        /// /读取--字
+        /// &lt;/summary&gt;
+        /// &lt;param name="Name"&gt;&lt;/param&gt;
+        /// &lt;param name="id"&gt;&lt;/param&gt;
+        /// &lt;param name="format"&gt;数据格式&lt;/param&gt;
+        /// &lt;returns&gt;&lt;/returns&gt;
+        string PLC_read_D_register(string Name, string id, string format);//读取--字
+        /// &lt;summary&gt;
+        /// 写--字
+        /// &lt;/summary&gt;
+        /// &lt;param name="Name"&gt;&lt;/param&gt;
+        /// &lt;param name="id"&gt;&lt;/param&gt;
+        /// &lt;param name="content"&gt;&lt;/param&gt;
+        /// &lt;param name="format"&gt;&lt;/param&gt;
+        /// &lt;returns&gt;&lt;/returns&gt;
+        string PLC_write_D_register(string Name, string id, string content, string format);//读写--字
+        /// &lt;summary&gt;
+        /// 读取--字--多个读取-自动判断类型改变地址索引
+        /// &lt;/summary&gt;
+        /// &lt;param name="id"&gt;&lt;/param&gt;
+        /// &lt;returns&gt;&lt;/returns&gt;
+        List&lt;int&gt; PLC_read_D_register_bit(string Name, string id, string format, string Index);//读取--字--多个读取
+        /// &lt;summary&gt;
+        /// 读写--字
+        /// &lt;/summary&gt;
+        /// &lt;param name="id"&gt;&lt;/param&gt;
+        /// &lt;returns&gt;&lt;/returns&gt;
+        List&lt;int&gt; PLC_write_D_register_bit(string id);//读写--字
+    }
+   /// &lt;summary&gt;
+    /// 数值显示类型
+    /// &lt;/summary&gt;
+    public enum numerical_format
+    {
+        BCD_16_Bit, BCD_32_Bit, Hex_16_Bit, Hex_32_Bit, Binary_16_Bit, Binary_32_Bit, Unsigned_16_Bit, Signed_16_Bit
+            , Unsigned_32_Bit, Signed_32_Bit, Float_32_Bit
+    }
+   /// &lt;summary&gt;
+    /// 本类主要用于-宏指令到
+    /// &lt;/summary&gt;
+    public class PLC
+    {
+        /// &lt;summary&gt;
+        /// 三菱Mitsubishi PLC仿真
+        /// &lt;/summary&gt;
+        public static macroinstruction_PLC_interface Mitsubishi_axActUtlType { get; set; }
+        /// &lt;summary&gt;
+        /// 三菱Mitsubishi PLC在线访问 
+        /// &lt;/summary&gt;
+        public static macroinstruction_PLC_interface Mitsubishi { get; set; }
+        /// &lt;summary&gt;
+        /// MODBUD_TCP 在线访问
+        /// &lt;/summary&gt;
+        public static macroinstruction_PLC_interface MODBUD_TCP { get; set; }
+        /// &lt;summary&gt;
+        /// 西门子Siemens 在线访问
+        /// &lt;/summary&gt;
+        public static macroinstruction_PLC_interface Siemens { get; set; }
+
+    }
+  /// &lt;summary&gt;
+    /// PLC硬件选择
+    /// PLC选择枚举&gt;
+    /// &lt;/summary&gt;
+
+    public enum PLC
+    {
+        Mitsubishi,
+        Siemens,
+        Modbus_TCP,
+        HMI
+    }
+    /// &lt;summary&gt;
+    /// PLC各可访问软元件  三菱-bit位
+    /// &lt;/summary&gt;
+    public enum Mitsubishi_bit
+    { 
+        LCS,LCC,SM,X,Y,M,L,F,B,TS,SS,SC,CS,CC,SB,S,D_Bit,SD_Bit,R_Bit,SW_Bit,W_Bit
+    }
+    /// &lt;summary&gt;
+    /// PLC各可访问软元件 三菱 -WORD 字
+    /// &lt;/summary&gt;
+    public enum Mitsubishi_D
+    {
+        LCN,LZ,SD,D,R,W,TN,SN,CN,SW,Z
+    }
+    /// &lt;summary&gt;
+    ///  PLC各可访问软元件 西门子 -bit位
+    /// &lt;/summary&gt;
+    public enum Siemens_bit
+    {
+       I, Q, M
+    }
+    /// &lt;summary&gt;
+    /// PLC各可访问软元件 西门子-WORD 字
+    /// &lt;/summary&gt;
+    public enum Siemens_D
+    {
+       DB
+    }
+    /// &lt;summary&gt;
+    ///  PLC各可访问软元件 Modbus_TCP -bit位
+    /// &lt;/summary&gt;
+    public enum Modbus_TCP_bit
+    {
+         X, Y, M
+    }
+    /// &lt;summary&gt;
+    /// PLC各可访问软元件 Modbus_TCP-WORD 字
+    /// &lt;/summary&gt;
+    public enum Modbus_TCP_D
+    {
+         D
+    }
+    /// &lt;summary&gt;
+    /// PLC各可访问软元件  三菱-bit位
+    /// &lt;/summary&gt;
+    public enum HMI_bit
+    {
+        Data_Bit
+    }
+    /// &lt;summary&gt;
+    /// PLC各可访问软元件 三菱 -WORD 字
+    /// &lt;/summary&gt;
+    public enum HMI_D
+    {
+         Data_D
+    }
+    /// &lt;summary&gt;
+    ///  PLC--按钮状态
+    /// &lt;/summary&gt;
+    public enum Button_state
+    {
+        Off,ON
+    }
+    /// &lt;summary&gt;
+    /// 数值显示类型
+    /// &lt;/summary&gt;
+    public enum numerical_format
+    {
+        BCD_16_Bit, BCD_32_Bit, Hex_16_Bit, Hex_32_Bit, Binary_16_Bit, Binary_32_Bit, Unsigned_16_Bit, Signed_16_Bit
+            , Unsigned_32_Bit, Signed_32_Bit, Float_32_Bit
+    }
+    /// &lt;summary&gt;
+    /// 数值显示类型
+    /// &lt;/summary&gt;
+    public enum numerical_type
+    {
+        数值
+    }
+    class PLCselect
+    {
+
+    }</value>
+  </data>
+  <data name="skinTextBox16.Text" xml:space="preserve">
+    <value>//使用 方法--以三菱PLC为例 若要访问其他PLC 把Mitsubishi_axActUtlType
+ 替代成其他PLC名称 
+三菱在线: Mitsubishi  三菱仿真: Mitsubishi_axActUtlType 
+MODBUS TCP: MODBUD_TCP 西门子：Siemens 
+PLC.Mitsubishi_axActUtlType. PLC_read_M_bit("Y","0");//读取位--名称--地址
+PLC.Mitsubishi_axActUtlType. PLC_write_M_bit("Y","0",true);//写入位--名称--地址
+PLC.Mitsubishi_axActUtlType. PLC_read_D_register("D","0",“Signed_32_Bit”);//读取有符号32位双字-名称--地址--类型
+PLC.Mitsubishi_axActUtlType. PLC_write_D_register("D","0",“0”,“Signed_32_Bit”);//写入有符号32位双字---名称--地址--内容--类型
   /// &lt;summary&gt;
     /// 宏指令与PLC的接口--PLC端必须继承与实现接口
     /// &lt;/summary&gt;

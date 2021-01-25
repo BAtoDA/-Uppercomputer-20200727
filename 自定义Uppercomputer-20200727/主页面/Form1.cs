@@ -56,7 +56,7 @@ namespace 自定义Uppercomputer_20200727
 
             label1.Text = strText;
             this.ucProcessLineExt1.Value = intValue;
-            Thread.Sleep(500);
+            Thread.Sleep(200);
         }
         private bool Home_examine()//主页面加载程序进程检查
         {

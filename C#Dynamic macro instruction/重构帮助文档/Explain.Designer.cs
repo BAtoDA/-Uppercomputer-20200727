@@ -49,6 +49,9 @@
             // 
             // uiTreeView1
             // 
+            this.uiTreeView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.uiTreeView1.CheckBoxes = true;
             this.uiTreeView1.FillColor = System.Drawing.Color.White;
             this.uiTreeView1.FillDisableColor = System.Drawing.Color.Black;
@@ -76,7 +79,7 @@
             this.uiTreeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
             treeNode16});
             this.uiTreeView1.SelectedNode = null;
-            this.uiTreeView1.Size = new System.Drawing.Size(163, 676);
+            this.uiTreeView1.Size = new System.Drawing.Size(409, 815);
             this.uiTreeView1.Style = Sunny.UI.UIStyle.Custom;
             this.uiTreeView1.TabIndex = 0;
             this.uiTreeView1.Text = "uiTreeView1";
@@ -84,23 +87,26 @@
             // 
             // panel1
             // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.AutoScroll = true;
             this.panel1.Location = new System.Drawing.Point(178, 37);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(889, 678);
+            this.panel1.Size = new System.Drawing.Size(1135, 817);
             this.panel1.TabIndex = 1;
+            this.panel1.Resize += new System.EventHandler(this.panel1_Resize);
             // 
             // Explain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1074, 722);
+            this.ClientSize = new System.Drawing.Size(1320, 861);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.uiTreeView1);
             this.Name = "Explain";
             this.Text = "Explain";
             this.Load += new System.EventHandler(this.Explain_Load);
-            this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Explain_MouseUp);
             this.ResumeLayout(false);
 
         }

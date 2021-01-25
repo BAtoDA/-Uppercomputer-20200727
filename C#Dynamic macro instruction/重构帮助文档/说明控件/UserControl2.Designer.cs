@@ -78,7 +78,7 @@
             this.skinPictureBox1.Image = global::CSEngineTest.Properties.Resources.宏指令编译器界面;
             this.skinPictureBox1.Location = new System.Drawing.Point(3, 300);
             this.skinPictureBox1.Name = "skinPictureBox1";
-            this.skinPictureBox1.Size = new System.Drawing.Size(817, 419);
+            this.skinPictureBox1.Size = new System.Drawing.Size(817, 605);
             this.skinPictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.skinPictureBox1.TabIndex = 6;
             this.skinPictureBox1.TabStop = false;
@@ -92,7 +92,7 @@
             this.Controls.Add(this.uiRichTextBox1);
             this.Controls.Add(this.uiLabel1);
             this.Name = "UserControl2";
-            this.Size = new System.Drawing.Size(1074, 722);
+            this.Size = new System.Drawing.Size(1074, 980);
             ((System.ComponentModel.ISupportInitialize)(this.skinPictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

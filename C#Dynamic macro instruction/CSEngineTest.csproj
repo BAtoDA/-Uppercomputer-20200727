@@ -134,6 +134,13 @@
     <Compile Include="重构帮助文档\说明控件\UserControl4.Designer.cs">
       <DependentUpon>UserControl4.cs</DependentUpon>
     </Compile>
+    <Compile Include="重构帮助文档\说明控件\宏函数解析控件\Document_Class.cs" />
+    <Compile Include="重构帮助文档\说明控件\宏函数解析控件\FunctionAnalysis.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="重构帮助文档\说明控件\宏函数解析控件\FunctionAnalysis.Designer.cs">
+      <DependentUpon>FunctionAnalysis.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="document_Form.resx">
       <DependentUpon>document_Form.cs</DependentUpon>
     </EmbeddedResource>
@@ -164,6 +171,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="重构帮助文档\说明控件\UserControl4.resx">
       <DependentUpon>UserControl4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="重构帮助文档\说明控件\宏函数解析控件\FunctionAnalysis.resx">
+      <DependentUpon>FunctionAnalysis.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\app.manifest" />
     <None Include="Properties\Settings.settings">

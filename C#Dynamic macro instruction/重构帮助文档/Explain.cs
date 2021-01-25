@@ -14,6 +14,7 @@ namespace CSEngineTest.重构帮助文档
 {
     public partial class Explain : Skin_Mac
     {
+        public static Size SIZE_i{ get; set; }
         public Explain()
         {
             InitializeComponent();
@@ -21,7 +22,7 @@ namespace CSEngineTest.重构帮助文档
         
         private void uiTreeView1_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
         {
-            switch(e.Node.Text)
+            switch (e.Node.Text)
             {
                 case "宏指令":
                     TreeViewAdd(new UserControl1());
@@ -32,6 +33,10 @@ namespace CSEngineTest.重构帮助文档
                 case "宏指令语法":
                     TreeViewAdd(new UserControl3());
                     return;
+                case "宏函数":
+                    TreeViewAdd(new UserControl4());
+                    return;
+
             } 
         }
 
@@ -44,9 +49,10 @@ namespace CSEngineTest.重构帮助文档
             this.panel1.Controls.Clear();
             this.panel1.Controls.Add(control);
         }
-        private void Explain_MouseUp(object sender, MouseEventArgs e)
+
+        private void panel1_Resize(object sender, EventArgs e)
         {
-            MessageBox.Show("d");
+            SIZE_i = this.Size;
         }
     }
 }
