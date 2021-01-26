@@ -273,12 +273,12 @@ namespace DragResizeControlWindowsDrawDemo
                         {
                             int x = ix.Location.X - control.Location.X;//计算偏差
                             int y = ix.Location.Y - control.Location.Y;//计算偏差
-                            if ((x > 3 & x < 10) || (x < -3 & x > -10))
+                            if ((x > 0 & x < 20) || (x < -0 & x > -20))
                             {
                                 control.Location = new Point() { X = ix.Location.X, Y = control.Location.Y };
                                 return;
                             }
-                            if ((y > 3 & y < 10) || (y < -3 & y > -10))
+                            if ((y > 0 & y < 20) || (y < -0 & y > -20))
                             {
                                 control.Location = new Point() { X = control.Location.X, Y = ix.Location.Y };
                                 return;

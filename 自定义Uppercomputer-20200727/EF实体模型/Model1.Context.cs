@@ -11,15 +11,43 @@ namespace 自定义Uppercomputer_20200727.EF实体模型
 {
     using System;
     using System.Data.Entity;
+    using System.Data.Entity.Core.EntityClient;
     using System.Data.Entity.Infrastructure;
-    
+    using System.Data.SqlClient;
+
     public partial class UppercomputerEntities2 : DbContext
     {
         public UppercomputerEntities2()
-            : base("name=UppercomputerEntities2")
+            : base(ConnectToSqlServer(@Home.SQLname, Home.SQLdatabase, Home.SQLuser, Home.SQLpassword, true))
         {
         }
-    
+        public UppercomputerEntities2(string connectionString)
+           : base(ConnectToSqlServer(@"DESKTOP-E3JO5HA\WINCC", "Uppercomputer", "sa", "3131458", true))
+        {
+        }
+        public static string ConnectToSqlServer(string host, string catalog, string user, string pass, bool winAuth)
+        {
+            SqlConnectionStringBuilder sqlBuilder = new SqlConnectionStringBuilder
+            {
+                DataSource = host,
+                InitialCatalog = catalog,
+                PersistSecurityInfo = true,
+                IntegratedSecurity = winAuth,
+                MultipleActiveResultSets = true,
+                UserID = user,
+                Password = pass,
+            };
+
+            // assumes a connectionString name in .config of MyDbEntities
+            var entityConnectionStringBuilder = new EntityConnectionStringBuilder
+            {
+                Provider = "System.Data.SqlClient",
+                ProviderConnectionString = sqlBuilder.ConnectionString,
+                Metadata = "res://*/EF实体模型.Model1.csdl|res://*/EF实体模型.Model1.ssdl|res://*/EF实体模型.Model1.msl",
+            };
+
+            return entityConnectionStringBuilder.ConnectionString;
+        }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();

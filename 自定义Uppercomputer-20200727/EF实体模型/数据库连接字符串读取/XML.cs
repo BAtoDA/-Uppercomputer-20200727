@@ -90,7 +90,7 @@ namespace 自定义Uppercomputer_20200727.EF实体模型.XML
             try
             {
                 //加载xml文件（参数为xml文件的路径）
-                Xml.Load(address);
+                Xml.Load(@address);
                 //获得第一个匹配的节点（SelectSingleNode）：此xml文件的根节点
                 XmlNode rootNode = Xml.SelectSingleNode("Computers");
                 //分别获得该节点的InnerXml和OuterXml信息

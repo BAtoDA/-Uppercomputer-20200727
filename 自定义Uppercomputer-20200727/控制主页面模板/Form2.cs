@@ -337,7 +337,7 @@ namespace 自定义Uppercomputer_20200727
                   });            
                 se.Wait();
                 this.timer3.Start();
-                timer3.Interval = 100;
+                timer3.Interval = 10;
                 time_Reform.Form = this.Name;//获取当前窗口名称
                 time_Reform.Interval = 100;//遍历控件时间
                 time_Reform.Start();//运行定时器

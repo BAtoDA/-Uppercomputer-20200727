@@ -108,6 +108,7 @@ namespace CSEngineTest.重构帮助文档.说明控件.宏函数解析控件
                 "thread.IsAlive;//线程状态--BOOL值\r\n" +
                 "Thread.Sleep();//延时线程\r\n"
                 ));
+
         }
     }
 }
