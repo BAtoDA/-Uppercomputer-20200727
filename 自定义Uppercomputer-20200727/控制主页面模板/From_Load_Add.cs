@@ -439,23 +439,26 @@ namespace 自定义Uppercomputer_20200727.控制主页面模板
             //遍历数组
             foreach (pull_down_menu_Class add in button_Classes)
             {
-                pull_down_menu_reform reform = new pull_down_menu_reform();//实例化按钮
-                reform.Size = new Size(point_or_Size(add.size)[0], point_or_Size(add.size)[1]);//设置大小
-                reform.Location = new Point(point_or_Size(add.location)[0], point_or_Size(add.location)[1]);//设置按钮位置
-                reform.Name = add.Control_type.Trim();//设置名称
-                reform.Text = add.Control_state_0_content.Trim();//设置文本
-                reform.BackColor = Color.FromName(add.选择背景.Trim());//默认背景颜色
-                reform.ForeColor = Color.FromName(add.Control_state_0_colour.Trim());//获取数据库中颜色名称进行设置
-                reform.DropBackColor = Color.FromName(add.下拉背景.Trim());//下拉颜色
-                reform.Font = new Font(add.Control_state_0_typeface.Trim(), add.Control_state_0_size.ToInt32(), FontStyle.Bold);//设置字体与大小
-                Form_event.BeginInvoke((EventHandler)delegate { control.Add(reform); });
-                //开始查询数据库中的项目数据--进行遍历
-                Parameter_Query_Add parameter_Query_Add = new Parameter_Query_Add();//创建EF查询对象
-                List<pull_down_menuName> pull_Down_MenuNames = parameter_Query_Add.all_Parameter_Query_pull_down_menuName(reform.Parent+"-" + reform.Name);
-                foreach (pull_down_menuName i in pull_Down_MenuNames)
-                    reform.Items.Add(i.项目资料.Trim());
-                reform.SelectedIndex = 0;
-                reform.SelectedItem = 0;
+                this.Form_event.BeginInvoke((EventHandler)delegate
+                {
+                    pull_down_menu_reform reform = new pull_down_menu_reform();//实例化按钮
+                    reform.Size = new Size(point_or_Size(add.size)[0], point_or_Size(add.size)[1]);//设置大小
+                    reform.Location = new Point(point_or_Size(add.location)[0], point_or_Size(add.location)[1]);//设置按钮位置
+                    reform.Name = add.Control_type.Trim();//设置名称
+                    reform.Text = add.Control_state_0_content.Trim();//设置文本
+                    reform.BackColor = Color.FromName(add.选择背景.Trim());//默认背景颜色
+                    reform.ForeColor = Color.FromName(add.Control_state_0_colour.Trim());//获取数据库中颜色名称进行设置
+                    reform.DropBackColor = Color.FromName(add.下拉背景.Trim());//下拉颜色
+                    reform.Font = new Font(add.Control_state_0_typeface.Trim(), add.Control_state_0_size.ToInt32(), FontStyle.Bold);//设置字体与大小
+                    control.Add(reform);
+                    //开始查询数据库中的项目数据--进行遍历
+                    Parameter_Query_Add parameter_Query_Add = new Parameter_Query_Add();//创建EF查询对象
+                    List<pull_down_menuName> pull_Down_MenuNames = parameter_Query_Add.all_Parameter_Query_pull_down_menuName(reform.Parent + "-" + reform.Name);
+                    foreach (pull_down_menuName i in pull_Down_MenuNames)
+                        reform.Items.Add(i.项目资料.Trim());
+                    reform.SelectedIndex = 0;
+                    reform.SelectedItem = 0;
+                });
             }
         }
         public void Load_Add(List<HScrollBar_Class> HScrollBar_Classes)//移动图形类--参数修改

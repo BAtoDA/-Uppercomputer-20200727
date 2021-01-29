@@ -163,15 +163,18 @@ namespace DragResizeControlWindowsDrawDemo
         {
             if (Form2.edit_mode != true) return;//返回方法
             Control lCtrl = (sender as Control);
-            //当鼠标出现控件上方 控件四边出现边框
-            if (!(lCtrl is GroupBox_reform))//四边框控件不再绘制
+            if (e.Button != MouseButtons.Left)
             {
-                using (Graphics graphics = lCtrl.CreateGraphics())
+                //当鼠标出现控件上方 控件四边出现边框
+                if (!(lCtrl is GroupBox_reform))//四边框控件不再绘制
                 {
-                    using (Pen pen = new Pen(Color.Red, 1))
+                    using (Graphics graphics = lCtrl.CreateGraphics())
                     {
-                        Brush brush = pen.Brush;//创建形状
-                        graphics.DrawRectangle(pen, 0, 0, lCtrl.Size.Width - 1, lCtrl.Size.Height - 1);//绘制边框
+                        using (Pen pen = new Pen(Color.Red, 1))
+                        {
+                            Brush brush = pen.Brush;//创建形状
+                            graphics.DrawRectangle(pen, 0, 0, lCtrl.Size.Width - 1, lCtrl.Size.Height - 1);//绘制边框
+                        }
                     }
                 }
             }
@@ -181,8 +184,6 @@ namespace DragResizeControlWindowsDrawDemo
                 graphics.Clear(Color.FromName("AppWorkspace"));
                 lCtrl.BeginInvoke((EventHandler)delegate
                 {
-                    lCtrl.SuspendLayout();
-                    LabelControl.SuspendLayout();
                     using (Pen pen = new Pen(Color.Red, 3))
                     {
                         //绘制X轴坐标
@@ -201,8 +202,8 @@ namespace DragResizeControlWindowsDrawDemo
                         Y = lCtrl.Top-25
                     };
                     LabelControl.Text = $"X：{lCtrl.Location.X} Y：{lCtrl.Location.Y}";
-                    lCtrl.ResumeLayout();
-                    LabelControl.ResumeLayout();
+                    lCtrl.Refresh();
+                    LabelControl.Refresh();
                 });
                 switch (m_MousePointPosition)
                 {
