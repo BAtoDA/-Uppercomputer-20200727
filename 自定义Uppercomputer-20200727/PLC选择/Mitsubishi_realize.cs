@@ -86,7 +86,9 @@ namespace 自定义Uppercomputer_20200727.PLC选择
                 melsec_net.PLCIpAddress = IPEndPoint.Address;//获取设置的IP
                 melsec_net.PortRead = IPEndPoint.Port;//获取设置的端口
                 melsec_net.ConnectClose();//切换通讯模式
+                melsec_net.ConnectTimeout = 500;
                 OperateResult connect = melsec_net.ConnectServer();//获取操作结果
+                retry = 0;
                 if (connect.IsSuccess)//判断是否连接成功
                 {
                     PLC_ready = true;//PLC开放正常
@@ -99,8 +101,7 @@ namespace 自定义Uppercomputer_20200727.PLC选择
                     melsec_net.ConnectClose();
                     MessageBox.Show("链接PLC"+ this.IPEndPoint.Address.ToString()+"异常--请检查下位机状态");
                     return "链接PLC异常";//尝试连接PLC，如果连接成功则返回值为0
-                }
-                
+                }               
             }
             catch (Exception e)
             {
@@ -121,9 +122,17 @@ namespace 自定义Uppercomputer_20200727.PLC选择
             {
                 try
                 {
-                    mutex.WaitOne(3000);//加锁
-                                        // 读取bool变量
-                    readResultRender(melsec_net.ReadBoolFromPLC(Name.Trim() + id.Trim()), Name.Trim() + id.Trim(), ref result);//读取自定地址变量状态
+                    mutex.WaitOne(100);
+                    // 读取bool变量 重写方法
+                    if (Name != "Y")
+                        readResultRender(melsec_net.ReadBoolFromPLC(Name.Trim() + id.Trim()), Name.Trim() + id.Trim(), ref result);//读取自定地址变量状态
+                    else
+                    {
+                        OperateResult<byte[]> read = melsec_net.ReadFromServerCore(this.Read_bit(三菱报文.message_bit.Y, Convert.ToInt32(id), 1));
+                        readResultRender(read, Name.Trim() + id.Trim(), ref result);
+                        if (read.IsSuccess)
+                            result = this.Analysis(read.Content, Convert.ToInt32(id)) ? "TRUE" : "FALSE";
+                    }
                     mutex.ReleaseMutex();//解锁
                 }
                 catch { }
@@ -156,9 +165,17 @@ namespace 自定义Uppercomputer_20200727.PLC选择
             {
                 try
                 {
-                    mutex.WaitOne(3000);//加锁
-                                        // 写bool变量
-                    writeResultRender(melsec_net.WriteIntoPLC(Name.Trim() + id.Trim(), Convert.ToBoolean(button_State.ToInt32())), Name.Trim() + id.Trim());//写入自定地址变量状态
+                    mutex.WaitOne(100);
+                    // 写bool变量
+                    if (Name != "Y")
+                        writeResultRender(melsec_net.WriteIntoPLC(Name.Trim() + id.Trim(), Convert.ToBoolean(button_State.ToInt32())), Name.Trim() + id.Trim());//写入自定地址变量状态
+                    else
+                    {
+                        //Q系列不需要转换-如果需要对接Q系列 需要把这个判断注释掉
+                        OperateResult<byte[]> read = melsec_net.ReadFromServerCore(this.Write_bit(三菱报文.message_bit.Y, Convert.ToInt32(id), button_State==Button_state.ON?true:false));
+                        readResultRender(read, Name.Trim() + id.Trim(), ref result);
+                        result = read.IsSuccess ? "TRUE" : "FALSE";
+                    }
                     mutex.ReleaseMutex();//解锁
                 }
                 catch { }
@@ -192,7 +209,7 @@ namespace 自定义Uppercomputer_20200727.PLC选择
             {
                 try
                 {
-                    mutex.WaitOne(3000);
+                    mutex.WaitOne(100);
                     switch (format)
                     {
                         case numerical_format.Signed_16_Bit:
@@ -272,7 +289,7 @@ namespace 自定义Uppercomputer_20200727.PLC选择
             {
                 try
                 {
-                    mutex.WaitOne(3000);
+                    mutex.WaitOne(100);
                     switch (format)
                     {
                         case numerical_format.Signed_16_Bit:
@@ -340,8 +357,8 @@ namespace 自定义Uppercomputer_20200727.PLC选择
             {
                 try
                 {
-                    mutex.WaitOne(3000);
-                    Data= Mitsubishi_to_Index_numerical(Name, id.ToInt32(), format, Index.ToInt32(), this);//批量读取寄存器并且返回数据
+                    mutex.WaitOne(500);
+                    Data = Mitsubishi_to_Index_numerical(Name, id.ToInt32(), format, Index.ToInt32(), this);//批量读取寄存器并且返回数据
                     mutex.ReleaseMutex();
                 }
                 catch { }
@@ -402,11 +419,19 @@ namespace 自定义Uppercomputer_20200727.PLC选择
             else
             {
                 retry += 1;//重试次数
-                if (retry < 10) return;
+                if (retry < 3)
+                {
+                    melsec_net.ConnectClose();//切断链接
+                    PLC_ready = melsec_net.ConnectServer().IsSuccess;//重新链接PLC
+                    return;
+                }
                 PLCerr_content = DateTime.Now.ToString("[HH:mm:ss] ") + $"[{address}] 读取失败{Environment.NewLine}原因：{result.ToMessageShowString()}";
                 MessageBox.Show(DateTime.Now.ToString("[HH:mm:ss] ") + $"[{address}] 读取失败{Environment.NewLine}原因：{result.ToMessageShowString()}");
-                PLC_ready = melsec_net.ConnectServer().IsSuccess;//重新链接PLC
-                retry = 0;
+                if (retry >= 3)
+                {
+                    err(new Exception("链接PLC异常"));
+                }
+
             }
         }
 

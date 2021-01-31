@@ -337,6 +337,8 @@
       <DependentUpon>modbus_Form.cs</DependentUpon>
     </Compile>
     <Compile Include="PLC选择\Siemens_realize.cs" />
+    <Compile Include="PLC选择\三菱报文\message.cs" />
+    <Compile Include="PLC选择\三菱报文\Mitsubishi_message.cs" />
     <Compile Include="修改参数界面\AnalogMeter百分百表盘参数\Modification_AnalogMeter.cs">
       <SubType>Form</SubType>
     </Compile>

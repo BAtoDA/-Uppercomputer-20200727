@@ -337,7 +337,7 @@ namespace 自定义Uppercomputer_20200727
                   });            
                 se.Wait();
                 this.timer3.Start();
-                timer3.Interval = 10;
+                timer3.Interval = 100;
                 time_Reform.Form = this.Name;//获取当前窗口名称
                 time_Reform.Interval = 100;//遍历控件时间
                 time_Reform.Start();//运行定时器
@@ -367,6 +367,7 @@ namespace 自定义Uppercomputer_20200727
         PLCselect_Form pLCselect_Form;
         private void toolStripMenuItem4_Click(object sender, EventArgs e)//开始链接设备--PLC
         {
+
             if (!pLCselect_Form.IsNull())
             {
                 if (pLCselect_Form.Hiel)

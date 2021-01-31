@@ -214,7 +214,8 @@ namespace 自定义Uppercomputer_20200727.控件重做
         /// 传入要刷新的窗口
         /// </summary>
         Form Form_Tick;//传入要刷新的窗口
-
+        //同步锁
+        Mutex mutex;
         /// <summary>
         /// 构造函数
         /// </summary>
@@ -234,14 +235,17 @@ namespace 自定义Uppercomputer_20200727.控件重做
             this.ihatetheqrcode_EF = new ihatetheqrcode_EF();//实例化二维码/条形码EF对象
             this.Form_Tick = form;//获取要刷新的窗口
             this.Tick += Time_Tick;
+            mutex = new Mutex();
         }
         private void Time_Tick(object send, EventArgs e)
         {
-            if (Form_Tick.IsHandleCreated != true) return;//判断创建是否加载完成   
+            if (Form_Tick.IsHandleCreated != true) return;//判断创建是否加载完成  
+            
             Form_Tick.BeginInvoke((EventHandler)delegate
             {
                 lock (this)
                 {
+                    mutex.WaitOne(20);
                     this.Stop();
                     Time_Tick_button(send, e);//注册按钮类刷新事件
                     Time_Tick_Textbox(send, e);//注册文本输入类刷新事件
@@ -255,6 +259,7 @@ namespace 自定义Uppercomputer_20200727.控件重做
                     Time_Tick_LedDisplay(send, e);//注册数值显示事件
                     Time_Tick_ihatetheqrcode(send, e);//注册二维码/条形码事件
                     this.Start();
+                    mutex.ReleaseMutex();
                 }
             });
         }
