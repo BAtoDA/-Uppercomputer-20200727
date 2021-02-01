@@ -9,8 +9,7 @@
 2:由于本软件允许用户与三菱GX Works3软件GX Works2软件进行模拟联动所以需要安装三菱MX Component软件--进行安装配置https://www.360kuai.com/pc/9abd50f94e327665c?cota=4&tj_url=xz&sign=360_57c3bbd1&refer_scene=so_1 只要把FX3U 换成GX Works3就好。   
 3:卸载完成后需要手动去把数据库分离。   
 4:用户提供正确的数据库实例名  用户名 密码 软件安装过程中会自动附加数据库。  
-5:目前已知BUG对接三菱在线访问的时候出现Y20以后线圈无法访问--通过查看是3E帧报文有问题---正在修复。    
-6:如果出现DLL补全 请在文件目录第三方DLL处重新添加。   
+5:如果出现DLL补全 请在文件目录第三方DLL处重新添加。   
 演示视频地址：  https://pan.baidu.com/s/1Ls92y1wU9d41BLVMU4eYNg 提取码：m2qc
   
 本软件说明：    
