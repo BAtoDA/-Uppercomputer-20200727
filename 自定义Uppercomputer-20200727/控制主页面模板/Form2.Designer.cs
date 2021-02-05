@@ -74,6 +74,7 @@
             HZH_Controls.Controls.NavigationMenuItem navigationMenuItem36 = new HZH_Controls.Controls.NavigationMenuItem();
             HZH_Controls.Controls.NavigationMenuItem navigationMenuItem37 = new HZH_Controls.Controls.NavigationMenuItem();
             HZH_Controls.Controls.NavigationMenuItem navigationMenuItem38 = new HZH_Controls.Controls.NavigationMenuItem();
+            HZH_Controls.Controls.NavigationMenuItem navigationMenuItem39 = new HZH_Controls.Controls.NavigationMenuItem();
             this.skinButton1 = new CCWin.SkinControl.SkinButton();
             this.skinButton2 = new CCWin.SkinControl.SkinButton();
             this.skinButton3 = new CCWin.SkinControl.SkinButton();
@@ -1225,6 +1226,15 @@
             navigationMenuItem38.ShowTip = true;
             navigationMenuItem38.Text = "编辑模式";
             navigationMenuItem38.TipText = "改";
+            navigationMenuItem39.AnchorRight = true;
+            navigationMenuItem39.DataSource = null;
+            navigationMenuItem39.HasSplitLintAtTop = false;
+            navigationMenuItem39.Icon = null;
+            navigationMenuItem39.Items = null;
+            navigationMenuItem39.ItemWidth = 100;
+            navigationMenuItem39.ShowTip = true;
+            navigationMenuItem39.Text = "伺服控制";
+            navigationMenuItem39.TipText = "IE";
             this.ucNavigationMenu1.Items = new HZH_Controls.Controls.NavigationMenuItem[] {
         navigationMenuItem1,
         navigationMenuItem33,
@@ -1232,7 +1242,8 @@
         navigationMenuItem35,
         navigationMenuItem36,
         navigationMenuItem37,
-        navigationMenuItem38};
+        navigationMenuItem38,
+        navigationMenuItem39};
             this.ucNavigationMenu1.Location = new System.Drawing.Point(-1, 34);
             this.ucNavigationMenu1.Name = "ucNavigationMenu1";
             this.ucNavigationMenu1.Padding = new System.Windows.Forms.Padding(30, 0, 0, 0);

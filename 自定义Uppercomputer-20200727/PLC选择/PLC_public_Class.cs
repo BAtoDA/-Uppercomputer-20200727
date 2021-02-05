@@ -388,7 +388,7 @@ namespace 自定义Uppercomputer_20200727.PLC选择
         /// </summary>
         /// <param name="d"></param>
         /// <returns></returns>
-        public int Hex_to_BCD(int d)//hex-to-bcd
+        public int Hex_to_BCD(int d)
         {
             int de = ((d >> 8) * 100) | ((d >> 4) * 10) | (d & 0x0f);
             return de;

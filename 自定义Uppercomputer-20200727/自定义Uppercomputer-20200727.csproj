@@ -1062,6 +1062,10 @@
       <Project>{90956435-00C0-45A2-A74E-AC9E3871CE85}</Project>
       <Name>UI_Library_da</Name>
     </ProjectReference>
+    <ProjectReference Include="..\三菱伺服MR-JE-C控制\三菱伺服MR-JE控制\三菱伺服MR-JE控制.csproj">
+      <Project>{034fa00d-d0ae-48f7-b06e-e3a8c8aa030f}</Project>
+      <Name>三菱伺服MR-JE控制</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">

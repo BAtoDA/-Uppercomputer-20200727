@@ -518,6 +518,7 @@ namespace 自定义Uppercomputer_20200727
             this.userControl11.Schedule = Vaule;
             this.userControl11.Schedule_Text = Text;
         }
+        三菱伺服MR_JE控制.Form1 Servo_Form;
         /// <summary>
         /// 新增菜单栏点击项事件
         /// </summary>
@@ -536,6 +537,18 @@ namespace 自定义Uppercomputer_20200727
                     return;
                 case "编辑模式":
                     toolStripMenuItem5_Click(sender, e);
+                    return;
+                case "伺服控制":
+                    if (!Servo_Form.IsNull())
+                    {
+                        if (Servo_Form.Hiel)
+                        {
+                            Servo_Form.Activate();
+                            return;
+                        }
+                    }
+                    Servo_Form = new 三菱伺服MR_JE控制.Form1();
+                    Servo_Form.Show();
                     return;
                 case "关于":
                     toolStripMenuItem15_Click(sender, e);

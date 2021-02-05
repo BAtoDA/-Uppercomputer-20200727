@@ -409,7 +409,7 @@ namespace 自定义Uppercomputer_20200727.PLC选择
                 Data = result.Content.ToString();//读取到的数据
                 retry = 0;
             }
-            Thread.Sleep(5);
+            Thread.Sleep(2);
             PLC_busy = false;//允许访问
             
         }

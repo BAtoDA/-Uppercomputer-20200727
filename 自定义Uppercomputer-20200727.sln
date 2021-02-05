@@ -11,11 +11,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UI_Library_da", "UI_Library
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSEngineTest", "C#Dynamic macro instruction\CSEngineTest.csproj", "{994E3EE9-10F4-461D-8F4A-0BEB6294395C}"
 EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "自定义Uppercomputer-20200727安装部署", "自定义Uppercomputer-20200727安装部署\自定义Uppercomputer-20200727安装部署.vdproj", "{881F4692-BA2B-4D0E-8AED-77069C3B7B36}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Install_deployment", "Install_deployment\Install_deployment.csproj", "{CF0A3078-0E2B-4A30-A915-DF9B1E1242E4}"
 EndProject
 Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "自定义Uppercomputer-20200727安装部署1", "自定义Uppercomputer-20200727安装部署1\自定义Uppercomputer-20200727安装部署1.vdproj", "{E4DA03C0-DF3A-443D-AC5C-06C2FA326763}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "三菱伺服MR-JE控制", "三菱伺服MR-JE-C控制\三菱伺服MR-JE控制\三菱伺服MR-JE控制.csproj", "{034FA00D-D0AE-48F7-B06E-E3A8C8AA030F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "命令处理", "三菱伺服MR-JE-C控制\命令处理\命令处理.csproj", "{5D77E549-3C6D-4E7F-A015-DEF34820AE53}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,14 +41,20 @@ Global
 		{994E3EE9-10F4-461D-8F4A-0BEB6294395C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{994E3EE9-10F4-461D-8F4A-0BEB6294395C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{994E3EE9-10F4-461D-8F4A-0BEB6294395C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{881F4692-BA2B-4D0E-8AED-77069C3B7B36}.Debug|Any CPU.ActiveCfg = Debug
-		{881F4692-BA2B-4D0E-8AED-77069C3B7B36}.Release|Any CPU.ActiveCfg = Release
 		{CF0A3078-0E2B-4A30-A915-DF9B1E1242E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{CF0A3078-0E2B-4A30-A915-DF9B1E1242E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CF0A3078-0E2B-4A30-A915-DF9B1E1242E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CF0A3078-0E2B-4A30-A915-DF9B1E1242E4}.Release|Any CPU.Build.0 = Release|Any CPU
 		{E4DA03C0-DF3A-443D-AC5C-06C2FA326763}.Debug|Any CPU.ActiveCfg = Debug
 		{E4DA03C0-DF3A-443D-AC5C-06C2FA326763}.Release|Any CPU.ActiveCfg = Release
+		{034FA00D-D0AE-48F7-B06E-E3A8C8AA030F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{034FA00D-D0AE-48F7-B06E-E3A8C8AA030F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{034FA00D-D0AE-48F7-B06E-E3A8C8AA030F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{034FA00D-D0AE-48F7-B06E-E3A8C8AA030F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5D77E549-3C6D-4E7F-A015-DEF34820AE53}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5D77E549-3C6D-4E7F-A015-DEF34820AE53}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5D77E549-3C6D-4E7F-A015-DEF34820AE53}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5D77E549-3C6D-4E7F-A015-DEF34820AE53}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
