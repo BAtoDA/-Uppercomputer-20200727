@@ -30,6 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(document_Form));
             this.skinTabControl1 = new CCWin.SkinControl.SkinTabControl();
+            this.skinTabPage10 = new CCWin.SkinControl.SkinTabPage();
+            this.skinTextBox10 = new CCWin.SkinControl.SkinTextBox();
             this.skinTabPage15 = new CCWin.SkinControl.SkinTabPage();
             this.skinTextBox15 = new CCWin.SkinControl.SkinTextBox();
             this.skinTabPage13 = new CCWin.SkinControl.SkinTabPage();
@@ -56,14 +58,13 @@
             this.skinTextBox8 = new CCWin.SkinControl.SkinTextBox();
             this.skinTabPage9 = new CCWin.SkinControl.SkinTabPage();
             this.skinTextBox9 = new CCWin.SkinControl.SkinTextBox();
-            this.skinTabPage10 = new CCWin.SkinControl.SkinTabPage();
-            this.skinTextBox10 = new CCWin.SkinControl.SkinTextBox();
             this.skinTabPage14 = new CCWin.SkinControl.SkinTabPage();
             this.skinTextBox14 = new CCWin.SkinControl.SkinTextBox();
             this.skinTabPage16 = new CCWin.SkinControl.SkinTabPage();
             this.skinTextBox17 = new CCWin.SkinControl.SkinTextBox();
             this.skinTextBox16 = new CCWin.SkinControl.SkinTextBox();
             this.skinTabControl1.SuspendLayout();
+            this.skinTabPage10.SuspendLayout();
             this.skinTabPage15.SuspendLayout();
             this.skinTabPage13.SuspendLayout();
             this.skinTabPage11.SuspendLayout();
@@ -77,7 +78,6 @@
             this.skinTabPage7.SuspendLayout();
             this.skinTabPage8.SuspendLayout();
             this.skinTabPage9.SuspendLayout();
-            this.skinTabPage10.SuspendLayout();
             this.skinTabPage14.SuspendLayout();
             this.skinTabPage16.SuspendLayout();
             this.SuspendLayout();
@@ -115,10 +115,126 @@
             this.skinTabControl1.PageHover = ((System.Drawing.Image)(resources.GetObject("skinTabControl1.PageHover")));
             this.skinTabControl1.PageImagePosition = CCWin.SkinControl.SkinTabControl.ePageImagePosition.Left;
             this.skinTabControl1.PageNorml = null;
-            this.skinTabControl1.SelectedIndex = 0;
+            this.skinTabControl1.SelectedIndex = 14;
             this.skinTabControl1.Size = new System.Drawing.Size(786, 407);
             this.skinTabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.skinTabControl1.TabIndex = 1;
+            // 
+            // skinTabPage10
+            // 
+            this.skinTabPage10.BackColor = System.Drawing.Color.White;
+            this.skinTabPage10.Controls.Add(this.skinTextBox10);
+            this.skinTabPage10.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.skinTabPage10.Location = new System.Drawing.Point(0, 36);
+            this.skinTabPage10.Name = "skinTabPage10";
+            this.skinTabPage10.Size = new System.Drawing.Size(786, 371);
+            this.skinTabPage10.TabIndex = 9;
+            this.skinTabPage10.TabItemImage = null;
+            this.skinTabPage10.Text = "Socket案例";
+            // 
+            // skinTextBox10
+            // 
+            this.skinTextBox10.BackColor = System.Drawing.Color.Transparent;
+            this.skinTextBox10.DownBack = null;
+            this.skinTextBox10.Icon = null;
+            this.skinTextBox10.IconIsButton = false;
+            this.skinTextBox10.IconMouseState = CCWin.SkinClass.ControlState.Normal;
+            this.skinTextBox10.IsPasswordChat = '\0';
+            this.skinTextBox10.IsSystemPasswordChar = false;
+            this.skinTextBox10.Lines = new string[] {
+        "   /// <summary>",
+        "    /// 重写 套接字",
+        "    /// </summary>",
+        "    public class macroinstruction_Socket : Socket",
+        "    {",
+        "        /// <summary>",
+        "        /// 套接字链接 结果",
+        "        /// </summary>",
+        "        public bool socket_OK { get; set; }",
+        "        public macroinstruction_Socket(AddressFamily family, SocketType socket, P" +
+            "rotocolType protocol) : base(family, socket, protocol)",
+        "        {",
+        "",
+        "        }",
+        "        /// <summary>",
+        "        /// 打开连接套接字",
+        "        /// </summary>",
+        "        /// <param name=\"iPEndPoint\"></param>",
+        "        public bool Open(IPEndPoint iPEndPoint)//打开套接字",
+        "        {",
+        "            try",
+        "            {",
+        "                this.Connect(iPEndPoint);//连接",
+        "                socket_OK = true;",
+        "                return true;",
+        "            }",
+        "            catch { socket_OK = false; return false; }",
+        "        }",
+        "        public void send(byte[] Data)",
+        "        {",
+        "            try",
+        "            {",
+        "                this.Send(Data);//发送数据",
+        "                socket_OK = true;",
+        "            }",
+        "            catch { socket_OK = false; }",
+        "        }",
+        "        public void send(string Data)",
+        "        {",
+        "            try",
+        "            {",
+        "                this.SendFile(Data);//发送数据",
+        "                socket_OK = true;",
+        "            }",
+        "            catch { socket_OK = false; }",
+        "        }",
+        "        public byte[] reception(byte[] Data)",
+        "        {",
+        "            try",
+        "            {",
+        "                this.Receive(Data, Data.Length, 0);//接收数据",
+        "                socket_OK = true;",
+        "                return Data;",
+        "            }",
+        "            catch { socket_OK = false; return Data; }",
+        "        }",
+        "    }",
+        "    "};
+            this.skinTextBox10.Location = new System.Drawing.Point(0, 0);
+            this.skinTextBox10.Margin = new System.Windows.Forms.Padding(0);
+            this.skinTextBox10.MaxLength = 32767;
+            this.skinTextBox10.MinimumSize = new System.Drawing.Size(28, 28);
+            this.skinTextBox10.MouseBack = null;
+            this.skinTextBox10.MouseState = CCWin.SkinClass.ControlState.Normal;
+            this.skinTextBox10.Multiline = true;
+            this.skinTextBox10.Name = "skinTextBox10";
+            this.skinTextBox10.NormlBack = null;
+            this.skinTextBox10.Padding = new System.Windows.Forms.Padding(5);
+            this.skinTextBox10.ReadOnly = true;
+            this.skinTextBox10.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.skinTextBox10.Size = new System.Drawing.Size(786, 371);
+            // 
+            // 
+            // 
+            this.skinTextBox10.SkinTxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.skinTextBox10.SkinTxt.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.skinTextBox10.SkinTxt.Font = new System.Drawing.Font("微软雅黑", 9.75F);
+            this.skinTextBox10.SkinTxt.Location = new System.Drawing.Point(5, 5);
+            this.skinTextBox10.SkinTxt.Multiline = true;
+            this.skinTextBox10.SkinTxt.Name = "BaseText";
+            this.skinTextBox10.SkinTxt.ReadOnly = true;
+            this.skinTextBox10.SkinTxt.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.skinTextBox10.SkinTxt.Size = new System.Drawing.Size(776, 361);
+            this.skinTextBox10.SkinTxt.TabIndex = 0;
+            this.skinTextBox10.SkinTxt.Text = resources.GetString("resource.Text");
+            this.skinTextBox10.SkinTxt.WaterColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(127)))), ((int)(((byte)(127)))));
+            this.skinTextBox10.SkinTxt.WaterText = "";
+            this.skinTextBox10.TabIndex = 0;
+            this.skinTextBox10.Text = resources.GetString("skinTextBox10.Text");
+            this.skinTextBox10.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.skinTextBox10.WaterColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(127)))), ((int)(((byte)(127)))));
+            this.skinTextBox10.WaterText = "";
+            this.skinTextBox10.WordWrap = true;
             // 
             // skinTabPage15
             // 
@@ -1719,122 +1835,6 @@
             this.skinTextBox9.WaterText = "";
             this.skinTextBox9.WordWrap = true;
             // 
-            // skinTabPage10
-            // 
-            this.skinTabPage10.BackColor = System.Drawing.Color.White;
-            this.skinTabPage10.Controls.Add(this.skinTextBox10);
-            this.skinTabPage10.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.skinTabPage10.Location = new System.Drawing.Point(0, 36);
-            this.skinTabPage10.Name = "skinTabPage10";
-            this.skinTabPage10.Size = new System.Drawing.Size(786, 371);
-            this.skinTabPage10.TabIndex = 9;
-            this.skinTabPage10.TabItemImage = null;
-            this.skinTabPage10.Text = "Socket案例";
-            // 
-            // skinTextBox10
-            // 
-            this.skinTextBox10.BackColor = System.Drawing.Color.Transparent;
-            this.skinTextBox10.DownBack = null;
-            this.skinTextBox10.Icon = null;
-            this.skinTextBox10.IconIsButton = false;
-            this.skinTextBox10.IconMouseState = CCWin.SkinClass.ControlState.Normal;
-            this.skinTextBox10.IsPasswordChat = '\0';
-            this.skinTextBox10.IsSystemPasswordChar = false;
-            this.skinTextBox10.Lines = new string[] {
-        "   /// <summary>",
-        "    /// 重写 套接字",
-        "    /// </summary>",
-        "    public class macroinstruction_Socket : Socket",
-        "    {",
-        "        /// <summary>",
-        "        /// 套接字链接 结果",
-        "        /// </summary>",
-        "        public bool socket_OK { get; set; }",
-        "        public macroinstruction_Socket(AddressFamily family, SocketType socket, P" +
-            "rotocolType protocol) : base(family, socket, protocol)",
-        "        {",
-        "",
-        "        }",
-        "        /// <summary>",
-        "        /// 打开连接套接字",
-        "        /// </summary>",
-        "        /// <param name=\"iPEndPoint\"></param>",
-        "        public bool Open(IPEndPoint iPEndPoint)//打开套接字",
-        "        {",
-        "            try",
-        "            {",
-        "                this.Connect(iPEndPoint);//连接",
-        "                socket_OK = true;",
-        "                return true;",
-        "            }",
-        "            catch { socket_OK = false; return false; }",
-        "        }",
-        "        public void send(byte[] Data)",
-        "        {",
-        "            try",
-        "            {",
-        "                this.Send(Data);//发送数据",
-        "                socket_OK = true;",
-        "            }",
-        "            catch { socket_OK = false; }",
-        "        }",
-        "        public void send(string Data)",
-        "        {",
-        "            try",
-        "            {",
-        "                this.SendFile(Data);//发送数据",
-        "                socket_OK = true;",
-        "            }",
-        "            catch { socket_OK = false; }",
-        "        }",
-        "        public byte[] reception(byte[] Data)",
-        "        {",
-        "            try",
-        "            {",
-        "                this.Receive(Data, Data.Length, 0);//接收数据",
-        "                socket_OK = true;",
-        "                return Data;",
-        "            }",
-        "            catch { socket_OK = false; return Data; }",
-        "        }",
-        "    }",
-        "    "};
-            this.skinTextBox10.Location = new System.Drawing.Point(0, 0);
-            this.skinTextBox10.Margin = new System.Windows.Forms.Padding(0);
-            this.skinTextBox10.MaxLength = 32767;
-            this.skinTextBox10.MinimumSize = new System.Drawing.Size(28, 28);
-            this.skinTextBox10.MouseBack = null;
-            this.skinTextBox10.MouseState = CCWin.SkinClass.ControlState.Normal;
-            this.skinTextBox10.Multiline = true;
-            this.skinTextBox10.Name = "skinTextBox10";
-            this.skinTextBox10.NormlBack = null;
-            this.skinTextBox10.Padding = new System.Windows.Forms.Padding(5);
-            this.skinTextBox10.ReadOnly = true;
-            this.skinTextBox10.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.skinTextBox10.Size = new System.Drawing.Size(786, 371);
-            // 
-            // 
-            // 
-            this.skinTextBox10.SkinTxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.skinTextBox10.SkinTxt.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.skinTextBox10.SkinTxt.Font = new System.Drawing.Font("微软雅黑", 9.75F);
-            this.skinTextBox10.SkinTxt.Location = new System.Drawing.Point(5, 5);
-            this.skinTextBox10.SkinTxt.Multiline = true;
-            this.skinTextBox10.SkinTxt.Name = "BaseText";
-            this.skinTextBox10.SkinTxt.ReadOnly = true;
-            this.skinTextBox10.SkinTxt.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.skinTextBox10.SkinTxt.Size = new System.Drawing.Size(776, 361);
-            this.skinTextBox10.SkinTxt.TabIndex = 0;
-            this.skinTextBox10.SkinTxt.Text = resources.GetString("resource.Text");
-            this.skinTextBox10.SkinTxt.WaterColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(127)))), ((int)(((byte)(127)))));
-            this.skinTextBox10.SkinTxt.WaterText = "";
-            this.skinTextBox10.TabIndex = 0;
-            this.skinTextBox10.Text = resources.GetString("skinTextBox10.Text");
-            this.skinTextBox10.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.skinTextBox10.WaterColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(127)))), ((int)(((byte)(127)))));
-            this.skinTextBox10.WaterText = "";
-            this.skinTextBox10.WordWrap = true;
-            // 
             // skinTabPage14
             // 
             this.skinTabPage14.BackColor = System.Drawing.Color.White;
@@ -2437,7 +2437,9 @@
             this.Controls.Add(this.skinTextBox16);
             this.Name = "document_Form";
             this.Text = "document_Form";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.document_Form_FormClosing);
             this.skinTabControl1.ResumeLayout(false);
+            this.skinTabPage10.ResumeLayout(false);
             this.skinTabPage15.ResumeLayout(false);
             this.skinTabPage13.ResumeLayout(false);
             this.skinTabPage11.ResumeLayout(false);
@@ -2451,7 +2453,6 @@
             this.skinTabPage7.ResumeLayout(false);
             this.skinTabPage8.ResumeLayout(false);
             this.skinTabPage9.ResumeLayout(false);
-            this.skinTabPage10.ResumeLayout(false);
             this.skinTabPage14.ResumeLayout(false);
             this.skinTabPage16.ResumeLayout(false);
             this.ResumeLayout(false);

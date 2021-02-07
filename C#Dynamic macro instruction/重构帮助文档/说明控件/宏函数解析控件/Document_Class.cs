@@ -108,7 +108,60 @@ namespace CSEngineTest.重构帮助文档.说明控件.宏函数解析控件
                 "thread.IsAlive;//线程状态--BOOL值\r\n" +
                 "Thread.Sleep();//延时线程\r\n"
                 ));
-
+            //添加Socket通讯使用方法
+            //添加macroinstruction_Socket(AddressFamily family, SocketType socket,ProtocolType protocol) 方法使用案例
+            tuples.Add(new Tuple<string, string, string, string, string>("uiLinkLabel12",
+                "macroinstruction_Socket(AddressFamily family, SocketType socket,ProtocolType protocol)\r\n"+
+                "Socket通讯需要传入开放类型",
+                "//Socket通讯的使用\r\n" +
+                "macroinstruction_Socket socket =new macroinstruction_Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);\r\n"
+                +"//开放链接服务器\r\n"+
+                "socket.Open(new IPEndPoint(IPAddress.Parse(127.0.0.1), int.Parse(502)));\r\n"
+                + "//向服务器发送消息-字节数组类型\r\n"
+                + "socket.send(new byet[] {0x1,0x2});\r\n"
+                +"//向服务器发送消息--字符串\r\n"
+                + "socket.send(123);\r\n"
+                +"//等待服务器回复数据 堵塞线程模式\r\n"
+                +"byet data=new byet[1024];\r\n"
+                + "socket.reception(data);\r\n"
+                +"//服务器与客户端异常标志位-这个比较重要 true 正常 false 异常\r\n"
+                + "socket.socket_OK;",
+                "macroinstruction_Socket socket =new macroinstruction_Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);",
+                "//Socket使用方法\r\n" +
+                "socket.Open() 表示链接服务器 需要传入IP 与端口\r\n"
+                + "socket.send()向服务器发送消息 可以发送数组 可以直接字符串发送\r\n"
+                + "socket.reception()接收服务器消息 会堵塞线程"
+                ));
+            //添加串口通讯使用方法
+            //添加macroinstruction_SerialPort(int BaudRate, int DataBits,string PortName,StopBits stopBits, Parity parity) 方法使用案例
+            tuples.Add(new Tuple<string, string, string, string, string>("uiLinkLabel11",
+                "macroinstruction_SerialPort(int BaudRate, int DataBits,string PortName,\r\n" +
+                "StopBits stopBits, Parity parity)\r\n" +
+                "串口通讯需要传入参数\r\n",
+                "//串口通讯的使用\r\n" 
+                + "this.BaudRate = BaudRate;//设置波特率\r\n"
+                + "this.DataBits = DataBits;//数据长度\r\n"
+                + "this.Encoding = Encoding.UTF8;//设置解码类型\r\n"
+                + "this.PortName = PortName;//端口号\r\n"
+                + "this.StopBits = stopBits;//停止位数--枚举---StopBits\r\n"
+                + "this.Parity = parity;//校验-枚举 -parity\r\n"
+                + "macroinstruction_SerialPort port =new macroinstruction_SerialPort\r\n"
+                + "(9600,8,COM1,StopBits.One,Parity.None);\r\n"
+                + "//打开COM1\r\n" +
+                 "port.Open();\r\n"
+                + "//向COM1发送消息--字符串\r\n"
+                + "port.send_Port(123);\r\n"
+                + "//等待服务器回复数据 堵塞线程模式\r\n"
+                + "byet data=new byet[1024];\r\n"
+                + "data=port.read_Port();\r\n"
+                + "//COM1异常标志位-这个比较重要 true 正常 false 异常\r\n"
+                + "port.Port_OK;",
+                "macroinstruction_SerialPort port =new macroinstruction_SerialPort(9600,8,COM1,StopBits.One,Parity.None);",
+                "//COM使用方法\r\n" +
+                "port.Open_Port() 表示链接COM口\r\n"
+                + "port.send_Port()向COM口发送消息 可以发送数组 可以直接字符串发送\r\n"
+                + "port.read_Port()接收COM口消息 会堵塞线程"
+                )); ;
         }
     }
 }

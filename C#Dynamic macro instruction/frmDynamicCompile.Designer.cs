@@ -55,6 +55,7 @@
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripMenuItem15 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator19 = new System.Windows.Forms.ToolStripSeparator();
+            this.button1 = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.skinGroupBox1.SuspendLayout();
@@ -120,7 +121,7 @@
             this.groupBox1.Size = new System.Drawing.Size(822, 363);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "宏指令脚本（注意：方法签名不可变更，一定要遵循C#语法，其它可自由编辑 可以引用任何C#本体命名空间-类-方法-属性等，把他当成IDE就没错了）";
+            this.groupBox1.Text = "宏指令脚本（注意：方法签名不可变更，一定要遵循C#语法，其它可自由编辑 可以引用任何C#本体命名空间-类-方法-属性等）";
             // 
             // skinGroupBox1
             // 
@@ -301,7 +302,7 @@
             this.skinTextBox2.IsSystemPasswordChar = false;
             this.skinTextBox2.Lines = new string[] {
         "Mian"};
-            this.skinTextBox2.Location = new System.Drawing.Point(254, 45);
+            this.skinTextBox2.Location = new System.Drawing.Point(231, 45);
             this.skinTextBox2.Margin = new System.Windows.Forms.Padding(0);
             this.skinTextBox2.MaxLength = 32767;
             this.skinTextBox2.MinimumSize = new System.Drawing.Size(28, 28);
@@ -342,7 +343,7 @@
             this.skinLabel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.skinLabel2.BorderColor = System.Drawing.Color.White;
             this.skinLabel2.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.skinLabel2.Location = new System.Drawing.Point(175, 51);
+            this.skinLabel2.Location = new System.Drawing.Point(152, 51);
             this.skinLabel2.Name = "skinLabel2";
             this.skinLabel2.Size = new System.Drawing.Size(79, 19);
             this.skinLabel2.TabIndex = 4;
@@ -361,7 +362,7 @@
             this.skinTextBox3.IsSystemPasswordChar = false;
             this.skinTextBox3.Lines = new string[] {
         "100"};
-            this.skinTextBox3.Location = new System.Drawing.Point(563, 45);
+            this.skinTextBox3.Location = new System.Drawing.Point(519, 45);
             this.skinTextBox3.Margin = new System.Windows.Forms.Padding(0);
             this.skinTextBox3.MaxLength = 32767;
             this.skinTextBox3.MinimumSize = new System.Drawing.Size(28, 28);
@@ -402,7 +403,7 @@
             this.skinLabel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.skinLabel3.BorderColor = System.Drawing.Color.White;
             this.skinLabel3.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.skinLabel3.Location = new System.Drawing.Point(470, 51);
+            this.skinLabel3.Location = new System.Drawing.Point(426, 51);
             this.skinLabel3.Name = "skinLabel3";
             this.skinLabel3.Size = new System.Drawing.Size(93, 19);
             this.skinLabel3.TabIndex = 6;
@@ -417,7 +418,7 @@
             this.skinCheckBox1.ControlState = CCWin.SkinClass.ControlState.Normal;
             this.skinCheckBox1.DownBack = null;
             this.skinCheckBox1.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Bold);
-            this.skinCheckBox1.Location = new System.Drawing.Point(696, 49);
+            this.skinCheckBox1.Location = new System.Drawing.Point(637, 49);
             this.skinCheckBox1.MouseBack = null;
             this.skinCheckBox1.Name = "skinCheckBox1";
             this.skinCheckBox1.NormlBack = null;
@@ -489,12 +490,23 @@
             this.toolStripSeparator19.Name = "toolStripSeparator19";
             this.toolStripSeparator19.Size = new System.Drawing.Size(133, 6);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(727, 48);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(94, 25);
+            this.button1.TabIndex = 9;
+            this.button1.Text = "帮助文档";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(840, 628);
             this.ContextMenuStrip = this.skinContextMenuStrip1;
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.skinCheckBox1);
             this.Controls.Add(this.skinTextBox3);
             this.Controls.Add(this.skinLabel3);
@@ -550,6 +562,7 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator19;
         private CCWin.SkinControl.SkinGroupBox skinGroupBox1;
         private CCWin.SkinControl.SkinProgressBar skinProgressBar1;
+        private System.Windows.Forms.Button button1;
     }
 }
 

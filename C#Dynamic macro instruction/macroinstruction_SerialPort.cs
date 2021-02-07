@@ -29,6 +29,7 @@ namespace CSEngineTest
             this.PortName = PortName;//端口号
             this.StopBits = stopBits;//停止位数--枚举---StopBits
             this.Parity = parity;//校验-枚举 -parity
+          
         }
         /// <summary>
         /// 打开串口

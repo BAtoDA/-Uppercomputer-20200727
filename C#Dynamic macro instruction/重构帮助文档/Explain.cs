@@ -36,13 +36,26 @@ namespace CSEngineTest.重构帮助文档
                 case "宏函数":
                     TreeViewAdd(new UserControl4());
                     return;
+                case "宏内置元件":
+                    TreeViewAdd(new UserControl5());
+                    return;
+                case "Socket通讯源码":
+                    TreeViewAdd(new UserControl6());
+                    return;
+                case "串口通讯源码":
+                    TreeViewAdd(new UserControl7());
+                    return;
+                case "数据转换源码":
+                    TreeViewAdd(new UserControl8());
+                    return;
 
             } 
         }
-
+        public bool Hiel;
         private void Explain_Load(object sender, EventArgs e)
         {
             this.panel1.Controls.Add(new UserControl1());
+            Hiel = true;
         }
         private void TreeViewAdd(Control  control)
         {
@@ -53,6 +66,11 @@ namespace CSEngineTest.重构帮助文档
         private void panel1_Resize(object sender, EventArgs e)
         {
             SIZE_i = this.Size;
+        }
+
+        private void Explain_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Hiel = false;
         }
     }
 }

@@ -468,13 +468,16 @@ namespace CSEngineTest
         Explain document_Form;
         private void toolStripMenuItem3_Click(object sender, EventArgs e)//用户点击了函数文档
         {
-            if (document_Form.IsNull())
+            if (!document_Form.IsNull())
             {
-                document_Form = new Explain();
-                document_Form.Show();//打开文档
+                if (document_Form.Hiel)
+                {
+                    document_Form.Activate();
+                    return;
+                }
             }
-            else
-                document_Form.Activate();//窗口已打开直接激活
+            document_Form = new Explain();
+            document_Form.Show();
         }
         /// <summary>
         /// 显示窗口
@@ -514,6 +517,20 @@ namespace CSEngineTest
             period_run=this.skinCheckBox1.Checked;//是否周期执行
             current_method = this.cmbSampleMethod.SelectedIndex;//设置选择的方法
             if (document_Form.IsNull() != true) document_Form.Close();//关闭窗口
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (!document_Form.IsNull())
+            {
+                if (document_Form.Hiel)
+                {
+                    document_Form.Activate();
+                    return;
+                }
+            }
+            document_Form = new Explain();
+            document_Form.Show();
         }
     }
 }

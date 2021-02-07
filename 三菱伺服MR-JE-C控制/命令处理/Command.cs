@@ -532,6 +532,12 @@ namespace 命令处理
                     busy = true;
                     return false;
                 }
+                if (!Servo_Enabled)
+                {
+                    MessageBox.Show("请开启伺服使能");
+                    timer.Stop();
+                    return true;
+                }
                 //传入定位位置 与 速度
                 busy = false;
                 modbus.IPLC_interface_PLC_write_D_register("D", Convert.ToInt32("607A", 16).ToString(),location.ToString(), numerical_format.Signed_32_Bit);
@@ -635,17 +641,18 @@ namespace 命令处理
             {
                 MessageBox.Show("伺服未准备好");
             }
-            //Task task;
+            if (!Servo_Enabled)
+            {
+                MessageBox.Show("请开启伺服使能");
+                return ;
+            }
             CancellationTokenSource _cancelSource = new CancellationTokenSource();
             //用户松开鼠标事件
             control.MouseUp += ((Send, e) =>
-              {
-                  //_cancelSource.Cancel();
-                  modbus.IPLC_interface_PLC_write_D_register("D", Convert.ToInt32("6040", 16).ToString(), Convert.ToInt32("0F", 16).ToString(), numerical_format.Signed_16_Bit);
-                  modbus.IPLC_interface_PLC_write_D_register("D", Convert.ToInt32("6060", 16).ToString(), Convert.ToInt32("01", 16).ToString(), numerical_format.Signed_16_Bit);
-              });
-            //task = new Task(() =>
-            //{
+             {
+                 modbus.IPLC_interface_PLC_write_D_register("D", Convert.ToInt32("6040", 16).ToString(), Convert.ToInt32("0F", 16).ToString(), numerical_format.Signed_16_Bit);
+                 modbus.IPLC_interface_PLC_write_D_register("D", Convert.ToInt32("6060", 16).ToString(), Convert.ToInt32("01", 16).ToString(), numerical_format.Signed_16_Bit);
+             });
             //切换模式--位置模式--TO--JOG模式
             modbus.IPLC_interface_PLC_write_D_register("D", Convert.ToInt32("6040", 16).ToString(), Convert.ToInt32("0F", 16).ToString(), numerical_format.Signed_16_Bit);
             modbus.IPLC_interface_PLC_write_D_register("D", Convert.ToInt32("6060", 16).ToString(), Convert.ToInt32("03", 16).ToString(), numerical_format.Signed_16_Bit);
@@ -661,61 +668,6 @@ namespace 命令处理
                 this.JOG_Speed = this.JOG_Speed > 0 ? 0 - this.JOG_Speed : this.JOG_Speed;
                 modbus.IPLC_interface_PLC_write_D_register("D", Convert.ToInt32("6040", 16).ToString(), Convert.ToInt32("800F", 16).ToString(), numerical_format.Unsigned_16_Bit);
             }
-            //});
-            //task.Start();
         }
-        /// <summary>
-        /// 处理伺服使能
-        /// </summary>
-        /// <param name="Enabled">TRUE 导通使能 FALSE 关闭使能</param>
-        /// <returns></returns>
-        //public bool Servo_Enabled(bool Enabled)
-        //{
-        //    if(Enabled)
-        //    {
-        //        this.modbus.IPLC_interface_PLC_write_D_register("D", Convert.ToInt32("6040", 16).ToString(), Convert.ToInt32("0F", 16).ToString(), numerical_format.Signed_16_Bit);
-        //    }
-        //    else
-        //    {
-
-        //        this.modbus.IPLC_interface_PLC_write_D_register("D", Convert.ToInt32("6040", 16).ToString(), Convert.ToInt32("07", 16).ToString(), numerical_format.Signed_16_Bit);
-        //    }
-        //    bool[] Status = new bool[16];
-        //    Status = this.ConvertIntToBoolArray(Convert.ToInt32(modbus.IPLC_interface_PLC_read_D_register("D", Convert.ToInt32("6041", 16).ToString(), numerical_format.Signed_16_Bit)), 16);
-        //    if (Status[1] & Status[2])
-        //        return true;
-        //    else
-        //        return false;
-        //}
-        //public bool Servo_Parameter()
-        //{
-        //    this.modbus.IPLC_interface_PLC_write_D_register("D", Convert.ToInt32("6040", 16).ToString(), Convert.ToInt32("0F", 16).ToString(), numerical_format.Signed_16_Bit);
-        //}
-        /// <summary>
-        /// 批量读取伺服状态
-        /// </summary>
-        /// <returns></returns>
-        //public List<Tuple<string,int>> Servo_Status()
-        //{
-        //    List<Tuple<string, int>> Status = new List<Tuple<string, int>>();
-        //    if(!modbus.Socket_ready)
-        //    {
-        //        MessageBox.Show("未链接伺服驱动器");
-        //        return new List<Tuple<string, int>>();
-        //    }
-        //    Status.Add(new Tuple<string, int>("6061",Convert.ToInt32(modbus.Read_short(6061))));
-
-
-        //}
-        /// <summary>
-        /// Err处理
-        /// </summary>
-        /// <param name="e"></param>
-        //private void Err(Exception e)
-        //{
-        //    ready = false;
-        //    code = 999;
-        //    content = e.Message;
-        //}
     }
 }

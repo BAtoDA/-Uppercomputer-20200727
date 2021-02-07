@@ -269,7 +269,7 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Name = "FunctionAnalysis";
-            this.Size = new System.Drawing.Size(676, 715);
+            this.Size = new System.Drawing.Size(676, 430);
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
             this.panel8.ResumeLayout(false);

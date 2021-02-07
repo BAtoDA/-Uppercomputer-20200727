@@ -7,19 +7,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using CCWin;
-namespace CSEngineTest
+
+namespace CSEngineTest.重构帮助文档.说明控件
 {
-    public partial class document_Form : Skin_Mac
+    public partial class UserControl7 : UserControl
     {
-        public document_Form()
+        public UserControl7()
         {
             InitializeComponent();
-        }
-
-        private void document_Form_FormClosing(object sender, FormClosingEventArgs e)
-        {
-
         }
     }
 }

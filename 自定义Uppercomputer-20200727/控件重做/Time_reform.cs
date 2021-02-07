@@ -380,8 +380,6 @@ namespace 自定义Uppercomputer_20200727.控件重做
             if (Form_Tick.IsHandleCreated != true) return;//判断创建是否加载完成   
             try
             {
-                //Form_Tick.BeginInvoke((EventHandler)delegate
-                //{
                 switch (button_State)
                 {
                     case PLC选择.Button_state.Off:
@@ -401,7 +399,6 @@ namespace 自定义Uppercomputer_20200727.控件重做
                         button_Reform.DownBaseColor = Color.FromName(button_Classes.colour_1.Trim());//设置样式
                         break;
                 }
-                //});
             }
             catch { return; }
         }
