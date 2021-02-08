@@ -96,9 +96,11 @@
             // 
             // doughnut_Chart1
             // 
+            this.doughnut_Chart1.background_colo = System.Drawing.Color.Transparent;
             this.doughnut_Chart1.BorderlineColor = System.Drawing.Color.BlanchedAlmond;
             chartArea1.Name = "ChartArea1";
             this.doughnut_Chart1.ChartAreas.Add(chartArea1);
+            this.doughnut_Chart1.color = System.Drawing.Color.BlanchedAlmond;
             this.doughnut_Chart1.doughnut_Chart_Data = ((System.Collections.Generic.List<string>)(resources.GetObject("doughnut_Chart1.doughnut_Chart_Data")));
             this.doughnut_Chart1.doughnut_Chart_Data_INT = ((System.Collections.Generic.List<int>)(resources.GetObject("doughnut_Chart1.doughnut_Chart_Data_INT")));
             this.doughnut_Chart1.doughnut_Chart_Font = new System.Drawing.Font("宋体", 15F);

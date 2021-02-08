@@ -29,7 +29,7 @@ namespace 自定义Uppercomputer_20200727.PLC选择
         /// <summary>
         /// 三菱3E帧类
         /// </summary>
-        private static MelsecNet melsec_net = null;
+        public static MelsecNet melsec_net = null;
         //互斥锁(Mutex)，用于多线程中防止两条线程同时对一个公共资源进行读写的机制。
         /// <summary>
         /// 互斥锁(Mutex)，用于多线程中防止两条线程同时对一个公共资源进行读写的机制

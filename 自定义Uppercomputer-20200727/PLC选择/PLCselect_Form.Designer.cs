@@ -40,6 +40,11 @@
             this.skinLabel2 = new CCWin.SkinControl.SkinLabel();
             this.skinTextBox1 = new CCWin.SkinControl.SkinTextBox();
             this.skinLabel1 = new CCWin.SkinControl.SkinLabel();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.skinButton7 = new CCWin.SkinControl.SkinButton();
+            this.skinButton6 = new CCWin.SkinControl.SkinButton();
+            this.skinButton5 = new CCWin.SkinControl.SkinButton();
+            this.skinButton4 = new CCWin.SkinControl.SkinButton();
             this.skinGroupBox2 = new CCWin.SkinControl.SkinGroupBox();
             this.skinComboBox2 = new CCWin.SkinControl.SkinComboBox();
             this.skinLabel5 = new CCWin.SkinControl.SkinLabel();
@@ -61,6 +66,7 @@
             this.skinTextBox9 = new CCWin.SkinControl.SkinTextBox();
             this.skinLabel12 = new CCWin.SkinControl.SkinLabel();
             this.skinGroupBox1.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.skinGroupBox2.SuspendLayout();
             this.skinGroupBox3.SuspendLayout();
             this.SuspendLayout();
@@ -79,6 +85,7 @@
             this.skinGroupBox1.Controls.Add(this.skinLabel2);
             this.skinGroupBox1.Controls.Add(this.skinTextBox1);
             this.skinGroupBox1.Controls.Add(this.skinLabel1);
+            this.skinGroupBox1.Controls.Add(this.groupBox1);
             this.skinGroupBox1.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.skinGroupBox1.ForeColor = System.Drawing.Color.Blue;
             this.skinGroupBox1.Location = new System.Drawing.Point(12, 42);
@@ -86,7 +93,7 @@
             this.skinGroupBox1.RectBackColor = System.Drawing.Color.Transparent;
             this.skinGroupBox1.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.skinGroupBox1.RoundStyle = CCWin.SkinClass.RoundStyle.All;
-            this.skinGroupBox1.Size = new System.Drawing.Size(322, 397);
+            this.skinGroupBox1.Size = new System.Drawing.Size(322, 404);
             this.skinGroupBox1.TabIndex = 0;
             this.skinGroupBox1.TabStop = false;
             this.skinGroupBox1.Text = "三菱通讯配置";
@@ -122,7 +129,7 @@
             this.skinButton1.BackColor = System.Drawing.Color.Transparent;
             this.skinButton1.ControlState = CCWin.SkinClass.ControlState.Normal;
             this.skinButton1.DownBack = null;
-            this.skinButton1.Location = new System.Drawing.Point(96, 297);
+            this.skinButton1.Location = new System.Drawing.Point(96, 315);
             this.skinButton1.MouseBack = null;
             this.skinButton1.Name = "skinButton1";
             this.skinButton1.NormlBack = null;
@@ -301,6 +308,79 @@
             this.skinLabel1.TabIndex = 0;
             this.skinLabel1.Text = "地址-IP：";
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.skinButton7);
+            this.groupBox1.Controls.Add(this.skinButton6);
+            this.groupBox1.Controls.Add(this.skinButton5);
+            this.groupBox1.Controls.Add(this.skinButton4);
+            this.groupBox1.Location = new System.Drawing.Point(31, 251);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(270, 61);
+            this.groupBox1.TabIndex = 10;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "PLC操作";
+            this.groupBox1.Visible = false;
+            // 
+            // skinButton7
+            // 
+            this.skinButton7.BackColor = System.Drawing.Color.Transparent;
+            this.skinButton7.ControlState = CCWin.SkinClass.ControlState.Normal;
+            this.skinButton7.DownBack = null;
+            this.skinButton7.Location = new System.Drawing.Point(203, 24);
+            this.skinButton7.MouseBack = null;
+            this.skinButton7.Name = "skinButton7";
+            this.skinButton7.NormlBack = null;
+            this.skinButton7.Size = new System.Drawing.Size(59, 26);
+            this.skinButton7.TabIndex = 12;
+            this.skinButton7.Text = "Pause";
+            this.skinButton7.UseVisualStyleBackColor = false;
+            this.skinButton7.Click += new System.EventHandler(this.Button_Click);
+            // 
+            // skinButton6
+            // 
+            this.skinButton6.BackColor = System.Drawing.Color.Transparent;
+            this.skinButton6.ControlState = CCWin.SkinClass.ControlState.Normal;
+            this.skinButton6.DownBack = null;
+            this.skinButton6.Location = new System.Drawing.Point(138, 24);
+            this.skinButton6.MouseBack = null;
+            this.skinButton6.Name = "skinButton6";
+            this.skinButton6.NormlBack = null;
+            this.skinButton6.Size = new System.Drawing.Size(59, 26);
+            this.skinButton6.TabIndex = 11;
+            this.skinButton6.Text = "REST";
+            this.skinButton6.UseVisualStyleBackColor = false;
+            // 
+            // skinButton5
+            // 
+            this.skinButton5.BackColor = System.Drawing.Color.Transparent;
+            this.skinButton5.ControlState = CCWin.SkinClass.ControlState.Normal;
+            this.skinButton5.DownBack = null;
+            this.skinButton5.Location = new System.Drawing.Point(73, 24);
+            this.skinButton5.MouseBack = null;
+            this.skinButton5.Name = "skinButton5";
+            this.skinButton5.NormlBack = null;
+            this.skinButton5.Size = new System.Drawing.Size(59, 26);
+            this.skinButton5.TabIndex = 10;
+            this.skinButton5.Text = "STOP";
+            this.skinButton5.UseVisualStyleBackColor = false;
+            this.skinButton5.Click += new System.EventHandler(this.Button_Click);
+            // 
+            // skinButton4
+            // 
+            this.skinButton4.BackColor = System.Drawing.Color.Transparent;
+            this.skinButton4.ControlState = CCWin.SkinClass.ControlState.Normal;
+            this.skinButton4.DownBack = null;
+            this.skinButton4.Location = new System.Drawing.Point(8, 24);
+            this.skinButton4.MouseBack = null;
+            this.skinButton4.Name = "skinButton4";
+            this.skinButton4.NormlBack = null;
+            this.skinButton4.Size = new System.Drawing.Size(59, 26);
+            this.skinButton4.TabIndex = 9;
+            this.skinButton4.Text = "RUN";
+            this.skinButton4.UseVisualStyleBackColor = false;
+            this.skinButton4.Click += new System.EventHandler(this.Button_Click);
+            // 
             // skinGroupBox2
             // 
             this.skinGroupBox2.AutoSize = true;
@@ -322,7 +402,7 @@
             this.skinGroupBox2.RectBackColor = System.Drawing.Color.Transparent;
             this.skinGroupBox2.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.skinGroupBox2.RoundStyle = CCWin.SkinClass.RoundStyle.All;
-            this.skinGroupBox2.Size = new System.Drawing.Size(322, 397);
+            this.skinGroupBox2.Size = new System.Drawing.Size(322, 405);
             this.skinGroupBox2.TabIndex = 1;
             this.skinGroupBox2.TabStop = false;
             this.skinGroupBox2.Text = "西门子通讯配置";
@@ -358,7 +438,7 @@
             this.skinButton2.BackColor = System.Drawing.Color.Transparent;
             this.skinButton2.ControlState = CCWin.SkinClass.ControlState.Normal;
             this.skinButton2.DownBack = null;
-            this.skinButton2.Location = new System.Drawing.Point(96, 297);
+            this.skinButton2.Location = new System.Drawing.Point(96, 316);
             this.skinButton2.MouseBack = null;
             this.skinButton2.Name = "skinButton2";
             this.skinButton2.NormlBack = null;
@@ -558,7 +638,7 @@
             this.skinGroupBox3.RectBackColor = System.Drawing.Color.Transparent;
             this.skinGroupBox3.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.skinGroupBox3.RoundStyle = CCWin.SkinClass.RoundStyle.All;
-            this.skinGroupBox3.Size = new System.Drawing.Size(322, 397);
+            this.skinGroupBox3.Size = new System.Drawing.Size(322, 405);
             this.skinGroupBox3.TabIndex = 2;
             this.skinGroupBox3.TabStop = false;
             this.skinGroupBox3.Text = "MODBUS_TCP通讯配置";
@@ -594,7 +674,7 @@
             this.skinButton3.BackColor = System.Drawing.Color.Transparent;
             this.skinButton3.ControlState = CCWin.SkinClass.ControlState.Normal;
             this.skinButton3.DownBack = null;
-            this.skinButton3.Location = new System.Drawing.Point(96, 297);
+            this.skinButton3.Location = new System.Drawing.Point(96, 316);
             this.skinButton3.MouseBack = null;
             this.skinButton3.Name = "skinButton3";
             this.skinButton3.NormlBack = null;
@@ -790,6 +870,7 @@
             this.Load += new System.EventHandler(this.PLCselect_Form_Load);
             this.skinGroupBox1.ResumeLayout(false);
             this.skinGroupBox1.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
             this.skinGroupBox2.ResumeLayout(false);
             this.skinGroupBox2.PerformLayout();
             this.skinGroupBox3.ResumeLayout(false);
@@ -831,5 +912,10 @@
         private CCWin.SkinControl.SkinLabel skinLabel11;
         private CCWin.SkinControl.SkinTextBox skinTextBox9;
         private CCWin.SkinControl.SkinLabel skinLabel12;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private CCWin.SkinControl.SkinButton skinButton5;
+        private CCWin.SkinControl.SkinButton skinButton4;
+        private CCWin.SkinControl.SkinButton skinButton6;
+        private CCWin.SkinControl.SkinButton skinButton7;
     }
 }

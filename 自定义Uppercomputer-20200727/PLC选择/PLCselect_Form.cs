@@ -14,6 +14,7 @@ using CCWin;
 using HslCommunication.Profinet;
 using 自定义Uppercomputer_20200727.EF实体模型;
 using 自定义Uppercomputer_20200727.PLC选择.MODBUS_TCP监控窗口;
+using 自定义Uppercomputer_20200727.三菱报文;
 
 namespace 自定义Uppercomputer_20200727.PLC选择
 {
@@ -51,6 +52,14 @@ namespace 自定义Uppercomputer_20200727.PLC选择
                     this.skinButton1.Text = "链接成功";
                     this.skinComboBox1.Enabled = false;
                     this.skinButton1.Enabled = false;
+                    //改变PLC操作显示
+                    this.skinButton1.EnabledChanged += ((send1, e1) =>
+                      {
+                          if (Mitsubishi.PLC_ready)
+                              this.groupBox1.Visible = true;
+                          else
+                              this.groupBox1.Visible = false;
+                      });
                 }
             }
             //预留未实现西门子
@@ -186,6 +195,35 @@ namespace 自定义Uppercomputer_20200727.PLC选择
         {
             Hiel = false;
 
+        }
+        /// <summary>
+        /// 执行对的PLC操作 RUN STOP REST Paus
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Button_Click(object sender, EventArgs e)
+        {
+            IPLC_interface Mitsubishi = new Mitsubishi_realize();
+            Mitsubishi_message mitsubishi = new Mitsubishi_message();
+            Control control = sender as Control;
+            if (Mitsubishi.PLC_ready)
+            {
+                switch (control.Text)
+                {
+                    case "RUN":
+                        Mitsubishi_realize.melsec_net.ReadFromServerCore(mitsubishi.PLC_Run_remote());
+                        return;
+                    case "STOP":
+                        Mitsubishi_realize.melsec_net.ReadFromServerCore(mitsubishi.PLC_Stop_remote());
+                        return;
+                    case "REST":
+                        Mitsubishi_realize.melsec_net.ReadFromServerCore(mitsubishi.PLC_Rrr_Rest_remote());
+                        return;
+                    case "Pause":
+                        Mitsubishi_realize.melsec_net.ReadFromServerCore(mitsubishi.PLC_Pause_remote());
+                        return;
+                }
+            }         
         }
     }
 }

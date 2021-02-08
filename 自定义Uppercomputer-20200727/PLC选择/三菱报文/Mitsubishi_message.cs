@@ -177,7 +177,7 @@ namespace 自定义Uppercomputer_20200727.三菱报文
         /// 对远程PLC执行Run运行操作--不强制执行
         /// </summary>
         /// <returns></returns>
-        protected virtual byte[] PLC_Run_remote()
+        public virtual byte[] PLC_Run_remote()
         {
             string length = $"0A00";//请求长度
             string Data = $"{Secondary_head}{Station_number}{length}{Time}{Remote_Run}{Mandatory_OFF}{Eliminate}{End}";//获取默认头部帧
@@ -187,7 +187,7 @@ namespace 自定义Uppercomputer_20200727.三菱报文
         /// 对远程PLC执行Stop停止操作
         /// </summary>
         /// <returns></returns>
-        protected virtual byte[] PLC_Stop_remote()
+        public virtual byte[] PLC_Stop_remote()
         {
             string length = $"0800";//请求长度
             string Data = $"{Secondary_head}{Station_number}{length}{Time}{Remote_Stop}{Eliminate}{End}";//获取默认头部帧
@@ -197,7 +197,7 @@ namespace 自定义Uppercomputer_20200727.三菱报文
         /// 对远程PLC进行Pause操作
         /// </summary>
         /// <returns></returns>
-        protected virtual byte[] PLC_Pause_remote()
+        public virtual byte[] PLC_Pause_remote()
         {
             string length = $"0800";//请求长度
             string Data = $"{Secondary_head}{Station_number}{length}{Time}{Remote_Pause}{Eliminate}{End}";//获取默认头部帧
@@ -207,7 +207,7 @@ namespace 自定义Uppercomputer_20200727.三菱报文
         /// 对远程PLC进行Rest复位操作
         /// </summary>
         /// <returns></returns>
-        protected virtual byte[] PLC_Rest_remote()
+        public virtual byte[] PLC_Rest_remote()
         {
             string length = $"0800";//请求长度
             string Data = $"{Secondary_head}{Station_number}{length}{Time}{Remote_Rest}{Eliminate}{End}";//获取默认头部帧
@@ -217,7 +217,7 @@ namespace 自定义Uppercomputer_20200727.三菱报文
         /// 对远程PLC进行 出错代码的初始化复位操作
         /// </summary>
         /// <returns></returns> 
-        protected virtual byte[] PLC_Rrr_Rest_remote()
+        public virtual byte[] PLC_Rrr_Rest_remote()
         {
             string length = $"0600";//请求长度
             string Data = $"{Secondary_head}{Station_number}{length}{Time}{Remote_Err_Rest}";//获取默认头部帧
