@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using 自定义Uppercomputer_20200727.EF实体模型;
 using 自定义Uppercomputer_20200727.EF实体模型.工业图形控件参数;
+using 自定义Uppercomputer_20200727.Nlog;
 using 自定义Uppercomputer_20200727.修改参数界面;
 using 自定义Uppercomputer_20200727.修改参数界面.AnalogMeter百分百表盘参数;
 using 自定义Uppercomputer_20200727.修改参数界面.doughnut_Chart图形控件参数;
@@ -71,6 +72,8 @@ namespace 自定义Uppercomputer_20200727.控件重做
         /// <本方法重写右键点击菜单事件--触发相应修改参数操作>
         public void toolStrip_Click_reform(object sender, EventArgs e)
         {
+            //LogUtils日志
+            LogUtils.debugWrite($"用户执行了：{((Control)this.all_purpose).Name} 参数修改");
             switch (SkinContextMenuStrip_Button_type)//判断传递父级的类型
             {
                 case "Button_reform":
@@ -159,6 +162,8 @@ namespace 自定义Uppercomputer_20200727.控件重做
                     Valve.ShowDialog();//弹出修改参数窗口
                     break;
             }
+            //LogUtils日志
+            LogUtils.debugWrite($"用户修改了：{((Control)this.all_purpose).Name} 控件参数完成" );
         }
         /// <本方法重写右键点击菜单事件--触发移除控件操作>
         [Obsolete]
@@ -296,6 +301,8 @@ namespace 自定义Uppercomputer_20200727.控件重做
                     Valve_F.Valve_Parameter_delete(SkinContextMenuStrip_Button_ID + "- " + ((Valve_reform)all_purpose).Name);//执行SQL删除操作
                     break;
             }
+            //LogUtils日志
+            LogUtils.debugWrite($"用户删除了：{((Control)this.all_purpose).Name} 控件");
         }
         /// <summary>2Q
         /// 控件最上层选择
@@ -390,6 +397,8 @@ namespace 自定义Uppercomputer_20200727.控件重做
                     layer_EF.all_Parameter_Query_Add(SkinContextMenuStrip_Button_ID + "- " + ((Valve_reform)all_purpose).Name, ((Valve_reform)all_purpose).Name, 1);
                     break;
             }
+            //LogUtils日志
+            LogUtils.debugWrite($"用户把：{((Control)this.all_purpose).Name} 控件改为最上层");
         }
         /// <summary>
         /// 控件最下层选择
@@ -484,6 +493,8 @@ namespace 自定义Uppercomputer_20200727.控件重做
                     layer_EF.all_Parameter_Query_Add(SkinContextMenuStrip_Button_ID + "- " + ((Valve_reform)all_purpose).Name, ((Valve_reform)all_purpose).Name, 0);
                     break;
             }
+            //LogUtils日志
+            LogUtils.debugWrite($"用户把：{((Control)this.all_purpose).Name} 控件改为最下层");
         }
         /// <summary>
         /// 查看控件属性
@@ -557,6 +568,8 @@ namespace 自定义Uppercomputer_20200727.控件重做
                     propertyGrid.SelectedObject = ((Valve_reform)all_purpose);
                     break;
             }
+            //LogUtils日志
+            LogUtils.debugWrite($"用户查看了：{((Control)this.all_purpose).Name} 控件属性信息");
             Control_property control_Property = new Control_property(propertyGrid);
             control_Property.ShowDialog();
         }

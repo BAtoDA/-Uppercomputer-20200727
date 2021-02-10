@@ -45,6 +45,7 @@ using HZH_Controls.Controls;
 using 自定义Uppercomputer_20200727.控制主页面模板.工业图形ADD;
 using 自定义Uppercomputer_20200727.控件重做.工业图形控件;
 using 自定义Uppercomputer_20200727.修改参数界面.工业图形汇总;
+using 自定义Uppercomputer_20200727.Nlog;
 
 namespace 自定义Uppercomputer_20200727
 {
@@ -93,10 +94,24 @@ namespace 自定义Uppercomputer_20200727
             Button_Add button = new Button_Add();
             Button_reform skinButton = button.Add(this.Controls, new Point(X, Y));
             this.Controls.Add(skinButton);//添加控件
+            //LogUtils日志
+            LogUtils.debugWrite("用户选择添加："+skinButton.Name);
+
             skinButton.BringToFront();//将控件放置所有控件最顶层     
             Modification_Button modification_Button = new Modification_Button(skinButton.Parent.ToString(), skinButton);
             modification_Button.ShowDialog();
-            if (modification_Button.Add_to_allow == false) this.Controls.Remove(skinButton);//不允许添加异常对象
+            if (modification_Button.Add_to_allow == false)
+            {
+                //LogUtils日志
+                LogUtils.debugWrite("用户取消添加控件：" + skinButton.Name);
+                this.Controls.Remove(skinButton);//不允许添加异常对象
+            }
+            else
+            {
+                //LogUtils日志
+                LogUtils.debugWrite("用户添加控件：" + skinButton.Name);
+            }
+
         }
 
         private void label文本ToolStripMenuItem_Click(object sender, EventArgs e)//添加系统文本
@@ -104,10 +119,23 @@ namespace 自定义Uppercomputer_20200727
             Skinlabel_Add skinlabel = new Skinlabel_Add();
             SkinLabel skinLabel = skinlabel.Add(this.Controls, new Point(X, Y));
             this.Controls.Add(skinLabel);
+            //LogUtils日志
+            LogUtils.debugWrite("用户选择添加：" + skinLabel.Name);
+
             skinLabel.BringToFront();//将控件放置所有控件最顶层     
             Modification_label modification_Label = new Modification_label(skinLabel.Parent.ToString(), skinLabel);
             modification_Label.ShowDialog();
-            if (modification_Label.Add_to_allow == false) this.Controls.Remove(skinLabel);//不允许添加异常对象
+            if (modification_Label.Add_to_allow == false)
+            {
+                //LogUtils日志
+                LogUtils.debugWrite("用户取消添加控件：" + skinLabel.Name);
+                this.Controls.Remove(skinLabel);//不允许添加异常对象
+            }
+            else
+            {
+                //LogUtils日志
+                LogUtils.debugWrite("用户添加控件：" + skinLabel.Name);
+            }
         }
 
         private void texebox数值ToolStripMenuItem_Click(object sender, EventArgs e)//添加系统输入文本
@@ -115,193 +143,442 @@ namespace 自定义Uppercomputer_20200727
             SkinTextBox_Add skinTextBox = new SkinTextBox_Add();
             TextBox skinTextBox1 = skinTextBox.Add(this.Controls, new Point(X, Y));
             this.Controls.Add(skinTextBox1);
+            //LogUtils日志
+            LogUtils.debugWrite("用户选择添加：" + skinTextBox1.Name);
+
             skinTextBox1.BringToFront();//将控件放置所有控件最顶层   
             Modification_numerical modification_Numerical = new Modification_numerical(skinTextBox1.Parent.ToString(), skinTextBox1);
             modification_Numerical.ShowDialog();
             skinTextBox1.Text = "00";
-            if (modification_Numerical.Add_to_allow == false) this.Controls.Remove(skinTextBox1);//不允许添加异常对象
+            if (modification_Numerical.Add_to_allow == false)
+            {
+                //LogUtils日志
+                LogUtils.debugWrite("用户取消添加控件：" + skinTextBox1.Name);
+                this.Controls.Remove(skinTextBox1);//不允许添加异常对象
+            }
+            else
+            {
+                //LogUtils日志
+                LogUtils.debugWrite("用户添加控件：" + skinTextBox1.Name);
+            }
+
         }
 
         private void lmage图片ToolStripMenuItem_Click(object sender, EventArgs e)//添加系统图片
         {
+
             SkinPictureBox_Add skinPicture = new SkinPictureBox_Add();
             SkinPictureBox skinPictureBox = skinPicture.Add(this.Controls, new Point(X, Y), this.imageList1.Images[0]);
             this.Controls.Add(skinPictureBox);
+            //LogUtils日志
+            LogUtils.debugWrite("用户选择添加：" + skinPictureBox.Name);
+
             skinPictureBox.BringToFront();//将控件放置所有控件最顶层   
             Modification_picture modification_Picture = new Modification_picture(skinPictureBox.Parent.ToString(), skinPictureBox);
             modification_Picture.ShowDialog();
             skinPictureBox.Image = modification_Picture.Image;
-            if (modification_Picture.Add_to_allow == false) this.Controls.Remove(skinPictureBox);//不允许添加异常对象
+            if (modification_Picture.Add_to_allow == false)
+            {
+                //LogUtils日志
+                LogUtils.debugWrite("用户取消添加控件：" + skinPictureBox.Name);
+                this.Controls.Remove(skinPictureBox);//不允许添加异常对象
+            }
+            else
+            {
+                //LogUtils日志
+                LogUtils.debugWrite("用户添加控件：" + skinPictureBox.Name);
+            }
         }
         private void toolStripMenuItem7_Click(object sender, EventArgs e)//添加切换开关
         {
             Switch_Add button = new Switch_Add();
             Switch_reform skinButton = button.Add(this.Controls, new Point(X, Y));
             this.Controls.Add(skinButton);//添加控件
+            //LogUtils日志
+            LogUtils.debugWrite("用户选择添加：" + skinButton.Name);
+
             skinButton.BringToFront();//将控件放置所有控件最顶层   
             Modification_Switch modification_Button = new Modification_Switch(skinButton.Parent.ToString(), skinButton);
             modification_Button.ShowDialog();
-            if (modification_Button.Add_to_allow == false) this.Controls.Remove(skinButton);//不允许添加异常对象
+            if (modification_Button.Add_to_allow == false)
+            {
+                //LogUtils日志
+                LogUtils.debugWrite("用户取消添加控件：" + skinButton.Name);
+                this.Controls.Remove(skinButton);//不允许添加异常对象
+            }
+            else
+            {
+                //LogUtils日志
+                LogUtils.debugWrite("用户添加控件：" + skinButton.Name);
+            }
         }
         private void toolStripMenuItem13_Click(object sender, EventArgs e)//添加指示灯
         {
             LedBulb_Add button = new LedBulb_Add();
             LedBulb_reform skinButton = button.Add(this.Controls, new Point(X, Y));
             this.Controls.Add(skinButton);//添加控件
+            //LogUtils日志
+            LogUtils.debugWrite("用户选择添加：" + skinButton.Name);
+
             skinButton.BringToFront();//将控件放置所有控件最顶层   
             Modification_Ledbulb modification_Button = new Modification_Ledbulb(skinButton.Parent.ToString(), skinButton);
             modification_Button.ShowDialog();
-            if (modification_Button.Add_to_allow == false) this.Controls.Remove(skinButton);//不允许添加异常对象
+            if (modification_Button.Add_to_allow == false)
+            {
+                //LogUtils日志
+                LogUtils.debugWrite("用户取消添加控件：" + skinButton.Name);
+                this.Controls.Remove(skinButton);//不允许添加异常对象
+            }
+            else
+            {
+                //LogUtils日志
+                LogUtils.debugWrite("用户添加控件：" + skinButton.Name);
+            }
         }
         private void toolStripMenuItem9_Click(object sender, EventArgs e)//添加四边形方框
         {
             GroupBox_Add GroupBox = new GroupBox_Add();
             GroupBox_reform GroupBoxl = GroupBox.Add(this.Controls, new Point(X, Y));
             this.Controls.Add(GroupBoxl);
+            //LogUtils日志
+            LogUtils.debugWrite("用户选择添加：" + GroupBoxl.Name);
+
             GroupBoxl.SendToBack();//将控件放置所有控件最底层
             Modification_GroupBox modification_GroupBox = new Modification_GroupBox(GroupBoxl.Parent.ToString(), GroupBoxl);
             modification_GroupBox.ShowDialog();
-            if (modification_GroupBox.Add_to_allow == false) this.Controls.Remove(GroupBoxl);//不允许添加异常对象
+            if (modification_GroupBox.Add_to_allow == false)
+            {
+                //LogUtils日志
+                LogUtils.debugWrite("用户取消添加控件：" + GroupBoxl.Name);
+                this.Controls.Remove(GroupBoxl);//不允许添加异常对象
+            }
+            else
+            {
+                //LogUtils日志
+                LogUtils.debugWrite("用户添加控件：" + GroupBoxl.Name);
+            }
         }
         private void toolStripMenuItem12_Click(object sender, EventArgs e)//添加无图片按钮类三
         {
             ImageButton_Add button = new ImageButton_Add();
             ImageButton_reform skinButton = button.Add(this.Controls, new Point(X, Y));
             this.Controls.Add(skinButton);//添加控件
+            //LogUtils日志
+            LogUtils.debugWrite("用户选择添加：" + skinButton.Name);
+
             skinButton.BringToFront();//将控件放置所有控件最顶层   
             Modification_ImageButton modification_ImageButton = new Modification_ImageButton(skinButton.Parent.ToString(), skinButton);
             modification_ImageButton.ShowDialog();
-            if (modification_ImageButton.Add_to_allow == false) this.Controls.Remove(skinButton);//不允许添加异常对象
+            if (modification_ImageButton.Add_to_allow == false)
+            {
+                //LogUtils日志
+                LogUtils.debugWrite("用户取消添加控件：" + skinButton.Name);
+                this.Controls.Remove(skinButton);//不允许添加异常对象
+            }
+            else
+            {
+                //LogUtils日志
+                LogUtils.debugWrite("用户添加控件：" + skinButton.Name);
+            }
         }
         private void toolStripMenuItem8_Click(object sender, EventArgs e)//添加报警条
         {
             ScrollingText_Add button = new ScrollingText_Add(this);
             ScrollingText_reform skinButton = button.Add(this.Controls, new Point(X, Y));
             this.Controls.Add(skinButton);//添加控件
+            //LogUtils日志
+            LogUtils.debugWrite("用户选择添加：" + skinButton.Name);
+
             skinButton.BringToFront();//将控件放置所有控件最顶层   
             Modification_ScrollingText modification_ImageButton = new Modification_ScrollingText(skinButton.Parent.ToString(), skinButton);
             modification_ImageButton.ShowDialog();
-            if (modification_ImageButton.Add_to_allow == false) this.Controls.Remove(skinButton);//不允许添加异常对象
+            if (modification_ImageButton.Add_to_allow == false)
+            {
+                //LogUtils日志
+                LogUtils.debugWrite("用户取消添加控件：" + skinButton.Name);
+                this.Controls.Remove(skinButton);//不允许添加异常对象
+            }
+            else
+            {
+                //LogUtils日志
+                LogUtils.debugWrite("用户添加控件：" + skinButton.Name);
+            }
         }
         private void toolStripMenuItem11_Click(object sender, EventArgs e)//添加圆形图
         {
             doughnut_Chart_Add button = new doughnut_Chart_Add();
             doughnut_Chart_reform skinButton = button.Add(this.Controls, new Point(X, Y));
             this.Controls.Add(skinButton);//添加控件
+            //LogUtils日志
+            LogUtils.debugWrite("用户选择添加：" + skinButton.Name);
+
             skinButton.BringToFront();//将控件放置所有控件最顶层   
             Modification_doughnut_Chart modification_ImageButton = new Modification_doughnut_Chart(skinButton.Parent.ToString(), skinButton);
             modification_ImageButton.ShowDialog();
-            if (modification_ImageButton.Add_to_allow == false) this.Controls.Remove(skinButton);//不允许添加异常对象
+            if (modification_ImageButton.Add_to_allow == false)
+            {
+                //LogUtils日志
+                LogUtils.debugWrite("用户取消添加控件：" + skinButton.Name);
+                this.Controls.Remove(skinButton);//不允许添加异常对象
+            }
+            else
+            {
+                //LogUtils日志
+                LogUtils.debugWrite("用户添加控件：" + skinButton.Name);
+            }
         }
         private void toolStripMenuItem10_Click(object sender, EventArgs e)//柱形图
         {
             histogram_Chart_Add button = new histogram_Chart_Add();
             histogram_Chart_reform skinButton = button.Add(this.Controls, new Point(X, Y));
             this.Controls.Add(skinButton);//添加控件
+            //LogUtils日志
+            LogUtils.debugWrite("用户选择添加：" + skinButton.Name);
+
             skinButton.BringToFront();//将控件放置所有控件最顶层   
             Modification_histogram_Chart modification_ImageButton = new Modification_histogram_Chart(skinButton.Parent.ToString(), skinButton);
             modification_ImageButton.ShowDialog();
-            if (modification_ImageButton.Add_to_allow == false) this.Controls.Remove(skinButton);//不允许添加异常对象
+            if (modification_ImageButton.Add_to_allow == false)
+            {
+                //LogUtils日志
+                LogUtils.debugWrite("用户取消添加控件：" + skinButton.Name);
+                this.Controls.Remove(skinButton);//不允许添加异常对象
+            }
+            else
+            {
+                //LogUtils日志
+                LogUtils.debugWrite("用户添加控件：" + skinButton.Name);
+            }
         }
         private void toolStripMenuItem14_Click(object sender, EventArgs e)//波形图
         {
             oscillogram_Chart_Add button = new oscillogram_Chart_Add();
             oscillogram_Chart_reform skinButton = button.Add(this.Controls, new Point(X, Y));
             this.Controls.Add(skinButton);//添加控件
+            //LogUtils日志
+            LogUtils.debugWrite("用户选择添加：" + skinButton.Name);
+
             skinButton.BringToFront();//将控件放置所有控件最顶层   
             Modification_oscillogram_Chart modification_ImageButton = new Modification_oscillogram_Chart(skinButton.Parent.ToString(), skinButton);
             modification_ImageButton.ShowDialog();
-            if (modification_ImageButton.Add_to_allow == false) this.Controls.Remove(skinButton);//不允许添加异常对象
+            if (modification_ImageButton.Add_to_allow == false)
+            {
+                //LogUtils日志
+                LogUtils.debugWrite("用户取消添加控件：" + skinButton.Name);
+                this.Controls.Remove(skinButton);//不允许添加异常对象
+            }
+            else
+            {
+                //LogUtils日志
+                LogUtils.debugWrite("用户添加控件：" + skinButton.Name);
+            }
         }
         private void toolStripMenuItem17_Click(object sender, EventArgs e)//数值显示
         {
             LedDisplay_Add button = new LedDisplay_Add();
             LedDisplay_reform skinButton = button.Add(this.Controls, new Point(X, Y));
             this.Controls.Add(skinButton);//添加控件
+            //LogUtils日志
+            LogUtils.debugWrite("用户选择添加：" + skinButton.Name);
+
             skinButton.BringToFront();//将控件放置所有控件最顶层   
             Modification_LedDisplay modification_ImageButton = new Modification_LedDisplay(skinButton.Parent.ToString(), skinButton);
             modification_ImageButton.ShowDialog();
-            if (modification_ImageButton.Add_to_allow == false) this.Controls.Remove(skinButton);//不允许添加异常对象
+            if (modification_ImageButton.Add_to_allow == false)
+            {
+                //LogUtils日志
+                LogUtils.debugWrite("用户取消添加控件：" + skinButton.Name);
+                this.Controls.Remove(skinButton);//不允许添加异常对象
+            }
+            else
+            {
+                //LogUtils日志
+                LogUtils.debugWrite("用户添加控件：" + skinButton.Name);
+            }
         }
         private void toolStripMenuItem18_Click(object sender, EventArgs e)//百分百表盘
         {
             AnalogMeter_Add button = new AnalogMeter_Add();
             AnalogMeter_reform skinButton = button.Add(this.Controls, new Point(X, Y));
             this.Controls.Add(skinButton);//添加控件
+            //LogUtils日志
+            LogUtils.debugWrite("用户选择添加：" + skinButton.Name);
+
             skinButton.BringToFront();//将控件放置所有控件最顶层   
             Modification_AnalogMeter modification_ImageButton = new Modification_AnalogMeter(skinButton.Parent.ToString(), skinButton);
             modification_ImageButton.ShowDialog();
-            if (modification_ImageButton.Add_to_allow == false) this.Controls.Remove(skinButton);//不允许添加异常对象
+            if (modification_ImageButton.Add_to_allow == false)
+            {
+                //LogUtils日志
+                LogUtils.debugWrite("用户取消添加控件：" + skinButton.Name);
+                this.Controls.Remove(skinButton);//不允许添加异常对象
+            }
+            else
+            {
+                //LogUtils日志
+                LogUtils.debugWrite("用户添加控件：" + skinButton.Name);
+            }
         }
         private void toolStripMenuItem19_Click(object sender, EventArgs e)//添加二维码/条形码
         {
             ihatetheqrcode_Add button = new ihatetheqrcode_Add();
             ihatetheqrcode_reform skinButton = button.Add(this.Controls, new Point(X, Y));
             this.Controls.Add(skinButton);//添加控件
+            //LogUtils日志
+            LogUtils.debugWrite("用户选择添加：" + skinButton.Name);
+
             skinButton.BringToFront();//将控件放置所有控件最顶层   
             Modification_ihatetheqrcode modification_ihatetheqrcode = new Modification_ihatetheqrcode(skinButton.Parent.ToString(), skinButton);
             modification_ihatetheqrcode.ShowDialog();
-            if (modification_ihatetheqrcode.Add_to_allow == false) this.Controls.Remove(skinButton);//不允许添加异常对象
+            if (modification_ihatetheqrcode.Add_to_allow == false)
+            {
+                //LogUtils日志
+                LogUtils.debugWrite("用户取消添加控件：" + skinButton.Name);
+                this.Controls.Remove(skinButton);//不允许添加异常对象
+            }
+            else
+            {
+                //LogUtils日志
+                LogUtils.debugWrite("用户添加控件：" + skinButton.Name);
+            }
         }
         private void toolStripMenuItem20_Click(object sender, EventArgs e)//添加画面切换
         {
             function_key_Add button = new function_key_Add();
             function_key_reform skinButton = button.Add(this.Name, this.Controls, new Point(X, Y));
             this.Controls.Add(skinButton);//添加控件
+            //LogUtils日志
+            LogUtils.debugWrite("用户选择添加：" + skinButton.Name);
+
             skinButton.BringToFront();//将控件放置所有控件最顶层   
             Modification_function_key modification_function_key = new Modification_function_key(skinButton.Parent.ToString(), skinButton);
             modification_function_key.ShowDialog();
-            if (modification_function_key.Add_to_allow == false) this.Controls.Remove(skinButton);//不允许添加异常对象
+            if (modification_function_key.Add_to_allow == false)
+            {
+                //LogUtils日志
+                LogUtils.debugWrite("用户取消添加控件：" + skinButton.Name);
+                this.Controls.Remove(skinButton);//不允许添加异常对象
+            }
+            else
+            {
+                //LogUtils日志
+                LogUtils.debugWrite("用户添加控件：" + skinButton.Name);
+            }
         }
         private void toolStripMenuItem22_Click(object sender, EventArgs e)//添加单选按钮
         {
             RadioButton_Add button = new RadioButton_Add();
             RadioButton_reform skinButton = button.Add(this.Controls, new Point(X, Y));
             this.Controls.Add(skinButton);//添加控件
+            //LogUtils日志
+            LogUtils.debugWrite("用户选择添加：" + skinButton.Name);
+
             skinButton.BringToFront();//将控件放置所有控件最顶层   
             Modification_RadioButton modification_RadioButton = new Modification_RadioButton(skinButton.Parent.ToString(), skinButton);
             modification_RadioButton.ShowDialog();
-            if (modification_RadioButton.Add_to_allow == false) this.Controls.Remove(skinButton);//不允许添加异常对象
+            if (modification_RadioButton.Add_to_allow == false)
+            {
+                //LogUtils日志
+                LogUtils.debugWrite("用户取消添加控件：" + skinButton.Name);
+                this.Controls.Remove(skinButton);//不允许添加异常对象
+            }
+            else
+            {
+                //LogUtils日志
+                LogUtils.debugWrite("用户添加控件：" + skinButton.Name);
+            }
         }
         private void toolStripMenuItem21_Click(object sender, EventArgs e)//添加下拉菜单
         {
             pull_down_menu_Add button = new pull_down_menu_Add();
             pull_down_menu_reform skinButton = button.Add(this.Controls, new Point(X, Y));
             this.Controls.Add(skinButton);//添加控件
+            //LogUtils日志
+            LogUtils.debugWrite("用户选择添加：" + skinButton.Name);
+
             skinButton.BringToFront();//将控件放置所有控件最顶层   
             Modification_pull_down_menu modification_pull_down_menu = new Modification_pull_down_menu(skinButton.Parent.ToString(), skinButton);
             modification_pull_down_menu.ShowDialog();
-            if (modification_pull_down_menu.Add_to_allow == false) this.Controls.Remove(skinButton);//不允许添加异常对象
+            if (modification_pull_down_menu.Add_to_allow == false)
+            {
+                //LogUtils日志
+                LogUtils.debugWrite("用户取消添加控件：" + skinButton.Name);
+                this.Controls.Remove(skinButton);//不允许添加异常对象
+            }
+            else
+            {
+                //LogUtils日志
+                LogUtils.debugWrite("用户添加控件：" + skinButton.Name);
+            }
         }
         private void toolStripMenuItem23_Click(object sender, EventArgs e)//添加纵向移动图形
         {
             HScrollBar_Add button = new HScrollBar_Add();
             HScrollBar_reform skinButton = button.Add(this.Controls, new Point(X, Y));
             this.Controls.Add(skinButton);//添加控件
+            //LogUtils日志
+            LogUtils.debugWrite("用户选择添加：" + skinButton.Name);
+
             skinButton.BringToFront();//将控件放置所有控件最顶层   
             Modification_HScrollBar modification_HScrollBar = new Modification_HScrollBar(skinButton.Parent.ToString(), skinButton);
             modification_HScrollBar.ShowDialog();
-            if (modification_HScrollBar.Add_to_allow == false) this.Controls.Remove(skinButton);//不允许添加异常对象
+            if (modification_HScrollBar.Add_to_allow == false)
+            {
+                //LogUtils日志
+                LogUtils.debugWrite("用户取消添加控件：" + skinButton.Name);
+                this.Controls.Remove(skinButton);//不允许添加异常对象
+            }
+            else
+            {
+                //LogUtils日志
+                LogUtils.debugWrite("用户添加控件：" + skinButton.Name);
+            }
         }
         private void toolStripMenuItem25_Click(object sender, EventArgs e)//添加Conveyor运输带
         {
             Conveyor_Add button = new Conveyor_Add();
             Conveyor_reform skinButton = button.Add(this.Controls, new Point(X, Y));
             this.Controls.Add(skinButton);//添加控件
+            //LogUtils日志
+            LogUtils.debugWrite("用户选择添加：" + skinButton.Name);
+
             skinButton.BringToFront();//将控件放置所有控件最顶层   
             Modification_Conveyor modification_Conveyor = new Modification_Conveyor(skinButton.Parent.ToString(), skinButton);
             modification_Conveyor.ShowDialog();
-            if (modification_Conveyor.Add_to_allow == false) this.Controls.Remove(skinButton);//不允许添加异常对象
+            if (modification_Conveyor.Add_to_allow == false)
+            {
+                //LogUtils日志
+                LogUtils.debugWrite("用户取消添加控件：" + skinButton.Name);
+                this.Controls.Remove(skinButton);//不允许添加异常对象
+            }
+            else
+            {
+                //LogUtils日志
+                LogUtils.debugWrite("用户添加控件：" + skinButton.Name);
+            }
         }
         private void toolStripMenuItem26_Click(object sender, EventArgs e)//添加Valve流体阀门
         {
             Valve_Add button = new Valve_Add();
             Valve_reform skinButton = button.Add(this.Controls, new Point(X, Y));
             this.Controls.Add(skinButton);//添加控件
+            //LogUtils日志
+            LogUtils.debugWrite("用户选择添加：" + skinButton.Name);
+
             skinButton.BringToFront();//将控件放置所有控件最顶层   
             Modification_Valve modification_Valve = new Modification_Valve(skinButton.Parent.ToString(), skinButton);
             modification_Valve.ShowDialog();
-            if (modification_Valve.Add_to_allow == false) this.Controls.Remove(skinButton);//不允许添加异常对象
+            if (modification_Valve.Add_to_allow == false)
+            {
+                //LogUtils日志
+                LogUtils.debugWrite("用户取消添加控件：" + skinButton.Name);
+                this.Controls.Remove(skinButton);//不允许添加异常对象
+            }
+            else
+            {
+                //LogUtils日志
+                LogUtils.debugWrite("用户添加控件：" + skinButton.Name);
+            }
         }
         private void Form2_MouseMove(object sender, MouseEventArgs e)
         {
@@ -344,6 +621,9 @@ namespace 自定义Uppercomputer_20200727
                 asc.RenewControlRect(this);
                 //传递PLC参数到宏指令
                 if (!CSEngineTest.PLC.Mitsubishi_axActUtlType.IsNull()) return;
+                //LogUtils日志
+                LogUtils.debugWrite("用户添加控件： 实例化宏指令对象" );
+
                 CSEngineTest.PLC.Mitsubishi_axActUtlType = new Mitsubishi_axActUtlType();//实例化接口
                 CSEngineTest.PLC.Mitsubishi = new Mitsubishi_realize();//实例化接口
                 CSEngineTest.PLC.MODBUD_TCP = new MODBUD_TCP();//实例化接口
@@ -356,13 +636,23 @@ namespace 自定义Uppercomputer_20200727
             this.timer2.Start();//运行定时器监控
             //UI_Schedule("开始正在显示UI", 90, true);
             if (edit_mode) this.toolStripMenuItem5.Text = "退出编辑模式"; else this.toolStripMenuItem5.Text = "开启编辑模式";//改变显示文本  
+            // 编辑模式 在记录日志
+            this.toolStripMenuItem5.TextChanged += ((send1, e1) =>
+              {
+                  //LogUtils日志
+                  LogUtils.debugWrite($"用户打开了：{this.toolStripMenuItem5.Text}");
+              });
         }
 
         private void toolStripMenuItem2_Click(object sender, EventArgs e)//调用测试工具
         {
+            //LogUtils日志
+            LogUtils.debugWrite("用户调用了 测试工具");
             FormLoad formLoad = new FormLoad();
             if (MessageBox.Show("该测试软件调用来源于：Git", "错误：ERR", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 formLoad.ShowDialog();
+            //LogUtils日志
+            LogUtils.debugWrite("用户关闭了 测试工具");
         }
         PLCselect_Form pLCselect_Form;
         private void toolStripMenuItem4_Click(object sender, EventArgs e)//开始链接设备--PLC
@@ -372,10 +662,14 @@ namespace 自定义Uppercomputer_20200727
             {
                 if (pLCselect_Form.Hiel)
                 {
+                    //LogUtils日志
+                    LogUtils.debugWrite("用户激活了 链接设备界面");
                     pLCselect_Form.Activate();
                     return;
                 }
             }
+            //LogUtils日志
+            LogUtils.debugWrite("用户调用了 链接设备界面");
             pLCselect_Form = new PLCselect_Form();
             pLCselect_Form.Show();
         }
@@ -383,7 +677,7 @@ namespace 自定义Uppercomputer_20200727
         private void toolStripMenuItem5_Click(object sender, EventArgs e)//用户进入编辑模式
         {
             if (edit_mode) edit_mode = false; else edit_mode = true;//改变状态
-            if (edit_mode) this.toolStripMenuItem5.Text = "退出编辑模式"; else this.toolStripMenuItem5.Text = "开启编辑模式";//改变显示文本
+            if (edit_mode)this.toolStripMenuItem5.Text = "退出编辑模式"; else this.toolStripMenuItem5.Text = "开启编辑模式";//改变显示文本
             this.toolStripMenuItem1.Enabled = edit_mode;
             this.toolStripMenuItem6.Enabled = edit_mode;
             this.toolStripMenuItem16.Enabled = edit_mode;
@@ -417,6 +711,9 @@ namespace 自定义Uppercomputer_20200727
                    time_Reform.LedDisplay_read_status != false || time_Reform.ihatetheqrcode_read_status != false || edit_mode) return;//直接返回方法--指示当前控件正在遍历
                    if (PLC_read_ok != true)
                    {
+                       //LogUtils日志
+                       LogUtils.debugWrite($"开始遍历{this.Name + this.Text}窗口控件");
+
                        PLC_read_Tick = false;//指示定时器不可以开始遍历
                        ConcurrentBag<Button_reform> button_Reforms = new ConcurrentBag<Button_reform>();//按钮类集合
                        ConcurrentBag<SkinTextBox_reform> skinTextBox_Reforms = new ConcurrentBag<SkinTextBox_reform>();//文本输入类集合
@@ -459,6 +756,8 @@ namespace 自定义Uppercomputer_20200727
                        PLC_read_ok = true;
                        PLC_read_Tick = true;//指示定时器可以开始遍历
                        button_Reforms = null;
+                       //LogUtils日志
+                       LogUtils.debugWrite($"遍历{this.Name + this.Text}窗口控件完成");
                    }
              });
 
@@ -466,14 +765,23 @@ namespace 自定义Uppercomputer_20200727
 
         private void toolStripMenuItem6_Click(object sender, EventArgs e)//用户点击了报警注册
         {
+            //LogUtils日志
+            LogUtils.debugWrite($"用户点击了 报警注册界面");
+
             Event_registration event_Registration = new Event_registration();//实例化报警注册窗口
             event_Registration.ShowDialog();//弹出窗口
+            //LogUtils日志
+            LogUtils.debugWrite($"用户点关闭 报警注册界面");
         }
 
         private void toolStripMenuItem16_Click(object sender, EventArgs e)//用户点击编辑宏指令--
         {
+            //LogUtils日志
+            LogUtils.debugWrite($"用户点击了 宏指令界面");
             macroinstruction_Form macroinstruction_Form = new macroinstruction_Form();
             macroinstruction_Form.ShowDialog();//弹出宏窗口
+            //LogUtils日志
+            LogUtils.debugWrite($"用户点关闭 宏指令界面");
         }
         public static bool Size_Max = false;//指示窗口是否开启最大值或者最小值
         private void Form2_SizeChanged(object sender, EventArgs e)
@@ -490,12 +798,18 @@ namespace 自定义Uppercomputer_20200727
             //    asc.ControlAutoSize(this);
             //});
 
+            //LogUtils日志
+            LogUtils.debugWrite($"用户改变了{this.Text+this.Name}窗口的Size大小");
         }
 
-        private void toolStripMenuItem15_Click(object sender, EventArgs e)
+        private void toolStripMenuItem15_Click(object sender, EventArgs e)//软件说明
         {
+            //LogUtils日志
+            LogUtils.debugWrite($"用户点击了 软件说明界面");
             Software_specifications software = new Software_specifications();
             software.ShowDialog();
+            //LogUtils日志
+            LogUtils.debugWrite($"用户关闭了 软件说明界面");
         }
 
         private void timer3_Tick(object sender, EventArgs e)
@@ -517,6 +831,8 @@ namespace 自定义Uppercomputer_20200727
             this.userControl11.Display = Visible;
             this.userControl11.Schedule = Vaule;
             this.userControl11.Schedule_Text = Text;
+            //LogUtils日志
+            LogUtils.debugWrite( this.Text+this.Name+Text+$"进度{Vaule}");
         }
         三菱伺服MR_JE控制.Form1 Servo_Form;
         /// <summary>
@@ -526,6 +842,9 @@ namespace 自定义Uppercomputer_20200727
         /// <param name="e"></param>
         private void ucNavigationMenu1_ClickItemed(object sender, EventArgs e)
         {
+            //LogUtils日志
+            LogUtils.debugWrite($"用户点击了："+ this.ucNavigationMenu1.SelectItem.Text);
+
             #region 不需要开启编辑模式的功能
             switch (this.ucNavigationMenu1.SelectItem.Text)
             {
@@ -665,6 +984,8 @@ namespace 自定义Uppercomputer_20200727
                 if (!this.Capture) return;
                 if (MessageBox.Show("该窗口是主窗口是否要退出程序？", "Err", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
+                    //LogUtils日志
+                    LogUtils.debugWrite($"用户关闭了软件");
                     Application.Exit();//关闭所有窗口
                 }
                 else

@@ -15,6 +15,7 @@ using CCWin.SkinControl;
 using 自定义Uppercomputer_20200727.EF实体模型;
 using 自定义Uppercomputer_20200727.图库;
 using 自定义Uppercomputer_20200727.控件重做;
+using 自定义Uppercomputer_20200727.Nlog;
 
 namespace 自定义Uppercomputer_20200727.修改参数界面.RadioButton单选按钮参数
 {
@@ -58,7 +59,7 @@ namespace 自定义Uppercomputer_20200727.修改参数界面.RadioButton单选�
 
         private void Modification_RadioButton_Load(object sender, EventArgs e)
         {
-            AnimateWindow(this.Handle, 1000, AW_SLIDE | AW_ACTIVE | AW_VER_NEGATIVE);
+            AnimateWindow(this.Handle, 500, AW_SLIDE | AW_ACTIVE | AW_VER_NEGATIVE);
             Modification_Button_Class modification_Button = new Modification_Button_Class
            (new List<SkinTabPage> { this.skinTabPage1, this.skinTabPage2, this.skinTabPage3, this.skinTabPage4, this.skinTabPage5 }, ((RadioButton_reform)this.all_purpose).Name, ((RadioButton_reform)this.all_purpose).Parent.ToString() + "-" + ((RadioButton_reform)this.all_purpose).Name);//调用加载数据类                
         }
@@ -145,9 +146,15 @@ namespace 自定义Uppercomputer_20200727.修改参数界面.RadioButton单选�
             //先查询数据库有无此ID--有进行修改--无新增--
             RadioButton_EF button_EF = new RadioButton_EF();//实例化EF对象
             if (RadioButton_EF.Button_Parameter_inquire(this.skinTextBox8.Text) == "OK")
+            {
+                //LogUtils日志
+                LogUtils.debugWrite($"用户向{((Control)all_purpose).Name} 控件修改参数");
                 button_EF.Button_Parameter_modification(this.skinTextBox8.Text, button_Parameter(), tag_Common_Parameters(), general_Parameters_Of_Picture(), control_Location(), Button_colour_Location());//修改数据库参数
+            }
             else
             {
+                //LogUtils日志
+                LogUtils.debugWrite($"用户向{((Control)all_purpose).Name} 控件插入参数");
                 button_EF.Button_Parameter_Add(tag_Common_Parameters());//插入标签参数
                 button_EF.Button_Parameter_Add(button_Parameter());//插入一般参数
                 button_EF.Button_Parameter_Add(general_Parameters_Of_Picture());//插入图片参数

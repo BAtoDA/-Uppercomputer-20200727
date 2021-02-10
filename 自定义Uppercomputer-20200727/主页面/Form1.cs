@@ -19,6 +19,7 @@ using 自定义Uppercomputer_20200727.EF实体模型;
 using 自定义Uppercomputer_20200727.EF实体模型.XML;
 using CCWin.SkinControl;
 using HZH_Controls.Forms;
+using 自定义Uppercomputer_20200727.Nlog;
 
 namespace 自定义Uppercomputer_20200727
 {
@@ -49,13 +50,16 @@ namespace 自定义Uppercomputer_20200727
         public static string SQLpassword { get; set; } = "3131458";
         private void Home_Shown(object sender, EventArgs e)
         {
+            //LogUtils日志
+            LogUtils.debugWrite("开始加载程序集"+axActUtlType1.Name);
             ActUtlType = this.axActUtlType1;        
         }
         public void BindingProcessMsg(string strText, int intValue)
         {
-
             label1.Text = strText;
             this.ucProcessLineExt1.Value = intValue;
+            //LogUtils日志
+            LogUtils.debugWrite($"{this.Name}  正在加载配置文件：" + strText+intValue.ToString());
             Thread.Sleep(200);
         }
         private bool Home_examine()//主页面加载程序进程检查
@@ -75,6 +79,9 @@ namespace 自定义Uppercomputer_20200727
 
         private void timer1_Tick(object sender, EventArgs e)
         {
+            LogUtils.deleteLogFile(@Application.StartupPath);//检查是否有超过2个月的日志 进行删除操作
+            //LogUtils日志
+            LogUtils.debugWrite(DateTime.Now+"  运行了"+Application.ProductName+"  版本号："+ System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString());
             timer1.Stop();
             //读取数据库文件
             BindingProcessMsg("正在读取XML文件", 10);

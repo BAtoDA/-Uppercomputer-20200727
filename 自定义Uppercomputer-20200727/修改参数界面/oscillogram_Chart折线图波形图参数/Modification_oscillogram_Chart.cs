@@ -58,7 +58,7 @@ namespace 自定义Uppercomputer_20200727.修改参数界面.oscillogram_Chart�
         #endregion
         private void Modification_oscillogram_Chart_Load(object sender, EventArgs e)
         {
-            AnimateWindow(this.Handle, 1000, AW_SLIDE | AW_ACTIVE | AW_VER_NEGATIVE);
+            AnimateWindow(this.Handle, 500, AW_SLIDE | AW_ACTIVE | AW_VER_NEGATIVE);
             Modification_numerical_Class numerical_Class = new Modification_numerical_Class(new List<SkinTabPage>()
             {this.skinTabPage1, this.skinTabPage2, this.skinTabPage3, this.skinTabPage4,this.skinTabPage5,this.skinTabPage6}, ((oscillogram_Chart_reform)all_purpose).Name);
         }

@@ -12,6 +12,7 @@ using CCWin;
 using CCWin.SkinClass;
 using CCWin.SkinControl;
 using 自定义Uppercomputer_20200727.EF实体模型;
+using 自定义Uppercomputer_20200727.Nlog;
 using 自定义Uppercomputer_20200727.控件重做;
 
 namespace 自定义Uppercomputer_20200727.修改参数界面.GroupBox四边形方框
@@ -55,13 +56,13 @@ namespace 自定义Uppercomputer_20200727.修改参数界面.GroupBox四边形�
         #endregion
         private void Modification_GroupBox_Load(object sender, EventArgs e)
         {
-            AnimateWindow(this.Handle, 1000, AW_SLIDE | AW_ACTIVE | AW_VER_NEGATIVE);
+            AnimateWindow(this.Handle, 500, AW_SLIDE | AW_ACTIVE | AW_VER_NEGATIVE);
             Modification_label_Class _Label_Class = new Modification_label_Class(new List<SkinTabPage>() { this.skinTabPage1, this.skinTabPage2, this.skinTabPage3 }, ((GroupBox_reform)all_purpose).Name);//加载
 
         }
         private void Modification_GroupBox_FormClosing(object sender, FormClosingEventArgs e)
         {
-            AnimateWindow(this.Handle, 1000, AW_SLIDE | AW_ACTIVE | AW_VER_NEGATIVE);
+            AnimateWindow(this.Handle, 500, AW_SLIDE | AW_ACTIVE | AW_VER_NEGATIVE);
         }
 
         private void Modification_GroupBox_Shown(object sender, EventArgs e)
@@ -111,9 +112,15 @@ namespace 自定义Uppercomputer_20200727.修改参数界面.GroupBox四边形�
             //先查询数据库有无此ID--有进行修改--无新增--
             GroupBox_EF groupBox_EF = new GroupBox_EF();//实例化EF对象
             if (GroupBox_EF.GroupBox_Parameter_inquire(this.skinTextBox1.Text) == "OK")
+            {
+                //LogUtils日志
+                LogUtils.debugWrite($"用户向{((Control)all_purpose).Name} 控件修改参数");
                 groupBox_EF.label_Parameter_modification(this.skinTextBox1.Text, Label_Parameter(), tag_Common_Parameters(), control_Location(), Button_colour_Location());//修改数据库参数
+            }
             else
             {
+                //LogUtils日志
+                LogUtils.debugWrite($"用户向{((Control)all_purpose).Name} 控件插入参数");
                 groupBox_EF.GroupBox_Parameter_Add(Label_Parameter());//插入主参数
                 groupBox_EF.GroupBox_Parameter_Add(tag_Common_Parameters());//插入标签参数
                 groupBox_EF.GroupBox_Parameter_Add(control_Location());//插入控件坐标参数

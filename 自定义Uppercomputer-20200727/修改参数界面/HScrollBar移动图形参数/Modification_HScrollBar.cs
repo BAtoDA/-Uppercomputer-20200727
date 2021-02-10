@@ -14,6 +14,7 @@ using CCWin.SkinClass;
 using CCWin.SkinControl;
 using 自定义Uppercomputer_20200727.EF实体模型;
 using 自定义Uppercomputer_20200727.控件重做;
+using 自定义Uppercomputer_20200727.Nlog;
 
 namespace 自定义Uppercomputer_20200727.修改参数界面.HScrollBar移动图形参数
 {
@@ -50,7 +51,7 @@ namespace 自定义Uppercomputer_20200727.修改参数界面.HScrollBar移动图
         #endregion
         private void Modification_HScrollBar_Load(object sender, EventArgs e)
         {
-            AnimateWindow(this.Handle, 1000, AW_SLIDE | AW_ACTIVE | AW_VER_NEGATIVE);
+            AnimateWindow(this.Handle, 500, AW_SLIDE | AW_ACTIVE | AW_VER_NEGATIVE);
             Modification_numerical_Class numerical_Class = new Modification_numerical_Class(new List<SkinTabPage>()
             {this.skinTabPage1, this.skinTabPage2, this.skinTabPage3, this.skinTabPage4,this.skinTabPage5,this.skinTabPage6}, ((HScrollBar_reform)all_purpose).Name);
         }
@@ -136,9 +137,15 @@ namespace 自定义Uppercomputer_20200727.修改参数界面.HScrollBar移动图
             //先查询数据库有无此ID--有进行修改--无新增--
             HScrollBar_EF HScrollBar_EF = new HScrollBar_EF();//实例化EF对象
             if (HScrollBar_EF.HScrollBar_Parameter_inquire(this.skinTextBox8.Text) == "OK")
+            {
+                //LogUtils日志
+                LogUtils.debugWrite($"用户向{((Control)all_purpose).Name} 控件修改参数");
                 HScrollBar_EF.HScrollBar_modification(this.skinTextBox8.Text, numerical_Parameter(), tag_Common_Parameters(), control_Location());//修改数据库参数
+            }
             else
             {
+                //LogUtils日志
+                LogUtils.debugWrite($"用户向{((Control)all_purpose).Name} 控件插入参数");
                 HScrollBar_EF.HScrollBar_Parameter_Add(tag_Common_Parameters());//插入标签参数
                 HScrollBar_EF.HScrollBar_Parameter_Add(numerical_Parameter());//插入一般参数
                 HScrollBar_EF.HScrollBar_Parameter_Add(control_Location());//插入控件坐标参数

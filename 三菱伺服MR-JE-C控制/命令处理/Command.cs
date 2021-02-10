@@ -541,7 +541,7 @@ namespace 命令处理
                 //传入定位位置 与 速度
                 busy = false;
                 modbus.IPLC_interface_PLC_write_D_register("D", Convert.ToInt32("607A", 16).ToString(),location.ToString(), numerical_format.Signed_32_Bit);
-               modbus.IPLC_interface_PLC_write_D_register("D", Convert.ToInt32("6081", 16).ToString(), speed.ToString(), numerical_format.Signed_32_Bit);
+                modbus.IPLC_interface_PLC_write_D_register("D", Convert.ToInt32("6081", 16).ToString(), speed.ToString(), numerical_format.Signed_32_Bit);
                 switch (Step)
                 {
 

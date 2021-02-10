@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using CCWin;
 using CCWin.SkinControl;
 using 自定义Uppercomputer_20200727.EF实体模型;
+using 自定义Uppercomputer_20200727.Nlog;
 using 自定义Uppercomputer_20200727.图库;
 
 namespace 自定义Uppercomputer_20200727.修改参数界面
@@ -48,9 +49,6 @@ namespace 自定义Uppercomputer_20200727.修改参数界面
         }
         private void List_Index()//索引
         {
-            //this.skinComboBox1.SelectedIndex = picture.Control_state_0_list;
-            //this.skinComboBox1.SelectedItem = picture.Control_state_0_list;
-            //List_Index_Load();
             this.skinPictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;//显示图片方式
             this.skinPictureBox1.Image = ListView_show.imageLists_1[picture.Control_state_0_list].Images[picture.Control_state_0_picture];//获取数据库保存的图片
         }
@@ -82,9 +80,15 @@ namespace 自定义Uppercomputer_20200727.修改参数界面
             //先查询数据库有无此ID--有进行修改--无新增--
             picture_EF picture_EF = new picture_EF();//实例化EF对象
             if (picture_EF.picture__Parameter_inquire(this.skinTextBox1.Text) == "OK")
+            {
+                //LogUtils日志
+                LogUtils.debugWrite($"用户向{((Control)all_purpose).Name} 控件修改参数");
                 picture_EF.picture_Parameter_modification(this.skinTextBox1.Text, picture_Parameter(), general_Parameters_Of_Picture(), control_Location());//修改数据库参数
+            }
             else
             {
+                //LogUtils日志
+                LogUtils.debugWrite($"用户向{((Control)all_purpose).Name} 控件插入参数");
                 picture_EF.picture_Parameter_Add(picture_Parameter());//插入主参数
                 picture_EF.picture_Parameter_Add(general_Parameters_Of_Picture());//插入图片参数
                 picture_EF.picture_Parameter_Add(control_Location());//插入控件坐标参数

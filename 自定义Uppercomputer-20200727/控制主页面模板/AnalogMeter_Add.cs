@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using 自定义Uppercomputer_20200727.Nlog;
 using 自定义Uppercomputer_20200727.控件重做;
 
 namespace 自定义Uppercomputer_20200727.控制主页面模板

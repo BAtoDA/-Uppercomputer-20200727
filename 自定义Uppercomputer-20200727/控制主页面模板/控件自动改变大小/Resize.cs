@@ -7,6 +7,7 @@ using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using 自定义Uppercomputer_20200727.Nlog;
 using static 自定义Uppercomputer_20200727.AutoSizeFormClass;
 
 namespace 自定义Uppercomputer_20200727
@@ -40,6 +41,9 @@ namespace 自定义Uppercomputer_20200727
         {
             //如果控件集合对象_oldCtrl不存在则将其添加，如果不添加首先无法找到主窗口
             //也就无法开始遍历
+            //LogUtils日志
+            //LogUtils.debugWrite( $"{mForm.TopLevelControl.ToString()??mForm.Name} 窗口大小改变 控件自动改变");
+
             _oldCtrl.Clear();
             ControlRect cR;
             cR.name = mForm.Name;

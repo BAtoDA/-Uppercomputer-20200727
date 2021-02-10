@@ -15,6 +15,7 @@ using CCWin.SkinControl;
 using 自定义Uppercomputer_20200727.EF实体模型;
 using 自定义Uppercomputer_20200727.修改参数界面.pull_down_menu下拉菜单参数.下拉菜单修改项目数据窗口;
 using 自定义Uppercomputer_20200727.控件重做;
+using 自定义Uppercomputer_20200727.Nlog;
 
 namespace 自定义Uppercomputer_20200727.修改参数界面
 {
@@ -56,7 +57,7 @@ namespace 自定义Uppercomputer_20200727.修改参数界面
         #endregion
         private void Modification_pull_down_menu_Load(object sender, EventArgs e)
         {
-            AnimateWindow(this.Handle, 1000, AW_SLIDE | AW_ACTIVE | AW_VER_NEGATIVE);
+            AnimateWindow(this.Handle, 500, AW_SLIDE | AW_ACTIVE | AW_VER_NEGATIVE);
             Modification_numerical_Class numerical_Class = new Modification_numerical_Class(new List<SkinTabPage>()
             {this.skinTabPage1, this.skinTabPage2, this.skinTabPage3, this.skinTabPage4,this.skinTabPage5,this.skinTabPage6}, ((pull_down_menu_reform)all_purpose).Name);
         }
@@ -164,9 +165,15 @@ namespace 自定义Uppercomputer_20200727.修改参数界面
             //先查询数据库有无此ID--有进行修改--无新增--
             pull_down_menu_EF pull_down_menu_EF = new pull_down_menu_EF();//实例化EF对象
             if (pull_down_menu_EF.pull_down_menu_Parameter_inquire(this.skinTextBox8.Text) == "OK")
+            {
+                //LogUtils日志
+                LogUtils.debugWrite($"用户向{((Control)all_purpose).Name} 控件修改参数");
                 pull_down_menu_EF.pull_down_menu_Parameter_modification(this.skinTextBox8.Text, numerical_Parameter(), tag_Common_Parameters(), general_Parameters_Of_Picture(), control_Location(), pull_down_menuName(), Convert.ToInt32(this.skinComboBox4.Text ?? "1"));//修改数据库参数
+            }
             else
             {
+                //LogUtils日志
+                LogUtils.debugWrite($"用户向{((Control)all_purpose).Name} 控件插入参数");
                 pull_down_menu_EF.pull_down_menu_Parameter_Add(tag_Common_Parameters());//插入标签参数
                 pull_down_menu_EF.pull_down_menu_Parameter_Add(numerical_Parameter());//插入一般参数
                 pull_down_menu_EF.pull_down_menu_Parameter_Add(general_Parameters_Of_Picture());//插入图片参数
