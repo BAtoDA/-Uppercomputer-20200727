@@ -20,16 +20,22 @@ namespace 三菱伺服MR_JE控制
         {
             InitializeComponent();
         }
-
+        bool gohome = false;
         private void button1_Click(object sender, EventArgs e)
         {
-            if (!command.Servo_ready)
-                return;
-            Task.Run(() =>
+            if (gohome == true) return;
+            lock (this)
             {
-                command.Servo_GoHome();
-                uiLedBulb11.On = command.Servo_Home;
-            });
+                if (!command.Servo_ready)
+                    return;
+                Task.Run(() =>
+                {
+                    gohome = true;
+                    command.Servo_GoHome();
+                    uiLedBulb11.On = command.Servo_Home;
+                    gohome = false;
+                });
+            }
         }
         Command command;
         public bool Hiel { get; set; } = false;
@@ -90,16 +96,22 @@ namespace 三菱伺服MR_JE控制
                 //command.JOG_Speed = Convert.ToInt32(skinTextBox16.Text);
             });
         }
-
+        bool Orientation = false;
         private void button2_Click(object sender, EventArgs e)
         {
-            if (!command.Servo_ready)
-                return;
-            //伺服定位
-            Task.Run(() =>
+            if (Orientation == true) return;
+            lock (this)
             {
-                command.Servo_Orientation(false, Convert.ToInt32(skinTextBox12.Text), Convert.ToInt32(skinTextBox13.Text));
-            });
+                if (!command.Servo_ready)
+                    return;
+                //伺服定位
+                Task.Run(() =>
+                {
+                    Orientation = true;
+                    command.Servo_Orientation(false, Convert.ToInt32(skinTextBox12.Text), Convert.ToInt32(skinTextBox13.Text));
+                    Orientation = false;
+                });
+            }
         }
         bool Enabled=false;
         private void button3_Click(object sender, EventArgs e)

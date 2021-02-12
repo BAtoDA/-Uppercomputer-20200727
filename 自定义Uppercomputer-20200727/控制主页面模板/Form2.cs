@@ -603,6 +603,7 @@ namespace 自定义Uppercomputer_20200727
 
         private void Form2_Load(object sender, EventArgs e)//加载窗口
         {
+            ToolStripManager.Renderer = new HZH_Controls.Controls.ProfessionalToolStripRendererEx();
             this.BeginInvoke((EventHandler)delegate
             {
                 UI_Schedule("开始加载控件", 30, true);

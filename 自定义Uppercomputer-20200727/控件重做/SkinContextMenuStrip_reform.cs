@@ -1,6 +1,7 @@
 ﻿using CCWin.SkinControl;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -46,27 +47,34 @@ namespace 自定义Uppercomputer_20200727.控件重做
             toolStrip = new ToolStripMenuItem();
             toolStrip.Text = "修改参数";
             this.Items.Add(toolStrip);
+            this.Back = Color.LightGray;
+            toolStrip.Margin = new Padding(0, 5, 0, 5);
             toolStrip.Click += toolStrip_Click_reform;//注册修改参数事件
             //查看控件属性
             toolStrip_4 = new ToolStripMenuItem();
             toolStrip_4.Text = "查看属性";
             this.Items.Add(toolStrip_4);
+            toolStrip_4.Margin = new Padding(0, 5, 0, 5);
             toolStrip_4.Click += toolStrip_Click_reform_4;//注册修改参数事件
             /// <移除控件>
             toolStrip_1 = new ToolStripMenuItem();
             toolStrip_1.Text = "移除控件";
             this.Items.Add(toolStrip_1);
+            toolStrip_1.Margin = new Padding(0, 5, 0, 5);
             toolStrip_1.Click += toolStrip_Click_reform_1;//注册修改参数事件
             ///<把控件移到最上层>
             toolStrip_2 = new ToolStripMenuItem();
             toolStrip_2.Text = "控件最上层";
             this.Items.Add(toolStrip_2);
+            toolStrip_2.Margin = new Padding(0, 5, 0, 5);
             toolStrip_2.Click += stratosphere;//注册修改参数事件
             ///<把控件移到最下层>
             toolStrip_3 = new ToolStripMenuItem();
             toolStrip_3.Text = "控件最下层";
             this.Items.Add(toolStrip_3);
+            toolStrip_3.Margin = new Padding(0, 5, 0, 5);
             toolStrip_3.Click += orlop;//注册修改参数事件
+            this.Margin = new Padding(0, 5, 0, 5);
 
         }
         /// <本方法重写右键点击菜单事件--触发相应修改参数操作>
