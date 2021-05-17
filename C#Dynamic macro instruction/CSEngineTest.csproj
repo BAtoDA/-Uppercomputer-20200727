@@ -58,14 +58,16 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="CSkin">
-      <HintPath>..\..\C#重要项目\CSkin 16.1.14.3 .NET控件\CSkin 2.0\CSkin.dll</HintPath>
+      <HintPath>..\自定义Uppercomputer-20200727\第三方控件DLL\缺少dll文件\其他dll\CSkin.dll</HintPath>
     </Reference>
-    <Reference Include="CSScriptLibrary, Version=3.11.1.0, Culture=neutral, PublicKeyToken=70fcc3d18c749033, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Debug\CSScriptLibrary.dll</HintPath>
+    <Reference Include="CSScriptLibrary">
+      <HintPath>..\自定义Uppercomputer-20200727\第三方控件DLL\缺少dll文件\其他dll\CSScriptLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="HZH_Controls">
+      <HintPath>..\自定义Uppercomputer-20200727\第三方控件DLL\缺少dll文件\其他dll\HZH_Controls.dll</HintPath>
     </Reference>
     <Reference Include="SunnyUI">
-      <HintPath>C:\Users\daying\Desktop\WindowsFormsApp3\SunnyUI.dll</HintPath>
+      <HintPath>..\自定义Uppercomputer-20200727\第三方控件DLL\缺少dll文件\其他dll\SunnyUI.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

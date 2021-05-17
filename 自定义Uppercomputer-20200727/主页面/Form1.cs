@@ -35,7 +35,7 @@ namespace 自定义Uppercomputer_20200727
         /// <summary>
         /// 数据库实例化
         /// </summary>
-        public static string SQLname { get; set; } = @"DESKTOP-E3JO5HA\WINCC";
+        public static string SQLname { get; set; } = @"LAPTOP-INNCV6MO";
         /// <summary>
         /// 数据库名
         /// </summary>

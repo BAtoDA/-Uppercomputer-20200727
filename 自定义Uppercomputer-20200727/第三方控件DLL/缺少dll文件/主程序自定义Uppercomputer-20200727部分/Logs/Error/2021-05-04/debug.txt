@@ -1,0 +1,141 @@
+2021-05-04 09:40:44.1916 | Info  | 捕获到未处理异常：System.Runtime.InteropServices.COMException
+异常信息：没有注册类 (异常来自 HRESULT:0x80040154 (REGDB_E_CLASSNOTREG))
+异常堆栈：   在 System.Windows.Forms.UnsafeNativeMethods.CoCreateInstance(Guid& clsid, Object punkOuter, Int32 context, Guid& iid)
+   在 System.Windows.Forms.AxHost.CreateWithLicense(String license, Guid clsid)
+   在 System.Windows.Forms.AxHost.CreateInstanceCore(Guid clsid)
+   在 System.Windows.Forms.AxHost.CreateInstance()
+   在 System.Windows.Forms.AxHost.GetOcxCreate()
+   在 System.Windows.Forms.AxHost.TransitionUpTo(Int32 state)
+   在 System.Windows.Forms.AxHost.CreateHandle()
+   在 System.Windows.Forms.Control.CreateControl(Boolean fIgnoreVisible)
+   在 System.Windows.Forms.Control.CreateControl(Boolean fIgnoreVisible)
+   在 System.Windows.Forms.AxHost.EndInit()
+   在 自定义Uppercomputer_20200727.Home.InitializeComponent() 位置 D:\C#项目\自定义Uppercomputer-20200727\自定义Uppercomputer-20200727\主页面\Form1.Designer.cs:行号 125
+   在 自定义Uppercomputer_20200727.Home..ctor() 位置 D:\C#项目\自定义Uppercomputer-20200727\自定义Uppercomputer-20200727\主页面\Form1.cs:行号 30
+   在 自定义Uppercomputer_20200727.Program.Main() 位置 D:\C#项目\自定义Uppercomputer-20200727\自定义Uppercomputer-20200727\Program.cs:行号 34
+CLR即将退出：True 
+2021-05-04 14:41:42.0881 | Info  | 捕获到未处理异常：System.Runtime.InteropServices.COMException
+异常信息：没有注册类 (异常来自 HRESULT:0x80040154 (REGDB_E_CLASSNOTREG))
+异常堆栈：   在 System.Windows.Forms.UnsafeNativeMethods.CoCreateInstance(Guid& clsid, Object punkOuter, Int32 context, Guid& iid)
+   在 System.Windows.Forms.AxHost.CreateWithLicense(String license, Guid clsid)
+   在 System.Windows.Forms.AxHost.CreateInstanceCore(Guid clsid)
+   在 System.Windows.Forms.AxHost.CreateInstance()
+   在 System.Windows.Forms.AxHost.GetOcxCreate()
+   在 System.Windows.Forms.AxHost.TransitionUpTo(Int32 state)
+   在 System.Windows.Forms.AxHost.CreateHandle()
+   在 System.Windows.Forms.Control.CreateControl(Boolean fIgnoreVisible)
+   在 System.Windows.Forms.Control.CreateControl(Boolean fIgnoreVisible)
+   在 System.Windows.Forms.AxHost.EndInit()
+   在 自定义Uppercomputer_20200727.Home.InitializeComponent() 位置 D:\C#项目\自定义Uppercomputer-20200727\自定义Uppercomputer-20200727\主页面\Form1.Designer.cs:行号 125
+   在 自定义Uppercomputer_20200727.Home..ctor() 位置 D:\C#项目\自定义Uppercomputer-20200727\自定义Uppercomputer-20200727\主页面\Form1.cs:行号 30
+   在 自定义Uppercomputer_20200727.Program.Main() 位置 D:\C#项目\自定义Uppercomputer-20200727\自定义Uppercomputer-20200727\Program.cs:行号 34
+CLR即将退出：True 
+2021-05-04 14:42:11.2427 | Info  | 捕获到未处理异常：System.Runtime.InteropServices.COMException
+异常信息：没有注册类 (异常来自 HRESULT:0x80040154 (REGDB_E_CLASSNOTREG))
+异常堆栈：   在 System.Windows.Forms.UnsafeNativeMethods.CoCreateInstance(Guid& clsid, Object punkOuter, Int32 context, Guid& iid)
+   在 System.Windows.Forms.AxHost.CreateWithLicense(String license, Guid clsid)
+   在 System.Windows.Forms.AxHost.CreateInstanceCore(Guid clsid)
+   在 System.Windows.Forms.AxHost.CreateInstance()
+   在 System.Windows.Forms.AxHost.GetOcxCreate()
+   在 System.Windows.Forms.AxHost.TransitionUpTo(Int32 state)
+   在 System.Windows.Forms.AxHost.CreateHandle()
+   在 System.Windows.Forms.Control.CreateControl(Boolean fIgnoreVisible)
+   在 System.Windows.Forms.Control.CreateControl(Boolean fIgnoreVisible)
+   在 System.Windows.Forms.AxHost.EndInit()
+   在 自定义Uppercomputer_20200727.Home.InitializeComponent() 位置 D:\C#项目\自定义Uppercomputer-20200727\自定义Uppercomputer-20200727\主页面\Form1.Designer.cs:行号 125
+   在 自定义Uppercomputer_20200727.Home..ctor() 位置 D:\C#项目\自定义Uppercomputer-20200727\自定义Uppercomputer-20200727\主页面\Form1.cs:行号 30
+   在 自定义Uppercomputer_20200727.Program.Main() 位置 D:\C#项目\自定义Uppercomputer-20200727\自定义Uppercomputer-20200727\Program.cs:行号 34
+CLR即将退出：True 
+2021-05-04 14:56:13.2979 | Debug | 开始加载程序集axActUtlType1 
+2021-05-04 14:56:13.6050 | Debug | 2021/5/4 14:56:13  运行了自定义Uppercomputer-20200727  版本号：1.0.0.42 
+2021-05-04 14:56:13.6050 | Debug | Home  正在加载配置文件：正在读取XML文件10 
+2021-05-04 14:56:13.8210 | Debug | Home  正在加载配置文件：正在读取数据库配置文件15 
+2021-05-04 14:56:14.0351 | Debug | Home  正在加载配置文件：正在读取正在更改数据库配置30 
+2021-05-04 14:56:16.3232 | Debug | Home  正在加载配置文件：正在设置线程池配置60 
+2021-05-04 14:56:16.5412 | Debug | Home  正在加载配置文件：正在判断是否重复打开软件90 
+2021-05-04 14:56:16.7631 | Debug | Home  正在加载配置文件：配置完成正在打开软件100 
+2021-05-04 14:56:18.0970 | Debug | 主画面Form3开始加载控件进度30 
+2021-05-04 14:56:18.7493 | Debug | 主画面Form3开始正在显示UI进度90 
+2021-05-04 14:56:18.7603 | Debug | 用户添加控件： 实例化宏指令对象 
+2021-05-04 14:56:18.8999 | Debug | 开始遍历Form3主画面窗口控件 
+2021-05-04 14:56:18.8999 | Debug | 开始遍历Form3主画面窗口控件 
+2021-05-04 14:56:18.9528 | Debug | 遍历Form3主画面窗口控件完成 
+2021-05-04 14:56:18.9528 | Debug | 遍历Form3主画面窗口控件完成 
+2021-05-04 14:56:19.3083 | Debug | 主画面Form3加载完成进度100 
+2021-05-04 14:56:19.3930 | Debug | 主画面Form3加载完成进度100 
+2021-05-04 14:56:25.1281 | Debug | 手动画面Form4开始加载控件进度30 
+2021-05-04 14:56:25.1919 | Debug | 手动画面Form4开始正在显示UI进度90 
+2021-05-04 14:56:25.2552 | Debug | 开始遍历Form4手动画面窗口控件 
+2021-05-04 14:56:25.2552 | Debug | 遍历Form4手动画面窗口控件完成 
+2021-05-04 14:56:25.3510 | Debug | 手动画面Form4加载完成进度100 
+2021-05-04 14:56:25.4148 | Debug | 手动画面Form4加载完成进度100 
+2021-05-04 14:56:27.1861 | Debug | 主画面Form3开始加载控件进度30 
+2021-05-04 14:56:27.2749 | Debug | 主画面Form3开始正在显示UI进度90 
+2021-05-04 14:56:27.5059 | Debug | 开始遍历Form3主画面窗口控件 
+2021-05-04 14:56:27.5189 | Debug | 遍历Form3主画面窗口控件完成 
+2021-05-04 14:56:27.7363 | Debug | 主画面Form3加载完成进度100 
+2021-05-04 14:56:27.8111 | Debug | 主画面Form3加载完成进度100 
+2021-05-04 14:56:29.6924 | Debug | 异常画面Form5开始加载控件进度30 
+2021-05-04 14:56:29.7363 | Debug | 异常画面Form5开始正在显示UI进度90 
+2021-05-04 14:56:30.1017 | Debug | 开始遍历Form5异常画面窗口控件 
+2021-05-04 14:56:30.1017 | Debug | 遍历Form5异常画面窗口控件完成 
+2021-05-04 14:56:30.1366 | Debug | 异常画面Form5加载完成进度100 
+2021-05-04 14:56:30.1992 | Debug | 异常画面Form5加载完成进度100 
+2021-05-04 14:56:32.4656 | Debug | 监视画面Form6开始加载控件进度30 
+2021-05-04 14:56:32.4936 | Debug | 监视画面Form6开始正在显示UI进度90 
+2021-05-04 14:56:32.6953 | Debug | 开始遍历Form6监视画面窗口控件 
+2021-05-04 14:56:32.6953 | Debug | 遍历Form6监视画面窗口控件完成 
+2021-05-04 14:56:32.7342 | Debug | 监视画面Form6加载完成进度100 
+2021-05-04 14:56:32.7940 | Debug | 监视画面Form6加载完成进度100 
+2021-05-04 14:56:34.2468 | Debug | 运转控制Form7开始加载控件进度30 
+2021-05-04 14:56:34.2727 | Debug | 运转控制Form7开始正在显示UI进度90 
+2021-05-04 14:56:34.4832 | Debug | 开始遍历Form7运转控制窗口控件 
+2021-05-04 14:56:34.4832 | Debug | 遍历Form7运转控制窗口控件完成 
+2021-05-04 14:56:34.5301 | Debug | 运转控制Form7加载完成进度100 
+2021-05-04 14:56:34.6029 | Debug | 运转控制Form7加载完成进度100 
+2021-05-04 14:56:36.3876 | Debug | 参数设置Form9开始加载控件进度30 
+2021-05-04 14:56:36.4106 | Debug | 参数设置Form9开始正在显示UI进度90 
+2021-05-04 14:56:36.4674 | Debug | 开始遍历Form9参数设置窗口控件 
+2021-05-04 14:56:36.4674 | Debug | 遍历Form9参数设置窗口控件完成 
+2021-05-04 14:56:36.5632 | Debug | 参数设置Form9加载完成进度100 
+2021-05-04 14:56:36.6320 | Debug | 参数设置Form9加载完成进度100 
+2021-05-04 14:56:38.7612 | Debug | 主画面Form3开始加载控件进度30 
+2021-05-04 14:56:38.8460 | Debug | 主画面Form3开始正在显示UI进度90 
+2021-05-04 14:56:39.2088 | Debug | 开始遍历Form3主画面窗口控件 
+2021-05-04 14:56:39.2088 | Debug | 遍历Form3主画面窗口控件完成 
+2021-05-04 14:56:39.4196 | Debug | 主画面Form3加载完成进度100 
+2021-05-04 14:56:39.4834 | Debug | 主画面Form3加载完成进度100 
+2021-05-04 15:55:17.2156 | Debug | 开始加载程序集axActUtlType1 
+2021-05-04 15:55:17.6051 | Debug | 2021/5/4 15:55:17  运行了自定义Uppercomputer-20200727  版本号：1.0.0.42 
+2021-05-04 15:55:17.6051 | Debug | Home  正在加载配置文件：正在读取XML文件10 
+2021-05-04 15:55:17.8295 | Debug | Home  正在加载配置文件：正在读取数据库配置文件15 
+2021-05-04 15:55:18.0434 | Debug | Home  正在加载配置文件：正在读取正在更改数据库配置30 
+2021-05-04 15:55:19.0185 | Debug | Home  正在加载配置文件：正在设置线程池配置60 
+2021-05-04 15:55:19.2289 | Debug | Home  正在加载配置文件：正在判断是否重复打开软件90 
+2021-05-04 15:55:19.4463 | Debug | Home  正在加载配置文件：配置完成正在打开软件100 
+2021-05-04 15:55:20.4352 | Debug | 主画面Form3开始加载控件进度30 
+2021-05-04 15:55:20.9841 | Debug | 主画面Form3开始正在显示UI进度90 
+2021-05-04 15:55:20.9881 | Debug | 用户添加控件： 实例化宏指令对象 
+2021-05-04 15:55:21.1307 | Debug | 开始遍历Form3主画面窗口控件 
+2021-05-04 15:55:21.1526 | Debug | 开始遍历Form3主画面窗口控件 
+2021-05-04 15:55:21.1526 | Debug | 遍历Form3主画面窗口控件完成 
+2021-05-04 15:55:21.1805 | Debug | 遍历Form3主画面窗口控件完成 
+2021-05-04 15:55:21.5277 | Debug | 主画面Form3加载完成进度100 
+2021-05-04 15:55:21.6065 | Debug | 主画面Form3加载完成进度100 
+2021-05-04 15:55:33.9556 | Debug | 用户点击了：报警注册 
+2021-05-04 15:55:36.7626 | Debug | 用户点击了：编辑模式 
+2021-05-04 15:55:36.7626 | Debug | 用户打开了：退出编辑模式 
+2021-05-04 15:55:37.6101 | Debug | 用户点击了：报警注册 
+2021-05-04 15:55:37.6131 | Debug | 用户点击了 报警注册界面 
+2021-05-04 15:55:44.3277 | Debug | 用户点关闭 报警注册界面 
+2021-05-04 15:55:51.9084 | Debug | 用户点击了：Switch_切换开关 
+2021-05-04 15:55:51.9163 | Debug | 用户选择添加：Switch_reform1 
+2021-05-04 15:55:54.2675 | Debug | 用户取消添加控件：Switch_reform1 
+2021-05-04 15:56:02.7838 | Debug | 用户点击了：宏指令 
+2021-05-04 15:56:02.7848 | Debug | 用户点击了 宏指令界面 
+2021-05-04 15:56:26.1724 | Debug | 用户点关闭 宏指令界面 
+2021-05-04 15:56:29.5746 | Debug | 用户点击了：伺服控制 
+2021-05-04 15:56:46.5065 | Debug | 用户点击了：通讯测试 
+2021-05-04 15:56:46.5065 | Debug | 用户调用了 测试工具 
+2021-05-04 15:56:51.4509 | Debug | 用户关闭了 测试工具 
+2021-05-04 15:56:53.3271 | Debug | 用户关闭了软件 

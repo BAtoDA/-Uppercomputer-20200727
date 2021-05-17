@@ -32,7 +32,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="CSkin">
-      <HintPath>..\..\C#重要项目\CSkin 16.1.14.3 .NET控件\CSkin 2.0\CSkin.dll</HintPath>
+      <HintPath>..\自定义Uppercomputer-20200727\第三方控件DLL\缺少dll文件\其他dll\CSkin.dll</HintPath>
     </Reference>
     <Reference Include="HZH_Controls">
       <HintPath>..\自定义Uppercomputer-20200727\第三方控件DLL\HZH_Controls.dll</HintPath>
@@ -121,6 +121,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Analyzer Include="..\自定义Uppercomputer-20200727\第三方控件DLL\缺少dll文件\其他dll\CSkin.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

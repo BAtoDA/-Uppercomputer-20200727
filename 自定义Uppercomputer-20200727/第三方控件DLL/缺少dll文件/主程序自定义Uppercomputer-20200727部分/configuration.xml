@@ -1,0 +1,6 @@
+<Computers>
+  <Computer Name="LAPTOP-INNCV6MO" Description="SQL Server 2014 Management Studio" />
+  <Computer Database="Uppercomputer" Description="SQL Server 2014 Management Studio" />
+  <Computer user="sa" Description="SQL Server 2014 Management Studio" />
+  <Computer password="abc3131458" Description="SQL Server 2014 Management Studio" />
+</Computers>
