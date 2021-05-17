@@ -456,8 +456,11 @@ namespace 自定义Uppercomputer_20200727.控制主页面模板
                     List<pull_down_menuName> pull_Down_MenuNames = parameter_Query_Add.all_Parameter_Query_pull_down_menuName(reform.Parent + "-" + reform.Name);
                     foreach (pull_down_menuName i in pull_Down_MenuNames)
                         reform.Items.Add(i.项目资料.Trim());
-                    reform.SelectedIndex = 0;
-                    reform.SelectedItem = 0;
+                    if (reform.Items.Count > 0)
+                    {
+                        reform.SelectedIndex = 0;
+                        reform.SelectedItem = 0;
+                    }
                 });
             }
         }

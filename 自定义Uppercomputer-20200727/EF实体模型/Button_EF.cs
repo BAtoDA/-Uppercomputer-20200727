@@ -258,6 +258,7 @@ namespace 自定义Uppercomputer_20200727.EF实体模型
                     button_control_location.location = _Location.location;//获取对象
                     button_control_location.size = _Location.size;//获取对象
                     #endregion
+                    //button_control_location.ID=button_control_location.ID.Trim();
                     model.SaveChanges();//执行操作
                 }
                 if (button_control_location != null)
