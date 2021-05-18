@@ -71,7 +71,7 @@ namespace 自定义Uppercomputer_20200727.PLC选择.MODBUS_TCP监控窗口
         ///  西门子 Siemens 打开PLC
         /// </summary>
         /// <returns></returns>
-        string IPLC_interface.PLC_open()//打开PLC
+        public string PLC_open()//打开PLC
         {
             try
             {
@@ -107,7 +107,7 @@ namespace 自定义Uppercomputer_20200727.PLC选择.MODBUS_TCP监控窗口
         /// <param name="Name"></param>
         /// <param name="id"></param>
         /// <returns></returns>
-        List<bool> IPLC_interface.PLC_read_M_bit(string Name, string id)//读取PLC 位状态 --D_bit这类需要自己在表流获取当前位状态--M这类不需要
+        public List<bool> PLC_read_M_bit(string Name, string id)//读取PLC 位状态 --D_bit这类需要自己在表流获取当前位状态--M这类不需要
         {
             string result = "FALSE";//定义获取数据变量
             lock (this)
@@ -143,7 +143,7 @@ namespace 自定义Uppercomputer_20200727.PLC选择.MODBUS_TCP监控窗口
         /// <param name="id"></param>
         /// <param name="button_State"></param>
         /// <returns></returns>
-        List<bool> IPLC_interface.PLC_write_M_bit(string Name, string id, Button_state button_State)//写入PLC 位状态 --D_bit这类需要自己在表流获取当前位状态--M这类不需要
+        public List<bool> PLC_write_M_bit(string Name, string id, Button_state button_State)//写入PLC 位状态 --D_bit这类需要自己在表流获取当前位状态--M这类不需要
         {
             string result = "FALSE";//定义获取数据变量
             lock (this)
@@ -180,7 +180,7 @@ namespace 自定义Uppercomputer_20200727.PLC选择.MODBUS_TCP监控窗口
         /// <param name="id"></param>
         /// <param name="format"></param>
         /// <returns></returns>
-        string IPLC_interface.PLC_read_D_register(string Name, string id, numerical_format format)//读寄存器--转换相应类型
+        public string PLC_read_D_register(string Name, string id, numerical_format format)//读寄存器--转换相应类型
         {
             string result = "0";//定义获取数据变量        
             lock (this)
@@ -260,7 +260,7 @@ namespace 自定义Uppercomputer_20200727.PLC选择.MODBUS_TCP监控窗口
         /// <param name="content"></param>
         /// <param name="format"></param>
         /// <returns></returns>
-        string IPLC_interface.PLC_write_D_register(string Name, string id, string content, numerical_format format)//写寄存器--转换类型--并且写入
+        public string PLC_write_D_register(string Name, string id, string content, numerical_format format)//写寄存器--转换类型--并且写入
         {
             string result = "0";//定义获取数据变量           
             lock (this)
@@ -328,7 +328,7 @@ namespace 自定义Uppercomputer_20200727.PLC选择.MODBUS_TCP监控窗口
         /// <param name="format"></param>
         /// <param name="Index"></param>
         /// <returns></returns>
-        List<int> IPLC_interface.PLC_read_D_register_bit(string Name, string id, numerical_format format, string Index)//批量读取寄存器
+        public List<int> PLC_read_D_register_bit(string Name, string id, numerical_format format, string Index)//批量读取寄存器
         {
             List<int> Data = new List<int>();
             lock (this)
@@ -372,7 +372,7 @@ namespace 自定义Uppercomputer_20200727.PLC选择.MODBUS_TCP监控窗口
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        List<int> IPLC_interface.PLC_write_D_register_bit(string id)//批量写入寄存器
+        public List<int> PLC_write_D_register_bit(string id)//批量写入寄存器
         {
             return new List<int>() { 1 };
         }

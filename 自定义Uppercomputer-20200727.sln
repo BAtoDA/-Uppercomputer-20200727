@@ -19,7 +19,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "三菱伺服MR-JE控制", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "命令处理", "三菱伺服MR-JE-C控制\命令处理\命令处理.csproj", "{5D77E549-3C6D-4E7F-A015-DEF34820AE53}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "欧姆龙Fins协议", "D:\三菱欧姆龙伺服控制\欧姆龙Fins协议\欧姆龙Fins协议.csproj", "{E2017A23-326F-4BD3-8F8C-889EF89BB127}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "欧姆龙Fins协议", "欧姆龙Fins协议\欧姆龙Fins协议.csproj", "{E2017A23-326F-4BD3-8F8C-889EF89BB127}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Robot通讯控制", "Robot通讯控制\Robot通讯控制.csproj", "{D4B82D33-5D59-44D5-8E54-96567C0BFAD2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -61,6 +63,10 @@ Global
 		{E2017A23-326F-4BD3-8F8C-889EF89BB127}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E2017A23-326F-4BD3-8F8C-889EF89BB127}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E2017A23-326F-4BD3-8F8C-889EF89BB127}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D4B82D33-5D59-44D5-8E54-96567C0BFAD2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D4B82D33-5D59-44D5-8E54-96567C0BFAD2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D4B82D33-5D59-44D5-8E54-96567C0BFAD2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D4B82D33-5D59-44D5-8E54-96567C0BFAD2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
