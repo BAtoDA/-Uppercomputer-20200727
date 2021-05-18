@@ -8,6 +8,7 @@ using System.Data.SQLite.EF6;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using SQLite.CodeFirst;
 using 自定义Uppercomputer_20200727.EF实体模型;
 
@@ -24,7 +25,7 @@ namespace 自定义Uppercomputer_20200727.EF实体模型
     //==============================================================
     public partial class UppercomputerEntities2 : DbContext
     {
-        public static string dbPath = @"C:\Users\XN004\Source\Repos\BAtoDA\-Uppercomputer-20200727\安装部署文件\Extent1.db";
+        public static string dbPath = $@"data source={@Application.StartupPath}\Extent1.db;Version=3;";
         /// <summary>
         /// EF构造函数
         /// </summary>
