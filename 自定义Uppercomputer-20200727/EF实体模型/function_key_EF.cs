@@ -198,33 +198,113 @@ namespace 自定义Uppercomputer_20200727.EF实体模型
         {
             using (UppercomputerEntities2 model = new UppercomputerEntities2())
             {
-                model.Button_parameter.Delete(pi => pi.FORM.Trim() == Form.Trim());//移除button按钮控件信息
-                model.AnalogMeter_parameter.Delete(pi => pi.FORM.Trim() == Form.Trim());//移除百分百表盘控件信息
-                model.Control_layer.Delete(pi => pi.FORM.Trim() == Form.Trim());//移除Control_layer控件信息
-                model.doughnut_Chart_parameter.Delete(pi => pi.FORM.Trim() == Form.Trim());//移除doughnut_Chart_parameter控件信息
-                model.GroupBox_parameter.Delete(pi => pi.FORM.Trim() == Form.Trim());//移除GroupBox_parameter控件信息
-                model.histogram_Chart_parameter.Delete(pi => pi.FORM.Trim() == Form.Trim());//移除histogram_Chart_parameter控件信息
-                model.ihatetheqrcode_parameter.Delete(pi => pi.FORM.Trim() == Form.Trim());//移除ihatetheqrcode_parameter控件信息
-                model.ImageButton_parameter.Delete(pi => pi.FORM.Trim() == Form.Trim());//移除ImageButton_parameter控件信息
-                model.label_parameter.Delete(pi => pi.FORM.Trim() == Form.Trim());//移除label_parameter控件信息
-                model.LedBulb_parameter.Delete(pi => pi.FORM.Trim() == Form.Trim());//移除LedBulb_parameter控件信息
-                model.LedDisplay_parameter.Delete(pi => pi.FORM.Trim() == Form.Trim());//移除LedDisplay_parameter控件信息
-                model.numerical_parameter.Delete(pi => pi.FORM.Trim() == Form.Trim());//移除numerical_parameter控件信息
-                model.oscillogram_Chart_parameter.Delete(pi => pi.FORM.Trim() == Form.Trim());//移除oscillogram_Chart_parameter控件信息
-                model.ScrollingText_parameter.Delete(pi => pi.FORM.Trim() == Form.Trim());//移除ScrollingText_parameter控件信息
-                model.Switch_parameter.Delete(pi => pi.FORM.Trim() == Form.Trim());//移除Switch_parameter控件信息
-                model.RadioButton_parameter.Delete(pi => pi.FORM.Trim() == Form.Trim());//移除RadioButton控件
-                model.Tag_common_parameters.Delete(pi => pi.FROM.Trim() == Form.Trim());//移除字体信息
-                model.control_location.Delete(pi => pi.FORM.Trim() == Form.Trim());//移除位置信息
-                model.General_parameters_of_picture.Delete(pi => pi.FORM.Trim() == Form.Trim());//移除图片信息
-                model.Button_colour.Delete(pi => pi.FORM.Trim() == Form.Trim());//移除控件背景颜色
-                model.HScrollBar_parameter.Delete(pi => pi.FORM.Trim() == Form.Trim());//移除HScrollBar控件
-                model.Conveyor_parameter.Delete(pi => pi.FORM.Trim() == Form.Trim());//移除HScrollBar控件
+                //SQL Server 与 SQLlite 数据库切换
+                int ie = 1;
+                if (ie == 0)
+                {
+                    //SQL Server数据库代码
+                    model.Button_parameter.Delete(pi => pi.FORM.Trim() == Form.Trim());//移除button按钮控件信息
+                    model.AnalogMeter_parameter.Delete(pi => pi.FORM.Trim() == Form.Trim());//移除百分百表盘控件信息
+                    model.Control_layer.Delete(pi => pi.FORM.Trim() == Form.Trim());//移除Control_layer控件信息
+                    model.doughnut_Chart_parameter.Delete(pi => pi.FORM.Trim() == Form.Trim());//移除doughnut_Chart_parameter控件信息
+                    model.GroupBox_parameter.Delete(pi => pi.FORM.Trim() == Form.Trim());//移除GroupBox_parameter控件信息
+                    model.histogram_Chart_parameter.Delete(pi => pi.FORM.Trim() == Form.Trim());//移除histogram_Chart_parameter控件信息
+                    model.ihatetheqrcode_parameter.Delete(pi => pi.FORM.Trim() == Form.Trim());//移除ihatetheqrcode_parameter控件信息
+                    model.ImageButton_parameter.Delete(pi => pi.FORM.Trim() == Form.Trim());//移除ImageButton_parameter控件信息
+                    model.label_parameter.Delete(pi => pi.FORM.Trim() == Form.Trim());//移除label_parameter控件信息
+                    model.LedBulb_parameter.Delete(pi => pi.FORM.Trim() == Form.Trim());//移除LedBulb_parameter控件信息
+                    model.LedDisplay_parameter.Delete(pi => pi.FORM.Trim() == Form.Trim());//移除LedDisplay_parameter控件信息
+                    model.numerical_parameter.Delete(pi => pi.FORM.Trim() == Form.Trim());//移除numerical_parameter控件信息
+                    model.oscillogram_Chart_parameter.Delete(pi => pi.FORM.Trim() == Form.Trim());//移除oscillogram_Chart_parameter控件信息
+                    model.ScrollingText_parameter.Delete(pi => pi.FORM.Trim() == Form.Trim());//移除ScrollingText_parameter控件信息
+                    model.Switch_parameter.Delete(pi => pi.FORM.Trim() == Form.Trim());//移除Switch_parameter控件信息
+                    model.RadioButton_parameter.Delete(pi => pi.FORM.Trim() == Form.Trim());//移除RadioButton控件
+                    model.Tag_common_parameters.Delete(pi => pi.FROM.Trim() == Form.Trim());//移除Tag_common_parameters字体信息
+                    model.control_location.Delete(pi => pi.FORM.Trim() == Form.Trim());//移除control_location位置信息
+                    model.General_parameters_of_picture.Delete(pi => pi.FORM.Trim() == Form.Trim());//移除General_parameters_of_picture图片信息
+                    model.Button_colour.Delete(pi => pi.FORM.Trim() == Form.Trim());//移除控件Button_colour背景颜色
+                    model.HScrollBar_parameter.Delete(pi => pi.FORM.Trim() == Form.Trim());//移除HScrollBar_parameter控件
+                    model.Conveyor_parameter.Delete(pi => pi.FORM.Trim() == Form.Trim());//移除Conveyor_parameter控件
 
 
-                model.pull_down_menu_parameter.Delete(pi => pi.FORM.Trim() == Form.Trim());//移除下拉菜单控件
-                model.pull_down_menuName.Delete(pi => pi.FORM.Trim() == Form.Trim());//移除下拉菜单控件
-
+                    model.pull_down_menu_parameter.Delete(pi => pi.FORM.Trim() == Form.Trim());//移除pull_down_menu_parameter下拉菜单控件
+                    model.pull_down_menuName.Delete(pi => pi.FORM.Trim() == Form.Trim());//移除.pull_down_menuName下拉菜单控件
+                }
+                else//SQLlite数据库代码
+                {
+                    //移除button按钮控件信息
+                    foreach (var i in model.Button_parameter.Where(pi => pi.FORM.Trim() == Form.Trim()).Select(pi => pi).ToList())
+                        model.Button_parameter.Remove(i);
+                    //移除百分百表盘控件信息
+                    foreach (var i in model.AnalogMeter_parameter.Where(pi => pi.FORM.Trim() == Form.Trim()).Select(pi => pi).ToList())
+                        model.AnalogMeter_parameter.Remove(i);
+                    //移除Control_layer控件信息
+                    foreach (var i in model.Control_layer.Where(pi => pi.FORM.Trim() == Form.Trim()).Select(pi => pi).ToList())
+                        model.Control_layer.Remove(i);
+                    //移除doughnut_Chart_parameter控件信息
+                    foreach (var i in model.doughnut_Chart_parameter.Where(pi => pi.FORM.Trim() == Form.Trim()).Select(pi => pi).ToList())
+                        model.doughnut_Chart_parameter.Remove(i);
+                    //移除GroupBox_parameter控件信息
+                    foreach (var i in model.GroupBox_parameter.Where(pi => pi.FORM.Trim() == Form.Trim()).Select(pi => pi).ToList())
+                        model.GroupBox_parameter.Remove(i);
+                    //移除histogram_Chart_parameter控件信息
+                    foreach (var i in model.histogram_Chart_parameter.Where(pi => pi.FORM.Trim() == Form.Trim()).Select(pi => pi).ToList())
+                        model.histogram_Chart_parameter.Remove(i);
+                    //移除ihatetheqrcode_parameter控件信息
+                    foreach (var i in model.ihatetheqrcode_parameter.Where(pi => pi.FORM.Trim() == Form.Trim()).Select(pi => pi).ToList())
+                        model.ihatetheqrcode_parameter.Remove(i);
+                    //移除ImageButton_parameter控件信息
+                    foreach (var i in model.ImageButton_parameter.Where(pi => pi.FORM.Trim() == Form.Trim()).Select(pi => pi).ToList())
+                        model.ImageButton_parameter.Remove(i);
+                    //移除label_parameter控件信息
+                    foreach (var i in model.label_parameter.Where(pi => pi.FORM.Trim() == Form.Trim()).Select(pi => pi).ToList())
+                        model.label_parameter.Remove(i);
+                    //移除LedBulb_parameter控件信息
+                    foreach (var i in model.LedBulb_parameter.Where(pi => pi.FORM.Trim() == Form.Trim()).Select(pi => pi).ToList())
+                        model.LedBulb_parameter.Remove(i);
+                    //移除LedDisplay_parameter控件信息
+                    foreach (var i in model.LedDisplay_parameter.Where(pi => pi.FORM.Trim() == Form.Trim()).Select(pi => pi).ToList())
+                        model.LedDisplay_parameter.Remove(i);
+                    //移除numerical_parameter控件信息
+                    foreach (var i in model.numerical_parameter.Where(pi => pi.FORM.Trim() == Form.Trim()).Select(pi => pi).ToList())
+                        model.numerical_parameter.Remove(i);
+                    //移除oscillogram_Chart_parameter控件信息
+                    foreach (var i in model.oscillogram_Chart_parameter.Where(pi => pi.FORM.Trim() == Form.Trim()).Select(pi => pi).ToList())
+                        model.oscillogram_Chart_parameter.Remove(i);
+                    //移除ScrollingText_parameter控件信息
+                    foreach (var i in model.ScrollingText_parameter.Where(pi => pi.FORM.Trim() == Form.Trim()).Select(pi => pi).ToList())
+                        model.ScrollingText_parameter.Remove(i);
+                    //移除Switch_parameter控件信息
+                    foreach (var i in model.Switch_parameter.Where(pi => pi.FORM.Trim() == Form.Trim()).Select(pi => pi).ToList())
+                        model.Switch_parameter.Remove(i);
+                    //移除RadioButton_parameter控件
+                    foreach (var i in model.RadioButton_parameter.Where(pi => pi.FORM.Trim() == Form.Trim()).Select(pi => pi).ToList())
+                        model.RadioButton_parameter.Remove(i);
+                    //移除Tag_common_parameters字体信息
+                    foreach (var i in model.Tag_common_parameters.Where(pi => pi.FROM.Trim() == Form.Trim()).Select(pi => pi).ToList())
+                        model.Tag_common_parameters.Remove(i);
+                    //移除control_location位置信息
+                    foreach (var i in model.control_location.Where(pi => pi.FORM.Trim() == Form.Trim()).Select(pi => pi).ToList())
+                        model.control_location.Remove(i);
+                    //移除General_parameters_of_picture图片信息
+                    foreach (var i in model.General_parameters_of_picture.Where(pi => pi.FORM.Trim() == Form.Trim()).Select(pi => pi).ToList())
+                        model.General_parameters_of_picture.Remove(i);
+                    //移除控件Button_colour背景颜色
+                    foreach (var i in model.Button_colour.Where(pi => pi.FORM.Trim() == Form.Trim()).Select(pi => pi).ToList())
+                        model.Button_colour.Remove(i);
+                    //移除HScrollBar_parameter控件
+                    foreach (var i in model.HScrollBar_parameter.Where(pi => pi.FORM.Trim() == Form.Trim()).Select(pi => pi).ToList())
+                        model.HScrollBar_parameter.Remove(i);
+                    //移除Conveyor_parameter控件
+                    foreach (var i in model.Conveyor_parameter.Where(pi => pi.FORM.Trim() == Form.Trim()).Select(pi => pi).ToList())
+                        model.Conveyor_parameter.Remove(i);
+                    //移除pull_down_menu_parameter下拉菜单控件
+                    foreach (var i in model.pull_down_menu_parameter.Where(pi => pi.FORM.Trim() == Form.Trim()).Select(pi => pi).ToList())
+                        model.pull_down_menu_parameter.Remove(i);
+                    //移除.pull_down_menuName下拉菜单控件
+                    foreach (var i in model.pull_down_menuName.Where(pi => pi.FORM.Trim() == Form.Trim()).Select(pi => pi).ToList())
+                        model.pull_down_menuName.Remove(i);
+                }
                 model.SaveChanges();//更新到数据库
             }
             return "OK";
