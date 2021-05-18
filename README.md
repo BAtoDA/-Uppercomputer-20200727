@@ -12,7 +12,7 @@
 无需PLC直接控制三菱MR-JE-C型伺服(已测试完成) 需要提前配置伺服参数 设置IP 与回零方式等重要参数。
  
                                                            具体安装部署：    
-1:软件安装过程中需要提供SQL Server 2014 Management Studio版本的数据库 地址：https://pan.baidu.com/s/1wI9bHCGg3Vm0b_lGw71mFQ 提取码：tdqb--小白安装需要记住数据库实例名与密码。   
+1:本软件已经无需安装数据库使用SQLlite小型内置型。   
 2:由于本软件允许用户与三菱GX Works3软件GX Works2软件进行模拟联动所以需要安装三菱MX Component软件--进行安装配置https://www.360kuai.com/pc/9abd50f94e327665c?cota=4&tj_url=xz&sign=360_57c3bbd1&refer_scene=so_1 只要把FX3U 换成GX Works3就好。   
 3:卸载完成后需要手动去把数据库分离。   
 4:用户提供正确的数据库实例名  用户名 密码 软件安装过程中会自动附加数据库。  
