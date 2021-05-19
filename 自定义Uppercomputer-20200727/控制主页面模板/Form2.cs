@@ -46,6 +46,10 @@ using 自定义Uppercomputer_20200727.控制主页面模板.工业图形ADD;
 using 自定义Uppercomputer_20200727.控件重做.工业图形控件;
 using 自定义Uppercomputer_20200727.修改参数界面.工业图形汇总;
 using 自定义Uppercomputer_20200727.Nlog;
+using 自定义Uppercomputer_20200727.控件复制粘贴API;
+using 自定义Uppercomputer_20200727.控件重做.复制粘贴接口;
+using 自定义Uppercomputer_20200727.EF实体模型;
+using System.Data.Entity;
 
 namespace 自定义Uppercomputer_20200727
 {
@@ -975,8 +979,106 @@ namespace 自定义Uppercomputer_20200727
             //}
             //#endregion
         }
+        /// <summary>
+        /// 控件热键注册
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Form2_Activated(object sender, EventArgs e)
+        {
+            WinMonitoring.RegisterHotKey(Handle, 103, WinMonitoring.KeyModifiers.Ctrl, Keys.C);
 
+            WinMonitoring.RegisterHotKey(Handle, 104, WinMonitoring.KeyModifiers.Ctrl, Keys.V);
+        }
+        /// <summary>
+        /// 注销控件热键
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Form2_Leave(object sender, EventArgs e)
+        {
+            WinMonitoring.UnregisterHotKey(Handle, 103);
 
+            WinMonitoring.UnregisterHotKey(Handle, 104);
+        }
+        /// <summary>
+        /// 粘贴板
+        /// </summary>
+        Control control;
+        /// <summary>
+        /// 监视Windows消息 重载WndProc方法，用于实现热键响应
+        /// </summary>
+        /// <param name="m"></param>
+        protected override void WndProc(ref Message m)
+        {
+            const int WM_HOTKEY = 0x0312;
+            //按快捷键
+            switch (m.Msg)
+            {
+                case WM_HOTKEY:
+                    switch (m.WParam.ToInt32())
+                    {
+                        case 103:     //按下的是Ctrl+C 触发了复制控件
+                            var  conrt= GetFocusedControl();//获取控件
+                            if (conrt == null) return;
+                            //判断改控件是否实现接口
+                            if ((conrt as ControlCopy)!=null)
+                            {
+                                control = GetFocusedControl();//获取需要复制的控件
+                            }
+                            break;
+                        case 104:     //按下的是Ctrl+V 触发了粘贴控件
+                            //判断粘贴板是否有控件
+                            if (control != null)
+                            {
+                                //遍历当前窗口--改控件的编号
+                                var cont = (from Control pi in this.Controls where pi.GetType().UnderlyingSystemType.Name == control.GetType().UnderlyingSystemType.Name select pi).ToList();
+                                int dex = 0;
+                            inedx:
+                                dex += 1;
+                                string Name = control.GetType().Name + dex;//先定义名称
+                                foreach (Control i in this.Controls)//遍历窗口是否有该名称存在
+                                {
+                                    if (i.Name == Name) goto inedx;
+                                }
+
+                                //根据获取到的数据--这里本来想用反射的 但是发现操作不了EF技术还是不够
+                               
+                                   switch(control.GetType().Name)
+                                    {
+                                        case "Button_reform":
+
+                                        //产生新的控件
+                                        this.Controls.Add((control as ControlCopy).Objectproperty(Name,this));
+                                        break;
+                                    }
+                                   
+                                
+                            }
+                            break;
+                    }
+                    break;
+            }
+            base.WndProc(ref m);
+        }
+        //API声明：获取当前焦点控件句柄      
+
+        [DllImport("user32.dll", CharSet = CharSet.Auto, CallingConvention = CallingConvention.Winapi)]
+
+        internal static extern IntPtr GetFocus();
+
+        /// <summary>
+        /// 获取 当前窗口拥有焦点的控件
+        /// </summary>
+        /// <returns></returns>
+        private Control GetFocusedControl()
+        {
+            Control focusedControl = null;
+            IntPtr focusedHandle = GetFocus();
+            if (focusedHandle != IntPtr.Zero)
+                focusedControl = Control.FromChildHandle(focusedHandle);
+            return focusedControl;
+        }
         private void Form2_FormClosing(object sender, FormClosingEventArgs e)
         {
 

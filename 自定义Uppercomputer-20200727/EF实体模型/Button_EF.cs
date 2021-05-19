@@ -21,6 +21,19 @@ namespace 自定义Uppercomputer_20200727.EF实体模型
                     return "NG";
             }
         }
+        /// <summary>
+        /// 插入按钮类全部参数
+        /// </summary>
+        /// <returns></returns>
+        public string Button_Add(Button_parameter parameter, Tag_common_parameters parameter1, General_parameters_of_picture parameter2, control_location parameter3, Button_colour parameter4)
+        {
+            this.Button_Parameter_Add(parameter);
+            this.Button_Parameter_Add(parameter1);
+            this.Button_Parameter_Add(parameter2);
+            this.Button_Parameter_Add(parameter3);
+            this.Button_Parameter_Add(parameter4);
+            return "ok";
+        }
         public string Button_Parameter_Add(Button_parameter parameter)//按钮类主参数参数插入
         {
             using (UppercomputerEntities2 model = new UppercomputerEntities2())

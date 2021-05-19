@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using UI_Library_da;
 using 自定义Uppercomputer_20200727.EF实体模型;
+using 自定义Uppercomputer_20200727.修改参数界面;
+using 自定义Uppercomputer_20200727.控件重做.复制粘贴接口;
 using 自定义Uppercomputer_20200727.控件重做.按钮类与宏指令通用类;
 
 namespace 自定义Uppercomputer_20200727.控件重做
@@ -15,7 +17,7 @@ namespace 自定义Uppercomputer_20200727.控件重做
     /// 继承UI_AnalogMeter
     ///  此类不能在窗口设计器中使用-如果需要使用请拖拽父类
     /// </summary>
-    class AnalogMeter_reform: UI_AnalogMeter
+    class AnalogMeter_reform: UI_AnalogMeter,ControlCopy
     {
         string AnalogMeter_ID { get; set; }//文本属性ID
         SkinContextMenuStrip_reform menuStrip_Reform;//绑定右键菜单类
@@ -24,7 +26,6 @@ namespace 自定义Uppercomputer_20200727.控件重做
         /// </summary>
         public AnalogMeter_reform()
         {
-            //this.InitChart_load();//初始化
             this.menuStrip_Reform = new SkinContextMenuStrip_reform();//实例化右键菜单
             this.ContextMenuStrip = this.menuStrip_Reform;//绑定右键菜单
             this.MouseDown += MouseDown_reform;//注册事件
@@ -98,6 +99,22 @@ namespace 自定义Uppercomputer_20200727.控件重做
             DragResizeControl.UnRegisterControl(this);//实现控件改变大小与拖拽位置
             this.menuStrip_Reform.Dispose();
             base.Dispose(disposing);
+        }
+        /// <summary>
+        /// 复制控件的属性
+        /// </summary>
+        /// <returns></returns>
+        public Control Objectproperty(string Name,Form form)
+        {
+            throw new NotImplementedException();
+        }
+        /// <summary>
+        /// 复制控件
+        /// </summary>
+        /// <returns></returns>
+        public object Clone()
+        {
+            return new AnalogMeter_reform() as object;
         }
     }
 }

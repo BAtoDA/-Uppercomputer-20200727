@@ -12,6 +12,8 @@ using System.Windows.Forms;
 using 自定义Uppercomputer_20200727.EF实体模型;
 using 自定义Uppercomputer_20200727.PLC选择;
 using 自定义Uppercomputer_20200727.PLC选择.MODBUS_TCP监控窗口;
+using 自定义Uppercomputer_20200727.修改参数界面;
+using 自定义Uppercomputer_20200727.控件重做.复制粘贴接口;
 using 自定义Uppercomputer_20200727.控件重做.按钮类与宏指令通用类;
 
 namespace 自定义Uppercomputer_20200727.控件重做
@@ -20,7 +22,7 @@ namespace 自定义Uppercomputer_20200727.控件重做
     /// 本类主要重写按钮的属性
     /// 重写
     /// </summary>
-    class Button_reform : SkinButton
+    class Button_reform : SkinButton, ControlCopy
     {
         public Button_Class Button_Class;//控件参数
         public enum Button_pattern//按钮模式类型枚举
@@ -308,6 +310,76 @@ namespace 自定义Uppercomputer_20200727.控件重做
                     state = false;//标志位
                     break;
             }
+        }
+        /// <summary>
+        /// 复制控件的属性
+        /// </summary>
+        /// <returns></returns>
+        public Control Objectproperty(string Name,Form form)
+        {
+            using (UppercomputerEntities2 db = new UppercomputerEntities2())
+            {
+                //获取上个控件的值
+                string path = this.Parent + "-" + this.Name;
+                var button_colour = db.Button_colour.Where(pi => pi.ID.Trim() == path).FirstOrDefault();
+                var button_parameter = db.Button_parameter.Where(pi => pi.ID.Trim() == path).FirstOrDefault();
+                var general_parameters_of_picture = db.General_parameters_of_picture.Where(pi => pi.ID.Trim() == path).FirstOrDefault();
+                var Tag_common = db.Tag_common_parameters.Where(pi => pi.ID.Trim() == path).FirstOrDefault();
+                var locatio = db.control_location.Where(pi => pi.ID.Trim() == path).FirstOrDefault();
+                var button_class = db.Button_Class.Where(pi => pi.ID.Trim() == path).FirstOrDefault();
+                //产生新的控件
+                Button_reform button =(Button_reform) this.Clone();
+
+                Public_attributeCalss public_AttributeCalss = new Public_attributeCalss();//实例化按钮参数设置
+                public_AttributeCalss.attributeCalss(button, button_class);//查询数据库--进行设置后的参数修改
+
+                //修改控件名称
+                button.Name = Name.Trim();
+                //设置控件产生的位置--判断是否超出边界
+                if((button.Left + button.Size.Width + 20)> form.Width-10&&(button.Top + button.Size.Height + 20)< form.Height-10)
+                {
+                    button.Location = new Point(button.Location.X, button.Location.Y+button.Height+20);
+                    goto Location;
+                }
+                if ((button.Location.X + button.Size.Width + 20) < form.Width-10)
+                {
+                    button.Location = new Point(button.Location.X + button.Size.Width + 20, button.Location.Y);
+                    goto Location;
+                }
+                //设置控件产生的位置--判断是否超出边界
+                if ((button.Location.X + button.Size.Width + 20) > form.Width - 10 && (button.Location.Y + button.Size.Height + 20) > form.Height - 10)
+                {
+                    button.Location = new Point(button.Location.X + button.Size.Width - 20, button.Location.Y);
+                    goto Location;
+                }
+                // button.Location = new Point(button.Location.X + button.Size.Width + 20, button.Location.Y);
+                Location:
+                button_parameter.ID = this.Parent + "-" + Name;
+                button_colour.ID = this.Parent + "-" + Name;
+                general_parameters_of_picture.ID= this.Parent + "-" + Name;
+                Tag_common.ID= this.Parent + "-" + Name;
+                Tag_common.Control_type= Name;
+                locatio.ID= this.Parent + "-" + Name;
+                locatio.location = (numerical_public.Size_X(button.Left)).ToString() + "-" + (numerical_public.Size_Y(button.Top)).ToString();
+                //重新向SQL插入数据
+                Button_EF button_EF = new Button_EF();
+                button_EF.Button_Add(button_parameter, Tag_common, general_parameters_of_picture, locatio, button_colour);
+                return button;
+            }
+        }
+        /// <summary>
+        /// 复制控件
+        /// </summary>
+        /// <returns></returns>
+        public object Clone()
+        {
+            Button_reform reform = new Button_reform();//实例化按钮
+            reform.Size = new Size(83, 31);//设置大小
+            reform.Location = this.Location;//设置按钮位置
+            reform.Name = this.Name;//设置名称
+            reform.Text = this.Name;//设置文本
+            reform.BringToFront();//将控件放置所有控件最顶层        
+            return reform;//返回数据
         }
         protected override void Dispose(bool disposing)
         {
