@@ -320,7 +320,7 @@ namespace 自定义Uppercomputer_20200727.控件重做
             using (UppercomputerEntities2 db = new UppercomputerEntities2())
             {
                 //获取上个控件的值
-                string path = this.Parent + "-" + this.Name;
+                string path = this.Button_ID + "-" + this.Name;
                 var button_colour = db.Button_colour.Where(pi => pi.ID.Trim() == path).FirstOrDefault();
                 var button_parameter = db.Button_parameter.Where(pi => pi.ID.Trim() == path).FirstOrDefault();
                 var general_parameters_of_picture = db.General_parameters_of_picture.Where(pi => pi.ID.Trim() == path).FirstOrDefault();
@@ -354,13 +354,23 @@ namespace 自定义Uppercomputer_20200727.控件重做
                 }
                 // button.Location = new Point(button.Location.X + button.Size.Width + 20, button.Location.Y);
                 Location:
-                button_parameter.ID = this.Parent + "-" + Name;
-                button_colour.ID = this.Parent + "-" + Name;
-                general_parameters_of_picture.ID= this.Parent + "-" + Name;
-                Tag_common.ID= this.Parent + "-" + Name;
+                //获取窗口ID
+                string From= parameter_indexes.Button_from_name(form.ToString());//获取窗口名称
+
+                button_parameter.ID = form.ToString() + "-" + Name;
+                button_colour.ID = form.ToString() + "-" + Name;
+                general_parameters_of_picture.ID= form.ToString() + "-" + Name;
+                Tag_common.ID= form.ToString() + "-" + Name;
                 Tag_common.Control_type= Name;
-                locatio.ID= this.Parent + "-" + Name;
+                locatio.ID= form.ToString() + "-" + Name;
                 locatio.location = (numerical_public.Size_X(button.Left)).ToString() + "-" + (numerical_public.Size_Y(button.Top)).ToString();
+
+                button_parameter.FORM = From.Trim();
+                button_colour.FORM= From.Trim();
+                general_parameters_of_picture.FORM = From;
+                Tag_common.FROM= From;
+                locatio.FORM= From;
+
                 //重新向SQL插入数据
                 Button_EF button_EF = new Button_EF();
                 button_EF.Button_Add(button_parameter, Tag_common, general_parameters_of_picture, locatio, button_colour);

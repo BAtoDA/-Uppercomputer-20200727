@@ -647,6 +647,10 @@ namespace 自定义Uppercomputer_20200727
                   //LogUtils日志
                   LogUtils.debugWrite($"用户打开了：{this.toolStripMenuItem5.Text}");
               });
+            ///注册API
+            WinMonitoring.RegisterHotKey(Handle, 103, WinMonitoring.KeyModifiers.Ctrl, Keys.C);
+
+            WinMonitoring.RegisterHotKey(Handle, 104, WinMonitoring.KeyModifiers.Ctrl, Keys.V);
         }
 
         private void toolStripMenuItem2_Click(object sender, EventArgs e)//调用测试工具
@@ -1004,7 +1008,7 @@ namespace 自定义Uppercomputer_20200727
         /// <summary>
         /// 粘贴板
         /// </summary>
-        Control control;
+        static Control control;
         /// <summary>
         /// 监视Windows消息 重载WndProc方法，用于实现热键响应
         /// </summary>
@@ -1025,6 +1029,15 @@ namespace 自定义Uppercomputer_20200727
                             if ((conrt as ControlCopy)!=null)
                             {
                                 control = GetFocusedControl();//获取需要复制的控件
+                                CopyControl copyControl = new CopyControl($"Copy 控件:{control.Name}成功",this);
+                                copyControl.Location = new Point(this.Size.Width / 2 - 150, 80);
+                                this.Controls.Add(copyControl);
+                            }
+                            else
+                            {
+                                CopyControl copyControl = new CopyControl($"Copy 控件:{conrt.Name}失败", this);
+                                copyControl.Location = new Point(this.Size.Width / 2 - 150, 80);
+                                this.Controls.Add(copyControl);
                             }
                             break;
                         case 104:     //按下的是Ctrl+V 触发了粘贴控件
@@ -1041,10 +1054,13 @@ namespace 自定义Uppercomputer_20200727
                                 {
                                     if (i.Name == Name) goto inedx;
                                 }
+                                CopyControl copyControl = new CopyControl($"粘贴控件:{control.Name}成功", this);
+                                copyControl.Location = new Point(this.Size.Width / 2 - 150, 80);
+                                this.Controls.Add(copyControl);
 
                                 //根据获取到的数据--这里本来想用反射的 但是发现操作不了EF技术还是不够
-                               
-                                   switch(control.GetType().Name)
+
+                                switch (control.GetType().Name)
                                     {
                                         case "Button_reform":
 
@@ -1054,6 +1070,12 @@ namespace 自定义Uppercomputer_20200727
                                     }
                                    
                                 
+                            }
+                            else
+                            {
+                                CopyControl copyControl = new CopyControl($"粘贴控件:失败", this);
+                                copyControl.Location = new Point(this.Size.Width / 2 - 100, 80);
+                                this.Controls.Add(copyControl);
                             }
                             break;
                     }
@@ -1081,7 +1103,9 @@ namespace 自定义Uppercomputer_20200727
         }
         private void Form2_FormClosing(object sender, FormClosingEventArgs e)
         {
+            WinMonitoring.UnregisterHotKey(Handle, 103);
 
+            WinMonitoring.UnregisterHotKey(Handle, 104);
             try
             {
                 if (!this.Capture) return;
