@@ -11,6 +11,8 @@ using UI_Library_da;
 using 自定义Uppercomputer_20200727.EF实体模型;
 using 自定义Uppercomputer_20200727.PLC选择;
 using 自定义Uppercomputer_20200727.PLC选择.MODBUS_TCP监控窗口;
+using 自定义Uppercomputer_20200727.修改参数界面;
+using 自定义Uppercomputer_20200727.控件重做.复制粘贴接口;
 using 自定义Uppercomputer_20200727.控件重做.按钮类与宏指令通用类;
 
 namespace 自定义Uppercomputer_20200727.控件重做
@@ -19,7 +21,7 @@ namespace 自定义Uppercomputer_20200727.控件重做
     /// 继承UIComboBox-下拉菜单实现进行相应的重写
     /// 此类不能在窗口设计器中使用-如果需要使用请拖拽父类
     /// </summary>
-    class pull_down_menu_reform : UIComboBox
+    class pull_down_menu_reform : UIComboBox, ControlCopy
     {
         string SkinLabel_ID { get; set; }//文本属性ID
         SkinContextMenuStrip_reform menuStrip_Reform;//绑定右键菜单类
@@ -158,6 +160,11 @@ namespace 自定义Uppercomputer_20200727.控件重做
             }
             return numerical_format.Unsigned_32_Bit;//如果不匹配则返回默认无符号类型
         }
+        protected override void OnClick(EventArgs e)
+        {
+            this.Focus();
+            base.OnClick(e);
+        }
         protected override void Dispose(bool disposing)
         {
             this.MouseDown -= MouseDown_reform;//移除事件
@@ -167,6 +174,72 @@ namespace 自定义Uppercomputer_20200727.控件重做
             this.menuStrip_Reform.Dispose();
             base.Dispose(disposing);
         }
+        /// <summary>
+        /// 复制控件的属性
+        /// </summary>
+        /// <returns></returns>
+        public Control Objectproperty(string Name, Form form)
+        {
+            using (UppercomputerEntities2 db = new UppercomputerEntities2())
+            {
+                //获取上个控件的值
+                string path = this.Parent.ToString() + "-" + this.Name;
+                var parameter = db.pull_down_menu_parameter.Where(pi => pi.ID.Trim() == path).FirstOrDefault();
+                var Tag_common = db.Tag_common_parameters.Where(pi => pi.ID.Trim() == path).FirstOrDefault();
+                var locatio = db.control_location.Where(pi => pi.ID.Trim() == path).FirstOrDefault();
+                var contrsclass = db.pull_down_menu_Class.Where(pi => pi.ID.Trim() == path).FirstOrDefault();
+                var pull_down_Name = db.pull_down_menuName.Where(pi => pi.控件归属.Trim() == path).Select(pi => pi).ToList();
+                //产生新的控件
+                pull_down_menu_reform control = (pull_down_menu_reform)this.Clone();
 
+                Public_attributeCalss public_AttributeCalss = new Public_attributeCalss();//实例化按钮参数设置
+                public_AttributeCalss.attributeCalss(control, contrsclass);//查询数据库--进行设置后的参数修改
+
+                //修改控件名称
+                control.Name = Name.Trim();
+                //设置控件产生的位置--判断是否超出边界
+                CopySize.ControlSize(control, form);
+                //获取窗口ID
+                string From = parameter_indexes.Button_from_name(form.ToString());//获取窗口名称
+                string contrpath = form.ToString() + "-" + Name;
+                parameter.ID = contrpath;
+                Tag_common.ID = contrpath;
+                Tag_common.Control_type = Name;
+                locatio.ID = contrpath;
+                locatio.location = (numerical_public.Size_X(control.Left)).ToString() + "-" + (numerical_public.Size_Y(control.Top)).ToString();
+
+                parameter.FORM = From.Trim();
+                Tag_common.FROM = From;
+                locatio.FORM = From;
+                //重新向SQL插入数据
+                pull_down_menu_EF EF = new pull_down_menu_EF();
+                EF.pull_down_menu_Parameter_Add(parameter);
+                EF.pull_down_menu_Parameter_Add(Tag_common);
+                EF.pull_down_menu_Parameter_Add(locatio);
+                //批量修改下拉菜单数据
+                for (int i = 0; i < pull_down_Name.Count; i++)
+                {
+                    pull_down_Name[i].ID = (form.ToString() + "-" + Name) + i;
+                    pull_down_Name[i].FORM = From;
+                    pull_down_Name[i].控件归属 = form.ToString() + "-" + Name;                    
+                }
+                EF.pull_down_menu_Parameter_Add(pull_down_Name);
+                if (control.Items.Count > 0) control.Items.Clear();
+                for (int i = 0; i < pull_down_Name.Count; i++)
+                {
+                    control.Items.Add(pull_down_Name[i].项目资料.Trim());//把数据添加到控件
+                }
+
+                return control;
+            }
+        }
+        /// <summary>
+        /// 复制控件
+        /// </summary>
+        /// <returns></returns>
+        public object Clone()
+        {
+            return new pull_down_menu_reform() as object;//返回数据
+        }
     }
 }

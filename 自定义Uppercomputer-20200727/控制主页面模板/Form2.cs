@@ -972,16 +972,6 @@ namespace 自定义Uppercomputer_20200727
                     break;
             }
             #endregion
-            //#region 控件对齐模式
-            //switch (this.ucNavigationMenu1.SelectItem.TipText)
-            //{
-            //    case "左对齐":
-
-            //        this.ucNavigationMenu1.SelectItem.Icon = this.Aligning.Images[0];
-
-            //        return;
-            //}
-            //#endregion
         }
         /// <summary>
         /// 控件热键注册
@@ -1057,19 +1047,10 @@ namespace 自定义Uppercomputer_20200727
                                 CopyControl copyControl = new CopyControl($"粘贴控件:{control.Name}成功", this);
                                 copyControl.Location = new Point(this.Size.Width / 2 - 150, 80);
                                 this.Controls.Add(copyControl);
-
-                                //根据获取到的数据--这里本来想用反射的 但是发现操作不了EF技术还是不够
-
-                                switch (control.GetType().Name)
-                                    {
-                                        case "Button_reform":
-
-                                        //产生新的控件
-                                        this.Controls.Add((control as ControlCopy).Objectproperty(Name,this));
-                                        break;
-                                    }
-                                   
-                                
+                                //产生新的控件
+                                var contrs = (control as ControlCopy).Objectproperty(Name, this);
+                                this.Controls.Add(contrs);
+                                contrs.BringToFront();
                             }
                             else
                             {

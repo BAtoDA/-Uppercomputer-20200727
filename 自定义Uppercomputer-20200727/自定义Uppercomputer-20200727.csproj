@@ -542,6 +542,7 @@
     <Compile Include="控件重做\复制粘贴接口\CopyControl.Designer.cs">
       <DependentUpon>CopyControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="控件重做\复制粘贴接口\CopySize.cs" />
     <Compile Include="控件重做\工业图形控件\Conveyor_reform.cs">
       <SubType>UserControl</SubType>
     </Compile>

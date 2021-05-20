@@ -141,7 +141,19 @@ namespace 自定义Uppercomputer_20200727.EF实体模型
                 pull_down_menuName pull_down_menuName = model.pull_down_menuName.Where(pi => pi.控件归属.Trim() == ID.Trim()).FirstOrDefault();//查询数据库是否有该ID
                 if (pull_down_menuName != null)
                 {
-                    model.pull_down_menuName.Delete(pi => pi.控件归属.Trim() == Name.Trim());//移除位置信息         
+                    //切换数据库标志位
+                    int iex = 1;
+                    if (iex == 0)
+                    {
+                        model.pull_down_menuName.Delete(pi => pi.控件归属.Trim() == Name.Trim());//移除位置信息
+                    }
+                    else
+                    {
+                        model.pull_down_menuName.Where(pi => pi.控件归属.Trim() == Name.Trim()).Select(pi => pi).ToList().ForEach(s => 
+                        {
+                            model.pull_down_menuName.Remove(s);
+                        });
+                    }
                     model.SaveChanges();//执行操作
                 }
                 //执行删除按钮类坐标参数操作
@@ -252,21 +264,6 @@ namespace 自定义Uppercomputer_20200727.EF实体模型
                     model.SaveChanges();//执行操作
                 }
                 pull_down_menu_Parameter_Add(pull_s);//重写添加插入数据
-                //for (int i=0;i<Inedx;i++)
-                //{
-                //    string id = pull_s[i].ID.Trim();
-                //    pull_down_menuName pull_down_menuName = model.pull_down_menuName.Where(pi => pi.ID.Trim() == id).FirstOrDefault();//查询数据库是否有该ID
-                //    if(pull_down_menuName!=null)
-                //    {
-                //        #region 要修改的属性
-                //        pull_down_menuName.控件归属 = pull_s[i].控件归属;//获取对象
-                //        pull_down_menuName.数据 = pull_s[i].数据;//获取对象
-                //        pull_down_menuName.项目 = pull_s[i].项目;//获取对象
-                //        pull_down_menuName.项目资料= pull_s[i].项目资料;//获取对象
-                //        #endregion
-                //        model.SaveChanges();//执行操作
-                //    }
-                //}
                 if (Button_parameter != null)
                     return "OK";
                 else

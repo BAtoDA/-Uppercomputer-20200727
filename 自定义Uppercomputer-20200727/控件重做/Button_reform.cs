@@ -320,7 +320,7 @@ namespace 自定义Uppercomputer_20200727.控件重做
             using (UppercomputerEntities2 db = new UppercomputerEntities2())
             {
                 //获取上个控件的值
-                string path = this.Button_ID + "-" + this.Name;
+                string path = this.Parent.ToString() + "-" + this.Name;
                 var button_colour = db.Button_colour.Where(pi => pi.ID.Trim() == path).FirstOrDefault();
                 var button_parameter = db.Button_parameter.Where(pi => pi.ID.Trim() == path).FirstOrDefault();
                 var general_parameters_of_picture = db.General_parameters_of_picture.Where(pi => pi.ID.Trim() == path).FirstOrDefault();
@@ -336,33 +336,16 @@ namespace 自定义Uppercomputer_20200727.控件重做
                 //修改控件名称
                 button.Name = Name.Trim();
                 //设置控件产生的位置--判断是否超出边界
-                if((button.Left + button.Size.Width + 20)> form.Width-10&&(button.Top + button.Size.Height + 20)< form.Height-10)
-                {
-                    button.Location = new Point(button.Location.X, button.Location.Y+button.Height+20);
-                    goto Location;
-                }
-                if ((button.Location.X + button.Size.Width + 20) < form.Width-10)
-                {
-                    button.Location = new Point(button.Location.X + button.Size.Width + 20, button.Location.Y);
-                    goto Location;
-                }
-                //设置控件产生的位置--判断是否超出边界
-                if ((button.Location.X + button.Size.Width + 20) > form.Width - 10 && (button.Location.Y + button.Size.Height + 20) > form.Height - 10)
-                {
-                    button.Location = new Point(button.Location.X + button.Size.Width - 20, button.Location.Y);
-                    goto Location;
-                }
-                // button.Location = new Point(button.Location.X + button.Size.Width + 20, button.Location.Y);
-                Location:
+                CopySize.ControlSize(button, form);
                 //获取窗口ID
                 string From= parameter_indexes.Button_from_name(form.ToString());//获取窗口名称
-
-                button_parameter.ID = form.ToString() + "-" + Name;
-                button_colour.ID = form.ToString() + "-" + Name;
-                general_parameters_of_picture.ID= form.ToString() + "-" + Name;
-                Tag_common.ID= form.ToString() + "-" + Name;
+                string contrpath = form.ToString() + "-" + Name;
+                button_parameter.ID = contrpath;
+                button_colour.ID = contrpath;
+                general_parameters_of_picture.ID= contrpath;
+                Tag_common.ID= contrpath;
                 Tag_common.Control_type= Name;
-                locatio.ID= form.ToString() + "-" + Name;
+                locatio.ID= contrpath;
                 locatio.location = (numerical_public.Size_X(button.Left)).ToString() + "-" + (numerical_public.Size_Y(button.Top)).ToString();
 
                 button_parameter.FORM = From.Trim();
@@ -382,14 +365,8 @@ namespace 自定义Uppercomputer_20200727.控件重做
         /// </summary>
         /// <returns></returns>
         public object Clone()
-        {
-            Button_reform reform = new Button_reform();//实例化按钮
-            reform.Size = new Size(83, 31);//设置大小
-            reform.Location = this.Location;//设置按钮位置
-            reform.Name = this.Name;//设置名称
-            reform.Text = this.Name;//设置文本
-            reform.BringToFront();//将控件放置所有控件最顶层        
-            return reform;//返回数据
+        {  
+            return new Button_reform() as object;//返回数据
         }
         protected override void Dispose(bool disposing)
         {

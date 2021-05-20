@@ -6,6 +6,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using UI_Library_da;
+using 自定义Uppercomputer_20200727.EF实体模型;
+
 namespace 自定义Uppercomputer_20200727.控件重做
 {
     /// <summary>
@@ -56,6 +58,11 @@ namespace 自定义Uppercomputer_20200727.控件重做
             this.option.ToolTip.AxisPointer.Type = UIAxisPointerType.Shadow;
             emptyOption = this.option;
 
+        }
+        protected override void OnClick(EventArgs e)
+        {
+            this.Focus();
+            base.OnClick(e);
         }
         protected override void Dispose(bool disposing)
         {
