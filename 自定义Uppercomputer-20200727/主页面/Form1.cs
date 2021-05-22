@@ -20,6 +20,7 @@ using 自定义Uppercomputer_20200727.EF实体模型.XML;
 using CCWin.SkinControl;
 using HZH_Controls.Forms;
 using 自定义Uppercomputer_20200727.Nlog;
+using System.Xml;
 
 namespace 自定义Uppercomputer_20200727
 {
@@ -124,6 +125,31 @@ namespace 自定义Uppercomputer_20200727
             else
                 timer.Start();
             BindingProcessMsg("配置完成正在打开软件", 100);
+        }
+        [Obsolete]
+        protected void XmlClick()
+        {
+            string newName = "SqliteTest";
+            string newConString = $@"data source={@Application.StartupPath}\Extent1.db;Version=3;";
+            //首先要登录进xml中也就是appconfig
+            XmlDataDocument doc = new XmlDataDocument();
+            string nowpath = System.Windows.Forms.Application.ExecutablePath + ".config";
+            doc.Load(nowpath);
+            XmlNode node = doc.SelectSingleNode("//connectionStrings");//获取connectionStrings节点
+            try
+            {
+                XmlElement element = (XmlElement)node.SelectSingleNode("//add[@name='" + newName + "']");
+                if (element != null)
+                {
+                    //存在更新子节点
+                    element.SetAttribute("connectionString", newConString);
+                }
+                doc.Save(nowpath);
+            }
+            catch (InvalidCastException ex)
+            {
+                throw ex;
+            }
         }
     }
 }

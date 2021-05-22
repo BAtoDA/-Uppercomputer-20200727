@@ -63,9 +63,9 @@ namespace 自定义Uppercomputer_20200727.EF实体模型
             // assumes a connectionString name in .config of MyDbEntities
             var entityConnectionStringBuilder = new EntityConnectionStringBuilder
             {
-                Provider = "System.Data.SqlClient",
+                Provider = "System.Data.SQLite.EF6",
                 ProviderConnectionString = sqlBuilder.ConnectionString,
-                Metadata = "res://*/EF实体模型.Model1.csdl|res://*/EF实体模型.Model1.ssdl|res://*/EF实体模型.Model1.msl",
+                //Metadata = "res://*/EF实体模型.Model1.csdl|res://*/EF实体模型.Model1.ssdl|res://*/EF实体模型.Model1.msl",
             };
 
             return entityConnectionStringBuilder.ConnectionString;

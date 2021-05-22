@@ -15,6 +15,8 @@ using 自定义Uppercomputer_20200727.PLC选择.MODBUS_TCP监控窗口;
 using 自定义Uppercomputer_20200727.修改参数界面;
 using 自定义Uppercomputer_20200727.控件重做.复制粘贴接口;
 using 自定义Uppercomputer_20200727.控件重做.按钮类与宏指令通用类;
+using 自定义Uppercomputer_20200727.控件重做.控件类基;
+using 自定义Uppercomputer_20200727.控件重做.控件类基.按钮_TO_PLC方法;
 
 namespace 自定义Uppercomputer_20200727.控件重做
 {
@@ -22,14 +24,42 @@ namespace 自定义Uppercomputer_20200727.控件重做
     /// 本类主要重写按钮的属性
     /// 重写
     /// </summary>
-    class Button_reform : SkinButton, ControlCopy
+    class Button_reform : SkinButton, ControlCopy, Button_base
     {
+        #region 实现接口参数
+        public PLC Plc { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public string PLC_Contact
+        {
+            get;set;
+        }
+        public string PLC_Address
+        {
+            get;set;
+        }
+        public Color Backdrop_ON { get; set; } = Color.FromName("Lime");
+        public Color Backdrop_OFF { get; set; } = Color.FromArgb(74, 131, 229);
+        public bool Command { get; set; }
+        public bool Button_select { get; set; }
+        public Button_state Pattern { get; set; } = Button_state.Off;
+        public string Text_ON { get; set; } = "ON";
+        public string Text_OFF { get; set; } = "OFF";
+        /// <summary>
+        /// 定时刷新 定时器
+        /// </summary>
+        public System.Windows.Forms.Timer PLC_time { get; } = new System.Windows.Forms.Timer() { Enabled = true, Interval = 200 };
+        /// <summary>
+        /// PLC通讯协议对象
+        /// </summary>
+        Button_PLC  button_PLC;
+        #endregion
+
         public Button_Class Button_Class;//控件参数
         public enum Button_pattern//按钮模式类型枚举
         {
             Set_as_on , Set_as_off, 切换开关, 复归型
         }
         public string Button_ID { get; set; }//该按钮ID
+
         SkinContextMenuStrip_reform menuStrip_Reform;//绑定右键菜单类
         public  Button_reform()//构造函数
         {

@@ -271,7 +271,7 @@ namespace 命令处理
                     }
                     mutex.ReleaseMutex();
                 }
-                catch (Exception E){ }
+                catch{ }
             }
             return result;//返回数据
         }

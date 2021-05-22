@@ -323,7 +323,7 @@ namespace 欧姆龙Fins协议.欧姆龙.报文处理
                     }
                     mutex.ReleaseMutex();
                 }
-                catch (Exception E) { }
+                catch{ }
             }
             return result;//返回数据
         }
