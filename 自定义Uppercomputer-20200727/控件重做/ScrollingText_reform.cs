@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using 自定义Uppercomputer_20200727.EF实体模型;
+using 自定义Uppercomputer_20200727.修改参数界面;
+using 自定义Uppercomputer_20200727.控件重做.复制粘贴接口;
 using 自定义Uppercomputer_20200727.控件重做.按钮类与宏指令通用类;
 
 namespace 自定义Uppercomputer_20200727.控件重做
@@ -16,7 +18,7 @@ namespace 自定义Uppercomputer_20200727.控件重做
     /// 引用第三方开源控件重构对事件方法等进行具体的实现
     /// 报警条
     /// </summary>LedBulb_parameter
-    class ScrollingText_reform : UIScrollingText
+    class ScrollingText_reform : UIScrollingText, ControlCopy
     {
         string SkinLabel_ID { get; set; }//文本属性ID
         SkinContextMenuStrip_reform menuStrip_Reform;//绑定右键菜单类
@@ -89,6 +91,11 @@ namespace 自定义Uppercomputer_20200727.控件重做
             this.Text = this.Text.Trim();//去除空白
             this.AutoSize = true;//控件大小根据字体改变
         }
+        protected override void OnClick(EventArgs e)
+        {
+            this.Focus();
+            base.OnClick(e);
+        }
         protected override void Dispose(bool disposing)
         {
             event_Time.Stop();//停止定时器
@@ -101,6 +108,64 @@ namespace 自定义Uppercomputer_20200727.控件重做
             menuStrip_Reform.Dispose();
             event_Time.Dispose();
             base.Dispose(disposing);
+        }
+        /// <summary>
+        /// 复制控件的属性
+        /// </summary>
+        /// <returns></returns>
+        public Control Objectproperty(string Name, Form form)
+        {
+            using (UppercomputerEntities2 db = new UppercomputerEntities2())
+            {
+                //获取上个控件的值
+                string path = this.Parent.ToString() + "-" + this.Name;
+                var parameter = db.ScrollingText_parameter.Where(pi => pi.ID.Trim() == path).FirstOrDefault();
+                var Tag_common = db.Tag_common_parameters.Where(pi => pi.ID.Trim() == path).FirstOrDefault();
+                var locatio = db.control_location.Where(pi => pi.ID.Trim() == path).FirstOrDefault();
+                var AnalogMeter_class = db.ScrollingText_Class.Where(pi => pi.ID.Trim() == path).FirstOrDefault();
+                //产生新的控件
+                ScrollingText_reform control = (ScrollingText_reform)this.Clone(form);
+
+                Public_attributeCalss public_AttributeCalss = new Public_attributeCalss();//实例化按钮参数设置
+                public_AttributeCalss.attributeCalss(control, AnalogMeter_class);//查询数据库--进行设置后的参数修改
+
+                //修改控件名称
+                control.Name = Name.Trim();
+                //设置控件产生的位置--判断是否超出边界
+                CopySize.ControlSize(control, form);
+                //获取窗口ID
+                string From = parameter_indexes.Button_from_name(form.ToString());//获取窗口名称
+                string contrpath = form.ToString() + "-" + Name;
+                parameter.ID = contrpath;
+                Tag_common.ID = contrpath;
+                Tag_common.Control_type = Name;
+                locatio.ID = contrpath;
+                locatio.location = (numerical_public.Size_X(control.Left)).ToString() + "-" + (numerical_public.Size_Y(control.Top)).ToString();
+
+                parameter.FORM = From.Trim();
+                Tag_common.FROM = From;
+                locatio.FORM = From;
+
+                //重新向SQL插入数据
+                ScrollingText_EF EF = new ScrollingText_EF();
+                EF.ScrollingText_Parameter_Add(parameter);
+                EF.ScrollingText_Parameter_Add(Tag_common);
+                EF.ScrollingText_Parameter_Add(locatio);
+                return control;
+            }
+        }
+        /// <summary>
+        /// 复制控件
+        /// </summary>
+        /// <returns></returns>
+        public object Clone()
+        {
+            return new object();
+            //return new ScrollingText_reform() as object;//返回数据
+        }
+        public object Clone(Form form)
+        {
+            return new ScrollingText_reform(form) as object;//返回数据
         }
     }
 }

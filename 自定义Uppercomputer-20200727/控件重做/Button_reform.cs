@@ -326,12 +326,12 @@ namespace 自定义Uppercomputer_20200727.控件重做
                 var general_parameters_of_picture = db.General_parameters_of_picture.Where(pi => pi.ID.Trim() == path).FirstOrDefault();
                 var Tag_common = db.Tag_common_parameters.Where(pi => pi.ID.Trim() == path).FirstOrDefault();
                 var locatio = db.control_location.Where(pi => pi.ID.Trim() == path).FirstOrDefault();
-                var button_class = db.Button_Class.Where(pi => pi.ID.Trim() == path).FirstOrDefault();
+                var contrsclass = db.Button_Class.Where(pi => pi.ID.Trim() == path).FirstOrDefault();
                 //产生新的控件
                 Button_reform button =(Button_reform) this.Clone();
 
                 Public_attributeCalss public_AttributeCalss = new Public_attributeCalss();//实例化按钮参数设置
-                public_AttributeCalss.attributeCalss(button, button_class);//查询数据库--进行设置后的参数修改
+                public_AttributeCalss.attributeCalss(button, contrsclass);//查询数据库--进行设置后的参数修改
 
                 //修改控件名称
                 button.Name = Name.Trim();
@@ -355,8 +355,8 @@ namespace 自定义Uppercomputer_20200727.控件重做
                 locatio.FORM= From;
 
                 //重新向SQL插入数据
-                Button_EF button_EF = new Button_EF();
-                button_EF.Button_Add(button_parameter, Tag_common, general_parameters_of_picture, locatio, button_colour);
+                Button_EF EF = new Button_EF();
+                EF.Button_Add(button_parameter, Tag_common, general_parameters_of_picture, locatio, button_colour);
                 return button;
             }
         }

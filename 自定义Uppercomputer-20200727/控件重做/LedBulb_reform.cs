@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using 自定义Uppercomputer_20200727.EF实体模型;
+using 自定义Uppercomputer_20200727.修改参数界面;
+using 自定义Uppercomputer_20200727.控件重做.复制粘贴接口;
 using 自定义Uppercomputer_20200727.控件重做.按钮类与宏指令通用类;
 
 namespace 自定义Uppercomputer_20200727.控件重做
@@ -16,7 +18,7 @@ namespace 自定义Uppercomputer_20200727.控件重做
     /// 引用第三方开源控件重构对事件方法等进行具体的实现
     /// 指示灯
     /// </summary>LedBulb_parameter
-    class LedBulb_reform : UILedBulb
+    class LedBulb_reform : UILedBulb, ControlCopy
     {
         LedBulb_Class LedBulb_Class;//控件参数
         public enum Switch_pattern//切换开模式类型枚举
@@ -53,6 +55,7 @@ namespace 自定义Uppercomputer_20200727.控件重做
         /// <方法重写当按钮按下触发—写入PLC状态>
         private void Click_reform(object send, EventArgs e)
         {
+            this.Focus();
         }
         /// <方法重写当触发双击>
         private void DoubleClick_reform(object send, EventArgs e)
@@ -101,6 +104,67 @@ namespace 自定义Uppercomputer_20200727.控件重做
                 int y = e.Y + this.Location.Y - clickY;
                 //this.Location = new Point(x, y);
             }
+        }
+        /// <summary>
+        /// 复制控件的属性
+        /// </summary>
+        /// <returns></returns>
+        public Control Objectproperty(string Name, Form form)
+        {
+            using (UppercomputerEntities2 db = new UppercomputerEntities2())
+            {
+                //获取上个控件的值
+                string path = this.Parent.ToString() + "-" + this.Name;
+                var button_colour = db.Button_colour.Where(pi => pi.ID.Trim() == path).FirstOrDefault();
+                var button_parameter = db.LedBulb_parameter.Where(pi => pi.ID.Trim() == path).FirstOrDefault();
+                var general_parameters_of_picture = db.General_parameters_of_picture.Where(pi => pi.ID.Trim() == path).FirstOrDefault();
+                var Tag_common = db.Tag_common_parameters.Where(pi => pi.ID.Trim() == path).FirstOrDefault();
+                var locatio = db.control_location.Where(pi => pi.ID.Trim() == path).FirstOrDefault();
+                var contrsclass = db.LedBulb_Class.Where(pi => pi.ID.Trim() == path).FirstOrDefault();
+                //产生新的控件
+                LedBulb_reform button = (LedBulb_reform)this.Clone();
+
+                Public_attributeCalss public_AttributeCalss = new Public_attributeCalss();//实例化按钮参数设置
+                public_AttributeCalss.attributeCalss(button, contrsclass);//查询数据库--进行设置后的参数修改
+
+                //修改控件名称
+                button.Name = Name.Trim();
+                //设置控件产生的位置--判断是否超出边界
+                CopySize.ControlSize(button, form);
+                //获取窗口ID
+                string From = parameter_indexes.Button_from_name(form.ToString());//获取窗口名称
+                string contrpath = form.ToString() + "-" + Name;
+                button_parameter.ID = contrpath;
+                general_parameters_of_picture.ID = contrpath;
+                Tag_common.ID = contrpath;
+                Tag_common.Control_type = Name;
+                locatio.ID = contrpath;
+                button_colour.ID = contrpath;
+                locatio.location = (numerical_public.Size_X(button.Left)).ToString() + "-" + (numerical_public.Size_Y(button.Top)).ToString();
+
+                button_parameter.FORM = From.Trim();
+                general_parameters_of_picture.FORM = From;
+                Tag_common.FROM = From;
+                locatio.FORM = From;
+                button_colour.FORM = From;
+
+                //重新向SQL插入数据
+                LedBulb_EF EF = new LedBulb_EF();
+                EF.Button_Parameter_Add(button_parameter);
+                EF.Button_Parameter_Add(general_parameters_of_picture);
+                EF.Button_Parameter_Add(Tag_common);
+                EF.Button_Parameter_Add(locatio);
+                EF.Button_Parameter_Add(button_colour);
+                return button;
+            }
+        }
+        /// <summary>
+        /// 复制控件
+        /// </summary>
+        /// <returns></returns>
+        public object Clone()
+        {
+            return new LedBulb_reform() as object;//返回数据
         }
         protected override void Dispose(bool disposing)//释放控件托管资源
         {         

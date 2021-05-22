@@ -7,7 +7,8 @@ using System.Windows.Forms;
 namespace 自定义Uppercomputer_20200727.控件重做.复制粘贴接口
 {
     /// <summary>
-    /// 复制控件接口
+    /// 复制粘贴控件接口
+    /// 必须实现所有方法
     /// </summary>
     interface ControlCopy: ICloneable
     {

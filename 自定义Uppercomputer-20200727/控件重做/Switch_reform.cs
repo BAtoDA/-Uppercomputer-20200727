@@ -12,6 +12,8 @@ using UI_Library_da;
 using 自定义Uppercomputer_20200727.EF实体模型;
 using 自定义Uppercomputer_20200727.PLC选择;
 using 自定义Uppercomputer_20200727.PLC选择.MODBUS_TCP监控窗口;
+using 自定义Uppercomputer_20200727.修改参数界面;
+using 自定义Uppercomputer_20200727.控件重做.复制粘贴接口;
 using 自定义Uppercomputer_20200727.控件重做.按钮类与宏指令通用类;
 
 namespace 自定义Uppercomputer_20200727.控件重做
@@ -20,7 +22,7 @@ namespace 自定义Uppercomputer_20200727.控件重做
    /// 引用第三方开源控件重构对事件方法等进行具体的实现
    /// 切换开关
    /// </summary>
-    class Switch_reform : UI_Switch
+    class Switch_reform : UI_Switch, ControlCopy
     {
         Switch_Class Switch_Class;//控件参数
         public enum Switch_pattern//切换开模式类型枚举
@@ -308,6 +310,11 @@ namespace 自定义Uppercomputer_20200727.控件重做
                     break;
             }
         }
+        protected override void OnClick(EventArgs e)
+        {
+            this.Focus();
+            base.OnClick(e);
+        }
         protected override void Dispose(bool disposing)
         {
             this.MouseEnter -= MouseEnter_reform;//移除事件
@@ -319,6 +326,65 @@ namespace 自定义Uppercomputer_20200727.控件重做
             menuStrip_Reform.Dispose();
             DragResizeControl.UnRegisterControl(this);
             base.Dispose(disposing);
+        }
+        /// <summary>
+        /// 复制控件的属性
+        /// </summary>
+        /// <returns></returns>
+        public Control Objectproperty(string Name, Form form)
+        {
+            using (UppercomputerEntities2 db = new UppercomputerEntities2())
+            {
+                //获取上个控件的值
+                string path = this.Parent.ToString() + "-" + this.Name;
+                var parameter = db.Switch_parameter.Where(pi => pi.ID.Trim() == path).FirstOrDefault();
+                var Tag_common = db.Tag_common_parameters.Where(pi => pi.ID.Trim() == path).FirstOrDefault();
+                var locatio = db.control_location.Where(pi => pi.ID.Trim() == path).FirstOrDefault();
+                var contrclass = db.Switch_Class.Where(pi => pi.ID.Trim() == path).FirstOrDefault();
+                var contrcolor = db.Button_colour.Where(pi => pi.ID.Trim() == path).FirstOrDefault();
+
+                //产生新的控件
+                Switch_reform control = (Switch_reform)this.Clone();
+
+                Public_attributeCalss public_AttributeCalss = new Public_attributeCalss();//实例化按钮参数设置
+                public_AttributeCalss.attributeCalss(control, contrclass);//查询数据库--进行设置后的参数修改
+                //修改控件名称
+                control.Name = Name.Trim();
+
+                //设置控件产生的位置--判断是否超出边界
+                CopySize.ControlSize(control, form);
+                //获取窗口ID
+                string From = parameter_indexes.Button_from_name(form.ToString());//获取窗口名称
+                string contrpath = form.ToString() + "-" + Name;
+                parameter.ID = contrpath;
+                Tag_common.ID = contrpath;
+                Tag_common.Control_type = Name;
+                locatio.ID = contrpath;
+                locatio.location = (numerical_public.Size_X(control.Left)).ToString() + "-" + (numerical_public.Size_Y(control.Top)).ToString();
+                contrcolor.ID = contrpath;
+
+                parameter.FORM = From.Trim();
+                Tag_common.FROM = From;
+                locatio.FORM = From;
+                contrcolor.FORM = From;
+
+                //重新向SQL插入数据
+                Switch_EF EF = new Switch_EF();
+                EF.Button_Parameter_Add(parameter);
+                EF.Button_Parameter_Add(Tag_common);
+                EF.Button_Parameter_Add(locatio);
+                EF.Button_Parameter_Add(contrcolor);
+
+                return control;
+            }
+        }
+        /// <summary>
+        /// 复制控件
+        /// </summary>
+        /// <returns></returns>
+        public object Clone()
+        {
+            return new Switch_reform() as object;//返回数据
         }
     }
 }
