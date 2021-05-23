@@ -80,6 +80,7 @@ namespace 自定义Uppercomputer_20200727
 
         private void timer1_Tick(object sender, EventArgs e)
         {
+            XmlClick();
             LogUtils.deleteLogFile(@Application.StartupPath);//检查是否有超过2个月的日志 进行删除操作
             //LogUtils日志
             LogUtils.debugWrite(DateTime.Now+"  运行了"+Application.ProductName+"  版本号："+ System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString());

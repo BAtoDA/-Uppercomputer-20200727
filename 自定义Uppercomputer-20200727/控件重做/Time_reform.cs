@@ -247,7 +247,7 @@ namespace 自定义Uppercomputer_20200727.控件重做
                 {
                     mutex.WaitOne(20);
                     this.Stop();
-                    Time_Tick_button(send, e);//注册按钮类刷新事件
+                   // Time_Tick_button(send, e);//注册按钮类刷新事件
                     Time_Tick_Textbox(send, e);//注册文本输入类刷新事件
                     Time_Tick_Switch(send, e);//注册切换开关类刷新事件
                     Time_Tick_LedBulb(send, e);//注册指示灯类刷新事件

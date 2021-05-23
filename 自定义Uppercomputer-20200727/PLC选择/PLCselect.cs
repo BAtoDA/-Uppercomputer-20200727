@@ -17,6 +17,7 @@ namespace 自定义Uppercomputer_20200727.PLC选择
         Siemens,
         Modbus_TCP,
         HMI
+
     }
     /// <summary>
     /// PLC各可访问软元件  三菱-bit位

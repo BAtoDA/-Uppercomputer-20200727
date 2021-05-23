@@ -74,7 +74,7 @@ namespace 命令处理
         ///伺服报警内容
         /// </summary>
         public string ServoErr_content { get => content; }//PLC报警内容
-        private string content;
+        private string content=" ";
         /// <summary>
         /// 伺服使能状态
         /// </summary>

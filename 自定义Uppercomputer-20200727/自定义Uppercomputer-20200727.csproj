@@ -590,13 +590,7 @@
     </Compile>
     <Compile Include="控件重做\控件移动改变大小实现\DragResizeControl.cs" />
     <Compile Include="控件重做\控件类基\Button_base.cs" />
-    <Compile Include="控件重做\控件类基\Combox_base.cs" />
-    <Compile Include="控件重做\控件类基\DataGridViewPLC_base.cs" />
-    <Compile Include="控件重做\控件类基\Doughnut_Base.cs" />
-    <Compile Include="控件重做\控件类基\Flicker_base.cs" />
-    <Compile Include="控件重做\控件类基\Histogram_base.cs" />
-    <Compile Include="控件重做\控件类基\TextBox_base.cs" />
-    <Compile Include="控件重做\控件类基\按钮--TO--PLC方法\Button_PLC.cs" />
+    <Compile Include="控件重做\控件类基\按钮--TO--PLC方法\Button_to_plc.cs" />
     <Compile Include="控件重做\获取控件的全部属性\Control_property.cs">
       <SubType>Form</SubType>
     </Compile>
