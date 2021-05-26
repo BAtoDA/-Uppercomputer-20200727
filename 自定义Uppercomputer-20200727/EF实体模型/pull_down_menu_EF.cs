@@ -260,7 +260,10 @@ namespace 自定义Uppercomputer_20200727.EF实体模型
                 pull_down_menuName pull_down_menuName = model.pull_down_menuName.Where(pi => pi.控件归属 == id).FirstOrDefault();//查询数据库是否有该ID
                 if (pull_down_menuName != null)
                 {
-                    model.pull_down_menuName.Delete(pi => pi.控件归属.Trim() == id);//移除位置信息         
+                    //model.pull_down_menuName.Delete(pi => pi.控件归属.Trim() == id);//移除位置信息
+                    model.pull_down_menuName.Where(PI => PI.控件归属.Trim() == ID).Select(PI=>PI).ToList().ForEach(S1=>{
+                        model.pull_down_menuName.Remove(S1);                    
+                    });
                     model.SaveChanges();//执行操作
                 }
                 pull_down_menu_Parameter_Add(pull_s);//重写添加插入数据

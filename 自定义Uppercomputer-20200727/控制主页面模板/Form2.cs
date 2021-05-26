@@ -1026,13 +1026,13 @@ namespace 自定义Uppercomputer_20200727
                     switch (m.WParam.ToInt32())
                     {
                         case 203:     //按下的是Ctrl+C 触发了复制控件
-                            var  conrt= GetFocusedControl();//获取控件
-                            if (conrt == null) return;
+                            var conrt = GetFocusedControl();//获取控件
+                            if (conrt == null|| !edit_mode) return;
                             //判断改控件是否实现接口
-                            if ((conrt as ControlCopy)!=null)
+                            if ((conrt as ControlCopy) != null)
                             {
                                 control = GetFocusedControl();//获取需要复制的控件
-                                CopyControl copyControl = new CopyControl($"Copy 控件:{control.Name}成功",this);
+                                CopyControl copyControl = new CopyControl($"Copy 控件:{control.Name}成功", this);
                                 copyControl.Location = new Point(this.Size.Width / 2 - 150, 80);
                                 this.Controls.Add(copyControl);
                             }
@@ -1045,7 +1045,7 @@ namespace 自定义Uppercomputer_20200727
                             break;
                         case 204:     //按下的是Ctrl+V 触发了粘贴控件
                             //判断粘贴板是否有控件
-                            if (control != null)
+                            if (control != null|| !edit_mode)
                             {
                                 //遍历当前窗口--改控件的编号
                                 var cont = (from Control pi in this.Controls where pi.GetType().UnderlyingSystemType.Name == control.GetType().UnderlyingSystemType.Name select pi).ToList();

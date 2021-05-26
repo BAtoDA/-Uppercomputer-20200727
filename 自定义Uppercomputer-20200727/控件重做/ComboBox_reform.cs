@@ -1,4 +1,5 @@
 ﻿using CCWin.SkinClass;
+using CCWin.SkinControl;
 using CSEngineTest;
 using DragResizeControlWindowsDrawDemo;
 using PLC通讯规范接口;
@@ -6,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using UI_Library_da;
@@ -15,6 +17,8 @@ using 自定义Uppercomputer_20200727.PLC选择.MODBUS_TCP监控窗口;
 using 自定义Uppercomputer_20200727.修改参数界面;
 using 自定义Uppercomputer_20200727.控件重做.复制粘贴接口;
 using 自定义Uppercomputer_20200727.控件重做.按钮类与宏指令通用类;
+using 自定义Uppercomputer_20200727.控件重做.控件类基;
+using 自定义Uppercomputer_20200727.控件重做.控件类基.文本__TO__PLC方法;
 
 namespace 自定义Uppercomputer_20200727.控件重做
 {
@@ -22,9 +26,16 @@ namespace 自定义Uppercomputer_20200727.控件重做
     /// 继承UIComboBox-下拉菜单实现进行相应的重写
     /// 此类不能在窗口设计器中使用-如果需要使用请拖拽父类
     /// </summary>
-    class pull_down_menu_reform : UIComboBox, ControlCopy
+    class pull_down_menu_reform : UIComboBox, ControlCopy, TextBox_base
     {
         string SkinLabel_ID { get; set; }//文本属性ID
+
+        public System.Threading.Timer PLC_time { get; }
+
+        public TextBox_PLC TextBox { get; }
+
+        public string Data_Text { get => this.Text; }
+
         SkinContextMenuStrip_reform menuStrip_Reform;//绑定右键菜单类
         public pull_down_menu_reform()//构造函数
         {
@@ -38,6 +49,12 @@ namespace 自定义Uppercomputer_20200727.控件重做
             this.TextChanged += TextChanged_reform;//注册事件
             DragResizeControl.RegisterControl(this);//实现控件改变大小与拖拽位置
             this.DropDownStyle = ComboBoxStyle.DropDownList;//不允许用户更改
+            TextBox = new TextBox_PLC();
+            PLC_time = new System.Threading.Timer(new TimerCallback((s) =>
+            {
+                this.Time_Tick();
+            }));
+            PLC_time.Change(500, 300);
         }
         /// <summary>
         /// 重写事件-当用户下拉选择选项时-把绑定的数据发送到-设备PLC
@@ -45,10 +62,13 @@ namespace 自定义Uppercomputer_20200727.控件重做
         /// <param name="e"></param>
         protected override void OnSelectionChangeCommitted(EventArgs e)
         {
-            //先查询数据库获取信息
-            pull_down_menu_EF _Menu_EF = new pull_down_menu_EF();
-            pull_down_menu_Class  down_Menu_Class= _Menu_EF.pull_down_menu_Parameter_Query((this.Parent + "-" + this.Name));//查询控件参数信息  
-            plc(down_Menu_Class.读写设备.Trim(), down_Menu_Class, (pull_down_menu_EF.pull_down_menu_inquire(this.Parent + "-" + this.Name))[this.SelectedIndex].数据.Trim());
+            this.BeginInvoke((EventHandler)delegate
+            {
+                //先查询数据库获取信息
+                pull_down_menu_EF _Menu_EF = new pull_down_menu_EF();
+                pull_down_menu_Class down_Menu_Class = _Menu_EF.pull_down_menu_Parameter_Query((this.Parent + "-" + this.Name));//查询控件参数信息  
+                TextBox.plc(down_Menu_Class.读写设备.Trim(), numerical_format.Unsigned_32_Bit.ToString(), down_Menu_Class.读写设备_地址.Trim(), down_Menu_Class.读写设备_地址_具体地址.Trim(), down_Menu_Class.读写不同地址_ON_OFF, down_Menu_Class.写设备_地址_复选.Trim(), down_Menu_Class.写设备_地址_具体地址_复选.Trim(), (pull_down_menu_EF.pull_down_menu_inquire(this.Parent + "-" + this.Name))[this.SelectedIndex].数据.Trim());//选择相应PLC 进行写入
+            });
             base.OnSelectionChangeCommitted(e);
         }
         /// <方法重写当鼠标移到控件时获取——ID>
@@ -60,7 +80,7 @@ namespace 自定义Uppercomputer_20200727.控件重做
             this.menuStrip_Reform.SkinContextMenuStrip_Button_ID = button.Parent.ToString();//写入信息
             this.menuStrip_Reform.all_purpose = send;//获取事件触发的控件
             this.menuStrip_Reform.SkinContextMenuStrip_Button_type = this.GetType().Name;//获取类型名称
-                                                                                         //如果用户不开启编辑模式--右键菜单选项为锁定状态
+            //如果用户不开启编辑模式--右键菜单选项为锁定状态
             this.menuStrip_Reform.Enabled = Form2.edit_mode;//启用状态
         }
         /// <方法重写实现拖放功能—>
@@ -106,61 +126,6 @@ namespace 自定义Uppercomputer_20200727.控件重做
             this.Text = this.Text.Trim();//去除空白
             this.AutoSize = true;//控件大小根据字体改变
         }
-        private string plc(string pLC, pull_down_menu_Class numerical_Classes,string Data)//根据PLC类型写入
-        {
-            switch (pLC)
-            {
-                case "Mitsubishi":
-                    if (PLCselect_Form.Mitsubishi.Trim() != "在线访问")//判断用户选定模式
-                    {
-                        IPLC_interface mitsubishi_AxActUtlType = new Mitsubishi_axActUtlType();//实例化接口--实现三菱仿真
-                        if (mitsubishi_AxActUtlType.PLC_ready)
-                        {
-                            mitsubishi_AxActUtlType.PLC_write_D_register(numerical_Classes.读写设备_地址.Trim(), numerical_Classes.读写设备_地址_具体地址.Trim(), Data, Index("Unsigned_32_Bit"));
-                        }
-                        else MessageBox.Show("未连接设备：" + numerical_Classes.读写设备.Trim(), "Err");//推出异常提示用户
-                    }
-                    else
-                    {
-                        IPLC_interface mitsubishi = new Mitsubishi_realize();//实例化接口--实现三菱在线访问
-                        if (mitsubishi.PLC_ready)
-                        {
-                            mitsubishi.PLC_write_D_register(numerical_Classes.读写设备_地址.Trim(), numerical_Classes.读写设备_地址_具体地址.Trim(), Data, Index("Unsigned_32_Bit"));
-                        }
-                        else MessageBox.Show("未连接设备：" + numerical_Classes.读写设备.Trim(), "Err");//推出异常提示
-                    }
-                    break;
-                case "Siemens":
-                    IPLC_interface Siemens = new Siemens_realize();//实例化接口--实现西门子在线访问
-                    if (Siemens.PLC_ready)
-                    {
-                        Siemens.PLC_write_D_register(numerical_Classes.读写设备_地址.Trim(), numerical_Classes.读写设备_地址_具体地址.Trim(), Data, Index("Unsigned_32_Bit"));
-                    }
-                    else MessageBox.Show("未连接设备：" + numerical_Classes.读写设备.Trim(), "Err");//推出异常提示
-                    break;
-                case "Modbus_TCP":
-                    IPLC_interface MODBUD_TCP = new MODBUD_TCP();//实例化接口--实现MODBUS TCP
-                    if (MODBUD_TCP.PLC_ready)
-                    {
-                        MODBUD_TCP.PLC_write_D_register(numerical_Classes.读写设备_地址.Trim(), numerical_Classes.读写设备_地址_具体地址.Trim(), Data, Index("Unsigned_32_Bit"));
-                    }
-                    else MessageBox.Show("未连接设备：" + numerical_Classes.读写设备.Trim(), "Err");//推出异常提示用户
-                    break;
-                //写入到 宏指令 静态区D_Data
-                case "HMI":
-                    macroinstruction_data<int>.D_Data[numerical_Classes.读写设备_地址_具体地址.Trim().ToInt32()] = Data;
-                    break;
-            }
-            return "OK_RUN";
-        }
-        private numerical_format Index(string Name)//查询索引
-        {
-            foreach (numerical_format suit in Enum.GetValues(typeof(numerical_format)))
-            {
-                if (suit.ToString() == Name.Trim()) return suit;//遍历枚举查询索引
-            }
-            return numerical_format.Unsigned_32_Bit;//如果不匹配则返回默认无符号类型
-        }
         protected override void OnClick(EventArgs e)
         {
             this.Focus();
@@ -173,7 +138,55 @@ namespace 自定义Uppercomputer_20200727.控件重做
             this.MouseMove -= MouseMove__reform;//移除事件
             DragResizeControl.UnRegisterControl(this);//实现控件改变大小与拖拽位置
             this.menuStrip_Reform.Dispose();
+            PLC_time.Dispose();
             base.Dispose(disposing);
+        }
+        /// <summary>
+        /// 填充文本数据
+        /// </summary>
+        /// <param name="skinTextBox_Reform"></param>
+        /// <param name="numerical_Class"></param>
+        /// <param name="Data"></param>
+        private void TextBox_state(pull_down_menu_Class Class, string Data)//填充文本数据
+        {
+            foreach(var i in pull_Down_MenuNames)
+            {
+                if(i.数据.ToInt32()==Data.ToInt32())
+                {
+                    this.SelectedIndex = i.项目.ToInt32() > this.Items.Count ? this.SelectedIndex :i.项目.ToInt32();
+                }
+            }
+        }
+        pull_down_menu_Class _Class;
+        List<pull_down_menuName> pull_Down_MenuNames;
+        /// <summary>
+        /// 定时刷新控件
+        /// </summary>
+        private void Time_Tick()
+        {
+            try
+            {
+                if (Form2.edit_mode == true)
+                {
+                    _Class = null;
+                    return;//返回方法
+                }
+                if (_Class.IsNull())
+                {
+                    pull_down_menu_EF EF = new pull_down_menu_EF();//实例化EF
+                    _Class = EF.pull_down_menu_Parameter_Query(this.Parent + "-" + this.Name);//查询控件参数
+                    //开始查询数据库中的项目数据--进行遍历
+                    Parameter_Query_Add parameter_Query_Add = new Parameter_Query_Add();//创建EF查询对象
+                    pull_Down_MenuNames = parameter_Query_Add.all_Parameter_Query_pull_down_menuName(this.Parent + "-" +this.Name);
+                }
+                if (_Class.IsNull()||this.DroppedDown) return;
+                this.TextBox_state(_Class, TextBox.Refresh(_Class.读写设备.Trim(), numerical_format.Unsigned_32_Bit.ToString(), _Class.读写设备_地址.Trim(), _Class.读写设备_地址_具体地址.Trim()));
+            }
+            catch
+            {
+
+            }
+
         }
         /// <summary>
         /// 复制控件的属性
@@ -241,6 +254,11 @@ namespace 自定义Uppercomputer_20200727.控件重做
         public object Clone()
         {
             return new pull_down_menu_reform() as object;//返回数据
+        }
+
+        public void ControlRefresh(string Data)
+        {
+            throw new NotImplementedException();
         }
     }
 }

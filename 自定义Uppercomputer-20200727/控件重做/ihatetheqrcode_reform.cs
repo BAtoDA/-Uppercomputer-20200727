@@ -122,6 +122,7 @@ namespace 自定义Uppercomputer_20200727.控件重做
             this.MouseMove -= MouseMove__reform;//注册事件
             this.MouseEnter -= MouseEnter_reform;//注册事件--获取控件信息
             this.TextChanged -= TextChanged_reform;//注册事件
+            PLC_time.Dispose();
             menuStrip_Reform.Dispose();
             base.Dispose(disposing);
         }
