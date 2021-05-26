@@ -5,6 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using CSEngineTest;
+using PLC通讯规范接口;
+using 欧姆龙Fins协议.报文处理;
+using 欧姆龙Fins协议.欧姆龙.报文处理;
 using 自定义Uppercomputer_20200727.PLC选择;
 using 自定义Uppercomputer_20200727.PLC选择.MODBUS_TCP监控窗口;
 
@@ -80,6 +83,27 @@ namespace 自定义Uppercomputer_20200727.控件重做.控件类基.按钮__TO__
                     else
                         state = Button_HMI_public.Button_HMI_write_select(Convert.ToInt32(specific), command);//根据按钮模式进行写入操作 
                     break;
+                case "OmronTCP":
+                    IPLC_interface OmronTCP = new OmronFinsTcp();//实例化接口--实现西门子在线访问
+                    if (OmronTCP.PLC_ready)//PLC是否准备完成
+                    {
+                        Button_write_select(command, OmronTCP, pattern, specific, different, pattern1, specific1);//根据按钮模式进行写入操作
+                    }
+                    break;
+                case "OmronUDP":
+                    IPLC_interface OmronUDP = (IPLC_interface)new OmronFinsUDP();//实例化接口--实现西门子在线访问
+                    if (OmronUDP.PLC_ready)//PLC是否准备完成
+                    {
+                        Button_write_select(command, OmronUDP, pattern, specific, different, pattern1, specific1);//根据按钮模式进行写入操作
+                    }
+                    break;
+                case "OmronCIP":
+                    IPLC_interface OmronCIP = (IPLC_interface)new OmronFinsCIP();//实例化接口--实现西门子在线访问
+                    if (OmronCIP.PLC_ready)//PLC是否准备完成
+                    {
+                        Button_write_select(command, OmronCIP, pattern, specific, different, pattern1, specific1);//根据按钮模式进行写入操作
+                    }
+                    break;
             }
             return "OK";
         }
@@ -141,6 +165,27 @@ namespace 自定义Uppercomputer_20200727.控件重做.控件类基.按钮__TO__
                     else
                         Button_HMI_public.Button_HMI_write_select(Convert.ToInt32(specific1), "复归型_Off");//根据按钮模式进行写入操作 
                     break;
+                case "OmronTCP":
+                    IPLC_interface OmronTCP = new OmronFinsTcp();//实例化接口--实现西门子在线访问
+                    if (OmronTCP.PLC_ready)//PLC是否准备完成
+                    {
+                        Button_write_select("复归型_Off", OmronTCP, pattern, specific, different, pattern1, specific1);//根据按钮模式进行写入操作
+                    }
+                    break;
+                case "OmronUDP":
+                    IPLC_interface OmronUDP = (IPLC_interface)new OmronFinsUDP();//实例化接口--实现西门子在线访问
+                    if (OmronUDP.PLC_ready)//PLC是否准备完成
+                    {
+                        Button_write_select("复归型_Off", OmronUDP, pattern, specific, different, pattern1, specific1);//根据按钮模式进行写入操作
+                    }
+                    break;
+                case "OmronCIP":
+                    IPLC_interface OmronCIP = (IPLC_interface)new OmronFinsCIP();//实例化接口--实现西门子在线访问
+                    if (OmronCIP.PLC_ready)//PLC是否准备完成
+                    {
+                        Button_write_select("复归型_Off", OmronCIP, pattern, specific, different, pattern1, specific1);//根据按钮模式进行写入操作
+                    }
+                    break;
             }
             return "OK";
         }
@@ -160,40 +205,40 @@ namespace 自定义Uppercomputer_20200727.控件重做.控件类基.按钮__TO__
             {
                 case "Set_as_on"://设置常ON
                     if (different == 0)
-                        pLC_Interface.PLC_write_M_bit(pattern, specific, Button_state.ON);//写入常ON
+                        pLC_Interface.PLC_write_M_bit(pattern, specific, PLC通讯规范接口.Button_state.ON);//写入常ON
                     else
-                        pLC_Interface.PLC_write_M_bit(pattern1, specific1, Button_state.ON);//写入常ON
+                        pLC_Interface.PLC_write_M_bit(pattern1, specific1, PLC通讯规范接口.Button_state.ON);//写入常ON
                     break;
                 case "Set_as_off"://设置常OFF
                     if (different == 0)
-                        pLC_Interface.PLC_write_M_bit(pattern, specific, Button_state.Off);//写入常Off
+                        pLC_Interface.PLC_write_M_bit(pattern, specific, PLC通讯规范接口.Button_state.Off);//写入常Off
                     else
-                        pLC_Interface.PLC_write_M_bit(pattern1, specific1, Button_state.Off);//写入常Off
+                        pLC_Interface.PLC_write_M_bit(pattern1, specific1, PLC通讯规范接口.Button_state.Off);//写入常Off
                     break;
                 case "切换开关":
                     if (different == 0)
                     {
                         List<bool> data = pLC_Interface.PLC_read_M_bit(pattern, specific);//先读取要写入的状态
-                        pLC_Interface.PLC_write_M_bit(pattern, specific, data[0] == true ? Button_state.Off : Button_state.ON);//根据要写入的状态进行取反
+                        pLC_Interface.PLC_write_M_bit(pattern, specific, data[0] == true ? PLC通讯规范接口.Button_state.Off : PLC通讯规范接口.Button_state.ON);//根据要写入的状态进行取反
                     }
                     else
                     {
                         List<bool> data = pLC_Interface.PLC_read_M_bit(pattern1, specific1);//先读取要写入的状态
-                        pLC_Interface.PLC_write_M_bit(pattern1, specific1, data[0] == true ? Button_state.Off : Button_state.ON);//根据要写入的状态进行取反
+                        pLC_Interface.PLC_write_M_bit(pattern1, specific1, data[0] == true ? PLC通讯规范接口.Button_state.Off : PLC通讯规范接口.Button_state.ON);//根据要写入的状态进行取反
                     }
                     break;
                 case "复归型":
                     if (different == 0)
-                        pLC_Interface.PLC_write_M_bit(pattern, specific, Button_state.ON);//先写入ON--后用事件复位-off
+                        pLC_Interface.PLC_write_M_bit(pattern, specific, PLC通讯规范接口.Button_state.ON);//先写入ON--后用事件复位-off
                     else
-                        pLC_Interface.PLC_write_M_bit(pattern1, specific1, Button_state.ON);//先写入ON--后用事件复位-off
+                        pLC_Interface.PLC_write_M_bit(pattern1, specific1, PLC通讯规范接口.Button_state.ON);//先写入ON--后用事件复位-off
                     state = true;//标志位                      
                     break;
                 case "复归型_Off":
                     if (different == 0)
-                        pLC_Interface.PLC_write_M_bit(pattern, specific, Button_state.Off);//先写入ON--后用事件复位-off
+                        pLC_Interface.PLC_write_M_bit(pattern, specific, PLC通讯规范接口.Button_state.Off);//先写入ON--后用事件复位-off
                     else
-                        pLC_Interface.PLC_write_M_bit(pattern1, specific1, Button_state.Off);//先写入ON--后用事件复位-off
+                        pLC_Interface.PLC_write_M_bit(pattern1, specific1, PLC通讯规范接口.Button_state.Off);//先写入ON--后用事件复位-off
                     state = false;//标志位
                     break;
             }
@@ -214,40 +259,40 @@ namespace 自定义Uppercomputer_20200727.控件重做.控件类基.按钮__TO__
             {
                 case "Set_as_on"://设置常ON
                     if (different == 0)
-                        pLC_Interface.IPLC_interface_PLC_write_M_bit(pattern, specific, Button_state.ON);//写入常ON
+                        pLC_Interface.IPLC_interface_PLC_write_M_bit(pattern, specific, PLC通讯规范接口.Button_state.ON);//写入常ON
                     else
-                        pLC_Interface.IPLC_interface_PLC_write_M_bit(pattern1, specific1, Button_state.ON);//写入常ON
+                        pLC_Interface.IPLC_interface_PLC_write_M_bit(pattern1, specific1, PLC通讯规范接口.Button_state.ON);//写入常ON
                     break;
                 case "Set_as_off"://设置常OFF
                     if (different == 0)
-                        pLC_Interface.IPLC_interface_PLC_write_M_bit(pattern, specific, Button_state.Off);//写入常Off
+                        pLC_Interface.IPLC_interface_PLC_write_M_bit(pattern, specific, PLC通讯规范接口.Button_state.Off);//写入常Off
                     else
-                        pLC_Interface.IPLC_interface_PLC_write_M_bit(pattern1, specific1, Button_state.Off);//写入常Off
+                        pLC_Interface.IPLC_interface_PLC_write_M_bit(pattern1, specific1, PLC通讯规范接口.Button_state.Off);//写入常Off
                     break;
                 case "切换开关":
                     if (different == 0)
                     {
                         List<bool> data = pLC_Interface.IPLC_interface_PLC_read_M_bit(pattern, specific);//先读取要写入的状态
-                        pLC_Interface.IPLC_interface_PLC_write_M_bit(pattern, specific, data[0] == true ? Button_state.Off : Button_state.ON);//根据要写入的状态进行取反
+                        pLC_Interface.IPLC_interface_PLC_write_M_bit(pattern, specific, data[0] == true ? PLC通讯规范接口.Button_state.Off : PLC通讯规范接口.Button_state.ON);//根据要写入的状态进行取反
                     }
                     else
                     {
                         List<bool> data = pLC_Interface.IPLC_interface_PLC_read_M_bit(pattern1, specific1);//先读取要写入的状态
-                        pLC_Interface.IPLC_interface_PLC_write_M_bit(pattern1, specific1, data[0] == true ? Button_state.Off : Button_state.ON);//根据要写入的状态进行取反
+                        pLC_Interface.IPLC_interface_PLC_write_M_bit(pattern1, specific1, data[0] == true ? PLC通讯规范接口.Button_state.Off : PLC通讯规范接口.Button_state.ON);//根据要写入的状态进行取反
                     }
                     break;
                 case "复归型":
                     if (different == 0)
-                        pLC_Interface.IPLC_interface_PLC_write_M_bit(pattern, specific, Button_state.ON);//先写入ON--后用事件复位-off
+                        pLC_Interface.IPLC_interface_PLC_write_M_bit(pattern, specific, PLC通讯规范接口.Button_state.ON);//先写入ON--后用事件复位-off
                     else
-                        pLC_Interface.IPLC_interface_PLC_write_M_bit(pattern1, specific1, Button_state.ON);//先写入ON--后用事件复位-off
+                        pLC_Interface.IPLC_interface_PLC_write_M_bit(pattern1, specific1, PLC通讯规范接口.Button_state.ON);//先写入ON--后用事件复位-off
                     state = true;//标志位                      
                     break;
                 case "复归型_Off":
                     if (different == 0)
-                        pLC_Interface.IPLC_interface_PLC_write_M_bit(pattern, specific, Button_state.Off);//先写入ON--后用事件复位-off
+                        pLC_Interface.IPLC_interface_PLC_write_M_bit(pattern, specific, PLC通讯规范接口.Button_state.Off);//先写入ON--后用事件复位-off
                     else
-                        pLC_Interface.IPLC_interface_PLC_write_M_bit(pattern1, specific1, Button_state.Off);//先写入ON--后用事件复位-off
+                        pLC_Interface.IPLC_interface_PLC_write_M_bit(pattern1, specific1, PLC通讯规范接口.Button_state.Off);//先写入ON--后用事件复位-off
                     state = false;//标志位
                     break;
             }
@@ -256,9 +301,9 @@ namespace 自定义Uppercomputer_20200727.控件重做.控件类基.按钮__TO__
         /// 定时刷新控件
         /// </summary>
         /// <param name="button"></param>
-        public PLC选择.Button_state Refresh(Button_base button_Base, string pLC, string pattern, string specific)//根据PLC类型读取--按钮类
+        public Button_state Refresh(Button_base button_Base, string pLC, string pattern, string specific)//根据PLC类型读取--按钮类
         {
-            PLC选择.Button_state button_State = PLC选择.Button_state.Off;//按钮状态
+           Button_state button_State = Button_state.Off;//按钮状态
             switch (pLC)
             {
                 case "Mitsubishi":
@@ -268,7 +313,7 @@ namespace 自定义Uppercomputer_20200727.控件重做.控件类基.按钮__TO__
                         if (mitsubishi_AxActUtlType.PLC_ready)//PLC是否准备完成
                         {
                             List<bool> data = mitsubishi_AxActUtlType.PLC_read_M_bit(pattern, specific);//读取状态
-                            button_State = data[0] == true ? PLC选择.Button_state.ON : PLC选择.Button_state.Off;
+                            button_State = data[0] == true ?Button_state.ON : Button_state.Off;
                         }
                     }
                     else
@@ -277,7 +322,7 @@ namespace 自定义Uppercomputer_20200727.控件重做.控件类基.按钮__TO__
                         if (mitsubishi.PLC_ready)//PLC是否准备完成
                         {
                             List<bool> data = mitsubishi.PLC_read_M_bit(pattern, specific);//读取状态
-                            button_State = data[0] == true ? PLC选择.Button_state.ON : PLC选择.Button_state.Off;
+                            button_State = data[0] == true ? Button_state.ON : Button_state.Off;
                         }
                     }
                     break;
@@ -286,7 +331,7 @@ namespace 自定义Uppercomputer_20200727.控件重做.控件类基.按钮__TO__
                     if (Siemens.PLC_ready)//PLC是否准备完成
                     {
                         List<bool> data = Siemens.PLC_read_M_bit(pattern, specific);//读取状态
-                        button_State = data[0] == true ? PLC选择.Button_state.ON : PLC选择.Button_state.Off;
+                        button_State = data[0] == true ? Button_state.ON : Button_state.Off;
                     }
                     break;
                 case "Modbus_TCP":
@@ -294,11 +339,35 @@ namespace 自定义Uppercomputer_20200727.控件重做.控件类基.按钮__TO__
                     if (MODBUD_TCP.IPLC_interface_PLC_ready)//PLC是否准备完成
                     {
                         List<bool> data = MODBUD_TCP.IPLC_interface_PLC_read_M_bit(pattern, specific);//读取状态
-                        button_State = data[0] == true ? PLC选择.Button_state.ON : PLC选择.Button_state.Off;
+                        button_State = data[0] == true ? Button_state.ON : Button_state.Off;
                     }
                     break;
                 case "HMI":
-                    button_State = macroinstruction_data<bool>.M_Data[Convert.ToInt32(specific)] == true ? PLC选择.Button_state.ON : PLC选择.Button_state.Off;
+                    button_State = macroinstruction_data<bool>.M_Data[Convert.ToInt32(specific)] == true ? Button_state.ON : Button_state.Off;
+                    break;
+                case "OmronTCP":
+                    IPLC_interface OmronTCP = (IPLC_interface)new OmronFinsTcp();//实例化接口--实现西门子在线访问
+                    if (OmronTCP.PLC_ready)//PLC是否准备完成
+                    {
+                        List<bool> data = OmronTCP.PLC_read_M_bit(pattern, specific);//读取状态
+                        button_State = data[0] == true ?Button_state.ON :Button_state.Off;
+                    }
+                    break;
+                case "OmronUDP":
+                    IPLC_interface OmronUDP = (IPLC_interface)new OmronFinsUDP();//实例化接口--实现西门子在线访问
+                    if (OmronUDP.PLC_ready)//PLC是否准备完成
+                    {
+                        List<bool> data = OmronUDP.PLC_read_M_bit(pattern, specific);//读取状态
+                        button_State = data[0] == true ? Button_state.ON : Button_state.Off;
+                    }
+                    break;
+                case "OmronCIP":
+                    IPLC_interface OmronCIP = (IPLC_interface)new OmronFinsCIP();//实例化接口--实现西门子在线访问
+                    if (OmronCIP.PLC_ready)//PLC是否准备完成
+                    {
+                        List<bool> data = OmronCIP.PLC_read_M_bit(pattern, specific);//读取状态
+                        button_State = data[0] == true ? Button_state.ON : Button_state.Off;
+                    }
                     break;
             }
             return button_State;

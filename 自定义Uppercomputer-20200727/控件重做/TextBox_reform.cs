@@ -2,6 +2,7 @@
 using CCWin.SkinControl;
 using CSEngineTest;
 using DragResizeControlWindowsDrawDemo;
+using PLC通讯规范接口;
 using System;
 using System.Collections.Generic;
 using System.Drawing;

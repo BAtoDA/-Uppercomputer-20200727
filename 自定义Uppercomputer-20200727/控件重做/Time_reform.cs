@@ -2,6 +2,7 @@
 using CCWin.SkinControl;
 using CCWin.Win32.Const;
 using CSEngineTest;
+using PLC通讯规范接口;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
@@ -249,9 +250,9 @@ namespace 自定义Uppercomputer_20200727.控件重做
                     this.Stop();
                    // Time_Tick_button(send, e);//注册按钮类刷新事件
                     Time_Tick_Textbox(send, e);//注册文本输入类刷新事件
-                    Time_Tick_Switch(send, e);//注册切换开关类刷新事件
-                    Time_Tick_LedBulb(send, e);//注册指示灯类刷新事件
-                    Time_Tick_ImageButton(send, e);//注册无图片按钮类刷新事件
+                   // Time_Tick_Switch(send, e);//注册切换开关类刷新事件
+                    //Time_Tick_LedBulb(send, e);//注册指示灯类刷新事件
+                    //Time_Tick_ImageButton(send, e);//注册无图片按钮类刷新事件
                     Time_Tick_doughnut_Chart(send, e);//注册圆形图刷新事件
                     Time_Tick_histogram_Chart(send, e);//注册柱形图事件
                     Time_Tick_oscillogram_Chart(send, e);//注册柱形图事件
@@ -318,7 +319,7 @@ namespace 自定义Uppercomputer_20200727.控件重做
         /// <returns></returns>
         private Tuple<Button_reform, Button_Class, Button_state> plc(string pLC, Button_Class button_Class, Button_reform button_Reform)//根据PLC类型读取--按钮类
         {
-            PLC选择.Button_state button_State = PLC选择.Button_state.Off;//按钮状态
+            Button_state button_State = Button_state.Off;//按钮状态
             switch (pLC)
             {
                 case "Mitsubishi":
@@ -329,7 +330,7 @@ namespace 自定义Uppercomputer_20200727.控件重做
                         {
                             List<bool> data = mitsubishi_AxActUtlType.PLC_read_M_bit(button_Class.读写设备_地址.Trim(), button_Class.读写设备_地址_具体地址.Trim());//读取状态
                             //button_state(button_Reform, button_Class, data[0] == true ? PLC选择.Button_state.ON : PLC选择.Button_state.Off);//写入状态
-                            button_State = data[0] == true ? PLC选择.Button_state.ON : PLC选择.Button_state.Off;
+                            button_State = data[0] == true ? Button_state.ON : Button_state.Off;
                         }
                     }
                     else
@@ -339,7 +340,7 @@ namespace 自定义Uppercomputer_20200727.控件重做
                         {
                             List<bool> data = mitsubishi.PLC_read_M_bit(button_Class.读写设备_地址.Trim(), button_Class.读写设备_地址_具体地址.Trim());//读取状态
                             //button_state(button_Reform, button_Class, data[0] == true ? PLC选择.Button_state.ON : PLC选择.Button_state.Off);//写入状态
-                            button_State = data[0] == true ? PLC选择.Button_state.ON : PLC选择.Button_state.Off;
+                            button_State = data[0] == true ? Button_state.ON : Button_state.Off;
                         }
                     }
                     break;
@@ -349,7 +350,7 @@ namespace 自定义Uppercomputer_20200727.控件重做
                     {
                         List<bool> data = Siemens.PLC_read_M_bit(button_Class.读写设备_地址.Trim(), button_Class.读写设备_地址_具体地址.Trim());//读取状态
                         //button_state(button_Reform, button_Class, data[0] == true ? PLC选择.Button_state.ON : PLC选择.Button_state.Off);//写入状态
-                        button_State = data[0] == true ? PLC选择.Button_state.ON : PLC选择.Button_state.Off;
+                        button_State = data[0] == true ? Button_state.ON : Button_state.Off;
                     }
                     break;
                 case "Modbus_TCP":
@@ -358,12 +359,12 @@ namespace 自定义Uppercomputer_20200727.控件重做
                     {
                         List<bool> data = MODBUD_TCP.IPLC_interface_PLC_read_M_bit(button_Class.读写设备_地址.Trim(), button_Class.读写设备_地址_具体地址.Trim());//读取状态
                         //button_state(button_Reform, button_Class, data[0] == true ? PLC选择.Button_state.ON : PLC选择.Button_state.Off);//写入状态
-                        button_State = data[0] == true ? PLC选择.Button_state.ON : PLC选择.Button_state.Off;
+                        button_State = data[0] == true ? Button_state.ON :Button_state.Off;
                     }
                     break;
                 case "HMI":
                     //button_state(button_Reform, button_Class, macroinstruction_data<bool>.M_Data[button_Class.读写设备_地址_具体地址.Trim().ToInt32()] == true ? PLC选择.Button_state.ON : PLC选择.Button_state.Off);//写入状态
-                    button_State = macroinstruction_data<bool>.M_Data[button_Class.读写设备_地址_具体地址.Trim().ToInt32()] == true ? PLC选择.Button_state.ON : PLC选择.Button_state.Off;
+                    button_State = macroinstruction_data<bool>.M_Data[button_Class.读写设备_地址_具体地址.Trim().ToInt32()] == true ?Button_state.ON : Button_state.Off;
                     break;
 
             }
@@ -382,7 +383,7 @@ namespace 自定义Uppercomputer_20200727.控件重做
             {
                 switch (button_State)
                 {
-                    case PLC选择.Button_state.Off:
+                    case Button_state.Off:
                         button_Reform.Text = button_Classes.Control_state_0_content.Trim();//设置文本
                         button_Reform.ForeColor = Color.FromName(button_Classes.Control_state_0_colour.Trim());//获取数据库中颜色名称进行设置
                         button_Reform.Font = new Font(button_Classes.Control_state_0_typeface.Trim(), button_Classes.Control_state_0_size.ToInt32(), FontStyle.Bold);//设置字体与大小
@@ -390,7 +391,7 @@ namespace 自定义Uppercomputer_20200727.控件重做
                         button_Reform.BaseColor = Color.FromName(button_Classes.colour_0.Trim());//设置样式
                         button_Reform.DownBaseColor = Color.FromName(button_Classes.colour_0.Trim());//设置样式
                         break;
-                    case PLC选择.Button_state.ON:
+                    case Button_state.ON:
                         button_Reform.Text = button_Classes.Control_state_1_content1.Trim();//设置文本
                         button_Reform.ForeColor = Color.FromName(button_Classes.Control_state_1_colour.Trim());//获取数据库中颜色名称进行设置
                         button_Reform.Font = new Font(button_Classes.Control_state_1_typeface.Trim(), button_Classes.Control_state_1_size.ToInt32(), FontStyle.Bold);//设置字体与大小
@@ -460,7 +461,7 @@ namespace 自定义Uppercomputer_20200727.控件重做
                         if (mitsubishi_AxActUtlType.PLC_ready)//PLC是否准备完成
                         {
                             List<bool> data = mitsubishi_AxActUtlType.PLC_read_M_bit(switch_Class.读写设备_地址.Trim(), switch_Class.读写设备_地址_具体地址.Trim());//读取状态
-                            button_state(switch_reform, switch_Class, data[0] == true ? PLC选择.Button_state.ON : PLC选择.Button_state.Off);//写入状态
+                            button_state(switch_reform, switch_Class, data[0] == true ? Button_state.ON : Button_state.Off);//写入状态
                         }
                     }
                     else
@@ -469,7 +470,7 @@ namespace 自定义Uppercomputer_20200727.控件重做
                         if (mitsubishi.PLC_ready)//PLC是否准备完成
                         {
                             List<bool> data = mitsubishi.PLC_read_M_bit(switch_Class.读写设备_地址.Trim(), switch_Class.读写设备_地址_具体地址.Trim());//读取状态
-                            button_state(switch_reform, switch_Class, data[0] == true ? PLC选择.Button_state.ON : PLC选择.Button_state.Off);//写入状态
+                            button_state(switch_reform, switch_Class, data[0] == true ? Button_state.ON :Button_state.Off);//写入状态
                         }
                     }
                     break;
@@ -478,7 +479,7 @@ namespace 自定义Uppercomputer_20200727.控件重做
                     if (Siemens.PLC_ready)//PLC是否准备完成
                     {
                         List<bool> data = Siemens.PLC_read_M_bit(switch_Class.读写设备_地址.Trim(), switch_Class.读写设备_地址_具体地址.Trim());//读取状态
-                        button_state(switch_reform, switch_Class, data[0] == true ? PLC选择.Button_state.ON : PLC选择.Button_state.Off);//写入状态
+                        button_state(switch_reform, switch_Class, data[0] == true ? Button_state.ON : Button_state.Off);//写入状态
                     }
                     break;
                 case "Modbus_TCP":
@@ -486,11 +487,11 @@ namespace 自定义Uppercomputer_20200727.控件重做
                     if (MODBUD_TCP.IPLC_interface_PLC_ready)//PLC是否准备完成
                     {
                         List<bool> data = MODBUD_TCP.IPLC_interface_PLC_read_M_bit(switch_Class.读写设备_地址.Trim(), switch_Class.读写设备_地址_具体地址.Trim());//读取状态
-                        button_state(switch_reform, switch_Class, data[0] == true ? PLC选择.Button_state.ON : PLC选择.Button_state.Off);//写入状态
+                        button_state(switch_reform, switch_Class, data[0] == true ? Button_state.ON : Button_state.Off);//写入状态
                     }
                     break;
                 case "HMI":
-                    button_state(switch_reform, switch_Class, macroinstruction_data<bool>.M_Data[switch_Class.读写设备_地址_具体地址.Trim().ToInt32()] == true ? PLC选择.Button_state.ON : PLC选择.Button_state.Off);//写入状态
+                    button_state(switch_reform, switch_Class, macroinstruction_data<bool>.M_Data[switch_Class.读写设备_地址_具体地址.Trim().ToInt32()] == true ? Button_state.ON : Button_state.Off);//写入状态
                     break;
             }
             return "OK";
@@ -509,7 +510,7 @@ namespace 自定义Uppercomputer_20200727.控件重做
 
                 switch (button_State)
                 {
-                    case PLC选择.Button_state.Off:
+                    case Button_state.Off:
                         button_Reform.Text = button_Classes.Control_state_0_content.Trim();//设置文本
                         button_Reform.BackColor = Color.FromName(button_Classes.Control_state_0_colour.Trim());//获取数据库中颜色名称进行设置
                         button_Reform.Font = new Font(button_Classes.Control_state_0_typeface.Trim(), button_Classes.Control_state_0_size.ToInt32(), FontStyle.Bold);//设置字体与大小
@@ -518,7 +519,7 @@ namespace 自定义Uppercomputer_20200727.控件重做
                         button_Reform.Active = false;
                         button_Reform.InActiveColor = Color.FromName(button_Classes.colour_0.Trim());//获取数据库中颜色名称进行设置
                         break;
-                    case PLC选择.Button_state.ON:
+                    case Button_state.ON:
                         button_Reform.Text = button_Classes.Control_state_1_content1.Trim();//设置文本
                         button_Reform.BackColor = Color.FromName(button_Classes.Control_state_1_colour.Trim());//获取数据库中颜色名称进行设置
                         button_Reform.Font = new Font(button_Classes.Control_state_1_typeface.Trim(), button_Classes.Control_state_1_size.ToInt32(), FontStyle.Bold);//设置字体与大小
@@ -589,7 +590,7 @@ namespace 自定义Uppercomputer_20200727.控件重做
                         if (mitsubishi_AxActUtlType.PLC_ready)//PLC是否准备完成
                         {
                             List<bool> data = mitsubishi_AxActUtlType.PLC_read_M_bit(LedBulb_Class.读写设备_地址.Trim(), LedBulb_Class.读写设备_地址_具体地址.Trim());//读取状态
-                            button_state(LedBulb_reform, LedBulb_Class, data[0] == true ? PLC选择.Button_state.ON : PLC选择.Button_state.Off);//写入状态
+                            button_state(LedBulb_reform, LedBulb_Class, data[0] == true ? Button_state.ON : Button_state.Off);//写入状态
                         }
                     }
                     else
@@ -598,7 +599,7 @@ namespace 自定义Uppercomputer_20200727.控件重做
                         if (mitsubishi.PLC_ready)//PLC是否准备完成
                         {
                             List<bool> data = mitsubishi.PLC_read_M_bit(LedBulb_Class.读写设备_地址.Trim(), LedBulb_Class.读写设备_地址_具体地址.Trim());//读取状态
-                            button_state(LedBulb_reform, LedBulb_Class, data[0] == true ? PLC选择.Button_state.ON : PLC选择.Button_state.Off);//写入状态
+                            button_state(LedBulb_reform, LedBulb_Class, data[0] == true ? Button_state.ON : Button_state.Off);//写入状态
                         }
                     }
                     break;
@@ -607,7 +608,7 @@ namespace 自定义Uppercomputer_20200727.控件重做
                     if (Siemens.PLC_ready)//PLC是否准备完成
                     {
                         List<bool> data = Siemens.PLC_read_M_bit(LedBulb_Class.读写设备_地址.Trim(), LedBulb_Class.读写设备_地址_具体地址.Trim());//读取状态
-                        button_state(LedBulb_reform, LedBulb_Class, data[0] == true ? PLC选择.Button_state.ON : PLC选择.Button_state.Off);//写入状态
+                        button_state(LedBulb_reform, LedBulb_Class, data[0] == true ? Button_state.ON : Button_state.Off);//写入状态
                     }
                     break;
                 case "Modbus_TCP":
@@ -615,11 +616,11 @@ namespace 自定义Uppercomputer_20200727.控件重做
                     if (MODBUD_TCP.IPLC_interface_PLC_ready)//PLC是否准备完成
                     {
                         List<bool> data = MODBUD_TCP.IPLC_interface_PLC_read_M_bit(LedBulb_Class.读写设备_地址.Trim(), LedBulb_Class.读写设备_地址_具体地址.Trim());//读取状态
-                        button_state(LedBulb_reform, LedBulb_Class, data[0] == true ? PLC选择.Button_state.ON : PLC选择.Button_state.Off);//写入状态
+                        button_state(LedBulb_reform, LedBulb_Class, data[0] == true ? Button_state.ON : Button_state.Off);//写入状态
                     }
                     break;
                 case "HMI":
-                    button_state(LedBulb_reform, LedBulb_Class, macroinstruction_data<bool>.M_Data[LedBulb_Class.读写设备_地址_具体地址.Trim().ToInt32()] == true ? PLC选择.Button_state.ON : PLC选择.Button_state.Off);//写入状态
+                    button_state(LedBulb_reform, LedBulb_Class, macroinstruction_data<bool>.M_Data[LedBulb_Class.读写设备_地址_具体地址.Trim().ToInt32()] == true ? Button_state.ON : Button_state.Off);//写入状态
                     break;
             }
             return "OK";
@@ -637,13 +638,13 @@ namespace 自定义Uppercomputer_20200727.控件重做
             {
                 switch (button_State)
                 {
-                    case PLC选择.Button_state.Off:
+                    case Button_state.Off:
                         button_Reform.Text = button_Classes.Control_state_0_content.Trim();//设置文本
                         button_Reform.Color = Color.FromName(button_Classes.colour_0.Trim());//获取数据库中颜色名称进行设置
                         button_Reform.Font = new Font(button_Classes.Control_state_0_typeface.Trim(), button_Classes.Control_state_0_size.ToInt32(), FontStyle.Bold);//设置字体与大小
                         button_Reform.BackColor = Color.FromName("182, 182, 182");//填充背景颜色--默认
                         break;
-                    case PLC选择.Button_state.ON:
+                    case Button_state.ON:
                         button_Reform.Text = button_Classes.Control_state_1_content1.Trim();//设置文本
                         button_Reform.Color = Color.FromName(button_Classes.colour_1.Trim());//获取数据库中颜色名称进行设置
                         button_Reform.Font = new Font(button_Classes.Control_state_1_typeface.Trim(), button_Classes.Control_state_1_size.ToInt32(), FontStyle.Bold);//设置字体与大小
@@ -711,7 +712,7 @@ namespace 自定义Uppercomputer_20200727.控件重做
                         if (mitsubishi_AxActUtlType.PLC_ready)//PLC是否准备完成
                         {
                             List<bool> data = mitsubishi_AxActUtlType.PLC_read_M_bit(button_Class.读写设备_地址.Trim(), button_Class.读写设备_地址_具体地址.Trim());//读取状态
-                            button_state(button_Reform, button_Class, data[0] == true ? PLC选择.Button_state.ON : PLC选择.Button_state.Off);//写入状态
+                            button_state(button_Reform, button_Class, data[0] == true ? Button_state.ON : Button_state.Off);//写入状态
                         }
                     }
                     else
@@ -720,7 +721,7 @@ namespace 自定义Uppercomputer_20200727.控件重做
                         if (mitsubishi.PLC_ready)//PLC是否准备完成
                         {
                             List<bool> data = mitsubishi.PLC_read_M_bit(button_Class.读写设备_地址.Trim(), button_Class.读写设备_地址_具体地址.Trim());//读取状态
-                            button_state(button_Reform, button_Class, data[0] == true ? PLC选择.Button_state.ON : PLC选择.Button_state.Off);//写入状态
+                            button_state(button_Reform, button_Class, data[0] == true ? Button_state.ON : Button_state.Off);//写入状态
                         }
                     }
                     break;
@@ -729,7 +730,7 @@ namespace 自定义Uppercomputer_20200727.控件重做
                     if (Siemens.PLC_ready)//PLC是否准备完成
                     {
                         List<bool> data = Siemens.PLC_read_M_bit(button_Class.读写设备_地址.Trim(), button_Class.读写设备_地址_具体地址.Trim());//读取状态
-                        button_state(button_Reform, button_Class, data[0] == true ? PLC选择.Button_state.ON : PLC选择.Button_state.Off);//写入状态
+                        button_state(button_Reform, button_Class, data[0] == true ? Button_state.ON : Button_state.Off);//写入状态
                     }
                     break;
                 case "Modbus_TCP":
@@ -737,11 +738,11 @@ namespace 自定义Uppercomputer_20200727.控件重做
                     if (MODBUD_TCP.IPLC_interface_PLC_ready)//PLC是否准备完成
                     {
                         List<bool> data = MODBUD_TCP.IPLC_interface_PLC_read_M_bit(button_Class.读写设备_地址.Trim(), button_Class.读写设备_地址_具体地址.Trim());//读取状态
-                        button_state(button_Reform, button_Class, data[0] == true ? PLC选择.Button_state.ON : PLC选择.Button_state.Off);//写入状态
+                        button_state(button_Reform, button_Class, data[0] == true ? Button_state.ON : Button_state.Off);//写入状态
                     }
                     break;
                 case "HMI":
-                    button_state(button_Reform, button_Class, macroinstruction_data<bool>.M_Data[button_Class.读写设备_地址_具体地址.Trim().ToInt32()] == true ? PLC选择.Button_state.ON : PLC选择.Button_state.Off);//写入状态
+                    button_state(button_Reform, button_Class, macroinstruction_data<bool>.M_Data[button_Class.读写设备_地址_具体地址.Trim().ToInt32()] == true ? Button_state.ON : Button_state.Off);//写入状态
                     break;
             }
             return "OK";
@@ -759,13 +760,13 @@ namespace 自定义Uppercomputer_20200727.控件重做
             {
                 switch (button_State)
                 {
-                    case PLC选择.Button_state.Off:
+                    case Button_state.Off:
                         button_Reform.Text = button_Classes.Control_state_0_content.Trim();//设置文本
                         button_Reform.ForeColor = Color.FromName(button_Classes.Control_state_0_colour.Trim());//获取数据库中颜色名称进行设置
                         button_Reform.Font = new Font(button_Classes.Control_state_0_typeface.Trim(), button_Classes.Control_state_0_size.ToInt32(), FontStyle.Bold);//设置字体与大小
                         button_Reform.TextAlign = ContentAlignment_1(button_Classes.Control_state_0_aligning.Trim());//设置对齐方式
                         break;
-                    case PLC选择.Button_state.ON:
+                    case Button_state.ON:
                         button_Reform.Text = button_Classes.Control_state_1_content1.Trim();//设置文本
                         button_Reform.ForeColor = Color.FromName(button_Classes.Control_state_1_colour.Trim());//获取数据库中颜色名称进行设置
                         button_Reform.Font = new Font(button_Classes.Control_state_1_typeface.Trim(), button_Classes.Control_state_1_size.ToInt32(), FontStyle.Bold);//设置字体与大小

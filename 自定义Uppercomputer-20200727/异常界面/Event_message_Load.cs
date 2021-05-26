@@ -1,4 +1,5 @@
 ﻿using CCWin.SkinControl;
+using PLC通讯规范接口;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,13 +23,13 @@ namespace 自定义Uppercomputer_20200727.异常界面
             {
                 bit.Checked = true;//默认Bit位
                 word.Checked = false;//取消
-                modification.SkinComboBox_Mitsubishi_BitLoad(ref address, PLC选择.PLC.Mitsubishi);//默认填充三菱
+                modification.SkinComboBox_Mitsubishi_BitLoad(ref address, PLC.Mitsubishi);//默认填充三菱
             }
             else
             {
                 bit.Checked = false;//默认Bit位
                 word.Checked = true;//取消
-                modification.SkinComboBox_Mitsubishi_numericalLoad(ref address, PLC选择.PLC.Mitsubishi);//默认填充三菱
+                modification.SkinComboBox_Mitsubishi_numericalLoad(ref address,PLC.Mitsubishi);//默认填充三菱
             }                 
             address_data.Text = "0";//默认地址0
             condition_Bit_traverse(touch);//填充bit

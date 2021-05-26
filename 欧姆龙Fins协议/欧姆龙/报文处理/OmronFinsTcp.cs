@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using HslCommunication;
 using HslCommunication.Profinet.Omron;
+using PLC通讯规范接口;
 using 欧姆龙Fins协议.报文处理;
 
 namespace 欧姆龙Fins协议.欧姆龙.报文处理
@@ -15,7 +16,7 @@ namespace 欧姆龙Fins协议.欧姆龙.报文处理
     /// <summary>
     /// 用于欧姆龙Fins Tcp协议
     /// </summary>
-    class OmronFinsTcp : PLC_public_Class, IPLC_interface
+    public class OmronFinsTcp : PLC_public_Class, IPLC_interface
     {
         /// <summary>
         /// 创建发送报文事件

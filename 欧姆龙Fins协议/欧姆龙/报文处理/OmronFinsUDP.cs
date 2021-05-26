@@ -8,12 +8,15 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using HslCommunication;
 using HslCommunication.Profinet.Omron;
-namespace 欧姆龙Fins协议.报文处理
+using PLC通讯规范接口;
+using 欧姆龙Fins协议.报文处理;
+
+namespace 欧姆龙Fins协议.欧姆龙.报文处理
 {
     /// <summary>
     /// 用于欧姆龙FNIS UDP协议通讯
     /// </summary>
-    public class OmronFinsUDP : PLC_public_Class,IPLC_interface
+    public class OmronFinsUDP : PLC_public_Class, IPLC_interface
     {
         /// <summary>
         /// 创建发送报文事件

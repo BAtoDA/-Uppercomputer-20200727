@@ -23,6 +23,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "欧姆龙Fins协议", "欧�
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Robot通讯控制", "Robot通讯控制\Robot通讯控制.csproj", "{D4B82D33-5D59-44D5-8E54-96567C0BFAD2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PLC通讯规范接口", "PLC通讯规范接口\PLC通讯规范接口.csproj", "{F61E9338-2D7E-4A93-A7B8-ACB591F01C47}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -67,6 +69,10 @@ Global
 		{D4B82D33-5D59-44D5-8E54-96567C0BFAD2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D4B82D33-5D59-44D5-8E54-96567C0BFAD2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D4B82D33-5D59-44D5-8E54-96567C0BFAD2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F61E9338-2D7E-4A93-A7B8-ACB591F01C47}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F61E9338-2D7E-4A93-A7B8-ACB591F01C47}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F61E9338-2D7E-4A93-A7B8-ACB591F01C47}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F61E9338-2D7E-4A93-A7B8-ACB591F01C47}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

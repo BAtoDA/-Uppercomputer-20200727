@@ -970,6 +970,7 @@
             this.skinButton9.TabIndex = 6;
             this.skinButton9.Text = "链接PLC";
             this.skinButton9.UseVisualStyleBackColor = false;
+            this.skinButton9.Click += new System.EventHandler(this.skinButton9_Click);
             // 
             // skinTextBox13
             // 
@@ -1038,7 +1039,7 @@
             this.skinTextBox14.IsPasswordChat = '\0';
             this.skinTextBox14.IsSystemPasswordChar = false;
             this.skinTextBox14.Lines = new string[] {
-        "2002"};
+        "60008"};
             this.skinTextBox14.Location = new System.Drawing.Point(101, 107);
             this.skinTextBox14.Margin = new System.Windows.Forms.Padding(0);
             this.skinTextBox14.MaxLength = 32767;
@@ -1062,11 +1063,11 @@
             this.skinTextBox14.SkinTxt.Name = "BaseText";
             this.skinTextBox14.SkinTxt.Size = new System.Drawing.Size(175, 18);
             this.skinTextBox14.SkinTxt.TabIndex = 0;
-            this.skinTextBox14.SkinTxt.Text = "2002";
+            this.skinTextBox14.SkinTxt.Text = "60008";
             this.skinTextBox14.SkinTxt.WaterColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(127)))), ((int)(((byte)(127)))));
             this.skinTextBox14.SkinTxt.WaterText = "";
             this.skinTextBox14.TabIndex = 3;
-            this.skinTextBox14.Text = "2002";
+            this.skinTextBox14.Text = "60008";
             this.skinTextBox14.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.skinTextBox14.WaterColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(127)))), ((int)(((byte)(127)))));
             this.skinTextBox14.WaterText = "";
@@ -1209,6 +1210,7 @@
             this.skinButton8.TabIndex = 6;
             this.skinButton8.Text = "链接PLC";
             this.skinButton8.UseVisualStyleBackColor = false;
+            this.skinButton8.Click += new System.EventHandler(this.skinButton8_Click);
             // 
             // skinTextBox10
             // 
@@ -1277,7 +1279,7 @@
             this.skinTextBox11.IsPasswordChat = '\0';
             this.skinTextBox11.IsSystemPasswordChar = false;
             this.skinTextBox11.Lines = new string[] {
-        "60009"};
+        "9600"};
             this.skinTextBox11.Location = new System.Drawing.Point(101, 107);
             this.skinTextBox11.Margin = new System.Windows.Forms.Padding(0);
             this.skinTextBox11.MaxLength = 32767;
@@ -1301,11 +1303,11 @@
             this.skinTextBox11.SkinTxt.Name = "BaseText";
             this.skinTextBox11.SkinTxt.Size = new System.Drawing.Size(175, 18);
             this.skinTextBox11.SkinTxt.TabIndex = 0;
-            this.skinTextBox11.SkinTxt.Text = "60009";
+            this.skinTextBox11.SkinTxt.Text = "9600";
             this.skinTextBox11.SkinTxt.WaterColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(127)))), ((int)(((byte)(127)))));
             this.skinTextBox11.SkinTxt.WaterText = "";
             this.skinTextBox11.TabIndex = 3;
-            this.skinTextBox11.Text = "60009";
+            this.skinTextBox11.Text = "9600";
             this.skinTextBox11.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.skinTextBox11.WaterColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(127)))), ((int)(((byte)(127)))));
             this.skinTextBox11.WaterText = "";

@@ -12,6 +12,9 @@ using System.Windows.Forms;
 using ActUtlTypeLib;
 using CCWin;
 using HslCommunication.Profinet;
+using PLC通讯规范接口;
+using 欧姆龙Fins协议.报文处理;
+using 欧姆龙Fins协议.欧姆龙.报文处理;
 using 自定义Uppercomputer_20200727.EF实体模型;
 using 自定义Uppercomputer_20200727.PLC选择.MODBUS_TCP监控窗口;
 using 自定义Uppercomputer_20200727.三菱报文;
@@ -31,9 +34,11 @@ namespace 自定义Uppercomputer_20200727.PLC选择
         {
             Hiel = true;
             PLCselect_Form_class pLCselect_Form_Class = new PLCselect_Form_class();//实例化加载对象
-            pLCselect_Form_Class.Load(PLCselect_Form_class.PLC_configuration.Mitsubishi, this.skinTextBox1, this.skinTextBox2, this.skinTextBox3, this.skinComboBox1);//填充三菱选项
-            pLCselect_Form_Class.Load(PLCselect_Form_class.PLC_configuration.Siemens, this.skinTextBox6, this.skinTextBox5, this.skinTextBox4, this.skinComboBox2);//填充西门子选项
-            pLCselect_Form_Class.Load(PLCselect_Form_class.PLC_configuration.MODBUS_TCP, this.skinTextBox9, this.skinTextBox8, this.skinTextBox7, this.skinComboBox3);//填充MODBUS_TCP选项   
+            pLCselect_Form_Class.Load(PLC.Mitsubishi, this.skinTextBox1, this.skinTextBox2, this.skinTextBox3, this.skinComboBox1);//填充三菱选项
+            pLCselect_Form_Class.Load(PLC.Siemens, this.skinTextBox6, this.skinTextBox5, this.skinTextBox4, this.skinComboBox2);//填充西门子选项
+            pLCselect_Form_Class.Load(PLC.Modbus_TCP, this.skinTextBox9, this.skinTextBox8, this.skinTextBox7, this.skinComboBox3);//填充MODBUS_TCP选项   
+            pLCselect_Form_Class.Load(PLC.OmronTCP, this.skinTextBox12, this.skinTextBox11, this.skinTextBox10, this.skinComboBox4);//填充欧姆龙选型
+            pLCselect_Form_Class.Load(PLC.Fanuc, this.skinTextBox15, this.skinTextBox14, this.skinTextBox13, this.skinComboBox5);//填充欧姆龙选型
             if (this.skinComboBox1.Text.Trim() != "在线访问")//加载时显示是否连接成功
             {
                 IPLC_interface axActUtlType = new Mitsubishi_axActUtlType();//实例化三菱 仿真--无参
@@ -62,7 +67,7 @@ namespace 自定义Uppercomputer_20200727.PLC选择
                       });
                 }
             }
-            //预留未实现西门子
+            //西门子
             IPLC_interface Siemens = new Siemens_realize();//实例化西门子 在线--无参
             if (Siemens.PLC_ready)
             {
@@ -77,6 +82,28 @@ namespace 自定义Uppercomputer_20200727.PLC选择
                 this.skinComboBox3.Enabled = false;
                 this.skinButton3.Enabled = false;
             }
+            //欧姆龙PLC
+            IPLC_interface Omron = (IPLC_interface)new OmronFinsTcp();
+            if (skinComboBox4.Text == "TCP")
+            {
+                Omron = (IPLC_interface)new OmronFinsTcp();
+            }
+            if (skinComboBox4.Text == "CIP")
+            {
+                Omron = (IPLC_interface)new OmronFinsCIP();
+            }
+            if (skinComboBox4.Text == "UDP")
+            {
+                Omron = (IPLC_interface)new OmronFinsUDP();
+            }
+            if (Omron.PLC_ready)
+            {
+                this.skinButton8.Text = "链接成功";
+                this.skinComboBox4.Enabled = false;
+                this.skinButton8.Enabled = false;
+            }
+            //发那科机器人
+
         }
         public static string Mitsubishi = "";//三菱PLC的访问模式
         public static bool Mitsubishi_ready=false;//指示用户是否打开了PLC
@@ -116,7 +143,7 @@ namespace 自定义Uppercomputer_20200727.PLC选择
         private void skinButton2_Click(object sender, EventArgs e)//链接西门子PLC
         {
             if (ip_err(this.skinTextBox6.Text) == "NG" || port_err(this.skinTextBox5.Text) == "NG") return;//返回方法
-            //未实现西门子S7在线访问
+            //西门子S7在线访问
             IPLC_interface Siemens = new Siemens_realize(new System.Net.IPEndPoint(IPAddress.Parse(this.skinTextBox6.Text), int.Parse(this.skinTextBox5.Text)), SiemensPLCS(skinComboBox2.Text));//实例化
             Siemens.PLC_open();//打开open--PLC
             if (Siemens.PLC_ready)
@@ -187,7 +214,16 @@ namespace 自定义Uppercomputer_20200727.PLC选择
                 MODBUS_TCP_PLC_IP = this.skinTextBox9.Text,
                 MODBUS_TCP_PLC_端口11 = this.skinTextBox8.Text,
                 MODBUS_TCP_PLC_类型 = this.skinTextBox7.Text,
-                MODBUS_TCP_PLC_链接类型 = this.skinComboBox3.Text
+                MODBUS_TCP_PLC_链接类型 = this.skinComboBox3.Text,
+                发那科_IP = this.skinTextBox15.Text,
+                发那科_端口 = this.skinTextBox14.Text,
+                发那科_类型 = this.skinTextBox13.Text,
+                发那科_链接类型 = this.skinComboBox5.Text,
+                欧姆龙PLC_IP = this.skinTextBox12.Text,
+                欧姆龙PLC_端口 = this.skinTextBox11.Text,
+                欧姆龙PLC_类型 = this.skinTextBox10.Text,
+                欧姆龙PLC链接类型 = this.skinComboBox4.Text
+
             };                        
         }
 
@@ -224,6 +260,41 @@ namespace 自定义Uppercomputer_20200727.PLC选择
                         return;
                 }
             }         
+        }
+
+        private void skinButton8_Click(object sender, EventArgs e)
+        {
+            if (ip_err(this.skinTextBox12.Text) == "NG" || port_err(this.skinTextBox11.Text) == "NG") return;//返回方法
+            //西门子S7在线访问
+            IPLC_interface Omron = (IPLC_interface)new OmronFinsTcp(new System.Net.IPEndPoint(IPAddress.Parse(this.skinTextBox12.Text), int.Parse(this.skinTextBox11.Text)),"6008");
+            if (skinComboBox4.Text == "TCP")
+            {
+                Omron = (IPLC_interface)new OmronFinsTcp(new System.Net.IPEndPoint(IPAddress.Parse(this.skinTextBox12.Text), int.Parse(this.skinTextBox11.Text)), "6008");
+            }
+            if (skinComboBox4.Text == "CIP")
+            {
+                Omron = (IPLC_interface)new OmronFinsCIP(new System.Net.IPEndPoint(IPAddress.Parse(this.skinTextBox12.Text), int.Parse(this.skinTextBox11.Text)),"6008");
+            }
+            if (skinComboBox4.Text == "UDP")
+            {
+                Omron = (IPLC_interface)new OmronFinsUDP(new System.Net.IPEndPoint(IPAddress.Parse(this.skinTextBox12.Text), int.Parse(this.skinTextBox11.Text)), "6008");
+            }
+            Omron.PLC_open();//打开open--PLC
+            if (Omron.PLC_ready)
+            {
+                this.skinButton8.Text = "链接成功";
+                this.skinComboBox4.Enabled = false;
+                this.skinButton8.Enabled = false;
+            }
+            PLC_EF pLC_EF = new PLC_EF();//实例化EF对象
+            if (pLC_EF.Parameter_inquire(1) == "OK") pLC_EF.Button_Parameter_modification(1, plC_Parameter());//修改参数
+            else pLC_EF.PLC_Parameter_Add(plC_Parameter());//插入参数
+
+        }
+
+        private void skinButton9_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

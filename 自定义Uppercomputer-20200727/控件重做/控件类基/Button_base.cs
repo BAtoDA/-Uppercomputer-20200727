@@ -5,7 +5,9 @@ using System.Linq;
 using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
+using PLC通讯规范接口;
 using 自定义Uppercomputer_20200727.PLC选择;
+using 自定义Uppercomputer_20200727.控件重做.控件类基.按钮__TO__PLC方法;
 
 namespace 自定义Uppercomputer_20200727.控件重做.控件类基
 {
@@ -31,5 +33,9 @@ namespace 自定义Uppercomputer_20200727.控件重做.控件类基
         /// 控件刷新定时器
         /// </summary>
         System.Threading.Timer PLC_time { get; }
+        /// <summary>
+        /// 按钮类 类基
+        /// </summary>
+        Button_to_plc button_PLC { get; }
     }
 }

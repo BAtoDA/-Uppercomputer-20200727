@@ -590,7 +590,9 @@
     </Compile>
     <Compile Include="控件重做\控件移动改变大小实现\DragResizeControl.cs" />
     <Compile Include="控件重做\控件类基\Button_base.cs" />
+    <Compile Include="控件重做\控件类基\TextBox_base.cs" />
     <Compile Include="控件重做\控件类基\按钮--TO--PLC方法\Button_to_plc.cs" />
+    <Compile Include="控件重做\控件类基\文本--TO--PLC方法\TextBox_PLC.cs" />
     <Compile Include="控件重做\获取控件的全部属性\Control_property.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -622,7 +624,6 @@
       <DependentUpon>keyboard.cs</DependentUpon>
     </Compile>
     <Compile Include="PLC选择\Mitsubishi_axActUtlType.cs" />
-    <Compile Include="PLC选择\PLCselect.cs" />
     <Compile Include="PLC选择\PLCselect_Form.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1108,6 +1109,10 @@
       <Project>{3878075B-B8D7-4090-B094-29622581442F}</Project>
       <Name>HslCommunicationDemo</Name>
     </ProjectReference>
+    <ProjectReference Include="..\PLC通讯规范接口\PLC通讯规范接口.csproj">
+      <Project>{f61e9338-2d7e-4a93-a7b8-acb591f01c47}</Project>
+      <Name>PLC通讯规范接口</Name>
+    </ProjectReference>
     <ProjectReference Include="..\UI_Library_da\UI_Library_da.csproj">
       <Project>{90956435-00C0-45A2-A74E-AC9E3871CE85}</Project>
       <Name>UI_Library_da</Name>
@@ -1115,6 +1120,10 @@
     <ProjectReference Include="..\三菱伺服MR-JE-C控制\三菱伺服MR-JE控制\三菱伺服MR-JE控制.csproj">
       <Project>{034fa00d-d0ae-48f7-b06e-e3a8c8aa030f}</Project>
       <Name>三菱伺服MR-JE控制</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\欧姆龙Fins协议\欧姆龙Fins协议.csproj">
+      <Project>{E2017A23-326F-4BD3-8F8C-889EF89BB127}</Project>
+      <Name>欧姆龙Fins协议</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

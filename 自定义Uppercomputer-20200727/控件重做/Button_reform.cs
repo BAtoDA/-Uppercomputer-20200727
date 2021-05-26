@@ -1,6 +1,7 @@
 ﻿using CCWin.SkinClass;
 using CCWin.SkinControl;
 using DragResizeControlWindowsDrawDemo;
+using PLC通讯规范接口;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -27,12 +28,12 @@ namespace 自定义Uppercomputer_20200727.控件重做
     class Button_reform : SkinButton, ControlCopy, Button_base
     {
 
-        Button_to_plc button_PLC;
+        public Button_to_plc button_PLC { get; }
         public Button_Class Button_Class;//控件参数
-        public enum Button_pattern//按钮模式类型枚举
-        {
-            Set_as_on , Set_as_off, 切换开关, 复归型
-        }
+        //public enum Button_pattern//按钮模式类型枚举
+        //{
+        //    Set_as_on , Set_as_off, 切换开关, 复归型
+        //}
         public string Button_ID { get; set; }//该按钮ID
 
         public System.Threading.Timer PLC_time { get; }
@@ -210,7 +211,7 @@ namespace 自定义Uppercomputer_20200727.控件重做
             {
                 switch (button_State)
                 {
-                    case PLC选择.Button_state.Off:
+                    case Button_state.Off:
                         button_Reform.Text = button_Classes.Control_state_0_content.Trim();//设置文本
                         button_Reform.ForeColor = Color.FromName(button_Classes.Control_state_0_colour.Trim());//获取数据库中颜色名称进行设置
                         button_Reform.Font = new Font(button_Classes.Control_state_0_typeface.Trim(), button_Classes.Control_state_0_size.ToInt32(), FontStyle.Bold);//设置字体与大小
@@ -218,7 +219,7 @@ namespace 自定义Uppercomputer_20200727.控件重做
                         button_Reform.BaseColor = Color.FromName(button_Classes.colour_0.Trim());//设置样式
                         button_Reform.DownBaseColor = Color.FromName(button_Classes.colour_0.Trim());//设置样式
                         break;
-                    case PLC选择.Button_state.ON:
+                    case Button_state.ON:
                         button_Reform.Text = button_Classes.Control_state_1_content1.Trim();//设置文本
                         button_Reform.ForeColor = Color.FromName(button_Classes.Control_state_1_colour.Trim());//获取数据库中颜色名称进行设置
                         button_Reform.Font = new Font(button_Classes.Control_state_1_typeface.Trim(), button_Classes.Control_state_1_size.ToInt32(), FontStyle.Bold);//设置字体与大小
@@ -240,22 +241,31 @@ namespace 自定义Uppercomputer_20200727.控件重做
             DragResizeControl.UnRegisterControl(this);//实现控件改变大小与拖拽位置
             Button_Class = null;
             this.menuStrip_Reform.Dispose();
+            PLC_time.Dispose();
             base.Dispose(disposing);
         }
         Button_Class _Class;
         public void Time_Tick()
         {
-            if (Form2.edit_mode == true)
+            try
             {
-                _Class = null;
-                return;//返回方法
+                if (Form2.edit_mode == true)
+                {
+                    _Class = null;
+                    return;//返回方法
+                }
+                if (_Class.IsNull())
+                {
+                    Button_EF EF = new Button_EF();//实例化EF
+                    _Class = EF.Button_Parameter_Query(this.Parent + "-" + this.Name);//查询控件参数
+                }
+                if (_Class.IsNull()) return;
+                this.button_state(this, _Class, button_PLC.Refresh(this, _Class.读写设备.Trim(), _Class.读写设备_地址.Trim(), _Class.读写设备_地址_具体地址.Trim()));
             }
-            if (_Class.IsNull())
+            catch
             {
-                Button_EF EF = new Button_EF();//实例化EF
-                _Class = EF.Button_Parameter_Query(this.Parent + "-" + this.Name);//查询控件参数
+
             }
-            this.button_state(this,_Class,button_PLC.Refresh(this, _Class.读写设备.Trim(), _Class.读写设备_地址.Trim(), _Class.读写设备_地址_具体地址.Trim()));
         }
         public void ControlRefresh(Button_state button_State)
         {

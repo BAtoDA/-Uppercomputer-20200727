@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using 自定义Uppercomputer_20200727.三菱报文;
+using PLC通讯规范接口;
+using numerical_format = PLC通讯规范接口.numerical_format;
 
 namespace 自定义Uppercomputer_20200727.PLC选择
 {

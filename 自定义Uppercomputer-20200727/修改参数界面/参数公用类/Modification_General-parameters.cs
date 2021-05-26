@@ -1,4 +1,5 @@
 ﻿using CCWin.SkinControl;
+using PLC通讯规范接口;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -83,6 +84,20 @@ namespace 自定义Uppercomputer_20200727.修改参数界面
                         skinCombo.Items.Add(suit);//添加选项
                     }
                     break;
+                case PLC.OmronTCP:
+                case PLC.OmronUDP:
+                case PLC.OmronCIP:
+                    foreach (Omron_bit suit in Enum.GetValues(typeof(Omron_bit)))
+                    {
+                        skinCombo.Items.Add(suit);//添加选项
+                    }
+                    break;
+                case PLC.Fanuc:
+                    foreach (Fanuc_bit suit in Enum.GetValues(typeof(Fanuc_bit)))
+                    {
+                        skinCombo.Items.Add(suit);//添加选项
+                    }
+                    break;
             }
             skinCombo.SelectedIndex = 0;
             skinCombo.SelectedItem = 0;
@@ -112,6 +127,20 @@ namespace 自定义Uppercomputer_20200727.修改参数界面
                     break;
                 case PLC.HMI:
                     foreach (HMI_D suit in Enum.GetValues(typeof(HMI_D)))
+                    {
+                        skinCombo.Items.Add(suit);//添加选项
+                    }
+                    break;
+                case PLC.OmronTCP:
+                case PLC.OmronUDP:
+                case PLC.OmronCIP:
+                    foreach (Omron_D suit in Enum.GetValues(typeof(Omron_D)))
+                    {
+                        skinCombo.Items.Add(suit);//添加选项
+                    }
+                    break;
+                case PLC.Fanuc:
+                    foreach (Fanuc_D suit in Enum.GetValues(typeof(Fanuc_D)))
                     {
                         skinCombo.Items.Add(suit);//添加选项
                     }

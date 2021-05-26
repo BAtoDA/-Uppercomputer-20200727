@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using 自定义Uppercomputer_20200727.EF实体模型;
 using CCWin.SkinControl;
 using 自定义Uppercomputer_20200727.修改参数界面;
+using PLC通讯规范接口;
 
 namespace 自定义Uppercomputer_20200727.异常界面
 {
@@ -53,7 +54,7 @@ namespace 自定义Uppercomputer_20200727.异常界面
                 this.skinLabel1.Visible = true;
                 this.skinLabel2.Visible = false;
                 modification.Mitsubishi_PLCload(ref this.skinComboBox1);//填充设备类型
-                modification.SkinComboBox_Mitsubishi_BitLoad(ref this.skinComboBox2, PLC选择.PLC.Mitsubishi);//默认填充三菱
+                modification.SkinComboBox_Mitsubishi_BitLoad(ref this.skinComboBox2, PLC.Mitsubishi);//默认填充三菱
             }
             else
             {
@@ -65,7 +66,7 @@ namespace 自定义Uppercomputer_20200727.异常界面
                 this.skinLabel1.Visible = false;
                 this.skinLabel2.Visible = true;
                 modification.Mitsubishi_PLCload(ref this.skinComboBox1);//填充设备类型
-                modification.SkinComboBox_Mitsubishi_numericalLoad(ref this.skinComboBox2, PLC选择.PLC.Mitsubishi);//默认填充三菱
+                modification.SkinComboBox_Mitsubishi_numericalLoad(ref this.skinComboBox2, PLC.Mitsubishi);//默认填充三菱
             }
         }
         private void Index(EF实体模型.Event_message event_Message)

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace 欧姆龙Fins协议.报文处理
+namespace PLC通讯规范接口
 {
     /// <summary>
     /// PLC硬件选择
@@ -17,21 +17,73 @@ namespace 欧姆龙Fins协议.报文处理
         Siemens,
         Modbus_TCP,
         HMI,
-        Omron
+        OmronTCP,
+        OmronCIP,
+        OmronUDP,
+        Fanuc
     }
     /// <summary>
     /// PLC各可访问软元件  三菱-bit位
     /// </summary>
     public enum Mitsubishi_bit
     { 
-      /*  LCS,LCC,*/SM,X,Y,M,L,F,B,TS,SS,SC,CS,CC,SB,S,D_Bit,SD_Bit,R_Bit,SW_Bit,W_Bit
+      /*  LCS,LCC,*/SM,X,Y,M,L,F,B,TS,SS,SC,CS,CC,SB,S,D_Bit,R_Bit,SW_Bit,W_Bit
     }
     /// <summary>
     /// PLC各可访问软元件 三菱 -WORD 字
     /// </summary>
     public enum Mitsubishi_D
     {
-        /*LCN,LZ,*/SD,D,R,W,TN,SN,CN,SW,Z
+        /*LCN,LZ,*/D,R,W,TN,SN,CN,SW,Z
+    }
+    /// <summary>
+    /// PLC各可访问软元件  欧姆龙 位
+    /// </summary>
+    public enum Omron_bit
+    {
+        IO = 48,
+        AR = 51,
+        DM = 2,
+        EM00 = 0x20,
+        EM01 = 33,
+        EM02 = 34,
+        EM03 = 35
+    }
+    /// <summary>
+    /// PLC各可访问软元件  欧姆龙  字
+    /// </summary>
+    public enum Omron_D
+    {
+        WR = 49,
+        HR = 50,
+        AR = 51,
+        DM = 2,
+        EM00 = 0x20,
+        EM01 = 33,
+        EM02 = 34,
+        EM03 = 35
+    }
+    /// <summary>
+    /// PLC各可访问软元件  欧姆龙 位
+    /// </summary>
+    public enum Fanuc_bit
+    {
+        DI=1,
+        DO=2,
+        RI=3,
+        RO=4,
+        UI=5,
+        UO=6
+    }
+    /// <summary>
+    /// PLC各可访问软元件  欧姆龙  字
+    /// </summary>
+    public enum Fanuc_D
+    {
+       R=1,
+       PR=2,
+       GO=3,
+       GI=4
     }
     /// <summary>
     ///  PLC各可访问软元件 西门子 -bit位
@@ -96,6 +148,10 @@ namespace 欧姆龙Fins协议.报文处理
     public enum numerical_type
     {
         数值
+    }
+    public enum Button_pattern//按钮模式类型枚举
+    {
+        Set_as_on, Set_as_off, 切换开关, 复归型
     }
     class PLCselect
     {

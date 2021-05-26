@@ -12,6 +12,8 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using CSEngineTest;
+using PLC通讯规范接口;
+
 namespace 自定义Uppercomputer_20200727.PLC选择
 {
     /// <summary>

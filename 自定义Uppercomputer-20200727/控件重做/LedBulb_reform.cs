@@ -1,16 +1,23 @@
-﻿using DragResizeControlWindowsDrawDemo;
+﻿using CCWin.SkinClass;
+using CCWin.SkinControl;
+using DragResizeControlWindowsDrawDemo;
+using PLC通讯规范接口;
 using Sunny.UI;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using 自定义Uppercomputer_20200727.EF实体模型;
+using 自定义Uppercomputer_20200727.PLC选择;
 using 自定义Uppercomputer_20200727.修改参数界面;
 using 自定义Uppercomputer_20200727.控件重做.复制粘贴接口;
 using 自定义Uppercomputer_20200727.控件重做.按钮类与宏指令通用类;
+using 自定义Uppercomputer_20200727.控件重做.控件类基;
+using 自定义Uppercomputer_20200727.控件重做.控件类基.按钮__TO__PLC方法;
 
 namespace 自定义Uppercomputer_20200727.控件重做
 {
@@ -18,7 +25,7 @@ namespace 自定义Uppercomputer_20200727.控件重做
     /// 引用第三方开源控件重构对事件方法等进行具体的实现
     /// 指示灯
     /// </summary>LedBulb_parameter
-    class LedBulb_reform : UILedBulb, ControlCopy
+    class LedBulb_reform : UILedBulb, ControlCopy, Button_base
     {
         LedBulb_Class LedBulb_Class;//控件参数
         public enum Switch_pattern//切换开模式类型枚举
@@ -26,6 +33,11 @@ namespace 自定义Uppercomputer_20200727.控件重做
             Set_as_on, Set_as_off, 切换开关, 复归型
         }
         public string Switch_ID { get; set; }//该按钮ID
+
+        public System.Threading.Timer PLC_time { get; }
+
+        public Button_to_plc button_PLC { get; }
+
         SkinContextMenuStrip_reform menuStrip_Reform;//绑定右键菜单类
         public LedBulb_reform()//构造函数
         {
@@ -39,6 +51,12 @@ namespace 自定义Uppercomputer_20200727.控件重做
             this.MouseMove += MouseMove__reform;//注册事件
             this.DoubleClick += DoubleClick_reform;//注册事件
             DragResizeControl.RegisterControl(this);//实现控件改变大小与拖拽位置
+            button_PLC = new Button_to_plc();
+            PLC_time = new System.Threading.Timer(new TimerCallback((s) =>
+            {
+                this.Time_Tick();
+            }));
+            PLC_time.Change(500, 300);
         }
         /// <方法重写当鼠标移到控件时获取——ID>
         private void MouseEnter_reform(object send, EventArgs e)
@@ -176,9 +194,64 @@ namespace 自定义Uppercomputer_20200727.控件重做
             this.DoubleClick -= DoubleClick_reform;//移除事件       
             DragResizeControl.UnRegisterControl(this);
             LedBulb_Class = null;
+            PLC_time.Dispose();
             menuStrip_Reform.Dispose();
             base.Dispose(disposing);
         }
-    
+        /// <summary>
+        /// 填充指示灯类
+        /// </summary>
+        /// <param name="button_Reform"></param>
+        /// <param name="button_Classes"></param>
+        /// <param name="button_State"></param>
+        private void button_state(LedBulb_reform button_Reform, LedBulb_Class button_Classes, Button_state button_State)//填充指示灯类
+        {      
+            try
+            {
+                switch (button_State)
+                {
+                    case Button_state.Off:
+                        button_Reform.Text = button_Classes.Control_state_0_content.Trim();//设置文本
+                        button_Reform.Color = Color.FromName(button_Classes.colour_0.Trim());//获取数据库中颜色名称进行设置
+                        button_Reform.Font = new Font(button_Classes.Control_state_0_typeface.Trim(), button_Classes.Control_state_0_size.ToInt32(), FontStyle.Bold);//设置字体与大小
+                        button_Reform.BackColor = Color.FromName("182, 182, 182");//填充背景颜色--默认
+                        break;
+                    case Button_state.ON:
+                        button_Reform.Text = button_Classes.Control_state_1_content1.Trim();//设置文本
+                        button_Reform.Color = Color.FromName(button_Classes.colour_1.Trim());//获取数据库中颜色名称进行设置
+                        button_Reform.Font = new Font(button_Classes.Control_state_1_typeface.Trim(), button_Classes.Control_state_1_size.ToInt32(), FontStyle.Bold);//设置字体与大小
+                        button_Reform.BackColor = Color.FromName("182, 182, 182");//填充背景颜色--默认
+                        break;
+                }
+            }
+            catch { return; }
+        }
+        LedBulb_Class _Class;
+        public void Time_Tick()
+        {
+            try
+            {
+                if (Form2.edit_mode == true)
+                {
+                    _Class = null;
+                    return;//返回方法
+                }
+                if (_Class.IsNull())
+                {
+                    LedBulb_EF EF = new LedBulb_EF();//实例化EF
+                    _Class = EF.Button_Parameter_Query(this.Parent + "-" + this.Name);//查询控件参数
+                }
+                if (_Class.IsNull()) return;
+                this.button_state(this, _Class, button_PLC.Refresh(this, _Class.读写设备.Trim(), _Class.读写设备_地址.Trim(), _Class.读写设备_地址_具体地址.Trim()));
+            }
+            catch
+            {
+
+            }
+        }
+        public void ControlRefresh(Button_state button_State)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
