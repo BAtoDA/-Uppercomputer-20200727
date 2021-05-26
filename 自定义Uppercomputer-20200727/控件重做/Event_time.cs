@@ -216,17 +216,17 @@ namespace 自定义Uppercomputer_20200727.控件重做
                     }
                     break;
                 case "Modbus_TCP":
-                    MODBUD_TCP MODBUD_TCP = new MODBUD_TCP();//实例化接口--实现MODBUS TCP
-                    if (MODBUD_TCP.IPLC_interface_PLC_ready)//PLC是否准备完成
+                    IPLC_interface MODBUD_TCP = new MODBUD_TCP();//实例化接口--实现MODBUS TCP
+                    if (MODBUD_TCP.PLC_ready)//PLC是否准备完成
                     {
                         switch (event_Message.类型)
                         {
                             case 0:
-                                List<bool> data = MODBUD_TCP.IPLC_interface_PLC_read_M_bit(event_Message.设备_地址.Trim(), event_Message.设备_具体地址.Trim());//读取状态
+                                List<bool> data = MODBUD_TCP.PLC_read_M_bit(event_Message.设备_地址.Trim(), event_Message.设备_具体地址.Trim());//读取状态
                                 trigger_Bit(data[0], event_Message);//判断bit触发条件
                                 break;
                             case 1:
-                                string numerical = MODBUD_TCP.IPLC_interface_PLC_read_D_register(event_Message.设备_地址.Trim(), event_Message.设备_具体地址.Trim(), numerical_format.Signed_16_Bit);//读取字数据
+                                string numerical = MODBUD_TCP.PLC_read_D_register(event_Message.设备_地址.Trim(), event_Message.设备_具体地址.Trim(), numerical_format.Signed_16_Bit);//读取字数据
                                 trigger_word(numerical, event_Message);//判断字触发条件
                                 break;
                         }
@@ -427,17 +427,17 @@ namespace 自定义Uppercomputer_20200727.控件重做
                     }
                     break;
                 case "Modbus_TCP":
-                    MODBUD_TCP MODBUD_TCP = new MODBUD_TCP();//实例化接口--实现MODBUS TCP
-                    if (MODBUD_TCP.IPLC_interface_PLC_ready)//PLC是否准备完成
+                    IPLC_interface MODBUD_TCP = new MODBUD_TCP();//实例化接口--实现MODBUS TCP
+                    if (MODBUD_TCP.PLC_ready)//PLC是否准备完成
                     {
                         switch (event_Message.类型)
                         {
                             case 0:
-                                List<bool> data = MODBUD_TCP.IPLC_interface_PLC_read_M_bit(event_Message.设备_地址.Trim(), event_Message.设备_具体地址.Trim());//读取状态
+                                List<bool> data = MODBUD_TCP.PLC_read_M_bit(event_Message.设备_地址.Trim(), event_Message.设备_具体地址.Trim());//读取状态
                                 trigger_Bit(data[0], event_Message);//判断bit触发条件
                                 break;
                             case 1:
-                                string numerical = MODBUD_TCP.IPLC_interface_PLC_read_D_register(event_Message.设备_地址.Trim(), event_Message.设备_具体地址.Trim(), numerical_format.Signed_16_Bit);//读取字数据
+                                string numerical = MODBUD_TCP.PLC_read_D_register(event_Message.设备_地址.Trim(), event_Message.设备_具体地址.Trim(), numerical_format.Signed_16_Bit);//读取字数据
                                 trigger_word(numerical, event_Message);//判断字触发条件
                                 break;
                         }

@@ -86,15 +86,15 @@ namespace 自定义Uppercomputer_20200727.PLC选择
             IPLC_interface Omron = (IPLC_interface)new OmronFinsTcp();
             if (skinComboBox4.Text == "TCP")
             {
-                Omron = (IPLC_interface)new OmronFinsTcp();
+                Omron =new OmronFinsTcp();
             }
             if (skinComboBox4.Text == "CIP")
             {
-                Omron = (IPLC_interface)new OmronFinsCIP();
+                Omron =new OmronFinsCIP();
             }
             if (skinComboBox4.Text == "UDP")
             {
-                Omron = (IPLC_interface)new OmronFinsUDP();
+                Omron =new OmronFinsUDP();
             }
             if (Omron.PLC_ready)
             {
@@ -160,9 +160,9 @@ namespace 自定义Uppercomputer_20200727.PLC选择
         private void skinButton3_Click(object sender, EventArgs e)//链接MODBUS-TCP
         {
             if (ip_err(this.skinTextBox9.Text) == "NG" || port_err(this.skinTextBox8.Text) == "NG") return;//返回方法
-            MODBUD_TCP pLC_Interface = new MODBUD_TCP(new IPEndPoint(IPAddress.Parse(this.skinTextBox9.Text), int.Parse(this.skinTextBox8.Text)), "MODBUD_TCP");//打开
-            MODBUD_TCP.IPLC_interface_PLC_open();//打开PLC
-            if (MODBUD_TCP.IPLC_interface_PLC_ready)
+            IPLC_interface pLC_Interface = new MODBUD_TCP(new IPEndPoint(IPAddress.Parse(this.skinTextBox9.Text), int.Parse(this.skinTextBox8.Text)), "MODBUD_TCP");//打开
+            pLC_Interface.PLC_open();//打开PLC
+            if (pLC_Interface.PLC_ready)
             {
                 this.skinButton3.Text = "链接成功";
                 this.skinComboBox3.Enabled = false;
@@ -266,18 +266,18 @@ namespace 自定义Uppercomputer_20200727.PLC选择
         {
             if (ip_err(this.skinTextBox12.Text) == "NG" || port_err(this.skinTextBox11.Text) == "NG") return;//返回方法
             //西门子S7在线访问
-            IPLC_interface Omron = (IPLC_interface)new OmronFinsTcp(new System.Net.IPEndPoint(IPAddress.Parse(this.skinTextBox12.Text), int.Parse(this.skinTextBox11.Text)),"6008");
+            IPLC_interface Omron = (IPLC_interface)new OmronFinsTcp(new System.Net.IPEndPoint(IPAddress.Parse(this.skinTextBox12.Text), int.Parse(this.skinTextBox11.Text)), this.skinTextBox11.Text);
             if (skinComboBox4.Text == "TCP")
             {
-                Omron = (IPLC_interface)new OmronFinsTcp(new System.Net.IPEndPoint(IPAddress.Parse(this.skinTextBox12.Text), int.Parse(this.skinTextBox11.Text)), "6008");
+                Omron = (IPLC_interface)new OmronFinsUDP(new System.Net.IPEndPoint(IPAddress.Parse(this.skinTextBox12.Text), int.Parse(this.skinTextBox11.Text)), this.skinTextBox11.Text);
             }
             if (skinComboBox4.Text == "CIP")
             {
-                Omron = (IPLC_interface)new OmronFinsCIP(new System.Net.IPEndPoint(IPAddress.Parse(this.skinTextBox12.Text), int.Parse(this.skinTextBox11.Text)),"6008");
+                Omron = (IPLC_interface)new OmronFinsCIP(new System.Net.IPEndPoint(IPAddress.Parse(this.skinTextBox12.Text), int.Parse(this.skinTextBox11.Text)), this.skinTextBox11.Text);
             }
             if (skinComboBox4.Text == "UDP")
             {
-                Omron = (IPLC_interface)new OmronFinsUDP(new System.Net.IPEndPoint(IPAddress.Parse(this.skinTextBox12.Text), int.Parse(this.skinTextBox11.Text)), "6008");
+                Omron = (IPLC_interface)new OmronFinsUDP(new System.Net.IPEndPoint(IPAddress.Parse(this.skinTextBox12.Text), int.Parse(this.skinTextBox11.Text)), this.skinTextBox11.Text);
             }
             Omron.PLC_open();//打开open--PLC
             if (Omron.PLC_ready)

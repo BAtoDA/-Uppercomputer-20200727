@@ -17,6 +17,8 @@ using 自定义Uppercomputer_20200727.PLC选择.MODBUS_TCP监控窗口;
 using 自定义Uppercomputer_20200727.修改参数界面;
 using 自定义Uppercomputer_20200727.控件重做.复制粘贴接口;
 using 自定义Uppercomputer_20200727.控件重做.按钮类与宏指令通用类;
+using 自定义Uppercomputer_20200727.控件重做.控件类基;
+using 自定义Uppercomputer_20200727.控件重做.控件类基.文本__TO__PLC方法;
 using 自定义Uppercomputer_20200727.文本输入键盘;
 
 namespace 自定义Uppercomputer_20200727.控件重做
@@ -25,13 +27,20 @@ namespace 自定义Uppercomputer_20200727.控件重做
     /// 本类主要重写系统数值输入控件
     /// 继承系统数值输入控件
     /// </summary>
-    class SkinTextBox_reform : TextBox, ControlCopy
+    class SkinTextBox_reform : TextBox, ControlCopy, TextBox_base
     {
         string SkinTextBox_ID { get; set; }//文本属性ID
         SkinContextMenuStrip_reform menuStrip_Reform;//绑定右键菜单类
         numerical_Class numerical_Classes;//实例化当前控件参数
         bool write_ok;//太久用户不输入文本自动允许PLC写入数据
         public bool write_ok_plc { get => write_ok; }//控件允许输入状态--只读状态
+
+        public System.Threading.Timer PLC_time { get; }
+
+        public TextBox_PLC TextBox { get; }
+
+        public string Data_Text { get => this.Text; }
+
         public SkinTextBox_reform()//构造函数
         {
             this.menuStrip_Reform = new SkinContextMenuStrip_reform();//实例化右键菜单
@@ -46,6 +55,12 @@ namespace 自定义Uppercomputer_20200727.控件重做
             DragResizeControl.RegisterControl(this);//实现控件改变大小与拖拽位置
             write_ok = true;//默认允许写入控件文本
             this.ReadOnly = true;//指示当前控件只读
+            TextBox = new TextBox_PLC();
+            PLC_time = new System.Threading.Timer(new TimerCallback((s) =>
+            {
+                this.Time_Tick();
+            }));
+            PLC_time.Change(500, 300);
         }
         /// <方法重写当鼠标移到控件时获取——ID>
         private void MouseEnter_reform(object send, EventArgs e)
@@ -127,81 +142,7 @@ namespace 自定义Uppercomputer_20200727.控件重做
             }
             write_ok = true;//允许修改控件
             //把控件文本写到PLC
-            if (numerical_Classes.读写不同地址_ON_OFF == 0)
-                plc(numerical_Classes.读写设备.Trim());//选择相应PLC 进行写入
-            else
-                plc(numerical_Classes.写设备_复选.Trim());//选择相应PLC 进行写入
-            //plc(numerical_Classes.读写设备.Trim());//选择PLC类型---
-        }
-        private string plc(string pLC)//根据PLC类型写入
-        {
-            switch(pLC)
-            {
-                case "Mitsubishi":
-                    if (PLCselect_Form.Mitsubishi.Trim() != "在线访问")//判断用户选定模式
-                    {
-                        IPLC_interface mitsubishi_AxActUtlType = new Mitsubishi_axActUtlType();//实例化接口--实现三菱仿真
-                        if (mitsubishi_AxActUtlType.PLC_ready)
-                        {
-                            if (numerical_Classes.读写不同地址_ON_OFF == 0)
-                                mitsubishi_AxActUtlType.PLC_write_D_register(numerical_Classes.读写设备_地址.Trim(), numerical_Classes.读写设备_地址_具体地址.Trim(), this.Text, Index(numerical_Classes.资料格式));
-                            else
-                                mitsubishi_AxActUtlType.PLC_write_D_register(numerical_Classes.写设备_地址_复选.Trim(), numerical_Classes.写设备_地址_具体地址_复选.Trim(), this.Text, Index(numerical_Classes.资料格式));
-                        }
-                        else MessageBox.Show("未连接设备：" + pLC.Trim(), "Err");//推出异常提示用户
-                    }
-                    else
-                    {
-                        IPLC_interface mitsubishi = new Mitsubishi_realize();//实例化接口--实现三菱在线访问
-                        if (mitsubishi.PLC_ready)
-                        {
-                            if (numerical_Classes.读写不同地址_ON_OFF == 0)
-                                mitsubishi.PLC_write_D_register(numerical_Classes.读写设备_地址.Trim(), numerical_Classes.读写设备_地址_具体地址.Trim(), this.Text, Index(numerical_Classes.资料格式));
-                            else
-                                mitsubishi.PLC_write_D_register(numerical_Classes.写设备_地址_复选.Trim(), numerical_Classes.写设备_地址_具体地址_复选.Trim(), this.Text, Index(numerical_Classes.资料格式));
-                        }
-                        else MessageBox.Show("未连接设备：" + pLC.Trim(), "Err");//推出异常提示
-                    }
-                    break;
-                case "Siemens":
-                    IPLC_interface Siemens = new Siemens_realize();//实例化接口--实现西门子在线访问
-                    if (Siemens.PLC_ready)
-                    {
-                        if (numerical_Classes.读写不同地址_ON_OFF == 0)
-                            Siemens.PLC_write_D_register(numerical_Classes.读写设备_地址.Trim(), numerical_Classes.读写设备_地址_具体地址.Trim(), this.Text, Index(numerical_Classes.资料格式));
-                        else
-                            Siemens.PLC_write_D_register(numerical_Classes.写设备_地址_复选.Trim(), numerical_Classes.写设备_地址_具体地址_复选.Trim(), this.Text, Index(numerical_Classes.资料格式));
-                    }
-                    else MessageBox.Show("未连接设备：" + pLC.Trim(), "Err");//推出异常提示
-                    break;
-                case "Modbus_TCP":
-                    MODBUD_TCP MODBUD_TCP = new MODBUD_TCP();//实例化接口--实现MODBUS TCP
-                    if (MODBUD_TCP.IPLC_interface_PLC_ready)
-                    {
-                        if (numerical_Classes.读写不同地址_ON_OFF == 0)
-                            MODBUD_TCP.IPLC_interface_PLC_write_D_register(numerical_Classes.读写设备_地址.Trim(), numerical_Classes.读写设备_地址_具体地址.Trim(), this.Text, Index(numerical_Classes.资料格式));
-                        else
-                            MODBUD_TCP.IPLC_interface_PLC_write_D_register(numerical_Classes.写设备_地址_复选.Trim(), numerical_Classes.写设备_地址_具体地址_复选.Trim(), this.Text, Index(numerical_Classes.资料格式));
-                    }
-                    else MessageBox.Show("未连接设备：" + pLC.Trim(), "Err");//推出异常提示用户
-                    break;
-                //写入到 宏指令 静态区D_Data
-                case "HMI":
-                    if (numerical_Classes.读写不同地址_ON_OFF == 0)
-                        macroinstruction_data<int>.D_Data[numerical_Classes.读写设备_地址_具体地址.Trim().ToInt32()] = this.Text;
-                    else
-                        macroinstruction_data<int>.D_Data[numerical_Classes.写设备_地址_具体地址_复选.Trim().ToInt32()] = this.Text;
-                    break;
-            }
-            return "OK_RUN";
-        }
-        private numerical_format Index(string Name)//查询索引
-        {
-            foreach (numerical_format suit in Enum.GetValues(typeof(numerical_format)))
-            {
-                if(suit.ToString()==Name.Trim()) return suit;//遍历枚举查询索引
-            }
-            return numerical_format.Unsigned_32_Bit;//如果不匹配则返回默认无符号类型
+            TextBox.plc(numerical_Classes.读写设备.Trim(),numerical_Classes.资料格式.Trim(),numerical_Classes.读写设备_地址.Trim(),numerical_Classes.读写设备_地址_具体地址.Trim(),numerical_Classes.读写不同地址_ON_OFF,numerical_Classes.写设备_地址_复选.Trim(),numerical_Classes.写设备_地址_具体地址_复选.Trim(),this.Text);//选择相应PLC 进行写入
         }
         protected override void Dispose(bool disposing)
         {
@@ -213,8 +154,59 @@ namespace 自定义Uppercomputer_20200727.控件重做
             this.MouseDown -= numerical_MouseDown;//注册事件 
             this.DoubleClick -= numerical_DoubleClick;//注册事件
             this.menuStrip_Reform.Dispose();
+            this.PLC_time.Dispose();
             DragResizeControl.UnRegisterControl(this);
             base.Dispose(disposing);
+        }
+        /// <summary>
+        /// 填充文本数据
+        /// </summary>
+        /// <param name="skinTextBox_Reform"></param>
+        /// <param name="numerical_Class"></param>
+        /// <param name="Data"></param>
+        private void TextBox_state(SkinTextBox_reform skinTextBox_Reform, numerical_Class numerical_Class, string Data)//填充文本数据
+        {
+            try
+            {
+                int Inde = Data.IndexOf('.');//搜索数据是否有小数点
+                if (Inde > 0 || Inde >= numerical_Class.小数点以下位数.ToInt32())//判断是否有小数点
+                {
+                    int In = Data.Length - 1 - numerical_Class.小数点以下位数.ToInt32() - Inde;//实现原理--先获取数据长度-后减1-小数点-在减去设定数-获取小数点位置
+                    for (int i = 0; i < In; i++) Data = Data.Remove(Data.Length - 1, 1); //移除掉                
+                }
+                else
+                    Data = TextBox.complement(Data, numerical_Class.小数点以下位数.Trim().ToInt32());//然后位数不够--自动补码
+                if (numerical_Class.小数点以下位数.ToInt32() < 1) Data = Data.Replace('.', ' ');//如果用户设定没有小数点直接去除小数点
+                skinTextBox_Reform.Text = Data;//直接填充数据
+            }
+            catch { return; }
+        }
+        numerical_Class _Class;
+        /// <summary>
+        /// 定时刷新控件
+        /// </summary>
+        private void Time_Tick()
+        {
+            try
+            {
+                if (Form2.edit_mode == true)
+                {
+                    _Class = null;
+                    return;//返回方法
+                }
+                if (_Class.IsNull())
+                {
+                    numerical_EF EF = new numerical_EF();//实例化EF
+                    _Class = EF.numerical_Parameter_Query(this.Parent + "- " + this.Name);//查询控件参数
+                }
+                if (_Class.IsNull()) return;
+                this.TextBox_state(this, _Class, TextBox.Refresh(_Class.读写设备.Trim(),_Class.资料格式.Trim(),_Class.读写设备_地址.Trim(),_Class.读写设备_地址_具体地址.Trim()));
+            }
+            catch
+            {
+
+            }
+
         }
         /// <summary>
         /// 复制控件的属性
@@ -276,6 +268,11 @@ namespace 自定义Uppercomputer_20200727.控件重做
         public object Clone()
         {
             return new SkinTextBox_reform() as object;//返回数据
+        }
+
+        public void ControlRefresh(string Data)
+        {
+            throw new NotImplementedException();
         }
     }
 }

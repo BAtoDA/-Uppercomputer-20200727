@@ -20,7 +20,7 @@ namespace 自定义Uppercomputer_20200727.PLC选择
     /// MODBUS-TCP通讯协议--open-读取-写入--继承接口IPLC_interface
     /// 继承宏指令接口实现宏指令--macroinstruction_PLC_interface
     /// </summary>
-    class MODBUD_TCP : PLC_public_Class, macroinstruction_PLC_interface
+    class MODBUD_TCP : PLC_public_Class, macroinstruction_PLC_interface, IPLC_interface
     {
         /// <summary>
         /// IP地址
@@ -30,6 +30,19 @@ namespace 自定义Uppercomputer_20200727.PLC选择
         static private bool PLC_ready;//内部PLC状态
         static private int PLCerr_code;//内部报警代码
         static private string PLCerr_content;//内部报警内容
+        //实现接口的属性
+        /// <summary>
+        /// 三菱Mitsubishi PLC状态
+        /// </summary>
+        bool IPLC_interface.PLC_ready { get => PLC_ready; } //PLC状态
+        /// <summary>
+        /// 三菱Mitsubishi PLC报警代码
+        /// </summary>
+        int IPLC_interface.PLCerr_code { get => PLCerr_code; }//PLC报警代码
+        /// <summary>
+        ///三菱Mitsubishi PLC报警内容
+        /// </summary>
+        string IPLC_interface.PLCerr_content { get => PLCerr_content; }//PLC报警内容
         /// <summary>
         /// 引用HslCommunication.ModBus进行实现
         /// </summary>
@@ -92,7 +105,7 @@ namespace 自定义Uppercomputer_20200727.PLC选择
         /// 打开端口
         /// </summary>
         /// <returns></returns>
-        public static string IPLC_interface_PLC_open()//打开端口
+        public  string PLC_open()//打开端口
         {
             try
             {
@@ -128,7 +141,7 @@ namespace 自定义Uppercomputer_20200727.PLC选择
         /// <param name="Name"></param>
         /// <param name="id"></param>
         /// <returns></returns>
-        public List<bool> IPLC_interface_PLC_read_M_bit(string Name, string id)//读取PLC 位状态 --D_bit这类需要自己在表流获取当前位状态--M这类不需要
+        public List<bool> PLC_read_M_bit(string Name, string id)//读取PLC 位状态 --D_bit这类需要自己在表流获取当前位状态--M这类不需要
         {
             string result = "FALSE";//定义获取数据变量
             lock (this)
@@ -153,7 +166,7 @@ namespace 自定义Uppercomputer_20200727.PLC选择
         {         
             string result = "FALSE";//定义获取数据变量
             if (PLC_ready != true) return new List<bool>() { Convert.ToBoolean(result ?? "FALSE") };//PLC未准备好返回数据
-            return this.IPLC_interface_PLC_read_M_bit(Name, id);
+            return this.PLC_read_M_bit(Name, id);
         }
         /// <summary>
         /// 写入PLC 位状态 --D_bit这类需要自己在表流获取当前位状态--M这类不需要
@@ -162,7 +175,7 @@ namespace 自定义Uppercomputer_20200727.PLC选择
         /// <param name="id"></param>
         /// <param name="button_State"></param>
         /// <returns></returns>
-        public List<bool> IPLC_interface_PLC_write_M_bit(string Name, string id, Button_state button_State)//写入PLC 位状态 --D_bit这类需要自己在表流获取当前位状态--M这类不需要
+        public List<bool> PLC_write_M_bit(string Name, string id, Button_state button_State)//写入PLC 位状态 --D_bit这类需要自己在表流获取当前位状态--M这类不需要
         {
             string result = "FALSE";//定义获取数据变量
             lock (this)
@@ -189,7 +202,7 @@ namespace 自定义Uppercomputer_20200727.PLC选择
         {
             string result = "FALSE";//定义获取数据变量
             if (PLC_ready != true) return new List<bool>() { Convert.ToBoolean(result ?? "FALSE") };//PLC未准备好返回数据
-            return  this.IPLC_interface_PLC_write_M_bit(Name,id,on_off? Button_state.ON: Button_state.Off);//返回数据
+            return  this.PLC_write_M_bit(Name,id,on_off? Button_state.ON: Button_state.Off);//返回数据
         }      
         /// <summary>
         /// 读寄存器--转换相应类型
@@ -198,7 +211,7 @@ namespace 自定义Uppercomputer_20200727.PLC选择
         /// <param name="id"></param>
         /// <param name="format"></param>
         /// <returns></returns>
-        public string IPLC_interface_PLC_read_D_register(string Name, string id, numerical_format format)//读寄存器--转换相应类型
+        public string PLC_read_D_register(string Name, string id, numerical_format format)//读寄存器--转换相应类型
         {
             string result = "0";//定义获取数据变量    
             lock (this)
@@ -267,7 +280,7 @@ namespace 自定义Uppercomputer_20200727.PLC选择
         string macroinstruction_PLC_interface.PLC_read_D_register(string Name, string id, string format)//读取--字
         {
             if (PLC_ready != true) return "0";//PLC未准备好返回数据
-            return this.IPLC_interface_PLC_read_D_register(Name, id, inquire_numerical(format));//进行数据查询
+            return this.PLC_read_D_register(Name, id, inquire_numerical(format));//进行数据查询
         }
         /// <summary>
         /// 写寄存器--转换类型--并且写入
@@ -277,7 +290,7 @@ namespace 自定义Uppercomputer_20200727.PLC选择
         /// <param name="content"></param>
         /// <param name="format"></param>
         /// <returns></returns>
-        public string IPLC_interface_PLC_write_D_register(string Name, string id, string content, numerical_format format)//写寄存器--转换类型--并且写入
+        public string PLC_write_D_register(string Name, string id, string content, numerical_format format)//写寄存器--转换类型--并且写入
         {
             string result = "0";//定义获取数据变量           
             lock (this)
@@ -334,7 +347,7 @@ namespace 自定义Uppercomputer_20200727.PLC选择
         string macroinstruction_PLC_interface.PLC_write_D_register(string Name, string id, string content, string format)//读写--字
         {
             if (PLC_ready != true) return "0";//PLC未准备好返回数据
-            return this.IPLC_interface_PLC_write_D_register(Name, id, content, inquire_numerical(format));
+            return this.PLC_write_D_register(Name, id, content, inquire_numerical(format));
         }
         /// <summary>
         /// 批量读寄存器--转换类型-
@@ -344,7 +357,7 @@ namespace 自定义Uppercomputer_20200727.PLC选择
         /// <param name="format"></param>
         /// <param name="Index"></param>
         /// <returns></returns>
-        public List<int> IPLC_interface_PLC_read_D_register_bit(string Name, string id, numerical_format format, string Index)//批量读取寄存器
+        public List<int> PLC_read_D_register_bit(string Name, string id, numerical_format format, string Index)//批量读取寄存器
         {
             List<int> Data = new List<int>();
             lock (this)
@@ -370,7 +383,7 @@ namespace 自定义Uppercomputer_20200727.PLC选择
         List<int> macroinstruction_PLC_interface.PLC_read_D_register_bit(string Name, string id, string format, string Index)//读取--字--多个读取
         {
             if (PLC_ready != true) return new List<int>() { 0 };//PLC未准备好返回数据
-            return this.IPLC_interface_PLC_read_D_register_bit(Name, id, inquire_numerical(format), Index);
+            return this.PLC_read_D_register_bit(Name, id, inquire_numerical(format), Index);
 
         }
         /// <summary>
@@ -447,6 +460,11 @@ namespace 自定义Uppercomputer_20200727.PLC选择
             PLCerr_content = e.Message;
             Message_run = true;
             MessageBox.Show("链接PLC异常");
+        }
+
+        public List<int> PLC_write_D_register_bit(string id)
+        {
+            return new List<int>() { 1 };
         }
     }
 }

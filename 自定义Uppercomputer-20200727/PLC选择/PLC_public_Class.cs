@@ -316,30 +316,30 @@ namespace 自定义Uppercomputer_20200727.PLC选择
         /// <param name="Index"></param>
         /// <param name="pLC_Interface"></param>
         /// <returns></returns>
-        public List<int> Mitsubishi_to_Index_numerical(string Name, int id, numerical_format format, int Index, MODBUD_TCP pLC_Interface)//转换类型---shorot--string
-        {
-            List<int> data = new List<int>();//初始化数据表
-            for (int i = 0; i < Index+1; i++)
-                switch (format)
-                {
-                    case numerical_format.BCD_16_Bit:
-                    case numerical_format.Binary_16_Bit:
-                    case numerical_format.Hex_16_Bit:
-                    case numerical_format.Signed_16_Bit:
-                    case numerical_format.Unsigned_16_Bit:
-                        data.Add(pLC_Interface.IPLC_interface_PLC_read_D_register(Name, (id + i).ToString(), format).ToInt32());//获取读取到的数据添加到泛型表
-                        break;
-                    case numerical_format.Binary_32_Bit:
-                    case numerical_format.Float_32_Bit:
-                    case numerical_format.Hex_32_Bit:
-                    case numerical_format.Signed_32_Bit:
-                    case numerical_format.Unsigned_32_Bit:
-                    case numerical_format.BCD_32_Bit:
-                        data.Add(pLC_Interface.IPLC_interface_PLC_read_D_register(Name, (id + (i * 2)).ToString(), format).ToInt32());//获取读取到的数据添加到泛型表
-                        break;
-                }
-            return data;//返回数据
-        }
+        //public List<int> Mitsubishi_to_Index_numerical(string Name, int id, numerical_format format, int Index, IPLC_interface pLC_Interface)//转换类型---shorot--string
+        //{
+        //    List<int> data = new List<int>();//初始化数据表
+        //    for (int i = 0; i < Index+1; i++)
+        //        switch (format)
+        //        {
+        //            case numerical_format.BCD_16_Bit:
+        //            case numerical_format.Binary_16_Bit:
+        //            case numerical_format.Hex_16_Bit:
+        //            case numerical_format.Signed_16_Bit:
+        //            case numerical_format.Unsigned_16_Bit:
+        //                data.Add(pLC_Interface.IPLC_interface_PLC_read_D_register(Name, (id + i).ToString(), format).ToInt32());//获取读取到的数据添加到泛型表
+        //                break;
+        //            case numerical_format.Binary_32_Bit:
+        //            case numerical_format.Float_32_Bit:
+        //            case numerical_format.Hex_32_Bit:
+        //            case numerical_format.Signed_32_Bit:
+        //            case numerical_format.Unsigned_32_Bit:
+        //            case numerical_format.BCD_32_Bit:
+        //                data.Add(pLC_Interface.IPLC_interface_PLC_read_D_register(Name, (id + (i * 2)).ToString(), format).ToInt32());//获取读取到的数据添加到泛型表
+        //                break;
+        //        }
+        //    return data;//返回数据
+        //}
         /// <summary>
         /// 数据类型查询
         /// </summary>

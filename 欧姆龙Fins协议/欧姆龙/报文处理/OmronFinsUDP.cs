@@ -37,7 +37,7 @@ namespace 欧姆龙Fins协议.欧姆龙.报文处理
         /// <summary>
         /// 引用HslCommunication.ModBus进行实现
         /// </summary>
-        public static OmronFinsUdp busTcpClient = null;//引用HslCommunication.ModBus进行实现
+        public static HslCommunication.Profinet.Omron.OmronFinsUdp busTcpClient = null;//引用HslCommunication.ModBus进行实现
                                                           //实现接口的属性
         /// <summary>
         /// 实现接口的属性 PLC状态
@@ -91,7 +91,7 @@ namespace 欧姆龙Fins协议.欧姆龙.报文处理
         {
             try
             {
-                busTcpClient = new OmronFinsUdp(IPEndPoint.Address.ToString(), IPEndPoint.Port);//传入IP与端口
+                busTcpClient = new HslCommunication.Profinet.Omron.OmronFinsUdp(IPEndPoint.Address.ToString(), IPEndPoint.Port);//传入IP与端口
                 busTcpClient.ReceiveTimeout = 1000;//X超时时间
                 OperateResult connect = busTcpClient.Read("W0",1);//是否打开成功？
                 if (connect.IsSuccess)

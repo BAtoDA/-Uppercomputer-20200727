@@ -159,7 +159,7 @@ namespace 自定义Uppercomputer_20200727.控件重做
                     MODBUD_TCP MODBUD_TCP = new MODBUD_TCP();//实例化接口--实现MODBUS TCP
                     if (MODBUD_TCP.IPLC_interface_PLC_ready)//PLC是否准备完成
                     {
-                        Button_write_select(RadioButton_Class.操作模式.Trim(), "MODBUD_TCP", MODBUD_TCP);//根据按钮模式进行写入操作
+                        Button_write_select(RadioButton_Class.操作模式.Trim(), MODBUD_TCP);//根据按钮模式进行写入操作
                     }
                     else MessageBox.Show("未连接设备：" + RadioButton_Class.读写设备.Trim(), "Err");//推出异常提示用户
                     break;
@@ -206,7 +206,7 @@ namespace 自定义Uppercomputer_20200727.控件重做
                     MODBUD_TCP MODBUD_TCP = new MODBUD_TCP();//实例化接口--实现三菱仿真
                     if (MODBUD_TCP.IPLC_interface_PLC_ready)//PLC是否准备完成
                     {
-                        Button_write_select("复归型_Off", "MODBUD_TCP", MODBUD_TCP);//根据按钮模式进行写入操作
+                        Button_write_select("复归型_Off", MODBUD_TCP);//根据按钮模式进行写入操作
                     }
                     else MessageBox.Show("未连接设备：" + RadioButton_Class.读写设备.Trim(), "Err");//推出异常提示用户
                     break;
@@ -243,31 +243,31 @@ namespace 自定义Uppercomputer_20200727.控件重做
                     break;
             }
         }
-        private void Button_write_select(string Name, string modbus_tcp, MODBUD_TCP pLC_Interface)//按照按钮模式写入
-        {
-            switch (Name)
-            {
-                case "Set_as_on"://设置常ON
-                    pLC_Interface.IPLC_interface_PLC_write_M_bit(RadioButton_Class.读写设备_地址.Trim(), RadioButton_Class.读写设备_地址_具体地址.Trim(), Button_state.ON);//写入常ON
-                    break;
-                case "Set_as_off"://设置常OFF
-                    pLC_Interface.IPLC_interface_PLC_write_M_bit(RadioButton_Class.读写设备_地址.Trim(), RadioButton_Class.读写设备_地址_具体地址.Trim(), Button_state.Off);//写入常Off
-                    break;
-                case "切换开关":
-                    List<bool> data = pLC_Interface.IPLC_interface_PLC_read_M_bit(RadioButton_Class.读写设备_地址.Trim(), RadioButton_Class.读写设备_地址_具体地址.Trim());//先读取要写入的状态
-                    pLC_Interface.IPLC_interface_PLC_write_M_bit(RadioButton_Class.读写设备_地址.Trim(), RadioButton_Class.读写设备_地址_具体地址.Trim(), data[0] == true ? Button_state.Off : Button_state.ON);//根据要写入的状态进行取反
-                    break;
-                case "复归型":
-                    pLC_Interface.IPLC_interface_PLC_write_M_bit(RadioButton_Class.读写设备_地址.Trim(), RadioButton_Class.读写设备_地址_具体地址.Trim(), Button_state.ON);//先写入ON--后用事件复位-off
-                    state = true;//标志位                      
-                    break;
-                case "复归型_Off":
-                    Thread.Sleep(300);//延时300ms复位
-                    pLC_Interface.IPLC_interface_PLC_write_M_bit(RadioButton_Class.读写设备_地址.Trim(), RadioButton_Class.读写设备_地址_具体地址.Trim(), Button_state.Off);//先写入ON--后用事件复位-off
-                    state = false;//标志位
-                    break;
-            }
-        }
+        //private void Button_write_select(string Name, string modbus_tcp, MODBUD_TCP pLC_Interface)//按照按钮模式写入
+        //{
+        //    switch (Name)
+        //    {
+        //        case "Set_as_on"://设置常ON
+        //            pLC_Interface.IPLC_interface_PLC_write_M_bit(RadioButton_Class.读写设备_地址.Trim(), RadioButton_Class.读写设备_地址_具体地址.Trim(), Button_state.ON);//写入常ON
+        //            break;
+        //        case "Set_as_off"://设置常OFF
+        //            pLC_Interface.IPLC_interface_PLC_write_M_bit(RadioButton_Class.读写设备_地址.Trim(), RadioButton_Class.读写设备_地址_具体地址.Trim(), Button_state.Off);//写入常Off
+        //            break;
+        //        case "切换开关":
+        //            List<bool> data = pLC_Interface.IPLC_interface_PLC_read_M_bit(RadioButton_Class.读写设备_地址.Trim(), RadioButton_Class.读写设备_地址_具体地址.Trim());//先读取要写入的状态
+        //            pLC_Interface.IPLC_interface_PLC_write_M_bit(RadioButton_Class.读写设备_地址.Trim(), RadioButton_Class.读写设备_地址_具体地址.Trim(), data[0] == true ? Button_state.Off : Button_state.ON);//根据要写入的状态进行取反
+        //            break;
+        //        case "复归型":
+        //            pLC_Interface.IPLC_interface_PLC_write_M_bit(RadioButton_Class.读写设备_地址.Trim(), RadioButton_Class.读写设备_地址_具体地址.Trim(), Button_state.ON);//先写入ON--后用事件复位-off
+        //            state = true;//标志位                      
+        //            break;
+        //        case "复归型_Off":
+        //            Thread.Sleep(300);//延时300ms复位
+        //            pLC_Interface.IPLC_interface_PLC_write_M_bit(RadioButton_Class.读写设备_地址.Trim(), RadioButton_Class.读写设备_地址_具体地址.Trim(), Button_state.Off);//先写入ON--后用事件复位-off
+        //            state = false;//标志位
+        //            break;
+        //    }
+        //}
         protected override void Dispose(bool disposing)
         {
             this.MouseEnter -= MouseEnter_reform;//移除事件

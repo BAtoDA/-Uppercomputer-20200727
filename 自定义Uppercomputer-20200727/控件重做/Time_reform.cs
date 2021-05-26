@@ -249,16 +249,16 @@ namespace 自定义Uppercomputer_20200727.控件重做
                     mutex.WaitOne(20);
                     this.Stop();
                    // Time_Tick_button(send, e);//注册按钮类刷新事件
-                    Time_Tick_Textbox(send, e);//注册文本输入类刷新事件
+                   // Time_Tick_Textbox(send, e);//注册文本输入类刷新事件
                    // Time_Tick_Switch(send, e);//注册切换开关类刷新事件
                     //Time_Tick_LedBulb(send, e);//注册指示灯类刷新事件
                     //Time_Tick_ImageButton(send, e);//注册无图片按钮类刷新事件
                     Time_Tick_doughnut_Chart(send, e);//注册圆形图刷新事件
                     Time_Tick_histogram_Chart(send, e);//注册柱形图事件
                     Time_Tick_oscillogram_Chart(send, e);//注册柱形图事件
-                    Time_Tick_AnalogMeter(send, e);//注册百分百表盘事件
-                    Time_Tick_LedDisplay(send, e);//注册数值显示事件
-                    Time_Tick_ihatetheqrcode(send, e);//注册二维码/条形码事件
+                    //Time_Tick_AnalogMeter(send, e);//注册百分百表盘事件
+                    //Time_Tick_LedDisplay(send, e);//注册数值显示事件
+                    //Time_Tick_ihatetheqrcode(send, e);//注册二维码/条形码事件
                     this.Start();
                     mutex.ReleaseMutex();
                 }
@@ -329,7 +329,6 @@ namespace 自定义Uppercomputer_20200727.控件重做
                         if (mitsubishi_AxActUtlType.PLC_ready)//PLC是否准备完成
                         {
                             List<bool> data = mitsubishi_AxActUtlType.PLC_read_M_bit(button_Class.读写设备_地址.Trim(), button_Class.读写设备_地址_具体地址.Trim());//读取状态
-                            //button_state(button_Reform, button_Class, data[0] == true ? PLC选择.Button_state.ON : PLC选择.Button_state.Off);//写入状态
                             button_State = data[0] == true ? Button_state.ON : Button_state.Off;
                         }
                     }
@@ -339,7 +338,6 @@ namespace 自定义Uppercomputer_20200727.控件重做
                         if (mitsubishi.PLC_ready)//PLC是否准备完成
                         {
                             List<bool> data = mitsubishi.PLC_read_M_bit(button_Class.读写设备_地址.Trim(), button_Class.读写设备_地址_具体地址.Trim());//读取状态
-                            //button_state(button_Reform, button_Class, data[0] == true ? PLC选择.Button_state.ON : PLC选择.Button_state.Off);//写入状态
                             button_State = data[0] == true ? Button_state.ON : Button_state.Off;
                         }
                     }
@@ -349,21 +347,18 @@ namespace 自定义Uppercomputer_20200727.控件重做
                     if (Siemens.PLC_ready)//PLC是否准备完成
                     {
                         List<bool> data = Siemens.PLC_read_M_bit(button_Class.读写设备_地址.Trim(), button_Class.读写设备_地址_具体地址.Trim());//读取状态
-                        //button_state(button_Reform, button_Class, data[0] == true ? PLC选择.Button_state.ON : PLC选择.Button_state.Off);//写入状态
                         button_State = data[0] == true ? Button_state.ON : Button_state.Off;
                     }
                     break;
                 case "Modbus_TCP":
-                    MODBUD_TCP MODBUD_TCP = new MODBUD_TCP();//实例化接口--实现MODBUS TCP
-                    if (MODBUD_TCP.IPLC_interface_PLC_ready)//PLC是否准备完成
+                    IPLC_interface MODBUD_TCP = new MODBUD_TCP();//实例化接口--实现MODBUS TCP
+                    if (MODBUD_TCP.PLC_ready)//PLC是否准备完成
                     {
-                        List<bool> data = MODBUD_TCP.IPLC_interface_PLC_read_M_bit(button_Class.读写设备_地址.Trim(), button_Class.读写设备_地址_具体地址.Trim());//读取状态
-                        //button_state(button_Reform, button_Class, data[0] == true ? PLC选择.Button_state.ON : PLC选择.Button_state.Off);//写入状态
+                        List<bool> data = MODBUD_TCP.PLC_read_M_bit(button_Class.读写设备_地址.Trim(), button_Class.读写设备_地址_具体地址.Trim());//读取状态
                         button_State = data[0] == true ? Button_state.ON :Button_state.Off;
                     }
                     break;
                 case "HMI":
-                    //button_state(button_Reform, button_Class, macroinstruction_data<bool>.M_Data[button_Class.读写设备_地址_具体地址.Trim().ToInt32()] == true ? PLC选择.Button_state.ON : PLC选择.Button_state.Off);//写入状态
                     button_State = macroinstruction_data<bool>.M_Data[button_Class.读写设备_地址_具体地址.Trim().ToInt32()] == true ?Button_state.ON : Button_state.Off;
                     break;
 
@@ -483,10 +478,10 @@ namespace 自定义Uppercomputer_20200727.控件重做
                     }
                     break;
                 case "Modbus_TCP":
-                    MODBUD_TCP MODBUD_TCP = new MODBUD_TCP();//实例化接口--实现MODBUS TCP
-                    if (MODBUD_TCP.IPLC_interface_PLC_ready)//PLC是否准备完成
+                    IPLC_interface MODBUD_TCP = new MODBUD_TCP();//实例化接口--实现MODBUS TCP
+                    if (MODBUD_TCP.PLC_ready)//PLC是否准备完成
                     {
-                        List<bool> data = MODBUD_TCP.IPLC_interface_PLC_read_M_bit(switch_Class.读写设备_地址.Trim(), switch_Class.读写设备_地址_具体地址.Trim());//读取状态
+                        List<bool> data = MODBUD_TCP.PLC_read_M_bit(switch_Class.读写设备_地址.Trim(), switch_Class.读写设备_地址_具体地址.Trim());//读取状态
                         button_state(switch_reform, switch_Class, data[0] == true ? Button_state.ON : Button_state.Off);//写入状态
                     }
                     break;
@@ -612,10 +607,10 @@ namespace 自定义Uppercomputer_20200727.控件重做
                     }
                     break;
                 case "Modbus_TCP":
-                    MODBUD_TCP MODBUD_TCP = new MODBUD_TCP();//实例化接口--实现MODBUS TCP
-                    if (MODBUD_TCP.IPLC_interface_PLC_ready)//PLC是否准备完成
+                    IPLC_interface MODBUD_TCP = new MODBUD_TCP();//实例化接口--实现MODBUS TCP
+                    if (MODBUD_TCP.PLC_ready)//PLC是否准备完成
                     {
-                        List<bool> data = MODBUD_TCP.IPLC_interface_PLC_read_M_bit(LedBulb_Class.读写设备_地址.Trim(), LedBulb_Class.读写设备_地址_具体地址.Trim());//读取状态
+                        List<bool> data = MODBUD_TCP.PLC_read_M_bit(LedBulb_Class.读写设备_地址.Trim(), LedBulb_Class.读写设备_地址_具体地址.Trim());//读取状态
                         button_state(LedBulb_reform, LedBulb_Class, data[0] == true ? Button_state.ON : Button_state.Off);//写入状态
                     }
                     break;
@@ -734,10 +729,10 @@ namespace 自定义Uppercomputer_20200727.控件重做
                     }
                     break;
                 case "Modbus_TCP":
-                    MODBUD_TCP MODBUD_TCP = new MODBUD_TCP();//实例化接口--实现MODBUS TCP
-                    if (MODBUD_TCP.IPLC_interface_PLC_ready)//PLC是否准备完成
+                    IPLC_interface MODBUD_TCP = new MODBUD_TCP();//实例化接口--实现MODBUS TCP
+                    if (MODBUD_TCP.PLC_ready)//PLC是否准备完成
                     {
-                        List<bool> data = MODBUD_TCP.IPLC_interface_PLC_read_M_bit(button_Class.读写设备_地址.Trim(), button_Class.读写设备_地址_具体地址.Trim());//读取状态
+                        List<bool> data = MODBUD_TCP.PLC_read_M_bit(button_Class.读写设备_地址.Trim(), button_Class.读写设备_地址_具体地址.Trim());//读取状态
                         button_state(button_Reform, button_Class, data[0] == true ? Button_state.ON : Button_state.Off);//写入状态
                     }
                     break;
@@ -856,11 +851,11 @@ namespace 自定义Uppercomputer_20200727.控件重做
                     }
                     break;
                 case "Modbus_TCP":
-                    MODBUD_TCP MODBUD_TCP = new MODBUD_TCP();//实例化接口--实现MODBUS TCP
-                    if (MODBUD_TCP.IPLC_interface_PLC_ready)//PLC是否准备完成
+                    IPLC_interface MODBUD_TCP = new MODBUD_TCP();//实例化接口--实现MODBUS TCP
+                    if (MODBUD_TCP.PLC_ready)//PLC是否准备完成
                     {
                         //由于modbus_TCP读写状态不同 读输出 写输入模式 
-                        string data = MODBUD_TCP.IPLC_interface_PLC_read_D_register(numerical_Class.读写设备_地址.Trim(), numerical_Class.读写设备_地址_具体地址.Trim(), TextBox_format(numerical_Class.资料格式));//读取PLC数值
+                        string data = MODBUD_TCP.PLC_read_D_register(numerical_Class.读写设备_地址.Trim(), numerical_Class.读写设备_地址_具体地址.Trim(), TextBox_format(numerical_Class.资料格式));//读取PLC数值
                         TextBox_state(skinTextBox_Reform, numerical_Class, data);//填充文本数据--自动判断用户设定的小数点位置--多余的异常
                     }
                     break;
@@ -978,11 +973,11 @@ namespace 自定义Uppercomputer_20200727.控件重做
                     }
                     break;
                 case "Modbus_TCP":
-                    MODBUD_TCP MODBUD_TCP = new MODBUD_TCP();//实例化接口--实现MODBUS TCP
-                    if (MODBUD_TCP.IPLC_interface_PLC_ready)//PLC是否准备完成
+                    IPLC_interface MODBUD_TCP = new MODBUD_TCP();//实例化接口--实现MODBUS TCP
+                    if (MODBUD_TCP.PLC_ready)//PLC是否准备完成
                     {
                         //由于modbus_TCP读写状态不同 读输出 写输入模式 
-                        doughnut_Chart_Data = MODBUD_TCP.IPLC_interface_PLC_read_D_register_bit(doughnut_Chart_Class.读写设备_地址.Trim(), doughnut_Chart_Class.读写设备_地址_具体地址.Trim(), TextBox_format(doughnut_Chart_Class.资料格式), doughnut_Chart_Class.通道数量.ToString());//读取PLC数值
+                        doughnut_Chart_Data = MODBUD_TCP.PLC_read_D_register_bit(doughnut_Chart_Class.读写设备_地址.Trim(), doughnut_Chart_Class.读写设备_地址_具体地址.Trim(), TextBox_format(doughnut_Chart_Class.资料格式), doughnut_Chart_Class.通道数量.ToString());//读取PLC数值
                         TextBox_state(doughnut_Chart_Reform, doughnut_Chart_Class, doughnut_Chart_Data);//填充文本数据--自动判断用户设定的小数点位置--多余的异常
                     }
                     break;
@@ -1094,11 +1089,11 @@ namespace 自定义Uppercomputer_20200727.控件重做
                     }
                     break;
                 case "Modbus_TCP":
-                    MODBUD_TCP MODBUD_TCP = new MODBUD_TCP();//实例化接口--实现MODBUS TCP
-                    if (MODBUD_TCP.IPLC_interface_PLC_ready)//PLC是否准备完成
+                    IPLC_interface MODBUD_TCP = new MODBUD_TCP();//实例化接口--实现MODBUS TCP
+                    if (MODBUD_TCP.PLC_ready)//PLC是否准备完成
                     {
                         //由于modbus_TCP读写状态不同 读输出 写输入模式 
-                        histogram_Chart_Data = MODBUD_TCP.IPLC_interface_PLC_read_D_register_bit(histogram_Chart_Class.读写设备_地址.Trim(), histogram_Chart_Class.读写设备_地址_具体地址.Trim(), TextBox_format(histogram_Chart_Class.资料格式), ((histogram_Chart_Class.通道数量 + 1) * 2).ToString());//读取PLC数值
+                        histogram_Chart_Data = MODBUD_TCP.PLC_read_D_register_bit(histogram_Chart_Class.读写设备_地址.Trim(), histogram_Chart_Class.读写设备_地址_具体地址.Trim(), TextBox_format(histogram_Chart_Class.资料格式), ((histogram_Chart_Class.通道数量 + 1) * 2).ToString());//读取PLC数值
                         TextBox_state(histogram_Chart_Reform, histogram_Chart_Class, int_to_double(histogram_Chart_Data));//填充文本数据--自动判断用户设定的小数点位置--多余的异常
                     }
                     break;
@@ -1210,11 +1205,11 @@ namespace 自定义Uppercomputer_20200727.控件重做
                     }
                     break;
                 case "Modbus_TCP":
-                    MODBUD_TCP MODBUD_TCP = new MODBUD_TCP();//实例化接口--实现MODBUS TCP
-                    if (MODBUD_TCP.IPLC_interface_PLC_ready)//PLC是否准备完成
+                    IPLC_interface MODBUD_TCP = new MODBUD_TCP();//实例化接口--实现MODBUS TCP
+                    if (MODBUD_TCP.PLC_ready)//PLC是否准备完成
                     {
                         //由于modbus_TCP读写状态不同 读输出 写输入模式 
-                        oscillogram_Chart_Data = MODBUD_TCP.IPLC_interface_PLC_read_D_register_bit(oscillogram_Chart_Class.读写设备_地址.Trim(), oscillogram_Chart_Class.读写设备_地址_具体地址.Trim(), TextBox_format(oscillogram_Chart_Class.资料格式), "0");//读取PLC数值
+                        oscillogram_Chart_Data = MODBUD_TCP.PLC_read_D_register_bit(oscillogram_Chart_Class.读写设备_地址.Trim(), oscillogram_Chart_Class.读写设备_地址_具体地址.Trim(), TextBox_format(oscillogram_Chart_Class.资料格式), "0");//读取PLC数值
                         TextBox_state(oscillogram_Chart_Reform, oscillogram_Chart_Class,oscillogram_Chart_Data);//填充文本数据--自动判断用户设定的小数点位置--多余的异常
                     }
                     break;
@@ -1338,11 +1333,11 @@ namespace 自定义Uppercomputer_20200727.控件重做
                     }
                     break;
                 case "Modbus_TCP":
-                    MODBUD_TCP MODBUD_TCP = new MODBUD_TCP();//实例化接口--实现MODBUS TCP
-                    if (MODBUD_TCP.IPLC_interface_PLC_ready)//PLC是否准备完成
+                    IPLC_interface MODBUD_TCP = new MODBUD_TCP();//实例化接口--实现MODBUS TCP
+                    if (MODBUD_TCP.PLC_ready)//PLC是否准备完成
                     {
                         //由于modbus_TCP读写状态不同 读输出 写输入模式 
-                        string data = MODBUD_TCP.IPLC_interface_PLC_read_D_register(numerical_Class.读写设备_地址.Trim(), numerical_Class.读写设备_地址_具体地址.Trim(), TextBox_format(numerical_Class.资料格式));//读取PLC数值
+                        string data = MODBUD_TCP.PLC_read_D_register(numerical_Class.读写设备_地址.Trim(), numerical_Class.读写设备_地址_具体地址.Trim(), TextBox_format(numerical_Class.资料格式));//读取PLC数值
                         TextBox_state(skinTextBox_Reform, numerical_Class, data);//填充文本数据--自动判断用户设定的小数点位置--多余的异常
                     }
                     break;
@@ -1459,11 +1454,11 @@ namespace 自定义Uppercomputer_20200727.控件重做
                     }
                     break;
                 case "Modbus_TCP":
-                    MODBUD_TCP MODBUD_TCP = new MODBUD_TCP();//实例化接口--实现MODBUS TCP
-                    if (MODBUD_TCP.IPLC_interface_PLC_ready)//PLC是否准备完成
+                    IPLC_interface MODBUD_TCP = new MODBUD_TCP();//实例化接口--实现MODBUS TCP
+                    if (MODBUD_TCP.PLC_ready)//PLC是否准备完成
                     {
                         //由于modbus_TCP读写状态不同 读输出 写输入模式 
-                        string data = MODBUD_TCP.IPLC_interface_PLC_read_D_register(numerical_Class.读写设备_地址.Trim(), numerical_Class.读写设备_地址_具体地址.Trim(), TextBox_format(numerical_Class.资料格式));//读取PLC数值
+                        string data = MODBUD_TCP.PLC_read_D_register(numerical_Class.读写设备_地址.Trim(), numerical_Class.读写设备_地址_具体地址.Trim(), TextBox_format(numerical_Class.资料格式));//读取PLC数值
                         TextBox_state(skinTextBox_Reform, numerical_Class, data);//填充文本数据--自动判断用户设定的小数点位置--多余的异常
                     }
                     break;
@@ -1580,11 +1575,11 @@ namespace 自定义Uppercomputer_20200727.控件重做
                     }
                     break;
                 case "Modbus_TCP":
-                    MODBUD_TCP MODBUD_TCP = new MODBUD_TCP();//实例化接口--实现MODBUS TCP
-                    if (MODBUD_TCP.IPLC_interface_PLC_ready)//PLC是否准备完成
+                    IPLC_interface MODBUD_TCP = new MODBUD_TCP();//实例化接口--实现MODBUS TCP
+                    if (MODBUD_TCP.PLC_ready)//PLC是否准备完成
                     {
                         //由于modbus_TCP读写状态不同 读输出 写输入模式 
-                        string data = MODBUD_TCP.IPLC_interface_PLC_read_D_register(numerical_Class.读写设备_地址.Trim(), numerical_Class.读写设备_地址_具体地址.Trim(), TextBox_format(numerical_Class.资料格式));//读取PLC数值
+                        string data = MODBUD_TCP.PLC_read_D_register(numerical_Class.读写设备_地址.Trim(), numerical_Class.读写设备_地址_具体地址.Trim(), TextBox_format(numerical_Class.资料格式));//读取PLC数值
                         TextBox_state(skinTextBox_Reform, numerical_Class, data);//填充文本数据--自动判断用户设定的小数点位置--多余的异常
                     }
                     break;

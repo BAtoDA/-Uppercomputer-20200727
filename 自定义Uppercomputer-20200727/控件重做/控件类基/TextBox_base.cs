@@ -21,5 +21,9 @@ namespace 自定义Uppercomputer_20200727.控件重做.控件类基
         /// 按钮类 类基
         /// </summary>
         TextBox_PLC TextBox { get; }
+        /// <summary>
+        /// 文本数据
+        /// </summary>
+        string Data_Text { get; }
     }
 }

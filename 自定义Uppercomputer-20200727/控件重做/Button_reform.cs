@@ -30,10 +30,6 @@ namespace 自定义Uppercomputer_20200727.控件重做
 
         public Button_to_plc button_PLC { get; }
         public Button_Class Button_Class;//控件参数
-        //public enum Button_pattern//按钮模式类型枚举
-        //{
-        //    Set_as_on , Set_as_off, 切换开关, 复归型
-        //}
         public string Button_ID { get; set; }//该按钮ID
 
         public System.Threading.Timer PLC_time { get; }

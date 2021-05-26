@@ -1,8 +1,11 @@
-﻿using DragResizeControlWindowsDrawDemo;
+﻿using CCWin.SkinClass;
+using CCWin.SkinControl;
+using DragResizeControlWindowsDrawDemo;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using UI_Library_da;
@@ -10,6 +13,8 @@ using 自定义Uppercomputer_20200727.EF实体模型;
 using 自定义Uppercomputer_20200727.修改参数界面;
 using 自定义Uppercomputer_20200727.控件重做.复制粘贴接口;
 using 自定义Uppercomputer_20200727.控件重做.按钮类与宏指令通用类;
+using 自定义Uppercomputer_20200727.控件重做.控件类基;
+using 自定义Uppercomputer_20200727.控件重做.控件类基.文本__TO__PLC方法;
 
 namespace 自定义Uppercomputer_20200727.控件重做
 {
@@ -17,9 +22,16 @@ namespace 自定义Uppercomputer_20200727.控件重做
     /// 继承数值显示软件
     ///  此类不能在窗口设计器中使用-如果需要使用请拖拽父类
     /// </summary>
-    class LedDisplay_reform : UI_LedDisplay, ControlCopy
+    class LedDisplay_reform : UI_LedDisplay, ControlCopy, TextBox_base
     {
         string LedDisplay_ID { get; set; }//文本属性ID
+
+        public System.Threading.Timer PLC_time { get; }
+
+        public TextBox_PLC TextBox { get; }
+
+        public string Data_Text { get => this.Text; }
+
         SkinContextMenuStrip_reform menuStrip_Reform;//绑定右键菜单类
         /// <summary>
         /// 构造函数初始化控件UI
@@ -35,7 +47,13 @@ namespace 自定义Uppercomputer_20200727.控件重做
             this.MouseEnter += MouseEnter_reform;//注册事件--获取控件信息
             this.TextChanged += TextChanged_reform;//注册事件
             DragResizeControl.RegisterControl(this);//实现控件改变大小与拖拽位置
-            this.ReadOnly = true;//指示当前控件只读            
+            this.ReadOnly = true;//指示当前控件只读
+            TextBox = new TextBox_PLC();
+            PLC_time = new System.Threading.Timer(new TimerCallback((s) =>
+            {
+                this.Time_Tick();
+            }));
+            PLC_time.Change(500, 300);
         }
         /// <方法重写当鼠标移到控件时获取——ID>
         private void MouseEnter_reform(object send, EventArgs e)
@@ -149,6 +167,56 @@ namespace 自定义Uppercomputer_20200727.控件重做
         {
             return new LedDisplay_reform() as object;//返回数据
         }
+        /// <summary>
+        /// 填充文本数据
+        /// </summary>
+        /// <param name=" AnalogMeter_Reform"></param>
+        /// <param name=" AnalogMeter_Class"></param>
+        /// <param name="Data"></param>
+        private void TextBox_state(LedDisplay_reform AnalogMeter_Reform, LedDisplay_Class numerical_Class, string Data)//填充文本数据
+        {
+            try
+            {
+                int Inde = Data.IndexOf('.');//搜索数据是否有小数点
+                if (Inde > 0 || Inde >= numerical_Class.小数点以下位数.ToInt32())//判断是否有小数点
+                {
+                    int In = Data.Length - 1 - numerical_Class.小数点以下位数.ToInt32() - Inde;//实现原理--先获取数据长度-后减1-小数点-在减去设定数-获取小数点位置
+                    for (int i = 0; i < In; i++) Data = Data.Remove(Data.Length - 1, 1); //移除掉                
+                }
+                else
+                    Data = TextBox.complement(Data, numerical_Class.小数点以下位数.ToInt32());//然后位数不够--自动补码
+                if (numerical_Class.小数点以下位数.ToInt32() < 1) Data = Data.Replace('.', ' ');//如果用户设定没有小数点直接去除小数点
+                AnalogMeter_Reform.Text = Data;//直接填充数据
+            }
+            catch { return; }
+        }
+        LedDisplay_Class _Class;
+        /// <summary>
+        /// 定时刷新控件
+        /// </summary>
+        private void Time_Tick()
+        {
+            try
+            {
+                if (Form2.edit_mode == true)
+                {
+                    _Class = null;
+                    return;//返回方法
+                }
+                if (_Class.IsNull())
+                {
+                    LedDisplay_EF EF = new LedDisplay_EF();//实例化EF
+                    _Class = EF.LedDisplay_Parameter_Query(this.Parent + "- " + this.Name);//查询控件参数
+                }
+                if (_Class.IsNull()) return;
+                this.TextBox_state(this, _Class, TextBox.Refresh(_Class.读写设备.Trim(), _Class.资料格式.Trim(), _Class.读写设备_地址.Trim(), _Class.读写设备_地址_具体地址.Trim()));
+            }
+            catch
+            {
+
+            }
+
+        }
         protected override void Dispose(bool disposing)
         {
             this.MouseDown -= MouseDown_reform;//注册事件
@@ -158,7 +226,13 @@ namespace 自定义Uppercomputer_20200727.控件重做
             this.TextChanged -= TextChanged_reform;//注册事件
             DragResizeControl.UnRegisterControl(this);
             menuStrip_Reform.Dispose();
+            PLC_time.Dispose();
             base.Dispose(disposing);
+        }
+
+        public void ControlRefresh(string Data)
+        {
+            throw new NotImplementedException();
         }
     }
 }

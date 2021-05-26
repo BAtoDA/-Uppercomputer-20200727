@@ -139,10 +139,10 @@ namespace 自定义Uppercomputer_20200727.控件重做
                     else MessageBox.Show("未连接设备：" + numerical_Classes.读写设备.Trim(), "Err");//推出异常提示
                     break;
                 case "Modbus_TCP":
-                    MODBUD_TCP MODBUD_TCP = new MODBUD_TCP();//实例化接口--实现MODBUS TCP
-                    if (MODBUD_TCP.IPLC_interface_PLC_ready)
+                    IPLC_interface MODBUD_TCP = new MODBUD_TCP();//实例化接口--实现MODBUS TCP
+                    if (MODBUD_TCP.PLC_ready)
                     {
-                        MODBUD_TCP.IPLC_interface_PLC_write_D_register(numerical_Classes.读写设备_地址.Trim(), numerical_Classes.读写设备_地址_具体地址.Trim(), Data, Index("Unsigned_32_Bit"));
+                        MODBUD_TCP.PLC_write_D_register(numerical_Classes.读写设备_地址.Trim(), numerical_Classes.读写设备_地址_具体地址.Trim(), Data, Index("Unsigned_32_Bit"));
                     }
                     else MessageBox.Show("未连接设备：" + numerical_Classes.读写设备.Trim(), "Err");//推出异常提示用户
                     break;
