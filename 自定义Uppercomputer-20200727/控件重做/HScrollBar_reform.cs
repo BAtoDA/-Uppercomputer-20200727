@@ -5,6 +5,7 @@ using DragResizeControlWindowsDrawDemo;
 using PLC通讯规范接口;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,6 +22,7 @@ namespace 自定义Uppercomputer_20200727.控件重做
     /// <summary>
     ///继承 HScrollBar类-实现动态绘制移动图形 
     /// </summary>
+    [ToolboxItem(false)]
     class HScrollBar_reform: SkinHScrollBar, ControlCopy
     {
         string AnalogMeter_ID { get; set; }//文本属性ID

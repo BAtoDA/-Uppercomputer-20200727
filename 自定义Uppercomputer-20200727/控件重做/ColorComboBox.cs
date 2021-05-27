@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
 using System.Reflection;
@@ -12,6 +13,7 @@ namespace 自定义Uppercomputer_20200727.控件重做
     /// <summary>
     /// 颜色选择下拉菜单
     /// </summary>
+    [ToolboxItem(false)]
     class ColorComboBox : ComboBox
     {
         /// <summary>

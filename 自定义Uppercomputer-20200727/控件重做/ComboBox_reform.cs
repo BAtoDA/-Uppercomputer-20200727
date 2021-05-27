@@ -5,6 +5,7 @@ using DragResizeControlWindowsDrawDemo;
 using PLC通讯规范接口;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -26,6 +27,7 @@ namespace 自定义Uppercomputer_20200727.控件重做
     /// 继承UIComboBox-下拉菜单实现进行相应的重写
     /// 此类不能在窗口设计器中使用-如果需要使用请拖拽父类
     /// </summary>
+    [ToolboxItem(false)]
     class pull_down_menu_reform : UIComboBox, ControlCopy, TextBox_base
     {
         string SkinLabel_ID { get; set; }//文本属性ID
@@ -164,27 +166,30 @@ namespace 自定义Uppercomputer_20200727.控件重做
         /// </summary>
         private void Time_Tick()
         {
-            try
+            lock (this)
             {
-                if (Form2.edit_mode == true)
+                try
                 {
-                    _Class = null;
-                    return;//返回方法
+                    if (Form2.edit_mode == true)
+                    {
+                        _Class = null;
+                        return;//返回方法
+                    }
+                    if (_Class.IsNull())
+                    {
+                        pull_down_menu_EF EF = new pull_down_menu_EF();//实例化EF
+                        _Class = EF.pull_down_menu_Parameter_Query(this.Parent + "-" + this.Name);//查询控件参数
+                                                                                                  //开始查询数据库中的项目数据--进行遍历
+                        Parameter_Query_Add parameter_Query_Add = new Parameter_Query_Add();//创建EF查询对象
+                        pull_Down_MenuNames = parameter_Query_Add.all_Parameter_Query_pull_down_menuName(this.Parent + "-" + this.Name);
+                    }
+                    if (_Class.IsNull() || this.DroppedDown) return;
+                    this.TextBox_state(_Class, TextBox.Refresh(_Class.读写设备.Trim(), numerical_format.Unsigned_32_Bit.ToString(), _Class.读写设备_地址.Trim(), _Class.读写设备_地址_具体地址.Trim()));
                 }
-                if (_Class.IsNull())
+                catch
                 {
-                    pull_down_menu_EF EF = new pull_down_menu_EF();//实例化EF
-                    _Class = EF.pull_down_menu_Parameter_Query(this.Parent + "-" + this.Name);//查询控件参数
-                    //开始查询数据库中的项目数据--进行遍历
-                    Parameter_Query_Add parameter_Query_Add = new Parameter_Query_Add();//创建EF查询对象
-                    pull_Down_MenuNames = parameter_Query_Add.all_Parameter_Query_pull_down_menuName(this.Parent + "-" +this.Name);
-                }
-                if (_Class.IsNull()||this.DroppedDown) return;
-                this.TextBox_state(_Class, TextBox.Refresh(_Class.读写设备.Trim(), numerical_format.Unsigned_32_Bit.ToString(), _Class.读写设备_地址.Trim(), _Class.读写设备_地址_具体地址.Trim()));
-            }
-            catch
-            {
 
+                }
             }
 
         }

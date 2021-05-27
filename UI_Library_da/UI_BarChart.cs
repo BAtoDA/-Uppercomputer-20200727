@@ -16,6 +16,7 @@ namespace UI_Library_da
     /// <柱形图>
     ///  * SunnyUI 开源控件库、工具类库、扩展类库、多页面开发框架。
     /// </summary>
+    [ToolboxItem(false)]
     public class UI_BarChart : Sunny.UI.UIChart
     {
         private bool NeedDraw;

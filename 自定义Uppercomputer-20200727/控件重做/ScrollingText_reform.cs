@@ -2,6 +2,7 @@
 using Sunny.UI;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -17,7 +18,8 @@ namespace 自定义Uppercomputer_20200727.控件重做
     /// <summary>
     /// 引用第三方开源控件重构对事件方法等进行具体的实现
     /// 报警条
-    /// </summary>LedBulb_parameter
+    /// </summary>
+    [ToolboxItem(false)]
     class ScrollingText_reform : UIScrollingText, ControlCopy
     {
         string SkinLabel_ID { get; set; }//文本属性ID

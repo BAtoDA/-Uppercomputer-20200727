@@ -3,6 +3,7 @@ using CCWin.SkinControl;
 using DragResizeControlWindowsDrawDemo;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -19,6 +20,7 @@ namespace 自定义Uppercomputer_20200727.控件重做
     ///  本类主要重写系统文本属性
     /// 继承系统文本
     /// </summary>
+    [ToolboxItem(false)]
     class SkinLabel_reform :SkinLabel, ControlCopy
     {
         string SkinLabel_ID { get; set; }//文本属性ID

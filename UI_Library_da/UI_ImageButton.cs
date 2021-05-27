@@ -14,6 +14,7 @@ namespace UI_Library_da
     /// <无图片按钮>
     ///  * SunnyUI 开源控件库、工具类库、扩展类库、多页面开发框架。
     /// </summary>
+    [ToolboxItem(false)]
     public class UI_ImageButton : PictureBox
     {
         private bool IsPress;

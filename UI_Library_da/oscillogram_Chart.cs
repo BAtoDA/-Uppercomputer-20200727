@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -12,6 +13,7 @@ namespace UI_Library_da
     /// <summary>
     /// 继承Chart类实现折线图波形图
     /// </summary>
+    [ToolboxItem(false)]
     public class oscillogram_Chart:Chart
     {
         /// <summary>

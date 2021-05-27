@@ -3,6 +3,7 @@ using CCWin.SkinControl;
 using DragResizeControlWindowsDrawDemo;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -22,6 +23,7 @@ namespace 自定义Uppercomputer_20200727.控件重做
     /// 继承数值显示软件
     ///  此类不能在窗口设计器中使用-如果需要使用请拖拽父类
     /// </summary>
+    [ToolboxItem(false)]
     class LedDisplay_reform : UI_LedDisplay, ControlCopy, TextBox_base
     {
         string LedDisplay_ID { get; set; }//文本属性ID
@@ -196,26 +198,28 @@ namespace 自定义Uppercomputer_20200727.控件重做
         /// </summary>
         private void Time_Tick()
         {
-            try
+            lock (this)
             {
-                if (Form2.edit_mode == true)
+                try
                 {
-                    _Class = null;
-                    return;//返回方法
+                    if (Form2.edit_mode == true)
+                    {
+                        _Class = null;
+                        return;//返回方法
+                    }
+                    if (_Class.IsNull())
+                    {
+                        LedDisplay_EF EF = new LedDisplay_EF();//实例化EF
+                        _Class = EF.LedDisplay_Parameter_Query(this.Parent + "- " + this.Name);//查询控件参数
+                    }
+                    if (_Class.IsNull()) return;
+                    this.TextBox_state(this, _Class, TextBox.Refresh(_Class.读写设备.Trim(), _Class.资料格式.Trim(), _Class.读写设备_地址.Trim(), _Class.读写设备_地址_具体地址.Trim()));
                 }
-                if (_Class.IsNull())
+                catch
                 {
-                    LedDisplay_EF EF = new LedDisplay_EF();//实例化EF
-                    _Class = EF.LedDisplay_Parameter_Query(this.Parent + "- " + this.Name);//查询控件参数
+
                 }
-                if (_Class.IsNull()) return;
-                this.TextBox_state(this, _Class, TextBox.Refresh(_Class.读写设备.Trim(), _Class.资料格式.Trim(), _Class.读写设备_地址.Trim(), _Class.读写设备_地址_具体地址.Trim()));
             }
-            catch
-            {
-
-            }
-
         }
         protected override void Dispose(bool disposing)
         {

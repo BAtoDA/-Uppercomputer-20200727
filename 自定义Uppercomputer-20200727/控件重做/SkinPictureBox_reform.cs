@@ -2,6 +2,7 @@
 using DragResizeControlWindowsDrawDemo;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -17,6 +18,7 @@ namespace 自定义Uppercomputer_20200727.控件重做
     /// <summary>
     /// 图片类
     /// </summary>
+    [ToolboxItem(false)]
     class SkinPictureBox_reform: SkinPictureBox, ControlCopy
     {
         public string SkinPictureBox_ID { get; set; }//该按钮ID

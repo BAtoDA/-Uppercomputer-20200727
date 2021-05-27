@@ -1,6 +1,7 @@
 ﻿using CCWin.SkinControl;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -32,6 +33,7 @@ namespace 自定义Uppercomputer_20200727.控件重做
     /// <summary>
     /// 本类主要重写右键菜单
     /// </summary>
+    [ToolboxItem(false)]
     class SkinContextMenuStrip_reform : SkinContextMenuStrip
     {
         /// <本类主要重写右键菜单的属性-事件-等>

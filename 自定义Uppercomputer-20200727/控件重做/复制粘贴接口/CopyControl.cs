@@ -13,6 +13,7 @@ namespace 自定义Uppercomputer_20200727.控件重做.复制粘贴接口
     /// <summary>
     /// 用于复制粘贴消息提示控件
     /// </summary>
+    [ToolboxItem(false)]
     public partial class CopyControl : UserControl
     {
         Form Control;

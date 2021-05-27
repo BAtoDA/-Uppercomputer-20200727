@@ -6,6 +6,7 @@ using PLC通讯规范接口;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -22,6 +23,7 @@ namespace 自定义Uppercomputer_20200727.控件重做
     /// 继承系统定时器
     /// 重写定时器控件--用于窗口的报警触发-与登录后的事件触发
     /// </summary>
+    [ToolboxItem(false)]
     class Event_time : System.Windows.Forms.Timer
     {
         /// <summary>

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 
@@ -10,6 +11,7 @@ namespace UI_Library_da
     /// <滚动文本--用于报警条>
     ///  * SunnyUI 开源控件库、工具类库、扩展类库、多页面开发框架。
     /// </summary>
+    [ToolboxItem(false)]
     class UI_ScrollingText : Sunny.UI.UIScrollingText
     {
         public UI_ScrollingText()

@@ -112,6 +112,8 @@ namespace 自定义Uppercomputer_20200727.PLC选择
                 busTcpClient?.ConnectClose();//切换模式
                 busTcpClient = new ModBusTcpClient(MODBUD_TCP.IPEndPoint.Address.ToString(), MODBUD_TCP.IPEndPoint.Port);//传入IP与端口
                 OperateResult connect = busTcpClient.ConnectServer();//是否打开成功？
+                busTcpClient.ReceiveBackTimeOut = 1000;
+                busTcpClient.ConnectTimeout = 1000;
                 if (connect.IsSuccess)
                 {
                     PLC_ready = true;//PLC开放正常

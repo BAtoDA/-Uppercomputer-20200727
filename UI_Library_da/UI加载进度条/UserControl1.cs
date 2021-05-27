@@ -11,6 +11,7 @@ using System.Runtime.InteropServices;
 
 namespace UI_Library_da.UI加载进度条
 {
+    [ToolboxItem(false)]
     public partial class UserControl1 : UserControl
     {
         public UserControl1()

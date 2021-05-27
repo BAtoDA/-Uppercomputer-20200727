@@ -2,6 +2,7 @@
 using HZH_Controls.Controls;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,6 +17,7 @@ namespace 自定义Uppercomputer_20200727.控件重做.工业图形控件
     /// 继承HZH_Controls控件
     /// 实现运输带控件
     /// </summary>
+    [ToolboxItem(false)]
     class Conveyor_reform : UCConveyor
     {
         string Conveyor_ID { get; set; }//文本属性ID

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.Linq;
@@ -16,6 +17,7 @@ namespace UI_Library_da
     /// <summary>
     /// 继承PictureBox进行 生成二维码/条形码-与显示
     /// </summary>
+    [ToolboxItem(false)]
     public class UI_ihatetheqrcode: PictureBox
     {
         /// <summary>

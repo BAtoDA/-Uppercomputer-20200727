@@ -5,6 +5,7 @@ using PLC通讯规范接口;
 using Sunny.UI;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -24,7 +25,8 @@ namespace 自定义Uppercomputer_20200727.控件重做
     /// <summary>
     /// 引用第三方开源控件重构对事件方法等进行具体的实现
     /// 指示灯
-    /// </summary>LedBulb_parameter
+    /// </summary>
+    [ToolboxItem(false)]
     class LedBulb_reform : UILedBulb, ControlCopy, Button_base
     {
         LedBulb_Class LedBulb_Class;//控件参数
@@ -229,24 +231,27 @@ namespace 自定义Uppercomputer_20200727.控件重做
         LedBulb_Class _Class;
         public void Time_Tick()
         {
-            try
+            lock (this)
             {
-                if (Form2.edit_mode == true)
+                try
                 {
-                    _Class = null;
-                    return;//返回方法
+                    if (Form2.edit_mode == true)
+                    {
+                        _Class = null;
+                        return;//返回方法
+                    }
+                    if (_Class.IsNull())
+                    {
+                        LedBulb_EF EF = new LedBulb_EF();//实例化EF
+                        _Class = EF.Button_Parameter_Query(this.Parent + "-" + this.Name);//查询控件参数
+                    }
+                    if (_Class.IsNull()) return;
+                    this.button_state(this, _Class, button_PLC.Refresh(this, _Class.读写设备.Trim(), _Class.读写设备_地址.Trim(), _Class.读写设备_地址_具体地址.Trim()));
                 }
-                if (_Class.IsNull())
+                catch
                 {
-                    LedBulb_EF EF = new LedBulb_EF();//实例化EF
-                    _Class = EF.Button_Parameter_Query(this.Parent + "-" + this.Name);//查询控件参数
-                }
-                if (_Class.IsNull()) return;
-                this.button_state(this, _Class, button_PLC.Refresh(this, _Class.读写设备.Trim(), _Class.读写设备_地址.Trim(), _Class.读写设备_地址_具体地址.Trim()));
-            }
-            catch
-            {
 
+                }
             }
         }
         public void ControlRefresh(Button_state button_State)

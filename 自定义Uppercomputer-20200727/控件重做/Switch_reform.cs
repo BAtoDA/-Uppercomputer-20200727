@@ -4,6 +4,7 @@ using DragResizeControlWindowsDrawDemo;
 using PLC通讯规范接口;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -21,11 +22,12 @@ using 自定义Uppercomputer_20200727.控件重做.控件类基;
 using 自定义Uppercomputer_20200727.控件重做.控件类基.按钮__TO__PLC方法;
 
 namespace 自定义Uppercomputer_20200727.控件重做
-{ 
+{
     /// <summary>
-   /// 引用第三方开源控件重构对事件方法等进行具体的实现
-   /// 切换开关
-   /// </summary>
+    /// 引用第三方开源控件重构对事件方法等进行具体的实现
+    /// 切换开关
+    /// </summary>
+    [ToolboxItem(false)]
     class Switch_reform : UI_Switch, ControlCopy, Button_base
     {
         Switch_Class Switch_Class;//控件参数
@@ -262,24 +264,27 @@ namespace 自定义Uppercomputer_20200727.控件重做
         Switch_Class _Class;
         public void Time_Tick()
         {
-            try
+            lock (this)
             {
-                if (Form2.edit_mode == true)
+                try
                 {
-                    _Class = null;
-                    return;//返回方法
+                    if (Form2.edit_mode == true)
+                    {
+                        _Class = null;
+                        return;//返回方法
+                    }
+                    if (_Class.IsNull())
+                    {
+                        Switch_EF EF = new Switch_EF();//实例化EF
+                        _Class = EF.Button_Parameter_Query(this.Parent + "-" + this.Name);//查询控件参数
+                    }
+                    if (_Class.IsNull()) return;
+                    this.button_state(this, _Class, button_PLC.Refresh(this, _Class.读写设备.Trim(), _Class.读写设备_地址.Trim(), _Class.读写设备_地址_具体地址.Trim()));
                 }
-                if (_Class.IsNull())
+                catch
                 {
-                    Switch_EF EF = new Switch_EF();//实例化EF
-                    _Class = EF.Button_Parameter_Query(this.Parent + "-" + this.Name);//查询控件参数
-                }
-                if (_Class.IsNull()) return;
-                this.button_state(this, _Class, button_PLC.Refresh(this, _Class.读写设备.Trim(), _Class.读写设备_地址.Trim(), _Class.读写设备_地址_具体地址.Trim()));
-            }
-            catch
-            {
 
+                }
             }
         }
         public void ControlRefresh(Button_state button_State)

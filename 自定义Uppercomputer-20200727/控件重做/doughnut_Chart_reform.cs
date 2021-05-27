@@ -11,6 +11,11 @@ using DragResizeControlWindowsDrawDemo;
 using 自定义Uppercomputer_20200727.控件重做.按钮类与宏指令通用类;
 using 自定义Uppercomputer_20200727.修改参数界面;
 using 自定义Uppercomputer_20200727.控件重做.复制粘贴接口;
+using 自定义Uppercomputer_20200727.控件重做.控件类基;
+using 自定义Uppercomputer_20200727.控件重做.控件类基.文本__TO__PLC方法;
+using System.Threading;
+using CCWin.SkinControl;
+using System.ComponentModel;
 
 namespace 自定义Uppercomputer_20200727.控件重做
 {
@@ -18,9 +23,17 @@ namespace 自定义Uppercomputer_20200727.控件重做
     /// 继承Chart实现圆环图形绘制
     /// 此类不能在窗口设计器中使用-如果需要使用请拖拽父类
     /// </summary>
-    class doughnut_Chart_reform : doughnut_Chart, ControlCopy
+    [ToolboxItem(false)]
+    class doughnut_Chart_reform : doughnut_Chart, ControlCopy, TextBox_base
     {
         string doughnut_Chart_ID { get; set; }//圆环图形属性ID
+
+        public System.Threading.Timer PLC_time { get; }
+
+        public TextBox_PLC TextBox { get; }
+
+        public string Data_Text { get => this.Text; }
+
         SkinContextMenuStrip_reform menuStrip_Reform;//绑定右键菜单类
         /// <summary>
         /// 构造函数初始化控件UI
@@ -37,6 +50,12 @@ namespace 自定义Uppercomputer_20200727.控件重做
             this.MouseEnter += MouseEnter_reform;//注册事件--获取控件信息
             this.TextChanged += TextChanged_reform;//注册事件
             DragResizeControl.RegisterControl(this);//实现控件改变大小与拖拽位置
+            TextBox = new TextBox_PLC();
+            PLC_time = new System.Threading.Timer(new TimerCallback((s) =>
+            {
+                this.Time_Tick();
+            }));
+            PLC_time.Change(500, 300);
         }
         /// <方法重写当鼠标移到控件时获取——ID>
         private void MouseEnter_reform(object send, EventArgs e)
@@ -47,7 +66,7 @@ namespace 自定义Uppercomputer_20200727.控件重做
             this.menuStrip_Reform.SkinContextMenuStrip_Button_ID = button.Parent.ToString();//写入信息
             this.menuStrip_Reform.all_purpose = send;//获取事件触发的控件
             this.menuStrip_Reform.SkinContextMenuStrip_Button_type = this.GetType().Name;//获取类型名称
-                                                                                         //如果用户不开启编辑模式--右键菜单选项为锁定状态
+            //如果用户不开启编辑模式--右键菜单选项为锁定状态
             this.menuStrip_Reform.Enabled = Form2.edit_mode;//启用状态
         }
         /// <方法重写实现拖放功能—>
@@ -105,7 +124,57 @@ namespace 自定义Uppercomputer_20200727.控件重做
             this.MouseMove -= MouseMove__reform;//移除事件
             DragResizeControl.UnRegisterControl(this);//实现控件改变大小与拖拽位置
             this.menuStrip_Reform.Dispose();
+            PLC_time.Dispose();
             base.Dispose(disposing);
+        }
+        /// <summary>
+        /// 填充文本数据 doughnut_Chart
+        /// </summary>
+        /// <param name="doughnut_Chart_Reform"></param>
+        /// <param name="doughnut_Chart_Class"></param>
+        /// <param name="Data"></param>
+        private void TextBox_state(List<int> doughnut_Chart_Data)//填充文本数据
+        {
+            try
+            {
+                this.BeginInvoke((MethodInvoker)delegate//委托当前窗口处理控件UI
+                {
+                    if (this.Load_number != doughnut_Chart_Data.Count) return;
+                    this.doughnut_Chart_Data_INT = doughnut_Chart_Data;//获取要填充的数据
+                    this.doughnut_Chart_Load();//重新刷新UI
+                });
+            }
+            catch { return; }
+        }
+        doughnut_Chart_Class _Class;
+        /// <summary>
+        /// 定时刷新控件
+        /// </summary>
+        private void Time_Tick()
+        {
+            lock (this)
+            {
+                try
+                {
+                    if (Form2.edit_mode == true)
+                    {
+                        _Class = null;
+                        return;//返回方法
+                    }
+                    if (_Class.IsNull())
+                    {
+                        doughnut_Chart_EF EF = new doughnut_Chart_EF();//实例化EF
+                        _Class = EF.doughnut_Chart_Parameter_Query(this.Parent + "- " + this.Name);//查询控件参数
+                    }
+                    if (_Class.IsNull()) return;
+                    this.TextBox_state(TextBox.Refresh(_Class.读写设备.Trim(), _Class.资料格式.Trim(), _Class.读写设备_地址.Trim(), _Class.读写设备_地址_具体地址.Trim(), _Class.通道数量));
+                }
+                catch
+                {
+
+                }
+            }
+
         }
         /// <summary>
         /// 复制控件的属性
@@ -164,6 +233,11 @@ namespace 自定义Uppercomputer_20200727.控件重做
         public object Clone()
         {
             return new doughnut_Chart_reform() as object;//返回数据
+        }
+
+        public void ControlRefresh(string Data)
+        {
+            throw new NotImplementedException();
         }
     }
 }

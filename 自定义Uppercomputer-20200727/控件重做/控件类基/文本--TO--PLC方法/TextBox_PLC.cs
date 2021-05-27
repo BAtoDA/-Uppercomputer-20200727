@@ -11,6 +11,7 @@ using PLC通讯规范接口;
 using 欧姆龙Fins协议.欧姆龙.报文处理;
 using 自定义Uppercomputer_20200727.PLC选择;
 using 自定义Uppercomputer_20200727.PLC选择.MODBUS_TCP监控窗口;
+using 自定义Uppercomputer_20200727.控件重做.按钮类与宏指令通用类;
 
 namespace 自定义Uppercomputer_20200727.控件重做.控件类基.文本__TO__PLC方法
 {
@@ -123,6 +124,95 @@ namespace 自定义Uppercomputer_20200727.控件重做.控件类基.文本__TO__
             }
             return "OK_RUN";
         }
+        /// <summary>
+        /// 根据PLC类型读取--圆形图类 doughnut_Chart
+        /// </summary>
+        /// <param name="pLC"></param>
+        /// <param name="doughnut_Chart_Class"></param>
+        /// <param name="doughnut_Chart_Reform"></param>
+        /// <returns></returns>
+        public List<int> Refresh(string pLC, string format, string pattern, string specific,int aisle)//根据PLC类型读取--圆形图类 doughnut_Chart
+        {
+            List<int> doughnut_Chart_Data = new List<int>();//指示要填充的数据--作为显示
+            switch (pLC)
+            {
+                case "Mitsubishi":
+                    if (PLCselect_Form.Mitsubishi.Trim() != "在线访问")//判断用户选定模式
+                    {
+                        IPLC_interface mitsubishi_AxActUtlType = new Mitsubishi_axActUtlType();//实例化接口--实现三菱仿真
+                        if (mitsubishi_AxActUtlType.PLC_ready)//PLC是否准备完成
+                        {
+                            doughnut_Chart_Data = mitsubishi_AxActUtlType.PLC_read_D_register_bit(pattern, specific.Trim(), Index(format), aisle.ToString());//读取PLC数值
+                        }
+                    }
+                    else
+                    {
+                        IPLC_interface mitsubishi = new Mitsubishi_realize();//实例化接口--实现三菱在线访问
+                        if (mitsubishi.PLC_ready)//PLC是否准备完成
+                        {
+                            doughnut_Chart_Data = mitsubishi.PLC_read_D_register_bit(pattern, specific.Trim(), Index(format), aisle.ToString());//读取PLC数值
+                        }
+                    }
+                    break;
+                case "Siemens":
+                    IPLC_interface Siemens = new Siemens_realize();//实例化接口--实现西门子在线访问
+                    if (Siemens.PLC_ready)//PLC是否准备完成
+                    {
+                        doughnut_Chart_Data = Siemens.PLC_read_D_register_bit(pattern, specific.Trim(), Index(format), aisle.ToString());//读取PLC数值
+                    }
+                    break;
+                case "Modbus_TCP":
+                    IPLC_interface MODBUD_TCP = new MODBUD_TCP();//实例化接口--实现MODBUS TCP
+                    if (MODBUD_TCP.PLC_ready)//PLC是否准备完成
+                    {
+                        //由于modbus_TCP读写状态不同 读输出 写输入模式 
+                        doughnut_Chart_Data = MODBUD_TCP.PLC_read_D_register_bit(pattern, specific.Trim(), Index(format), aisle.ToString());//读取PLC数值
+                    }
+                    break;
+                case "HMI":
+                    doughnut_Chart_Data = numerical_public.Index(aisle + 1, specific.ToInt32(), doughnut_Chart_Data);//获取数据
+                    //获取到数据进行填充 
+                    break;
+                case "OmronTCP":
+                    IPLC_interface FinsTcp = new OmronFinsTcp();//实例化接口--实现OmronTCP
+                    if (FinsTcp.PLC_ready)
+                    {
+                        doughnut_Chart_Data = FinsTcp.PLC_read_D_register_bit(pattern, specific.Trim(), Index(format), aisle.ToString());//读取PLC数值
+                    }
+                    break;
+                case "OmronUDP":
+                    IPLC_interface FinsUdp = new OmronFinsUDP();//实例化接口--实现OmronUDP
+                    if (FinsUdp.PLC_ready)
+                    {
+                        doughnut_Chart_Data = FinsUdp.PLC_read_D_register_bit(pattern, specific.Trim(), Index(format), aisle.ToString());//读取PLC数值
+                    }
+                    break;
+                case "OmronCIP":
+                    IPLC_interface Finscip = new OmronFinsCIP();//实例化接口--实现OmronCIP
+                    if (Finscip.PLC_ready)
+                    {
+                        doughnut_Chart_Data = Finscip.PLC_read_D_register_bit(pattern, specific.Trim(), Index(format), aisle.ToString());//读取PLC数值
+                    }
+                    break;
+            }
+            return doughnut_Chart_Data;
+        }
+        /// <summary>
+        /// int泛型表转换成双精度浮点数
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns></returns>
+        public List<double> int_to_double(List<int> data)
+        {
+            List<double> vs = new List<double>();
+            foreach (int i in data) vs.Add(Convert.ToDouble(i));
+            return vs;
+        }
+        /// <summary>
+        /// 查询资料格式
+        /// </summary>
+        /// <param name="Name"></param>
+        /// <returns></returns>
         public numerical_format Index(string Name)//查询索引
         {
             foreach (numerical_format suit in Enum.GetValues(typeof(numerical_format)))
@@ -227,5 +317,6 @@ namespace 自定义Uppercomputer_20200727.控件重做.控件类基.文本__TO__
             }
             return data;
         }
+
     }
 }

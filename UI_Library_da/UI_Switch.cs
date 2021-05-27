@@ -14,9 +14,9 @@ namespace UI_Library_da
     /// <切换开关>
     ///  * SunnyUI 开源控件库、工具类库、扩展类库、多页面开发框架。
     /// </summary>
-    [DefaultEvent("ValueChanged")]
+     [DefaultEvent("ValueChanged")]
         [DefaultProperty("ActiveValue")]
-        [ToolboxItem(true)]
+        [ToolboxItem(false)]
         public  class UI_Switch : Sunny.UI.UIControl
     {
             public delegate void OnValueChanged(object sender, bool value);

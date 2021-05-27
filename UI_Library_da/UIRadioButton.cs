@@ -16,7 +16,7 @@ namespace UI_Library_da
     /// </summary>
     [DefaultEvent("ValueChanged")]
     [DefaultProperty("Text")]
-    [ToolboxItem(true)]
+    [ToolboxItem(false)]
     public class UI_RadioButton : UIControl
     {
         public delegate void OnValueChanged(object sender, bool value);

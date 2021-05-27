@@ -1,6 +1,7 @@
 ﻿using DragResizeControlWindowsDrawDemo;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -18,6 +19,7 @@ namespace 自定义Uppercomputer_20200727.控件重做
     /// 引用UI_Library_da 继承 oscillogram_Chart
     /// 此类不能在窗口设计器中使用-如果需要使用请拖拽父类
     /// </summary>
+    [ToolboxItem(false)]
     class oscillogram_Chart_reform : oscillogram_Chart, ControlCopy
     {
         string doughnut_Chart_ID { get; set; }//圆环图形属性ID

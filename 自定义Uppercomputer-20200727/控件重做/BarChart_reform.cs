@@ -1,6 +1,7 @@
 ﻿using Sunny.UI;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,6 +15,7 @@ namespace 自定义Uppercomputer_20200727.控件重做
     /// 继承UI_BarChart--进行柱形图绘制与重写
     /// 此类不能在窗口设计器中使用-如果需要使用请拖拽父类
     /// </summary>
+    [ToolboxItem(false)]
     class BarChart_reform : UI_Library_da.UI_BarChart
     {
         public BarChart_reform()

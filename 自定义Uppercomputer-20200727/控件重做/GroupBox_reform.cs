@@ -1,6 +1,7 @@
 ﻿using DragResizeControlWindowsDrawDemo;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -17,6 +18,7 @@ namespace 自定义Uppercomputer_20200727.控件重做
     /// 引用第三方开源控件重构
     /// 边框控件
     /// </summary>
+    [ToolboxItem(false)]
     class GroupBox_reform : UI_Library_da.UI_GroupBox, ControlCopy
     {
         string SkinLabel_ID { get; set; }//文本属性ID

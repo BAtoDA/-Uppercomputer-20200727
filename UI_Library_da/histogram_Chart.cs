@@ -1,6 +1,7 @@
 ﻿using CCWin.SkinControl;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -13,6 +14,7 @@ namespace UI_Library_da
     /// <summary>
     /// 继承Chart图片--进行柱形图绘制
     /// </summary>
+    [ToolboxItem(false)]
     public class histogram_Chart: Chart
     {
         /// <summary>

@@ -1,8 +1,10 @@
 ﻿using CCWin.SkinClass;
+using CCWin.SkinControl;
 using DragResizeControlWindowsDrawDemo;
 using PLC通讯规范接口;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -15,13 +17,16 @@ using 自定义Uppercomputer_20200727.PLC选择.MODBUS_TCP监控窗口;
 using 自定义Uppercomputer_20200727.修改参数界面;
 using 自定义Uppercomputer_20200727.控件重做.复制粘贴接口;
 using 自定义Uppercomputer_20200727.控件重做.按钮类与宏指令通用类;
+using 自定义Uppercomputer_20200727.控件重做.控件类基;
+using 自定义Uppercomputer_20200727.控件重做.控件类基.按钮__TO__PLC方法;
 
 namespace 自定义Uppercomputer_20200727.控件重做
 {
     /// <summary>
     /// 继承UIRadioButton--实现单选按钮
     /// </summary>
-    class RadioButton_reform: UI_RadioButton, ControlCopy
+    [ToolboxItem(false)]
+    class RadioButton_reform: UI_RadioButton, ControlCopy, Button_base
     {
         /// <summary>
         /// 指示着当前控件已经是否选择
@@ -38,6 +43,11 @@ namespace 自定义Uppercomputer_20200727.控件重做
         }
         RadioButton_Class RadioButton_Class;//控件参数
         public string RadioButton_ID { get; set; }//该按钮ID
+
+        public System.Threading.Timer PLC_time { get; }
+
+        public Button_to_plc button_PLC { get; }
+
         SkinContextMenuStrip_reform menuStrip_Reform;//绑定右键菜单类
         public RadioButton_reform()//构造函数
         {
@@ -51,6 +61,12 @@ namespace 自定义Uppercomputer_20200727.控件重做
             this.MouseMove += MouseMove__reform;//注册事件
             this.DoubleClick += DoubleClick_reform;//注册事件
             DragResizeControl.RegisterControl(this);//实现控件改变大小与拖拽位置
+            button_PLC = new Button_to_plc();
+            PLC_time = new System.Threading.Timer(new TimerCallback((s) =>
+            {
+                this.Time_Tick();
+            }));
+            PLC_time.Change(500, 300);
         }
         /// <方法重写当鼠标移到控件时获取——ID>
         private void MouseEnter_reform(object send, EventArgs e)
@@ -69,7 +85,14 @@ namespace 自定义Uppercomputer_20200727.控件重做
         {
             this.Focus();
             if (Form2.edit_mode) return;
-            plc(RadioButton_Class.读写设备.Trim());//选择相应PLC 进行写入
+            //当按钮按下触发—写入PLC状态
+            this.BeginInvoke((EventHandler)delegate
+            {
+                if (RadioButton_Class.读写不同地址_ON_OFF == 0)
+                    button_PLC.plc(RadioButton_Class.读写设备.Trim(), RadioButton_Class.操作模式.Trim(), RadioButton_Class.读写设备_地址.Trim(), RadioButton_Class.读写设备_地址_具体地址.Trim(), RadioButton_Class.读写不同地址_ON_OFF, RadioButton_Class.写设备_地址_复选.Trim(), RadioButton_Class.写设备_地址_具体地址_复选.Trim());//选择相应PLC 进行写入
+                else
+                    button_PLC.plc(RadioButton_Class.写设备_复选.Trim(), RadioButton_Class.操作模式.Trim(), RadioButton_Class.读写设备_地址.Trim(), RadioButton_Class.读写设备_地址_具体地址.Trim(), RadioButton_Class.读写不同地址_ON_OFF, RadioButton_Class.写设备_地址_复选.Trim(), RadioButton_Class.写设备_地址_具体地址_复选.Trim());//选择相应PLC 进行写入
+            });
         }
         /// <方法重写当触发双击>
         private void DoubleClick_reform(object send, EventArgs e)
@@ -107,9 +130,17 @@ namespace 自定义Uppercomputer_20200727.控件重做
                 startMove = false;
             }
             if (Form2.edit_mode) return;
-            if (state)
+            if (button_PLC.state)
             {
-                ThreadPool.QueueUserWorkItem((sr) => { plc(RadioButton_Class.读写设备.Trim(), state); });//选择相应PLC--复归型按钮--把任务交到线程池序列
+                if (RadioButton_Class.读写不同地址_ON_OFF == 0)
+                    ThreadPool.QueueUserWorkItem((sr) =>
+                    {
+                        button_PLC.plc(RadioButton_Class.读写设备.Trim(), RadioButton_Class.读写设备_地址.Trim(), RadioButton_Class.读写设备_地址_具体地址.Trim(), RadioButton_Class.读写不同地址_ON_OFF, RadioButton_Class.写设备_地址_复选.Trim(), RadioButton_Class.写设备_地址_具体地址_复选.Trim(), button_PLC.state);
+                    });//选择相应PLC--复归型按钮--把任务交到线程池序列
+                else
+                    ThreadPool.QueueUserWorkItem((sr) => {
+                        button_PLC.plc(RadioButton_Class.写设备_复选.Trim(), RadioButton_Class.读写设备_地址.Trim(), RadioButton_Class.读写设备_地址_具体地址.Trim(), RadioButton_Class.读写不同地址_ON_OFF, RadioButton_Class.写设备_地址_复选.Trim(), RadioButton_Class.写设备_地址_具体地址_复选.Trim(), button_PLC.state);
+                    });//选择相应PLC--复归型按钮--把任务交到线程池序列
             }
         }
         private void MouseMove__reform(object sender, MouseEventArgs e)//鼠标拖放位置
@@ -123,151 +154,6 @@ namespace 自定义Uppercomputer_20200727.控件重做
                 //this.Location = new Point(x, y);
             }
         }
-        private string plc(string pLC)//根据PLC类型写入
-        {
-            switch (pLC)
-            {
-                case "Mitsubishi"://三菱有二种模式 --在线与仿真
-                    if (PLCselect_Form.Mitsubishi.Trim() != "在线访问")//判断用户选定模式
-                    {
-                        IPLC_interface mitsubishi_AxActUtlType = new Mitsubishi_axActUtlType();//实例化接口--实现三菱仿真
-                        if (mitsubishi_AxActUtlType.PLC_ready)//PLC是否准备完成
-                        {
-                            Button_write_select(RadioButton_Class.操作模式.Trim(), mitsubishi_AxActUtlType);//根据按钮模式进行写入操作
-                        }
-                        else MessageBox.Show("未连接设备：" + RadioButton_Class.读写设备.Trim(), "Err");//推出异常提示用户
-                    }
-                    else
-                    {
-                        IPLC_interface mitsubishi = new Mitsubishi_realize();//实例化接口--实现三菱在线访问
-                        if (mitsubishi.PLC_ready)//PLC是否准备完成
-                        {
-                            Button_write_select(RadioButton_Class.操作模式.Trim(), mitsubishi);//根据按钮模式进行写入操作
-                        }
-                        else MessageBox.Show("未连接设备：" + RadioButton_Class.读写设备.Trim(), "Err");//推出异常提示用户
-                    }
-                    break;
-                case "Siemens":
-                    IPLC_interface Siemens = new Siemens_realize();//实例化接口--实现西门子在线访问
-                    if (Siemens.PLC_ready)//PLC是否准备完成
-                    {
-                        Button_write_select(RadioButton_Class.操作模式.Trim(), Siemens);//根据按钮模式进行写入操作
-                    }
-                    else MessageBox.Show("未连接设备：" + RadioButton_Class.读写设备.Trim(), "Err");//推出异常提示用户
-                    break;
-                case "Modbus_TCP":
-                    MODBUD_TCP MODBUD_TCP = new MODBUD_TCP();//实例化接口--实现MODBUS TCP
-                    if (MODBUD_TCP.IPLC_interface_PLC_ready)//PLC是否准备完成
-                    {
-                        Button_write_select(RadioButton_Class.操作模式.Trim(), MODBUD_TCP);//根据按钮模式进行写入操作
-                    }
-                    else MessageBox.Show("未连接设备：" + RadioButton_Class.读写设备.Trim(), "Err");//推出异常提示用户
-                    break;
-                //访问 宏指令数据区--Data_M
-                case "HMI":
-                    Button_HMI_public.Button_HMI_write_select(RadioButton_Class.读写设备_地址_具体地址.Trim().ToInt32(), "复归型_Off");//根据按钮模式进行写入操作 
-                    break;
-            }
-            return "OK";
-        }
-        private string plc(string pLC, bool state)//根据PLC类型写入--为复归型按钮使用
-        {
-            switch (pLC)
-            {
-                case "Mitsubishi":
-                    if (PLCselect_Form.Mitsubishi.Trim() != "在线访问")//判断用户选定模式
-                    {
-                        IPLC_interface mitsubishi_AxActUtlType = new Mitsubishi_axActUtlType();//实例化接口--实现三菱仿真
-                        if (mitsubishi_AxActUtlType.PLC_ready)//PLC是否准备完成
-                        {
-                            Button_write_select("复归型_Off", mitsubishi_AxActUtlType);//根据按钮模式进行写入操作
-                        }
-                        else MessageBox.Show("未连接设备：" + RadioButton_Class.读写设备.Trim(), "Err");//推出异常提示用户                       
-                    }
-                    else
-                    {
-                        IPLC_interface mitsubishi = new Mitsubishi_realize();//实例化接口--实现三菱在线访问
-                        if (mitsubishi.PLC_ready)//PLC是否准备完成
-                        {
-                            Button_write_select("复归型_Off", mitsubishi);//根据按钮模式进行写入操作
-                        }
-                        else MessageBox.Show("未连接设备：" + RadioButton_Class.读写设备.Trim(), "Err");//推出异常提示用户
-                    }
-                    break;
-                case "Siemens":
-                    IPLC_interface Siemens = new Siemens_realize();//实例化接口--实现西门子在线访问
-                    if (Siemens.PLC_ready)//PLC是否准备完成
-                    {
-                        Button_write_select("复归型_Off", Siemens);//根据按钮模式进行写入操作
-                    }
-                    else MessageBox.Show("未连接设备：" + RadioButton_Class.读写设备.Trim(), "Err");//推出异常提示用户
-                    break;
-                case "Modbus_TCP":
-                    MODBUD_TCP MODBUD_TCP = new MODBUD_TCP();//实例化接口--实现三菱仿真
-                    if (MODBUD_TCP.IPLC_interface_PLC_ready)//PLC是否准备完成
-                    {
-                        Button_write_select("复归型_Off", MODBUD_TCP);//根据按钮模式进行写入操作
-                    }
-                    else MessageBox.Show("未连接设备：" + RadioButton_Class.读写设备.Trim(), "Err");//推出异常提示用户
-                    break;
-                //访问 宏指令数据区--Data_M
-                case "HMI":
-                    Button_HMI_public.Button_HMI_write_select(RadioButton_Class.读写设备_地址_具体地址.Trim().ToInt32(), "复归型_Off");//根据按钮模式进行写入操作 
-                    break;
-            }
-            return "OK";
-        }
-        bool state = false;//定义标志位--复归型按钮-判断状态
-        private void Button_write_select(string Name, IPLC_interface pLC_Interface)//按照按钮模式写入
-        {
-            switch (Name)
-            {
-                case "Set_as_on"://设置常ON
-                    pLC_Interface.PLC_write_M_bit(RadioButton_Class.读写设备_地址.Trim(), RadioButton_Class.读写设备_地址_具体地址.Trim(), Button_state.ON);//写入常ON
-                    break;
-                case "Set_as_off"://设置常OFF
-                    pLC_Interface.PLC_write_M_bit(RadioButton_Class.读写设备_地址.Trim(), RadioButton_Class.读写设备_地址_具体地址.Trim(), Button_state.Off);//写入常Off
-                    break;
-                case "切换开关":
-                    List<bool> data = pLC_Interface.PLC_read_M_bit(RadioButton_Class.读写设备_地址.Trim(), RadioButton_Class.读写设备_地址_具体地址.Trim());//先读取要写入的状态
-                    pLC_Interface.PLC_write_M_bit(RadioButton_Class.读写设备_地址.Trim(), RadioButton_Class.读写设备_地址_具体地址.Trim(), data[0] == true ? Button_state.Off : Button_state.ON);//根据要写入的状态进行取反
-                    break;
-                case "复归型":
-                    pLC_Interface.PLC_write_M_bit(RadioButton_Class.读写设备_地址.Trim(), RadioButton_Class.读写设备_地址_具体地址.Trim(), Button_state.ON);//先写入ON--后用事件复位-off
-                    state = true;//标志位                      
-                    break;
-                case "复归型_Off":
-                    Thread.Sleep(300);//延时300ms复位
-                    pLC_Interface.PLC_write_M_bit(RadioButton_Class.读写设备_地址.Trim(), RadioButton_Class.读写设备_地址_具体地址.Trim(), Button_state.Off);//先写入ON--后用事件复位-off
-                    state = false;//标志位
-                    break;
-            }
-        }
-        //private void Button_write_select(string Name, string modbus_tcp, MODBUD_TCP pLC_Interface)//按照按钮模式写入
-        //{
-        //    switch (Name)
-        //    {
-        //        case "Set_as_on"://设置常ON
-        //            pLC_Interface.IPLC_interface_PLC_write_M_bit(RadioButton_Class.读写设备_地址.Trim(), RadioButton_Class.读写设备_地址_具体地址.Trim(), Button_state.ON);//写入常ON
-        //            break;
-        //        case "Set_as_off"://设置常OFF
-        //            pLC_Interface.IPLC_interface_PLC_write_M_bit(RadioButton_Class.读写设备_地址.Trim(), RadioButton_Class.读写设备_地址_具体地址.Trim(), Button_state.Off);//写入常Off
-        //            break;
-        //        case "切换开关":
-        //            List<bool> data = pLC_Interface.IPLC_interface_PLC_read_M_bit(RadioButton_Class.读写设备_地址.Trim(), RadioButton_Class.读写设备_地址_具体地址.Trim());//先读取要写入的状态
-        //            pLC_Interface.IPLC_interface_PLC_write_M_bit(RadioButton_Class.读写设备_地址.Trim(), RadioButton_Class.读写设备_地址_具体地址.Trim(), data[0] == true ? Button_state.Off : Button_state.ON);//根据要写入的状态进行取反
-        //            break;
-        //        case "复归型":
-        //            pLC_Interface.IPLC_interface_PLC_write_M_bit(RadioButton_Class.读写设备_地址.Trim(), RadioButton_Class.读写设备_地址_具体地址.Trim(), Button_state.ON);//先写入ON--后用事件复位-off
-        //            state = true;//标志位                      
-        //            break;
-        //        case "复归型_Off":
-        //            Thread.Sleep(300);//延时300ms复位
-        //            pLC_Interface.IPLC_interface_PLC_write_M_bit(RadioButton_Class.读写设备_地址.Trim(), RadioButton_Class.读写设备_地址_具体地址.Trim(), Button_state.Off);//先写入ON--后用事件复位-off
-        //            state = false;//标志位
-        //            break;
-        //    }
-        //}
         protected override void Dispose(bool disposing)
         {
             this.MouseEnter -= MouseEnter_reform;//移除事件
@@ -277,6 +163,7 @@ namespace 自定义Uppercomputer_20200727.控件重做
             this.MouseMove -= MouseMove__reform;//移除事件
             this.DoubleClick -= DoubleClick_reform;//移除事件
             DragResizeControl.UnRegisterControl(this);
+            PLC_time.Dispose();
             menuStrip_Reform.Dispose();
             base.Dispose(disposing);
         }
@@ -338,6 +225,40 @@ namespace 自定义Uppercomputer_20200727.控件重做
         public object Clone()
         {
             return new RadioButton_reform() as object;//返回数据
+        }
+        public void button_state(Button_state button_)
+        {
+            this.Checked =Convert.ToBoolean(button_);
+        }
+        RadioButton_Class _Class;
+        public void Time_Tick()
+        {
+            lock (this)
+            {
+                try
+                {
+                    if (Form2.edit_mode == true)
+                    {
+                        _Class = null;
+                        return;//返回方法
+                    }
+                    if (_Class.IsNull())
+                    {
+                        RadioButton_EF EF = new RadioButton_EF();//实例化EF
+                        _Class = EF.Button_Parameter_Query(this.Parent + "-" + this.Name);//查询控件参数
+                    }
+                    if (_Class.IsNull()) return;
+                    this.button_state(button_PLC.Refresh(this, _Class.读写设备.Trim(), _Class.读写设备_地址.Trim(), _Class.读写设备_地址_具体地址.Trim()));
+                }
+                catch
+                {
+
+                }
+            }
+        }
+        public void ControlRefresh(Button_state button_State)
+        {
+            throw new NotImplementedException();
         }
     }
 }

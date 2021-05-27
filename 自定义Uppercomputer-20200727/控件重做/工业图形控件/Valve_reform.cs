@@ -14,6 +14,7 @@ using 自定义Uppercomputer_20200727.控件重做.按钮类与宏指令通用�
 
 namespace 自定义Uppercomputer_20200727.控件重做.工业图形控件
 {
+    [ToolboxItem(false)]
     public partial class Valve_reform : UCValve
     {
         string Valve_ID { get; set; }//文本属性ID

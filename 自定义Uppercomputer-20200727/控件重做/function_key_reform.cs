@@ -2,6 +2,7 @@
 using DragResizeControlWindowsDrawDemo;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,6 +19,7 @@ namespace 自定义Uppercomputer_20200727.控件重做
     /// 继承UI_Button 实现功能键--画面切换
     /// 此类不能在窗口设计器中使用-如果需要使用请拖拽父类
     /// </summary>
+    [ToolboxItem(false)]
     class function_key_reform : UI_Button, ControlCopy
     {
         string LedDisplay_ID { get; set; }//文本属性ID
