@@ -245,22 +245,27 @@ namespace 自定义Uppercomputer_20200727.控件重做
         Button_Class _Class;
         public void Time_Tick()
         {
+            if (this.IsDisposed || this.Created == false) return;//用户不开启PLC功能
+
             lock (this)
             {
                 try
                 {
-                    if (Form2.edit_mode == true)
+                    this.BeginInvoke((EventHandler)delegate
                     {
-                        _Class = null;
-                        return;//返回方法
-                    }
-                    if (_Class.IsNull())
-                    {
-                        Button_EF EF = new Button_EF();//实例化EF
-                        _Class = EF.Button_Parameter_Query(this.Parent + "-" + this.Name);//查询控件参数
-                    }
-                    if (_Class.IsNull()) return;
-                    this.button_state(this, _Class, button_PLC.Refresh(this, _Class.读写设备.Trim(), _Class.读写设备_地址.Trim(), _Class.读写设备_地址_具体地址.Trim()));
+                        if (Form2.edit_mode == true)
+                        {
+                            _Class = null;
+                            return;//返回方法
+                            }
+                        if (_Class.IsNull())
+                        {
+                            Button_EF EF = new Button_EF();//实例化EF
+                                _Class = EF.Button_Parameter_Query(this.Parent + "-" + this.Name);//查询控件参数
+                            }
+                        if (_Class.IsNull()) return;
+                        this.button_state(this, _Class, button_PLC.Refresh(this, _Class.读写设备.Trim(), _Class.读写设备_地址.Trim(), _Class.读写设备_地址_具体地址.Trim()));
+                    });
                 }
                 catch
                 {

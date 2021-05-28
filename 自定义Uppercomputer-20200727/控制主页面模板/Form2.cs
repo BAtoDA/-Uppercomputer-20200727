@@ -707,10 +707,26 @@ namespace 自定义Uppercomputer_20200727
             if (PLC_read_Tick & edit_mode != true) time_Reform.read_status = false; else time_Reform.read_status = true; //指示定时器可以开始遍历
             if (edit_mode) { PLC_read_ok = false; PLC_read_Tick = false; };//指示用户开始了编辑模式
             asc.RenewControlRect(this);//实时保存控件大小与位置
-            //判断用户是否没进入编辑模式--并且没有连接设备
+            try
+            {
+                if (GetForegroundWindow() == this.Handle)
+                {
+                    Form2_Activated(this, new EventArgs());
+                }
+                else
+                {
+                    Form2_Leave(this, new EventArgs());
+                }
+            }
+            catch { }
         }
         bool PLC_read_Tick = false;//指示是否遍历窗口完成
         bool PLC_read_ok = false;//指示是否遍历控件是否完成--
+        /// <summary>
+        /// 该方法已过时 --停用
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void PLC_circulation_read_Tick(object sender, EventArgs e)//PLC循环读取定时器
         {
            await Task.Run(() =>
@@ -770,18 +786,6 @@ namespace 自定义Uppercomputer_20200727
                        LogUtils.debugWrite($"遍历{this.Name + this.Text}窗口控件完成");
                    }
              });
-            try
-            {
-                if (GetForegroundWindow() == this.Handle)
-                {
-                    Form2_Activated(this, new EventArgs());
-                }
-                else
-                {
-                    Form2_Leave(this, new EventArgs());
-                }
-            }
-            catch { }
         }
 
         private void toolStripMenuItem6_Click(object sender, EventArgs e)//用户点击了报警注册

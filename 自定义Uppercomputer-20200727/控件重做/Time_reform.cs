@@ -23,6 +23,7 @@ using 自定义Uppercomputer_20200727.控件重做.按钮类与宏指令通用�
 namespace 自定义Uppercomputer_20200727.控件重做
 {
     /// <summary>
+    /// 该定时器已停用
     /// 继承系统定时器
     /// 重写定时器控件--用于窗口控件的刷新-文本数据刷新
     /// </summary>
@@ -257,7 +258,7 @@ namespace 自定义Uppercomputer_20200727.控件重做
                     //Time_Tick_ImageButton(send, e);//注册无图片按钮类刷新事件
                    // Time_Tick_doughnut_Chart(send, e);//注册圆形图刷新事件
                    // Time_Tick_histogram_Chart(send, e);//注册柱形图事件
-                    Time_Tick_oscillogram_Chart(send, e);//注册柱形图事件
+                    //Time_Tick_oscillogram_Chart(send, e);//注册柱形图事件
                     //Time_Tick_AnalogMeter(send, e);//注册百分百表盘事件
                     //Time_Tick_LedDisplay(send, e);//注册数值显示事件
                     //Time_Tick_ihatetheqrcode(send, e);//注册二维码/条形码事件

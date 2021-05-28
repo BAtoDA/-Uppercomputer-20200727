@@ -11,7 +11,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using HslCommunication.Profinet.Siemens;
 namespace 自定义Uppercomputer_20200727.PLC选择.MODBUS_TCP监控窗口
 {
 
@@ -25,7 +25,7 @@ namespace 自定义Uppercomputer_20200727.PLC选择.MODBUS_TCP监控窗口
         static private int PLCerr_code;//内部报警代码
         static private string PLCerr_content;//内部报警内容
         //西门子S7通讯类--
-        private static SiemensTcpNet siemensTcpNet = null;
+        private static SiemensS7Net siemensTcpNet = null;
         //互斥锁(Mutex)，用于多线程中防止两条线程同时对一个公共资源进行读写的机制。
         static Mutex mutex;//定义互斥锁名称
         //实现接口的属性
@@ -58,11 +58,11 @@ namespace 自定义Uppercomputer_20200727.PLC选择.MODBUS_TCP监控窗口
         /// </summary>
         /// <param name="iPEndPoint"></param>
         /// <param name="siemensPLCS"></param>
-        public Siemens_realize(IPEndPoint iPEndPoint, SiemensPLCS siemensPLCS)//构造函数---初始化---open--并且判断用户选择的类型
+        public Siemens_realize(IPEndPoint iPEndPoint, HslCommunication.Profinet.Siemens.SiemensPLCS siemensPLCS)//构造函数---初始化---open--并且判断用户选择的类型
         {
             this.IPEndPoint = iPEndPoint;//获取IP地址
             this.IPEndPoint.Port = int.Parse("102");//西门子S7默认端口
-            siemensTcpNet = new SiemensTcpNet(siemensPLCS);//实例化对象
+            siemensTcpNet = new SiemensS7Net(siemensPLCS);//实例化对象
             mutex = new Mutex();//实例化互斥锁(Mutex)
         }
         public Siemens_realize()//无参数
@@ -77,9 +77,9 @@ namespace 自定义Uppercomputer_20200727.PLC选择.MODBUS_TCP监控窗口
             try
             {
                 //利用西门子S7协议实现
-                siemensTcpNet.PLCIpAddress = IPEndPoint.Address;//获取设置的IP
-                siemensTcpNet.ConnectTimeout = 1000;//超时时间
-                siemensTcpNet.ReceiveBackTimeOut = 1000;
+                siemensTcpNet.IpAddress = IPEndPoint.Address.ToString();//获取设置的IP
+                siemensTcpNet.ReceiveTimeOut = 1000;//超时时间
+                siemensTcpNet.ConnectTimeOut = 1000;
                 OperateResult connect = siemensTcpNet.ConnectServer();//获取操作结果
                 if (connect.IsSuccess)//判断是否连接成功
                 {
@@ -118,7 +118,7 @@ namespace 自定义Uppercomputer_20200727.PLC选择.MODBUS_TCP监控窗口
                 {
                    mutex.WaitOne(3000);//加锁
                                         // 读取bool变量
-                    readResultRender(siemensTcpNet.ReadBoolFromPLC(Name.Trim() + id.Trim()), Name.Trim() + id.Trim(), ref result);//读取自定地址变量状态
+                    readResultRender(siemensTcpNet.ReadBool(Name.Trim() + id.Trim()), Name.Trim() + id.Trim(), ref result);//读取自定地址变量状态
                    mutex.ReleaseMutex();//解锁
                 }
                 catch { }
@@ -154,7 +154,7 @@ namespace 自定义Uppercomputer_20200727.PLC选择.MODBUS_TCP监控窗口
                 {
                     mutex.WaitOne(3000);//加锁
                                         // 写bool变量
-                    writeResultRender(siemensTcpNet.WriteIntoPLC(Name.Trim() + id.Trim(), Convert.ToBoolean(button_State.ToInt32())), Name.Trim() + id.Trim());//写入自定地址变量状态
+                    writeResultRender(siemensTcpNet.Write(Name.Trim() + id.Trim(), Convert.ToBoolean(button_State.ToInt32())), Name.Trim() + id.Trim());//写入自定地址变量状态
                     mutex.ReleaseMutex();//解锁
                 }
                 catch { }
@@ -195,44 +195,44 @@ namespace 自定义Uppercomputer_20200727.PLC选择.MODBUS_TCP监控窗口
                         case numerical_format.Signed_16_Bit:
                         case numerical_format.BCD_16_Bit:
                             // 读取short变量
-                            readResultRender(siemensTcpNet.ReadShortFromPLC(Name.Trim() + id.Trim()), Name.Trim() + id.Trim(), ref result);
+                            readResultRender(siemensTcpNet.ReadInt16(Name.Trim() + id.Trim()), Name.Trim() + id.Trim(), ref result);
                             break;
                         case numerical_format.Signed_32_Bit:
                         case numerical_format.BCD_32_Bit:
                             // 读取int变量
-                            readResultRender(siemensTcpNet.ReadIntFromPLC(Name.Trim() + id.Trim()), Name.Trim() + id.Trim(), ref result);
+                            readResultRender(siemensTcpNet.ReadInt32(Name.Trim() + id.Trim()), Name.Trim() + id.Trim(), ref result);
                             break;
                         case numerical_format.Binary_16_Bit:
                             // 读取16位二进制数
                             String data_1 = Convert.ToString(result.ToInt32(), 2);
-                            readResultRender(siemensTcpNet.ReadShortFromPLC(Name.Trim() + id.Trim()), Name.Trim() + id.Trim(), ref result);
+                            readResultRender(siemensTcpNet.ReadInt16(Name.Trim() + id.Trim()), Name.Trim() + id.Trim(), ref result);
                             break;
                         case numerical_format.Binary_32_Bit:
                             // 读取32位二进制数
                             String data_2 = Convert.ToString(result.ToInt32(), 2);
-                            readResultRender(siemensTcpNet.ReadIntFromPLC(Name.Trim() + id.Trim()), Name.Trim() + id.Trim(), ref result);
+                            readResultRender(siemensTcpNet.ReadInt32(Name.Trim() + id.Trim()), Name.Trim() + id.Trim(), ref result);
                             break;
                         case numerical_format.Float_32_Bit:
                             // 读取float变量
-                            readResultRender(siemensTcpNet.ReadFloatFromPLC(Name.Trim() + id.Trim()), Name.Trim() + id.Trim(), ref result);
+                            readResultRender(siemensTcpNet.ReadFloat(Name.Trim() + id.Trim()), Name.Trim() + id.Trim(), ref result);
                             break;
                         case numerical_format.Hex_16_Bit:
                             // 读取short变量
-                            readResultRender(siemensTcpNet.ReadShortFromPLC(Name.Trim() + id.Trim()), Name.Trim() + id.Trim(), ref result);
+                            readResultRender(siemensTcpNet.ReadInt16(Name.Trim() + id.Trim()), Name.Trim() + id.Trim(), ref result);
                             result = Convert.ToInt32(result).ToString("X");
                             break;
                         case numerical_format.Hex_32_Bit:
                             // 读取int变量
-                            readResultRender(siemensTcpNet.ReadIntFromPLC(Name.Trim() + id.Trim()), Name.Trim() + id.Trim(), ref result);
+                            readResultRender(siemensTcpNet.ReadInt32(Name.Trim() + id.Trim()), Name.Trim() + id.Trim(), ref result);
                             result = Convert.ToInt32(result).ToString("X");
                             break;
                         case numerical_format.Unsigned_16_Bit:
                             // 读取ushort变量
-                            readResultRender(siemensTcpNet.ReadUShortFromPLC(Name.Trim() + id.Trim()), Name.Trim() + id.Trim(), ref result);
+                            readResultRender(siemensTcpNet.ReadUInt16(Name.Trim() + id.Trim()), Name.Trim() + id.Trim(), ref result);
                             break;
                         case numerical_format.Unsigned_32_Bit:
                             // 读取uint变量
-                            readResultRender(siemensTcpNet.ReadUIntFromPLC(Name.Trim() + id.Trim()), Name.Trim() + id.Trim(), ref result);
+                            readResultRender(siemensTcpNet.ReadUInt32(Name.Trim() + id.Trim()), Name.Trim() + id.Trim(), ref result);
                             break;
                     }
                    mutex.ReleaseMutex();
@@ -274,32 +274,32 @@ namespace 自定义Uppercomputer_20200727.PLC选择.MODBUS_TCP监控窗口
                     {
                         case numerical_format.Signed_16_Bit:
                         case numerical_format.BCD_16_Bit:
-                            writeResultRender(siemensTcpNet.WriteIntoPLC(Name.Trim() + id.Trim(), short.Parse(content)), Name.Trim() + id.Trim());
+                            writeResultRender(siemensTcpNet.Write(Name.Trim() + id.Trim(), short.Parse(content)), Name.Trim() + id.Trim());
                             break;
                         case numerical_format.Signed_32_Bit:
                         case numerical_format.BCD_32_Bit:
-                            writeResultRender(siemensTcpNet.WriteIntoPLC(Name.Trim() + id.Trim(), int.Parse(content)), Name.Trim() + id.Trim());
+                            writeResultRender(siemensTcpNet.Write(Name.Trim() + id.Trim(), int.Parse(content)), Name.Trim() + id.Trim());
                             break;
                         case numerical_format.Binary_16_Bit:
-                            writeResultRender(siemensTcpNet.WriteIntoPLC(Name.Trim() + id.Trim(), short.Parse(Convert.ToInt32(content, 2).ToString())), Name.Trim() + id.Trim());
+                            writeResultRender(siemensTcpNet.Write(Name.Trim() + id.Trim(), short.Parse(Convert.ToInt32(content, 2).ToString())), Name.Trim() + id.Trim());
                             break;
                         case numerical_format.Binary_32_Bit:
-                            writeResultRender(siemensTcpNet.WriteIntoPLC(Name.Trim() + id.Trim(), int.Parse(Convert.ToInt32(content, 2).ToString())), Name.Trim() + id.Trim());
+                            writeResultRender(siemensTcpNet.Write(Name.Trim() + id.Trim(), int.Parse(Convert.ToInt32(content, 2).ToString())), Name.Trim() + id.Trim());
                             break;
                         case numerical_format.Float_32_Bit:
-                            writeResultRender(siemensTcpNet.WriteIntoPLC(Name.Trim() + id.Trim(), float.Parse(content)), Name.Trim() + id.Trim());
+                            writeResultRender(siemensTcpNet.Write(Name.Trim() + id.Trim(), float.Parse(content)), Name.Trim() + id.Trim());
                             break;
                         case numerical_format.Hex_16_Bit:
-                            writeResultRender(siemensTcpNet.WriteIntoPLC(Name.Trim() + id.Trim(), short.Parse(Convert.ToInt32(content, 16).ToString())), Name.Trim() + id.Trim());
+                            writeResultRender(siemensTcpNet.Write(Name.Trim() + id.Trim(), short.Parse(Convert.ToInt32(content, 16).ToString())), Name.Trim() + id.Trim());
                             break;
                         case numerical_format.Hex_32_Bit:
-                            writeResultRender(siemensTcpNet.WriteIntoPLC(Name.Trim() + id.Trim(), int.Parse(Convert.ToInt32(content, 16).ToString())), Name.Trim() + id.Trim());
+                            writeResultRender(siemensTcpNet.Write(Name.Trim() + id.Trim(), int.Parse(Convert.ToInt32(content, 16).ToString())), Name.Trim() + id.Trim());
                             break;
                         case numerical_format.Unsigned_16_Bit:
-                            writeResultRender(siemensTcpNet.WriteIntoPLC(Name.Trim() + id.Trim(), int.Parse(content)), Name.Trim() + id.Trim());
+                            writeResultRender(siemensTcpNet.Write(Name.Trim() + id.Trim(), int.Parse(content)), Name.Trim() + id.Trim());
                             break;
                         case numerical_format.Unsigned_32_Bit:
-                            writeResultRender(siemensTcpNet.WriteIntoPLC(Name.Trim() + id.Trim(), int.Parse(content)), Name.Trim() + id.Trim());
+                            writeResultRender(siemensTcpNet.Write(Name.Trim() + id.Trim(), int.Parse(content)), Name.Trim() + id.Trim());
                             break;
                     }
                     mutex.ReleaseMutex();

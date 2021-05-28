@@ -84,6 +84,10 @@
     <Reference Include="CSkin">
       <HintPath>第三方控件DLL\缺少dll文件\主程序自定义Uppercomputer-20200727部分\CSkin.dll</HintPath>
     </Reference>
+    <Reference Include="CSScriptLibrary, Version=3.11.1.0, Culture=neutral, PublicKeyToken=70fcc3d18c749033, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>第三方控件DLL\CSScriptLibrary.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -93,8 +97,9 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
-    <Reference Include="HslCommunication">
-      <HintPath>第三方控件DLL\缺少dll文件\主程序自定义Uppercomputer-20200727部分\HslCommunication.dll</HintPath>
+    <Reference Include="HslCommunication, Version=6.0.0.0, Culture=neutral, PublicKeyToken=cdb2261fa039ed67, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\欧姆龙Fins协议\第三方dll\HslCommunication.dll</HintPath>
     </Reference>
     <Reference Include="HZH_Controls">
       <HintPath>第三方控件DLL\HZH_Controls.dll</HintPath>

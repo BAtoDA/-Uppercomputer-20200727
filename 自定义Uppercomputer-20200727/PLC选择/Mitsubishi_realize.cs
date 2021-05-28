@@ -10,6 +10,7 @@ using CCWin.SkinClass;
 using CSEngineTest;
 using HslCommunication;
 using HslCommunication.Profinet;
+using HslCommunication.Profinet.Melsec;
 using PLC通讯规范接口;
 
 namespace 自定义Uppercomputer_20200727.PLC选择
@@ -22,7 +23,7 @@ namespace 自定义Uppercomputer_20200727.PLC选择
         /// <summary>
         /// IP地址
         /// </summary>
-        public IPEndPoint IPEndPoint { get; set; }//IP地址
+        public static IPEndPoint IPEndPoint { get; set; }//IP地址
         static private bool PLC_ready;//内部PLC状态
         static private int PLCerr_code;//内部报警代码
         static private string PLCerr_content;//内部报警内容
@@ -30,7 +31,7 @@ namespace 自定义Uppercomputer_20200727.PLC选择
         /// <summary>
         /// 三菱3E帧类
         /// </summary>
-        public static MelsecNet melsec_net = null;
+        public static MelsecMcNet melsec_net = null;
         //互斥锁(Mutex)，用于多线程中防止两条线程同时对一个公共资源进行读写的机制。
         /// <summary>
         /// 互斥锁(Mutex)，用于多线程中防止两条线程同时对一个公共资源进行读写的机制
@@ -67,8 +68,8 @@ namespace 自定义Uppercomputer_20200727.PLC选择
         /// <param name="iPEndPoint"></param>
         public Mitsubishi_realize(IPEndPoint iPEndPoint)//构造函数---初始化---open
         {
-            this.IPEndPoint = iPEndPoint;//获取IP地址
-            melsec_net = new MelsecNet();//实例化对象
+            IPEndPoint = iPEndPoint;//获取IP地址
+            melsec_net = new MelsecMcNet(iPEndPoint.Address.ToString(), iPEndPoint.Port);//实例化对象
             mutex = new Mutex();//实例化互斥锁(Mutex)
         }
         public Mitsubishi_realize()//构造函数---多态
@@ -84,23 +85,25 @@ namespace 自定义Uppercomputer_20200727.PLC选择
             try
             {
                 //利用三菱3E帧实现
-                melsec_net.PLCIpAddress = IPEndPoint.Address;//获取设置的IP
-                melsec_net.PortRead = IPEndPoint.Port;//获取设置的端口
+                melsec_net.IpAddress = IPEndPoint.Address.ToString();//获取设置的IP
+                melsec_net.Port = IPEndPoint.Port;//获取设置的端口
                 melsec_net.ConnectClose();//切换通讯模式
-                melsec_net.ConnectTimeout = 500;
+                melsec_net.ConnectTimeOut = 500;
+                melsec_net.ReceiveTimeOut = 500;
                 OperateResult connect = melsec_net.ConnectServer();//获取操作结果
                 retry = 0;
                 if (connect.IsSuccess)//判断是否连接成功
                 {
+                    Thread.Sleep(600);
                     PLC_ready = true;//PLC开放正常
-                    return "已成功链接到" + this.IPEndPoint.Address;
+                    return "已成功链接到" + IPEndPoint.Address;
                 }
                 else
                 {
                     PLC_ready = false;//PLC开放异常
                     // 切断连接
                     melsec_net.ConnectClose();
-                    MessageBox.Show("链接PLC"+ this.IPEndPoint.Address.ToString()+"异常--请检查下位机状态");
+                    MessageBox.Show("链接PLC"+ IPEndPoint.Address.ToString()+"异常--请检查下位机状态");
                     return "链接PLC异常";//尝试连接PLC，如果连接成功则返回值为0
                 }               
             }
@@ -126,10 +129,10 @@ namespace 自定义Uppercomputer_20200727.PLC选择
                     mutex.WaitOne(100);
                     // 读取bool变量 重写方法
                     if (Name != "Y")
-                        readResultRender(melsec_net.ReadBoolFromPLC(Name.Trim() + id.Trim()), Name.Trim() + id.Trim(), ref result);//读取自定地址变量状态
+                        readResultRender(melsec_net.ReadBool(Name.Trim() + id.Trim()), Name.Trim() + id.Trim(), ref result);//读取自定地址变量状态
                     else
                     {
-                        OperateResult<byte[]> read = melsec_net.ReadFromServerCore(this.Read_bit(三菱报文.message_bit.Y, Convert.ToInt32(id), 1));
+                        OperateResult<byte[]> read = melsec_net.ReadFromCoreServer(this.Read_bit(三菱报文.message_bit.Y, Convert.ToInt32(id), 1));
                         readResultRender(read, Name.Trim() + id.Trim(), ref result);
                         if (read.IsSuccess)
                             result = this.Analysis(read.Content, Convert.ToInt32(id)) ? "TRUE" : "FALSE";
@@ -169,11 +172,11 @@ namespace 自定义Uppercomputer_20200727.PLC选择
                     mutex.WaitOne(100);
                     // 写bool变量
                     if (Name != "Y")
-                        writeResultRender(melsec_net.WriteIntoPLC(Name.Trim() + id.Trim(), Convert.ToBoolean(button_State.ToInt32())), Name.Trim() + id.Trim());//写入自定地址变量状态
+                        writeResultRender(melsec_net.Write(Name.Trim() + id.Trim(), Convert.ToBoolean(button_State.ToInt32())), Name.Trim() + id.Trim());//写入自定地址变量状态
                     else
                     {
                         //Q系列不需要转换-如果需要对接Q系列 需要把这个判断注释掉
-                        OperateResult<byte[]> read = melsec_net.ReadFromServerCore(this.Write_bit(三菱报文.message_bit.Y, Convert.ToInt32(id), button_State==Button_state.ON?true:false));
+                        OperateResult<byte[]> read = melsec_net.ReadFromCoreServer(this.Write_bit(三菱报文.message_bit.Y, Convert.ToInt32(id), button_State==Button_state.ON?true:false));
                         readResultRender(read, Name.Trim() + id.Trim(), ref result);
                         result = read.IsSuccess ? "TRUE" : "FALSE";
                     }
@@ -216,44 +219,44 @@ namespace 自定义Uppercomputer_20200727.PLC选择
                         case numerical_format.Signed_16_Bit:
                         case numerical_format.BCD_16_Bit:
                             // 读取short变量
-                            readResultRender(melsec_net.ReadShortFromPLC(Name.Trim() + id.Trim()), Name.Trim() + id.Trim(), ref result);
+                            readResultRender(melsec_net.ReadInt16(Name.Trim() + id.Trim()), Name.Trim() + id.Trim(), ref result);
                             break;
                         case numerical_format.Signed_32_Bit:
                         case numerical_format.BCD_32_Bit:
                             // 读取int变量
-                            readResultRender(melsec_net.ReadIntFromPLC(Name.Trim() + id.Trim()), Name.Trim() + id.Trim(), ref result);
+                            readResultRender(melsec_net.ReadInt32(Name.Trim() + id.Trim()), Name.Trim() + id.Trim(), ref result);
                             break;
                         case numerical_format.Binary_16_Bit:
                             // 读取16位二进制数
                             String data_1 = Convert.ToString(result.ToInt32(), 2);
-                            readResultRender(melsec_net.ReadShortFromPLC(Name.Trim() + id.Trim()), Name.Trim() + id.Trim(), ref result);
+                            readResultRender(melsec_net.ReadInt16(Name.Trim() + id.Trim()), Name.Trim() + id.Trim(), ref result);
                             break;
                         case numerical_format.Binary_32_Bit:
                             // 读取32位二进制数
                             String data_2 = Convert.ToString(result.ToInt32(), 2);
-                            readResultRender(melsec_net.ReadIntFromPLC(Name.Trim() + id.Trim()), Name.Trim() + id.Trim(), ref result);
+                            readResultRender(melsec_net.ReadInt32(Name.Trim() + id.Trim()), Name.Trim() + id.Trim(), ref result);
                             break;
                         case numerical_format.Float_32_Bit:
                             // 读取float变量
-                            readResultRender(melsec_net.ReadFloatFromPLC(Name.Trim() + id.Trim()), Name.Trim() + id.Trim(), ref result);
+                            readResultRender(melsec_net.ReadFloat(Name.Trim() + id.Trim()), Name.Trim() + id.Trim(), ref result);
                             break;
                         case numerical_format.Hex_16_Bit:
                             // 读取short变量
-                            readResultRender(melsec_net.ReadShortFromPLC(Name.Trim() + id.Trim()), Name.Trim() + id.Trim(), ref result);
+                            readResultRender(melsec_net.ReadInt16(Name.Trim() + id.Trim()), Name.Trim() + id.Trim(), ref result);
                             result = Convert.ToInt32(result).ToString("X");
                             break;
                         case numerical_format.Hex_32_Bit:
                             // 读取int变量
-                            readResultRender(melsec_net.ReadIntFromPLC(Name.Trim() + id.Trim()), Name.Trim() + id.Trim(), ref result);
+                            readResultRender(melsec_net.ReadInt32(Name.Trim() + id.Trim()), Name.Trim() + id.Trim(), ref result);
                             result = Convert.ToInt32(result).ToString("X");
                             break;
                         case numerical_format.Unsigned_16_Bit:
                             // 读取ushort变量
-                            readResultRender(melsec_net.ReadUShortFromPLC(Name.Trim() + id.Trim()), Name.Trim() + id.Trim(), ref result);
+                            readResultRender(melsec_net.ReadUInt16(Name.Trim() + id.Trim()), Name.Trim() + id.Trim(), ref result);
                             break;
                         case numerical_format.Unsigned_32_Bit:
                             // 读取uint变量
-                            readResultRender(melsec_net.ReadUIntFromPLC(Name.Trim() + id.Trim()), Name.Trim() + id.Trim(), ref result);
+                            readResultRender(melsec_net.ReadUInt32(Name.Trim() + id.Trim()), Name.Trim() + id.Trim(), ref result);
                             break;
                     }
                     mutex.ReleaseMutex();
@@ -295,32 +298,32 @@ namespace 自定义Uppercomputer_20200727.PLC选择
                     {
                         case numerical_format.Signed_16_Bit:
                         case numerical_format.BCD_16_Bit:
-                            writeResultRender(melsec_net.WriteIntoPLC(Name.Trim() + id.Trim(), short.Parse(content)), Name.Trim() + id.Trim());
+                            writeResultRender(melsec_net.Write(Name.Trim() + id.Trim(), short.Parse(content)), Name.Trim() + id.Trim());
                             break;
                         case numerical_format.Signed_32_Bit:
                         case numerical_format.BCD_32_Bit:
-                            writeResultRender(melsec_net.WriteIntoPLC(Name.Trim() + id.Trim(), int.Parse(content)), Name.Trim() + id.Trim());
+                            writeResultRender(melsec_net.Write(Name.Trim() + id.Trim(), int.Parse(content)), Name.Trim() + id.Trim());
                             break;
                         case numerical_format.Binary_16_Bit:
-                            writeResultRender(melsec_net.WriteIntoPLC(Name.Trim() + id.Trim(), short.Parse(Convert.ToInt32(content, 2).ToString())), Name.Trim() + id.Trim());
+                            writeResultRender(melsec_net.Write(Name.Trim() + id.Trim(), short.Parse(Convert.ToInt32(content, 2).ToString())), Name.Trim() + id.Trim());
                             break;
                         case numerical_format.Binary_32_Bit:
-                            writeResultRender(melsec_net.WriteIntoPLC(Name.Trim() + id.Trim(), int.Parse(Convert.ToInt32(content, 2).ToString())), Name.Trim() + id.Trim());
+                            writeResultRender(melsec_net.Write(Name.Trim() + id.Trim(), int.Parse(Convert.ToInt32(content, 2).ToString())), Name.Trim() + id.Trim());
                             break;
                         case numerical_format.Float_32_Bit:
-                            writeResultRender(melsec_net.WriteIntoPLC(Name.Trim() + id.Trim(), float.Parse(content)), Name.Trim() + id.Trim());
+                            writeResultRender(melsec_net.Write(Name.Trim() + id.Trim(), float.Parse(content)), Name.Trim() + id.Trim());
                             break;
                         case numerical_format.Hex_16_Bit:
-                            writeResultRender(melsec_net.WriteIntoPLC(Name.Trim() + id.Trim(), short.Parse(Convert.ToInt32(content, 16).ToString())), Name.Trim() + id.Trim());
+                            writeResultRender(melsec_net.Write(Name.Trim() + id.Trim(), short.Parse(Convert.ToInt32(content, 16).ToString())), Name.Trim() + id.Trim());
                             break;
                         case numerical_format.Hex_32_Bit:
-                            writeResultRender(melsec_net.WriteIntoPLC(Name.Trim() + id.Trim(), int.Parse(Convert.ToInt32(content, 16).ToString())), Name.Trim() + id.Trim());
+                            writeResultRender(melsec_net.Write(Name.Trim() + id.Trim(), int.Parse(Convert.ToInt32(content, 16).ToString())), Name.Trim() + id.Trim());
                             break;
                         case numerical_format.Unsigned_16_Bit:
-                            writeResultRender(melsec_net.WriteIntoPLC(Name.Trim() + id.Trim(), int.Parse(content)), Name.Trim() + id.Trim());
+                            writeResultRender(melsec_net.Write(Name.Trim() + id.Trim(), int.Parse(content)), Name.Trim() + id.Trim());
                             break;
                         case numerical_format.Unsigned_32_Bit:
-                            writeResultRender(melsec_net.WriteIntoPLC(Name.Trim() + id.Trim(), int.Parse(content)), Name.Trim() + id.Trim());
+                            writeResultRender(melsec_net.Write(Name.Trim() + id.Trim(), int.Parse(content)), Name.Trim() + id.Trim());
                             break;
                     }
                     mutex.ReleaseMutex();
@@ -358,7 +361,7 @@ namespace 自定义Uppercomputer_20200727.PLC选择
             {
                 try
                 {
-                    mutex.WaitOne(500);
+                    mutex.WaitOne(100);
                     Data = Mitsubishi_to_Index_numerical(Name, id.ToInt32(), format, Index.ToInt32(), this);//批量读取寄存器并且返回数据
                     mutex.ReleaseMutex();
                 }
@@ -420,22 +423,14 @@ namespace 自定义Uppercomputer_20200727.PLC选择
             else
             {
                 retry += 1;//重试次数
-                if (retry < 3)
-                {
-                    melsec_net.ConnectClose();//切断链接
-                    PLC_ready = melsec_net.ConnectServer().IsSuccess;//重新链接PLC
-                    return;
-                }
                 PLCerr_content = DateTime.Now.ToString("[HH:mm:ss] ") + $"[{address}] 读取失败{Environment.NewLine}原因：{result.ToMessageShowString()}";
-                MessageBox.Show(DateTime.Now.ToString("[HH:mm:ss] ") + $"[{address}] 读取失败{Environment.NewLine}原因：{result.ToMessageShowString()}");
-                if (retry >= 3)
+                if (retry >= 4)
                 {
                     err(new Exception("链接PLC异常"));
                 }
 
             }
         }
-
         /// <summary>
         /// 统一的数据写入的结果显示
         /// </summary>
@@ -447,11 +442,6 @@ namespace 自定义Uppercomputer_20200727.PLC选择
             {
                 PLC_ready = false;//读取异常
                 PLCerr_content = DateTime.Now.ToString("[HH:mm:ss] ") + $"[{address}] 写入失败{Environment.NewLine}原因：{result.ToMessageShowString()}";
-                if (Message_run != true)
-                {
-                    MessageBox.Show(DateTime.Now.ToString("[HH:mm:ss] ") + $"[{address}] 写入失败{Environment.NewLine}原因：{result.ToMessageShowString()}");
-                    Message_run = true;
-                }
             }
         }
         /// <summary>
@@ -460,11 +450,12 @@ namespace 自定义Uppercomputer_20200727.PLC选择
         /// <param name="e"></param>
         private void err(Exception e)
         {
+            melsec_net.ConnectClose();
             PLC_ready = false;//PLC开放异常
             PLCerr_code = e.HResult;
             PLCerr_content = e.Message;
             Message_run = true;
-            MessageBox.Show("链接PLC异常");
+          //  MessageBox.Show("链接PLC异常");
         }
     }
 }

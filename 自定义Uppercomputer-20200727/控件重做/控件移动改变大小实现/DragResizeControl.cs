@@ -124,6 +124,10 @@ namespace DragResizeControlWindowsDrawDemo
                 }
             }
         }
+        /// <summary>
+        /// 指示拖放控件上下层
+        /// </summary>
+        bool ToBack = false;
         private static void control_MouseUP(object sender, MouseEventArgs e)
         {
             //测试代码

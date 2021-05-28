@@ -19,21 +19,26 @@ namespace 自定义Uppercomputer_20200727.EF实体模型
         public string 三菱PLC_端口 { get; set; }
         public string 三菱PLC_类型 { get; set; }
         public string 三菱PLC_链接类型 { get; set; }
+        public bool 三菱链接模式 { get; set; }
         public string 西门子PLC_IP { get; set; }
         public string 西门子PLC_端口 { get; set; }
         public string 西门子PLC_类型 { get; set; }
         public string 西门子PLC_链接类型 { get; set; }
+        public bool 西门子链接模式 { get; set; }
         public string MODBUS_TCP_PLC_IP { get; set; }
         public string MODBUS_TCP_PLC_端口11 { get; set; }
         public string MODBUS_TCP_PLC_类型 { get; set; }
         public string MODBUS_TCP_PLC_链接类型 { get; set; }
+        public bool MODBUS链接模式 { get; set; }
         public string 欧姆龙PLC_IP { get; set; }
         public string 欧姆龙PLC_端口 { get; set; }
         public string 欧姆龙PLC_类型 { get; set; }
         public string 欧姆龙PLC链接类型 { get; set; }
+        public bool 欧姆龙链接模式 { get; set; }
         public string 发那科_IP { get; set; }
         public string 发那科_端口 { get; set; }
         public string 发那科_类型 { get; set; }
         public string 发那科_链接类型 { get; set; }
+        public bool 发那科链接模式 { get; set; }
     }
 }

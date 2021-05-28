@@ -153,8 +153,8 @@
             this.imageList3 = new System.Windows.Forms.ImageList(this.components);
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.ucNavigationMenu1 = new HZH_Controls.Controls.UCNavigationMenu();
-            this.userControl11 = new UI_Library_da.UI加载进度条.UserControl1();
             this.Aligning = new System.Windows.Forms.ImageList(this.components);
+            this.userControl11 = new UI_Library_da.UI加载进度条.UserControl1();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.skinContextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -798,7 +798,6 @@
             // 
             // PLC_circulation_read
             // 
-            this.PLC_circulation_read.Enabled = true;
             this.PLC_circulation_read.Interval = 200;
             this.PLC_circulation_read.Tick += new System.EventHandler(this.PLC_circulation_read_Tick);
             // 
@@ -1264,6 +1263,13 @@
             this.ucNavigationMenu1.TipColor = System.Drawing.Color.Red;
             this.ucNavigationMenu1.ClickItemed += new System.EventHandler(this.ucNavigationMenu1_ClickItemed);
             // 
+            // Aligning
+            // 
+            this.Aligning.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("Aligning.ImageStream")));
+            this.Aligning.TransparentColor = System.Drawing.Color.Transparent;
+            this.Aligning.Images.SetKeyName(0, "左对齐启用.png");
+            this.Aligning.Images.SetKeyName(1, "左对齐未启用.png");
+            // 
             // userControl11
             // 
             this.userControl11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
@@ -1273,13 +1279,6 @@
             this.userControl11.Schedule_Text = "窗口加载中";
             this.userControl11.Size = new System.Drawing.Size(362, 225);
             this.userControl11.TabIndex = 9;
-            // 
-            // Aligning
-            // 
-            this.Aligning.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("Aligning.ImageStream")));
-            this.Aligning.TransparentColor = System.Drawing.Color.Transparent;
-            this.Aligning.Images.SetKeyName(0, "左对齐启用.png");
-            this.Aligning.Images.SetKeyName(1, "左对齐未启用.png");
             // 
             // Form2
             // 

@@ -12,6 +12,7 @@ using System.Windows.Forms;
 using ActUtlTypeLib;
 using CCWin;
 using HslCommunication.Profinet;
+using HslCommunication.Profinet.Siemens;
 using PLC通讯规范接口;
 using 欧姆龙Fins协议.报文处理;
 using 欧姆龙Fins协议.欧姆龙.报文处理;
@@ -34,11 +35,11 @@ namespace 自定义Uppercomputer_20200727.PLC选择
         {
             Hiel = true;
             PLCselect_Form_class pLCselect_Form_Class = new PLCselect_Form_class();//实例化加载对象
-            pLCselect_Form_Class.Load(PLC.Mitsubishi, this.skinTextBox1, this.skinTextBox2, this.skinTextBox3, this.skinComboBox1);//填充三菱选项
-            pLCselect_Form_Class.Load(PLC.Siemens, this.skinTextBox6, this.skinTextBox5, this.skinTextBox4, this.skinComboBox2);//填充西门子选项
-            pLCselect_Form_Class.Load(PLC.Modbus_TCP, this.skinTextBox9, this.skinTextBox8, this.skinTextBox7, this.skinComboBox3);//填充MODBUS_TCP选项   
-            pLCselect_Form_Class.Load(PLC.OmronTCP, this.skinTextBox12, this.skinTextBox11, this.skinTextBox10, this.skinComboBox4);//填充欧姆龙选型
-            pLCselect_Form_Class.Load(PLC.Fanuc, this.skinTextBox15, this.skinTextBox14, this.skinTextBox13, this.skinComboBox5);//填充欧姆龙选型
+            pLCselect_Form_Class.Load(PLC.Mitsubishi, this.skinTextBox1, this.skinTextBox2, this.skinTextBox3, this.skinComboBox1,this.uiCheckBox1);//填充三菱选项
+            pLCselect_Form_Class.Load(PLC.Siemens, this.skinTextBox6, this.skinTextBox5, this.skinTextBox4, this.skinComboBox2, this.uiCheckBox2);//填充西门子选项
+            pLCselect_Form_Class.Load(PLC.Modbus_TCP, this.skinTextBox9, this.skinTextBox8, this.skinTextBox7, this.skinComboBox3, this.uiCheckBox3);//填充MODBUS_TCP选项   
+            pLCselect_Form_Class.Load(PLC.OmronTCP, this.skinTextBox12, this.skinTextBox11, this.skinTextBox10, this.skinComboBox4, this.uiCheckBox4);//填充欧姆龙选型
+            pLCselect_Form_Class.Load(PLC.Fanuc, this.skinTextBox15, this.skinTextBox14, this.skinTextBox13, this.skinComboBox5, this.uiCheckBox5);//填充欧姆龙选型
             if (this.skinComboBox1.Text.Trim() != "在线访问")//加载时显示是否连接成功
             {
                 IPLC_interface axActUtlType = new Mitsubishi_axActUtlType();//实例化三菱 仿真--无参
@@ -190,13 +191,13 @@ namespace 自定义Uppercomputer_20200727.PLC选择
             }
             return "OK";
         }
-        public SiemensPLCS SiemensPLCS(String Name)//遍历用户选定的PLC系列
+        public HslCommunication.Profinet.Siemens.SiemensPLCS SiemensPLCS(String Name)//遍历用户选定的PLC系列
         {
-            foreach (SiemensPLCS suit in Enum.GetValues(typeof(SiemensPLCS)))
+            foreach (HslCommunication.Profinet.Siemens.SiemensPLCS suit in Enum.GetValues(typeof(HslCommunication.Profinet.Siemens.SiemensPLCS)))
             {
                 if (suit.ToString() == Name.Trim()) return suit;//返回系列枚举
             }
-            return HslCommunication.Profinet.SiemensPLCS.S200Smart;//查询失败--返回默认类型S200
+            return HslCommunication.Profinet.Siemens.SiemensPLCS.S200Smart;//查询失败--返回默认类型S200
         }
         private PLC_parameter plC_Parameter()//获取写个参数设置
         {
@@ -222,7 +223,12 @@ namespace 自定义Uppercomputer_20200727.PLC选择
                 欧姆龙PLC_IP = this.skinTextBox12.Text,
                 欧姆龙PLC_端口 = this.skinTextBox11.Text,
                 欧姆龙PLC_类型 = this.skinTextBox10.Text,
-                欧姆龙PLC链接类型 = this.skinComboBox4.Text
+                欧姆龙PLC链接类型 = this.skinComboBox4.Text,
+                三菱链接模式 = this.uiCheckBox1.Checked,
+                西门子链接模式 = this.uiCheckBox2.Checked,
+                MODBUS链接模式 = this.uiCheckBox3.Checked,
+                欧姆龙链接模式 = this.uiCheckBox4.Checked,
+                发那科链接模式 = this.uiCheckBox5.Checked
 
             };                        
         }
@@ -247,16 +253,16 @@ namespace 自定义Uppercomputer_20200727.PLC选择
                 switch (control.Text)
                 {
                     case "RUN":
-                        Mitsubishi_realize.melsec_net.ReadFromServerCore(mitsubishi.PLC_Run_remote());
+                        Mitsubishi_realize.melsec_net.ReadFromCoreServer(mitsubishi.PLC_Run_remote());
                         return;
                     case "STOP":
-                        Mitsubishi_realize.melsec_net.ReadFromServerCore(mitsubishi.PLC_Stop_remote());
+                        Mitsubishi_realize.melsec_net.ReadFromCoreServer(mitsubishi.PLC_Stop_remote());
                         return;
                     case "REST":
-                        Mitsubishi_realize.melsec_net.ReadFromServerCore(mitsubishi.PLC_Rrr_Rest_remote());
+                        Mitsubishi_realize.melsec_net.ReadFromCoreServer(mitsubishi.PLC_Rrr_Rest_remote());
                         return;
                     case "Pause":
-                        Mitsubishi_realize.melsec_net.ReadFromServerCore(mitsubishi.PLC_Pause_remote());
+                        Mitsubishi_realize.melsec_net.ReadFromCoreServer(mitsubishi.PLC_Pause_remote());
                         return;
                 }
             }         

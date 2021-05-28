@@ -1,10 +1,12 @@
-﻿using DragResizeControlWindowsDrawDemo;
+﻿using CCWin.SkinControl;
+using DragResizeControlWindowsDrawDemo;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using UI_Library_da;
@@ -12,6 +14,8 @@ using 自定义Uppercomputer_20200727.EF实体模型;
 using 自定义Uppercomputer_20200727.修改参数界面;
 using 自定义Uppercomputer_20200727.控件重做.复制粘贴接口;
 using 自定义Uppercomputer_20200727.控件重做.按钮类与宏指令通用类;
+using 自定义Uppercomputer_20200727.控件重做.控件类基;
+using 自定义Uppercomputer_20200727.控件重做.控件类基.文本__TO__PLC方法;
 
 namespace 自定义Uppercomputer_20200727.控件重做
 {
@@ -20,9 +24,16 @@ namespace 自定义Uppercomputer_20200727.控件重做
     /// 此类不能在窗口设计器中使用-如果需要使用请拖拽父类
     /// </summary>
     [ToolboxItem(false)]
-    class oscillogram_Chart_reform : oscillogram_Chart, ControlCopy
+    class oscillogram_Chart_reform : oscillogram_Chart, ControlCopy, TextBox_base
     {
         string doughnut_Chart_ID { get; set; }//圆环图形属性ID
+
+        public System.Threading.Timer PLC_time { get; }
+
+        public TextBox_PLC TextBox { get; }
+
+        public string Data_Text { get; }
+
         SkinContextMenuStrip_reform menuStrip_Reform;//绑定右键菜单类
         /// <summary>
         /// 构造函数初始化控件UI
@@ -39,6 +50,12 @@ namespace 自定义Uppercomputer_20200727.控件重做
             this.MouseEnter += MouseEnter_reform;//注册事件--获取控件信息
             this.TextChanged += TextChanged_reform;//注册事件
             DragResizeControl.RegisterControl(this);//实现控件改变大小与拖拽位置
+            TextBox = new TextBox_PLC();
+            PLC_time = new System.Threading.Timer(new TimerCallback((s) =>
+            {
+                this.Time_Tick();
+            }));
+            PLC_time.Change(500, 300);
         }
         /// <方法重写当鼠标移到控件时获取——ID>
         private void MouseEnter_reform(object send, EventArgs e)
@@ -112,6 +129,54 @@ namespace 自定义Uppercomputer_20200727.控件重做
             base.OnClick(e);
         }
         /// <summary>
+        /// 填充文本数据 oscillogram_Chart
+        /// </summary>
+        /// <param name="oscillogram_Chart_Reform"></param>
+        /// <param name="oscillogram_Chart_Class"></param>
+        /// <param name="oscillogram_Chart_Data"></param>
+        private void TextBox_state(List<int> oscillogram_Chart_Data)//填充文本数据
+        {
+            try
+            {
+                this.BeginInvoke((MethodInvoker)delegate//委托当前窗口处理控件UI
+                {
+                    if (oscillogram_Chart_Data.Count < 1) return;
+                    oscillogram_Data = oscillogram_Chart_Data[0];//获取要填充的数据
+                    oscillogram_Chart_Tick();//重新刷新UI
+                });
+            }
+            catch { return; }
+        }
+        oscillogram_Chart_Class _Class;
+        /// <summary>
+        /// 定时刷新控件
+        /// </summary>
+        private void Time_Tick()
+        {
+            lock (this)
+            {
+                try
+                {
+                    if (Form2.edit_mode == true)
+                    {
+                        _Class = null;
+                        return;//返回方法
+                    }
+                    if (_Class.IsNull())
+                    {
+                        oscillogram_Chart_EF EF = new oscillogram_Chart_EF();//实例化EF
+                        _Class = EF.oscillogram_Chart_Parameter_Query(this.Parent + "- " + this.Name);//查询控件参数
+                    }
+                    if (_Class.IsNull()) return;
+                    this.TextBox_state(TextBox.Refresh(_Class.读写设备.Trim(), _Class.资料格式.Trim(), _Class.读写设备_地址.Trim(), _Class.读写设备_地址_具体地址.Trim(),0));
+                }
+                catch
+                {
+
+                }
+            }
+        }
+        /// <summary>
         /// 复制控件的属性
         /// </summary>
         /// <returns></returns>
@@ -168,6 +233,11 @@ namespace 自定义Uppercomputer_20200727.控件重做
         public object Clone()
         {
             return new oscillogram_Chart_reform() as object;//返回数据
+        }
+
+        public void ControlRefresh(string Data)
+        {
+            throw new NotImplementedException();
         }
     }
 }

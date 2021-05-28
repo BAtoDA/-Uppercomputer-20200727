@@ -88,6 +88,16 @@
             this.skinTextBox12 = new CCWin.SkinControl.SkinTextBox();
             this.skinLabel16 = new CCWin.SkinControl.SkinLabel();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.uiCheckBox1 = new Sunny.UI.UICheckBox();
+            this.skinLabel21 = new CCWin.SkinControl.SkinLabel();
+            this.skinLabel22 = new CCWin.SkinControl.SkinLabel();
+            this.uiCheckBox2 = new Sunny.UI.UICheckBox();
+            this.skinLabel23 = new CCWin.SkinControl.SkinLabel();
+            this.uiCheckBox3 = new Sunny.UI.UICheckBox();
+            this.skinLabel24 = new CCWin.SkinControl.SkinLabel();
+            this.uiCheckBox4 = new Sunny.UI.UICheckBox();
+            this.skinLabel25 = new CCWin.SkinControl.SkinLabel();
+            this.uiCheckBox5 = new Sunny.UI.UICheckBox();
             this.skinGroupBox1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.skinGroupBox2.SuspendLayout();
@@ -103,6 +113,8 @@
             // 
             this.skinGroupBox1.BackColor = System.Drawing.Color.Transparent;
             this.skinGroupBox1.BorderColor = System.Drawing.Color.Red;
+            this.skinGroupBox1.Controls.Add(this.skinLabel21);
+            this.skinGroupBox1.Controls.Add(this.uiCheckBox1);
             this.skinGroupBox1.Controls.Add(this.skinComboBox1);
             this.skinGroupBox1.Controls.Add(this.skinLabel4);
             this.skinGroupBox1.Controls.Add(this.skinButton1);
@@ -120,7 +132,7 @@
             this.skinGroupBox1.RectBackColor = System.Drawing.Color.Transparent;
             this.skinGroupBox1.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.skinGroupBox1.RoundStyle = CCWin.SkinClass.RoundStyle.All;
-            this.skinGroupBox1.Size = new System.Drawing.Size(322, 405);
+            this.skinGroupBox1.Size = new System.Drawing.Size(322, 425);
             this.skinGroupBox1.TabIndex = 0;
             this.skinGroupBox1.TabStop = false;
             this.skinGroupBox1.Text = "三菱通讯配置";
@@ -156,7 +168,7 @@
             this.skinButton1.BackColor = System.Drawing.Color.Transparent;
             this.skinButton1.ControlState = CCWin.SkinClass.ControlState.Normal;
             this.skinButton1.DownBack = null;
-            this.skinButton1.Location = new System.Drawing.Point(96, 315);
+            this.skinButton1.Location = new System.Drawing.Point(96, 342);
             this.skinButton1.MouseBack = null;
             this.skinButton1.Name = "skinButton1";
             this.skinButton1.NormlBack = null;
@@ -341,7 +353,7 @@
             this.groupBox1.Controls.Add(this.skinButton6);
             this.groupBox1.Controls.Add(this.skinButton5);
             this.groupBox1.Controls.Add(this.skinButton4);
-            this.groupBox1.Location = new System.Drawing.Point(31, 251);
+            this.groupBox1.Location = new System.Drawing.Point(32, 279);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(270, 61);
             this.groupBox1.TabIndex = 10;
@@ -413,7 +425,9 @@
             this.skinGroupBox2.AutoSize = true;
             this.skinGroupBox2.BackColor = System.Drawing.Color.Transparent;
             this.skinGroupBox2.BorderColor = System.Drawing.Color.Red;
+            this.skinGroupBox2.Controls.Add(this.skinLabel22);
             this.skinGroupBox2.Controls.Add(this.skinComboBox2);
+            this.skinGroupBox2.Controls.Add(this.uiCheckBox2);
             this.skinGroupBox2.Controls.Add(this.skinLabel5);
             this.skinGroupBox2.Controls.Add(this.skinButton2);
             this.skinGroupBox2.Controls.Add(this.skinTextBox4);
@@ -429,7 +443,7 @@
             this.skinGroupBox2.RectBackColor = System.Drawing.Color.Transparent;
             this.skinGroupBox2.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.skinGroupBox2.RoundStyle = CCWin.SkinClass.RoundStyle.All;
-            this.skinGroupBox2.Size = new System.Drawing.Size(322, 405);
+            this.skinGroupBox2.Size = new System.Drawing.Size(322, 432);
             this.skinGroupBox2.TabIndex = 1;
             this.skinGroupBox2.TabStop = false;
             this.skinGroupBox2.Text = "西门子通讯配置";
@@ -465,7 +479,7 @@
             this.skinButton2.BackColor = System.Drawing.Color.Transparent;
             this.skinButton2.ControlState = CCWin.SkinClass.ControlState.Normal;
             this.skinButton2.DownBack = null;
-            this.skinButton2.Location = new System.Drawing.Point(96, 316);
+            this.skinButton2.Location = new System.Drawing.Point(96, 343);
             this.skinButton2.MouseBack = null;
             this.skinButton2.Name = "skinButton2";
             this.skinButton2.NormlBack = null;
@@ -649,7 +663,9 @@
             this.skinGroupBox3.AutoSize = true;
             this.skinGroupBox3.BackColor = System.Drawing.Color.Transparent;
             this.skinGroupBox3.BorderColor = System.Drawing.Color.Red;
+            this.skinGroupBox3.Controls.Add(this.skinLabel23);
             this.skinGroupBox3.Controls.Add(this.skinComboBox3);
+            this.skinGroupBox3.Controls.Add(this.uiCheckBox3);
             this.skinGroupBox3.Controls.Add(this.skinLabel9);
             this.skinGroupBox3.Controls.Add(this.skinButton3);
             this.skinGroupBox3.Controls.Add(this.skinTextBox7);
@@ -665,7 +681,7 @@
             this.skinGroupBox3.RectBackColor = System.Drawing.Color.Transparent;
             this.skinGroupBox3.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.skinGroupBox3.RoundStyle = CCWin.SkinClass.RoundStyle.All;
-            this.skinGroupBox3.Size = new System.Drawing.Size(322, 405);
+            this.skinGroupBox3.Size = new System.Drawing.Size(322, 432);
             this.skinGroupBox3.TabIndex = 2;
             this.skinGroupBox3.TabStop = false;
             this.skinGroupBox3.Text = "MODBUS_TCP通讯配置";
@@ -701,7 +717,7 @@
             this.skinButton3.BackColor = System.Drawing.Color.Transparent;
             this.skinButton3.ControlState = CCWin.SkinClass.ControlState.Normal;
             this.skinButton3.DownBack = null;
-            this.skinButton3.Location = new System.Drawing.Point(96, 316);
+            this.skinButton3.Location = new System.Drawing.Point(96, 343);
             this.skinButton3.MouseBack = null;
             this.skinButton3.Name = "skinButton3";
             this.skinButton3.NormlBack = null;
@@ -910,7 +926,9 @@
             this.skinGroupBox5.AutoSize = true;
             this.skinGroupBox5.BackColor = System.Drawing.Color.Transparent;
             this.skinGroupBox5.BorderColor = System.Drawing.Color.Red;
+            this.skinGroupBox5.Controls.Add(this.skinLabel25);
             this.skinGroupBox5.Controls.Add(this.skinComboBox5);
+            this.skinGroupBox5.Controls.Add(this.uiCheckBox5);
             this.skinGroupBox5.Controls.Add(this.skinLabel17);
             this.skinGroupBox5.Controls.Add(this.skinButton9);
             this.skinGroupBox5.Controls.Add(this.skinTextBox13);
@@ -921,12 +939,12 @@
             this.skinGroupBox5.Controls.Add(this.skinLabel20);
             this.skinGroupBox5.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.skinGroupBox5.ForeColor = System.Drawing.Color.Blue;
-            this.skinGroupBox5.Location = new System.Drawing.Point(339, 22);
+            this.skinGroupBox5.Location = new System.Drawing.Point(350, 16);
             this.skinGroupBox5.Name = "skinGroupBox5";
             this.skinGroupBox5.RectBackColor = System.Drawing.Color.Transparent;
             this.skinGroupBox5.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.skinGroupBox5.RoundStyle = CCWin.SkinClass.RoundStyle.All;
-            this.skinGroupBox5.Size = new System.Drawing.Size(343, 405);
+            this.skinGroupBox5.Size = new System.Drawing.Size(322, 431);
             this.skinGroupBox5.TabIndex = 4;
             this.skinGroupBox5.TabStop = false;
             this.skinGroupBox5.Text = "发那科机器人通讯配置";
@@ -962,7 +980,7 @@
             this.skinButton9.BackColor = System.Drawing.Color.Transparent;
             this.skinButton9.ControlState = CCWin.SkinClass.ControlState.Normal;
             this.skinButton9.DownBack = null;
-            this.skinButton9.Location = new System.Drawing.Point(96, 316);
+            this.skinButton9.Location = new System.Drawing.Point(96, 342);
             this.skinButton9.MouseBack = null;
             this.skinButton9.Name = "skinButton9";
             this.skinButton9.NormlBack = null;
@@ -1146,7 +1164,9 @@
             this.skinGroupBox4.AutoSize = true;
             this.skinGroupBox4.BackColor = System.Drawing.Color.Transparent;
             this.skinGroupBox4.BorderColor = System.Drawing.Color.Red;
+            this.skinGroupBox4.Controls.Add(this.skinLabel24);
             this.skinGroupBox4.Controls.Add(this.skinComboBox4);
+            this.skinGroupBox4.Controls.Add(this.uiCheckBox4);
             this.skinGroupBox4.Controls.Add(this.skinLabel13);
             this.skinGroupBox4.Controls.Add(this.skinButton8);
             this.skinGroupBox4.Controls.Add(this.skinTextBox10);
@@ -1157,12 +1177,12 @@
             this.skinGroupBox4.Controls.Add(this.skinLabel16);
             this.skinGroupBox4.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.skinGroupBox4.ForeColor = System.Drawing.Color.Blue;
-            this.skinGroupBox4.Location = new System.Drawing.Point(8, 22);
+            this.skinGroupBox4.Location = new System.Drawing.Point(10, 16);
             this.skinGroupBox4.Name = "skinGroupBox4";
             this.skinGroupBox4.RectBackColor = System.Drawing.Color.Transparent;
             this.skinGroupBox4.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.skinGroupBox4.RoundStyle = CCWin.SkinClass.RoundStyle.All;
-            this.skinGroupBox4.Size = new System.Drawing.Size(322, 405);
+            this.skinGroupBox4.Size = new System.Drawing.Size(322, 431);
             this.skinGroupBox4.TabIndex = 3;
             this.skinGroupBox4.TabStop = false;
             this.skinGroupBox4.Text = "欧姆龙通讯配置";
@@ -1202,7 +1222,7 @@
             this.skinButton8.BackColor = System.Drawing.Color.Transparent;
             this.skinButton8.ControlState = CCWin.SkinClass.ControlState.Normal;
             this.skinButton8.DownBack = null;
-            this.skinButton8.Location = new System.Drawing.Point(96, 316);
+            this.skinButton8.Location = new System.Drawing.Point(96, 342);
             this.skinButton8.MouseBack = null;
             this.skinButton8.Name = "skinButton8";
             this.skinButton8.NormlBack = null;
@@ -1393,6 +1413,136 @@
             this.tabPage1.Text = "选项1";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // uiCheckBox1
+            // 
+            this.uiCheckBox1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.uiCheckBox1.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Bold);
+            this.uiCheckBox1.ForeColor = System.Drawing.Color.Blue;
+            this.uiCheckBox1.Location = new System.Drawing.Point(101, 250);
+            this.uiCheckBox1.Name = "uiCheckBox1";
+            this.uiCheckBox1.Padding = new System.Windows.Forms.Padding(22, 0, 0, 0);
+            this.uiCheckBox1.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.uiCheckBox1.Size = new System.Drawing.Size(150, 29);
+            this.uiCheckBox1.Style = Sunny.UI.UIStyle.Custom;
+            this.uiCheckBox1.TabIndex = 11;
+            this.uiCheckBox1.Text = "自动重链";
+            // 
+            // skinLabel21
+            // 
+            this.skinLabel21.AutoSize = true;
+            this.skinLabel21.BackColor = System.Drawing.Color.Transparent;
+            this.skinLabel21.BorderColor = System.Drawing.Color.White;
+            this.skinLabel21.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.skinLabel21.Location = new System.Drawing.Point(26, 253);
+            this.skinLabel21.Name = "skinLabel21";
+            this.skinLabel21.Size = new System.Drawing.Size(79, 19);
+            this.skinLabel21.TabIndex = 12;
+            this.skinLabel21.Text = "设备处理：";
+            // 
+            // skinLabel22
+            // 
+            this.skinLabel22.AutoSize = true;
+            this.skinLabel22.BackColor = System.Drawing.Color.Transparent;
+            this.skinLabel22.BorderColor = System.Drawing.Color.White;
+            this.skinLabel22.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.skinLabel22.Location = new System.Drawing.Point(26, 256);
+            this.skinLabel22.Name = "skinLabel22";
+            this.skinLabel22.Size = new System.Drawing.Size(79, 19);
+            this.skinLabel22.TabIndex = 14;
+            this.skinLabel22.Text = "设备处理：";
+            // 
+            // uiCheckBox2
+            // 
+            this.uiCheckBox2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.uiCheckBox2.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Bold);
+            this.uiCheckBox2.ForeColor = System.Drawing.Color.Blue;
+            this.uiCheckBox2.Location = new System.Drawing.Point(101, 253);
+            this.uiCheckBox2.Name = "uiCheckBox2";
+            this.uiCheckBox2.Padding = new System.Windows.Forms.Padding(22, 0, 0, 0);
+            this.uiCheckBox2.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.uiCheckBox2.Size = new System.Drawing.Size(150, 29);
+            this.uiCheckBox2.Style = Sunny.UI.UIStyle.Custom;
+            this.uiCheckBox2.TabIndex = 13;
+            this.uiCheckBox2.Text = "自动重链";
+            // 
+            // skinLabel23
+            // 
+            this.skinLabel23.AutoSize = true;
+            this.skinLabel23.BackColor = System.Drawing.Color.Transparent;
+            this.skinLabel23.BorderColor = System.Drawing.Color.White;
+            this.skinLabel23.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.skinLabel23.Location = new System.Drawing.Point(26, 259);
+            this.skinLabel23.Name = "skinLabel23";
+            this.skinLabel23.Size = new System.Drawing.Size(79, 19);
+            this.skinLabel23.TabIndex = 16;
+            this.skinLabel23.Text = "设备处理：";
+            // 
+            // uiCheckBox3
+            // 
+            this.uiCheckBox3.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.uiCheckBox3.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Bold);
+            this.uiCheckBox3.ForeColor = System.Drawing.Color.Blue;
+            this.uiCheckBox3.Location = new System.Drawing.Point(101, 256);
+            this.uiCheckBox3.Name = "uiCheckBox3";
+            this.uiCheckBox3.Padding = new System.Windows.Forms.Padding(22, 0, 0, 0);
+            this.uiCheckBox3.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.uiCheckBox3.Size = new System.Drawing.Size(150, 29);
+            this.uiCheckBox3.Style = Sunny.UI.UIStyle.Custom;
+            this.uiCheckBox3.TabIndex = 15;
+            this.uiCheckBox3.Text = "自动重链";
+            // 
+            // skinLabel24
+            // 
+            this.skinLabel24.AutoSize = true;
+            this.skinLabel24.BackColor = System.Drawing.Color.Transparent;
+            this.skinLabel24.BorderColor = System.Drawing.Color.White;
+            this.skinLabel24.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.skinLabel24.Location = new System.Drawing.Point(26, 253);
+            this.skinLabel24.Name = "skinLabel24";
+            this.skinLabel24.Size = new System.Drawing.Size(79, 19);
+            this.skinLabel24.TabIndex = 16;
+            this.skinLabel24.Text = "设备处理：";
+            // 
+            // uiCheckBox4
+            // 
+            this.uiCheckBox4.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.uiCheckBox4.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Bold);
+            this.uiCheckBox4.ForeColor = System.Drawing.Color.Blue;
+            this.uiCheckBox4.Location = new System.Drawing.Point(101, 250);
+            this.uiCheckBox4.Name = "uiCheckBox4";
+            this.uiCheckBox4.Padding = new System.Windows.Forms.Padding(22, 0, 0, 0);
+            this.uiCheckBox4.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.uiCheckBox4.Size = new System.Drawing.Size(150, 29);
+            this.uiCheckBox4.Style = Sunny.UI.UIStyle.Custom;
+            this.uiCheckBox4.TabIndex = 15;
+            this.uiCheckBox4.Text = "自动重链";
+            // 
+            // skinLabel25
+            // 
+            this.skinLabel25.AutoSize = true;
+            this.skinLabel25.BackColor = System.Drawing.Color.Transparent;
+            this.skinLabel25.BorderColor = System.Drawing.Color.White;
+            this.skinLabel25.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.skinLabel25.Location = new System.Drawing.Point(26, 256);
+            this.skinLabel25.Name = "skinLabel25";
+            this.skinLabel25.Size = new System.Drawing.Size(79, 19);
+            this.skinLabel25.TabIndex = 18;
+            this.skinLabel25.Text = "设备处理：";
+            // 
+            // uiCheckBox5
+            // 
+            this.uiCheckBox5.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.uiCheckBox5.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Bold);
+            this.uiCheckBox5.ForeColor = System.Drawing.Color.Blue;
+            this.uiCheckBox5.Location = new System.Drawing.Point(101, 253);
+            this.uiCheckBox5.Name = "uiCheckBox5";
+            this.uiCheckBox5.Padding = new System.Windows.Forms.Padding(22, 0, 0, 0);
+            this.uiCheckBox5.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.uiCheckBox5.Size = new System.Drawing.Size(150, 29);
+            this.uiCheckBox5.Style = Sunny.UI.UIStyle.Custom;
+            this.uiCheckBox5.TabIndex = 17;
+            this.uiCheckBox5.Text = "自动重链";
+            // 
             // PLCselect_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1486,5 +1636,15 @@
         private CCWin.SkinControl.SkinLabel skinLabel15;
         private CCWin.SkinControl.SkinTextBox skinTextBox12;
         private CCWin.SkinControl.SkinLabel skinLabel16;
+        private CCWin.SkinControl.SkinLabel skinLabel21;
+        private Sunny.UI.UICheckBox uiCheckBox1;
+        private CCWin.SkinControl.SkinLabel skinLabel22;
+        private Sunny.UI.UICheckBox uiCheckBox2;
+        private CCWin.SkinControl.SkinLabel skinLabel23;
+        private Sunny.UI.UICheckBox uiCheckBox3;
+        private CCWin.SkinControl.SkinLabel skinLabel25;
+        private Sunny.UI.UICheckBox uiCheckBox5;
+        private CCWin.SkinControl.SkinLabel skinLabel24;
+        private Sunny.UI.UICheckBox uiCheckBox4;
     }
 }
