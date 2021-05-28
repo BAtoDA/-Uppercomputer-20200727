@@ -19,7 +19,7 @@
 5:如果出现DLL补全 请在文件目录第三方DLL处重新添加。   
 演示视频地址：  https://pan.baidu.com/s/1Ls92y1wU9d41BLVMU4eYNg 提取码：m2qc
  
-   控件组成  
+                                                           控件组成    
 
 ![image](https://user-images.githubusercontent.com/60955669/119997409-4a109380-c002-11eb-91c2-3704899ab6dd.png)
 
