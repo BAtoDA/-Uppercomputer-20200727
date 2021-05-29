@@ -224,6 +224,7 @@
     <Compile Include="EF实体模型\doughnut_Chart_parameter.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="EF实体模型\EFtoSQL操作类重写\Button_EFbase.cs" />
     <Compile Include="EF实体模型\EF实体模型\UppercomputerEntities2.cs" />
     <Compile Include="EF实体模型\Event_EF.cs" />
     <Compile Include="EF实体模型\Event_message.cs">
@@ -711,9 +712,6 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="控件重做\SkinLabel_reform.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="控件重做\Time_reform.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="控制主页面\Form3.cs">

@@ -16,6 +16,7 @@ using 自定义Uppercomputer_20200727.控件重做.控件类基.文本__TO__PLC�
 using System.Threading;
 using CCWin.SkinControl;
 using System.ComponentModel;
+using 自定义Uppercomputer_20200727.EF实体模型.EFtoSQL操作类重写;
 
 namespace 自定义Uppercomputer_20200727.控件重做
 {
@@ -85,7 +86,7 @@ namespace 自定义Uppercomputer_20200727.控件重做
             //标志位复位-并且写入数据库
             if (startMove)
             {
-                Button_EF button_EF = new Button_EF();//实例化EF
+                Button_EFbase button_EF = new Button_EFbase();//实例化EF
                 button_EF.Button_Parameter_modification(this.Parent + "- " + this.Name
                     , new control_location
                     {

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace 自定义Uppercomputer_20200727.EF实体模型
 {
     /// <本类用于处理Button类进行数据查询修改等操作>    
-    class Button_EF
+    class Button_EF2
     {
         public static string Button_Parameter_inquire(string ID)//按钮类参数ID查询
         {

@@ -17,7 +17,6 @@
             {                
                 if (disposing && (components != null))
                 {
-                    time_Reform.Dispose();
                     asc = null;
                     components.Dispose();
                 }
@@ -799,7 +798,6 @@
             // PLC_circulation_read
             // 
             this.PLC_circulation_read.Interval = 200;
-            this.PLC_circulation_read.Tick += new System.EventHandler(this.PLC_circulation_read_Tick);
             // 
             // timer3
             // 

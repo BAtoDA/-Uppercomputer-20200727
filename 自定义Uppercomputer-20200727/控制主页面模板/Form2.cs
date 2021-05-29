@@ -57,8 +57,7 @@ namespace 自定义Uppercomputer_20200727
     public partial class Form2 : CCWin.Skin_Mac
     {
         /// <该页面是模板通用页面->
-        Time_reform time_Reform;//读取PLC与修改控件--定时器
-                                //1.声明自适应类实例
+        //1.声明自适应类实例
         AutoSizeFormClass asc = new AutoSizeFormClass();
         /// <summary>
         /// 构造函数
@@ -66,7 +65,6 @@ namespace 自定义Uppercomputer_20200727
         public Form2()
         {
             InitializeComponent();
-            time_Reform = new Time_reform(this);//实例化读取定时器--开启读取PLC
             ////开启双缓冲
             this.SetStyle(ControlStyles.OptimizedDoubleBuffer
                  | ControlStyles.ResizeRedraw
@@ -621,9 +619,6 @@ namespace 自定义Uppercomputer_20200727
                 se.Wait();
                 this.timer3.Start();
                 timer3.Interval = 100;
-                time_Reform.Form = this.Name;//获取当前窗口名称
-                time_Reform.Interval = 100;//遍历控件时间
-                time_Reform.Start();//运行定时器
                 asc.RenewControlRect(this);
                 //传递PLC参数到宏指令
                 if (!CSEngineTest.PLC.Mitsubishi_axActUtlType.IsNull()) return;
@@ -704,7 +699,6 @@ namespace 自定义Uppercomputer_20200727
             this.ucNavigationMenu1.Enabled = false;
             this.ucNavigationMenu1.Items[6].TipText = edit_mode == true ? "开" : "关";//改变状态栏提示文字
             this.ucNavigationMenu1.Enabled = true;
-            if (PLC_read_Tick & edit_mode != true) time_Reform.read_status = false; else time_Reform.read_status = true; //指示定时器可以开始遍历
             if (edit_mode) { PLC_read_ok = false; PLC_read_Tick = false; };//指示用户开始了编辑模式
             asc.RenewControlRect(this);//实时保存控件大小与位置
             try
@@ -722,71 +716,6 @@ namespace 自定义Uppercomputer_20200727
         }
         bool PLC_read_Tick = false;//指示是否遍历窗口完成
         bool PLC_read_ok = false;//指示是否遍历控件是否完成--
-        /// <summary>
-        /// 该方法已过时 --停用
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private async void PLC_circulation_read_Tick(object sender, EventArgs e)//PLC循环读取定时器
-        {
-           await Task.Run(() =>
-               {
-                   if (time_Reform.TextBox_read_status != false || time_Reform.Button_read_status != false || time_Reform.Switch_read_status != false
-                   || time_Reform.LedBulb_read_status != false || time_Reform.doughnut_Chart_read_status != false || time_Reform.histogram_Chart_read_status != false
-                   || time_Reform.oscillogram_Chart_read_status != false || time_Reform.AnalogMeter_read_status != false ||
-                   time_Reform.LedDisplay_read_status != false || time_Reform.ihatetheqrcode_read_status != false || edit_mode) return;//直接返回方法--指示当前控件正在遍历
-                   if (PLC_read_ok != true)
-                   {
-                       //LogUtils日志
-                       LogUtils.debugWrite($"开始遍历{this.Name + this.Text}窗口控件");
-
-                       PLC_read_Tick = false;//指示定时器不可以开始遍历
-                       ConcurrentBag<Button_reform> button_Reforms = new ConcurrentBag<Button_reform>();//按钮类集合
-                       ConcurrentBag<SkinTextBox_reform> skinTextBox_Reforms = new ConcurrentBag<SkinTextBox_reform>();//文本输入类集合
-                       ConcurrentBag<Switch_reform> Switch_reforms = new ConcurrentBag<Switch_reform>();//切换开关类集合
-                       ConcurrentBag<LedBulb_reform> LedBulb_reforms = new ConcurrentBag<LedBulb_reform>();//指示灯类集合
-                       ConcurrentBag<ImageButton_reform> ImageButton_reforms = new ConcurrentBag<ImageButton_reform>();//指示灯类集合
-                       ConcurrentBag<doughnut_Chart_reform> doughnut_Chart_reforms = new ConcurrentBag<doughnut_Chart_reform>();//圆形图类集合
-                       ConcurrentBag<histogram_Chart_reform> histogram_Chart_reforms = new ConcurrentBag<histogram_Chart_reform>();//柱形图图类集合
-                       ConcurrentBag<oscillogram_Chart_reform> oscillogram_Chart_reforms = new ConcurrentBag<oscillogram_Chart_reform>();//折线图类集合
-                       ConcurrentBag<AnalogMeter_reform> AnalogMeter_reforms = new ConcurrentBag<AnalogMeter_reform>();//百分百表盘类集合
-                       ConcurrentBag<LedDisplay_reform> LedDisplay_reforms = new ConcurrentBag<LedDisplay_reform>();//数值显示类集合
-                       ConcurrentBag<ihatetheqrcode_reform> ihatetheqrcode_reforms = new ConcurrentBag<ihatetheqrcode_reform>();//二维码/条形码类集合
-
-                       foreach (var In in this.Controls)//遍历窗口控件
-                       {
-                           if (In is Button_reform) button_Reforms.Add((Button_reform)In);//添加按钮对象
-                           if (In is SkinTextBox_reform) skinTextBox_Reforms.Add((SkinTextBox_reform)In);//添加文本输入对象
-                           if (In is Switch_reform) Switch_reforms.Add((Switch_reform)In);//切换开关对象
-                           if (In is LedBulb_reform) LedBulb_reforms.Add((LedBulb_reform)In);//添加对象
-                           if (In is ImageButton_reform) ImageButton_reforms.Add((ImageButton_reform)In);//添加对象
-                           if (In is doughnut_Chart_reform) doughnut_Chart_reforms.Add((doughnut_Chart_reform)In);//添加对象
-                           if (In is histogram_Chart_reform) histogram_Chart_reforms.Add((histogram_Chart_reform)In);//添加对象
-                           if (In is oscillogram_Chart_reform) oscillogram_Chart_reforms.Add((oscillogram_Chart_reform)In);//添加对象
-                           if (In is AnalogMeter_reform) AnalogMeter_reforms.Add((AnalogMeter_reform)In);//添加对象
-                           if (In is LedDisplay_reform) LedDisplay_reforms.Add((LedDisplay_reform)In);//添加对象
-                           if (In is ihatetheqrcode_reform) ihatetheqrcode_reforms.Add((ihatetheqrcode_reform)In);//添加对象
-
-                       }
-                       time_Reform.Button_list_1 = button_Reforms;//获取集合
-                       time_Reform.TextBox_list_1 = skinTextBox_Reforms;//获取集合
-                       time_Reform.Switch_list_1 = Switch_reforms;//获取集合
-                       time_Reform.LedBulb_list_1 = LedBulb_reforms;//获取集合
-                       time_Reform.ImageButton_list_1 = ImageButton_reforms;//获取集合
-                       time_Reform.doughnut_Chart_list_1 = doughnut_Chart_reforms;//获取集合
-                       time_Reform.histogram_Chart_list_1 = histogram_Chart_reforms;//获取集合
-                       time_Reform.oscillogram_Chart_list_1 = oscillogram_Chart_reforms;//获取集合
-                       time_Reform.AnalogMeter_list_1 = AnalogMeter_reforms;//获取集合
-                       time_Reform.LedDisplay_list_1 = LedDisplay_reforms;//获取集合
-                       time_Reform.ihatetheqrcode_list_1 = ihatetheqrcode_reforms;//获取集合
-                       PLC_read_ok = true;
-                       PLC_read_Tick = true;//指示定时器可以开始遍历
-                       button_Reforms = null;
-                       //LogUtils日志
-                       LogUtils.debugWrite($"遍历{this.Name + this.Text}窗口控件完成");
-                   }
-             });
-        }
 
         private void toolStripMenuItem6_Click(object sender, EventArgs e)//用户点击了报警注册
         {

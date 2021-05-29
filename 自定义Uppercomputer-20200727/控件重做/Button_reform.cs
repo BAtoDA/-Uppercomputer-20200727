@@ -12,6 +12,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using 自定义Uppercomputer_20200727.EF实体模型;
+using 自定义Uppercomputer_20200727.EF实体模型.EFtoSQL操作类重写;
 using 自定义Uppercomputer_20200727.PLC选择;
 using 自定义Uppercomputer_20200727.PLC选择.MODBUS_TCP监控窗口;
 using 自定义Uppercomputer_20200727.修改参数界面;
@@ -74,8 +75,8 @@ namespace 自定义Uppercomputer_20200727.控件重做
             //当按钮按下触发—写入PLC状态
             this.BeginInvoke((EventHandler)delegate
             {
-                Button_EF button_EF = new Button_EF();//实例化EF
-                Button_Class = button_EF.Button_Parameter_Query(this.Parent + "-" + this.Name);//查询控件参数
+                Button_EFbase button_EF = new Button_EFbase();//实例化EF
+                Button_Class = button_EF.Button_Parameter_Query<Button_Class>(this.Parent + "-" + this.Name);//查询控件参数
                 if (Form2.edit_mode || Button_Class.位指示灯.Trim() == "1") return;
                 if (Button_Class.读写不同地址_ON_OFF == 0)
                     button_PLC.plc(Button_Class.读写设备.Trim(), Button_Class.操作模式.Trim(), Button_Class.读写设备_地址.Trim(),Button_Class.读写设备_地址_具体地址.Trim(), Button_Class.读写不同地址_ON_OFF,Button_Class.写设备_地址_复选.Trim(),Button_Class.写设备_地址_具体地址_复选.Trim());//选择相应PLC 进行写入
@@ -105,7 +106,7 @@ namespace 自定义Uppercomputer_20200727.控件重做
             //标志位复位-并且写入数据库
             if (startMove)
             {
-                Button_EF button_EF = new Button_EF();//实例化EF
+                Button_EFbase button_EF = new Button_EFbase();//实例化EF
                 button_EF.Button_Parameter_modification(this.Parent + "-" + this.Name
                     , new control_location
                     {
@@ -183,7 +184,7 @@ namespace 自定义Uppercomputer_20200727.控件重做
                 locatio.FORM= From;
 
                 //重新向SQL插入数据
-                Button_EF EF = new Button_EF();
+                Button_EFbase EF = new Button_EFbase();
                 EF.Button_Add(button_parameter, Tag_common, general_parameters_of_picture, locatio, button_colour);
                 return button;
             }
@@ -259,8 +260,8 @@ namespace 自定义Uppercomputer_20200727.控件重做
                             }
                         if (_Class.IsNull())
                         {
-                            Button_EF EF = new Button_EF();//实例化EF
-                                _Class = EF.Button_Parameter_Query(this.Parent + "-" + this.Name);//查询控件参数
+                            Button_EFbase EF = new Button_EFbase();//实例化EF
+                                _Class = EF.Button_Parameter_Query<Button_Class>(this.Parent + "-" + this.Name);//查询控件参数
                             }
                         if (_Class.IsNull()) return;
                         this.button_state(this, _Class, button_PLC.Refresh(this, _Class.读写设备.Trim(), _Class.读写设备_地址.Trim(), _Class.读写设备_地址_具体地址.Trim()));

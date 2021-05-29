@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using 自定义Uppercomputer_20200727.EF实体模型;
+using 自定义Uppercomputer_20200727.EF实体模型.EFtoSQL操作类重写;
 using 自定义Uppercomputer_20200727.EF实体模型.工业图形控件参数;
 using 自定义Uppercomputer_20200727.Nlog;
 using 自定义Uppercomputer_20200727.修改参数界面;
@@ -184,8 +185,8 @@ namespace 自定义Uppercomputer_20200727.控件重做
                 case "Button_reform":
                     if (MessageBox.Show("确定要删除" + ((Button_reform)all_purpose).Name.Trim() + "吗？", "错误：", MessageBoxButtons.YesNo) == DialogResult.No) return;
                     ((Button_reform)all_purpose).Visible = false;//隐藏控件
-                    Button_EF button_EF = new Button_EF();//实例化EF对象
-                    button_EF.Button_Parameter_delete(SkinContextMenuStrip_Button_ID + "-" + ((Button_reform)all_purpose).Name);//执行SQL删除操作
+                    Button_EFbase button_EF = new Button_EFbase();//实例化EF对象
+                    button_EF.Button_Parameter_delete<Button_parameter, Tag_common_parameters, General_parameters_of_picture, control_location, Control_layer, Button_colour>(SkinContextMenuStrip_Button_ID + "-" + ((Button_reform)all_purpose).Name);//执行SQL删除操作
                     break;
                 case "SkinLabel_reform":
                     if (MessageBox.Show("确定要删除" + ((SkinLabel)all_purpose).Name.Trim() + "吗？", "错误：", MessageBoxButtons.YesNo) == DialogResult.No) return;
