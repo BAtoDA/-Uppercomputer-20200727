@@ -190,7 +190,6 @@
     <Compile Include="EF实体模型\AnalogMeter_Class.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="EF实体模型\AnalogMeter_EF.cs" />
     <Compile Include="EF实体模型\AnalogMeter_parameter.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -200,7 +199,6 @@
     <Compile Include="EF实体模型\Button_colour.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="EF实体模型\Button_EF.cs" />
     <Compile Include="EF实体模型\Button_parameter.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -243,7 +241,6 @@
     <Compile Include="EF实体模型\GroupBox_Class.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="EF实体模型\GroupBox_EF.cs" />
     <Compile Include="EF实体模型\GroupBox_parameter.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -257,7 +254,6 @@
     <Compile Include="EF实体模型\HScrollBar_Class.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="EF实体模型\HScrollBar_EF.cs" />
     <Compile Include="EF实体模型\HScrollBar_parameter.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -271,7 +267,6 @@
     <Compile Include="EF实体模型\ImageButton_Class.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="EF实体模型\ImageButton_EF.cs" />
     <Compile Include="EF实体模型\ImageButton_parameter.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -339,7 +334,6 @@
     <Compile Include="EF实体模型\RadioButton_Class.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="EF实体模型\RadioButton_EF.cs" />
     <Compile Include="EF实体模型\RadioButton_parameter.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -353,7 +347,6 @@
     <Compile Include="EF实体模型\Switch_Class.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="EF实体模型\Switch_EF.cs" />
     <Compile Include="EF实体模型\Switch_parameter.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>

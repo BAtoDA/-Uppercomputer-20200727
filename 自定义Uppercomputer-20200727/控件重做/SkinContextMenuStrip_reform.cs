@@ -209,8 +209,8 @@ namespace 自定义Uppercomputer_20200727.控件重做
                 case "Switch_reform":
                     if (MessageBox.Show("确定要删除" + ((Switch_reform)all_purpose).Name.Trim() + "吗？", "错误：", MessageBoxButtons.YesNo) == DialogResult.No) return;
                     ((Switch_reform)all_purpose).Visible = false;//隐藏控件
-                    Switch_EF Switch_EF = new Switch_EF();//实例化EF对象
-                    Switch_EF.Button_Parameter_delete(SkinContextMenuStrip_Button_ID + "-" + ((Switch_reform)all_purpose).Name);//执行SQL删除操作
+                    Button_EFbase Switch_EF = new Button_EFbase();//实例化EF对象
+                    Switch_EF.Button_Parameter_delete<Switch_parameter, Tag_common_parameters, General_parameters_of_picture, control_location, Control_layer, Button_colour>(SkinContextMenuStrip_Button_ID + "-" + ((Switch_reform)all_purpose).Name);//执行SQL删除操作
                     break;
                 case "LedBulb_reform":
                     if (MessageBox.Show("确定要删除" + ((LedBulb_reform)all_purpose).Name.Trim() + "吗？", "错误：", MessageBoxButtons.YesNo) == DialogResult.No) return;
@@ -221,14 +221,15 @@ namespace 自定义Uppercomputer_20200727.控件重做
                 case "GroupBox_reform":
                     if (MessageBox.Show("确定要删除" + ((GroupBox_reform)all_purpose).Name.Trim() + "吗？", "错误：", MessageBoxButtons.YesNo) == DialogResult.No) return;
                     ((GroupBox_reform)all_purpose).Visible = false;//隐藏控件
-                    GroupBox_EF GroupBox_EF = new GroupBox_EF();//实例化EF对象
-                    GroupBox_EF.GroupBox_Parameter_delete(SkinContextMenuStrip_Button_ID + "-" + ((GroupBox_reform)all_purpose).Name);//执行SQL删除操作
+                    Button_EFbase GroupBox_EF = new Button_EFbase();//实例化EF对象
+                    GroupBox_EF.Button_Parameter_delete<GroupBox_parameter, Tag_common_parameters, control_location, Control_layer, Button_colour>(SkinContextMenuStrip_Button_ID + "-" + ((GroupBox_reform)all_purpose).Name);//执行SQL删除操作
                     break;
                 case "ImageButton_reform":
                     if (MessageBox.Show("确定要删除" + ((ImageButton_reform)all_purpose).Name.Trim() + "吗？", "错误：", MessageBoxButtons.YesNo) == DialogResult.No) return;
                     ((ImageButton_reform)all_purpose).Visible = false;//隐藏控件
-                    ImageButton_EF ImageButton_EF = new ImageButton_EF();//实例化EF对象
-                    ImageButton_EF.Button_Parameter_delete(SkinContextMenuStrip_Button_ID + "-" + ((ImageButton_reform)all_purpose).Name);//执行SQL删除操作
+                    Button_EFbase ImageButton_EF = new Button_EFbase();//实例化EF对象
+                    ImageButton_EF.Button_Parameter_delete<ImageButton_parameter, Tag_common_parameters ,
+             General_parameters_of_picture , control_location, Control_layer> (SkinContextMenuStrip_Button_ID + "-" + ((ImageButton_reform)all_purpose).Name);//执行SQL删除操作
                     break;
                 case "ScrollingText_reform":
                     if (MessageBox.Show("确定要删除" + ((ScrollingText_reform)all_purpose).Name.Trim() + "吗？", "错误：", MessageBoxButtons.YesNo) == DialogResult.No) return;
@@ -257,8 +258,8 @@ namespace 自定义Uppercomputer_20200727.控件重做
                 case "AnalogMeter_reform":
                     if (MessageBox.Show("确定要删除" + ((AnalogMeter_reform)all_purpose).Name.Trim() + "吗？", "错误：", MessageBoxButtons.YesNo) == DialogResult.No) return;
                     ((AnalogMeter_reform)all_purpose).Visible = false;//隐藏控件
-                    AnalogMeter_EF AnalogMeter_EF = new AnalogMeter_EF();//实例化EF对象
-                    AnalogMeter_EF.AnalogMeter_Parameter_delete(SkinContextMenuStrip_Button_ID + "- " + ((AnalogMeter_reform)all_purpose).Name);//执行SQL删除操作
+                    Button_EFbase AnalogMeter_EF = new Button_EFbase();//实例化EF对象
+                    AnalogMeter_EF.Button_Parameter_delete<AnalogMeter_parameter, Tag_common_parameters, control_location>(SkinContextMenuStrip_Button_ID + "- " + ((AnalogMeter_reform)all_purpose).Name);//执行SQL删除操作
                     break;
                 case "LedDisplay_reform":
                     if (MessageBox.Show("确定要删除" + ((LedDisplay_reform)all_purpose).Name.Trim() + "吗？", "错误：", MessageBoxButtons.YesNo) == DialogResult.No) return;
@@ -284,8 +285,8 @@ namespace 自定义Uppercomputer_20200727.控件重做
                 case "RadioButton_reform":
                     if (MessageBox.Show("确定要删除" + ((RadioButton_reform)all_purpose).Name.Trim() + "吗？", "错误：", MessageBoxButtons.YesNo) == DialogResult.No) return;
                     ((RadioButton_reform)all_purpose).Visible = false;//隐藏控件
-                    RadioButton_EF RadioButton_EF = new RadioButton_EF();//实例化EF对象
-                    RadioButton_EF.Button_Parameter_delete(SkinContextMenuStrip_Button_ID + "-" + ((RadioButton_reform)all_purpose).Name);//执行SQL删除操作
+                    Button_EFbase RadioButton_EF = new Button_EFbase();//实例化EF对象
+                    RadioButton_EF.Button_Parameter_delete<RadioButton_parameter, Tag_common_parameters, General_parameters_of_picture, control_location, Control_layer, Button_colour>(SkinContextMenuStrip_Button_ID + "-" + ((RadioButton_reform)all_purpose).Name);//执行SQL删除操作
                     break;
                 case "pull_down_menu_reform":
                     if (MessageBox.Show("确定要删除" + ((pull_down_menu_reform)all_purpose).Name.Trim() + "吗？", "错误：", MessageBoxButtons.YesNo) == DialogResult.No) return;
@@ -296,8 +297,8 @@ namespace 自定义Uppercomputer_20200727.控件重做
                 case "HScrollBar_reform":
                     if (MessageBox.Show("确定要删除" + ((HScrollBar_reform)all_purpose).Name.Trim() + "吗？", "错误：", MessageBoxButtons.YesNo) == DialogResult.No) return;
                     ((HScrollBar_reform)all_purpose).Visible = false;//隐藏控件
-                    HScrollBar_EF HScrollBar_EF = new HScrollBar_EF();//实例化EF对象
-                    HScrollBar_EF.HScrollBar_Parameter_delete(SkinContextMenuStrip_Button_ID + "- " + ((HScrollBar_reform)all_purpose).Name);//执行SQL删除操作
+                    Button_EFbase HScrollBar_EF = new Button_EFbase();//实例化EF对象
+                    HScrollBar_EF.Button_Parameter_delete<HScrollBar_parameter, Tag_common_parameters, control_location>(SkinContextMenuStrip_Button_ID + "- " + ((HScrollBar_reform)all_purpose).Name);//执行SQL删除操作
                     break;
                 case "Conveyor_reform":
                     if (MessageBox.Show("确定要删除" + ((Conveyor_reform)all_purpose).Name.Trim() + "吗？", "错误：", MessageBoxButtons.YesNo) == DialogResult.No) return;

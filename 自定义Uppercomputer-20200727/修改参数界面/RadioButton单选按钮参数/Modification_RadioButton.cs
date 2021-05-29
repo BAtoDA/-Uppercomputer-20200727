@@ -16,6 +16,7 @@ using 自定义Uppercomputer_20200727.EF实体模型;
 using 自定义Uppercomputer_20200727.图库;
 using 自定义Uppercomputer_20200727.控件重做;
 using 自定义Uppercomputer_20200727.Nlog;
+using 自定义Uppercomputer_20200727.EF实体模型.EFtoSQL操作类重写;
 
 namespace 自定义Uppercomputer_20200727.修改参数界面.RadioButton单选按钮参数
 {
@@ -67,10 +68,10 @@ namespace 自定义Uppercomputer_20200727.修改参数界面.RadioButton单选�
         private void Modification_RadioButton_Shown(object sender, EventArgs e)
         {
             //查询数据库是否有该数据
-            if (RadioButton_EF.Button_Parameter_inquire(this.skinTextBox8.Text) == "OK")
+            if (Button_EFbase.Button_Parameter_inquire<RadioButton_Class>(this.skinTextBox8.Text) == "OK")
             {
-                RadioButton_EF button_EF = new RadioButton_EF();//实例化EF对象
-                button = button_EF.Button_Parameter_Query(this.skinTextBox8.Text);//获取按钮类全部参数
+                Button_EFbase button_EF = new Button_EFbase();//实例化EF对象
+                button = button_EF.Button_Parameter_Query<RadioButton_Class>(this.skinTextBox8.Text);//获取按钮类全部参数
                 List_Index();//开始改变索引
                 if (skinRadioButton1.Checked == false & skinRadioButton4.Checked == false) skinRadioButton1.Checked = true;
 
@@ -144,8 +145,8 @@ namespace 自定义Uppercomputer_20200727.修改参数界面.RadioButton单选�
             //判断PLC具体地址是否为Null或者不正确
 
             //先查询数据库有无此ID--有进行修改--无新增--
-            RadioButton_EF button_EF = new RadioButton_EF();//实例化EF对象
-            if (RadioButton_EF.Button_Parameter_inquire(this.skinTextBox8.Text) == "OK")
+            Button_EFbase button_EF = new Button_EFbase();//实例化EF对象
+            if (Button_EFbase.Button_Parameter_inquire<RadioButton_Class>(this.skinTextBox8.Text) == "OK")
             {
                 //LogUtils日志
                 LogUtils.debugWrite($"用户向{((Control)all_purpose).Name} 控件修改参数");
@@ -163,7 +164,7 @@ namespace 自定义Uppercomputer_20200727.修改参数界面.RadioButton单选�
             }
             ((RadioButton_reform)this.all_purpose).Text = this.skinChatRichTextBox1.Text.Trim();//设置文本
             Public_attributeCalss public_AttributeCalss = new Public_attributeCalss();//实例化按钮参数设置
-            public_AttributeCalss.attributeCalss((RadioButton_reform)this.all_purpose, button_EF.Button_Parameter_Query(skinTextBox8.Text.Trim()));//查询数据库--进行设置后的参数修改
+            public_AttributeCalss.attributeCalss((RadioButton_reform)this.all_purpose, button_EF.Button_Parameter_Query<RadioButton_Class>(skinTextBox8.Text.Trim()));//查询数据库--进行设置后的参数修改
             Add_to_allow = true;//允许添加控件
             this.Close();
             this.Dispose();

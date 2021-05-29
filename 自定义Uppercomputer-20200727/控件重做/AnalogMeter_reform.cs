@@ -67,7 +67,7 @@ namespace 自定义Uppercomputer_20200727.控件重做
             this.menuStrip_Reform.SkinContextMenuStrip_Button_ID = button.Parent.ToString();//写入信息
             this.menuStrip_Reform.all_purpose = send;//获取事件触发的控件
             this.menuStrip_Reform.SkinContextMenuStrip_Button_type = this.GetType().Name;//获取类型名称
-                                                                                         //如果用户不开启编辑模式--右键菜单选项为锁定状态
+             //如果用户不开启编辑模式--右键菜单选项为锁定状态
             this.menuStrip_Reform.Enabled = Form2.edit_mode;//启用状态
         }
         /// <方法重写实现拖放功能—>
@@ -104,7 +104,6 @@ namespace 自定义Uppercomputer_20200727.控件重做
                 // e.X 是正负数,表示移动的方向
                 int x = this.Location.X + e.X - clickX;   //还要减去上次鼠标点击的位置
                 int y = e.Y + this.Location.Y - clickY;
-                //this.Location = new Point(x, y);
             }
         }
         /// <方法重写实现字体大小改变控件Size大小功能—>
@@ -166,12 +165,12 @@ namespace 自定义Uppercomputer_20200727.控件重做
                         _Class = null;
                         return;//返回方法
                     }
-                    if (_Class.IsNull())
+                    if (_Class.IsNull()||_Class.ID.IsNull())
                     {
-                        AnalogMeter_EF EF = new AnalogMeter_EF();//实例化EF
-                        _Class = EF.AnalogMeter_Parameter_Query(this.Parent + "- " + this.Name);//查询控件参数
+                        Button_EFbase EF = new Button_EFbase();//实例化EF
+                        _Class = EF.Button_Parameter_Query<AnalogMeter_Class>(this.Parent + "- " + this.Name);//查询控件参数
                     }
-                    if (_Class.IsNull()) return;
+                    if (_Class.ID.IsNull()) return;
                     this.TextBox_state(this, _Class, TextBox.Refresh(_Class.读写设备.Trim(), _Class.资料格式.Trim(), _Class.读写设备_地址.Trim(), _Class.读写设备_地址_具体地址.Trim()));
                 }
                 catch
@@ -219,10 +218,10 @@ namespace 自定义Uppercomputer_20200727.控件重做
                 locatio.FORM = From;
 
                 //重新向SQL插入数据
-                AnalogMeter_EF AnalogMeter_EF = new AnalogMeter_EF();
-                AnalogMeter_EF.AnalogMeter_Parameter_Add(parameter);
-                AnalogMeter_EF.AnalogMeter_Parameter_Add(Tag_common);
-                AnalogMeter_EF.AnalogMeter_Parameter_Add(locatio);
+                Button_EFbase AnalogMeter_EF = new Button_EFbase();
+                AnalogMeter_EF.Button_Parameter_Add(parameter);
+                AnalogMeter_EF.Button_Parameter_Add(Tag_common);
+                AnalogMeter_EF.Button_Parameter_Add(locatio);
                 return control;
             }
         }

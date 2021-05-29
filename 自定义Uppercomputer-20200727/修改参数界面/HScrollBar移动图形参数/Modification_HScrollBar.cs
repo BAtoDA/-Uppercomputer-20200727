@@ -15,6 +15,7 @@ using CCWin.SkinControl;
 using 自定义Uppercomputer_20200727.EF实体模型;
 using 自定义Uppercomputer_20200727.控件重做;
 using 自定义Uppercomputer_20200727.Nlog;
+using 自定义Uppercomputer_20200727.EF实体模型.EFtoSQL操作类重写;
 
 namespace 自定义Uppercomputer_20200727.修改参数界面.HScrollBar移动图形参数
 {
@@ -64,10 +65,10 @@ namespace 自定义Uppercomputer_20200727.修改参数界面.HScrollBar移动图
         private void Modification_HScrollBar_Shown(object sender, EventArgs e)
         {
             //查询数据库是否有该数据
-            if (HScrollBar_EF.HScrollBar_Parameter_inquire(this.skinTextBox8.Text) == "OK")
+            if (Button_EFbase.Button_Parameter_inquire<HScrollBar_Class>(this.skinTextBox8.Text) == "OK")
             {
-                HScrollBar_EF HScrollBar_EF = new HScrollBar_EF();//实例化EF对象
-                button = HScrollBar_EF.AnalogMeter_Parameter_Query(this.skinTextBox8.Text);//获取按钮类全部参数
+                Button_EFbase HScrollBar_EF = new Button_EFbase();//实例化EF对象
+                button = HScrollBar_EF.Button_Parameter_Query<HScrollBar_Class>(this.skinTextBox8.Text);//获取按钮类全部参数
                 List_Index();//开始改变索引
             }
             else
@@ -135,25 +136,25 @@ namespace 自定义Uppercomputer_20200727.修改参数界面.HScrollBar移动图
                 return;
             }
             //先查询数据库有无此ID--有进行修改--无新增--
-            HScrollBar_EF HScrollBar_EF = new HScrollBar_EF();//实例化EF对象
-            if (HScrollBar_EF.HScrollBar_Parameter_inquire(this.skinTextBox8.Text) == "OK")
+            Button_EFbase HScrollBar_EF = new Button_EFbase();//实例化EF对象
+            if (Button_EFbase.Button_Parameter_inquire<HScrollBar_Class>(this.skinTextBox8.Text) == "OK")
             {
                 //LogUtils日志
                 LogUtils.debugWrite($"用户向{((Control)all_purpose).Name} 控件修改参数");
-                HScrollBar_EF.HScrollBar_modification(this.skinTextBox8.Text, numerical_Parameter(), tag_Common_Parameters(), control_Location());//修改数据库参数
+                HScrollBar_EF.Button_Parameter_modification(this.skinTextBox8.Text, numerical_Parameter(), tag_Common_Parameters(), control_Location());//修改数据库参数
             }
             else
             {
                 //LogUtils日志
                 LogUtils.debugWrite($"用户向{((Control)all_purpose).Name} 控件插入参数");
-                HScrollBar_EF.HScrollBar_Parameter_Add(tag_Common_Parameters());//插入标签参数
-                HScrollBar_EF.HScrollBar_Parameter_Add(numerical_Parameter());//插入一般参数
-                HScrollBar_EF.HScrollBar_Parameter_Add(control_Location());//插入控件坐标参数
+                HScrollBar_EF.Button_Parameter_Add(tag_Common_Parameters());//插入标签参数
+                HScrollBar_EF.Button_Parameter_Add(numerical_Parameter());//插入一般参数
+                HScrollBar_EF.Button_Parameter_Add(control_Location());//插入控件坐标参数
             }
             Public_attributeCalss public_AttributeCalss = new Public_attributeCalss();//实例化按钮参数设置
             ((HScrollBar_reform)this.all_purpose).Maximum = this.skinTextBox9.Text.ToInt32();//设置最小值
             ((HScrollBar_reform)this.all_purpose).Minimum = this.skinTextBox5.Text.ToInt32();//设置最大值
-            public_AttributeCalss.HScrollBar((HScrollBar_reform)this.all_purpose, HScrollBar_EF.AnalogMeter_Parameter_Query(this.skinTextBox8.Text));//查询数据库--进行设置后的参数修改
+            public_AttributeCalss.HScrollBar((HScrollBar_reform)this.all_purpose, HScrollBar_EF.Button_Parameter_Query<HScrollBar_Class>(this.skinTextBox8.Text));//查询数据库--进行设置后的参数修改
             Add_to_allow = true;
             this.Close();
             this.Dispose();

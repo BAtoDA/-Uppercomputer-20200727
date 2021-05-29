@@ -778,7 +778,10 @@ namespace 自定义Uppercomputer_20200727
             UI_Schedule("加载完成", 100, true);
             Thread.Sleep(50);
             UI_Schedule("加载完成", 100, false);
+            this.timer4.Enabled = true;
+            this.timer4.Start();
             this.timer3.Stop();
+
         }
         public void UI_Schedule(string Text, int Vaule, bool Visible)//加载UI控件控制
         {
@@ -1047,6 +1050,13 @@ namespace 自定义Uppercomputer_20200727
                 return false;
             else
                 return true;
+        }
+
+        private void timer4_Tick(object sender, EventArgs e)
+        {
+            this.timer4.Stop();
+            From_Load_Add.Stratum(this.Name, this);
+
         }
 
         private void Form2_FormClosing(object sender, FormClosingEventArgs e)

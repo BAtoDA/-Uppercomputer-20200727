@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using 自定义Uppercomputer_20200727.EF实体模型;
@@ -17,6 +18,8 @@ using 自定义Uppercomputer_20200727.PLC选择.MODBUS_TCP监控窗口;
 using 自定义Uppercomputer_20200727.修改参数界面;
 using 自定义Uppercomputer_20200727.控件重做.复制粘贴接口;
 using 自定义Uppercomputer_20200727.控件重做.按钮类与宏指令通用类;
+using 自定义Uppercomputer_20200727.控件重做.控件类基;
+using 自定义Uppercomputer_20200727.控件重做.控件类基.文本__TO__PLC方法;
 
 namespace 自定义Uppercomputer_20200727.控件重做
 {
@@ -24,9 +27,16 @@ namespace 自定义Uppercomputer_20200727.控件重做
     ///继承 HScrollBar类-实现动态绘制移动图形 
     /// </summary>
     [ToolboxItem(false)]
-    class HScrollBar_reform: SkinHScrollBar, ControlCopy
+    class HScrollBar_reform: SkinHScrollBar, ControlCopy, TextBox_base
     {
         string AnalogMeter_ID { get; set; }//文本属性ID
+
+        public System.Threading.Timer PLC_time { get; }
+
+        public TextBox_PLC TextBox { get; }
+
+        public string Data_Text { get => this.Value.ToString(); }
+
         SkinContextMenuStrip_reform menuStrip_Reform;//绑定右键菜单类
         /// <summary>
         /// 构造函数初始化控件UI
@@ -46,6 +56,12 @@ namespace 自定义Uppercomputer_20200727.控件重做
             this.Cursor = Cursors.Hand;//改变鼠标状态
             this.InnerPaddingWidth = 10;//内框宽度
             this.LargeChange = 1;//移动数量
+            TextBox = new TextBox_PLC();
+            PLC_time = new System.Threading.Timer(new TimerCallback((s) =>
+            {
+                this.Time_Tick();
+            }));
+            PLC_time.Change(500, 300);
         }
         /// <方法重写当鼠标移到控件时获取——ID>
         private void MouseEnter_reform(object send, EventArgs e)
@@ -56,7 +72,7 @@ namespace 自定义Uppercomputer_20200727.控件重做
             this.menuStrip_Reform.SkinContextMenuStrip_Button_ID = button.Parent.ToString();//写入信息
             this.menuStrip_Reform.all_purpose = send;//获取事件触发的控件
             this.menuStrip_Reform.SkinContextMenuStrip_Button_type = this.GetType().Name;//获取类型名称
-                                                                                         //如果用户不开启编辑模式--右键菜单选项为锁定状态
+            //如果用户不开启编辑模式--右键菜单选项为锁定状态
             this.menuStrip_Reform.Enabled = Form2.edit_mode;//启用状态
         }
         /// <方法重写实现拖放功能—>
@@ -87,7 +103,10 @@ namespace 自定义Uppercomputer_20200727.控件重做
             if (Form2.edit_mode) return;//返回方法
             if (Visi)
             {
-                plc();//写入数据
+                Button_EFbase button_EF = new Button_EFbase();//实例化EF
+                var EF= button_EF.Button_Parameter_Query<HScrollBar_Class>(this.Parent + "- " + this.Name);
+                //把控件文本写到PLC
+                TextBox.plc(EF.读写设备.Trim(), EF.资料格式.Trim(), EF.读写设备_地址.Trim(), EF.读写设备_地址_具体地址.Trim(), EF.读写不同地址_ON_OFF, EF.写设备_地址_复选.Trim(), EF.写设备_地址_具体地址_复选.Trim(), this.Value.ToString());//选择相应PLC 进行写入
                 Visi = false;
             }
         }
@@ -113,64 +132,6 @@ namespace 自定义Uppercomputer_20200727.控件重做
             this.Text = this.Text.Trim();//去除空白
             this.AutoSize = true;//控件大小根据字体改变
         }
-        private string plc()//根据PLC类型写入
-        {
-            HScrollBar_EF  hScrollBar_EF  = new HScrollBar_EF();
-            HScrollBar_Class numerical_Classes= hScrollBar_EF.AnalogMeter_Parameter_Query(this.Parent + "- " + this.Name);
-            string pLC = numerical_Classes.读写设备.Trim();
-            switch (pLC)
-            {
-                case "Mitsubishi":
-                    if (PLCselect_Form.Mitsubishi.Trim() != "在线访问")//判断用户选定模式
-                    {
-                        IPLC_interface mitsubishi_AxActUtlType = new Mitsubishi_axActUtlType();//实例化接口--实现三菱仿真
-                        if (mitsubishi_AxActUtlType.PLC_ready)
-                        {
-                            mitsubishi_AxActUtlType.PLC_write_D_register(numerical_Classes.读写设备_地址.Trim(), numerical_Classes.读写设备_地址_具体地址.Trim(), this.Value.ToString(), Index(numerical_Classes.资料格式));
-                        }
-                        else MessageBox.Show("未连接设备：" + numerical_Classes.读写设备.Trim(), "Err");//推出异常提示用户
-                    }
-                    else
-                    {
-                        IPLC_interface mitsubishi = new Mitsubishi_realize();//实例化接口--实现三菱在线访问
-                        if (mitsubishi.PLC_ready)
-                        {
-                            mitsubishi.PLC_write_D_register(numerical_Classes.读写设备_地址.Trim(), numerical_Classes.读写设备_地址_具体地址.Trim(), this.Value.ToString(), Index(numerical_Classes.资料格式));
-                        }
-                        else MessageBox.Show("未连接设备：" + numerical_Classes.读写设备.Trim(), "Err");//推出异常提示
-                    }
-                    break;
-                case "Siemens":
-                    IPLC_interface Siemens = new Siemens_realize();//实例化接口--实现西门子在线访问
-                    if (Siemens.PLC_ready)
-                    {
-                        Siemens.PLC_write_D_register(numerical_Classes.读写设备_地址.Trim(), numerical_Classes.读写设备_地址_具体地址.Trim(), this.Value.ToString(), Index(numerical_Classes.资料格式));
-                    }
-                    else MessageBox.Show("未连接设备：" + numerical_Classes.读写设备.Trim(), "Err");//推出异常提示
-                    break;
-                case "Modbus_TCP":
-                    MODBUD_TCP MODBUD_TCP = new MODBUD_TCP();//实例化接口--实现MODBUS TCP
-                    if (MODBUD_TCP.IPLC_interface_PLC_ready)
-                    {
-                        MODBUD_TCP.PLC_write_D_register(numerical_Classes.读写设备_地址.Trim(), numerical_Classes.读写设备_地址_具体地址.Trim(), this.Value.ToString(), Index(numerical_Classes.资料格式));
-                    }
-                    else MessageBox.Show("未连接设备：" + numerical_Classes.读写设备.Trim(), "Err");//推出异常提示用户
-                    break;
-                //写入到 宏指令 静态区D_Data
-                case "HMI":
-                    macroinstruction_data<int>.D_Data[numerical_Classes.读写设备_地址_具体地址.Trim().ToInt32()] = this.Value.ToString();
-                    break;
-            }
-            return "OK_RUN";
-        }
-        private numerical_format Index(string Name)//查询索引
-        {
-            foreach (numerical_format suit in Enum.GetValues(typeof(numerical_format)))
-            {
-                if (suit.ToString() == Name.Trim()) return suit;//遍历枚举查询索引
-            }
-            return numerical_format.Unsigned_32_Bit;//如果不匹配则返回默认无符号类型
-        }
         protected override void Dispose(bool disposing)
         {
             this.MouseDown -= MouseDown_reform;//注册事件
@@ -186,6 +147,35 @@ namespace 自定义Uppercomputer_20200727.控件重做
         {
             this.Focus();
             base.OnClick(e);
+        }
+        HScrollBar_Class _Class;
+        /// <summary>
+        /// 定时刷新控件
+        /// </summary>
+        private void Time_Tick()
+        {
+            lock (this)
+            {
+                try
+                {
+                    if (Form2.edit_mode == true)
+                    {
+                        _Class = null;
+                        return;//返回方法
+                    }
+                    if (_Class.IsNull()||_Class.ID.IsNull())
+                    {
+                        Button_EFbase EF = new Button_EFbase();//实例化EF
+                        _Class = EF.Button_Parameter_Query<HScrollBar_Class>(this.Parent + "- " + this.Name);//查询控件参数
+                    }
+                    if (_Class.ID.IsNull()) return;
+                    this.Value=TextBox.Refresh(_Class.读写设备.Trim(), _Class.资料格式.Trim(), _Class.读写设备_地址.Trim(), _Class.读写设备_地址_具体地址.Trim()).ToInt32();
+                }
+                catch
+                {
+
+                }
+            }
         }
         /// <summary>
         /// 复制控件的属性
@@ -225,10 +215,10 @@ namespace 自定义Uppercomputer_20200727.控件重做
                 locatio.FORM = From;
 
                 //重新向SQL插入数据
-                HScrollBar_EF EF = new HScrollBar_EF();
-                EF.HScrollBar_Parameter_Add(parameter);
-                EF.HScrollBar_Parameter_Add(Tag_common);
-                EF.HScrollBar_Parameter_Add(locatio);
+                Button_EFbase EF = new Button_EFbase();
+                EF.Button_Parameter_Add(parameter);
+                EF.Button_Parameter_Add(Tag_common);
+                EF.Button_Parameter_Add(locatio);
                 return control;
             }
         }
@@ -239,6 +229,11 @@ namespace 自定义Uppercomputer_20200727.控件重做
         public object Clone()
         {
             return new HScrollBar_reform();//返回数据
+        }
+
+        public void ControlRefresh(string Data)
+        {
+            throw new NotImplementedException();
         }
     }
 }

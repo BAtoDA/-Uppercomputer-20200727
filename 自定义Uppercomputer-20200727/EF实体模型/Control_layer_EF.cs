@@ -57,10 +57,6 @@ namespace 自定义Uppercomputer_20200727.EF实体模型
         }
         private string FORM_segmentation(string Data)//把ID进行数据分割--获取所在窗口的ID
         {
-            //string[] segmentation = Data.Split('.');//第一次分割
-            //string[] FORM = new string[5];
-            //if (segmentation.Length > 2) FORM= segmentation[2].Split(',');//第二次分割
-            //return FORM[0];//返回数据
             string[] Name = Data.Split('.');
             string[] Name_1 = new string[2];
             if (Name.Length > 2)

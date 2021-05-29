@@ -20,29 +20,8 @@ using static System.Windows.Forms.Control;
 namespace 自定义Uppercomputer_20200727.控制主页面模板
 {
     /// <本类主要用于窗口加载过程中同步加载数据库的控件>
-    class From_Load_Add: IDisposable
+    class From_Load_Add : IDisposable
     {
-        List<Button_Class> skinButtons = new List<Button_Class>();//按钮类泛型表
-        List<picture_Class> skinpicture = new List<picture_Class>();//图片类泛型表
-        List<label_Class> skinlabel = new List<label_Class>();//标签类泛型表
-        List<numerical_Class> skinnumerical = new List<numerical_Class>();//标签类泛型表
-        List<Switch_Class> Switch = new List<Switch_Class>();//选择开关类泛型表
-        List<LedBulb_Class> LedBulb = new List<LedBulb_Class>();//指示灯类泛型表
-        List<GroupBox_Class> GroupBox = new List<GroupBox_Class>();//标签类泛型表
-        List<ImageButton_Class> ImageButton = new List<ImageButton_Class>();//无图片按钮类类泛型表
-        List<ScrollingText_Class> ScrollingText = new List<ScrollingText_Class>();//报警条类泛型表
-        List<doughnut_Chart_Class> doughnut = new List<doughnut_Chart_Class>();//圆形图类泛型表
-        List<histogram_Chart_Class> histogram = new List<histogram_Chart_Class>();//柱形图类泛型表
-        List<oscillogram_Chart_Class> oscillogram = new List<oscillogram_Chart_Class>();//折线图图类泛型表
-        List<AnalogMeter_Class> AnalogMeter = new List<AnalogMeter_Class>();//百分百表盘类泛型表
-        List<LedDisplay_Class> LedDisplay = new List<LedDisplay_Class>();//数值显示类泛型表
-        List<ihatetheqrcode_Class> ihatetheqrcode = new List<ihatetheqrcode_Class>();//二维码/条形码类泛型表
-        List<function_key_Class> function_key = new List<function_key_Class>();//功能键类泛型表
-        List<RadioButton_Class> RadioButton = new List<RadioButton_Class>();//单选按钮类泛型表
-        List<pull_down_menu_Class> pull_down_menu = new List<pull_down_menu_Class>();//下拉菜单类泛型表
-        List<HScrollBar_Class> HScrollBar = new List<HScrollBar_Class>();//纵向移动图形类泛型表
-        List<Conveyor_Class> Conveyor = new List<Conveyor_Class>();//运输带类泛型表
-        List<Valve_Class> Valve = new List<Valve_Class>();//液体阀门类泛型表
         ControlCollection control;//当前窗口控件集合
         List<ImageList> imageLists_1 { get; set; } //图库类集合--不可修改
         //报警条需要参数
@@ -52,65 +31,53 @@ namespace 自定义Uppercomputer_20200727.控制主页面模板
             Parameter_Query_Add parameter_Query_Add = new Parameter_Query_Add();//创建EF查询对象
             this.Form_event = form;//获取当前窗口
             this.control = control;
-            var T = Task.Run(() =>
-              {
-                  this.skinButtons = parameter_Query_Add.all_Parameter_Query_Button(From_Name);//查询按钮类
-                  Load_Add(this.skinButtons);
-                  this.skinpicture = parameter_Query_Add.all_Parameter_Query_picture(From_Name);//查询图片类
-                  this.skinlabel = parameter_Query_Add.all_Parameter_Query_label(From_Name);//查询标签类
-                  this.skinnumerical = parameter_Query_Add.all_Parameter_Query_numerical(From_Name);//查询数值类
-                  Load_Add(this.skinpicture);
-                  Load_Add(this.skinlabel);
-                  Load_Add(this.skinnumerical);
-              });
-            var T1 = Task.Run(() =>
+            Conrolt_add(From_Name, control, imageLists_1, form);
+            Load_Add(parameter_Query_Add.all_Parameter_Query_GroupBox(From_Name));
+        
+        }
+        private async void Conrolt_add(string From_Name, ControlCollection control, List<ImageList> imageLists_1, Form form)
+        {
+            Parameter_Query_Add parameter_Query_Add = new Parameter_Query_Add();//创建EF查询对象
+            await Task.Run(() =>
             {
-                this.Switch = parameter_Query_Add.all_Parameter_Query_Switch(From_Name);//查询切换开关类
-                this.LedBulb = parameter_Query_Add.all_Parameter_Query_LedBulb(From_Name);//查询指示灯类
-                this.GroupBox = parameter_Query_Add.all_Parameter_Query_GroupBox(From_Name);//查询四边框类
-                this.ImageButton = parameter_Query_Add.all_Parameter_Query_ImageButton(From_Name);//查询无图片按钮类
-                this.doughnut = parameter_Query_Add.all_Parameter_Query_doughnut_Chart(From_Name);//查询圆形图类按钮类
-                Load_Add(this.Switch);
-                Load_Add(this.LedBulb);
-                Load_Add(this.ImageButton);
-                Load_Add(this.doughnut);
+                Load_Add(parameter_Query_Add.all_Parameter_Query_Button(From_Name));
+                Load_Add(parameter_Query_Add.all_Parameter_Query_picture(From_Name));
+                Load_Add(parameter_Query_Add.all_Parameter_Query_label(From_Name));
+                Load_Add(parameter_Query_Add.all_Parameter_Query_numerical(From_Name));
             });
-            var T2 = Task.Run(() =>
+            await Task.Run(() =>
             {
-                this.histogram = parameter_Query_Add.all_Parameter_Query_doughnut_histogram(From_Name);//查询柱形图图类按钮类
-                this.oscillogram = parameter_Query_Add.all_Parameter_Query_doughnut_oscillogram(From_Name);//查询折线图图图类按钮类
-                this.AnalogMeter = parameter_Query_Add.all_Parameter_Query_AnalogMeter(From_Name);//查询百分百表盘类按钮类
-                this.LedDisplay = parameter_Query_Add.all_Parameter_Query_LedDisplay(From_Name);//查询数值显示类按钮类
-                this.ihatetheqrcode = parameter_Query_Add.all_Parameter_Query_ihatetheqrcode(From_Name);//查询二维码/条形码类类
-                this.function_key = parameter_Query_Add.all_Parameter_Query_function_key(From_Name);//查询功能键类
-                this.RadioButton = parameter_Query_Add.all_Parameter_Query_RadioButton(From_Name);//查询单选按钮类
-                this.pull_down_menu = parameter_Query_Add.all_Parameter_Query_pull_down_menu(From_Name);//查询下拉菜单类
-                this.Conveyor = parameter_Query_Add.all_Parameter_Query_Conveyor(From_Name);//查询运输带类
-                this.Valve = parameter_Query_Add.all_Parameter_Query_Valve(From_Name);//查询运输带类
-
+                Load_Add(parameter_Query_Add.all_Parameter_Query_Switch(From_Name));
+                Load_Add(parameter_Query_Add.all_Parameter_Query_LedBulb(From_Name));
+                Load_Add(parameter_Query_Add.all_Parameter_Query_ImageButton(From_Name));
+                Load_Add(parameter_Query_Add.all_Parameter_Query_doughnut_Chart(From_Name));
+            });
+           await Task.Run(() =>
+            {
                 this.imageLists_1 = imageLists_1;//获取图库
-                Load_Add(this.histogram);
-                Load_Add(this.oscillogram);
-                Load_Add(this.AnalogMeter);
-                Load_Add(this.LedDisplay);
-                Load_Add(this.ihatetheqrcode);
-                Load_Add(this.function_key);
-                Load_Add(this.RadioButton);
-                Load_Add(this.pull_down_menu);
-                Load_Add(this.HScrollBar);
-                Load_Add(this.Conveyor);
-                Load_Add(this.Valve);
+                Load_Add(parameter_Query_Add.all_Parameter_Query_doughnut_histogram(From_Name));
+                Load_Add(parameter_Query_Add.all_Parameter_Query_doughnut_oscillogram(From_Name));
+                Load_Add(parameter_Query_Add.all_Parameter_Query_AnalogMeter(From_Name));
+                Load_Add(parameter_Query_Add.all_Parameter_Query_LedDisplay(From_Name));
+                Load_Add(parameter_Query_Add.all_Parameter_Query_ihatetheqrcode(From_Name));
+                Load_Add(parameter_Query_Add.all_Parameter_Query_function_key(From_Name));
+                Load_Add(parameter_Query_Add.all_Parameter_Query_RadioButton(From_Name));
+                Load_Add(parameter_Query_Add.all_Parameter_Query_pull_down_menu(From_Name));
+                Load_Add(parameter_Query_Add.all_Parameter_Query_HScrollBar(From_Name));
+                Load_Add(parameter_Query_Add.all_Parameter_Query_Conveyor(From_Name));
+                Load_Add(parameter_Query_Add.all_Parameter_Query_Valve(From_Name));
             });
-            Task.WaitAll(T, T1, T2);
-            Load_Add(this.GroupBox);
+        }
+        public static async void Stratum(string From_Name, Form form)
+        {
             //改变控件上下层
-            var T3 = Task.Run(() =>
+           await Task.Run(() =>
             {
                 Control_layer_EF layer_EF = new Control_layer_EF();//实例化最下层EF查询对象
                 List<Control_layer> control_Layers = layer_EF.all_Parameter_Query_Control_layer(From_Name.Trim());//把查询到数据的保存
                 for (int ix = 0; ix < 2; ix++)
                 {
-                    foreach (Control i in control)
+                    foreach (Control i in form.Controls)
                     {
                         for (int index = 0; index < control_Layers.Count; index++)
                         {
@@ -130,8 +97,7 @@ namespace 自定义Uppercomputer_20200727.控制主页面模板
             this.imageLists_1 = imageLists_1;//获取图库
             this.control = control;
             Parameter_Query_Add parameter_Query_Add = new Parameter_Query_Add();//创建EF查询对象
-            this.ScrollingText = parameter_Query_Add.all_Parameter_Query_ScrollingText(From_Name);//查询报警条类
-            Load_Add(ScrollingText);
+            Load_Add(parameter_Query_Add.all_Parameter_Query_ScrollingText(From_Name));
         }
         private void Load_Add(List<Button_Class> button_Classes)//填充按钮类
         {
@@ -651,26 +617,6 @@ namespace 自定义Uppercomputer_20200727.控制主页面模板
             if (disposing)
             {
                 //TODO:释放那些实现IDisposable接口的托管对象
-                skinButtons.Clear();
-                skinpicture.Clear();
-                skinlabel.Clear();
-                skinnumerical.Clear();
-                Switch.Clear();
-                LedBulb.Clear();
-                GroupBox.Clear();
-                ImageButton.Clear();
-                ScrollingText.Clear();
-                doughnut.Clear();
-                histogram.Clear();
-                oscillogram.Clear();
-                AnalogMeter.Clear();
-                LedDisplay.Clear();
-                ihatetheqrcode.Clear();
-                RadioButton.Clear();
-                pull_down_menu.Clear();
-                HScrollBar.Clear();
-                imageLists_1.Clear();
-                Conveyor.Clear();
             }
             //TODO:释放非托管资源，设置对象为null
             _disposed = true;

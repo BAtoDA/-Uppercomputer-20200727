@@ -139,11 +139,11 @@ namespace 自定义Uppercomputer_20200727.控件重做
                 contrcolor.FORM = From;
 
                 //重新向SQL插入数据
-                GroupBox_EF EF = new GroupBox_EF();
-                EF.GroupBox_Parameter_Add(parameter);
-                EF.GroupBox_Parameter_Add(Tag_common);
-                EF.GroupBox_Parameter_Add(locatio);
-                EF.GroupBox_Parameter_Add(contrcolor);
+                Button_EFbase EF = new Button_EFbase();
+                EF.Button_Parameter_Add(parameter);
+                EF.Button_Parameter_Add(Tag_common);
+                EF.Button_Parameter_Add(locatio);
+                EF.Button_Parameter_Add(contrcolor);
                 return control;
             }
         }

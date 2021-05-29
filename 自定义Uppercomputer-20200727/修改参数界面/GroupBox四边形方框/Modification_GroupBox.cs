@@ -12,6 +12,7 @@ using CCWin;
 using CCWin.SkinClass;
 using CCWin.SkinControl;
 using 自定义Uppercomputer_20200727.EF实体模型;
+using 自定义Uppercomputer_20200727.EF实体模型.EFtoSQL操作类重写;
 using 自定义Uppercomputer_20200727.Nlog;
 using 自定义Uppercomputer_20200727.控件重做;
 
@@ -71,10 +72,10 @@ namespace 自定义Uppercomputer_20200727.修改参数界面.GroupBox四边形�
             this.colorComboBox2.SelectedIndex = 0;//默认透明
             this.colorComboBox2.SelectedItem = 0;//默认透明
             //查询数据库是否有该数据
-            if (GroupBox_EF.GroupBox_Parameter_inquire(this.skinTextBox1.Text) == "OK")
+            if (Button_EFbase.Button_Parameter_inquire<GroupBox_Class>(this.skinTextBox1.Text) == "OK")
             {
-                GroupBox_EF GroupBox_EF = new GroupBox_EF();//实例化EF对象
-                label = GroupBox_EF.GroupBox_Parameter_Query(this.skinTextBox1.Text);//获取按钮类全部参数
+                Button_EFbase GroupBox_EF = new Button_EFbase();//实例化EF对象
+                label = GroupBox_EF.Button_Parameter_Query<GroupBox_Class>(this.skinTextBox1.Text);//获取按钮类全部参数
                 List_Index();//开始改变索引
             }
             else
@@ -110,26 +111,26 @@ namespace 自定义Uppercomputer_20200727.修改参数界面.GroupBox四边形�
         private void skinButton2_Click(object sender, EventArgs e)
         {
             //先查询数据库有无此ID--有进行修改--无新增--
-            GroupBox_EF groupBox_EF = new GroupBox_EF();//实例化EF对象
-            if (GroupBox_EF.GroupBox_Parameter_inquire(this.skinTextBox1.Text) == "OK")
+            Button_EFbase groupBox_EF = new Button_EFbase();//实例化EF对象
+            if (Button_EFbase.Button_Parameter_inquire<GroupBox_Class>(this.skinTextBox1.Text) == "OK")
             {
                 //LogUtils日志
                 LogUtils.debugWrite($"用户向{((Control)all_purpose).Name} 控件修改参数");
-                groupBox_EF.label_Parameter_modification(this.skinTextBox1.Text, Label_Parameter(), tag_Common_Parameters(), control_Location(), Button_colour_Location());//修改数据库参数
+                groupBox_EF.Button_Parameter_modification(this.skinTextBox1.Text, Label_Parameter(), tag_Common_Parameters(), control_Location(), Button_colour_Location());//修改数据库参数
             }
             else
             {
                 //LogUtils日志
                 LogUtils.debugWrite($"用户向{((Control)all_purpose).Name} 控件插入参数");
-                groupBox_EF.GroupBox_Parameter_Add(Label_Parameter());//插入主参数
-                groupBox_EF.GroupBox_Parameter_Add(tag_Common_Parameters());//插入标签参数
-                groupBox_EF.GroupBox_Parameter_Add(control_Location());//插入控件坐标参数
-                groupBox_EF.GroupBox_Parameter_Add(Button_colour_Location());//插入控件背景颜色
+                groupBox_EF.Button_Parameter_Add(Label_Parameter());//插入主参数
+                groupBox_EF.Button_Parameter_Add(tag_Common_Parameters());//插入标签参数
+                groupBox_EF.Button_Parameter_Add(control_Location());//插入控件坐标参数
+                groupBox_EF.Button_Parameter_Add(Button_colour_Location());//插入控件背景颜色
             }
             Add_to_allow = true;
             ((GroupBox_reform)all_purpose).Text = this.skinChatRichTextBox1.Text;//修改显示内容
             Public_attributeCalss public_AttributeCalss = new Public_attributeCalss();//实例化按钮参数设置
-            public_AttributeCalss.attributeCalss((GroupBox_reform)this.all_purpose, groupBox_EF.GroupBox_Parameter_Query(this.skinTextBox1.Text.Trim()));//查询数据库--进行设置后的参数修改
+            public_AttributeCalss.attributeCalss((GroupBox_reform)this.all_purpose, groupBox_EF.Button_Parameter_Query<GroupBox_Class>(this.skinTextBox1.Text.Trim()));//查询数据库--进行设置后的参数修改
             this.Close();
             this.Dispose();
         }

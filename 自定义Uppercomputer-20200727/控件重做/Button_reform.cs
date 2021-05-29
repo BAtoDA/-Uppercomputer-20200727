@@ -258,12 +258,12 @@ namespace 自定义Uppercomputer_20200727.控件重做
                             _Class = null;
                             return;//返回方法
                             }
-                        if (_Class.IsNull())
+                        if (_Class.IsNull()|| _Class.ID.IsNull())
                         {
                             Button_EFbase EF = new Button_EFbase();//实例化EF
                                 _Class = EF.Button_Parameter_Query<Button_Class>(this.Parent + "-" + this.Name);//查询控件参数
                             }
-                        if (_Class.IsNull()) return;
+                        if (_Class.ID.IsNull()) return;
                         this.button_state(this, _Class, button_PLC.Refresh(this, _Class.读写设备.Trim(), _Class.读写设备_地址.Trim(), _Class.读写设备_地址_具体地址.Trim()));
                     });
                 }

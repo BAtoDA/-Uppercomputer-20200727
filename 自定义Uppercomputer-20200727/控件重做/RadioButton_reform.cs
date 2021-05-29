@@ -107,8 +107,8 @@ namespace 自定义Uppercomputer_20200727.控件重做
         private void MouseDown_reform(object sender, MouseEventArgs e)//鼠标按下事件
         {
             //当按钮按下触发—写入PLC状态
-            RadioButton_EF button_EF = new RadioButton_EF();//实例化EF
-            RadioButton_Class = button_EF.Button_Parameter_Query(this.Parent + "-" + this.Name);//查询控件参数
+            Button_EFbase button_EF = new Button_EFbase();//实例化EF
+            RadioButton_Class = button_EF.Button_Parameter_Query<RadioButton_Class>(this.Parent + "-" + this.Name);//查询控件参数
             //初始化按钮
             if (Form2.edit_mode != true) return;//返回方法
             clickX = e.X;
@@ -210,7 +210,7 @@ namespace 自定义Uppercomputer_20200727.控件重做
                 contrcolor.FORM = From;
 
                 //重新向SQL插入数据
-                RadioButton_EF EF = new RadioButton_EF();
+                Button_EFbase EF = new Button_EFbase();
                 EF.Button_Parameter_Add(parameter);
                 EF.Button_Parameter_Add(Tag_common);
                 EF.Button_Parameter_Add(locatio);
@@ -243,12 +243,12 @@ namespace 自定义Uppercomputer_20200727.控件重做
                         _Class = null;
                         return;//返回方法
                     }
-                    if (_Class.IsNull())
+                    if (_Class.IsNull()||_Class.ID.IsNull())
                     {
-                        RadioButton_EF EF = new RadioButton_EF();//实例化EF
-                        _Class = EF.Button_Parameter_Query(this.Parent + "-" + this.Name);//查询控件参数
+                        Button_EFbase EF = new Button_EFbase();//实例化EF
+                        _Class = EF.Button_Parameter_Query<RadioButton_Class>(this.Parent + "-" + this.Name);//查询控件参数
                     }
-                    if (_Class.IsNull()) return;
+                    if (_Class.ID.IsNull()) return;
                     this.button_state(button_PLC.Refresh(this, _Class.读写设备.Trim(), _Class.读写设备_地址.Trim(), _Class.读写设备_地址_具体地址.Trim()));
                 }
                 catch

@@ -7,34 +7,78 @@ using System.Threading.Tasks;
 namespace 自定义Uppercomputer_20200727.EF实体模型.EFtoSQL操作类重写
 {
     /// <summary>
-    /// 用于按钮类操作EF实体模型---to SQL数据库
+    /// 用于EF类操作EF实体模型---to SQL数据库
     /// </summary>
     class Button_EFbase
     {
         public static List<dynamic> EFbase { get; set; }
         /// <summary>
-        /// 默认添加按钮类EF中的表属性对象
+        /// 默认添加EF中所有的表属性对象 
         /// </summary>
         public UppercomputerEntities2 EFsurface()
         {
             UppercomputerEntities2 db = new UppercomputerEntities2();
             EFbase = new List<dynamic>()
                 {
-                    db.Button_Class,
+#region SQL参数表
+                db.AnalogMeter_parameter,
                     db.Button_colour,
                     db.Button_parameter,
-                    db.ImageButton_Class,
-                    db.ImageButton_parameter,
-                    db.RadioButton_Class,
-                    db.RadioButton_parameter,
-                    db.Tag_common_parameters,
-                    db.General_parameters_of_picture,
+                    db.Control_layer,
                     db.control_location,
-                };
+                    db.doughnut_Chart_parameter,
+                    db.Event_message,
+                    db.function_key_parameter,
+                    db.General_parameters_of_picture,
+                    db.GroupBox_parameter,
+                    db.histogram_Chart_parameter,
+                    db.HScrollBar_parameter,
+                    db.ihatetheqrcode_parameter,
+                    db.ImageButton_parameter,
+                    db.label_parameter,
+                    db.LedBulb_parameter,
+                    db.LedDisplay_parameter,
+                    db.numerical_parameter,
+                    db.oscillogram_Chart_parameter,
+                    db.picture_parameter,
+                    db.PLC_macroinstruction,
+                    db.PLC_parameter,
+                    db.Profile,
+                    db.pull_down_menu_parameter,
+                    db.pull_down_menuName,
+                    db.RadioButton_parameter,
+                    db.ScrollingText_parameter,
+                    db.Switch_parameter,
+                    db.Tag_common_parameters,
+                    db.AnalogMeter_Class,
+                    db.Button_Class,
+                    db.doughnut_Chart_Class,
+                    db.function_key_Class,
+                    db.GroupBox_Class,
+                    db.histogram_Chart_Class,
+                    db.HScrollBar_Class,
+                    db.ihatetheqrcode_Class,
+                    db.ImageButton_Class,
+                    db.label_Class,
+                    db.LedBulb_Class,
+                    db.LedDisplay_Class,
+                    db.numerical_Class,
+                    db.oscillogram_Chart_Class,
+                    db.picture_Class,
+                    db.pull_down_menu_Class,
+                    db.RadioButton_Class,
+                    db.ScrollingText_Class,
+                    db.Switch_Class,
+                    db.Conveyor_parameter,
+                    db.Conveyor_Class,
+                    db.Valve_parameter,
+                    db.Valve_Class
+#endregion
+            };
             return db;
         }
         /// <summary>
-        /// 查询按钮类参数
+        /// 查询EF类参数 根据泛型<T>自动推断需要查询的表
         /// </summary>
         /// <typeparam name="T">传入类型</typeparam>
         /// <param name="ID">查询条件</param>
@@ -55,7 +99,7 @@ namespace 自定义Uppercomputer_20200727.EF实体模型.EFtoSQL操作类重写
             return "NG";
         }
         /// <summary>
-        /// 插入按钮类类型全部参数
+        /// 插入类型全部参数 可以不使用<T>去约束 IDE根据传入参数的对象自动推断
         /// </summary>
         /// <typeparam name="T1">Button_parameter</typeparam>
         /// <typeparam name="T2">Tag_common_parameters</typeparam>
@@ -78,7 +122,7 @@ namespace 自定义Uppercomputer_20200727.EF实体模型.EFtoSQL操作类重写
             return "OK";
         }
         /// <summary>
-        /// 插入按钮类参数--可以不使用<T>去约束 IDE根据传入参数的对象自动推断
+        /// 插入参数--可以不使用<T>去约束 IDE根据传入参数的对象自动推断
         /// </summary>
         /// <typeparam name="T">传入约束类型</typeparam>
         /// <param name="parameter">该类型的对象</param>
@@ -104,7 +148,7 @@ namespace 自定义Uppercomputer_20200727.EF实体模型.EFtoSQL操作类重写
             return "NG";
         }
         /// <summary>
-        /// 查询按钮类型参数 根据泛型<T>自动推断需要查询的表
+        /// 查询参数 根据泛型<T>自动推断需要查询的表
         /// </summary>
         /// <typeparam name="T">传入约束类型</typeparam>
         /// <param name="ID">查询条件内容</param>
@@ -122,10 +166,10 @@ namespace 自定义Uppercomputer_20200727.EF实体模型.EFtoSQL操作类重写
                     return i1;
                 }
             }
-            throw new Exception("查询SQL数据为null");
+            return new T();
         }
         /// <summary>
-        /// 删除按钮类型参数 根据泛型<T>自动推断需要查询的表
+        /// 删除参数 根据泛型<T>自动推断需要查询的表
         /// </summary>
         /// <typeparam name="T1">Button_parameter</typeparam>
         /// <typeparam name="T2">Tag_common_parameters</typeparam>
@@ -142,10 +186,62 @@ namespace 自定义Uppercomputer_20200727.EF实体模型.EFtoSQL操作类重写
             this.Button_Parameter_delete<T3>(ID);
             this.Button_Parameter_delete<T4>(ID);
             this.Button_Parameter_delete<T5>(ID);
+            this.Button_Parameter_delete<T6>(ID);
             return "OK";
         }
         /// <summary>
-        /// 删除按钮类参数 根据泛型<T>自动推断需要查询的表
+        /// 删除参数 根据泛型<T>自动推断需要查询的表
+        /// </summary>
+        /// <typeparam name="T1">Button_parameter</typeparam>
+        /// <typeparam name="T2">Tag_common_parameters</typeparam>
+        /// <typeparam name="T3">General_parameters_of_picture</typeparam>
+        /// <typeparam name="T4">control_location</typeparam>
+        /// <typeparam name="T5">Control_layer</typeparam>
+        /// <param name="ID">查询条件内容</param>
+        /// <returns></returns>
+        public string Button_Parameter_delete<T1, T2, T3, T4, T5>(string ID)
+        {
+            this.Button_Parameter_delete<T1>(ID);
+            this.Button_Parameter_delete<T2>(ID);
+            this.Button_Parameter_delete<T3>(ID);
+            this.Button_Parameter_delete<T4>(ID);
+            this.Button_Parameter_delete<T5>(ID);
+            return "OK";
+        }
+        /// <summary>
+        /// 删除参数 根据泛型<T>自动推断需要查询的表
+        /// </summary>
+        /// <typeparam name="T1">Button_parameter</typeparam>
+        /// <typeparam name="T2">Tag_common_parameters</typeparam>
+        /// <typeparam name="T3">General_parameters_of_picture</typeparam>
+        /// <typeparam name="T4">control_location</typeparam>
+        /// <param name="ID">查询条件内容</param>
+        /// <returns></returns>
+        public string Button_Parameter_delete<T1, T2, T3, T4>(string ID)
+        {
+            this.Button_Parameter_delete<T1>(ID);
+            this.Button_Parameter_delete<T2>(ID);
+            this.Button_Parameter_delete<T3>(ID);
+            this.Button_Parameter_delete<T4>(ID);
+            return "OK";
+        }
+        /// <summary>
+        /// 删除参数 根据泛型<T>自动推断需要查询的表
+        /// </summary>
+        /// <typeparam name="T1">Button_parameter</typeparam>
+        /// <typeparam name="T2">Tag_common_parameters</typeparam>
+        /// <typeparam name="T3">General_parameters_of_picture</typeparam>
+        /// <param name="ID">查询条件内容</param>
+        /// <returns></returns>
+        public string Button_Parameter_delete<T1, T2, T3>(string ID)
+        {
+            this.Button_Parameter_delete<T1>(ID);
+            this.Button_Parameter_delete<T2>(ID);
+            this.Button_Parameter_delete<T3>(ID);
+            return "OK";
+        }
+        /// <summary>
+        /// 删除参数 根据泛型<T>自动推断需要查询的表
         /// </summary>
         /// <typeparam name="T1">传入约束类型</typeparam>
         /// <param name="ID">查询条件内容</param>
@@ -168,7 +264,7 @@ namespace 自定义Uppercomputer_20200727.EF实体模型.EFtoSQL操作类重写
             return "NG";
         }
         /// <summary>
-        /// 
+        /// 修改参数 根据泛型<T>自动推断需要查询的表
         /// </summary>
         /// <typeparam name="T1"></typeparam>
         /// <typeparam name="T2"></typeparam>
@@ -189,6 +285,45 @@ namespace 自定义Uppercomputer_20200727.EF实体模型.EFtoSQL操作类重写
             Button_Parameter_modification(ID, _Of_Picture);
             Button_Parameter_modification(ID, _Location);
             Button_Parameter_modification(ID, button_);
+            return "OK";
+        }
+        /// <summary>
+        /// 修改参数 根据泛型<T>自动推断需要查询的表
+        /// </summary>
+        /// <typeparam name="T1"></typeparam>
+        /// <typeparam name="T2"></typeparam>
+        /// <typeparam name="T3"></typeparam>
+        /// <typeparam name="T4"></typeparam>
+        /// <param name="ID">查询条件内容</param>
+        /// <param name="_Parameter">Button_parameter</param>
+        /// <param name="tag_Common_">Tag_common_parameters</param>
+        /// <param name="_Of_Picture">General_parameters_of_picture</param>
+        /// <param name="_Location">control_location</param>
+        /// <returns></returns>
+        public string Button_Parameter_modification<T1, T2, T3, T4>(string ID, T1 _Parameter, T2 tag_Common_, T3 _Of_Picture, T4 _Location)
+        {
+            Button_Parameter_modification(ID, _Parameter);
+            Button_Parameter_modification(ID, tag_Common_);
+            Button_Parameter_modification(ID, _Of_Picture);
+            Button_Parameter_modification(ID, _Location);
+            return "OK";
+        }
+        /// <summary>
+        /// 修改参数 根据泛型<T>自动推断需要查询的表
+        /// </summary>
+        /// <typeparam name="T1"></typeparam>
+        /// <typeparam name="T2"></typeparam>
+        /// <typeparam name="T3"></typeparam>
+        /// <param name="ID">查询条件内容</param>
+        /// <param name="_Parameter">Button_parameter</param>
+        /// <param name="tag_Common_">Tag_common_parameters</param>
+        /// <param name="_Of_Picture">General_parameters_of_picture</param>
+        /// <returns></returns>
+        public string Button_Parameter_modification<T1, T2, T3>(string ID, T1 _Parameter, T2 tag_Common_, T3 _Of_Picture)
+        {
+            Button_Parameter_modification(ID, _Parameter);
+            Button_Parameter_modification(ID, tag_Common_);
+            Button_Parameter_modification(ID, _Of_Picture);
             return "OK";
         }
         /// <summary>
@@ -226,7 +361,7 @@ namespace 自定义Uppercomputer_20200727.EF实体模型.EFtoSQL操作类重写
                     for (int i = 0; i < propertyInfos.Length; i++)
                     {
                         //不修改ID 与FORM的数据
-                        if (Properties[i].GetType().Name != "ID" && Properties[i].GetType().Name != "FORM")
+                        if (Properties[i].GetType().Name != "ID" && Properties[i].GetType().Name != "FORM"&& Properties[i].GetType().Name != "FROM")
                             Properties[i].SetValue(i1, propertyInfos[i].GetValue(Parameter));
                     }
                     i1.ID = id;
