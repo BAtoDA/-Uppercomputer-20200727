@@ -136,7 +136,6 @@ namespace 自定义Uppercomputer_20200727.控件重做
                 // e.X 是正负数,表示移动的方向
                 int x = this.Location.X + e.X - clickX;   //还要减去上次鼠标点击的位置
                 int y = e.Y + this.Location.Y - clickY;
-                //this.Location = new Point(x, y);//放弃该代码
             }
         }
       

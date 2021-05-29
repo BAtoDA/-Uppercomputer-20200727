@@ -78,8 +78,8 @@ namespace 自定义Uppercomputer_20200727.PLC选择.MODBUS_TCP监控窗口
             {
                 //利用西门子S7协议实现
                 siemensTcpNet.IpAddress = IPEndPoint.Address.ToString();//获取设置的IP
-                siemensTcpNet.ReceiveTimeOut = 1000;//超时时间
-                siemensTcpNet.ConnectTimeOut = 1000;
+                siemensTcpNet.ReceiveTimeOut = 500;//超时时间
+                siemensTcpNet.ConnectTimeOut = 500;
                 OperateResult connect = siemensTcpNet.ConnectServer();//获取操作结果
                 if (connect.IsSuccess)//判断是否连接成功
                 {
@@ -116,7 +116,7 @@ namespace 自定义Uppercomputer_20200727.PLC选择.MODBUS_TCP监控窗口
             {
                 try
                 {
-                   mutex.WaitOne(3000);//加锁
+                   mutex.WaitOne(100);//加锁
                                         // 读取bool变量
                     readResultRender(siemensTcpNet.ReadBool(Name.Trim() + id.Trim()), Name.Trim() + id.Trim(), ref result);//读取自定地址变量状态
                    mutex.ReleaseMutex();//解锁
@@ -152,7 +152,7 @@ namespace 自定义Uppercomputer_20200727.PLC选择.MODBUS_TCP监控窗口
             {
                 try
                 {
-                    mutex.WaitOne(3000);//加锁
+                    mutex.WaitOne(100);//加锁
                                         // 写bool变量
                     writeResultRender(siemensTcpNet.Write(Name.Trim() + id.Trim(), Convert.ToBoolean(button_State.ToInt32())), Name.Trim() + id.Trim());//写入自定地址变量状态
                     mutex.ReleaseMutex();//解锁
@@ -189,7 +189,7 @@ namespace 自定义Uppercomputer_20200727.PLC选择.MODBUS_TCP监控窗口
             {
                 try
                 {
-                    mutex.WaitOne(3000);
+                    mutex.WaitOne(100);
                     switch (format)
                     {
                         case numerical_format.Signed_16_Bit:
@@ -269,7 +269,7 @@ namespace 自定义Uppercomputer_20200727.PLC选择.MODBUS_TCP监控窗口
             {
                 try
                 {
-                    mutex.WaitOne(3000);
+                    mutex.WaitOne(100);
                     switch (format)
                     {
                         case numerical_format.Signed_16_Bit:
@@ -337,7 +337,7 @@ namespace 自定义Uppercomputer_20200727.PLC选择.MODBUS_TCP监控窗口
             {
                 try
                 {
-                   mutex.WaitOne(3000);
+                   mutex.WaitOne(100);
                     if (Name == "M")
                         Data = Mitsubishi_to_Index_numerical(Name, id.ToInt32(), format, Index.ToInt32(), this);//批量读取寄存器并且返回数据
                     else
@@ -407,13 +407,14 @@ namespace 自定义Uppercomputer_20200727.PLC选择.MODBUS_TCP监控窗口
                 retry = 0;
             }
             else
-            {               
+            {
                 retry += 1;//重试次数
-                if (retry < 10) return;
                 PLCerr_content = DateTime.Now.ToString("[HH:mm:ss] ") + $"[{address}] 读取失败{Environment.NewLine}原因：{result.ToMessageShowString()}";
-                MessageBox.Show(DateTime.Now.ToString("[HH:mm:ss] ") + $"[{address}] 读取失败{Environment.NewLine}原因：{result.ToMessageShowString()}");
-                PLC_ready = siemensTcpNet.ConnectServer().IsSuccess;//重新链接PLC
-                retry = 0;
+                if (retry==1)
+                    MessageBox.Show(DateTime.Now.ToString("[HH:mm:ss] ") + $"[{address}] 读取失败{Environment.NewLine}原因：{result.ToMessageShowString()}");
+                if(retry>=1)
+                    err(new Exception("链接PLC异常"));
+
             }
         }
 
@@ -427,11 +428,6 @@ namespace 自定义Uppercomputer_20200727.PLC选择.MODBUS_TCP监控窗口
             if (result.IsSuccess != true)
             {
                 PLCerr_content = DateTime.Now.ToString("[HH:mm:ss] ") + $"[{address}] 写入失败{Environment.NewLine}原因：{result.ToMessageShowString()}";
-                if (Message_run != true)
-                {
-                    MessageBox.Show(DateTime.Now.ToString("[HH:mm:ss] ") + $"[{address}] 写入失败{Environment.NewLine}原因：{result.ToMessageShowString()}");
-                    Message_run = true;
-                }
             }
         }
         private void err(Exception e)
@@ -440,7 +436,6 @@ namespace 自定义Uppercomputer_20200727.PLC选择.MODBUS_TCP监控窗口
             PLCerr_code = e.HResult;
             PLCerr_content = e.Message;
             Message_run = true;
-            MessageBox.Show("链接PLC异常");
         }
     }
 }

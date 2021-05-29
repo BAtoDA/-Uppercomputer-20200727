@@ -150,7 +150,7 @@ namespace 自定义Uppercomputer_20200727.PLC选择
             {
                 try
                 {
-                    mutex.WaitOne(3000);
+                    mutex.WaitOne(500);
                     readResultRender(busTcpClient.ReadCoil(id), id, ref result);//格式--读取地址-地址，返回数据--地址决定了是Nmae的类型            
                     mutex.ReleaseMutex();
                 }
@@ -184,7 +184,7 @@ namespace 自定义Uppercomputer_20200727.PLC选择
             {
                 try
                 {
-                    mutex.WaitOne(3000);
+                    mutex.WaitOne(500);
                     writeResultRender(busTcpClient.WriteCoil(id, Convert.ToBoolean(button_State.ToInt32())), id);
                     result = "1";//写入1   
                     mutex.ReleaseMutex();
@@ -220,7 +220,7 @@ namespace 自定义Uppercomputer_20200727.PLC选择
             {
                 try
                 {
-                    mutex.WaitOne(3000);
+                    mutex.WaitOne(500);
                     switch (format)
                     {
                         case numerical_format.Signed_16_Bit:
@@ -299,7 +299,7 @@ namespace 自定义Uppercomputer_20200727.PLC选择
             {
                 try
                 {
-                    mutex.WaitOne(3000);
+                    mutex.WaitOne(500);
                     switch (format)
                     {
                         case numerical_format.Signed_16_Bit:
@@ -366,7 +366,7 @@ namespace 自定义Uppercomputer_20200727.PLC选择
             {
                 try
                 {
-                    mutex.WaitOne(3000);
+                    mutex.WaitOne(500);
                     Data = Mitsubishi_to_Index_numerical(Name, id.ToInt32(), format, Index.ToInt32(), this);//批量读取寄存器并且返回数据
                     mutex.ReleaseMutex();
                 }
@@ -415,11 +415,11 @@ namespace 自定义Uppercomputer_20200727.PLC选择
             if (result.IsSuccess != true)//指示读取失败
             {
                 retry += 1;//重试次数
-                if (retry < 10) return;
                 PLCerr_content = DateTime.Now.ToString("[HH:mm:ss] ") + $"[{address}] 读取失败{Environment.NewLine}原因：{result.ToMessageShowString()}";
-                MessageBox.Show(DateTime.Now.ToString("[HH:mm:ss] ") + $"[{address}] 读取失败{Environment.NewLine}原因：{result.ToMessageShowString()}");
-                PLC_ready = busTcpClient.ConnectServer().IsSuccess;//重新链接PLC
-                retry = 0;
+                if (retry == 1)
+                    MessageBox.Show(DateTime.Now.ToString("[HH:mm:ss] ") + $"[{address}] 读取失败{Environment.NewLine}原因：{result.ToMessageShowString()}");
+                if (retry >= 1)
+                    err(new Exception("链接PLC异常"));
             }
             else
             {
@@ -441,11 +441,6 @@ namespace 自定义Uppercomputer_20200727.PLC选择
             {
                 PLC_ready = false;//读取异常
                 PLCerr_content = DateTime.Now.ToString("[HH:mm:ss] ") + $"[{address}] 写入失败{Environment.NewLine}原因：{result.ToMessageShowString()}";
-                if (Message_run != true)
-                {
-                    MessageBox.Show(DateTime.Now.ToString("[HH:mm:ss] ") + $"[{address}] 写入失败{Environment.NewLine}原因：{result.ToMessageShowString()}");
-                    Message_run = true;
-                }
             }
             Thread.Sleep(5);
             PLC_busy = false;//允许访问
@@ -461,7 +456,6 @@ namespace 自定义Uppercomputer_20200727.PLC选择
             PLCerr_code = e.HResult;
             PLCerr_content = e.Message;
             Message_run = true;
-            MessageBox.Show("链接PLC异常");
         }
 
         public List<int> PLC_write_D_register_bit(string id)

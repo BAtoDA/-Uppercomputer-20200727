@@ -424,10 +424,10 @@ namespace 自定义Uppercomputer_20200727.PLC选择
             {
                 retry += 1;//重试次数
                 PLCerr_content = DateTime.Now.ToString("[HH:mm:ss] ") + $"[{address}] 读取失败{Environment.NewLine}原因：{result.ToMessageShowString()}";
-                if (retry >= 4)
-                {
+                if (retry == 1)
+                    MessageBox.Show(DateTime.Now.ToString("[HH:mm:ss] ") + $"[{address}] 读取失败{Environment.NewLine}原因：{result.ToMessageShowString()}");
+                if (retry >= 1)
                     err(new Exception("链接PLC异常"));
-                }
 
             }
         }

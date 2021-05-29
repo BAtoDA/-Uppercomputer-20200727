@@ -305,6 +305,7 @@ namespace 自定义Uppercomputer_20200727.PLC选择
         /// <returns></returns>
         List<int> IPLC_interface.PLC_write_D_register_bit(string id)
         {
+            
             return new List<int>() { 1 };
         }
         /// <summary>

@@ -84,21 +84,21 @@ namespace 自定义Uppercomputer_20200727.控件重做.控件类基.按钮__TO__
                         state = Button_HMI_public.Button_HMI_write_select(Convert.ToInt32(specific), command);//根据按钮模式进行写入操作 
                     break;
                 case "OmronTCP":
-                    IPLC_interface OmronTCP = new OmronFinsTcp();//实例化接口--实现西门子在线访问
+                    IPLC_interface OmronTCP = new OmronFinsTcp();//实例化接口
                     if (OmronTCP.PLC_ready)//PLC是否准备完成
                     {
                         Button_write_select(command, OmronTCP, pattern, specific, different, pattern1, specific1);//根据按钮模式进行写入操作
                     }
                     break;
                 case "OmronUDP":
-                    IPLC_interface OmronUDP =new OmronFinsUDP();//实例化接口--实现西门子在线访问
+                    IPLC_interface OmronUDP =new OmronFinsUDP();//实例化接口
                     if (OmronUDP.PLC_ready)//PLC是否准备完成
                     {
                         Button_write_select(command, OmronUDP, pattern, specific, different, pattern1, specific1);//根据按钮模式进行写入操作
                     }
                     break;
                 case "OmronCIP":
-                    IPLC_interface OmronCIP =new OmronFinsCIP();//实例化接口--实现西门子在线访问
+                    IPLC_interface OmronCIP =new OmronFinsCIP();//实例化接口
                     if (OmronCIP.PLC_ready)//PLC是否准备完成
                     {
                         Button_write_select(command, OmronCIP, pattern, specific, different, pattern1, specific1);//根据按钮模式进行写入操作

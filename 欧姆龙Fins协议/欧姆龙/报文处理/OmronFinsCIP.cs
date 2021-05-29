@@ -92,8 +92,8 @@ namespace 欧姆龙Fins协议.欧姆龙.报文处理
             try
             {
                 busTcpClient = new OmronCipNet(IPEndPoint.Address.ToString());//传入IP与端口
-                busTcpClient.ConnectTimeOut = 1000;//X超时时间
-                busTcpClient.ReceiveTimeOut = 1000;//超时时间
+                busTcpClient.ConnectTimeOut = 500;//X超时时间
+                busTcpClient.ReceiveTimeOut = 500;//超时时间
                 busTcpClient.ConnectClose();//切断链接                            
                 OperateResult connect = busTcpClient.ConnectServer();//是否打开成功？
                 retry = 0;
@@ -132,7 +132,7 @@ namespace 欧姆龙Fins协议.欧姆龙.报文处理
             {
                 try
                 {
-                    mutex.WaitOne(3000);
+                    mutex.WaitOne(100);
                     readResultRender(busTcpClient.Read(Name + id, 1), Name + id.ToString(), ref result);//格式--读取地址-地址，返回数据--地址决定了是Nmae的类型            
                     mutex.ReleaseMutex();
                 }
@@ -153,7 +153,7 @@ namespace 欧姆龙Fins协议.欧姆龙.报文处理
             {
                 try
                 {
-                    mutex.WaitOne(3000);
+                    mutex.WaitOne(100);
                     result = busTcpClient.Read(Name + id, Length);//格式--读取地址-地址，返回数据--地址决定了是Nmae的类型            
                     mutex.ReleaseMutex();
                     return result;
@@ -176,7 +176,7 @@ namespace 欧姆龙Fins协议.欧姆龙.报文处理
             {
                 try
                 {
-                    mutex.WaitOne(3000);
+                    mutex.WaitOne(100);
                     writeResultRender(busTcpClient.Write(Name + id, Convert.ToBoolean((int)button_State)), Name + id + Convert.ToBoolean((int)button_State));
                     result = "1";//写入1   
                     mutex.ReleaseMutex();
@@ -199,7 +199,7 @@ namespace 欧姆龙Fins协议.欧姆龙.报文处理
             {
                 try
                 {
-                    mutex.WaitOne(3000);
+                    mutex.WaitOne(100);
                     writeResultRender(busTcpClient.Write(Name + id, button_State), Name + id);
                     result = "1";//写入1   
                     mutex.ReleaseMutex();
@@ -222,7 +222,7 @@ namespace 欧姆龙Fins协议.欧姆龙.报文处理
             {
                 try
                 {
-                    mutex.WaitOne(3000);
+                    mutex.WaitOne(100);
                     switch (format)
                     {
                         case numerical_format.Signed_16_Bit:
@@ -289,7 +289,7 @@ namespace 欧姆龙Fins协议.欧姆龙.报文处理
             {
                 try
                 {
-                    mutex.WaitOne(3000);
+                    mutex.WaitOne(100);
                     switch (format)
                     {
                         case numerical_format.Signed_16_Bit:
@@ -343,7 +343,7 @@ namespace 欧姆龙Fins协议.欧姆龙.报文处理
             {
                 try
                 {
-                    mutex.WaitOne(3000);
+                    mutex.WaitOne(100);
                     Data = Mitsubishi_to_Index_numerical(Name, Convert.ToInt32(id), format, Convert.ToInt32(Index), this);//批量读取寄存器并且返回数据
                     mutex.ReleaseMutex();
                 }
@@ -379,8 +379,10 @@ namespace 欧姆龙Fins协议.欧姆龙.报文处理
                 retry += 1;//重试次数
                 if (retry < 10) return;
                 PLCerr_content = DateTime.Now.ToString("[HH:mm:ss] ") + $"[{address}] 读取失败{Environment.NewLine}原因：{result.ToMessageShowString()}";
-                MessageBox.Show(DateTime.Now.ToString("[HH:mm:ss] ") + $"[{address}] 读取失败{Environment.NewLine}原因：{result.ToMessageShowString()}");
-                retry = 0;
+                if (retry == 1)
+                    MessageBox.Show(DateTime.Now.ToString("[HH:mm:ss] ") + $"[{address}] 读取失败{Environment.NewLine}原因：{result.ToMessageShowString()}");
+                if (retry >= 1)
+                    err(new Exception("链接PLC异常"));
             }
             else
             {
@@ -429,11 +431,6 @@ namespace 欧姆龙Fins协议.欧姆龙.报文处理
             {
                 PLC_ready = false;//读取异常
                 PLCerr_content = DateTime.Now.ToString("[HH:mm:ss] ") + $"[{address}] 写入失败{Environment.NewLine}原因：{result.ToMessageShowString()}";
-                if (Message_run != true)
-                {
-                    MessageBox.Show(DateTime.Now.ToString("[HH:mm:ss] ") + $"[{address}] 写入失败{Environment.NewLine}原因：{result.ToMessageShowString()}");
-                    Message_run = true;
-                }
             }
             Thread.Sleep(5);
             PLC_busy = false;//允许访问
@@ -449,7 +446,6 @@ namespace 欧姆龙Fins协议.欧姆龙.报文处理
             PLCerr_code = e.HResult;
             PLCerr_content = e.Message;
             Message_run = true;
-            MessageBox.Show("链接PLC异常");
         }
 
         public List<int> PLC_write_D_register_bit(string id)
