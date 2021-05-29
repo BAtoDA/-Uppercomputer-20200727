@@ -21,9 +21,9 @@
  
                                                            控件组成    
 
-![image](https://user-images.githubusercontent.com/60955669/119997409-4a109380-c002-11eb-91c2-3704899ab6dd.png)
-                                                           更改后EF实体模型到SLQLite    
-![image](https://user-images.githubusercontent.com/60955669/120075098-8ad7dd80-c0d2-11eb-9873-1bff331e2971.png)
+![image](https://user-images.githubusercontent.com/60955669/119997409-4a109380-c002-11eb-91c2-3704899ab6dd.png)  
+                                                       更改后EF实体模型到SLQLite    
+![image](https://user-images.githubusercontent.com/60955669/120075098-8ad7dd80-c0d2-11eb-9873-1bff331e2971.png)  
 
 BUG与反馈：  
 开源自由就好BUG什么的肯定有哈哈。  
