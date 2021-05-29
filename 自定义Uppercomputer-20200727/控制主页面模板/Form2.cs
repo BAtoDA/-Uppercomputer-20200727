@@ -604,32 +604,31 @@ namespace 自定义Uppercomputer_20200727
         private const int AW_BLEND = 0x80000;//使用淡入淡出效果
         #endregion
 
-        private  void Form2_Load(object sender, EventArgs e)//加载窗口
+        private void Form2_Load(object sender, EventArgs e)//加载窗口
         {
             ToolStripManager.Renderer = new HZH_Controls.Controls.ProfessionalToolStripRendererEx();
-            //this.BeginInvoke((EventHandler)delegate
-            //{
-                UI_Schedule("开始加载控件", 30, true);
-                 var se = Task.Run(() =>
-                  {
-                      using (From_Load_Add load_Add = new From_Load_Add(this.Name, this.Controls, new List<ImageList>() { this.imageList1, this.imageList2, this.imageList3 }, this));//添加报警条
+            Form2_Leave(this, new EventArgs());
+            UI_Schedule("开始加载控件", 30, true);
+            var se = Task.Run(() =>
+             {
+                 From_Load_Add.imageLists_1 = new List<ImageList>() { this.imageList1, this.imageList2, this.imageList3 };
+                 using (From_Load_Add load_Add = new From_Load_Add(this.Name, this.Controls, new List<ImageList>() { this.imageList1, this.imageList2, this.imageList3 }, this)) ;//添加报警条
                       using (From_Load_Add add = new From_Load_Add(this.Name, this.Controls, new List<ImageList>() { this.imageList1, this.imageList2, this.imageList3 }, this, true)) ;//添加普通文本
                       UI_Schedule("开始正在显示UI", 90, true);
-                  });
-                se.Wait();
-                this.timer3.Start();
-                timer3.Interval = 100;
-                asc.RenewControlRect(this);
-                //传递PLC参数到宏指令
-                if (!CSEngineTest.PLC.Mitsubishi_axActUtlType.IsNull()) return;
-                //LogUtils日志
-                LogUtils.debugWrite("用户添加控件： 实例化宏指令对象" );
+             });
+            se.Wait();
+            this.timer3.Start();
+            timer3.Interval = 100;
+            asc.RenewControlRect(this);
+            //传递PLC参数到宏指令
+            if (!CSEngineTest.PLC.Mitsubishi_axActUtlType.IsNull()) return;
+            //LogUtils日志
+            LogUtils.debugWrite("用户添加控件： 实例化宏指令对象");
 
-                CSEngineTest.PLC.Mitsubishi_axActUtlType = new Mitsubishi_axActUtlType();//实例化接口
-                CSEngineTest.PLC.Mitsubishi = new Mitsubishi_realize();//实例化接口
-                CSEngineTest.PLC.MODBUD_TCP = new MODBUD_TCP();//实例化接口
-                CSEngineTest.PLC.Siemens = new Siemens_realize();//实例化接口;            
-           // });
+            CSEngineTest.PLC.Mitsubishi_axActUtlType = new Mitsubishi_axActUtlType();//实例化接口
+            CSEngineTest.PLC.Mitsubishi = new Mitsubishi_realize();//实例化接口
+            CSEngineTest.PLC.MODBUD_TCP = new MODBUD_TCP();//实例化接口
+            CSEngineTest.PLC.Siemens = new Siemens_realize();//实例化接口;            
         }
 
         private void Form2_Shown(object sender, EventArgs e)//添加控件
@@ -701,6 +700,7 @@ namespace 自定义Uppercomputer_20200727
             this.ucNavigationMenu1.Enabled = true;
             if (edit_mode) { PLC_read_ok = false; PLC_read_Tick = false; };//指示用户开始了编辑模式
             asc.RenewControlRect(this);//实时保存控件大小与位置
+
             try
             {
                 if (GetForegroundWindow() == this.Handle)
@@ -928,10 +928,9 @@ namespace 自定义Uppercomputer_20200727
         /// <param name="e"></param>
         private void Form2_Activated(object sender, EventArgs e)
         {
-            WinMonitoring.RegisterHotKey(Handle, 203, WinMonitoring.KeyModifiers.Ctrl, Keys.C);
+            WinMonitoring.RegisterHotKey(Handle, 103, WinMonitoring.KeyModifiers.Ctrl, Keys.C);
 
-            WinMonitoring.RegisterHotKey(Handle, 204, WinMonitoring.KeyModifiers.Ctrl, Keys.V);
-            IsEnabled(Handle);
+            WinMonitoring.RegisterHotKey(Handle, 104, WinMonitoring.KeyModifiers.Ctrl, Keys.V);
         }
         /// <summary>
         /// 注销控件热键
@@ -940,9 +939,9 @@ namespace 自定义Uppercomputer_20200727
         /// <param name="e"></param>
         private void Form2_Leave(object sender, EventArgs e)
         {
-            WinMonitoring.UnregisterHotKey(Handle, 203);
+            WinMonitoring.UnregisterHotKey(Handle, 103);
 
-            WinMonitoring.UnregisterHotKey(Handle, 204);
+            WinMonitoring.UnregisterHotKey(Handle, 104);
         }
         /// <summary>
         /// 粘贴板
@@ -961,7 +960,7 @@ namespace 自定义Uppercomputer_20200727
                 case WM_HOTKEY:
                     switch (m.WParam.ToInt32())
                     {
-                        case 203:     //按下的是Ctrl+C 触发了复制控件
+                        case 103:     //按下的是Ctrl+C 触发了复制控件
                             var conrt = GetFocusedControl();//获取控件
                             if (conrt == null|| !edit_mode) return;
                             //判断改控件是否实现接口
@@ -979,7 +978,7 @@ namespace 自定义Uppercomputer_20200727
                                 this.Controls.Add(copyControl);
                             }
                             break;
-                        case 204:     //按下的是Ctrl+V 触发了粘贴控件
+                        case 104:     //按下的是Ctrl+V 触发了粘贴控件
                             //判断粘贴板是否有控件
                             if (control != null|| !edit_mode)
                             {

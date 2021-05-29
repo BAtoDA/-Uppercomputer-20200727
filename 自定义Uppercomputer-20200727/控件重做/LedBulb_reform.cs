@@ -31,10 +31,6 @@ namespace 自定义Uppercomputer_20200727.控件重做
     class LedBulb_reform : UILedBulb, ControlCopy, Button_base
     {
         LedBulb_Class LedBulb_Class;//控件参数
-        public enum Switch_pattern//切换开模式类型枚举
-        {
-            Set_as_on, Set_as_off, 切换开关, 复归型
-        }
         public string Switch_ID { get; set; }//该按钮ID
 
         public System.Threading.Timer PLC_time { get; }
@@ -90,8 +86,8 @@ namespace 自定义Uppercomputer_20200727.控件重做
         private void MouseDown_reform(object sender, MouseEventArgs e)//鼠标按下事件
         {
             //当按钮按下触发—写入PLC状态
-            LedBulb_EF button_EF = new LedBulb_EF();//实例化EF
-            LedBulb_Class = button_EF.Button_Parameter_Query(this.Parent + "-" + this.Name);//查询控件参数
+            Button_EFbase button_EF = new Button_EFbase();//实例化EF
+            LedBulb_Class = button_EF.Button_Parameter_Query<LedBulb_Class>(this.Parent + "-" + this.Name);//查询控件参数
             //初始化按钮
             if (Form2.edit_mode != true) return;//返回方法
             clickX = e.X;
@@ -135,7 +131,8 @@ namespace 自定义Uppercomputer_20200727.控件重做
             using (UppercomputerEntities2 db = new UppercomputerEntities2())
             {
                 //获取上个控件的值
-                string path = this.Parent.ToString() + "-" + this.Name;
+                string path = this.Parent?.ToString() ?? Switch_ID ;
+                path += "-" + this.Name;
                 var button_colour = db.Button_colour.Where(pi => pi.ID.Trim() == path).FirstOrDefault();
                 var button_parameter = db.LedBulb_parameter.Where(pi => pi.ID.Trim() == path).FirstOrDefault();
                 var general_parameters_of_picture = db.General_parameters_of_picture.Where(pi => pi.ID.Trim() == path).FirstOrDefault();
@@ -170,7 +167,7 @@ namespace 自定义Uppercomputer_20200727.控件重做
                 button_colour.FORM = From;
 
                 //重新向SQL插入数据
-                LedBulb_EF EF = new LedBulb_EF();
+                Button_EFbase EF = new Button_EFbase();
                 EF.Button_Parameter_Add(button_parameter);
                 EF.Button_Parameter_Add(general_parameters_of_picture);
                 EF.Button_Parameter_Add(Tag_common);
@@ -241,12 +238,12 @@ namespace 自定义Uppercomputer_20200727.控件重做
                         _Class = null;
                         return;//返回方法
                     }
-                    if (_Class.IsNull())
+                    if (_Class.IsNull()||_Class.ID.IsNull())
                     {
-                        LedBulb_EF EF = new LedBulb_EF();//实例化EF
-                        _Class = EF.Button_Parameter_Query(this.Parent + "-" + this.Name);//查询控件参数
+                        Button_EFbase EF = new Button_EFbase();//实例化EF
+                        _Class = EF.Button_Parameter_Query<LedBulb_Class>(this.Parent + "-" + this.Name);//查询控件参数
                     }
-                    if (_Class.IsNull()) return;
+                    if (_Class.ID.IsNull()) return;
                     this.button_state(this, _Class, button_PLC.Refresh(this, _Class.读写设备.Trim(), _Class.读写设备_地址.Trim(), _Class.读写设备_地址_具体地址.Trim()));
                 }
                 catch

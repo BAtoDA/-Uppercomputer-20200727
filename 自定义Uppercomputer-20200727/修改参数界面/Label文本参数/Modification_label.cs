@@ -12,6 +12,7 @@ using CCWin;
 using CCWin.SkinClass;
 using CCWin.SkinControl;
 using 自定义Uppercomputer_20200727.EF实体模型;
+using 自定义Uppercomputer_20200727.EF实体模型.EFtoSQL操作类重写;
 using 自定义Uppercomputer_20200727.Nlog;
 using 自定义Uppercomputer_20200727.控件重做;
 
@@ -68,10 +69,10 @@ namespace 自定义Uppercomputer_20200727.修改参数界面
         private void Modification_label_Shown(object sender, EventArgs e)
         {
             //查询数据库是否有该数据
-            if (label_EF.label_Parameter_inquire(this.skinTextBox1.Text) == "OK")
+            if (Button_EFbase.Button_Parameter_inquire<label_Class>(this.skinTextBox1.Text) == "OK")
             {
-                label_EF label_EF = new label_EF();//实例化EF对象
-                label = label_EF.label_Parameter_Query(this.skinTextBox1.Text);//获取按钮类全部参数
+                Button_EFbase label_EF = new Button_EFbase();//实例化EF对象
+                label = label_EF.Button_Parameter_Query<label_Class>(this.skinTextBox1.Text);//获取按钮类全部参数
                 List_Index();//开始改变索引
             }
             else
@@ -105,25 +106,25 @@ namespace 自定义Uppercomputer_20200727.修改参数界面
         private void skinButton2_Click(object sender, EventArgs e)//用户点击了确定
         {
             //先查询数据库有无此ID--有进行修改--无新增--
-            label_EF label_EF = new label_EF();//实例化EF对象
-            if (label_EF.label_Parameter_inquire(this.skinTextBox1.Text) == "OK")
+            Button_EFbase label_EF = new Button_EFbase();//实例化EF对象
+            if (Button_EFbase.Button_Parameter_inquire<label_Class>(this.skinTextBox1.Text) == "OK")
             {
                 //LogUtils日志
                 LogUtils.debugWrite($"用户向{((Control)all_purpose).Name} 控件修改参数");
-                label_EF.label_Parameter_modification(this.skinTextBox1.Text, Label_Parameter(), tag_Common_Parameters(), control_Location());//修改数据库参数
+                label_EF.Button_Parameter_modification(this.skinTextBox1.Text, tag_Common_Parameters(), control_Location());//修改数据库参数
             }
             else
             {
                 //LogUtils日志
                 LogUtils.debugWrite($"用户向{((Control)all_purpose).Name} 控件插入参数");
-                label_EF.label_Parameter_Add(Label_Parameter());//插入主参数
-                label_EF.label_Parameter_Add(tag_Common_Parameters());//插入标签参数
-                label_EF.label_Parameter_Add(control_Location());//插入控件坐标参数
+                label_EF.Button_Parameter_Add(Label_Parameter());//插入主参数
+                label_EF.Button_Parameter_Add(tag_Common_Parameters());//插入标签参数
+                label_EF.Button_Parameter_Add(control_Location());//插入控件坐标参数
             }
             Add_to_allow = true;
             ((SkinLabel_reform)all_purpose).Text = this.skinChatRichTextBox1.Text;//修改显示内容
             Public_attributeCalss public_AttributeCalss = new Public_attributeCalss();//实例化按钮参数设置
-            public_AttributeCalss.attributeCalss((SkinLabel_reform)this.all_purpose,label_EF.label_Parameter_Query(this.skinTextBox1.Text.Trim()));//查询数据库--进行设置后的参数修改
+            public_AttributeCalss.attributeCalss((SkinLabel_reform)this.all_purpose,label_EF.Button_Parameter_Query<label_Class>(this.skinTextBox1.Text.Trim()));//查询数据库--进行设置后的参数修改
             this.Close();
             this.Dispose();
         }

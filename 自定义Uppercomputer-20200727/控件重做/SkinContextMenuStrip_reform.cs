@@ -191,20 +191,20 @@ namespace 自定义Uppercomputer_20200727.控件重做
                 case "SkinLabel_reform":
                     if (MessageBox.Show("确定要删除" + ((SkinLabel)all_purpose).Name.Trim() + "吗？", "错误：", MessageBoxButtons.YesNo) == DialogResult.No) return;
                     ((SkinLabel)all_purpose).Visible = false;//隐藏控件
-                    label_EF label_EF = new label_EF();//实例化EF对象
-                    label_EF.label_Parameter_delete(SkinContextMenuStrip_Button_ID + "-" + ((SkinLabel)all_purpose).Name);//执行SQL删除操作
+                    Button_EFbase label_EF = new Button_EFbase();//实例化EF对象
+                    label_EF.Button_Parameter_delete<label_parameter, Tag_common_parameters, control_location, Control_layer>(SkinContextMenuStrip_Button_ID + "-" + ((SkinLabel)all_purpose).Name);//执行SQL删除操作
                     break;
                 case "SkinTextBox_reform":
                     if (MessageBox.Show("确定要删除" + ((SkinTextBox_reform)all_purpose).Name.Trim() + "吗？", "错误：", MessageBoxButtons.YesNo) == DialogResult.No) return;
                     ((SkinTextBox_reform)all_purpose).Visible = false;//隐藏控件
-                    numerical_EF numerical_EF = new numerical_EF();//实例化EF对象
-                    numerical_EF.numerical_Parameter_delete(SkinContextMenuStrip_Button_ID + "- " + ((SkinTextBox_reform)all_purpose).Name);//执行SQL删除操作
+                    Button_EFbase numerical_EF = new Button_EFbase();//实例化EF对象
+                    numerical_EF.Button_Parameter_delete<numerical_parameter, Tag_common_parameters, General_parameters_of_picture, control_location, Control_layer, Button_colour>(SkinContextMenuStrip_Button_ID + "- " + ((SkinTextBox_reform)all_purpose).Name);//执行SQL删除操作
                     break;
                 case "SkinPictureBox_reform":
                     if (MessageBox.Show("确定要删除" + ((SkinPictureBox)all_purpose).Name.Trim() + "吗？", "错误：", MessageBoxButtons.YesNo) == DialogResult.No) return;
                     ((SkinPictureBox)all_purpose).Visible = false;//隐藏控件
-                    picture_EF picture_EF = new picture_EF();//实例化EF对象
-                    picture_EF.picture_Parameter_delete(SkinContextMenuStrip_Button_ID + "-" + ((SkinPictureBox)all_purpose).Name);//执行SQL删除操作
+                    Button_EFbase picture_EF = new Button_EFbase();//实例化EF对象
+                    picture_EF.Button_Parameter_delete<picture_parameter, General_parameters_of_picture, control_location, Control_layer>(SkinContextMenuStrip_Button_ID + "-" + ((SkinPictureBox)all_purpose).Name);//执行SQL删除操作
                     break;
                 case "Switch_reform":
                     if (MessageBox.Show("确定要删除" + ((Switch_reform)all_purpose).Name.Trim() + "吗？", "错误：", MessageBoxButtons.YesNo) == DialogResult.No) return;
@@ -215,8 +215,8 @@ namespace 自定义Uppercomputer_20200727.控件重做
                 case "LedBulb_reform":
                     if (MessageBox.Show("确定要删除" + ((LedBulb_reform)all_purpose).Name.Trim() + "吗？", "错误：", MessageBoxButtons.YesNo) == DialogResult.No) return;
                     ((LedBulb_reform)all_purpose).Visible = false;//隐藏控件
-                    LedBulb_EF LedBulb_EF = new LedBulb_EF();//实例化EF对象
-                    LedBulb_EF.Button_Parameter_delete(SkinContextMenuStrip_Button_ID + "-" + ((LedBulb_reform)all_purpose).Name);//执行SQL删除操作
+                    Button_EFbase LedBulb_EF = new Button_EFbase();//实例化EF对象
+                    LedBulb_EF.Button_Parameter_delete<LedBulb_parameter, Tag_common_parameters, General_parameters_of_picture, control_location, Control_layer, Button_colour>(SkinContextMenuStrip_Button_ID + "-" + ((LedBulb_reform)all_purpose).Name);//执行SQL删除操作
                     break;
                 case "GroupBox_reform":
                     if (MessageBox.Show("确定要删除" + ((GroupBox_reform)all_purpose).Name.Trim() + "吗？", "错误：", MessageBoxButtons.YesNo) == DialogResult.No) return;
@@ -234,8 +234,8 @@ namespace 自定义Uppercomputer_20200727.控件重做
                 case "ScrollingText_reform":
                     if (MessageBox.Show("确定要删除" + ((ScrollingText_reform)all_purpose).Name.Trim() + "吗？", "错误：", MessageBoxButtons.YesNo) == DialogResult.No) return;
                     ((ScrollingText_reform)all_purpose).Visible = false;//隐藏控件
-                    ScrollingText_EF ScrollingText_EF = new ScrollingText_EF();//实例化EF对象
-                    ScrollingText_EF.ScrollingText_Parameter_delete(SkinContextMenuStrip_Button_ID + "-" + ((ScrollingText_reform)all_purpose).Name);//执行SQL删除操作
+                    Button_EFbase ScrollingText_EF = new Button_EFbase();//实例化EF对象
+                    ScrollingText_EF.Button_Parameter_delete<ScrollingText_parameter, Tag_common_parameters, control_location, Control_layer>(SkinContextMenuStrip_Button_ID + "-" + ((ScrollingText_reform)all_purpose).Name);//执行SQL删除操作
                     break;
                 case "doughnut_Chart_reform":
                     if (MessageBox.Show("确定要删除" + ((doughnut_Chart_reform)all_purpose).Name.Trim() + "吗？", "错误：", MessageBoxButtons.YesNo) == DialogResult.No) return;
@@ -264,8 +264,8 @@ namespace 自定义Uppercomputer_20200727.控件重做
                 case "LedDisplay_reform":
                     if (MessageBox.Show("确定要删除" + ((LedDisplay_reform)all_purpose).Name.Trim() + "吗？", "错误：", MessageBoxButtons.YesNo) == DialogResult.No) return;
                     ((LedDisplay_reform)all_purpose).Visible = false;//隐藏控件
-                    LedDisplay_EF LedDisplay_EF = new LedDisplay_EF();//实例化EF对象
-                    LedDisplay_EF.LedDisplay_Parameter_delete(SkinContextMenuStrip_Button_ID + "- " + ((LedDisplay_reform)all_purpose).Name);//执行SQL删除操作
+                    Button_EFbase LedDisplay_EF = new Button_EFbase();//实例化EF对象
+                    LedDisplay_EF.Button_Parameter_delete<LedDisplay_parameter, Tag_common_parameters, General_parameters_of_picture, control_location, Control_layer, Button_colour>(SkinContextMenuStrip_Button_ID + "- " + ((LedDisplay_reform)all_purpose).Name);//执行SQL删除操作
                     break;
                 case "ihatetheqrcode_reform":
                     if (MessageBox.Show("确定要删除" + ((ihatetheqrcode_reform)all_purpose).Name.Trim() + "吗？", "错误：", MessageBoxButtons.YesNo) == DialogResult.No) return;

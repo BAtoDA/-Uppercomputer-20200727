@@ -122,7 +122,8 @@ namespace 自定义Uppercomputer_20200727.控件重做
             using (UppercomputerEntities2 db = new UppercomputerEntities2())
             {
                 //获取上个控件的值
-                string path = this.Parent.ToString() + "- " + this.Name;
+                string path = this.Parent?.ToString() ?? LedDisplay_ID ;
+                path += "- " + this.Name;
                 var button_colour = db.Button_colour.Where(pi => pi.ID.Trim() == path).FirstOrDefault();
                 var parameter = db.LedDisplay_parameter.Where(pi => pi.ID.Trim() == path).FirstOrDefault();
                 var Tag_common = db.Tag_common_parameters.Where(pi => pi.ID.Trim() == path).FirstOrDefault();
@@ -154,11 +155,11 @@ namespace 自定义Uppercomputer_20200727.控件重做
                 button_colour.FORM = From;
 
                 //重新向SQL插入数据
-                LedDisplay_EF EF = new LedDisplay_EF();
-                EF.LedDisplay_Parameter_Add(parameter);
-                EF.LedDisplay_Parameter_Add(Tag_common);
-                EF.LedDisplay_Parameter_Add(locatio);
-                EF.LedDisplay_Parameter_Add(button_colour);
+                Button_EFbase EF = new Button_EFbase();
+                EF.Button_Parameter_Add(parameter);
+                EF.Button_Parameter_Add(Tag_common);
+                EF.Button_Parameter_Add(locatio);
+                EF.Button_Parameter_Add(button_colour);
                 return control;
             }
         }
@@ -210,8 +211,8 @@ namespace 自定义Uppercomputer_20200727.控件重做
                     }
                     if (_Class.IsNull())
                     {
-                        LedDisplay_EF EF = new LedDisplay_EF();//实例化EF
-                        _Class = EF.LedDisplay_Parameter_Query(this.Parent + "- " + this.Name);//查询控件参数
+                        Button_EFbase EF = new Button_EFbase();//实例化EF
+                        _Class = EF.Button_Parameter_Query<LedDisplay_Class>(this.Parent + "- " + this.Name);//查询控件参数
                     }
                     if (_Class.IsNull()) return;
                     this.TextBox_state(this, _Class, TextBox.Refresh(_Class.读写设备.Trim(), _Class.资料格式.Trim(), _Class.读写设备_地址.Trim(), _Class.读写设备_地址_具体地址.Trim()));

@@ -123,8 +123,8 @@ namespace 自定义Uppercomputer_20200727.控件重做
         /// <方法重写实现当鼠标在控件上方按下时触发--获取数据库中相应控件的参数—实现参数写入与约束>
         private void numerical_MouseDown(object sender, MouseEventArgs e)//当前控件当鼠标在控件上方按下时触发--获取数据库中相应控件的参数
         {
-            numerical_EF numerical_EF = new numerical_EF();//实例化EF对象
-            numerical_Classes=numerical_EF.numerical_Parameter_Query(((SkinTextBox_reform)sender).Parent + "- " + ((SkinTextBox_reform)sender).Name);//查询控件参数信息            
+            Button_EFbase numerical_EF = new Button_EFbase();//实例化EF对象
+            numerical_Classes=numerical_EF.Button_Parameter_Query<numerical_Class>(((SkinTextBox_reform)sender).Parent + "- " + ((SkinTextBox_reform)sender).Name);//查询控件参数信息            
         }
         /// <方法重写实现用户双击控件---进入键盘—实现参数写入与约束>
         private void numerical_DoubleClick(object sender, EventArgs e)//用户双击控件---进入键盘
@@ -199,12 +199,12 @@ namespace 自定义Uppercomputer_20200727.控件重做
                         _Class = null;
                         return;//返回方法
                     }
-                    if (_Class.IsNull())
+                    if (_Class.IsNull()||_Class.ID.IsNull())
                     {
-                        numerical_EF EF = new numerical_EF();//实例化EF
-                        _Class = EF.numerical_Parameter_Query(this.Parent + "- " + this.Name);//查询控件参数
+                        Button_EFbase EF = new Button_EFbase();//实例化EF
+                        _Class = EF.Button_Parameter_Query<numerical_Class>(this.Parent + "- " + this.Name);//查询控件参数
                     }
-                    if (_Class.IsNull()) return;
+                    if (_Class.ID.IsNull()) return;
                     this.TextBox_state(this, _Class, TextBox.Refresh(_Class.读写设备.Trim(), _Class.资料格式.Trim(), _Class.读写设备_地址.Trim(), _Class.读写设备_地址_具体地址.Trim()));
                 }
                 catch
@@ -222,13 +222,15 @@ namespace 自定义Uppercomputer_20200727.控件重做
             using (UppercomputerEntities2 db = new UppercomputerEntities2())
             {
                 //获取上个控件的值
-                string path = this.Parent.ToString() + "- " + this.Name;
+                string path = this.Parent?.ToString() ?? SkinTextBox_ID;
+                path += "- " + this.Name;
                 var button_colour = db.Button_colour.Where(pi => pi.ID.Trim() == path).FirstOrDefault();
                 var button_parameter = db.numerical_parameter.Where(pi => pi.ID.Trim() == path).FirstOrDefault();
                 var general_parameters_of_picture = db.General_parameters_of_picture.Where(pi => pi.ID.Trim() == path).FirstOrDefault();
                 var Tag_common = db.Tag_common_parameters.Where(pi => pi.ID.Trim() == path).FirstOrDefault();
                 var locatio = db.control_location.Where(pi => pi.ID.Trim() == path).FirstOrDefault();
                 var contrsclass = db.numerical_Class.Where(pi => pi.ID.Trim() == path).FirstOrDefault();
+
                 //产生新的控件
                 SkinTextBox_reform button = (SkinTextBox_reform)this.Clone();
 
@@ -257,11 +259,11 @@ namespace 自定义Uppercomputer_20200727.控件重做
                 locatio.FORM = From;
 
                 //重新向SQL插入数据
-                numerical_EF EF = new numerical_EF();
-                EF.numerical_Parameter_Add(button_parameter);
-                EF.numerical_Parameter_Add(Tag_common);
-                EF.numerical_Parameter_Add(general_parameters_of_picture);
-                EF.numerical_Parameter_Add(locatio);
+                Button_EFbase EF = new Button_EFbase();
+                EF.Button_Parameter_Add(button_parameter);
+                EF.Button_Parameter_Add(Tag_common);
+                EF.Button_Parameter_Add(general_parameters_of_picture);
+                EF.Button_Parameter_Add(locatio);
                 EF.Button_Parameter_Add(button_colour);
                 return button;
             }

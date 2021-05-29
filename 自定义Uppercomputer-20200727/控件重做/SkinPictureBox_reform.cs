@@ -121,7 +121,8 @@ namespace 自定义Uppercomputer_20200727.控件重做
             using (UppercomputerEntities2 db = new UppercomputerEntities2())
             {
                 //获取上个控件的值
-                string path = this.Parent.ToString() + "-" + this.Name;
+                string path = this.Parent?.ToString() ?? SkinPictureBox_ID ;
+                path += "-" + this.Name;
                 var parameter = db.picture_parameter.Where(pi => pi.ID.Trim() == path).FirstOrDefault();
                 var General = db.General_parameters_of_picture.Where(pi => pi.ID.Trim() == path).FirstOrDefault();
                 var locatio = db.control_location.Where(pi => pi.ID.Trim() == path).FirstOrDefault();
@@ -149,10 +150,10 @@ namespace 自定义Uppercomputer_20200727.控件重做
                 locatio.FORM = From;
 
                 //重新向SQL插入数据
-                picture_EF EF = new picture_EF();
-                EF.picture_Parameter_Add(parameter);
-                EF.picture_Parameter_Add(General);
-                EF.picture_Parameter_Add(locatio);
+                Button_EFbase EF = new Button_EFbase();
+                EF.Button_Parameter_Add(parameter);
+                EF.Button_Parameter_Add(General);
+                EF.Button_Parameter_Add(locatio);
                 return control;
             }
         }

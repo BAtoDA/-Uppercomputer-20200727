@@ -15,6 +15,7 @@ using CCWin.SkinControl;
 using 自定义Uppercomputer_20200727.EF实体模型;
 using 自定义Uppercomputer_20200727.控件重做;
 using 自定义Uppercomputer_20200727.Nlog;
+using 自定义Uppercomputer_20200727.EF实体模型.EFtoSQL操作类重写;
 
 namespace 自定义Uppercomputer_20200727.修改参数界面.LedDisplay数值显示参数
 {
@@ -69,10 +70,10 @@ namespace 自定义Uppercomputer_20200727.修改参数界面.LedDisplay数值显
             this.colorComboBox2.SelectedIndex = 0;
             this.colorComboBox2.SelectedItem = 0;
             //查询数据库是否有该数据
-            if (LedDisplay_EF.LedDisplay_Parameter_inquire(this.skinTextBox8.Text) == "OK")
+            if (Button_EFbase.Button_Parameter_inquire<LedDisplay_Class>(this.skinTextBox8.Text) == "OK")
             {
-                LedDisplay_EF button_EF = new LedDisplay_EF();//实例化EF对象
-                button = button_EF.LedDisplay_Parameter_Query(this.skinTextBox8.Text);//获取按钮类全部参数
+                Button_EFbase button_EF = new Button_EFbase();//实例化EF对象
+                button = button_EF.Button_Parameter_Query<LedDisplay_Class>(this.skinTextBox8.Text);//获取按钮类全部参数
                 List_Index();//开始改变索引
             }
             else
@@ -134,25 +135,25 @@ namespace 自定义Uppercomputer_20200727.修改参数界面.LedDisplay数值显
                 return;
             }
             //先查询数据库有无此ID--有进行修改--无新增--
-            LedDisplay_EF LedDisplay_EF = new LedDisplay_EF();//实例化EF对象
-            if (LedDisplay_EF.LedDisplay_Parameter_inquire(this.skinTextBox8.Text) == "OK")
+            Button_EFbase LedDisplay_EF = new Button_EFbase();//实例化EF对象
+            if (Button_EFbase.Button_Parameter_inquire<LedDisplay_Class>(this.skinTextBox8.Text) == "OK")
             {
                 //LogUtils日志
                 LogUtils.debugWrite($"用户向{((Control)all_purpose).Name} 控件修改参数");
-                LedDisplay_EF.LedDisplay_Parameter_modification(this.skinTextBox8.Text, numerical_Parameter(), tag_Common_Parameters(), general_Parameters_Of_Picture(), control_Location(), Button_colour_Location());//修改数据库参数
+                LedDisplay_EF.Button_Parameter_modification(this.skinTextBox8.Text, numerical_Parameter(), tag_Common_Parameters(), general_Parameters_Of_Picture(), control_Location(), Button_colour_Location());//修改数据库参数
             }
             else
             {
                 //LogUtils日志
                 LogUtils.debugWrite($"用户向{((Control)all_purpose).Name} 控件插入参数");
-                LedDisplay_EF.LedDisplay_Parameter_Add(tag_Common_Parameters());//插入标签参数
-                LedDisplay_EF.LedDisplay_Parameter_Add(numerical_Parameter());//插入一般参数
-                LedDisplay_EF.LedDisplay_Parameter_Add(general_Parameters_Of_Picture());//插入图片参数
-                LedDisplay_EF.LedDisplay_Parameter_Add(control_Location());//插入控件坐标参数
-                LedDisplay_EF.LedDisplay_Parameter_Add(Button_colour_Location());//插入控件背景颜色
+                LedDisplay_EF.Button_Parameter_Add(tag_Common_Parameters());//插入标签参数
+                LedDisplay_EF.Button_Parameter_Add(numerical_Parameter());//插入一般参数
+                LedDisplay_EF.Button_Parameter_Add(general_Parameters_Of_Picture());//插入图片参数
+                LedDisplay_EF.Button_Parameter_Add(control_Location());//插入控件坐标参数
+                LedDisplay_EF.Button_Parameter_Add(Button_colour_Location());//插入控件背景颜色
             }
             Public_attributeCalss public_AttributeCalss = new Public_attributeCalss();//实例化按钮参数设置
-            public_AttributeCalss.LedDisplay((LedDisplay_reform)this.all_purpose, LedDisplay_EF.LedDisplay_Parameter_Query(this.skinTextBox8.Text));//查询数据库--进行设置后的参数修改
+            public_AttributeCalss.LedDisplay((LedDisplay_reform)this.all_purpose, LedDisplay_EF.Button_Parameter_Query<LedDisplay_Class>(this.skinTextBox8.Text));//查询数据库--进行设置后的参数修改
             Add_to_allow = true;
             this.Close();
             this.Dispose();

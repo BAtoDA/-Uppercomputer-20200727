@@ -273,28 +273,24 @@
     <Compile Include="EF实体模型\label_Class.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="EF实体模型\label_EF.cs" />
     <Compile Include="EF实体模型\label_parameter.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="EF实体模型\LedBulb_Class.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="EF实体模型\LedBulb_EF.cs" />
     <Compile Include="EF实体模型\LedBulb_parameter.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="EF实体模型\LedDisplay_Class.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="EF实体模型\LedDisplay_EF.cs" />
     <Compile Include="EF实体模型\LedDisplay_parameter.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="EF实体模型\numerical_Class.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="EF实体模型\numerical_EF.cs" />
     <Compile Include="EF实体模型\numerical_parameter.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -309,7 +305,6 @@
     <Compile Include="EF实体模型\picture_Class.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="EF实体模型\picture_EF.cs" />
     <Compile Include="EF实体模型\picture_parameter.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>

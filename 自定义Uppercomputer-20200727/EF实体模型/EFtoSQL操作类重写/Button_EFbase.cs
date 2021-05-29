@@ -329,6 +329,21 @@ namespace 自定义Uppercomputer_20200727.EF实体模型.EFtoSQL操作类重写
         /// <summary>
         /// 修改参数 根据泛型<T>自动推断需要查询的表
         /// </summary>
+        /// <typeparam name="T1"></typeparam>
+        /// <typeparam name="T2"></typeparam>
+        /// <param name="ID">查询条件内容</param>
+        /// <param name="_Parameter">Button_parameter</param>
+        /// <param name="tag_Common_">Tag_common_parameters</param>
+        /// <returns></returns>
+        public string Button_Parameter_modification<T1, T2>(string ID, T1 _Parameter, T2 tag_Common_)
+        {
+            Button_Parameter_modification(ID, _Parameter);
+            Button_Parameter_modification(ID, tag_Common_);
+            return "OK";
+        }
+        /// <summary>
+        /// 修改参数 根据泛型<T>自动推断需要查询的表
+        /// </summary>
         /// <typeparam name="T">约束类型</typeparam>
         /// <param name="ID">查询条件内容</param>
         /// <param name="Parameter">需要修改的内容</param>

@@ -23,7 +23,7 @@ namespace 自定义Uppercomputer_20200727.控制主页面模板
     class From_Load_Add : IDisposable
     {
         ControlCollection control;//当前窗口控件集合
-        List<ImageList> imageLists_1 { get; set; } //图库类集合--不可修改
+        public static List<ImageList> imageLists_1 { get; set; } //图库类集合--不可修改
         //报警条需要参数
         Form Form_event;//当前窗口
         public From_Load_Add(string From_Name, ControlCollection control, List<ImageList> imageLists_1, Form form, bool e)
@@ -54,7 +54,7 @@ namespace 自定义Uppercomputer_20200727.控制主页面模板
             });
            await Task.Run(() =>
             {
-                this.imageLists_1 = imageLists_1;//获取图库
+               // this.imageLists_1 = imageLists_1;//获取图库
                 Load_Add(parameter_Query_Add.all_Parameter_Query_doughnut_histogram(From_Name));
                 Load_Add(parameter_Query_Add.all_Parameter_Query_doughnut_oscillogram(From_Name));
                 Load_Add(parameter_Query_Add.all_Parameter_Query_AnalogMeter(From_Name));
@@ -94,7 +94,7 @@ namespace 自定义Uppercomputer_20200727.控制主页面模板
         public From_Load_Add(string From_Name, ControlCollection control, List<ImageList> imageLists_1,Form form)
         {
             this.Form_event = form;
-            this.imageLists_1 = imageLists_1;//获取图库
+            //this.imageLists_1 = imageLists_1;//获取图库
             this.control = control;
             Parameter_Query_Add parameter_Query_Add = new Parameter_Query_Add();//创建EF查询对象
             Load_Add(parameter_Query_Add.all_Parameter_Query_ScrollingText(From_Name));

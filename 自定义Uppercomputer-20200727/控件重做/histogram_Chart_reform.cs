@@ -185,7 +185,8 @@ namespace 自定义Uppercomputer_20200727.控件重做
             using (UppercomputerEntities2 db = new UppercomputerEntities2())
             {
                 //获取上个控件的值
-                string path = this.Parent.ToString() + "- " + this.Name;
+                string path = this.Parent?.ToString() ?? doughnut_Chart_ID ;
+                path += "- " + this.Name;
                 var parameter = db.histogram_Chart_parameter.Where(pi => pi.ID.Trim() == path).FirstOrDefault();
                 var Tag_common = db.Tag_common_parameters.Where(pi => pi.ID.Trim() == path).FirstOrDefault();
                 var locatio = db.control_location.Where(pi => pi.ID.Trim() == path).FirstOrDefault();

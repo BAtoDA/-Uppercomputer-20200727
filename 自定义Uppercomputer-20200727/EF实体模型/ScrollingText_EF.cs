@@ -9,7 +9,7 @@ namespace 自定义Uppercomputer_20200727.EF实体模型
     /// <summary>
     /// <本类用于处理ScrollingText类进行数据查询修改等操作> 
     /// </summary>
-    class ScrollingText_EF
+    class ScrollingText_EF22
     {
         public static string ScrollingText_Parameter_inquire(string ID)//标签类参数ID查询
         {
