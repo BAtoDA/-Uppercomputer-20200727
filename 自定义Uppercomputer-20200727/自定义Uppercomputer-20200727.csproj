@@ -922,7 +922,6 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Model1.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="EF实体模型\EF实体模型\物料库SQL.db" />
     <None Include="EF实体模型\Model1.edmx.diagram">
       <DependentUpon>Model1.edmx</DependentUpon>
     </None>
@@ -947,6 +946,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="SQL数据库文件\Extent1.db" />
     <None Include="自定义Uppercomputer-20200727_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>

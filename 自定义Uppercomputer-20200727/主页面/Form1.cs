@@ -22,6 +22,7 @@ using HZH_Controls.Forms;
 using 自定义Uppercomputer_20200727.Nlog;
 using System.Xml;
 using 自定义Uppercomputer_20200727.EF实体模型.EFtoSQL操作类重写;
+using System.IO;
 
 namespace 自定义Uppercomputer_20200727
 {
@@ -81,10 +82,6 @@ namespace 自定义Uppercomputer_20200727
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            //测试代码------------
-           //var SS= Button_EFbase.Button_Parameter_inquire<Button_Class>("自定义Uppercomputer_20200727.控制主页面.Form3, Text: 主画面-Button_reform1");
-           //var button_EFbase = new Button_EFbase().Button_Parameter_Add<Button_colour>(new Button_colour() { ID= "自定义Uppercomputer_20200727.控制主页面.Form3, Text: 主画面-Button_reform20", FORM= "Form3", colour_0= "DarkGray", colour_1= "GreenYellow" });
-
             XmlClick();
             LogUtils.deleteLogFile(@Application.StartupPath);//检查是否有超过2个月的日志 进行删除操作
             //LogUtils日志
@@ -136,7 +133,7 @@ namespace 自定义Uppercomputer_20200727
         protected void XmlClick()
         {
             string newName = "SqliteTest";
-            string newConString = $@"data source={@Application.StartupPath}\Extent1.db;Version=3;";
+            string newConString = $@"data source={@Path.GetFullPath("../../")}SQL数据库文件\Extent1.db;Version=3;";
             //首先要登录进xml中也就是appconfig
             XmlDataDocument doc = new XmlDataDocument();
             string nowpath = System.Windows.Forms.Application.ExecutablePath + ".config";
@@ -151,6 +148,17 @@ namespace 自定义Uppercomputer_20200727
                     element.SetAttribute("connectionString", newConString);
                 }
                 doc.Save(nowpath);
+                //判断SQL路径是否正确
+                using(UppercomputerEntities2 db=new UppercomputerEntities2())
+                {
+                   if( db.PLC_parameter.Where(pi => true).Select(pi => pi).Count()<1)
+                    {
+                        if( MessageBox.Show("初步判断SQL数据库路径错误 是否尝试重启解决？","SQL数据库错误",MessageBoxButtons.YesNo)==DialogResult.Yes)
+                        {
+                            Application.Restart();//重启软件
+                        }
+                    }    
+                }
             }
             catch (InvalidCastException ex)
             {
