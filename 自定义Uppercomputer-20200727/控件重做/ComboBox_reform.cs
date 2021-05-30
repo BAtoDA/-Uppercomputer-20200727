@@ -176,15 +176,15 @@ namespace 自定义Uppercomputer_20200727.控件重做
                         _Class = null;
                         return;//返回方法
                     }
-                    if (_Class.IsNull())
+                    if (_Class.IsNull()||_Class.ID.IsNull())
                     {
                         pull_down_menu_EF EF = new pull_down_menu_EF();//实例化EF
                         _Class = EF.pull_down_menu_Parameter_Query(this.Parent + "-" + this.Name);//查询控件参数
                                                                                                   //开始查询数据库中的项目数据--进行遍历
-                        Parameter_Query_Add parameter_Query_Add = new Parameter_Query_Add();//创建EF查询对象
-                        pull_Down_MenuNames = parameter_Query_Add.all_Parameter_Query_pull_down_menuName(this.Parent + "-" + this.Name);
+                        Button_EFbase parameter_Query_Add = new Button_EFbase();//创建EF查询对象
+                        pull_Down_MenuNames = parameter_Query_Add.Button_Parameter_Query<pull_down_menuName>(this.Parent + "-" + this.Name, "控件归属");
                     }
-                    if (_Class.IsNull() || this.DroppedDown) return;
+                    if (_Class.ID.IsNull() || this.DroppedDown) return;
                     this.TextBox_state(_Class, TextBox.Refresh(_Class.读写设备.Trim(), numerical_format.Unsigned_32_Bit.ToString(), _Class.读写设备_地址.Trim(), _Class.读写设备_地址_具体地址.Trim()));
                 }
                 catch

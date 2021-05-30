@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace 自定义Uppercomputer_20200727.EF实体模型.EFtoSQL操作类重写
@@ -11,6 +12,13 @@ namespace 自定义Uppercomputer_20200727.EF实体模型.EFtoSQL操作类重写
     /// </summary>
     class Button_EFbase
     {
+        static Mutex mutex;
+        static object muxt = new object();
+        static object mux = new object();
+        public Button_EFbase()
+        {
+            mutex = new Mutex();//实例化互斥锁(Mutex)    
+        }
         public static List<dynamic> EFbase { get; set; }
         /// <summary>
         /// 默认添加EF中所有的表属性对象 
@@ -85,18 +93,24 @@ namespace 自定义Uppercomputer_20200727.EF实体模型.EFtoSQL操作类重写
         /// <returns></returns>
         public static string Button_Parameter_inquire<T>(string ID)//按钮类参数ID查询
         {
-             _= new Button_EFbase().EFsurface();
-            //查询泛型约束 需要修改的表
-            var surface = EFbase.Where(pi => pi.GetType().GenericTypeArguments[0].Name == typeof(T).Name).FirstOrDefault();
-            //查询SQL数据
-            foreach (dynamic i1 in from pi in (IQueryable<T>)surface where true select pi)
+            lock (muxt)
             {
-                if (i1.ID.Trim() == ID.Trim())
+                mutex.WaitOne(3000);
+                var entities2 = new Button_EFbase();
+                entities2.EFsurface();
+                //查询泛型约束 需要修改的表
+                var surface = EFbase.Where(pi => pi.GetType().GenericTypeArguments[0].Name == typeof(T).Name).FirstOrDefault();
+                //查询SQL数据
+                foreach (dynamic i1 in from pi in (IQueryable<T>)surface where true select pi)
                 {
-                    return "OK";
+                    if (i1.ID.Trim() == ID.Trim())
+                    {
+                        return "OK";
+                    }
                 }
+                mutex.ReleaseMutex();
+                return "NG";
             }
-            return "NG";
         }
         /// <summary>
         /// 插入类型全部参数 可以不使用<T>去约束 IDE根据传入参数的对象自动推断
@@ -129,23 +143,28 @@ namespace 自定义Uppercomputer_20200727.EF实体模型.EFtoSQL操作类重写
         /// <returns></returns>
         public string Button_Parameter_Add<T>(T parameter)
         {
-            UppercomputerEntities2 db = new Button_EFbase().EFsurface();
-            //查询泛型约束 需要修改的表
-            var surface = EFbase.Where(pi => pi.GetType().GenericTypeArguments[0].Name == typeof(T).Name).FirstOrDefault();
-            //查询SQL数据
-            bool have = false;
-            foreach (dynamic i1 in from pi in (IQueryable<T>)surface where true select pi)
+            lock (this)
             {
-                have = i1.ID.Trim() == ((dynamic)parameter).ID.Trim() ? true : false;
+                mutex.WaitOne(3000);
+                UppercomputerEntities2 db = new Button_EFbase().EFsurface();
+                //查询泛型约束 需要修改的表
+                var surface = EFbase.Where(pi => pi.GetType().GenericTypeArguments[0].Name == typeof(T).Name).FirstOrDefault();
+                //查询SQL数据
+                bool have = false;
+                foreach (dynamic i1 in from pi in (IQueryable<T>)surface where true select pi)
+                {
+                    have = i1.ID.Trim() == ((dynamic)parameter).ID.Trim() ? true : false;
+                }
+                //表示SQL中不存在该ID数据--允许插入数据
+                if (!have)
+                {
+                    surface.Add(parameter);//构造添加到表的SQL语句
+                    db.SaveChanges();//执行操作
+                    return "OK";
+                }
+                mutex.ReleaseMutex();
+                return "NG";
             }
-            //表示SQL中不存在该ID数据--允许插入数据
-            if(!have)
-            {
-                surface.Add(parameter);//构造添加到表的SQL语句
-                db.SaveChanges();//执行操作
-                return "OK";
-            }
-            return "NG";
         }
         /// <summary>
         /// 查询参数 根据泛型<T>自动推断需要查询的表
@@ -155,18 +174,68 @@ namespace 自定义Uppercomputer_20200727.EF实体模型.EFtoSQL操作类重写
         /// <returns></returns>
         public T Button_Parameter_Query<T>(string ID)where T:new()
         {
-            _ = new Button_EFbase().EFsurface();
-            //查询泛型约束 需要修改的表
-            var surface = EFbase.Where(pi => pi.GetType().GenericTypeArguments[0].Name == typeof(T).Name).FirstOrDefault();
-            //查询SQL数据
-            foreach (dynamic i1 in from pi in (IQueryable<T>)surface where true select pi)
+            lock (this)
             {
-                if (i1.ID.Trim() == ID.Trim())
+                mutex.WaitOne(3000);
+                _ = new Button_EFbase().EFsurface();
+                //查询泛型约束 需要修改的表
+                var surface = EFbase.Where(pi => pi.GetType().GenericTypeArguments[0].Name == typeof(T).Name).FirstOrDefault();
+                //查询SQL数据
+                foreach (dynamic i1 in from pi in (IQueryable<T>)surface where true select pi)
                 {
-                    return i1;
+                    if (i1.ID.Trim() == ID.Trim())
+                    {
+                        return i1;
+                    }
                 }
+                mutex.ReleaseMutex();
+                return new T();
             }
-            return new T();
+        }
+        /// <summary>
+        /// 查询窗口参数根据field去判断 根据泛型<T>自动推断需要查询的表
+        /// </summary>
+        /// <typeparam name="T">传入约束类型</typeparam>
+        /// <param name="FORM">查询条件内容</param>
+        /// <param name="field">需要查询的字段</param>
+        /// <returns></returns>
+        public List<T> Button_Parameter_Query<T>(string FORM,string field) where T : new()
+        {
+            lock (mux)
+            {
+                mutex.WaitOne(5000);
+                //创建表
+                List<T> Data = new List<T>();
+                _ = new Button_EFbase().EFsurface();
+                //查询泛型约束 需要修改的表
+                var surface = EFbase.Where(pi => pi.GetType().GenericTypeArguments[0].Name == typeof(T).Name).FirstOrDefault();
+                //查询SQL数据
+                switch (field)
+                {
+                    case "FORM":
+                        foreach (dynamic i1 in from pi in (IQueryable<T>)surface where true select pi)
+                        {
+                            if (i1.FORM.Trim() == FORM.Trim())
+                            {
+                                Data.Add(i1);
+                            }
+
+                        }
+                        return Data;
+                    case "控件归属":
+                        foreach (dynamic i1 in from pi in (IQueryable<T>)surface where true select pi)
+                        {
+                            if (i1.控件归属.Trim() == FORM.Trim())
+                            {
+                                Data.Add(i1);
+                            }
+
+                        }
+                        return Data;
+                }
+                mutex.ReleaseMutex();
+                return Data;
+            }
         }
         /// <summary>
         /// 删除参数 根据泛型<T>自动推断需要查询的表

@@ -301,7 +301,6 @@
     <Compile Include="EF实体模型\oscillogram_Chart_parameter.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="EF实体模型\Parameter_Query_Add.cs" />
     <Compile Include="EF实体模型\picture_Class.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -335,7 +334,6 @@
     <Compile Include="EF实体模型\ScrollingText_Class.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="EF实体模型\ScrollingText_EF.cs" />
     <Compile Include="EF实体模型\ScrollingText_parameter.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>

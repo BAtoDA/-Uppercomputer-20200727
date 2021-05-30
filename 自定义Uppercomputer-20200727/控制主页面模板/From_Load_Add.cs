@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
 using 自定义Uppercomputer_20200727.EF实体模型;
+using 自定义Uppercomputer_20200727.EF实体模型.EFtoSQL操作类重写;
 using 自定义Uppercomputer_20200727.图库;
 using 自定义Uppercomputer_20200727.控件重做;
 using 自定义Uppercomputer_20200727.控件重做.工业图形控件;
@@ -28,44 +29,37 @@ namespace 自定义Uppercomputer_20200727.控制主页面模板
         Form Form_event;//当前窗口
         public From_Load_Add(string From_Name, ControlCollection control, List<ImageList> imageLists_1, Form form, bool e)
         {
-            Parameter_Query_Add parameter_Query_Add = new Parameter_Query_Add();//创建EF查询对象
+            Button_EFbase parameter_Query_Add = new Button_EFbase();//创建EF查询对象
             this.Form_event = form;//获取当前窗口
             this.control = control;
             Conrolt_add(From_Name, control, imageLists_1, form);
-            Load_Add(parameter_Query_Add.all_Parameter_Query_GroupBox(From_Name));
+            Load_Add(parameter_Query_Add.Button_Parameter_Query<GroupBox_Class>(From_Name, "FORM"));
         
         }
         private async void Conrolt_add(string From_Name, ControlCollection control, List<ImageList> imageLists_1, Form form)
         {
-            Parameter_Query_Add parameter_Query_Add = new Parameter_Query_Add();//创建EF查询对象
+            Button_EFbase parameter_Query_Add = new Button_EFbase();//创建EF查询对象
             await Task.Run(() =>
             {
-                Load_Add(parameter_Query_Add.all_Parameter_Query_Button(From_Name));
-                Load_Add(parameter_Query_Add.all_Parameter_Query_picture(From_Name));
-                Load_Add(parameter_Query_Add.all_Parameter_Query_label(From_Name));
-                Load_Add(parameter_Query_Add.all_Parameter_Query_numerical(From_Name));
-            });
-            await Task.Run(() =>
-            {
-                Load_Add(parameter_Query_Add.all_Parameter_Query_Switch(From_Name));
-                Load_Add(parameter_Query_Add.all_Parameter_Query_LedBulb(From_Name));
-                Load_Add(parameter_Query_Add.all_Parameter_Query_ImageButton(From_Name));
-                Load_Add(parameter_Query_Add.all_Parameter_Query_doughnut_Chart(From_Name));
-            });
-           await Task.Run(() =>
-            {
-               // this.imageLists_1 = imageLists_1;//获取图库
-                Load_Add(parameter_Query_Add.all_Parameter_Query_doughnut_histogram(From_Name));
-                Load_Add(parameter_Query_Add.all_Parameter_Query_doughnut_oscillogram(From_Name));
-                Load_Add(parameter_Query_Add.all_Parameter_Query_AnalogMeter(From_Name));
-                Load_Add(parameter_Query_Add.all_Parameter_Query_LedDisplay(From_Name));
-                Load_Add(parameter_Query_Add.all_Parameter_Query_ihatetheqrcode(From_Name));
-                Load_Add(parameter_Query_Add.all_Parameter_Query_function_key(From_Name));
-                Load_Add(parameter_Query_Add.all_Parameter_Query_RadioButton(From_Name));
-                Load_Add(parameter_Query_Add.all_Parameter_Query_pull_down_menu(From_Name));
-                Load_Add(parameter_Query_Add.all_Parameter_Query_HScrollBar(From_Name));
-                Load_Add(parameter_Query_Add.all_Parameter_Query_Conveyor(From_Name));
-                Load_Add(parameter_Query_Add.all_Parameter_Query_Valve(From_Name));
+                Load_Add(parameter_Query_Add.Button_Parameter_Query<Button_Class>(From_Name, "FORM"));
+                Load_Add(parameter_Query_Add.Button_Parameter_Query<picture_Class>(From_Name, "FORM"));
+                Load_Add(parameter_Query_Add.Button_Parameter_Query<label_Class>(From_Name, "FORM"));
+                Load_Add(parameter_Query_Add.Button_Parameter_Query<numerical_Class>(From_Name, "FORM"));
+                Load_Add(parameter_Query_Add.Button_Parameter_Query<Switch_Class>(From_Name, "FORM"));
+                Load_Add(parameter_Query_Add.Button_Parameter_Query<LedBulb_Class>(From_Name, "FORM"));
+                Load_Add(parameter_Query_Add.Button_Parameter_Query<ImageButton_Class>(From_Name, "FORM"));
+                Load_Add(parameter_Query_Add.Button_Parameter_Query<doughnut_Chart_Class>(From_Name, "FORM"));
+                Load_Add(parameter_Query_Add.Button_Parameter_Query<histogram_Chart_Class>(From_Name, "FORM"));
+                Load_Add(parameter_Query_Add.Button_Parameter_Query<oscillogram_Chart_Class>(From_Name, "FORM"));
+                Load_Add(parameter_Query_Add.Button_Parameter_Query<AnalogMeter_Class>(From_Name, "FORM"));
+                Load_Add(parameter_Query_Add.Button_Parameter_Query<LedDisplay_Class>(From_Name, "FORM"));
+                Load_Add(parameter_Query_Add.Button_Parameter_Query<ihatetheqrcode_Class>(From_Name, "FORM"));
+                Load_Add(parameter_Query_Add.Button_Parameter_Query<function_key_Class>(From_Name, "FORM"));
+                Load_Add(parameter_Query_Add.Button_Parameter_Query<RadioButton_Class>(From_Name, "FORM"));
+                Load_Add(parameter_Query_Add.Button_Parameter_Query<pull_down_menu_Class>(From_Name, "FORM"));
+                Load_Add(parameter_Query_Add.Button_Parameter_Query<HScrollBar_Class>(From_Name, "FORM"));
+                Load_Add(parameter_Query_Add.Button_Parameter_Query<Conveyor_Class>(From_Name, "FORM"));
+                Load_Add(parameter_Query_Add.Button_Parameter_Query<Valve_Class>(From_Name, "FORM"));
             });
         }
         public static async void Stratum(string From_Name, Form form)
@@ -96,8 +90,8 @@ namespace 自定义Uppercomputer_20200727.控制主页面模板
             this.Form_event = form;
             //this.imageLists_1 = imageLists_1;//获取图库
             this.control = control;
-            Parameter_Query_Add parameter_Query_Add = new Parameter_Query_Add();//创建EF查询对象
-            Load_Add(parameter_Query_Add.all_Parameter_Query_ScrollingText(From_Name));
+            Button_EFbase parameter_Query_Add = new Button_EFbase();//创建EF查询对象
+            Load_Add(parameter_Query_Add.Button_Parameter_Query<ScrollingText_Class>(From_Name, "FORM"));
         }
         private void Load_Add(List<Button_Class> button_Classes)//填充按钮类
         {
@@ -418,8 +412,8 @@ namespace 自定义Uppercomputer_20200727.控制主页面模板
                     reform.Font = new Font(add.Control_state_0_typeface.Trim(), add.Control_state_0_size.ToInt32(), FontStyle.Bold);//设置字体与大小
                     control.Add(reform);
                     //开始查询数据库中的项目数据--进行遍历
-                    Parameter_Query_Add parameter_Query_Add = new Parameter_Query_Add();//创建EF查询对象
-                    List<pull_down_menuName> pull_Down_MenuNames = parameter_Query_Add.all_Parameter_Query_pull_down_menuName(reform.Parent + "-" + reform.Name);
+                    Button_EFbase parameter_Query_Add = new Button_EFbase();//创建EF查询对象
+                    List<pull_down_menuName> pull_Down_MenuNames = parameter_Query_Add.Button_Parameter_Query<pull_down_menuName>(reform.Parent + "-" + reform.Name, "控件归属");
                     foreach (pull_down_menuName i in pull_Down_MenuNames)
                         reform.Items.Add(i.项目资料.Trim());
                     if (reform.Items.Count > 0)
