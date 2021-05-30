@@ -25,6 +25,8 @@
 
                                                        更改后EF实体模型到SLQLite数据库    
 ![image](https://user-images.githubusercontent.com/60955669/120075356-82cc6d80-c0d3-11eb-843c-818b62cb9fdf.png) 
+1.实现逻辑先把表填充到List<dynamic> EFbase泛型集合 然后找到你想要的方法填写好Button_Parameter_inquire<T>（string ID） 泛型约束 代码会自动跟踪到你需要的表 根据ID主键进行SQL数据查询
+  这样大量减少EF操作SQL的代码 当然实现这种逻辑归功于DLR动态编程。
 
 BUG与反馈：  
 开源自由就好BUG什么的肯定有哈哈。  
