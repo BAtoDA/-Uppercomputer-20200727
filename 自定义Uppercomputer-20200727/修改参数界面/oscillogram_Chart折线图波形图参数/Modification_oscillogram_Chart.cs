@@ -15,6 +15,7 @@ using CCWin.SkinControl;
 using Sunny.UI;
 using 自定义Uppercomputer_20200727.EF实体模型;
 using 自定义Uppercomputer_20200727.控件重做;
+using 自定义Uppercomputer_20200727.EF实体模型.EFtoSQL操作类重写;
 
 namespace 自定义Uppercomputer_20200727.修改参数界面.oscillogram_Chart折线图波形图参数
 {
@@ -68,10 +69,10 @@ namespace 自定义Uppercomputer_20200727.修改参数界面.oscillogram_Chart�
             this.colorComboBox2.SelectedIndex = 0;//默认透明
             this.colorComboBox2.SelectedItem = 0;//默认透明
             //查询数据库是否有该数据
-            if (oscillogram_Chart_EF.oscillogram_Chart_Parameter_inquire(this.skinTextBox8.Text) == "OK")
+            if (Button_EFbase.Button_Parameter_inquire<oscillogram_Chart_Class>(this.skinTextBox8.Text) == "OK")
             {
-                oscillogram_Chart_EF oscillogram_Chart_EF = new oscillogram_Chart_EF();//实例化EF对象
-                button = oscillogram_Chart_EF.oscillogram_Chart_Parameter_Query(this.skinTextBox8.Text);//获取按钮类全部参数
+                Button_EFbase oscillogram_Chart_EF = new Button_EFbase();//实例化EF对象
+                button = oscillogram_Chart_EF.Button_Parameter_Query<oscillogram_Chart_Class>(this.skinTextBox8.Text);//获取按钮类全部参数
                 List_Index();//开始改变索引
             }
             else
@@ -143,22 +144,22 @@ namespace 自定义Uppercomputer_20200727.修改参数界面.oscillogram_Chart�
                 return;
             }
             //先查询数据库有无此ID--有进行修改--无新增--
-            oscillogram_Chart_EF numerical_EF = new oscillogram_Chart_EF();//实例化EF对象
-            if (oscillogram_Chart_EF.oscillogram_Chart_Parameter_inquire(this.skinTextBox8.Text) == "OK")
-                numerical_EF.oscillogram_Chart_modification(this.skinTextBox8.Text, numerical_Parameter(), tag_Common_Parameters(), control_Location(), Button_colour_Location());//修改数据库参数
+            Button_EFbase numerical_EF = new Button_EFbase();//实例化EF对象
+            if (Button_EFbase.Button_Parameter_inquire<oscillogram_Chart_Class>(this.skinTextBox8.Text) == "OK")
+                numerical_EF.Button_Parameter_modification(this.skinTextBox8.Text, numerical_Parameter(), tag_Common_Parameters(), control_Location(), Button_colour_Location());//修改数据库参数
             else
             {
-                numerical_EF.oscillogram_Chart_Parameter_Add(tag_Common_Parameters());//插入标签参数
-                numerical_EF.oscillogram_Chart_Parameter_Add(numerical_Parameter());//插入一般参数
-                numerical_EF.oscillogram_Chart_Parameter_Add(control_Location());//插入控件坐标参数
-                numerical_EF.oscillogram_Chart_Parameter_Add(Button_colour_Location());//插入控件背景颜色
+                numerical_EF.Button_Parameter_Add(tag_Common_Parameters());//插入标签参数
+                numerical_EF.Button_Parameter_Add(numerical_Parameter());//插入一般参数
+                numerical_EF.Button_Parameter_Add(control_Location());//插入控件坐标参数
+                numerical_EF.Button_Parameter_Add(Button_colour_Location());//插入控件背景颜色
             }
             Public_attributeCalss public_AttributeCalss = new Public_attributeCalss();//实例化按钮参数设置
             ((oscillogram_Chart_reform)this.all_purpose).Chart_Minimum = this.skinTextBox5.Text.ToInt32();//设置最小值
             ((oscillogram_Chart_reform)this.all_purpose).Chart_Maximum = this.skinTextBox9.Text.ToInt32();//设置最大值
             ((oscillogram_Chart_reform)this.all_purpose).Chart_Interval = this.skinTextBox9.Text.ToInt32();//设置刷新时间
             ((oscillogram_Chart_reform)this.all_purpose).waveform_ON = this.skinCheckBox2.Checked;//获取用户设置
-            public_AttributeCalss.attributeCalss((oscillogram_Chart_reform)this.all_purpose, numerical_EF.oscillogram_Chart_Parameter_Query(this.skinTextBox8.Text));//查询数据库--进行设置后的参数修改
+            public_AttributeCalss.attributeCalss((oscillogram_Chart_reform)this.all_purpose, numerical_EF.Button_Parameter_Query<oscillogram_Chart_Class>(this.skinTextBox8.Text));//查询数据库--进行设置后的参数修改
             Add_to_allow = true;
             this.Close();
             this.Dispose();

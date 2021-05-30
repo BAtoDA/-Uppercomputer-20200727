@@ -13,6 +13,7 @@ using CCWin;
 using CCWin.SkinClass;
 using CCWin.SkinControl;
 using 自定义Uppercomputer_20200727.EF实体模型;
+using 自定义Uppercomputer_20200727.EF实体模型.EFtoSQL操作类重写;
 using 自定义Uppercomputer_20200727.Nlog;
 using 自定义Uppercomputer_20200727.控件重做;
 
@@ -65,10 +66,10 @@ namespace 自定义Uppercomputer_20200727.修改参数界面.ihatetheqrcode二�
         private void Modification_ihatetheqrcode_Shown(object sender, EventArgs e)
         {
             //查询数据库是否有该数据
-            if (ihatetheqrcode_EF.ihatetheqrcode_Parameter_inquire(this.skinTextBox8.Text) == "OK")
+            if (Button_EFbase.Button_Parameter_inquire<ihatetheqrcode_Class>(this.skinTextBox8.Text) == "OK")
             {
-                ihatetheqrcode_EF button_EF = new ihatetheqrcode_EF();//实例化EF对象
-                button = button_EF.ihatetheqrcode_Parameter_Query(this.skinTextBox8.Text);//获取按钮类全部参数
+                Button_EFbase button_EF = new Button_EFbase();//实例化EF对象
+                button = button_EF.Button_Parameter_Query<ihatetheqrcode_Class>(this.skinTextBox8.Text);//获取按钮类全部参数
                 List_Index();//开始改变索引
             }
             else
@@ -136,24 +137,24 @@ namespace 自定义Uppercomputer_20200727.修改参数界面.ihatetheqrcode二�
                 return;
             }
             //先查询数据库有无此ID--有进行修改--无新增--
-            ihatetheqrcode_EF ihatetheqrcode_EF = new ihatetheqrcode_EF();//实例化EF对象
-            if (ihatetheqrcode_EF.ihatetheqrcode_Parameter_inquire(this.skinTextBox8.Text) == "OK")
+            Button_EFbase ihatetheqrcode_EF = new Button_EFbase();//实例化EF对象
+            if (Button_EFbase.Button_Parameter_inquire<ihatetheqrcode_Class>(this.skinTextBox8.Text) == "OK")
             {
                 //LogUtils日志
                 LogUtils.debugWrite($"用户向{((Control)all_purpose).Name} 控件修改参数");
-                ihatetheqrcode_EF.ihatetheqrcode_Parameter_modification(this.skinTextBox8.Text, numerical_Parameter(), tag_Common_Parameters(), general_Parameters_Of_Picture(), control_Location());//修改数据库参数
+                ihatetheqrcode_EF.Button_Parameter_modification(this.skinTextBox8.Text, numerical_Parameter(), tag_Common_Parameters(), general_Parameters_Of_Picture(), control_Location());//修改数据库参数
             }
             else
             {
                 //LogUtils日志
                 LogUtils.debugWrite($"用户向{((Control)all_purpose).Name} 控件插入参数");
-                ihatetheqrcode_EF.ihatetheqrcode_Parameter_Add(tag_Common_Parameters());//插入标签参数
-                ihatetheqrcode_EF.ihatetheqrcode_Parameter_Add(numerical_Parameter());//插入一般参数
-                ihatetheqrcode_EF.ihatetheqrcode_Parameter_Add(general_Parameters_Of_Picture());//插入图片参数
-                ihatetheqrcode_EF.ihatetheqrcode_Parameter_Add(control_Location());//插入控件坐标参数
+                ihatetheqrcode_EF.Button_Parameter_Add(tag_Common_Parameters());//插入标签参数
+                ihatetheqrcode_EF.Button_Parameter_Add(numerical_Parameter());//插入一般参数
+                ihatetheqrcode_EF.Button_Parameter_Add(general_Parameters_Of_Picture());//插入图片参数
+                ihatetheqrcode_EF.Button_Parameter_Add(control_Location());//插入控件坐标参数
             }
             Public_attributeCalss public_AttributeCalss = new Public_attributeCalss();//实例化按钮参数设置
-            public_AttributeCalss.ihatetheqrcode((ihatetheqrcode_reform)this.all_purpose, ihatetheqrcode_EF.ihatetheqrcode_Parameter_Query(this.skinTextBox8.Text));//查询数据库--进行设置后的参数修改
+            public_AttributeCalss.ihatetheqrcode((ihatetheqrcode_reform)this.all_purpose, ihatetheqrcode_EF.Button_Parameter_Query<ihatetheqrcode_Class>(this.skinTextBox8.Text));//查询数据库--进行设置后的参数修改
             Add_to_allow = true;
             this.Close();
             this.Dispose();

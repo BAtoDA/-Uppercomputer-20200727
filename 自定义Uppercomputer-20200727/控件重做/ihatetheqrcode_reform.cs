@@ -171,12 +171,12 @@ namespace 自定义Uppercomputer_20200727.控件重做
                         _Class = null;
                         return;//返回方法
                     }
-                    if (_Class.IsNull())
+                    if (_Class.IsNull()||_Class.ID.IsNull())
                     {
-                        ihatetheqrcode_EF EF = new ihatetheqrcode_EF();//实例化EF
-                        _Class = EF.ihatetheqrcode_Parameter_Query(this.Parent + "- " + this.Name);//查询控件参数
+                        Button_EFbase EF = new Button_EFbase();//实例化EF
+                        _Class = EF.Button_Parameter_Query<ihatetheqrcode_Class>(this.Parent + "- " + this.Name);//查询控件参数
                     }
-                    if (_Class.IsNull()) return;
+                    if (_Class.ID.IsNull()) return;
                     this.TextBox_state(this, _Class, TextBox.Refresh(_Class.读写设备.Trim(), _Class.资料格式.Trim(), _Class.读写设备_地址.Trim(), _Class.读写设备_地址_具体地址.Trim()));
                 }
                 catch
@@ -224,10 +224,10 @@ namespace 自定义Uppercomputer_20200727.控件重做
                 locatio.FORM = From;
 
                 //重新向SQL插入数据
-                ihatetheqrcode_EF EF = new ihatetheqrcode_EF();
-                EF.ihatetheqrcode_Parameter_Add(parameter);
-                EF.ihatetheqrcode_Parameter_Add(Tag_common);
-                EF.ihatetheqrcode_Parameter_Add(locatio);
+                Button_EFbase EF = new Button_EFbase();
+                EF.Button_Parameter_Add(parameter);
+                EF.Button_Parameter_Add(Tag_common);
+                EF.Button_Parameter_Add(locatio);
                 return control;
             }
         }

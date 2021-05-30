@@ -240,8 +240,8 @@ namespace 自定义Uppercomputer_20200727.控件重做
                 case "doughnut_Chart_reform":
                     if (MessageBox.Show("确定要删除" + ((doughnut_Chart_reform)all_purpose).Name.Trim() + "吗？", "错误：", MessageBoxButtons.YesNo) == DialogResult.No) return;
                     ((doughnut_Chart_reform)all_purpose).Visible = false;//隐藏控件
-                    doughnut_Chart_EF doughnut_Chart_EF = new doughnut_Chart_EF();//实例化EF对象
-                    doughnut_Chart_EF.doughnut_Chart_Parameter_delete(SkinContextMenuStrip_Button_ID + "- " + ((doughnut_Chart_reform)all_purpose).Name);//执行SQL删除操作
+                    Button_EFbase doughnut_Chart_EF = new Button_EFbase();//实例化EF对象
+                    doughnut_Chart_EF.Button_Parameter_delete<doughnut_Chart_parameter, Tag_common_parameters, control_location, Control_layer, Button_colour>(SkinContextMenuStrip_Button_ID + "- " + ((doughnut_Chart_reform)all_purpose).Name);//执行SQL删除操作
                     break;
                 case "histogram_Chart_reform":
                     if (MessageBox.Show("确定要删除" + ((histogram_Chart_reform)all_purpose).Name.Trim() + "吗？", "错误：", MessageBoxButtons.YesNo) == DialogResult.No) return;
@@ -252,8 +252,8 @@ namespace 自定义Uppercomputer_20200727.控件重做
                 case "oscillogram_Chart_reform":
                     if (MessageBox.Show("确定要删除" + ((oscillogram_Chart_reform)all_purpose).Name.Trim() + "吗？", "错误：", MessageBoxButtons.YesNo) == DialogResult.No) return;
                     ((oscillogram_Chart_reform)all_purpose).Visible = false;//隐藏控件
-                    oscillogram_Chart_EF oscillogram_Chart_EF = new oscillogram_Chart_EF();//实例化EF对象
-                    oscillogram_Chart_EF.oscillogram_Chart_Parameter_delete(SkinContextMenuStrip_Button_ID + "- " + ((oscillogram_Chart_reform)all_purpose).Name);//执行SQL删除操作
+                    Button_EFbase oscillogram_Chart_EF = new Button_EFbase();//实例化EF对象
+                    oscillogram_Chart_EF.Button_Parameter_delete<oscillogram_Chart_parameter, Tag_common_parameters, control_location, Control_layer, Button_colour>(SkinContextMenuStrip_Button_ID + "- " + ((oscillogram_Chart_reform)all_purpose).Name);//执行SQL删除操作
                     break;
                 case "AnalogMeter_reform":
                     if (MessageBox.Show("确定要删除" + ((AnalogMeter_reform)all_purpose).Name.Trim() + "吗？", "错误：", MessageBoxButtons.YesNo) == DialogResult.No) return;
@@ -270,8 +270,8 @@ namespace 自定义Uppercomputer_20200727.控件重做
                 case "ihatetheqrcode_reform":
                     if (MessageBox.Show("确定要删除" + ((ihatetheqrcode_reform)all_purpose).Name.Trim() + "吗？", "错误：", MessageBoxButtons.YesNo) == DialogResult.No) return;
                     ((ihatetheqrcode_reform)all_purpose).Visible = false;//隐藏控件
-                    ihatetheqrcode_EF ihatetheqrcode_EF = new ihatetheqrcode_EF();//实例化EF对象
-                    ihatetheqrcode_EF.ihatetheqrcode_Parameter_delete(SkinContextMenuStrip_Button_ID + "- " + ((ihatetheqrcode_reform)all_purpose).Name);//执行SQL删除操作
+                    Button_EFbase ihatetheqrcode_EF = new Button_EFbase();//实例化EF对象
+                    ihatetheqrcode_EF.Button_Parameter_delete<ihatetheqrcode_parameter, Tag_common_parameters, General_parameters_of_picture, control_location, Control_layer>(SkinContextMenuStrip_Button_ID + "- " + ((ihatetheqrcode_reform)all_purpose).Name);//执行SQL删除操作
                     break;
                 case "function_key_reform":
                     if (MessageBox.Show("确定要移除功能键吗？--移除前请确认跳转的页面是否存在更深层次的功能键,请先移除该功能键在移除当前功能键--否则无法彻底删除数据库的所有信息！！", "Err：移除前确认", MessageBoxButtons.YesNo) == DialogResult.No) return;

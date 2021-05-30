@@ -108,8 +108,8 @@ namespace 自定义Uppercomputer_20200727.EF实体模型.EFtoSQL操作类重写
                         return "OK";
                     }
                 }
-                mutex.ReleaseMutex();
                 return "NG";
+                mutex.ReleaseMutex();
             }
         }
         /// <summary>
@@ -188,8 +188,8 @@ namespace 自定义Uppercomputer_20200727.EF实体模型.EFtoSQL操作类重写
                         return i1;
                     }
                 }
-                mutex.ReleaseMutex();
                 return new T();
+                mutex.ReleaseMutex();
             }
         }
         /// <summary>
@@ -233,8 +233,8 @@ namespace 自定义Uppercomputer_20200727.EF实体模型.EFtoSQL操作类重写
                         }
                         return Data;
                 }
-                mutex.ReleaseMutex();
                 return Data;
+                mutex.ReleaseMutex();
             }
         }
         /// <summary>
