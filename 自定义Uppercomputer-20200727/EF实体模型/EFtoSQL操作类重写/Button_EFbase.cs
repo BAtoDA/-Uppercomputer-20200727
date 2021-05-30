@@ -162,8 +162,8 @@ namespace 自定义Uppercomputer_20200727.EF实体模型.EFtoSQL操作类重写
                     db.SaveChanges();//执行操作
                     return "OK";
                 }
-                mutex.ReleaseMutex();
                 return "NG";
+                mutex.ReleaseMutex();
             }
         }
         /// <summary>
