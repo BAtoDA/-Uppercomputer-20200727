@@ -41,23 +41,26 @@ namespace PLC通讯规范接口
     /// </summary>
     public enum Omron_bit
     {
-        IO = 48,
-        AR = 51,
-        DM = 2,
+        C = 36,
+        A = 51,
+        D = 2,
+        H = 50,
         EM00 = 0x20,
         EM01 = 33,
         EM02 = 34,
-        EM03 = 35
+        EM03 = 35,
+        W = 49
     }
     /// <summary>
     /// PLC各可访问软元件  欧姆龙  字
     /// </summary>
     public enum Omron_D
     {
-        WR = 49,
-        HR = 50,
-        AR = 51,
-        DM = 2,
+        C=36,
+        W = 49,
+        H = 50,
+        A = 51,
+        D = 2,
         EM00 = 0x20,
         EM01 = 33,
         EM02 = 34,

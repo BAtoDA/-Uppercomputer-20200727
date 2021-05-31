@@ -246,8 +246,8 @@ namespace 自定义Uppercomputer_20200727.控件重做
                 case "histogram_Chart_reform":
                     if (MessageBox.Show("确定要删除" + ((histogram_Chart_reform)all_purpose).Name.Trim() + "吗？", "错误：", MessageBoxButtons.YesNo) == DialogResult.No) return;
                     ((histogram_Chart_reform)all_purpose).Visible = false;//隐藏控件
-                    histogram_Chart_EF histogram_Chart_EF = new histogram_Chart_EF();//实例化EF对象
-                    histogram_Chart_EF.histogram_Chart_Parameter_delete(SkinContextMenuStrip_Button_ID + "- " + ((histogram_Chart_reform)all_purpose).Name);//执行SQL删除操作
+                    Button_EFbase histogram_Chart_EF = new Button_EFbase();//实例化EF对象
+                    histogram_Chart_EF.Button_Parameter_delete<histogram_Chart_parameter, Tag_common_parameters, control_location, Control_layer, Button_colour>(SkinContextMenuStrip_Button_ID + "- " + ((histogram_Chart_reform)all_purpose).Name);//执行SQL删除操作
                     break;
                 case "oscillogram_Chart_reform":
                     if (MessageBox.Show("确定要删除" + ((oscillogram_Chart_reform)all_purpose).Name.Trim() + "吗？", "错误：", MessageBoxButtons.YesNo) == DialogResult.No) return;

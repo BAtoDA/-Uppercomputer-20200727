@@ -30,6 +30,8 @@ namespace 自定义Uppercomputer_20200727.PLC选择
         static private bool PLC_ready;//内部PLC状态
         static private int PLCerr_code;//内部报警代码
         static private string PLCerr_content;//内部报警内容
+        static bool PLC_Reconnection;//重连标志位
+        static string PLC_type = "TCP";//链接类型
         //实现接口的属性
         /// <summary>
         /// 三菱Mitsubishi PLC状态
@@ -68,6 +70,8 @@ namespace 自定义Uppercomputer_20200727.PLC选择
         /// PLC报警内容
         /// </summary>
         public static string IPLC_interface_PLCerr_content { get => PLCerr_content; }//PLC报警内容
+        bool IPLC_interface.PLC_Reconnection { get { return PLC_Reconnection; } set { PLC_Reconnection = value; } }
+        string IPLC_interface.PLC_type { get { return PLC_type; } set { PLC_type = value; } }
         /// <summary>
         /// 实现宏指令接口-PLC报警内容
         /// </summary>
@@ -136,6 +140,10 @@ namespace 自定义Uppercomputer_20200727.PLC选择
                 MODBUD_TCP.err(Err);//异常处理
                 return "链接PLC异常";//尝试连接PLC，如果连接成功则返回值为0
             }
+        }
+        public void PLC_Close()//切断PLC链接
+        {
+            err(new Exception("切断PLC链接"));
         }
         /// <summary>
         /// 读取PLC 位状态 --D_bit这类需要自己在表流获取当前位状态--M这类不需要

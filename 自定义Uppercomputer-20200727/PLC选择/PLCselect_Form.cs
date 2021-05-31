@@ -11,9 +11,11 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using ActUtlTypeLib;
 using CCWin;
+using CCWin.SkinControl;
 using HslCommunication.Profinet;
 using HslCommunication.Profinet.Siemens;
 using PLC通讯规范接口;
+using Sunny.UI;
 using 欧姆龙Fins协议.报文处理;
 using 欧姆龙Fins协议.欧姆龙.报文处理;
 using 自定义Uppercomputer_20200727.EF实体模型;
@@ -47,7 +49,7 @@ namespace 自定义Uppercomputer_20200727.PLC选择
                 {
                     this.skinButton1.Text = "链接成功";
                     this.skinComboBox1.Enabled = false;
-                    this.skinButton1.Enabled = false;
+                    //this.skinButton1.Enabled = false;
                 }
             }
             else
@@ -57,9 +59,9 @@ namespace 自定义Uppercomputer_20200727.PLC选择
                 {
                     this.skinButton1.Text = "链接成功";
                     this.skinComboBox1.Enabled = false;
-                    this.skinButton1.Enabled = false;
+                    //this.skinButton1.Enabled = false;
                     //改变PLC操作显示
-                    this.skinButton1.EnabledChanged += ((send1, e1) =>
+                    this.skinComboBox1.EnabledChanged += ((send1, e1) =>
                       {
                           if (Mitsubishi.PLC_ready)
                               this.groupBox1.Visible = true;
@@ -74,17 +76,17 @@ namespace 自定义Uppercomputer_20200727.PLC选择
             {
                 this.skinButton2.Text = "链接成功";
                 this.skinComboBox2.Enabled = false;
-                this.skinButton2.Enabled = false;
+                //this.skinButton2.Enabled = false;
             }
             MODBUD_TCP pLC_Interface = new MODBUD_TCP();//实例化MODBUS-TCP 在线--无参
             if (MODBUD_TCP.IPLC_interface_PLC_ready)
             {
                 this.skinButton3.Text = "链接成功";
                 this.skinComboBox3.Enabled = false;
-                this.skinButton3.Enabled = false;
+                //this.skinButton3.Enabled = false;
             }
             //欧姆龙PLC
-            IPLC_interface Omron = (IPLC_interface)new OmronFinsTcp();
+            IPLC_interface Omron =new OmronFinsTcp();
             if (skinComboBox4.Text == "TCP")
             {
                 Omron =new OmronFinsTcp();
@@ -101,7 +103,7 @@ namespace 自定义Uppercomputer_20200727.PLC选择
             {
                 this.skinButton8.Text = "链接成功";
                 this.skinComboBox4.Enabled = false;
-                this.skinButton8.Enabled = false;
+                //this.skinButton8.Enabled = false;
             }
             //发那科机器人
 
@@ -111,67 +113,35 @@ namespace 自定义Uppercomputer_20200727.PLC选择
         private void skinButton1_Click(object sender, EventArgs e)//链接三菱PLC
         {
             if (ip_err(this.skinTextBox1.Text) == "NG" || port_err(this.skinTextBox2.Text) == "NG") return;//返回方法
+
             if (this.skinComboBox1.Text.Trim() != "在线访问")//PLC模式选择
             {
                 if (MessageBox.Show(Mitsubishi_ree, "Err", MessageBoxButtons.YesNo) == DialogResult.No) return;//返回方法
                 if (Home.ActUtlType == null) return;//返回方法
                 IPLC_interface axActUtlType = new Mitsubishi_axActUtlType(new System.Net.IPEndPoint(IPAddress.Parse(this.skinTextBox1.Text), int.Parse(this.skinTextBox2.Text)), "三菱", Home.ActUtlType);
-                axActUtlType.PLC_open();//打开端口
-                if (axActUtlType.PLC_ready)
-                {
-                    this.skinButton1.Text = "链接成功";
-                    this.skinComboBox1.Enabled = false;
-                    this.skinButton1.Enabled = false;
-                }
+                PLChandle(axActUtlType, skinButton1, skinComboBox1, uiCheckBox1);
             }
             else
             {
                 //三菱3E帧在线访问
                 IPLC_interface Mitsubishi = new Mitsubishi_realize(new System.Net.IPEndPoint(IPAddress.Parse(this.skinTextBox1.Text), int.Parse(this.skinTextBox2.Text)));//实例化
-                Mitsubishi.PLC_open();//打开open--PLC
-                if (Mitsubishi.PLC_ready)
-                {
-                    this.skinButton1.Text = "链接成功";
-                    this.skinComboBox1.Enabled = false;
-                    this.skinButton1.Enabled = false;
-                }
+                PLChandle(Mitsubishi, skinButton1, skinComboBox1, uiCheckBox1);
             }
-            Mitsubishi = this.skinComboBox1.Text.Trim();//获取用户开放的方式---仿真与---在线二选一
-            PLC_EF pLC_EF = new PLC_EF();//实例化EF对象
-            if (pLC_EF.Parameter_inquire(1) == "OK") pLC_EF.Button_Parameter_modification(1, plC_Parameter());//修改参数
-            else pLC_EF.PLC_Parameter_Add(plC_Parameter());//插入参数   
+            Mitsubishi = this.skinComboBox1.Text.Trim();//获取用户开放的方式---仿真与---在线二选一   
         }
         private void skinButton2_Click(object sender, EventArgs e)//链接西门子PLC
         {
             if (ip_err(this.skinTextBox6.Text) == "NG" || port_err(this.skinTextBox5.Text) == "NG") return;//返回方法
             //西门子S7在线访问
             IPLC_interface Siemens = new Siemens_realize(new System.Net.IPEndPoint(IPAddress.Parse(this.skinTextBox6.Text), int.Parse(this.skinTextBox5.Text)), SiemensPLCS(skinComboBox2.Text));//实例化
-            Siemens.PLC_open();//打开open--PLC
-            if (Siemens.PLC_ready)
-            {
-                this.skinButton2.Text = "链接成功";
-                this.skinComboBox2.Enabled = false;
-                this.skinButton2.Enabled = false;
-            }
-            PLC_EF pLC_EF = new PLC_EF();//实例化EF对象
-            if (pLC_EF.Parameter_inquire(1) == "OK") pLC_EF.Button_Parameter_modification(1, plC_Parameter());//修改参数
-            else pLC_EF.PLC_Parameter_Add(plC_Parameter());//插入参数
+            PLChandle(Siemens, skinButton2, skinComboBox2, uiCheckBox2);
         }
 
         private void skinButton3_Click(object sender, EventArgs e)//链接MODBUS-TCP
         {
             if (ip_err(this.skinTextBox9.Text) == "NG" || port_err(this.skinTextBox8.Text) == "NG") return;//返回方法
             IPLC_interface pLC_Interface = new MODBUD_TCP(new IPEndPoint(IPAddress.Parse(this.skinTextBox9.Text), int.Parse(this.skinTextBox8.Text)), "MODBUD_TCP");//打开
-            pLC_Interface.PLC_open();//打开PLC
-            if (pLC_Interface.PLC_ready)
-            {
-                this.skinButton3.Text = "链接成功";
-                this.skinComboBox3.Enabled = false;
-                this.skinButton3.Enabled = false;
-            }
-            PLC_EF pLC_EF = new PLC_EF();//实例化EF对象
-            if (pLC_EF.Parameter_inquire(1) == "OK") pLC_EF.Button_Parameter_modification(1, plC_Parameter());//修改参数
-            else pLC_EF.PLC_Parameter_Add(plC_Parameter());//插入参数
+            PLChandle(pLC_Interface,skinButton3, skinComboBox3, uiCheckBox3);
         }
         private string ip_err(string ip)//检查IP
         {
@@ -272,35 +242,57 @@ namespace 自定义Uppercomputer_20200727.PLC选择
         {
             if (ip_err(this.skinTextBox12.Text) == "NG" || port_err(this.skinTextBox11.Text) == "NG") return;//返回方法
             //西门子S7在线访问
-            IPLC_interface Omron = (IPLC_interface)new OmronFinsTcp(new System.Net.IPEndPoint(IPAddress.Parse(this.skinTextBox12.Text), int.Parse(this.skinTextBox11.Text)), this.skinTextBox11.Text);
+            IPLC_interface Omron = new OmronFinsTcp(new System.Net.IPEndPoint(IPAddress.Parse(this.skinTextBox12.Text), int.Parse(this.skinTextBox11.Text)), this.skinTextBox11.Text);
             if (skinComboBox4.Text == "TCP")
             {
-                Omron = (IPLC_interface)new OmronFinsUDP(new System.Net.IPEndPoint(IPAddress.Parse(this.skinTextBox12.Text), int.Parse(this.skinTextBox11.Text)), this.skinTextBox11.Text);
+                Omron = new OmronFinsUDP(new System.Net.IPEndPoint(IPAddress.Parse(this.skinTextBox12.Text), int.Parse(this.skinTextBox11.Text)), this.skinTextBox11.Text);
             }
             if (skinComboBox4.Text == "CIP")
             {
-                Omron = (IPLC_interface)new OmronFinsCIP(new System.Net.IPEndPoint(IPAddress.Parse(this.skinTextBox12.Text), int.Parse(this.skinTextBox11.Text)), this.skinTextBox11.Text);
+                Omron = new OmronFinsCIP(new System.Net.IPEndPoint(IPAddress.Parse(this.skinTextBox12.Text), int.Parse(this.skinTextBox11.Text)), this.skinTextBox11.Text);
             }
             if (skinComboBox4.Text == "UDP")
             {
-                Omron = (IPLC_interface)new OmronFinsUDP(new System.Net.IPEndPoint(IPAddress.Parse(this.skinTextBox12.Text), int.Parse(this.skinTextBox11.Text)), this.skinTextBox11.Text);
+                Omron = new OmronFinsUDP(new System.Net.IPEndPoint(IPAddress.Parse(this.skinTextBox12.Text), int.Parse(this.skinTextBox11.Text)), this.skinTextBox11.Text);
             }
-            Omron.PLC_open();//打开open--PLC
-            if (Omron.PLC_ready)
-            {
-                this.skinButton8.Text = "链接成功";
-                this.skinComboBox4.Enabled = false;
-                this.skinButton8.Enabled = false;
-            }
-            PLC_EF pLC_EF = new PLC_EF();//实例化EF对象
-            if (pLC_EF.Parameter_inquire(1) == "OK") pLC_EF.Button_Parameter_modification(1, plC_Parameter());//修改参数
-            else pLC_EF.PLC_Parameter_Add(plC_Parameter());//插入参数
-
+            PLChandle(Omron, skinButton8, skinComboBox4, uiCheckBox4);
         }
 
         private void skinButton9_Click(object sender, EventArgs e)
         {
 
+        }
+        /// <summary>
+        /// 通用链接与切断PLC方法
+        /// </summary>
+        /// <param name="pLC"></param>
+        /// <param name="skinButton"></param>
+        /// <param name="skinCombo"></param>
+        /// <param name="check"></param>
+        private void PLChandle(IPLC_interface pLC,SkinButton skinButton,SkinComboBox skinCombo, UICheckBox check)
+        {
+            if (skinButton.Text == "链接成功")
+            {
+                pLC.PLC_Close();
+                skinButton.Text = "链接PLC";
+                skinCombo.Enabled = true;
+                skinButton.Enabled = true;
+                pLC.PLC_Reconnection = false;
+                return;
+            }
+            pLC.PLC_open();//打开PLC
+            if (pLC.PLC_ready)
+            {
+                skinButton.Text = "链接成功";
+                skinCombo.Enabled = false;
+                skinButton.Enabled = false;
+                pLC.PLC_Reconnection = check.Checked;
+                pLC.PLC_type = skinCombo.Text;
+
+            }
+            PLC_EF pLC_EF = new PLC_EF();//实例化EF对象
+            if (pLC_EF.Parameter_inquire(1) == "OK") pLC_EF.Button_Parameter_modification(1, plC_Parameter());//修改参数
+            else pLC_EF.PLC_Parameter_Add(plC_Parameter());//插入参数
         }
     }
 }

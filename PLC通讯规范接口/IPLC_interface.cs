@@ -24,10 +24,23 @@ namespace PLC通讯规范接口
         /// </summary>
         string PLCerr_content { get; }//PLC报警内容
         /// <summary>
+        /// PLC是否重连标志位
+        /// </summary>
+        bool PLC_Reconnection { get; set; }
+        /// <summary>
+        /// PLC链接的类型
+        /// </summary>
+        string PLC_type { get; set; }
+        /// <summary>
         /// 打开PLC
         /// </summary>
         /// <returns></returns>
         string PLC_open();//打开PLC
+        /// <summary>
+        /// 切断PLC链接
+        /// </summary>
+        /// <returns></returns>
+        void PLC_Close();
         /// <summary>
         /// 读取--位
         /// </summary>

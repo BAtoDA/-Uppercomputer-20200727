@@ -1053,8 +1053,12 @@ namespace 自定义Uppercomputer_20200727
 
         private void timer4_Tick(object sender, EventArgs e)
         {
+            //加载完成 开始布局控件上下层
             this.timer4.Stop();
             From_Load_Add.Stratum(this.Name, this);
+            //开始判断是否重连 机制
+            this.plCreconnectionTime1.Enabled =  true;
+            this.plCreconnectionTime1.Start();
 
         }
 

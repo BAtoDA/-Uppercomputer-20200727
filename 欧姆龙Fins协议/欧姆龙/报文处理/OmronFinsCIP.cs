@@ -34,6 +34,8 @@ namespace 欧姆龙Fins协议.欧姆龙.报文处理
         static private bool PLC_ready;//内部PLC状态
         static private int PLCerr_code;//内部报警代码
         static private string PLCerr_content;//内部报警内容
+        static bool PLC_Reconnection;//重连标志位
+        static string PLC_type="TCP";//链接类型
         /// <summary>
         /// 引用HslCommunication.ModBus进行实现
         /// </summary>
@@ -51,12 +53,14 @@ namespace 欧姆龙Fins协议.欧姆龙.报文处理
         /// PLC报警内容
         /// </summary>
         public static string IPLC_interface_PLCerr_content { get => PLCerr_content; }//PLC报警内容
+        bool IPLC_interface.PLC_Reconnection { get { return PLC_Reconnection; } set { PLC_Reconnection = value; } }
 
         bool IPLC_interface.PLC_ready { get => PLC_ready; }
 
         int IPLC_interface.PLCerr_code { get => PLCerr_code; }
 
         string IPLC_interface.PLCerr_content { get => PLCerr_content; }
+        string IPLC_interface.PLC_type { get { return PLC_type; } set { PLC_type = value; } }
 
         /// <summary>
         /// /互斥锁(Mutex)，用于多线程中防止两条线程同时对一个公共资源进行读写的机制。
@@ -119,6 +123,10 @@ namespace 欧姆龙Fins协议.欧姆龙.报文处理
                 return "链接PLC异常";//尝试连接PLC，如果连接成功则返回值为0
             }
         }
+        public void PLC_Close()//切断PLC链接
+        {
+            err(new Exception("切断PLC链接"));
+        }
         /// <summary>
         /// 读取PLC 位状态 --D_bit这类需要自己在表流获取当前位状态--M这类不需要
         /// </summary>
@@ -133,7 +141,7 @@ namespace 欧姆龙Fins协议.欧姆龙.报文处理
                 try
                 {
                     mutex.WaitOne(100);
-                    readResultRender(busTcpClient.Read(Name + id, 1), Name + id.ToString(), ref result);//格式--读取地址-地址，返回数据--地址决定了是Nmae的类型            
+                    readResultRender(busTcpClient.ReadBool(Name + id, 1), Name + id.ToString(), ref result);//格式--读取地址-地址，返回数据--地址决定了是Nmae的类型            
                     mutex.ReleaseMutex();
                 }
                 catch { }
@@ -146,15 +154,15 @@ namespace 欧姆龙Fins协议.欧姆龙.报文处理
         /// <param name="Name"></param>
         /// <param name="id"></param>
         /// <returns></returns>
-        public OperateResult<byte[]> PLC_read_M_bit(string Name, string id, ushort Length)//读取PLC 位状态 --D_bit这类需要自己在表流获取当前位状态--M这类不需要
+        public OperateResult<bool[]> PLC_read_M_bit(string Name, string id, ushort Length)//读取PLC 位状态 --D_bit这类需要自己在表流获取当前位状态--M这类不需要
         {
-            OperateResult<byte[]> result = new OperateResult<byte[]>();//定义获取数据变量
+            OperateResult<bool[]> result = new OperateResult<bool[]>();//定义获取数据变量
             lock (this)
             {
                 try
                 {
                     mutex.WaitOne(100);
-                    result = busTcpClient.Read(Name + id, Length);//格式--读取地址-地址，返回数据--地址决定了是Nmae的类型            
+                    result = busTcpClient.ReadBool(Name + id, Length);//格式--读取地址-地址，返回数据--地址决定了是Nmae的类型            
                     mutex.ReleaseMutex();
                     return result;
                 }
@@ -364,7 +372,7 @@ namespace 欧姆龙Fins协议.欧姆龙.报文处理
         /// <typeparam name="T"></typeparam>
         /// <param name="result"></param>
         /// <param name="address"></param>
-        /// <param name="textBox"></param>
+        /// <param name="Data"></param>
         public void readResultRender<T>(OperateResult<T> result, string address, ref string Data)
         {
             ///读取结果
@@ -377,7 +385,6 @@ namespace 欧姆龙Fins协议.欧姆龙.报文处理
             if (result.IsSuccess != true)//指示读取失败
             {
                 retry += 1;//重试次数
-                if (retry < 10) return;
                 PLCerr_content = DateTime.Now.ToString("[HH:mm:ss] ") + $"[{address}] 读取失败{Environment.NewLine}原因：{result.ToMessageShowString()}";
                 if (retry == 1)
                     MessageBox.Show(DateTime.Now.ToString("[HH:mm:ss] ") + $"[{address}] 读取失败{Environment.NewLine}原因：{result.ToMessageShowString()}");
@@ -386,28 +393,38 @@ namespace 欧姆龙Fins协议.欧姆龙.报文处理
             }
             else
             {
-                switch (typeof(T).Name.ToString())
-                {
-                    case "Int16[]":
-                        foreach (var i in (short[])((object)result.Content))
-                        {
-                            Data = i.ToString();
-                        }
-                        break;
-                    case "Int32[]":
-                        foreach (var i in (int[])((object)result.Content))
-                        {
-                            Data = i.ToString();
-                        }
-                        break;
-                    case "Single[]":
-                        foreach (var i in (float[])((object)result.Content))
-                        {
-                            Data = i.ToString();
-                        }
-                        break;
+                //使用动态编程--DLR运行时确定T类型
+                dynamic Resut = result.Content;
+                Data= Resut[0].ToString();
 
-                }
+                //switch (typeof(T).Name.ToString())
+                //{
+                //    case "Boolean[]":
+                //        foreach (var i in (bool[])((object)result.Content))
+                //        {
+                //            Data = i.ToString();
+                //        }
+                //        break;
+                //    case "Int16[]":
+                //        foreach (var i in (short[])((object)result.Content))
+                //        {
+                //            Data = i.ToString();
+                //        }
+                //        break;
+                //    case "Int32[]":
+                //        foreach (var i in (int[])((object)result.Content))
+                //        {
+                //            Data = i.ToString();
+                //        }
+                //        break;
+                //    case "Single[]":
+                //        foreach (var i in (float[])((object)result.Content))
+                //        {
+                //            Data = i.ToString();
+                //        }
+                //        break;
+
+                //}
                 retry = 0;
             }
             Thread.Sleep(2);

@@ -161,12 +161,12 @@ namespace 自定义Uppercomputer_20200727.控件重做
                         _Class = null;
                         return;//返回方法
                     }
-                    if (_Class.IsNull())
+                    if (_Class.IsNull()||_Class.ID.IsNull())
                     {
-                        histogram_Chart_EF EF = new histogram_Chart_EF();//实例化EF
-                        _Class = EF.histogram_Chart_Parameter_Query(this.Parent + "- " + this.Name);//查询控件参数
+                        Button_EFbase EF = new Button_EFbase();//实例化EF
+                        _Class = EF.Button_Parameter_Query<histogram_Chart_Class>(this.Parent + "- " + this.Name);//查询控件参数
                     }
-                    if (_Class.IsNull()) return;
+                    if (_Class.ID.IsNull()) return;
                     this.TextBox_state(TextBox.int_to_double(TextBox.Refresh(_Class.读写设备.Trim(), _Class.资料格式.Trim(), _Class.读写设备_地址.Trim(), _Class.读写设备_地址_具体地址.Trim(), (_Class.通道数量 + 1) * 2)));
                 }
                 catch
@@ -218,11 +218,11 @@ namespace 自定义Uppercomputer_20200727.控件重做
                 contrcolor.FORM = From;
 
                 //重新向SQL插入数据
-                histogram_Chart_EF EF = new histogram_Chart_EF();
-                EF.histogram_Chart_Parameter_Add(parameter);
-                EF.histogram_Chart_Parameter_Add(Tag_common);
-                EF.histogram_Chart_Parameter_Add(locatio);
-                EF.histogram_Chart_Parameter_Add(contrcolor);
+                Button_EFbase EF = new Button_EFbase();
+                EF.Button_Parameter_Add(parameter);
+                EF.Button_Parameter_Add(Tag_common);
+                EF.Button_Parameter_Add(locatio);
+                EF.Button_Parameter_Add(contrcolor);
                 return control;
             }
         }

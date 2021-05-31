@@ -35,45 +35,45 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form2));
-            HZH_Controls.Controls.NavigationMenuItem navigationMenuItem118 = new HZH_Controls.Controls.NavigationMenuItem();
-            HZH_Controls.Controls.NavigationMenuItem navigationMenuItem119 = new HZH_Controls.Controls.NavigationMenuItem();
-            HZH_Controls.Controls.NavigationMenuItem navigationMenuItem120 = new HZH_Controls.Controls.NavigationMenuItem();
-            HZH_Controls.Controls.NavigationMenuItem navigationMenuItem121 = new HZH_Controls.Controls.NavigationMenuItem();
-            HZH_Controls.Controls.NavigationMenuItem navigationMenuItem122 = new HZH_Controls.Controls.NavigationMenuItem();
-            HZH_Controls.Controls.NavigationMenuItem navigationMenuItem123 = new HZH_Controls.Controls.NavigationMenuItem();
-            HZH_Controls.Controls.NavigationMenuItem navigationMenuItem124 = new HZH_Controls.Controls.NavigationMenuItem();
-            HZH_Controls.Controls.NavigationMenuItem navigationMenuItem125 = new HZH_Controls.Controls.NavigationMenuItem();
-            HZH_Controls.Controls.NavigationMenuItem navigationMenuItem126 = new HZH_Controls.Controls.NavigationMenuItem();
-            HZH_Controls.Controls.NavigationMenuItem navigationMenuItem127 = new HZH_Controls.Controls.NavigationMenuItem();
-            HZH_Controls.Controls.NavigationMenuItem navigationMenuItem128 = new HZH_Controls.Controls.NavigationMenuItem();
-            HZH_Controls.Controls.NavigationMenuItem navigationMenuItem129 = new HZH_Controls.Controls.NavigationMenuItem();
-            HZH_Controls.Controls.NavigationMenuItem navigationMenuItem130 = new HZH_Controls.Controls.NavigationMenuItem();
-            HZH_Controls.Controls.NavigationMenuItem navigationMenuItem131 = new HZH_Controls.Controls.NavigationMenuItem();
-            HZH_Controls.Controls.NavigationMenuItem navigationMenuItem132 = new HZH_Controls.Controls.NavigationMenuItem();
-            HZH_Controls.Controls.NavigationMenuItem navigationMenuItem133 = new HZH_Controls.Controls.NavigationMenuItem();
-            HZH_Controls.Controls.NavigationMenuItem navigationMenuItem134 = new HZH_Controls.Controls.NavigationMenuItem();
-            HZH_Controls.Controls.NavigationMenuItem navigationMenuItem135 = new HZH_Controls.Controls.NavigationMenuItem();
-            HZH_Controls.Controls.NavigationMenuItem navigationMenuItem136 = new HZH_Controls.Controls.NavigationMenuItem();
-            HZH_Controls.Controls.NavigationMenuItem navigationMenuItem137 = new HZH_Controls.Controls.NavigationMenuItem();
-            HZH_Controls.Controls.NavigationMenuItem navigationMenuItem138 = new HZH_Controls.Controls.NavigationMenuItem();
-            HZH_Controls.Controls.NavigationMenuItem navigationMenuItem139 = new HZH_Controls.Controls.NavigationMenuItem();
-            HZH_Controls.Controls.NavigationMenuItem navigationMenuItem140 = new HZH_Controls.Controls.NavigationMenuItem();
-            HZH_Controls.Controls.NavigationMenuItem navigationMenuItem141 = new HZH_Controls.Controls.NavigationMenuItem();
-            HZH_Controls.Controls.NavigationMenuItem navigationMenuItem142 = new HZH_Controls.Controls.NavigationMenuItem();
-            HZH_Controls.Controls.NavigationMenuItem navigationMenuItem143 = new HZH_Controls.Controls.NavigationMenuItem();
-            HZH_Controls.Controls.NavigationMenuItem navigationMenuItem144 = new HZH_Controls.Controls.NavigationMenuItem();
-            HZH_Controls.Controls.NavigationMenuItem navigationMenuItem145 = new HZH_Controls.Controls.NavigationMenuItem();
-            HZH_Controls.Controls.NavigationMenuItem navigationMenuItem146 = new HZH_Controls.Controls.NavigationMenuItem();
-            HZH_Controls.Controls.NavigationMenuItem navigationMenuItem147 = new HZH_Controls.Controls.NavigationMenuItem();
-            HZH_Controls.Controls.NavigationMenuItem navigationMenuItem148 = new HZH_Controls.Controls.NavigationMenuItem();
-            HZH_Controls.Controls.NavigationMenuItem navigationMenuItem149 = new HZH_Controls.Controls.NavigationMenuItem();
-            HZH_Controls.Controls.NavigationMenuItem navigationMenuItem150 = new HZH_Controls.Controls.NavigationMenuItem();
-            HZH_Controls.Controls.NavigationMenuItem navigationMenuItem151 = new HZH_Controls.Controls.NavigationMenuItem();
-            HZH_Controls.Controls.NavigationMenuItem navigationMenuItem152 = new HZH_Controls.Controls.NavigationMenuItem();
-            HZH_Controls.Controls.NavigationMenuItem navigationMenuItem153 = new HZH_Controls.Controls.NavigationMenuItem();
-            HZH_Controls.Controls.NavigationMenuItem navigationMenuItem154 = new HZH_Controls.Controls.NavigationMenuItem();
-            HZH_Controls.Controls.NavigationMenuItem navigationMenuItem155 = new HZH_Controls.Controls.NavigationMenuItem();
-            HZH_Controls.Controls.NavigationMenuItem navigationMenuItem156 = new HZH_Controls.Controls.NavigationMenuItem();
+            HZH_Controls.Controls.NavigationMenuItem navigationMenuItem40 = new HZH_Controls.Controls.NavigationMenuItem();
+            HZH_Controls.Controls.NavigationMenuItem navigationMenuItem41 = new HZH_Controls.Controls.NavigationMenuItem();
+            HZH_Controls.Controls.NavigationMenuItem navigationMenuItem42 = new HZH_Controls.Controls.NavigationMenuItem();
+            HZH_Controls.Controls.NavigationMenuItem navigationMenuItem43 = new HZH_Controls.Controls.NavigationMenuItem();
+            HZH_Controls.Controls.NavigationMenuItem navigationMenuItem44 = new HZH_Controls.Controls.NavigationMenuItem();
+            HZH_Controls.Controls.NavigationMenuItem navigationMenuItem45 = new HZH_Controls.Controls.NavigationMenuItem();
+            HZH_Controls.Controls.NavigationMenuItem navigationMenuItem46 = new HZH_Controls.Controls.NavigationMenuItem();
+            HZH_Controls.Controls.NavigationMenuItem navigationMenuItem47 = new HZH_Controls.Controls.NavigationMenuItem();
+            HZH_Controls.Controls.NavigationMenuItem navigationMenuItem48 = new HZH_Controls.Controls.NavigationMenuItem();
+            HZH_Controls.Controls.NavigationMenuItem navigationMenuItem49 = new HZH_Controls.Controls.NavigationMenuItem();
+            HZH_Controls.Controls.NavigationMenuItem navigationMenuItem50 = new HZH_Controls.Controls.NavigationMenuItem();
+            HZH_Controls.Controls.NavigationMenuItem navigationMenuItem51 = new HZH_Controls.Controls.NavigationMenuItem();
+            HZH_Controls.Controls.NavigationMenuItem navigationMenuItem52 = new HZH_Controls.Controls.NavigationMenuItem();
+            HZH_Controls.Controls.NavigationMenuItem navigationMenuItem53 = new HZH_Controls.Controls.NavigationMenuItem();
+            HZH_Controls.Controls.NavigationMenuItem navigationMenuItem54 = new HZH_Controls.Controls.NavigationMenuItem();
+            HZH_Controls.Controls.NavigationMenuItem navigationMenuItem55 = new HZH_Controls.Controls.NavigationMenuItem();
+            HZH_Controls.Controls.NavigationMenuItem navigationMenuItem56 = new HZH_Controls.Controls.NavigationMenuItem();
+            HZH_Controls.Controls.NavigationMenuItem navigationMenuItem57 = new HZH_Controls.Controls.NavigationMenuItem();
+            HZH_Controls.Controls.NavigationMenuItem navigationMenuItem58 = new HZH_Controls.Controls.NavigationMenuItem();
+            HZH_Controls.Controls.NavigationMenuItem navigationMenuItem59 = new HZH_Controls.Controls.NavigationMenuItem();
+            HZH_Controls.Controls.NavigationMenuItem navigationMenuItem60 = new HZH_Controls.Controls.NavigationMenuItem();
+            HZH_Controls.Controls.NavigationMenuItem navigationMenuItem61 = new HZH_Controls.Controls.NavigationMenuItem();
+            HZH_Controls.Controls.NavigationMenuItem navigationMenuItem62 = new HZH_Controls.Controls.NavigationMenuItem();
+            HZH_Controls.Controls.NavigationMenuItem navigationMenuItem63 = new HZH_Controls.Controls.NavigationMenuItem();
+            HZH_Controls.Controls.NavigationMenuItem navigationMenuItem64 = new HZH_Controls.Controls.NavigationMenuItem();
+            HZH_Controls.Controls.NavigationMenuItem navigationMenuItem65 = new HZH_Controls.Controls.NavigationMenuItem();
+            HZH_Controls.Controls.NavigationMenuItem navigationMenuItem66 = new HZH_Controls.Controls.NavigationMenuItem();
+            HZH_Controls.Controls.NavigationMenuItem navigationMenuItem67 = new HZH_Controls.Controls.NavigationMenuItem();
+            HZH_Controls.Controls.NavigationMenuItem navigationMenuItem68 = new HZH_Controls.Controls.NavigationMenuItem();
+            HZH_Controls.Controls.NavigationMenuItem navigationMenuItem69 = new HZH_Controls.Controls.NavigationMenuItem();
+            HZH_Controls.Controls.NavigationMenuItem navigationMenuItem70 = new HZH_Controls.Controls.NavigationMenuItem();
+            HZH_Controls.Controls.NavigationMenuItem navigationMenuItem71 = new HZH_Controls.Controls.NavigationMenuItem();
+            HZH_Controls.Controls.NavigationMenuItem navigationMenuItem72 = new HZH_Controls.Controls.NavigationMenuItem();
+            HZH_Controls.Controls.NavigationMenuItem navigationMenuItem73 = new HZH_Controls.Controls.NavigationMenuItem();
+            HZH_Controls.Controls.NavigationMenuItem navigationMenuItem74 = new HZH_Controls.Controls.NavigationMenuItem();
+            HZH_Controls.Controls.NavigationMenuItem navigationMenuItem75 = new HZH_Controls.Controls.NavigationMenuItem();
+            HZH_Controls.Controls.NavigationMenuItem navigationMenuItem76 = new HZH_Controls.Controls.NavigationMenuItem();
+            HZH_Controls.Controls.NavigationMenuItem navigationMenuItem77 = new HZH_Controls.Controls.NavigationMenuItem();
+            HZH_Controls.Controls.NavigationMenuItem navigationMenuItem78 = new HZH_Controls.Controls.NavigationMenuItem();
             this.skinButton1 = new CCWin.SkinControl.SkinButton();
             this.skinButton2 = new CCWin.SkinControl.SkinButton();
             this.skinButton3 = new CCWin.SkinControl.SkinButton();
@@ -146,15 +146,15 @@
             this.toolStripMenuItem15 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator19 = new System.Windows.Forms.ToolStripSeparator();
             this.timer2 = new System.Windows.Forms.Timer(this.components);
-            this.PLC_circulation_read = new System.Windows.Forms.Timer(this.components);
             this.timer3 = new System.Windows.Forms.Timer(this.components);
             this.imageList2 = new System.Windows.Forms.ImageList(this.components);
             this.imageList3 = new System.Windows.Forms.ImageList(this.components);
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.ucNavigationMenu1 = new HZH_Controls.Controls.UCNavigationMenu();
             this.Aligning = new System.Windows.Forms.ImageList(this.components);
-            this.userControl11 = new UI_Library_da.UI加载进度条.UserControl1();
             this.timer4 = new System.Windows.Forms.Timer(this.components);
+            this.userControl11 = new UI_Library_da.UI加载进度条.UserControl1();
+            this.plCreconnectionTime1 = new 自定义Uppercomputer_20200727.控件重做.PLCreconnectionTime();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.skinContextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -796,10 +796,6 @@
             this.timer2.Enabled = true;
             this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
             // 
-            // PLC_circulation_read
-            // 
-            this.PLC_circulation_read.Interval = 200;
-            // 
             // timer3
             // 
             this.timer3.Enabled = true;
@@ -863,397 +859,397 @@
             this.ucNavigationMenu1.BackColor = System.Drawing.Color.Gray;
             this.ucNavigationMenu1.Font = new System.Drawing.Font("微软雅黑", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.ucNavigationMenu1.ForeColor = System.Drawing.Color.Black;
-            navigationMenuItem118.AnchorRight = false;
-            navigationMenuItem118.DataSource = null;
-            navigationMenuItem118.HasSplitLintAtTop = false;
-            navigationMenuItem118.Icon = null;
-            navigationMenuItem119.AnchorRight = false;
-            navigationMenuItem119.DataSource = null;
-            navigationMenuItem119.HasSplitLintAtTop = false;
-            navigationMenuItem119.Icon = null;
-            navigationMenuItem120.AnchorRight = false;
-            navigationMenuItem120.DataSource = null;
-            navigationMenuItem120.HasSplitLintAtTop = false;
-            navigationMenuItem120.Icon = null;
-            navigationMenuItem120.Items = null;
-            navigationMenuItem120.ItemWidth = 60;
-            navigationMenuItem120.ShowTip = false;
-            navigationMenuItem120.Text = "Button_按钮";
-            navigationMenuItem120.TipText = "BT";
-            navigationMenuItem121.AnchorRight = false;
-            navigationMenuItem121.DataSource = null;
-            navigationMenuItem121.HasSplitLintAtTop = false;
-            navigationMenuItem121.Icon = null;
-            navigationMenuItem121.Items = null;
-            navigationMenuItem121.ItemWidth = 60;
-            navigationMenuItem121.ShowTip = false;
-            navigationMenuItem121.Text = "透明化_Button";
-            navigationMenuItem121.TipText = "TM";
-            navigationMenuItem122.AnchorRight = false;
-            navigationMenuItem122.DataSource = null;
-            navigationMenuItem122.HasSplitLintAtTop = false;
-            navigationMenuItem122.Icon = null;
-            navigationMenuItem122.Items = null;
-            navigationMenuItem122.ItemWidth = 60;
-            navigationMenuItem122.ShowTip = false;
-            navigationMenuItem122.Text = "CheckBox 单选按钮";
-            navigationMenuItem122.TipText = "CB";
-            navigationMenuItem123.AnchorRight = false;
-            navigationMenuItem123.DataSource = null;
-            navigationMenuItem123.HasSplitLintAtTop = false;
-            navigationMenuItem123.Icon = null;
-            navigationMenuItem123.Items = null;
-            navigationMenuItem123.ItemWidth = 60;
-            navigationMenuItem123.ShowTip = false;
-            navigationMenuItem123.Text = "Switch_切换开关";
-            navigationMenuItem123.TipText = "SC";
-            navigationMenuItem119.Items = new HZH_Controls.Controls.NavigationMenuItem[] {
-        navigationMenuItem120,
-        navigationMenuItem121,
-        navigationMenuItem122,
-        navigationMenuItem123};
-            navigationMenuItem119.ItemWidth = 100;
-            navigationMenuItem119.ShowTip = false;
-            navigationMenuItem119.Text = "按钮类";
-            navigationMenuItem119.TipText = "BT";
-            navigationMenuItem124.AnchorRight = false;
-            navigationMenuItem124.DataSource = null;
-            navigationMenuItem124.HasSplitLintAtTop = false;
-            navigationMenuItem124.Icon = null;
-            navigationMenuItem125.AnchorRight = false;
-            navigationMenuItem125.DataSource = null;
-            navigationMenuItem125.HasSplitLintAtTop = false;
-            navigationMenuItem125.Icon = null;
-            navigationMenuItem125.Items = null;
-            navigationMenuItem125.ItemWidth = 100;
-            navigationMenuItem125.ShowTip = false;
-            navigationMenuItem125.Text = "Label_文本";
-            navigationMenuItem125.TipText = "LB";
-            navigationMenuItem126.AnchorRight = false;
-            navigationMenuItem126.DataSource = null;
-            navigationMenuItem126.HasSplitLintAtTop = false;
-            navigationMenuItem126.Icon = null;
-            navigationMenuItem126.Items = null;
-            navigationMenuItem126.ItemWidth = 100;
-            navigationMenuItem126.ShowTip = false;
-            navigationMenuItem126.Text = "LedDisplay数值显示";
-            navigationMenuItem126.TipText = "LD";
-            navigationMenuItem127.AnchorRight = true;
-            navigationMenuItem127.DataSource = null;
-            navigationMenuItem127.HasSplitLintAtTop = true;
-            navigationMenuItem127.Icon = null;
-            navigationMenuItem127.Items = null;
-            navigationMenuItem127.ItemWidth = 100;
-            navigationMenuItem127.ShowTip = false;
-            navigationMenuItem127.Text = "Texebox_数值";
-            navigationMenuItem127.TipText = "TE";
-            navigationMenuItem124.Items = new HZH_Controls.Controls.NavigationMenuItem[] {
-        navigationMenuItem125,
-        navigationMenuItem126,
-        navigationMenuItem127};
-            navigationMenuItem124.ItemWidth = 100;
-            navigationMenuItem124.ShowTip = false;
-            navigationMenuItem124.Text = "文本类";
-            navigationMenuItem124.TipText = "TB";
-            navigationMenuItem128.AnchorRight = false;
-            navigationMenuItem128.DataSource = null;
-            navigationMenuItem128.HasSplitLintAtTop = false;
-            navigationMenuItem128.Icon = null;
-            navigationMenuItem129.AnchorRight = false;
-            navigationMenuItem129.DataSource = null;
-            navigationMenuItem129.HasSplitLintAtTop = false;
-            navigationMenuItem129.Icon = null;
-            navigationMenuItem129.Items = null;
-            navigationMenuItem129.ItemWidth = 100;
-            navigationMenuItem129.ShowTip = false;
-            navigationMenuItem129.Text = "ScrollingText报警滚动条";
-            navigationMenuItem129.TipText = "SIT";
-            navigationMenuItem128.Items = new HZH_Controls.Controls.NavigationMenuItem[] {
-        navigationMenuItem129};
-            navigationMenuItem128.ItemWidth = 100;
-            navigationMenuItem128.ShowTip = false;
-            navigationMenuItem128.Text = "报警类";
-            navigationMenuItem128.TipText = "ST";
-            navigationMenuItem130.AnchorRight = false;
-            navigationMenuItem130.DataSource = null;
-            navigationMenuItem130.HasSplitLintAtTop = false;
-            navigationMenuItem130.Icon = null;
-            navigationMenuItem131.AnchorRight = false;
-            navigationMenuItem131.DataSource = null;
-            navigationMenuItem131.HasSplitLintAtTop = false;
-            navigationMenuItem131.Icon = null;
-            navigationMenuItem131.Items = null;
-            navigationMenuItem131.ItemWidth = 100;
-            navigationMenuItem131.ShowTip = false;
-            navigationMenuItem131.Text = "LedBulb指示灯";
-            navigationMenuItem131.TipText = "LB";
-            navigationMenuItem130.Items = new HZH_Controls.Controls.NavigationMenuItem[] {
-        navigationMenuItem131};
-            navigationMenuItem130.ItemWidth = 100;
-            navigationMenuItem130.ShowTip = false;
-            navigationMenuItem130.Text = "指示类";
-            navigationMenuItem130.TipText = "LB";
-            navigationMenuItem132.AnchorRight = false;
-            navigationMenuItem132.DataSource = null;
-            navigationMenuItem132.HasSplitLintAtTop = false;
-            navigationMenuItem132.Icon = null;
-            navigationMenuItem133.AnchorRight = false;
-            navigationMenuItem133.DataSource = null;
-            navigationMenuItem133.HasSplitLintAtTop = false;
-            navigationMenuItem133.Icon = null;
-            navigationMenuItem133.Items = null;
-            navigationMenuItem133.ItemWidth = 100;
-            navigationMenuItem133.ShowTip = false;
-            navigationMenuItem133.Text = "histogram_Chart柱形图";
-            navigationMenuItem133.TipText = "HC";
-            navigationMenuItem134.AnchorRight = false;
-            navigationMenuItem134.DataSource = null;
-            navigationMenuItem134.HasSplitLintAtTop = false;
-            navigationMenuItem134.Icon = null;
-            navigationMenuItem134.Items = null;
-            navigationMenuItem134.ItemWidth = 100;
-            navigationMenuItem134.ShowTip = false;
-            navigationMenuItem134.Text = "doughnut_Chart圆形图";
-            navigationMenuItem134.TipText = "DC";
-            navigationMenuItem135.AnchorRight = false;
-            navigationMenuItem135.DataSource = null;
-            navigationMenuItem135.HasSplitLintAtTop = false;
-            navigationMenuItem135.Icon = null;
-            navigationMenuItem135.Items = null;
-            navigationMenuItem135.ItemWidth = 100;
-            navigationMenuItem135.ShowTip = false;
-            navigationMenuItem135.Text = "oscillogram_Chart波形图";
-            navigationMenuItem135.TipText = "OC";
-            navigationMenuItem136.AnchorRight = false;
-            navigationMenuItem136.DataSource = null;
-            navigationMenuItem136.HasSplitLintAtTop = false;
-            navigationMenuItem136.Icon = null;
-            navigationMenuItem136.Items = null;
-            navigationMenuItem136.ItemWidth = 100;
-            navigationMenuItem136.ShowTip = false;
-            navigationMenuItem136.Text = "HScrollBar_纵向移动图形";
-            navigationMenuItem136.TipText = "HB";
-            navigationMenuItem137.AnchorRight = false;
-            navigationMenuItem137.DataSource = null;
-            navigationMenuItem137.HasSplitLintAtTop = false;
-            navigationMenuItem137.Icon = null;
-            navigationMenuItem137.Items = null;
-            navigationMenuItem137.ItemWidth = 100;
-            navigationMenuItem137.ShowTip = false;
-            navigationMenuItem137.Text = "VScrollBar_横向移动图形";
-            navigationMenuItem137.TipText = "VB";
-            navigationMenuItem138.AnchorRight = false;
-            navigationMenuItem138.DataSource = null;
-            navigationMenuItem138.HasSplitLintAtTop = false;
-            navigationMenuItem138.Icon = null;
-            navigationMenuItem138.Items = null;
-            navigationMenuItem138.ItemWidth = 100;
-            navigationMenuItem138.ShowTip = false;
-            navigationMenuItem138.Text = "lmage_图片";
-            navigationMenuItem138.TipText = "IG";
-            navigationMenuItem139.AnchorRight = false;
-            navigationMenuItem139.DataSource = null;
-            navigationMenuItem139.HasSplitLintAtTop = false;
-            navigationMenuItem139.Icon = null;
-            navigationMenuItem139.Items = null;
-            navigationMenuItem139.ItemWidth = 100;
-            navigationMenuItem139.ShowTip = false;
-            navigationMenuItem139.Text = "GroupBox四方边框条";
-            navigationMenuItem139.TipText = "GB";
-            navigationMenuItem132.Items = new HZH_Controls.Controls.NavigationMenuItem[] {
-        navigationMenuItem133,
-        navigationMenuItem134,
-        navigationMenuItem135,
-        navigationMenuItem136,
-        navigationMenuItem137,
-        navigationMenuItem138,
-        navigationMenuItem139};
-            navigationMenuItem132.ItemWidth = 100;
-            navigationMenuItem132.ShowTip = false;
-            navigationMenuItem132.Text = "图形";
-            navigationMenuItem132.TipText = "CH";
-            navigationMenuItem140.AnchorRight = false;
-            navigationMenuItem140.DataSource = null;
-            navigationMenuItem140.HasSplitLintAtTop = false;
-            navigationMenuItem140.Icon = null;
-            navigationMenuItem141.AnchorRight = false;
-            navigationMenuItem141.DataSource = null;
-            navigationMenuItem141.HasSplitLintAtTop = false;
-            navigationMenuItem141.Icon = null;
-            navigationMenuItem141.Items = null;
-            navigationMenuItem141.ItemWidth = 100;
-            navigationMenuItem141.ShowTip = false;
-            navigationMenuItem141.Text = "AnalogMeter百分百表盘";
-            navigationMenuItem141.TipText = "AM";
-            navigationMenuItem140.Items = new HZH_Controls.Controls.NavigationMenuItem[] {
-        navigationMenuItem141};
-            navigationMenuItem140.ItemWidth = 100;
-            navigationMenuItem140.ShowTip = false;
-            navigationMenuItem140.Text = "表盘";
-            navigationMenuItem140.TipText = "AM";
-            navigationMenuItem142.AnchorRight = false;
-            navigationMenuItem142.DataSource = null;
-            navigationMenuItem142.HasSplitLintAtTop = false;
-            navigationMenuItem142.Icon = null;
-            navigationMenuItem143.AnchorRight = false;
-            navigationMenuItem143.DataSource = null;
-            navigationMenuItem143.HasSplitLintAtTop = false;
-            navigationMenuItem143.Icon = null;
-            navigationMenuItem143.Items = null;
-            navigationMenuItem143.ItemWidth = 100;
-            navigationMenuItem143.ShowTip = false;
-            navigationMenuItem143.Text = "二维码/条形码";
-            navigationMenuItem143.TipText = "MA";
-            navigationMenuItem142.Items = new HZH_Controls.Controls.NavigationMenuItem[] {
-        navigationMenuItem143};
-            navigationMenuItem142.ItemWidth = 100;
-            navigationMenuItem142.ShowTip = false;
-            navigationMenuItem142.Text = "二维码";
-            navigationMenuItem142.TipText = "码";
-            navigationMenuItem144.AnchorRight = false;
-            navigationMenuItem144.DataSource = null;
-            navigationMenuItem144.HasSplitLintAtTop = false;
-            navigationMenuItem144.Icon = null;
-            navigationMenuItem145.AnchorRight = false;
-            navigationMenuItem145.DataSource = null;
-            navigationMenuItem145.HasSplitLintAtTop = false;
-            navigationMenuItem145.Icon = null;
-            navigationMenuItem145.Items = null;
-            navigationMenuItem145.ItemWidth = 100;
-            navigationMenuItem145.ShowTip = false;
-            navigationMenuItem145.Text = "功能键_画面切换";
-            navigationMenuItem145.TipText = "HUA";
-            navigationMenuItem146.AnchorRight = false;
-            navigationMenuItem146.DataSource = null;
-            navigationMenuItem146.HasSplitLintAtTop = false;
-            navigationMenuItem146.Icon = null;
-            navigationMenuItem146.Items = null;
-            navigationMenuItem146.ItemWidth = 100;
-            navigationMenuItem146.ShowTip = false;
-            navigationMenuItem146.Text = "ComboBox下拉菜单";
-            navigationMenuItem146.TipText = "CB";
-            navigationMenuItem144.Items = new HZH_Controls.Controls.NavigationMenuItem[] {
-        navigationMenuItem145,
-        navigationMenuItem146};
-            navigationMenuItem144.ItemWidth = 100;
-            navigationMenuItem144.ShowTip = false;
-            navigationMenuItem144.Text = "功能键";
-            navigationMenuItem144.TipText = "画";
-            navigationMenuItem147.AnchorRight = false;
-            navigationMenuItem147.DataSource = null;
-            navigationMenuItem147.HasSplitLintAtTop = false;
-            navigationMenuItem147.Icon = null;
-            navigationMenuItem148.AnchorRight = false;
-            navigationMenuItem148.DataSource = null;
-            navigationMenuItem148.HasSplitLintAtTop = false;
-            navigationMenuItem148.Icon = null;
-            navigationMenuItem148.Items = null;
-            navigationMenuItem148.ItemWidth = 100;
-            navigationMenuItem148.ShowTip = false;
-            navigationMenuItem148.Text = "Conveyor运输带";
-            navigationMenuItem148.TipText = null;
-            navigationMenuItem149.AnchorRight = false;
-            navigationMenuItem149.DataSource = null;
-            navigationMenuItem149.HasSplitLintAtTop = false;
-            navigationMenuItem149.Icon = null;
-            navigationMenuItem149.Items = null;
-            navigationMenuItem149.ItemWidth = 100;
-            navigationMenuItem149.ShowTip = false;
-            navigationMenuItem149.Text = "Valve流体阀门";
-            navigationMenuItem149.TipText = null;
-            navigationMenuItem147.Items = new HZH_Controls.Controls.NavigationMenuItem[] {
-        navigationMenuItem148,
-        navigationMenuItem149};
-            navigationMenuItem147.ItemWidth = 100;
-            navigationMenuItem147.ShowTip = false;
-            navigationMenuItem147.Text = "工业图形类";
-            navigationMenuItem147.TipText = null;
-            navigationMenuItem118.Items = new HZH_Controls.Controls.NavigationMenuItem[] {
-        navigationMenuItem119,
-        navigationMenuItem124,
-        navigationMenuItem128,
-        navigationMenuItem130,
-        navigationMenuItem132,
-        navigationMenuItem140,
-        navigationMenuItem142,
-        navigationMenuItem144,
-        navigationMenuItem147};
-            navigationMenuItem118.ItemWidth = 100;
-            navigationMenuItem118.ShowTip = true;
-            navigationMenuItem118.Text = "添加控件";
-            navigationMenuItem118.TipText = "控";
-            navigationMenuItem150.AnchorRight = false;
-            navigationMenuItem150.DataSource = null;
-            navigationMenuItem150.HasSplitLintAtTop = false;
-            navigationMenuItem150.Icon = null;
-            navigationMenuItem150.Items = null;
-            navigationMenuItem150.ItemWidth = 100;
-            navigationMenuItem150.ShowTip = true;
-            navigationMenuItem150.Text = "报警注册";
-            navigationMenuItem150.TipText = "报警";
-            navigationMenuItem151.AnchorRight = false;
-            navigationMenuItem151.DataSource = null;
-            navigationMenuItem151.HasSplitLintAtTop = false;
-            navigationMenuItem151.Icon = null;
-            navigationMenuItem151.Items = null;
-            navigationMenuItem151.ItemWidth = 100;
-            navigationMenuItem151.ShowTip = true;
-            navigationMenuItem151.Text = "宏指令";
-            navigationMenuItem151.TipText = "宏";
-            navigationMenuItem152.AnchorRight = false;
-            navigationMenuItem152.DataSource = null;
-            navigationMenuItem152.HasSplitLintAtTop = false;
-            navigationMenuItem152.Icon = null;
-            navigationMenuItem152.Items = null;
-            navigationMenuItem152.ItemWidth = 100;
-            navigationMenuItem152.ShowTip = true;
-            navigationMenuItem152.Text = "链接设备";
-            navigationMenuItem152.TipText = "PLC";
-            navigationMenuItem153.AnchorRight = true;
-            navigationMenuItem153.DataSource = null;
-            navigationMenuItem153.HasSplitLintAtTop = false;
-            navigationMenuItem153.Icon = null;
-            navigationMenuItem153.Items = null;
-            navigationMenuItem153.ItemWidth = 100;
-            navigationMenuItem153.ShowTip = true;
-            navigationMenuItem153.Text = "关于";
-            navigationMenuItem153.TipText = "DA";
-            navigationMenuItem154.AnchorRight = true;
-            navigationMenuItem154.DataSource = null;
-            navigationMenuItem154.HasSplitLintAtTop = false;
-            navigationMenuItem154.Icon = null;
-            navigationMenuItem154.Items = null;
-            navigationMenuItem154.ItemWidth = 100;
-            navigationMenuItem154.ShowTip = true;
-            navigationMenuItem154.Text = "通讯测试";
-            navigationMenuItem154.TipText = "PING";
-            navigationMenuItem155.AnchorRight = true;
-            navigationMenuItem155.DataSource = null;
-            navigationMenuItem155.HasSplitLintAtTop = false;
-            navigationMenuItem155.Icon = null;
-            navigationMenuItem155.Items = null;
-            navigationMenuItem155.ItemWidth = 100;
-            navigationMenuItem155.ShowTip = true;
-            navigationMenuItem155.Text = "编辑模式";
-            navigationMenuItem155.TipText = "改";
-            navigationMenuItem156.AnchorRight = true;
-            navigationMenuItem156.DataSource = null;
-            navigationMenuItem156.HasSplitLintAtTop = false;
-            navigationMenuItem156.Icon = null;
-            navigationMenuItem156.Items = null;
-            navigationMenuItem156.ItemWidth = 100;
-            navigationMenuItem156.ShowTip = true;
-            navigationMenuItem156.Text = "伺服控制";
-            navigationMenuItem156.TipText = "IE";
+            navigationMenuItem40.AnchorRight = false;
+            navigationMenuItem40.DataSource = null;
+            navigationMenuItem40.HasSplitLintAtTop = false;
+            navigationMenuItem40.Icon = null;
+            navigationMenuItem41.AnchorRight = false;
+            navigationMenuItem41.DataSource = null;
+            navigationMenuItem41.HasSplitLintAtTop = false;
+            navigationMenuItem41.Icon = null;
+            navigationMenuItem42.AnchorRight = false;
+            navigationMenuItem42.DataSource = null;
+            navigationMenuItem42.HasSplitLintAtTop = false;
+            navigationMenuItem42.Icon = null;
+            navigationMenuItem42.Items = null;
+            navigationMenuItem42.ItemWidth = 60;
+            navigationMenuItem42.ShowTip = false;
+            navigationMenuItem42.Text = "Button_按钮";
+            navigationMenuItem42.TipText = "BT";
+            navigationMenuItem43.AnchorRight = false;
+            navigationMenuItem43.DataSource = null;
+            navigationMenuItem43.HasSplitLintAtTop = false;
+            navigationMenuItem43.Icon = null;
+            navigationMenuItem43.Items = null;
+            navigationMenuItem43.ItemWidth = 60;
+            navigationMenuItem43.ShowTip = false;
+            navigationMenuItem43.Text = "透明化_Button";
+            navigationMenuItem43.TipText = "TM";
+            navigationMenuItem44.AnchorRight = false;
+            navigationMenuItem44.DataSource = null;
+            navigationMenuItem44.HasSplitLintAtTop = false;
+            navigationMenuItem44.Icon = null;
+            navigationMenuItem44.Items = null;
+            navigationMenuItem44.ItemWidth = 60;
+            navigationMenuItem44.ShowTip = false;
+            navigationMenuItem44.Text = "CheckBox 单选按钮";
+            navigationMenuItem44.TipText = "CB";
+            navigationMenuItem45.AnchorRight = false;
+            navigationMenuItem45.DataSource = null;
+            navigationMenuItem45.HasSplitLintAtTop = false;
+            navigationMenuItem45.Icon = null;
+            navigationMenuItem45.Items = null;
+            navigationMenuItem45.ItemWidth = 60;
+            navigationMenuItem45.ShowTip = false;
+            navigationMenuItem45.Text = "Switch_切换开关";
+            navigationMenuItem45.TipText = "SC";
+            navigationMenuItem41.Items = new HZH_Controls.Controls.NavigationMenuItem[] {
+        navigationMenuItem42,
+        navigationMenuItem43,
+        navigationMenuItem44,
+        navigationMenuItem45};
+            navigationMenuItem41.ItemWidth = 100;
+            navigationMenuItem41.ShowTip = false;
+            navigationMenuItem41.Text = "按钮类";
+            navigationMenuItem41.TipText = "BT";
+            navigationMenuItem46.AnchorRight = false;
+            navigationMenuItem46.DataSource = null;
+            navigationMenuItem46.HasSplitLintAtTop = false;
+            navigationMenuItem46.Icon = null;
+            navigationMenuItem47.AnchorRight = false;
+            navigationMenuItem47.DataSource = null;
+            navigationMenuItem47.HasSplitLintAtTop = false;
+            navigationMenuItem47.Icon = null;
+            navigationMenuItem47.Items = null;
+            navigationMenuItem47.ItemWidth = 100;
+            navigationMenuItem47.ShowTip = false;
+            navigationMenuItem47.Text = "Label_文本";
+            navigationMenuItem47.TipText = "LB";
+            navigationMenuItem48.AnchorRight = false;
+            navigationMenuItem48.DataSource = null;
+            navigationMenuItem48.HasSplitLintAtTop = false;
+            navigationMenuItem48.Icon = null;
+            navigationMenuItem48.Items = null;
+            navigationMenuItem48.ItemWidth = 100;
+            navigationMenuItem48.ShowTip = false;
+            navigationMenuItem48.Text = "LedDisplay数值显示";
+            navigationMenuItem48.TipText = "LD";
+            navigationMenuItem49.AnchorRight = true;
+            navigationMenuItem49.DataSource = null;
+            navigationMenuItem49.HasSplitLintAtTop = true;
+            navigationMenuItem49.Icon = null;
+            navigationMenuItem49.Items = null;
+            navigationMenuItem49.ItemWidth = 100;
+            navigationMenuItem49.ShowTip = false;
+            navigationMenuItem49.Text = "Texebox_数值";
+            navigationMenuItem49.TipText = "TE";
+            navigationMenuItem46.Items = new HZH_Controls.Controls.NavigationMenuItem[] {
+        navigationMenuItem47,
+        navigationMenuItem48,
+        navigationMenuItem49};
+            navigationMenuItem46.ItemWidth = 100;
+            navigationMenuItem46.ShowTip = false;
+            navigationMenuItem46.Text = "文本类";
+            navigationMenuItem46.TipText = "TB";
+            navigationMenuItem50.AnchorRight = false;
+            navigationMenuItem50.DataSource = null;
+            navigationMenuItem50.HasSplitLintAtTop = false;
+            navigationMenuItem50.Icon = null;
+            navigationMenuItem51.AnchorRight = false;
+            navigationMenuItem51.DataSource = null;
+            navigationMenuItem51.HasSplitLintAtTop = false;
+            navigationMenuItem51.Icon = null;
+            navigationMenuItem51.Items = null;
+            navigationMenuItem51.ItemWidth = 100;
+            navigationMenuItem51.ShowTip = false;
+            navigationMenuItem51.Text = "ScrollingText报警滚动条";
+            navigationMenuItem51.TipText = "SIT";
+            navigationMenuItem50.Items = new HZH_Controls.Controls.NavigationMenuItem[] {
+        navigationMenuItem51};
+            navigationMenuItem50.ItemWidth = 100;
+            navigationMenuItem50.ShowTip = false;
+            navigationMenuItem50.Text = "报警类";
+            navigationMenuItem50.TipText = "ST";
+            navigationMenuItem52.AnchorRight = false;
+            navigationMenuItem52.DataSource = null;
+            navigationMenuItem52.HasSplitLintAtTop = false;
+            navigationMenuItem52.Icon = null;
+            navigationMenuItem53.AnchorRight = false;
+            navigationMenuItem53.DataSource = null;
+            navigationMenuItem53.HasSplitLintAtTop = false;
+            navigationMenuItem53.Icon = null;
+            navigationMenuItem53.Items = null;
+            navigationMenuItem53.ItemWidth = 100;
+            navigationMenuItem53.ShowTip = false;
+            navigationMenuItem53.Text = "LedBulb指示灯";
+            navigationMenuItem53.TipText = "LB";
+            navigationMenuItem52.Items = new HZH_Controls.Controls.NavigationMenuItem[] {
+        navigationMenuItem53};
+            navigationMenuItem52.ItemWidth = 100;
+            navigationMenuItem52.ShowTip = false;
+            navigationMenuItem52.Text = "指示类";
+            navigationMenuItem52.TipText = "LB";
+            navigationMenuItem54.AnchorRight = false;
+            navigationMenuItem54.DataSource = null;
+            navigationMenuItem54.HasSplitLintAtTop = false;
+            navigationMenuItem54.Icon = null;
+            navigationMenuItem55.AnchorRight = false;
+            navigationMenuItem55.DataSource = null;
+            navigationMenuItem55.HasSplitLintAtTop = false;
+            navigationMenuItem55.Icon = null;
+            navigationMenuItem55.Items = null;
+            navigationMenuItem55.ItemWidth = 100;
+            navigationMenuItem55.ShowTip = false;
+            navigationMenuItem55.Text = "histogram_Chart柱形图";
+            navigationMenuItem55.TipText = "HC";
+            navigationMenuItem56.AnchorRight = false;
+            navigationMenuItem56.DataSource = null;
+            navigationMenuItem56.HasSplitLintAtTop = false;
+            navigationMenuItem56.Icon = null;
+            navigationMenuItem56.Items = null;
+            navigationMenuItem56.ItemWidth = 100;
+            navigationMenuItem56.ShowTip = false;
+            navigationMenuItem56.Text = "doughnut_Chart圆形图";
+            navigationMenuItem56.TipText = "DC";
+            navigationMenuItem57.AnchorRight = false;
+            navigationMenuItem57.DataSource = null;
+            navigationMenuItem57.HasSplitLintAtTop = false;
+            navigationMenuItem57.Icon = null;
+            navigationMenuItem57.Items = null;
+            navigationMenuItem57.ItemWidth = 100;
+            navigationMenuItem57.ShowTip = false;
+            navigationMenuItem57.Text = "oscillogram_Chart波形图";
+            navigationMenuItem57.TipText = "OC";
+            navigationMenuItem58.AnchorRight = false;
+            navigationMenuItem58.DataSource = null;
+            navigationMenuItem58.HasSplitLintAtTop = false;
+            navigationMenuItem58.Icon = null;
+            navigationMenuItem58.Items = null;
+            navigationMenuItem58.ItemWidth = 100;
+            navigationMenuItem58.ShowTip = false;
+            navigationMenuItem58.Text = "HScrollBar_纵向移动图形";
+            navigationMenuItem58.TipText = "HB";
+            navigationMenuItem59.AnchorRight = false;
+            navigationMenuItem59.DataSource = null;
+            navigationMenuItem59.HasSplitLintAtTop = false;
+            navigationMenuItem59.Icon = null;
+            navigationMenuItem59.Items = null;
+            navigationMenuItem59.ItemWidth = 100;
+            navigationMenuItem59.ShowTip = false;
+            navigationMenuItem59.Text = "VScrollBar_横向移动图形";
+            navigationMenuItem59.TipText = "VB";
+            navigationMenuItem60.AnchorRight = false;
+            navigationMenuItem60.DataSource = null;
+            navigationMenuItem60.HasSplitLintAtTop = false;
+            navigationMenuItem60.Icon = null;
+            navigationMenuItem60.Items = null;
+            navigationMenuItem60.ItemWidth = 100;
+            navigationMenuItem60.ShowTip = false;
+            navigationMenuItem60.Text = "lmage_图片";
+            navigationMenuItem60.TipText = "IG";
+            navigationMenuItem61.AnchorRight = false;
+            navigationMenuItem61.DataSource = null;
+            navigationMenuItem61.HasSplitLintAtTop = false;
+            navigationMenuItem61.Icon = null;
+            navigationMenuItem61.Items = null;
+            navigationMenuItem61.ItemWidth = 100;
+            navigationMenuItem61.ShowTip = false;
+            navigationMenuItem61.Text = "GroupBox四方边框条";
+            navigationMenuItem61.TipText = "GB";
+            navigationMenuItem54.Items = new HZH_Controls.Controls.NavigationMenuItem[] {
+        navigationMenuItem55,
+        navigationMenuItem56,
+        navigationMenuItem57,
+        navigationMenuItem58,
+        navigationMenuItem59,
+        navigationMenuItem60,
+        navigationMenuItem61};
+            navigationMenuItem54.ItemWidth = 100;
+            navigationMenuItem54.ShowTip = false;
+            navigationMenuItem54.Text = "图形";
+            navigationMenuItem54.TipText = "CH";
+            navigationMenuItem62.AnchorRight = false;
+            navigationMenuItem62.DataSource = null;
+            navigationMenuItem62.HasSplitLintAtTop = false;
+            navigationMenuItem62.Icon = null;
+            navigationMenuItem63.AnchorRight = false;
+            navigationMenuItem63.DataSource = null;
+            navigationMenuItem63.HasSplitLintAtTop = false;
+            navigationMenuItem63.Icon = null;
+            navigationMenuItem63.Items = null;
+            navigationMenuItem63.ItemWidth = 100;
+            navigationMenuItem63.ShowTip = false;
+            navigationMenuItem63.Text = "AnalogMeter百分百表盘";
+            navigationMenuItem63.TipText = "AM";
+            navigationMenuItem62.Items = new HZH_Controls.Controls.NavigationMenuItem[] {
+        navigationMenuItem63};
+            navigationMenuItem62.ItemWidth = 100;
+            navigationMenuItem62.ShowTip = false;
+            navigationMenuItem62.Text = "表盘";
+            navigationMenuItem62.TipText = "AM";
+            navigationMenuItem64.AnchorRight = false;
+            navigationMenuItem64.DataSource = null;
+            navigationMenuItem64.HasSplitLintAtTop = false;
+            navigationMenuItem64.Icon = null;
+            navigationMenuItem65.AnchorRight = false;
+            navigationMenuItem65.DataSource = null;
+            navigationMenuItem65.HasSplitLintAtTop = false;
+            navigationMenuItem65.Icon = null;
+            navigationMenuItem65.Items = null;
+            navigationMenuItem65.ItemWidth = 100;
+            navigationMenuItem65.ShowTip = false;
+            navigationMenuItem65.Text = "二维码/条形码";
+            navigationMenuItem65.TipText = "MA";
+            navigationMenuItem64.Items = new HZH_Controls.Controls.NavigationMenuItem[] {
+        navigationMenuItem65};
+            navigationMenuItem64.ItemWidth = 100;
+            navigationMenuItem64.ShowTip = false;
+            navigationMenuItem64.Text = "二维码";
+            navigationMenuItem64.TipText = "码";
+            navigationMenuItem66.AnchorRight = false;
+            navigationMenuItem66.DataSource = null;
+            navigationMenuItem66.HasSplitLintAtTop = false;
+            navigationMenuItem66.Icon = null;
+            navigationMenuItem67.AnchorRight = false;
+            navigationMenuItem67.DataSource = null;
+            navigationMenuItem67.HasSplitLintAtTop = false;
+            navigationMenuItem67.Icon = null;
+            navigationMenuItem67.Items = null;
+            navigationMenuItem67.ItemWidth = 100;
+            navigationMenuItem67.ShowTip = false;
+            navigationMenuItem67.Text = "功能键_画面切换";
+            navigationMenuItem67.TipText = "HUA";
+            navigationMenuItem68.AnchorRight = false;
+            navigationMenuItem68.DataSource = null;
+            navigationMenuItem68.HasSplitLintAtTop = false;
+            navigationMenuItem68.Icon = null;
+            navigationMenuItem68.Items = null;
+            navigationMenuItem68.ItemWidth = 100;
+            navigationMenuItem68.ShowTip = false;
+            navigationMenuItem68.Text = "ComboBox下拉菜单";
+            navigationMenuItem68.TipText = "CB";
+            navigationMenuItem66.Items = new HZH_Controls.Controls.NavigationMenuItem[] {
+        navigationMenuItem67,
+        navigationMenuItem68};
+            navigationMenuItem66.ItemWidth = 100;
+            navigationMenuItem66.ShowTip = false;
+            navigationMenuItem66.Text = "功能键";
+            navigationMenuItem66.TipText = "画";
+            navigationMenuItem69.AnchorRight = false;
+            navigationMenuItem69.DataSource = null;
+            navigationMenuItem69.HasSplitLintAtTop = false;
+            navigationMenuItem69.Icon = null;
+            navigationMenuItem70.AnchorRight = false;
+            navigationMenuItem70.DataSource = null;
+            navigationMenuItem70.HasSplitLintAtTop = false;
+            navigationMenuItem70.Icon = null;
+            navigationMenuItem70.Items = null;
+            navigationMenuItem70.ItemWidth = 100;
+            navigationMenuItem70.ShowTip = false;
+            navigationMenuItem70.Text = "Conveyor运输带";
+            navigationMenuItem70.TipText = null;
+            navigationMenuItem71.AnchorRight = false;
+            navigationMenuItem71.DataSource = null;
+            navigationMenuItem71.HasSplitLintAtTop = false;
+            navigationMenuItem71.Icon = null;
+            navigationMenuItem71.Items = null;
+            navigationMenuItem71.ItemWidth = 100;
+            navigationMenuItem71.ShowTip = false;
+            navigationMenuItem71.Text = "Valve流体阀门";
+            navigationMenuItem71.TipText = null;
+            navigationMenuItem69.Items = new HZH_Controls.Controls.NavigationMenuItem[] {
+        navigationMenuItem70,
+        navigationMenuItem71};
+            navigationMenuItem69.ItemWidth = 100;
+            navigationMenuItem69.ShowTip = false;
+            navigationMenuItem69.Text = "工业图形类";
+            navigationMenuItem69.TipText = null;
+            navigationMenuItem40.Items = new HZH_Controls.Controls.NavigationMenuItem[] {
+        navigationMenuItem41,
+        navigationMenuItem46,
+        navigationMenuItem50,
+        navigationMenuItem52,
+        navigationMenuItem54,
+        navigationMenuItem62,
+        navigationMenuItem64,
+        navigationMenuItem66,
+        navigationMenuItem69};
+            navigationMenuItem40.ItemWidth = 100;
+            navigationMenuItem40.ShowTip = true;
+            navigationMenuItem40.Text = "添加控件";
+            navigationMenuItem40.TipText = "控";
+            navigationMenuItem72.AnchorRight = false;
+            navigationMenuItem72.DataSource = null;
+            navigationMenuItem72.HasSplitLintAtTop = false;
+            navigationMenuItem72.Icon = null;
+            navigationMenuItem72.Items = null;
+            navigationMenuItem72.ItemWidth = 100;
+            navigationMenuItem72.ShowTip = true;
+            navigationMenuItem72.Text = "报警注册";
+            navigationMenuItem72.TipText = "报警";
+            navigationMenuItem73.AnchorRight = false;
+            navigationMenuItem73.DataSource = null;
+            navigationMenuItem73.HasSplitLintAtTop = false;
+            navigationMenuItem73.Icon = null;
+            navigationMenuItem73.Items = null;
+            navigationMenuItem73.ItemWidth = 100;
+            navigationMenuItem73.ShowTip = true;
+            navigationMenuItem73.Text = "宏指令";
+            navigationMenuItem73.TipText = "宏";
+            navigationMenuItem74.AnchorRight = false;
+            navigationMenuItem74.DataSource = null;
+            navigationMenuItem74.HasSplitLintAtTop = false;
+            navigationMenuItem74.Icon = null;
+            navigationMenuItem74.Items = null;
+            navigationMenuItem74.ItemWidth = 100;
+            navigationMenuItem74.ShowTip = true;
+            navigationMenuItem74.Text = "链接设备";
+            navigationMenuItem74.TipText = "PLC";
+            navigationMenuItem75.AnchorRight = true;
+            navigationMenuItem75.DataSource = null;
+            navigationMenuItem75.HasSplitLintAtTop = false;
+            navigationMenuItem75.Icon = null;
+            navigationMenuItem75.Items = null;
+            navigationMenuItem75.ItemWidth = 100;
+            navigationMenuItem75.ShowTip = true;
+            navigationMenuItem75.Text = "关于";
+            navigationMenuItem75.TipText = "DA";
+            navigationMenuItem76.AnchorRight = true;
+            navigationMenuItem76.DataSource = null;
+            navigationMenuItem76.HasSplitLintAtTop = false;
+            navigationMenuItem76.Icon = null;
+            navigationMenuItem76.Items = null;
+            navigationMenuItem76.ItemWidth = 100;
+            navigationMenuItem76.ShowTip = true;
+            navigationMenuItem76.Text = "通讯测试";
+            navigationMenuItem76.TipText = "PING";
+            navigationMenuItem77.AnchorRight = true;
+            navigationMenuItem77.DataSource = null;
+            navigationMenuItem77.HasSplitLintAtTop = false;
+            navigationMenuItem77.Icon = null;
+            navigationMenuItem77.Items = null;
+            navigationMenuItem77.ItemWidth = 100;
+            navigationMenuItem77.ShowTip = true;
+            navigationMenuItem77.Text = "编辑模式";
+            navigationMenuItem77.TipText = "改";
+            navigationMenuItem78.AnchorRight = true;
+            navigationMenuItem78.DataSource = null;
+            navigationMenuItem78.HasSplitLintAtTop = false;
+            navigationMenuItem78.Icon = null;
+            navigationMenuItem78.Items = null;
+            navigationMenuItem78.ItemWidth = 100;
+            navigationMenuItem78.ShowTip = true;
+            navigationMenuItem78.Text = "伺服控制";
+            navigationMenuItem78.TipText = "IE";
             this.ucNavigationMenu1.Items = new HZH_Controls.Controls.NavigationMenuItem[] {
-        navigationMenuItem118,
-        navigationMenuItem150,
-        navigationMenuItem151,
-        navigationMenuItem152,
-        navigationMenuItem153,
-        navigationMenuItem154,
-        navigationMenuItem155,
-        navigationMenuItem156};
+        navigationMenuItem40,
+        navigationMenuItem72,
+        navigationMenuItem73,
+        navigationMenuItem74,
+        navigationMenuItem75,
+        navigationMenuItem76,
+        navigationMenuItem77,
+        navigationMenuItem78};
             this.ucNavigationMenu1.Location = new System.Drawing.Point(-1, 34);
             this.ucNavigationMenu1.Name = "ucNavigationMenu1";
             this.ucNavigationMenu1.Padding = new System.Windows.Forms.Padding(30, 0, 0, 0);
@@ -1269,6 +1265,10 @@
             this.Aligning.Images.SetKeyName(0, "左对齐启用.png");
             this.Aligning.Images.SetKeyName(1, "左对齐未启用.png");
             // 
+            // timer4
+            // 
+            this.timer4.Tick += new System.EventHandler(this.timer4_Tick);
+            // 
             // userControl11
             // 
             this.userControl11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
@@ -1279,9 +1279,9 @@
             this.userControl11.Size = new System.Drawing.Size(362, 225);
             this.userControl11.TabIndex = 9;
             // 
-            // timer4
+            // plCreconnectionTime1
             // 
-            this.timer4.Tick += new System.EventHandler(this.timer4_Tick);
+            this.plCreconnectionTime1.Interval = 500;
             // 
             // Form2
             // 
@@ -1353,7 +1353,6 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem5;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
         private System.Windows.Forms.Timer timer2;
-        private System.Windows.Forms.Timer PLC_circulation_read;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem6;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem7;
@@ -1409,5 +1408,6 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem26;
         private System.Windows.Forms.ImageList Aligning;
         private System.Windows.Forms.Timer timer4;
+        private 控件重做.PLCreconnectionTime plCreconnectionTime1;
     }
 }

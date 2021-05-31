@@ -79,6 +79,14 @@ namespace 自定义Uppercomputer_20200727.EF实体模型
                     Button_parameter.MODBUS_TCP_PLC_端口11 = _Parameter.MODBUS_TCP_PLC_端口11;
                     Button_parameter.MODBUS_TCP_PLC_类型 = _Parameter.MODBUS_TCP_PLC_类型;
                     Button_parameter.MODBUS_TCP_PLC_链接类型 = _Parameter.MODBUS_TCP_PLC_链接类型;
+                    Button_parameter.发那科_IP = _Parameter.发那科_IP;
+                    Button_parameter.发那科_端口 = _Parameter.发那科_端口;
+                    Button_parameter.发那科_类型 = _Parameter.发那科_类型;
+                    Button_parameter.发那科_链接类型 = _Parameter.发那科_链接类型;
+                    Button_parameter.欧姆龙PLC_IP = _Parameter.欧姆龙PLC_IP;
+                    Button_parameter.欧姆龙PLC_端口 = _Parameter.欧姆龙PLC_端口;
+                    Button_parameter.欧姆龙PLC_类型 = _Parameter.欧姆龙PLC_类型;
+                    Button_parameter.欧姆龙PLC链接类型 = _Parameter.欧姆龙PLC链接类型;
                     Button_parameter.三菱链接模式 = _Parameter.三菱链接模式;
                     Button_parameter.西门子链接模式 = _Parameter.西门子链接模式;
                     Button_parameter.欧姆龙链接模式 = _Parameter.欧姆龙链接模式;

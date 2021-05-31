@@ -28,6 +28,8 @@ namespace 自定义Uppercomputer_20200727.PLC选择
         static private bool PLC_ready;//内部PLC状态
         static private int PLCerr_code;//内部报警代码
         static private string PLCerr_content;//内部报警内容
+        static bool PLC_Reconnection;//重连标志位
+        static string PLC_type = "TCP";//链接类型
         //实现接口的属性
         /// <summary>
         /// 三菱Mitsubishi PLC状态
@@ -49,6 +51,8 @@ namespace 自定义Uppercomputer_20200727.PLC选择
         ///三菱Mitsubishi PLC报警内容
         /// </summary>
         string IPLC_interface.PLCerr_content { get => PLCerr_content; }//PLC报警内容
+        bool IPLC_interface.PLC_Reconnection { get {return PLC_Reconnection; } set { PLC_Reconnection = value; } }
+        string IPLC_interface.PLC_type { get { return PLC_type; } set { PLC_type = value; } }
         /// <summary>
         /// 宏指令  三菱Mitsubishi PLC报警内容
         /// </summary>
@@ -99,6 +103,10 @@ namespace 自定义Uppercomputer_20200727.PLC选择
                 err(e);//异常处理
                 return "链接PLC异常";//尝试连接PLC，如果连接成功则返回值为0
             }
+        }
+        public void PLC_Close()//切断PLC链接
+        {
+            err(new Exception("切断PLC链接"));
         }
         /// <summary>
         /// 三菱Mitsubishi  读取PLC
@@ -326,7 +334,6 @@ namespace 自定义Uppercomputer_20200727.PLC选择
             PLC_ready = false;//PLC开放异常
             PLCerr_code = e.HResult;
             PLCerr_content = e.Message;
-            MessageBox.Show("链接PLC异常");
         }
     }
 }

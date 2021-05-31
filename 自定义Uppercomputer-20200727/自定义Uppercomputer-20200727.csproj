@@ -253,7 +253,6 @@
     <Compile Include="EF实体模型\histogram_Chart_Class.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="EF实体模型\histogram_Chart_EF.cs" />
     <Compile Include="EF实体模型\histogram_Chart_parameter.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -526,6 +525,9 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="控件重做\LedDisplay_reform.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="控件重做\PLCreconnectionTime.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="控件重做\RadioButton_reform.cs">

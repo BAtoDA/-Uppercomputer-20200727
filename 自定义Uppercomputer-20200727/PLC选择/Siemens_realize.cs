@@ -24,6 +24,8 @@ namespace 自定义Uppercomputer_20200727.PLC选择.MODBUS_TCP监控窗口
         static private bool PLC_ready;//内部PLC状态
         static private int PLCerr_code;//内部报警代码
         static private string PLCerr_content;//内部报警内容
+        static bool PLC_Reconnection;//重连标志位
+        static string PLC_type = "TCP";//链接类型
         //西门子S7通讯类--
         private static SiemensS7Net siemensTcpNet = null;
         //互斥锁(Mutex)，用于多线程中防止两条线程同时对一个公共资源进行读写的机制。
@@ -53,6 +55,8 @@ namespace 自定义Uppercomputer_20200727.PLC选择.MODBUS_TCP监控窗口
         /// 宏指令 西门子 Siemens  PLC报警内容
         /// </summary>
         string macroinstruction_PLC_interface.PLCerr_content { get => PLCerr_content; }//PLC报警内容
+        bool IPLC_interface.PLC_Reconnection { get { return PLC_Reconnection; } set { PLC_Reconnection = value; } }
+        string IPLC_interface.PLC_type { get { return PLC_type; } set { PLC_type = value; } }
         /// <summary>
         ///  西门子 Siemens   初始化---open--并且判断用户选择的类型
         /// </summary>
@@ -102,6 +106,10 @@ namespace 自定义Uppercomputer_20200727.PLC选择.MODBUS_TCP监控窗口
                 err(e);//异常处理
                 return "链接PLC异常";//尝试连接PLC，如果连接成功则返回值为0
             }
+        }
+        public void PLC_Close()//切断PLC链接
+        {
+            err(new Exception("切断PLC链接"));
         }
         /// <summary>
         /// 西门子 Siemens 读取PLC 位状态 
