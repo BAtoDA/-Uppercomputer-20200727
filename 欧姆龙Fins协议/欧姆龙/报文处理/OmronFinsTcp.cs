@@ -424,34 +424,6 @@ namespace 欧姆龙Fins协议.欧姆龙.报文处理
                 //使用动态编程--DLR运行时确定T类型
                 dynamic Resut = result.Content;
                 Data = Resut[0].ToString();
-                //switch (typeof(T).Name.ToString())
-                //{
-                //    case "Boolean[]":
-                //        foreach (var i in (bool[])((object)result.Content))
-                //        {
-                //            Data = i.ToString();
-                //        }
-                //        break;
-                //    case "Int16[]":
-                //        foreach (var i in (short[])((object)result.Content))
-                //        {
-                //            Data = i.ToString();
-                //        }
-                //        break;
-                //    case "Int32[]":
-                //        foreach (var i in (int[])((object)result.Content))
-                //        {
-                //            Data = i.ToString();
-                //        }
-                //        break;
-                //    case "Single[]":
-                //        foreach (var i in (float[])((object)result.Content))
-                //        {
-                //            Data = i.ToString();
-                //        }
-                //        break;
-
-                //}
                 retry = 0;
             }
             Thread.Sleep(2);
