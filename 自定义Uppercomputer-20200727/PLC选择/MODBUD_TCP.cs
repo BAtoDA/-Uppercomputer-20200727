@@ -145,6 +145,36 @@ namespace 自定义Uppercomputer_20200727.PLC选择
         {
             err(new Exception("切断PLC链接"));
         }
+        public void PLCreconnection()//重连PLC
+        {
+            try
+            {
+                busTcpClient?.ConnectClose();//切换模式
+                busTcpClient = new ModbusTcpNet(MODBUD_TCP.IPEndPoint.Address.ToString(), MODBUD_TCP.IPEndPoint.Port);//传入IP与端口
+                OperateResult connect = busTcpClient.ConnectServer();//是否打开成功？
+                busTcpClient.ConnectTimeOut = 1000;
+                busTcpClient.ReceiveTimeOut = 1000;
+                if (connect.IsSuccess)
+                {
+                    PLC_ready = true;//PLC开放正常
+                    PLC_busy = false;//允许访问
+                    return ;//已连接到服务器        
+                }
+                else
+                {
+                    PLC_ready = false;//PLC开放异常
+                    PLC_busy = false;//允许访问
+                    // 切断连接
+                    busTcpClient.ConnectClose();
+                    return;//尝试连接PLC，如果连接成功则返回值为0                   
+                }
+            }
+            catch (Exception Err)
+            {
+                MODBUD_TCP.err(Err);//异常处理
+                return ;//尝试连接PLC，如果连接成功则返回值为0
+            }
+        }
         /// <summary>
         /// 读取PLC 位状态 --D_bit这类需要自己在表流获取当前位状态--M这类不需要
         /// </summary>

@@ -106,9 +106,9 @@ namespace 自定义Uppercomputer_20200727.PLC选择
                     PLC_ready = false;//PLC开放异常
                     // 切断连接
                     melsec_net.ConnectClose();
-                    MessageBox.Show("链接PLC"+ IPEndPoint.Address.ToString()+"异常--请检查下位机状态");
+                    MessageBox.Show("链接PLC" + IPEndPoint.Address.ToString() + "异常--请检查下位机状态");
                     return "链接PLC异常";//尝试连接PLC，如果连接成功则返回值为0
-                }               
+                }
             }
             catch (Exception e)
             {
@@ -119,6 +119,37 @@ namespace 自定义Uppercomputer_20200727.PLC选择
         public void PLC_Close()//切断PLC链接
         {
             err(new Exception("切断PLC链接"));
+        }
+        public void PLCreconnection()//重连PLC
+        {
+            try
+            {
+                //利用三菱3E帧实现
+                melsec_net.IpAddress = IPEndPoint.Address.ToString();//获取设置的IP
+                melsec_net.Port = IPEndPoint.Port;//获取设置的端口
+                melsec_net.ConnectClose();//切换通讯模式
+                melsec_net.ConnectTimeOut = 500;
+                melsec_net.ReceiveTimeOut = 500;
+                OperateResult connect = melsec_net.ConnectServer();//获取操作结果
+                retry = 0;
+                if (connect.IsSuccess)//判断是否连接成功
+                {
+                    PLC_ready = true;//PLC开放正常
+                    return ;
+                }
+                else
+                {
+                    PLC_ready = false;//PLC开放异常
+                    // 切断连接
+                    melsec_net.ConnectClose();
+                    return ;//尝试连接PLC，如果连接成功则返回值为0
+                }
+            }
+            catch (Exception e)
+            {
+                err(e);//异常处理
+                return ;//尝试连接PLC，如果连接成功则返回值为0
+            }
         }
         /// <summary>
         ///   三菱 Mitsubishi /读取PLC

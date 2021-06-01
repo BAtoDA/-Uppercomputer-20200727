@@ -42,6 +42,10 @@ namespace PLC通讯规范接口
         /// <returns></returns>
         void PLC_Close();
         /// <summary>
+        /// 重连PLC方法
+        /// </summary>
+        void PLCreconnection();
+        /// <summary>
         /// 读取--位
         /// </summary>
         /// <param name="Name"></param>

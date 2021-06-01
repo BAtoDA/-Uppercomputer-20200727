@@ -111,6 +111,36 @@ namespace 自定义Uppercomputer_20200727.PLC选择.MODBUS_TCP监控窗口
         {
             err(new Exception("切断PLC链接"));
         }
+        public void PLCreconnection()//重连PLC
+        {
+            try
+            {
+                //利用西门子S7协议实现
+                siemensTcpNet.IpAddress = IPEndPoint.Address.ToString();//获取设置的IP
+                siemensTcpNet.ReceiveTimeOut = 500;//超时时间
+                siemensTcpNet.ConnectTimeOut = 500;
+                OperateResult connect = siemensTcpNet.ConnectServer();//获取操作结果
+                if (connect.IsSuccess)//判断是否连接成功
+                {
+                    PLC_ready = true;//PLC开放正常
+                    Message_run = false;//复位标志位
+                    return ;
+                }
+                else
+                {
+                    PLC_ready = false;//PLC开放异常
+                    // 切断连接
+                    siemensTcpNet.ConnectClose();
+                    return ;//尝试连接PLC，如果连接成功则返回值为0
+                }
+
+            }
+            catch (Exception e)
+            {
+                err(e);//异常处理
+                return ;//尝试连接PLC，如果连接成功则返回值为0
+            }
+        }
         /// <summary>
         /// 西门子 Siemens 读取PLC 位状态 
         /// </summary>

@@ -48,46 +48,44 @@ namespace 自定义Uppercomputer_20200727.控件重做
 
                await Task.Run(() =>
                 {
-                    this.Stop();
                     lock (this)
                     {
                         //重连PLC机制
                         if( Mitsubishi_ax.PLC_Reconnection&& Mitsubishi_ax.PLC_ready!=true)
                         {
                             Mitsubishi_ax.PLC_Close();
-                            Mitsubishi_ax.PLC_open();
+                            Mitsubishi_ax.PLCreconnection();
                         }
                         if (Mitsubishi_rea.PLC_Reconnection && Mitsubishi_rea.PLC_ready != true)
                         {
                             Mitsubishi_rea.PLC_Close();
-                            Mitsubishi_rea.PLC_open();
+                            Mitsubishi_rea.PLCreconnection();
                         }
                         if (MODBUD_tcp.PLC_Reconnection && MODBUD_tcp.PLC_ready != true)
                         {
                             MODBUD_tcp.PLC_Close();
-                            MODBUD_tcp.PLC_open();
+                            MODBUD_tcp.PLCreconnection();
                         }
                         if (Siemens_rea.PLC_Reconnection && Siemens_rea.PLC_ready != true)
                         {
                             Siemens_rea.PLC_Close();
-                            Siemens_rea.PLC_open();
+                            Siemens_rea.PLCreconnection();
                         }
                         if (OmronFinsCIP.PLC_Reconnection && OmronFinsCIP.PLC_ready != true)
                         {
                             OmronFinsCIP.PLC_Close();
-                            OmronFinsCIP.PLC_open();
+                            OmronFinsCIP.PLCreconnection();
                         }
                         if (OmronFinsTCP.PLC_Reconnection && OmronFinsTCP.PLC_ready != true)
                         {
                             OmronFinsTCP.PLC_Close();
-                            OmronFinsTCP.PLC_open();
+                            OmronFinsTCP.PLCreconnection();
                         }
                         if (OmronFinsUDP.PLC_Reconnection && OmronFinsUDP.PLC_ready != true)
                         {
                             OmronFinsUDP.PLC_Close();
-                            OmronFinsUDP.PLC_open();
+                            OmronFinsUDP.PLCreconnection();
                         }
-                        this.Start();
                     }
                 });
           

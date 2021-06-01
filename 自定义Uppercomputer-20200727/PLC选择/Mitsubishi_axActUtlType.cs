@@ -108,6 +108,28 @@ namespace 自定义Uppercomputer_20200727.PLC选择
         {
             err(new Exception("切断PLC链接"));
         }
+        public void PLCreconnection()//重连PLC
+        {
+            try
+            {
+                //利用Communication DLL库实现
+                axActUtlType.ActLogicalStationNumber = Convert.ToInt32(1);//填设置的逻辑站号
+                axActUtlType.ActPassword = " ";//填设置的逻辑密码
+                if (axActUtlType.Open() > 0)
+                {
+                    PLC_ready = false;//PLC开放异常
+                    return ;//尝试连接PLC，如果连接成功则返回值为0
+                }
+                else
+                    PLC_ready = true;//PLC开放正常
+                return ;
+            }
+            catch (Exception e)
+            {
+                err(e);//异常处理
+                return;//尝试连接PLC，如果连接成功则返回值为0
+            }
+        }
         /// <summary>
         /// 三菱Mitsubishi  读取PLC
         /// </summary>

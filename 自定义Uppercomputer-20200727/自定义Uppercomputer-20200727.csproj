@@ -1135,6 +1135,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="PLC选择\NewFolder1\" />
+    <Folder Include="控制主页面模板\控件添加类重写\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

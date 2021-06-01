@@ -128,6 +128,37 @@ namespace 欧姆龙Fins协议.欧姆龙.报文处理
         {
             err(new Exception("切断PLC链接"));
         }
+        public void PLCreconnection()//重连PLC
+        {
+            try
+            {
+                busTcpClient = new OmronFinsNet(IPEndPoint.Address.ToString(), IPEndPoint.Port);//传入IP与端口
+                busTcpClient.ConnectTimeOut = 1000;//X超时时间
+                busTcpClient.ReceiveTimeOut = 1000;//超时时间
+                busTcpClient.ConnectClose();//切断链接
+                busTcpClient.IsChangeSA1AfterReadFailed = true;//设置SA1值                              
+                OperateResult connect = busTcpClient.ConnectServer();//是否打开成功？
+                retry = 0;
+                if (connect.IsSuccess)
+                {
+                    PLC_ready = true;//PLC开放正常
+                    PLC_busy = false;//允许访问
+                    return ;//已连接到服务器        
+                }
+                else
+                {
+                    PLC_ready = false;//PLC开放异常
+                    PLC_busy = false;//允许访问
+                    busTcpClient.ConnectClose();//切断链接
+                    return ;//尝试连接PLC，如果连接成功则返回值为0                   
+                }
+            }
+            catch (Exception Err)
+            {
+                err(Err);//异常处理
+                return ;//尝试连接PLC，如果连接成功则返回值为0
+            }
+        }
         /// <summary>
         /// 读取PLC 位状态 --D_bit这类需要自己在表流获取当前位状态--M这类不需要
         /// </summary>
