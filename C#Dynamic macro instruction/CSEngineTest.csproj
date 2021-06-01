@@ -248,5 +248,11 @@
   <ItemGroup>
     <None Include="Resources\宏指令编译器界面.png" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PLC通讯规范接口\PLC通讯规范接口.csproj">
+      <Project>{F61E9338-2D7E-4A93-A7B8-ACB591F01C47}</Project>
+      <Name>PLC通讯规范接口</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

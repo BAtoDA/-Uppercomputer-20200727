@@ -52,6 +52,7 @@ using 自定义Uppercomputer_20200727.EF实体模型;
 using System.Data.Entity;
 using CCWin.Win32.Const;
 using 自定义Uppercomputer_20200727.控制主页面模板.控件添加类重写;
+using 欧姆龙Fins协议.欧姆龙.报文处理;
 
 namespace 自定义Uppercomputer_20200727
 {
@@ -629,7 +630,10 @@ namespace 自定义Uppercomputer_20200727
             CSEngineTest.PLC.Mitsubishi_axActUtlType = new Mitsubishi_axActUtlType();//实例化接口
             CSEngineTest.PLC.Mitsubishi = new Mitsubishi_realize();//实例化接口
             CSEngineTest.PLC.MODBUD_TCP = new MODBUD_TCP();//实例化接口
-            CSEngineTest.PLC.Siemens = new Siemens_realize();//实例化接口;            
+            CSEngineTest.PLC.Siemens = new Siemens_realize();//实例化接口;
+            CSEngineTest.PLC.OmronCip = new OmronFinsCIP();//实例化接口;
+            CSEngineTest.PLC.OmronTcp = new OmronFinsTcp();//实例化接口;
+            CSEngineTest.PLC.OmronUdp = new OmronFinsUDP();//实例化接口;
         }
 
         private void Form2_Shown(object sender, EventArgs e)//添加控件
