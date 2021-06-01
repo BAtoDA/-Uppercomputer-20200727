@@ -35,6 +35,7 @@ namespace 自定义Uppercomputer_20200727.控件重做
             this.MouseMove += MouseMove__reform;//注册事件
             this.DoubleClick += DoubleClick_reform;//注册事件
             DragResizeControl.RegisterControl(this);//实现控件改变大小与拖拽位置
+            this.Size = new Size(100, 100);//设置大小
         }
         /// <方法重写当鼠标移到控件时获取——ID>
         private void MouseEnter_reform(object send, EventArgs e)

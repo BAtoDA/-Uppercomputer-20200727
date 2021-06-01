@@ -27,7 +27,7 @@ namespace PLC通讯规范接口
     /// </summary>
     public enum Mitsubishi_bit
     { 
-      /*  LCS,LCC,*/SM,X,Y,M,L,F,B,TS,SS,SC,CS,CC,SB,S,D_Bit,R_Bit,SW_Bit,W_Bit
+      /*  LCS,LCC,*/X,Y,M,L,F,B,TS,SM,SS,SC,CS,CC,SB,S,D_Bit,R_Bit,SW_Bit,W_Bit
     }
     /// <summary>
     /// PLC各可访问软元件 三菱 -WORD 字
@@ -41,7 +41,7 @@ namespace PLC通讯规范接口
     /// </summary>
     public enum Omron_bit
     {
-        C = 36,
+        W = 36,
         A = 51,
         D = 2,
         H = 50,
@@ -49,15 +49,15 @@ namespace PLC通讯规范接口
         EM01 = 33,
         EM02 = 34,
         EM03 = 35,
-        W = 49
+        C = 49
     }
     /// <summary>
     /// PLC各可访问软元件  欧姆龙  字
     /// </summary>
     public enum Omron_D
     {
-        C=36,
-        W = 49,
+        W=36,
+        C = 49,
         H = 50,
         A = 51,
         D = 2,

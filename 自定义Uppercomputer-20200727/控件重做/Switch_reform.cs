@@ -60,6 +60,7 @@ namespace 自定义Uppercomputer_20200727.控件重做
                 this.Time_Tick();
             }));
             PLC_time.Change(500, 300);
+            this.Size = new Size(75, 29);//设置大小
         }
         /// <方法重写当鼠标移到控件时获取——ID>
         private void MouseEnter_reform(object send, EventArgs e)

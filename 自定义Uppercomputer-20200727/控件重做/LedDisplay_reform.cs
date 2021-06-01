@@ -4,6 +4,7 @@ using DragResizeControlWindowsDrawDemo;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -57,6 +58,7 @@ namespace 自定义Uppercomputer_20200727.控件重做
                 this.Time_Tick();
             }));
             PLC_time.Change(500, 300);
+            this.Size = new Size(101, 33);//设置大小
         }
         /// <方法重写当鼠标移到控件时获取——ID>
         private void MouseEnter_reform(object send, EventArgs e)

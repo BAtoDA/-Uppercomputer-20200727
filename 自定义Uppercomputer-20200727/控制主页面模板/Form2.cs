@@ -51,6 +51,7 @@ using 自定义Uppercomputer_20200727.控件重做.复制粘贴接口;
 using 自定义Uppercomputer_20200727.EF实体模型;
 using System.Data.Entity;
 using CCWin.Win32.Const;
+using 自定义Uppercomputer_20200727.控制主页面模板.控件添加类重写;
 
 namespace 自定义Uppercomputer_20200727
 {
@@ -94,8 +95,8 @@ namespace 自定义Uppercomputer_20200727
 
         private void buttton按钮ToolStripMenuItem_Click(object sender, EventArgs e)//添加按钮
         {
-            Button_Add button = new Button_Add();
-            Button_reform skinButton = button.Add(this.Controls, new Point(X, Y));
+            ControlAddBase controlAdd = new ControlAddBase();
+            Button_reform skinButton = controlAdd.Add<Button_reform>(this.Controls, new Point(X, Y));
             this.Controls.Add(skinButton);//添加控件
             //LogUtils日志
             LogUtils.debugWrite("用户选择添加："+skinButton.Name);
@@ -119,8 +120,8 @@ namespace 自定义Uppercomputer_20200727
 
         private void label文本ToolStripMenuItem_Click(object sender, EventArgs e)//添加系统文本
         {
-            Skinlabel_Add skinlabel = new Skinlabel_Add();
-            SkinLabel skinLabel = skinlabel.Add(this.Controls, new Point(X, Y));
+            ControlAddBase skinlabel = new ControlAddBase();
+            SkinLabel skinLabel = skinlabel.Add<SkinLabel_reform>(this.Controls, new Point(X, Y));
             this.Controls.Add(skinLabel);
             //LogUtils日志
             LogUtils.debugWrite("用户选择添加：" + skinLabel.Name);
@@ -143,8 +144,8 @@ namespace 自定义Uppercomputer_20200727
 
         private void texebox数值ToolStripMenuItem_Click(object sender, EventArgs e)//添加系统输入文本
         {
-            SkinTextBox_Add skinTextBox = new SkinTextBox_Add();
-            TextBox skinTextBox1 = skinTextBox.Add(this.Controls, new Point(X, Y));
+            ControlAddBase skinTextBox = new ControlAddBase();
+            TextBox skinTextBox1 = skinTextBox.Add<SkinTextBox_reform>(this.Controls, new Point(X, Y));
             this.Controls.Add(skinTextBox1);
             //LogUtils日志
             LogUtils.debugWrite("用户选择添加：" + skinTextBox1.Name);
@@ -194,8 +195,8 @@ namespace 自定义Uppercomputer_20200727
         }
         private void toolStripMenuItem7_Click(object sender, EventArgs e)//添加切换开关
         {
-            Switch_Add button = new Switch_Add();
-            Switch_reform skinButton = button.Add(this.Controls, new Point(X, Y));
+            ControlAddBase button = new ControlAddBase();
+            Switch_reform skinButton = button.Add<Switch_reform>(this.Controls, new Point(X, Y));
             this.Controls.Add(skinButton);//添加控件
             //LogUtils日志
             LogUtils.debugWrite("用户选择添加：" + skinButton.Name);
@@ -217,8 +218,8 @@ namespace 自定义Uppercomputer_20200727
         }
         private void toolStripMenuItem13_Click(object sender, EventArgs e)//添加指示灯
         {
-            LedBulb_Add button = new LedBulb_Add();
-            LedBulb_reform skinButton = button.Add(this.Controls, new Point(X, Y));
+            ControlAddBase button = new ControlAddBase();
+            LedBulb_reform skinButton = button.Add<LedBulb_reform>(this.Controls, new Point(X, Y));
             this.Controls.Add(skinButton);//添加控件
             //LogUtils日志
             LogUtils.debugWrite("用户选择添加：" + skinButton.Name);
@@ -240,8 +241,8 @@ namespace 自定义Uppercomputer_20200727
         }
         private void toolStripMenuItem9_Click(object sender, EventArgs e)//添加四边形方框
         {
-            GroupBox_Add GroupBox = new GroupBox_Add();
-            GroupBox_reform GroupBoxl = GroupBox.Add(this.Controls, new Point(X, Y));
+            ControlAddBase GroupBox = new ControlAddBase();
+            GroupBox_reform GroupBoxl = GroupBox.Add<GroupBox_reform>(this.Controls, new Point(X, Y));
             this.Controls.Add(GroupBoxl);
             //LogUtils日志
             LogUtils.debugWrite("用户选择添加：" + GroupBoxl.Name);
@@ -263,8 +264,8 @@ namespace 自定义Uppercomputer_20200727
         }
         private void toolStripMenuItem12_Click(object sender, EventArgs e)//添加无图片按钮类三
         {
-            ImageButton_Add button = new ImageButton_Add();
-            ImageButton_reform skinButton = button.Add(this.Controls, new Point(X, Y));
+            ControlAddBase button = new ControlAddBase();
+            ImageButton_reform skinButton = button.Add<ImageButton_reform>(this.Controls, new Point(X, Y));
             this.Controls.Add(skinButton);//添加控件
             //LogUtils日志
             LogUtils.debugWrite("用户选择添加：" + skinButton.Name);
@@ -378,8 +379,8 @@ namespace 自定义Uppercomputer_20200727
         }
         private void toolStripMenuItem17_Click(object sender, EventArgs e)//数值显示
         {
-            LedDisplay_Add button = new LedDisplay_Add();
-            LedDisplay_reform skinButton = button.Add(this.Controls, new Point(X, Y));
+            ControlAddBase button = new ControlAddBase();
+            LedDisplay_reform skinButton = button.Add<LedDisplay_reform>(this.Controls, new Point(X, Y));
             this.Controls.Add(skinButton);//添加控件
             //LogUtils日志
             LogUtils.debugWrite("用户选择添加：" + skinButton.Name);
@@ -401,8 +402,8 @@ namespace 自定义Uppercomputer_20200727
         }
         private void toolStripMenuItem18_Click(object sender, EventArgs e)//百分百表盘
         {
-            AnalogMeter_Add button = new AnalogMeter_Add();
-            AnalogMeter_reform skinButton = button.Add(this.Controls, new Point(X, Y));
+            ControlAddBase button = new ControlAddBase();
+            AnalogMeter_reform skinButton = button.Add<AnalogMeter_reform>(this.Controls, new Point(X, Y));
             this.Controls.Add(skinButton);//添加控件
             //LogUtils日志
             LogUtils.debugWrite("用户选择添加：" + skinButton.Name);
@@ -447,8 +448,8 @@ namespace 自定义Uppercomputer_20200727
         }
         private void toolStripMenuItem20_Click(object sender, EventArgs e)//添加画面切换
         {
-            function_key_Add button = new function_key_Add();
-            function_key_reform skinButton = button.Add(this.Name, this.Controls, new Point(X, Y));
+            ControlAddBase button = new ControlAddBase();
+            function_key_reform skinButton = button.Add<function_key_reform>(this.Controls, new Point(X, Y));
             this.Controls.Add(skinButton);//添加控件
             //LogUtils日志
             LogUtils.debugWrite("用户选择添加：" + skinButton.Name);
@@ -470,8 +471,8 @@ namespace 自定义Uppercomputer_20200727
         }
         private void toolStripMenuItem22_Click(object sender, EventArgs e)//添加单选按钮
         {
-            RadioButton_Add button = new RadioButton_Add();
-            RadioButton_reform skinButton = button.Add(this.Controls, new Point(X, Y));
+            ControlAddBase button = new ControlAddBase();
+            RadioButton_reform skinButton = button.Add<RadioButton_reform>(this.Controls, new Point(X, Y));
             this.Controls.Add(skinButton);//添加控件
             //LogUtils日志
             LogUtils.debugWrite("用户选择添加：" + skinButton.Name);
@@ -516,8 +517,8 @@ namespace 自定义Uppercomputer_20200727
         }
         private void toolStripMenuItem23_Click(object sender, EventArgs e)//添加纵向移动图形
         {
-            HScrollBar_Add button = new HScrollBar_Add();
-            HScrollBar_reform skinButton = button.Add(this.Controls, new Point(X, Y));
+            ControlAddBase button = new ControlAddBase();
+            HScrollBar_reform skinButton = button.Add<HScrollBar_reform>(this.Controls, new Point(X, Y));
             this.Controls.Add(skinButton);//添加控件
             //LogUtils日志
             LogUtils.debugWrite("用户选择添加：" + skinButton.Name);

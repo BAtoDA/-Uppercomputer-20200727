@@ -3,6 +3,7 @@ using DragResizeControlWindowsDrawDemo;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -40,6 +41,7 @@ namespace 自定义Uppercomputer_20200727.控件重做
             this.MouseEnter += MouseEnter_reform;//注册事件--获取控件信息
             this.TextChanged += TextChanged_reform;//注册事件
             DragResizeControl.RegisterControl(this);//实现控件改变大小与拖拽位置
+            this.Size = new Size(83, 31);//设置大小
         }
         /// <summary>
         /// 重写点击事件--实现画面切换

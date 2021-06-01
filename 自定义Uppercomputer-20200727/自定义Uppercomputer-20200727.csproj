@@ -597,23 +597,15 @@
     <Compile Include="控件重做\获取控件的全部属性\Control_property.Designer.cs">
       <DependentUpon>Control_property.cs</DependentUpon>
     </Compile>
-    <Compile Include="控制主页面模板\AnalogMeter_Add.cs" />
     <Compile Include="控制主页面模板\doughnut_Chart_Add.cs" />
-    <Compile Include="控制主页面模板\function_key_Add.cs" />
-    <Compile Include="控制主页面模板\GroupBox_Add.cs" />
     <Compile Include="控制主页面模板\histogram_Chart_Add.cs" />
-    <Compile Include="控制主页面模板\HScrollBar_Add.cs" />
     <Compile Include="控制主页面模板\ihatetheqrcode_Add.cs" />
-    <Compile Include="控制主页面模板\ImageButton_Add.cs" />
-    <Compile Include="控制主页面模板\LedBulb_Add.cs" />
-    <Compile Include="控制主页面模板\LedDisplay_Add.cs" />
     <Compile Include="控制主页面模板\oscillogram_Chart_Add.cs" />
     <Compile Include="控制主页面模板\pull_down_menu_Add.cs" />
-    <Compile Include="控制主页面模板\RadioButton_Add.cs" />
     <Compile Include="控制主页面模板\ScrollingText_Add.cs" />
-    <Compile Include="控制主页面模板\Switch_Add.cs" />
     <Compile Include="控制主页面模板\工业图形ADD\Conveyor_Add.cs" />
     <Compile Include="控制主页面模板\工业图形ADD\Valve_Add.cs" />
+    <Compile Include="控制主页面模板\控件添加类重写\ControlAddBase.cs" />
     <Compile Include="控制主页面模板\控件自动改变大小\Resize.cs" />
     <Compile Include="文本输入键盘\keyboard.cs">
       <SubType>Form</SubType>
@@ -712,7 +704,6 @@
     <Compile Include="控制主页面\Form3.Designer.cs">
       <DependentUpon>Form3.cs</DependentUpon>
     </Compile>
-    <Compile Include="控制主页面模板\Button_Add.cs" />
     <Compile Include="控制主页面模板\Form2.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -747,9 +738,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="主页面\Homepag-class.cs" />
     <Compile Include="控制主页面模板\From_Load_Add.cs" />
-    <Compile Include="控制主页面模板\Skinlabel_Add.cs" />
     <Compile Include="控制主页面模板\SkinPictureBox_Add.cs" />
-    <Compile Include="控制主页面模板\SkinTextBox_Add.cs" />
     <Compile Include="控制主页面模板\Windowclass.cs" />
     <Compile Include="文本输入键盘\keyboard_Hex.cs">
       <SubType>Form</SubType>
@@ -1135,7 +1124,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="PLC选择\NewFolder1\" />
-    <Folder Include="控制主页面模板\控件添加类重写\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

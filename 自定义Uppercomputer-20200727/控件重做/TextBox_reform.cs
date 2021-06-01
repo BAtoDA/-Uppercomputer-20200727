@@ -64,6 +64,9 @@ namespace 自定义Uppercomputer_20200727.控件重做
                 this.Time_Tick();
             }));
             PLC_time.Change(500, 300);
+            this.Size = new Size(83, 31);//设置大小
+            this.Text = "0";//设置文本
+            this.Lines = new string[] { typeof(SkinTextBox_reform).Name };//初次显示文字
         }
         /// <方法重写当鼠标移到控件时获取——ID>
         private void MouseEnter_reform(object send, EventArgs e)

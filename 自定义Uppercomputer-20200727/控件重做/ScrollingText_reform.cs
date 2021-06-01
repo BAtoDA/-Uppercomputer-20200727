@@ -38,6 +38,8 @@ namespace 自定义Uppercomputer_20200727.控件重做
             DragResizeControl.RegisterControl(this);//实现控件改变大小与拖拽位置
             event_Time = new Event_time(this, form);//实例化报警条事件遍历
             event_Time.Start();//启动定时器
+            this.Interval = 100;//文本刷新时间
+            this.Size = new Size(200, 60);//设置大小
         }
         /// <方法重写当鼠标移到控件时获取——ID>
         private void MouseEnter_reform(object send, EventArgs e)
