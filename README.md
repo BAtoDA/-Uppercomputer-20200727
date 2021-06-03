@@ -36,7 +36,8 @@
  3.可以访问三菱 西门子 modbus tcp 欧姆龙 等PLC bool区 D区域。   
  4.后期会出一个dll专门处理协议帧让用户无需理会报文直接套用方法。  
  ![image](https://user-images.githubusercontent.com/60955669/120663718-d9afb980-c4bc-11eb-8218-ffa19a9f650a.png)
-![Uploading image.png…]()
+ ![image](https://user-images.githubusercontent.com/60955669/120666045-da494f80-c4be-11eb-807d-99fc4f91706f.png)
+
 
  
 BUG与反馈：  
