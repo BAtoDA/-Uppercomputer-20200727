@@ -82,9 +82,10 @@ namespace 自定义Uppercomputer_20200727.PLC选择.MODBUS_TCP监控窗口
             {
                 //利用西门子S7协议实现
                 siemensTcpNet.IpAddress = IPEndPoint.Address.ToString();//获取设置的IP
-                siemensTcpNet.ReceiveTimeOut = 500;//超时时间
-                siemensTcpNet.ConnectTimeOut = 500;
+                siemensTcpNet.ReceiveTimeOut = 1000;//超时时间
+                siemensTcpNet.ConnectTimeOut = 1000;
                 OperateResult connect = siemensTcpNet.ConnectServer();//获取操作结果
+                retry = 0;
                 if (connect.IsSuccess)//判断是否连接成功
                 {
                     PLC_ready = true;//PLC开放正常
@@ -122,6 +123,7 @@ namespace 自定义Uppercomputer_20200727.PLC选择.MODBUS_TCP监控窗口
                 OperateResult connect = siemensTcpNet.ConnectServer();//获取操作结果
                 if (connect.IsSuccess)//判断是否连接成功
                 {
+                    retry = retry > 3 ? 0 : retry;
                     PLC_ready = true;//PLC开放正常
                     Message_run = false;//复位标志位
                     return ;

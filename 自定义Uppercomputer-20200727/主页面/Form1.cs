@@ -23,6 +23,11 @@ using 自定义Uppercomputer_20200727.Nlog;
 using System.Xml;
 using 自定义Uppercomputer_20200727.EF实体模型.EFtoSQL操作类重写;
 using System.IO;
+using System.Runtime.InteropServices;
+using static PLC通讯规范接口.Request;
+using Nancy.Json;
+using 服务器端;
+using 自定义Uppercomputer_20200727.主页面.进程通讯消息处理;
 
 namespace 自定义Uppercomputer_20200727
 {
@@ -53,6 +58,12 @@ namespace 自定义Uppercomputer_20200727
         public static string SQLpassword { get; set; } = "3131458";
         private void Home_Shown(object sender, EventArgs e)
         {
+            //进程间通讯程序 启动 
+            Form1 form1 = new Form1();
+            form1.Show();
+            //监听
+            SocketServer socketServer = new SocketServer(new System.Net.IPEndPoint(System.Net.IPAddress.Parse("127.0.0.1"), 9500));
+            socketServer.SocketLoad();
             //LogUtils日志
             LogUtils.debugWrite("开始加载程序集"+axActUtlType1.Name);
             ActUtlType = this.axActUtlType1;        
@@ -166,5 +177,50 @@ namespace 自定义Uppercomputer_20200727
                 throw ex;
             }
         }
+        //进程通讯上位机 使用的API函数
+
+        [DllImport("User32.dll", EntryPoint = "SendMessage")]
+
+        private static extern int SendMessage(int hWnd, int Msg, int wParam, ref COPYDATASTRUCTresult lParam);
+
+        [DllImport("User32.dll", EntryPoint = "FindWindow")]
+
+        private static extern int FindWindow(string lpClassName, string lpWindowName);
+        const int WM_COPYDATA = 0x004A;
+        protected override void DefWndProc(ref Message m)
+        {
+            switch (m.Msg)
+
+            {
+                case WM_COPYDATA:
+                    COPYDATASTRUCT cds = new COPYDATASTRUCT();
+                    Type t = cds.GetType();
+                    cds = (COPYDATASTRUCT)m.GetLParam(t);
+                    Messagehandling messagehandling = new Messagehandling();
+                    var data= messagehandling.Manage(cds);
+
+                    //处理完成后返回 数据
+                    int hWnd = FindWindow(null, @cds.characteristic);
+                    if (hWnd == 0)
+                    {
+                        MessageBox.Show("未找到消息接受者！");
+                    }
+                    else
+                    {
+                        data.characteristic = this.Name;
+                        data.cbData = messagehandling.Messagelen(data);
+
+                        SendMessage(hWnd, WM_COPYDATA, 0, ref data);
+                    }
+                    break;
+
+                default:
+
+                    base.DefWndProc(ref m);
+                    break;
+            }
+
+        }
+        
     }
 }

@@ -131,6 +131,7 @@ namespace 欧姆龙Fins协议.欧姆龙.报文处理
                 OperateResult connect = busTcpClient.Read("W0", 1);//是否打开成功？
                 if (connect.IsSuccess)
                 {
+                    retry = retry > 3 ? 0 : retry;
                     PLC_ready = true;//PLC开放正常
                     PLC_busy = false;//允许访问
                     return ;//已连接到服务器        

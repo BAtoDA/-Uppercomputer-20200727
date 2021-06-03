@@ -92,8 +92,8 @@ namespace 自定义Uppercomputer_20200727.PLC选择
                 melsec_net.IpAddress = IPEndPoint.Address.ToString();//获取设置的IP
                 melsec_net.Port = IPEndPoint.Port;//获取设置的端口
                 melsec_net.ConnectClose();//切换通讯模式
-                melsec_net.ConnectTimeOut = 500;
-                melsec_net.ReceiveTimeOut = 500;
+                melsec_net.ConnectTimeOut = 1000;
+                melsec_net.ReceiveTimeOut = 1000;
                 OperateResult connect = melsec_net.ConnectServer();//获取操作结果
                 retry = 0;
                 if (connect.IsSuccess)//判断是否连接成功
@@ -131,7 +131,7 @@ namespace 自定义Uppercomputer_20200727.PLC选择
                 melsec_net.ConnectTimeOut = 500;
                 melsec_net.ReceiveTimeOut = 500;
                 OperateResult connect = melsec_net.ConnectServer();//获取操作结果
-                retry = 0;
+                retry = retry>3?0:retry;
                 if (connect.IsSuccess)//判断是否连接成功
                 {
                     PLC_ready = true;//PLC开放正常

@@ -114,6 +114,9 @@
     <Reference Include="Microsoft.Graph.Core, Version=1.25.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Graph.Core.1.25.1\lib\net45\Microsoft.Graph.Core.dll</HintPath>
     </Reference>
+    <Reference Include="Nancy, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Nancy.2.0.0\lib\net452\Nancy.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -161,6 +164,7 @@
       <HintPath>..\packages\System.Diagnostics.DiagnosticSource.5.0.1\lib\net46\System.Diagnostics.DiagnosticSource.dll</HintPath>
     </Reference>
     <Reference Include="System.IO.Compression" />
+    <Reference Include="System.Management" />
     <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Memory.4.5.4\lib\net461\System.Memory.dll</HintPath>
     </Reference>
@@ -370,6 +374,8 @@
     <Compile Include="PLC选择\Siemens_realize.cs" />
     <Compile Include="PLC选择\三菱报文\message.cs" />
     <Compile Include="PLC选择\三菱报文\Mitsubishi_message.cs" />
+    <Compile Include="主页面\进程通讯消息处理\Messagehandling .cs" />
+    <Compile Include="主页面\进程通讯消息处理\SocketServer.cs" />
     <Compile Include="修改参数界面\AnalogMeter百分百表盘参数\Modification_AnalogMeter.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1104,6 +1110,10 @@
     <ProjectReference Include="..\三菱伺服MR-JE-C控制\三菱伺服MR-JE控制\三菱伺服MR-JE控制.csproj">
       <Project>{034fa00d-d0ae-48f7-b06e-e3a8c8aa030f}</Project>
       <Name>三菱伺服MR-JE控制</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\服务器端\服务器端.csproj">
+      <Project>{82ff19c7-1ff5-4e27-bb5e-415bab43643b}</Project>
+      <Name>服务器端</Name>
     </ProjectReference>
     <ProjectReference Include="..\欧姆龙Fins协议\欧姆龙Fins协议.csproj">
       <Project>{E2017A23-326F-4BD3-8F8C-889EF89BB127}</Project>

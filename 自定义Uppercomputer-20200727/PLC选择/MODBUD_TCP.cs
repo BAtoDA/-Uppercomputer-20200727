@@ -118,6 +118,7 @@ namespace 自定义Uppercomputer_20200727.PLC选择
                 OperateResult connect = busTcpClient.ConnectServer();//是否打开成功？
                 busTcpClient.ConnectTimeOut = 1000;
                 busTcpClient.ReceiveTimeOut = 1000;
+                retry = 0;
                 if (connect.IsSuccess)
                 {
                     PLC_ready = true;//PLC开放正常
@@ -156,6 +157,7 @@ namespace 自定义Uppercomputer_20200727.PLC选择
                 busTcpClient.ReceiveTimeOut = 1000;
                 if (connect.IsSuccess)
                 {
+                    retry = retry > 3 ? 0 : retry;
                     PLC_ready = true;//PLC开放正常
                     PLC_busy = false;//允许访问
                     return ;//已连接到服务器        

@@ -136,9 +136,9 @@ namespace 欧姆龙Fins协议.欧姆龙.报文处理
                 busTcpClient.ReceiveTimeOut = 500;//超时时间
                 busTcpClient.ConnectClose();//切断链接                            
                 OperateResult connect = busTcpClient.ConnectServer();//是否打开成功？
-                retry = 0;
                 if (connect.IsSuccess)
                 {
+                    retry = retry > 3 ? 0 : retry;
                     PLC_ready = true;//PLC开放正常
                     PLC_busy = false;//允许访问
                     return ;//已连接到服务器        

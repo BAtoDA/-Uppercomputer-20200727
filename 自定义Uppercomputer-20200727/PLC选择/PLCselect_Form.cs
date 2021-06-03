@@ -49,7 +49,7 @@ namespace 自定义Uppercomputer_20200727.PLC选择
                 {
                     this.skinButton1.Text = "链接成功";
                     this.skinComboBox1.Enabled = false;
-                    //this.skinButton1.Enabled = false;
+                    skinButton1.BaseColor = Color.FromName("Lime");
                 }
             }
             else
@@ -59,15 +59,7 @@ namespace 自定义Uppercomputer_20200727.PLC选择
                 {
                     this.skinButton1.Text = "链接成功";
                     this.skinComboBox1.Enabled = false;
-                    //this.skinButton1.Enabled = false;
-                    //改变PLC操作显示
-                    this.skinComboBox1.EnabledChanged += ((send1, e1) =>
-                      {
-                          if (Mitsubishi.PLC_ready)
-                              this.groupBox1.Visible = true;
-                          else
-                              this.groupBox1.Visible = false;
-                      });
+                    skinButton1.BaseColor = Color.FromName("Lime");
                 }
             }
             //西门子
@@ -76,14 +68,14 @@ namespace 自定义Uppercomputer_20200727.PLC选择
             {
                 this.skinButton2.Text = "链接成功";
                 this.skinComboBox2.Enabled = false;
-                //this.skinButton2.Enabled = false;
+                skinButton2.BaseColor = Color.FromName("Lime");
             }
             MODBUD_TCP pLC_Interface = new MODBUD_TCP();//实例化MODBUS-TCP 在线--无参
             if (MODBUD_TCP.IPLC_interface_PLC_ready)
             {
                 this.skinButton3.Text = "链接成功";
                 this.skinComboBox3.Enabled = false;
-                //this.skinButton3.Enabled = false;
+                skinButton3.BaseColor = Color.FromName("Lime");
             }
             //欧姆龙PLC
             IPLC_interface Omron =new OmronFinsTcp();
@@ -103,7 +95,7 @@ namespace 自定义Uppercomputer_20200727.PLC选择
             {
                 this.skinButton8.Text = "链接成功";
                 this.skinComboBox4.Enabled = false;
-                //this.skinButton8.Enabled = false;
+                skinButton8.BaseColor = Color.FromName("Lime");
             }
             //发那科机器人
 
@@ -125,6 +117,14 @@ namespace 自定义Uppercomputer_20200727.PLC选择
             {
                 //三菱3E帧在线访问
                 IPLC_interface Mitsubishi = new Mitsubishi_realize(new System.Net.IPEndPoint(IPAddress.Parse(this.skinTextBox1.Text), int.Parse(this.skinTextBox2.Text)));//实例化
+                                                                                                                                                           //改变PLC操作显示
+                this.skinComboBox1.EnabledChanged += ((send1, e1) =>
+                {
+                    if (Mitsubishi.PLC_ready)
+                        this.groupBox1.Visible = true;
+                    else
+                        this.groupBox1.Visible = false;
+                });
                 PLChandle(Mitsubishi, skinButton1, skinComboBox1, uiCheckBox1);
             }
             Mitsubishi = this.skinComboBox1.Text.Trim();//获取用户开放的方式---仿真与---在线二选一   
@@ -277,6 +277,7 @@ namespace 自定义Uppercomputer_20200727.PLC选择
                 skinButton.Text = "链接PLC";
                 skinCombo.Enabled = true;
                 skinButton.Enabled = true;
+                skinButton.BaseColor = Color.FromArgb(9, 163, 220);
                 pLC.PLC_Reconnection = false;
                 return;
             }
@@ -285,7 +286,7 @@ namespace 自定义Uppercomputer_20200727.PLC选择
             {
                 skinButton.Text = "链接成功";
                 skinCombo.Enabled = false;
-                skinButton.Enabled = false;
+                skinButton.BaseColor = Color.FromName("Lime");
                 pLC.PLC_Reconnection = check.Checked;
                 pLC.PLC_type = skinCombo.Text;
 

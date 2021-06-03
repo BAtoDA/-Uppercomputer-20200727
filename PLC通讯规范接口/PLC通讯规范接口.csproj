@@ -41,6 +41,7 @@
   <ItemGroup>
     <Compile Include="IPLC_interface.cs" />
     <Compile Include="PLCselect.cs" />
+    <Compile Include="进程间通讯\Request.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
