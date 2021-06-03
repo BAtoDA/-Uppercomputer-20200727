@@ -27,8 +27,17 @@
                                                        更改后EF实体模型到SLQLite数据库    
 ![image](https://user-images.githubusercontent.com/60955669/120075356-82cc6d80-c0d3-11eb-843c-818b62cb9fdf.png) 
 1.实现逻辑先把表填充到List<dynamic> EFbase泛型集合（默认已经填充如有新表填充一下就行） 然后找到你想要的方法填写好Button_Parameter_inquire<T>（string ID） 泛型约束 代码会自动跟踪到你需要的表 根据ID主键进行SQL数据查询
-  这样大量减少EF操作SQL的代码 当然实现这种逻辑归功于DLR动态编程。
+  这样大量减少EF操作SQL的代码 当然实现这种逻辑归功于DLR动态编程。  
+  
+                                                         新曾Socket TCP 访问上位机功能  
+  
+ 1.默认端口号：9500 IP是本地物理网卡IP：获取失败会默认绑定：127.0.0.1地址。  
+ 2.可以访问上位机HMI的M区、D区。  
+ 3.可以访问三菱 西门子 modbus tcp 欧姆龙 等PLC bool区 D区域。   
+ 4.后期会出一个dll专门处理协议帧让用户无需理会报文直接套用方法。  
+ ![image](https://user-images.githubusercontent.com/60955669/120663718-d9afb980-c4bc-11eb-8218-ffa19a9f650a.png)
 
+ 
 BUG与反馈：  
 开源自由就好BUG什么的肯定有哈哈。  
 
