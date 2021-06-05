@@ -35,17 +35,8 @@ namespace 自定义Uppercomputer_20200727.主页面.进程通讯消息处理
         IList<ArraySegment<Byte>> Data = new List<ArraySegment<Byte>>() { new ArraySegment<byte>(new byte[10]) };
         public SocketServer(IPEndPoint iPEnd)
         {
-            //获取本地的IP地址
-            //string AddressIP = string.Empty;
-            //foreach (IPAddress _IPAddress in Dns.GetHostEntry(Dns.GetHostName()).AddressList)
-            //{
-            //    if (_IPAddress.AddressFamily.ToString() == "InterNetwork")
-            //    {
-            //        AddressIP = _IPAddress.ToString();
-            //    }
-            //}
             this.IPEnd = iPEnd;
-            this.IPEnd.Address = IPAddress.Parse(GetPhysicsNetworkCardIP()[0]??"127.0.0.1");
+            this.IPEnd.Address = IPAddress.Parse("127.0.0.1");
             this.IPEnd.Port = 9500;
         }
         /// <summary>

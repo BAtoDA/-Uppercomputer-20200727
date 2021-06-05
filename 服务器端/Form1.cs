@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using Nancy.Json;
-using static PLC通讯规范接口.Request;
 using System.Net.Sockets;
 using System.Net;
+using 服务器端.上位机通讯报文处理;
 namespace 服务器端
 {
     public partial class Form1 : Form
@@ -38,50 +38,7 @@ namespace 服务器端
 
         private void button1_Click(object sender, EventArgs e)
         {
-            int hWnd = FindWindow(null, this.textBox1.Text??"null");
-
-            if (hWnd == 0)
-
-            {
-
-                MessageBox.Show("555，未找到消息接受者！");
-
-            }
-
-            else
-
-            {
-                //获取所有的字节长度
-                byte[] sarr = System.Text.Encoding.Default.GetBytes(this.textBox6.Text+ this.textBox2.Text+ this.textBox3.Text+ this.textBox4.Text+ this.textBox5.Text+ this.textBox6.Text+ this.Name+ this.textBox7.Text);
-                //获取长度
-                int len = sarr.Length;
-                //实例化消息封装器
-                COPYDATASTRUCT cds =new COPYDATASTRUCT();
-                //发送者名称
-                 cds.characteristic =this.Name;
-                //功能码
-                cds.function = Convert.ToInt16(this.textBox2.Text);//可以是任意值
-                //设备功能码
-                cds.Equipmenttype = this.textBox3.Text;
-                //访问设备的具体地址
-                 cds.Address = this.textBox4.Text;
-                //访问设备的类型
-                 cds.Type = this.textBox5.Text;
-                //访问设备的长度
-                cds.length = this.textBox6.Text;
-                //字节数
-                cds.cbData = len+2 ;//指定lpData内存区域的字节数
-
-                cds.lpData =this.textBox7.Text;//发送给目标窗口所在进程的数据
-                JavaScriptSerializer jss = new JavaScriptSerializer();
-                string jsonStr = jss.Serialize(cds);
-                socket.Send(Encoding.UTF8.GetBytes(jsonStr));
-
-
-                //SendMessage(hWnd, WM_COPYDATA, 0, ref cds);
-
-            }
-
+           var HMIM= socket_Client.ReadHmi_Bool(Name, 1, 1);
 
         }
         protected override void DefWndProc(ref Message m)
@@ -141,11 +98,39 @@ namespace 服务器端
         {
         }
         Socket socket;
+        Socket_Client socket_Client;
         private void button2_Click(object sender, EventArgs e)
         {
-            socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-            socket.Connect(new IPEndPoint(IPAddress.Parse("192.168.250.90"), 9500));
-            socketread();
+            socket_Client = new Socket_Client(new IPEndPoint(IPAddress.Parse("127.0.0.1"), 9500));
+            var DW= socket_Client.Open();
+            socket_Client.Readmessage += ((es, q) =>
+              {
+                  richTextBox1.AppendText(es.ToString());
+              });
+            socket_Client.Writemessage += ((es, q) =>
+            {
+                richTextBox1.AppendText(es.ToString());
+            });
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            socket_Client.ReadHmiD<string>(Name, 1, 1, HmiType.Hex);
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            socket_Client.WriteHmi_Bool(Name, 1, true);
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            socket_Client.WriteHmi_Bool(Name, 1, false);
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            socket_Client.WriteHmi_D(Name, 1, HmiType.Hex, "FFFFF");
         }
     }
 }

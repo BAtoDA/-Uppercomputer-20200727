@@ -140,7 +140,7 @@ namespace 自定义Uppercomputer_20200727.主页面
                             {
                                 case "hex":
                                 case "Hex":
-                                    macroinstruction_data<int>.D_Data[Address] = Convert.ToInt32(oPYDATASTRUCT.lpData ?? "0", 16);
+                                    macroinstruction_data<int>.D_Data[Address] = oPYDATASTRUCT.lpData ?? "0";
                                     return Replymessage(oPYDATASTRUCT, "", true);
 
                                 case "int32":
@@ -306,13 +306,96 @@ namespace 自定义Uppercomputer_20200727.主页面
                                 }
                             }
                             else
-                                throw new Exception($"三菱PLC未准备好 异常代码为：{Siemens_rea.PLCerr_content ?? "0"}");
+                                throw new Exception($"西门子PLC未准备好 异常代码为：{Siemens_rea.PLCerr_content ?? "0"}");
                             JavaScriptSerializer jss = new JavaScriptSerializer();
                             string jsonStr = jss.Serialize(Data);
                             return Replymessage(oPYDATASTRUCT, jsonStr, true);
                         }
                         else
                             throw new Exception($"输入设备功能码错误：{oPYDATASTRUCT.Equipmenttype} 09功能码应为：{EnumValue<Siemens_bit>()}");
+                    // H10---读取外部PLC链接设备D区  （西门子PLC） 
+                    case 10:
+                        //检查输入数据是否正确
+                        if (IsPLCType<Siemens_D>(oPYDATASTRUCT.Equipmenttype))
+                        {
+                            //检查输入数据是否正确
+                            Regex RegMitsubit = new Regex(@"^[0-9]+(.+[0-9]+)?$");
+                            string Address = RegMitsubit.IsMatch(oPYDATASTRUCT.Address) ? oPYDATASTRUCT.Address : throw new Exception($"输入{oPYDATASTRUCT.Address}地址错误 正常应为：1");
+                            _ = IsInt(oPYDATASTRUCT.length) ? Convert.ToInt32(oPYDATASTRUCT.length) : throw new Exception($"输入{oPYDATASTRUCT.length}长度错误 正确类型应为： 1");
+                            IPLC_interface Siemens_rea = new Siemens_realize();
+                            _ = IsPLCType<numerical_format>(oPYDATASTRUCT.Type.Trim()) ? true : throw new Exception($"输入类型：{oPYDATASTRUCT.Type} 错误 正确应为：{EnumValue<numerical_format>()}");
+                            JavaScriptSerializer jss = new JavaScriptSerializer();
+                            if (Siemens_rea.PLC_ready)
+                            {
+                                string jsonStr = jss.Serialize(Siemens_rea.PLC_read_D_register_bit(oPYDATASTRUCT.Equipmenttype, (Address).ToString(), (numerical_format)Enum.Parse(typeof(numerical_format), oPYDATASTRUCT.Type.Trim()), oPYDATASTRUCT.length));
+                                return Replymessage(oPYDATASTRUCT, jsonStr, true);
+                            }
+                            else
+                                throw new Exception($"三菱PLC未准备好 异常代码为：{Siemens_rea.PLCerr_content ?? "0"}");
+                        }
+                        else
+                            throw new Exception($"输入设备功能码错误：{oPYDATASTRUCT.Equipmenttype} 06功能码应为：{EnumValue<Siemens_D>()}");
+                    //  H11---写入外部PLC链接设备bool区  （西门子PLC） 
+                    case 11:
+                        //检查输入数据是否正确
+                        if (IsPLCType<Siemens_bit>(oPYDATASTRUCT.Equipmenttype.Trim()))
+                        {
+                            //检查输入数据是否正确
+                            Regex RegMitsubit = new Regex(@"^[0-9]+(.+[0-9]+)?$");
+                            string Address = RegMitsubit.IsMatch(oPYDATASTRUCT.Address) ? oPYDATASTRUCT.Address : throw new Exception($"输入{oPYDATASTRUCT.Address}地址错误 正常应为：1");
+                            _ = oPYDATASTRUCT.Type == typeof(bool).Name ? true : throw new Exception($"输入类型:{oPYDATASTRUCT.Type}无法识别 正确类型应为：" + typeof(bool).Name);
+                            int len = IsInt(oPYDATASTRUCT.length) ? Convert.ToInt32(oPYDATASTRUCT.length) : throw new Exception($"输入{oPYDATASTRUCT.length}长度错误 正确类型应为： 1");
+                            _ = IsPLCType<Button_state>(oPYDATASTRUCT.lpData) == false ? throw new Exception($"输入内容{oPYDATASTRUCT.lpData}不正确 正确应为：{EnumValue<Button_state>()}") : oPYDATASTRUCT.lpData;
+                            IPLC_interface Mitsubishi_rea = new Mitsubishi_realize();
+                            if (Mitsubishi_rea.PLC_ready)
+                            {
+                                for (int i = 0; i < len; i++)
+                                {
+                                    if (IsInt(Address))
+                                    {
+                                        Mitsubishi_rea.PLC_write_M_bit(oPYDATASTRUCT.Equipmenttype.Trim(), (Convert.ToInt32(Address) + i).ToString(), (Button_state)Enum.Parse(typeof(Button_state), oPYDATASTRUCT.lpData));
+                                    }
+                                    else
+                                    {
+                                        string addres = (Convert.ToInt32(Address, 16) + i).ToString("X");
+                                        Mitsubishi_rea.PLC_write_M_bit(oPYDATASTRUCT.Equipmenttype.Trim(), addres, (Button_state)Enum.Parse(typeof(Button_state), oPYDATASTRUCT.lpData));
+                                    }
+                                }
+                            }
+                            else
+                                throw new Exception($"西门子PLC未准备好 异常代码为：{Mitsubishi_rea.PLCerr_content ?? "0"}");
+                            return Replymessage(oPYDATASTRUCT, "", true);
+                        }
+                        else
+                            throw new Exception($"输入设备功能码错误：{oPYDATASTRUCT.Equipmenttype} 11功能码应为：{EnumValue<Siemens_bit>()}");
+                    //H12 写入外部PLC链接设备D区  （西门子PLC） 
+                    case 12:
+                        //检查输入数据是否正确
+                        if (IsPLCType<Siemens_D>(oPYDATASTRUCT.Equipmenttype.Trim()))
+                        {
+                            //检查输入数据是否正确
+                            Regex RegMitsubit = new Regex(@"^[A-Fa-z0-9]+(.+[0-9]+)?$");
+                            string Address = RegMitsubit.IsMatch(oPYDATASTRUCT.Address) ? oPYDATASTRUCT.Address : throw new Exception($"输入{oPYDATASTRUCT.Address}地址错误 正常应为：1");
+                            _ = IsPLCType<numerical_format>(oPYDATASTRUCT.Type.Trim()) ? true : throw new Exception($"输入类型：{oPYDATASTRUCT.Type} 错误 正确应为：{EnumValue<numerical_format>()}");
+                            int len = IsInt(oPYDATASTRUCT.length) ? Convert.ToInt32(oPYDATASTRUCT.length) : throw new Exception($"输入{oPYDATASTRUCT.length}长度错误 正确类型应为： 1");
+                            _ = oPYDATASTRUCT.lpData == null ? throw new Exception("输入内容不能为空") : Convert.ToInt32(oPYDATASTRUCT.lpData);
+                            IPLC_interface Siemens_rea = new Siemens_realize();
+                            if (Siemens_rea.PLC_ready)
+                            {
+                                for (int i = 0; i < len; i++)
+                                {
+                                    if (IsInt(Address))
+                                    {
+                                        Siemens_rea.PLC_write_D_register(oPYDATASTRUCT.Equipmenttype.Trim(), (Convert.ToInt32(Address) + i).ToString(), oPYDATASTRUCT.lpData ?? "00", (numerical_format)Enum.Parse(typeof(numerical_format), oPYDATASTRUCT.Type));
+                                    }
+                                }
+                            }
+                            else
+                                throw new Exception($"西门子PLC未准备好 异常代码为：{Siemens_rea.PLCerr_content ?? "0"}");
+                            return Replymessage(oPYDATASTRUCT, "", true);
+                        }
+                        else
+                            throw new Exception($"输入设备功能码错误：{oPYDATASTRUCT.Equipmenttype} 12功能码应为：{EnumValue<Siemens_D>()}");
                     default:
                         return Replymessage(oPYDATASTRUCT, $"Err报警内容:未找到功能码为：{oPYDATASTRUCT.function} 请确定一下功能码是否正确", false);
                 }

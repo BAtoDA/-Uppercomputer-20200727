@@ -57,6 +57,10 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="上位机通讯报文处理\Operating.cs" />
+    <Compile Include="上位机通讯报文处理\Functional.cs" />
+    <Compile Include="上位机通讯报文处理\message.cs" />
+    <Compile Include="上位机通讯报文处理\Socket_Client.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>

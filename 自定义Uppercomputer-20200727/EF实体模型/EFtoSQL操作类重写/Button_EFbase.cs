@@ -180,7 +180,9 @@ namespace 自定义Uppercomputer_20200727.EF实体模型.EFtoSQL操作类重写
                 _ = new Button_EFbase().EFsurface();
                 //查询泛型约束 需要修改的表
                 var surface = EFbase.Where(pi => pi.GetType().GenericTypeArguments[0].Name == typeof(T).Name).FirstOrDefault();
-                var reach = from pi in (IQueryable<T>)surface where true select pi;
+                var reach =(from pi in (IQueryable<T>)surface where true select pi).ToList();
+                if(reach.Count==0)
+                    reach = (from pi in (IQueryable<T>)surface where true select pi).ToList();
                 //查询SQL数据
                 foreach (dynamic i1 in reach)
                 {
