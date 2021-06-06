@@ -38,7 +38,10 @@
  ![image](https://user-images.githubusercontent.com/60955669/120663718-d9afb980-c4bc-11eb-8218-ffa19a9f650a.png)
  ![image](https://user-images.githubusercontent.com/60955669/120924346-f0951c80-c705-11eb-847b-aa893757c867.png)
  ![image](https://user-images.githubusercontent.com/60955669/120666045-da494f80-c4be-11eb-807d-99fc4f91706f.png)
-
+下面是案例视频 使用的DLL案例是：服务器端项目 在本项目主目录有    
+链接：https://pan.baidu.com/s/1HIXcXG9uaQuOA7L9UD-lFg    
+提取码：wlei   
+复制这段内容后打开百度网盘手机App，操作更方便哦   
 
  
 BUG与反馈：  
