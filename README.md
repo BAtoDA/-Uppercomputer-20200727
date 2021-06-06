@@ -29,15 +29,19 @@
 1.实现逻辑先把表填充到List<dynamic> EFbase泛型集合（默认已经填充如有新表填充一下就行） 然后找到你想要的方法填写好Button_Parameter_inquire<T>（string ID） 泛型约束 代码会自动跟踪到你需要的表 根据ID主键进行SQL数据查询
   这样大量减少EF操作SQL的代码 当然实现这种逻辑归功于DLR动态编程。  
   
-                                                         新曾Socket TCP 访问上位机功能  
+                                                      新增Socket TCP 访问上位机功能  
   
  1.默认端口号：9500 IP是本地物理网卡IP：获取失败会默认绑定：127.0.0.1地址。  
  2.可以访问上位机HMI的M区、D区。  
  3.可以访问三菱 西门子 modbus tcp 欧姆龙 等PLC bool区 D区域。   
- 4.后期会出一个dll专门处理协议帧让用户无需理会报文直接套用方法。  
+ 4.后期会出一个dll专门处理协议帧让用户无需理会报文直接套用方法（模板在服务器端项目 上位机通讯处理 Socket_Client类是实现通讯的 基本完成）。  
  ![image](https://user-images.githubusercontent.com/60955669/120663718-d9afb980-c4bc-11eb-8218-ffa19a9f650a.png)
+ ![image](https://user-images.githubusercontent.com/60955669/120924346-f0951c80-c705-11eb-847b-aa893757c867.png)
  ![image](https://user-images.githubusercontent.com/60955669/120666045-da494f80-c4be-11eb-807d-99fc4f91706f.png)
-
+下面是案例视频 使用的DLL案例是：服务器端项目 在本项目主目录有    
+链接：https://pan.baidu.com/s/1HIXcXG9uaQuOA7L9UD-lFg    
+提取码：wlei   
+复制这段内容后打开百度网盘手机App，操作更方便哦   
 
  
 BUG与反馈：  
