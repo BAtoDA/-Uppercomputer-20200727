@@ -36,7 +36,7 @@ namespace 自定义Uppercomputer_20200727.主页面.进程通讯消息处理
         public SocketServer(IPEndPoint iPEnd)
         {
             this.IPEnd = iPEnd;
-            this.IPEnd.Address = IPAddress.Parse("127.0.0.1");
+            this.IPEnd.Address = IPAddress.Parse(GetPhysicsNetworkCardIP().Count>0? GetPhysicsNetworkCardIP()[0]: "127.0.0.1");
             this.IPEnd.Port = 9500;
         }
         /// <summary>
@@ -109,7 +109,10 @@ namespace 自定义Uppercomputer_20200727.主页面.进程通讯消息处理
             catch
             {
                 if (socketload == null)
-                    return;
+                    return;              
+            }
+            finally
+            {
                 //继续回调监听客户端
                 socket.BeginAccept(new AsyncCallback(Socketcall_back), socket);
             }

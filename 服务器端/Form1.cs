@@ -101,7 +101,7 @@ namespace 服务器端
         Socket_Client socket_Client;
         private void button2_Click(object sender, EventArgs e)
         {
-            socket_Client = new Socket_Client(new IPEndPoint(IPAddress.Parse("127.0.0.1"), 9500));
+            socket_Client = new Socket_Client(new IPEndPoint(IPAddress.Parse("192.168.3.206"), 9500));
             var DW= socket_Client.Open();
             socket_Client.Readmessage += ((es, q) =>
               {
@@ -131,6 +131,11 @@ namespace 服务器端
         private void button4_Click(object sender, EventArgs e)
         {
             socket_Client.WriteHmi_D(Name, 1, HmiType.Hex, "FFFFF");
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            socket_Client.ReadPLCBool(Name, Siemens_bit.M,"1.2", 1);
         }
     }
 }

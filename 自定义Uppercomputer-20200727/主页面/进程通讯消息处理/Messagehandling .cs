@@ -103,7 +103,6 @@ namespace 自定义Uppercomputer_20200727.主页面
                                     }
                                     return Replymessage(oPYDATASTRUCT, jss.Serialize(byetdata), true);
                                 default:
-                                    // bool type = oPYDATASTRUCT.Type == typeof(int).Name || oPYDATASTRUCT.Type == typeof(Int16).Name || oPYDATASTRUCT.Type == typeof(byte).Name || oPYDATASTRUCT.Type == "Hex" ? true : throw new Exception($"输入类型:{oPYDATASTRUCT.Type}无法识别 正确类型应为：{typeof(int).Name}或者{typeof(Int16).Name}或者{typeof(byte)} Hex");
                                     throw new Exception($"输入类型:{oPYDATASTRUCT.Type}无法识别 正确类型应为：{typeof(int).Name}或者{typeof(Int16).Name}或者{typeof(byte)}");
                                     break;
                             }
@@ -396,6 +395,122 @@ namespace 自定义Uppercomputer_20200727.主页面
                         }
                         else
                             throw new Exception($"输入设备功能码错误：{oPYDATASTRUCT.Equipmenttype} 12功能码应为：{EnumValue<Siemens_D>()}");
+                    //H13 读取外部PLC链接设备BOOL区  （Modbsu tcp PLC）
+                    case 13:
+                        //检查输入数据是否正确
+                        if (IsPLCType<Modbus_TCP_bit>(oPYDATASTRUCT.Equipmenttype.Trim()))
+                        {
+                            //检查输入数据是否正确
+                            Regex RegMitsubit = new Regex(@"^[A-Fa-z0-9]+([0-9]+)?$");
+                            string Address = RegMitsubit.IsMatch(oPYDATASTRUCT.Address) ? oPYDATASTRUCT.Address : throw new Exception($"输入{oPYDATASTRUCT.Address}地址错误 正常应为：1");
+                            _ = oPYDATASTRUCT.Type == typeof(bool).Name ? true : throw new Exception($"输入类型:{oPYDATASTRUCT.Type}无法识别 正确类型应为：" + typeof(bool).Name);
+                            int len = IsInt(oPYDATASTRUCT.length) ? Convert.ToInt32(oPYDATASTRUCT.length) : throw new Exception($"输入{oPYDATASTRUCT.length}长度错误 正确类型应为： 1");
+                            bool[] Data = new bool[len];
+                            IPLC_interface MODBUD_rea = new MODBUD_TCP();
+                            if (MODBUD_rea.PLC_ready)
+                            {
+                                for (int i = 0; i < len; i++)
+                                {
+                                    if (IsInt(Address))
+                                    {
+                                        Data[i] = MODBUD_rea.PLC_read_M_bit(oPYDATASTRUCT.Equipmenttype.Trim(), (Convert.ToInt32(Address) + i).ToString())[0];
+                                    }
+                                    else
+                                    {
+                                        string addres = (Convert.ToInt32(Address, 16) + i).ToString("X");
+                                        Data[i] = MODBUD_rea.PLC_read_M_bit(oPYDATASTRUCT.Equipmenttype.Trim(), addres)[0];
+                                    }
+                                }
+                            }
+                            else
+                                throw new Exception($"Modbus TCPPLC未准备好 异常代码为：{MODBUD_rea.PLCerr_content ?? "0"}");
+                            JavaScriptSerializer jss = new JavaScriptSerializer();
+                            string jsonStr = jss.Serialize(Data);
+                            return Replymessage(oPYDATASTRUCT, jsonStr, true);
+                        }
+                        else
+                            throw new Exception($"输入设备功能码错误：{oPYDATASTRUCT.Equipmenttype} 13功能码应为：{EnumValue<Modbus_TCP_bit>()}");
+                    // H06---读取外部PLC链接设备D区  （Modbsu tcp PLC） 
+                    case 14:
+                        //检查输入数据是否正确
+                        if (IsPLCType<Modbus_TCP_D>(oPYDATASTRUCT.Equipmenttype))
+                        {
+                            int Address = IsInt(oPYDATASTRUCT.Address) ? Convert.ToInt32(oPYDATASTRUCT.Address) : throw new Exception($"输入{oPYDATASTRUCT.Address}地址错误 正常应为：1");
+                            _ = IsInt(oPYDATASTRUCT.length) ? Convert.ToInt32(oPYDATASTRUCT.length) : throw new Exception($"输入{oPYDATASTRUCT.length}长度错误 正确类型应为： 1");
+                            IPLC_interface MODBUD_rea = new MODBUD_TCP();
+                            _ = IsPLCType<numerical_format>(oPYDATASTRUCT.Type.Trim()) ? true : throw new Exception($"输入类型：{oPYDATASTRUCT.Type} 错误 正确应为：{EnumValue<numerical_format>()}");
+                            JavaScriptSerializer jss = new JavaScriptSerializer();
+                            if (MODBUD_rea.PLC_ready)
+                            {
+                                string jsonStr = jss.Serialize(MODBUD_rea.PLC_read_D_register_bit(oPYDATASTRUCT.Equipmenttype, (Address).ToString(), (numerical_format)Enum.Parse(typeof(numerical_format), oPYDATASTRUCT.Type.Trim()), oPYDATASTRUCT.length));
+                                return Replymessage(oPYDATASTRUCT, jsonStr, true);
+                            }
+                            else
+                                throw new Exception($"Modbus Tcp PLC未准备好 异常代码为：{MODBUD_rea.PLCerr_content ?? "0"}");
+                        }
+                        else
+                            throw new Exception($"输入设备功能码错误：{oPYDATASTRUCT.Equipmenttype} 14功能码应为：{EnumValue<Modbus_TCP_D>()}");
+                    //H15 写入外部PLC链接设备bool区  （Modbsu tcp PLC）
+                    case 15:
+                        //检查输入数据是否正确
+                        if (IsPLCType<Modbus_TCP_bit>(oPYDATASTRUCT.Equipmenttype.Trim()))
+                        {
+                            //检查输入数据是否正确
+                            Regex RegMitsubit = new Regex(@"^[A-Fa-z0-9]+([0-9]+)?$");
+                            string Address = RegMitsubit.IsMatch(oPYDATASTRUCT.Address) ? oPYDATASTRUCT.Address : throw new Exception($"输入{oPYDATASTRUCT.Address}地址错误 正常应为：1");
+                            _ = oPYDATASTRUCT.Type == typeof(bool).Name ? true : throw new Exception($"输入类型:{oPYDATASTRUCT.Type}无法识别 正确类型应为：" + typeof(bool).Name);
+                            int len = IsInt(oPYDATASTRUCT.length) ? Convert.ToInt32(oPYDATASTRUCT.length) : throw new Exception($"输入{oPYDATASTRUCT.length}长度错误 正确类型应为： 1");
+                            _ = IsPLCType<Button_state>(oPYDATASTRUCT.lpData) == false ? throw new Exception($"输入内容{oPYDATASTRUCT.lpData}不正确 正确应为：{EnumValue<Button_state>()}") : oPYDATASTRUCT.lpData;
+                            IPLC_interface MODBUD_rea = new MODBUD_TCP();
+                            if (MODBUD_rea.PLC_ready)
+                            {
+                                for (int i = 0; i < len; i++)
+                                {
+                                    if (IsInt(Address))
+                                    {
+                                        MODBUD_rea.PLC_write_M_bit(oPYDATASTRUCT.Equipmenttype.Trim(), (Convert.ToInt32(Address) + i).ToString(), (Button_state)Enum.Parse(typeof(Button_state), oPYDATASTRUCT.lpData));
+                                    }
+                                    else
+                                    {
+                                        string addres = (Convert.ToInt32(Address, 16) + i).ToString("X");
+                                        MODBUD_rea.PLC_write_M_bit(oPYDATASTRUCT.Equipmenttype.Trim(), addres, (Button_state)Enum.Parse(typeof(Button_state), oPYDATASTRUCT.lpData));
+                                    }
+                                }
+                            }
+                            else
+                                throw new Exception($"Modbus Tcp PLC未准备好 异常代码为：{MODBUD_rea.PLCerr_content ?? "0"}");
+                            return Replymessage(oPYDATASTRUCT, "", true);
+                        }
+                        else
+                            throw new Exception($"输入设备功能码错误：{oPYDATASTRUCT.Equipmenttype} 15功能码应为：{EnumValue<Modbus_TCP_bit>()}");
+                    //H16 写入外部PLC链接设备D区  （Modbsu tcp PLC）
+                    case 16:
+                        //检查输入数据是否正确
+                        if (IsPLCType<Modbus_TCP_D>(oPYDATASTRUCT.Equipmenttype.Trim()))
+                        {
+                            //检查输入数据是否正确
+                            Regex RegMitsubit = new Regex(@"^[A-Fa-z0-9]+([0-9]+)?$");
+                            string Address = RegMitsubit.IsMatch(oPYDATASTRUCT.Address) ? oPYDATASTRUCT.Address : throw new Exception($"输入{oPYDATASTRUCT.Address}地址错误 正常应为：1");
+                            _ = IsPLCType<numerical_format>(oPYDATASTRUCT.Type.Trim()) ? true : throw new Exception($"输入类型：{oPYDATASTRUCT.Type} 错误 正确应为：{EnumValue<numerical_format>()}");
+                            int len = IsInt(oPYDATASTRUCT.length) ? Convert.ToInt32(oPYDATASTRUCT.length) : throw new Exception($"输入{oPYDATASTRUCT.length}长度错误 正确类型应为： 1");
+                            _ = oPYDATASTRUCT.lpData == null ? throw new Exception("输入内容不能为空") : Convert.ToInt32(oPYDATASTRUCT.lpData);
+                            IPLC_interface MODBUD_rea = new MODBUD_TCP();
+                            if (MODBUD_rea.PLC_ready)
+                            {
+                                for (int i = 0; i < len; i++)
+                                {
+                                    if (IsInt(Address))
+                                    {
+                                        MODBUD_rea.PLC_write_D_register(oPYDATASTRUCT.Equipmenttype.Trim(), (Convert.ToInt32(Address) + i).ToString(), oPYDATASTRUCT.lpData ?? "00", (numerical_format)Enum.Parse(typeof(numerical_format), oPYDATASTRUCT.Type));
+                                    }
+                                }
+                            }
+                            else
+                                throw new Exception($"Modbus Tcp PLC未准备好 异常代码为：{MODBUD_rea.PLCerr_content ?? "0"}");
+                            return Replymessage(oPYDATASTRUCT, "", true);
+                        }
+                        else
+                            throw new Exception($"输入设备功能码错误：{oPYDATASTRUCT.Equipmenttype} 16功能码应为：{EnumValue<Modbus_TCP_D>()}");
                     default:
                         return Replymessage(oPYDATASTRUCT, $"Err报警内容:未找到功能码为：{oPYDATASTRUCT.function} 请确定一下功能码是否正确", false);
                 }

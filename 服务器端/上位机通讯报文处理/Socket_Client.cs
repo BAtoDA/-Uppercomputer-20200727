@@ -168,12 +168,11 @@ namespace 服务器端.上位机通讯报文处理
         /// 读取三菱PLC--
         /// </summary>
         /// <param name="FormNmae">消息发送者窗口名称</param>
-        /// <param name="functional">需要访问的设备功能码</param>
         /// <param name="mitsubishi_Bit">要读取PLC的软元件</param>
         /// <param name="address">请输入起始地址</param>
         /// <param name="length">请输入要读取的长度</param>
         /// <returns></returns>
-        public Operating<bool[]> Mitsubishi_ReadPLCBool(string FormNmae, Mitsubishi_bit mitsubishi_Bit, string address , int length)
+        public Operating<bool[]> ReadPLCBool(string FormNmae, Mitsubishi_bit mitsubishi_Bit, string address , int length)
         {
             try
             {
@@ -189,20 +188,348 @@ namespace 服务器端.上位机通讯报文处理
             }
         }
         /// <summary>
-        /// 读取PLC--D区的值
+        /// 读取西门子PLC--
         /// </summary>
         /// <param name="FormNmae">消息发送者窗口名称</param>
-        /// <param name="functional">需要访问的设备功能码</param>
+        /// <param name="Siemens_Bit">要读取PLC的软元件</param>
+        /// <param name="address">请输入起始地址</param>
+        /// <param name="length">请输入要读取的长度</param>
+        /// <returns></returns>
+        public Operating<bool[]> ReadPLCBool(string FormNmae, Siemens_bit Siemens_Bit, string address, int length)
+        {
+            try
+            {
+                socket.Send(ReadPLCBool(FormNmae, Functional.Readsiemens_bool, Siemens_Bit, address, length));
+                byte[] Data = new byte[1024];
+                socket.Receive(Data);
+                return this.ReadPLCBoolresult(Data);
+            }
+            catch (Exception e)
+            {
+                Err();
+                return new Operating<bool[]>() { Content = null, ErrorCode = e.Message, IsSuccess = false };
+            }
+        }
+        /// <summary>
+        /// 读取Modbus TCP PLC--
+        /// </summary>
+        /// <param name="FormNmae">消息发送者窗口名称</param>
+        /// <param name="Modbus_TCP_Bit">要读取PLC的软元件</param>
+        /// <param name="address">请输入起始地址</param>
+        /// <param name="length">请输入要读取的长度</param>
+        /// <returns></returns>
+        public Operating<bool[]> ReadPLCBool(string FormNmae, Modbus_TCP_bit Modbus_TCP_Bit, string address, int length)
+        {
+            try
+            {
+                socket.Send(ReadPLCBool(FormNmae, Functional.ReadModbusTCP_bool, Modbus_TCP_Bit, address, length));
+                byte[] Data = new byte[1024];
+                socket.Receive(Data);
+                return this.ReadPLCBoolresult(Data);
+            }
+            catch (Exception e)
+            {
+                Err();
+                return new Operating<bool[]>() { Content = null, ErrorCode = e.Message, IsSuccess = false };
+            }
+        }
+        /// <summary>
+        /// 读取Modbus TCP PLC--
+        /// </summary>
+        /// <param name="FormNmae">消息发送者窗口名称</param>
+        /// <param name="Modbus_TCP_Bit">要读取PLC的软元件</param>
+        /// <param name="address">请输入起始地址</param>
+        /// <param name="length">请输入要读取的长度</param>
+        /// <returns></returns>
+        public Operating<bool[]> ReadPLCBool(string FormNmae, Omron_bit Omron_Bit, string address, int length)
+        {
+            try
+            {
+                socket.Send(ReadPLCBool(FormNmae, Functional.ReadOmronTCP_bool, Omron_Bit, address, length));
+                byte[] Data = new byte[1024];
+                socket.Receive(Data);
+                return this.ReadPLCBoolresult(Data);
+            }
+            catch (Exception e)
+            {
+                Err();
+                return new Operating<bool[]>() { Content = null, ErrorCode = e.Message, IsSuccess = false };
+            }
+        }
+        /// <summary>
+        /// 读取三菱PLC--D区的值
+        /// </summary>
+        /// <param name="FormNmae">消息发送者窗口名称</param>
         ///  <param name="mitsubishi_D">要读取PLC的软元件</param>
         ///  <param name="numerical">要读取PLC的类型</param>
         /// <param name="address">请输入起始地址</param>
         /// <param name="length">请输入要读取的长度</param>
         /// <returns></returns>
-        public Operating<string> Mitsubishi_ReadPLCD(string FormNmae, Mitsubishi_D mitsubishi_D,numerical_format numerical, string address, int length)
+        public Operating<string> ReadPLCD(string FormNmae, Mitsubishi_D mitsubishi_D,numerical_format numerical, string address, int length)
         {
             try
             {
                 socket.Send(ReadPLCD(FormNmae,Functional.Readmitsubishi_D,mitsubishi_D,numerical,address,length));
+                byte[] Data = new byte[1024];
+                socket.Receive(Data);
+                return this.ReadPLCDresult(Data);
+            }
+            catch (Exception e)
+            {
+                Err();
+                return new Operating<string>() { Content = null, ErrorCode = e.Message, IsSuccess = false };
+            }
+        }
+        /// <summary>
+        /// 读取西门子PLC--D区的值
+        /// </summary>
+        /// <param name="FormNmae">消息发送者窗口名称</param>
+        ///  <param name="Siemens_D">要读取PLC的软元件</param>
+        ///  <param name="numerical">要读取PLC的类型</param>
+        /// <param name="address">请输入起始地址</param>
+        /// <param name="length">请输入要读取的长度</param>
+        /// <returns></returns>
+        public Operating<string> ReadPLCD(string FormNmae, Siemens_D Siemens_D, numerical_format numerical, string address, int length)
+        {
+            try
+            {
+                socket.Send(ReadPLCD(FormNmae, Functional.Readsiemens_D, Siemens_D, numerical, address, length));
+                byte[] Data = new byte[1024];
+                socket.Receive(Data);
+                return this.ReadPLCDresult(Data);
+            }
+            catch (Exception e)
+            {
+                Err();
+                return new Operating<string>() { Content = null, ErrorCode = e.Message, IsSuccess = false };
+            }
+        }
+        /// <summary>
+        /// 读取Modbus_TCP PLC--D区的值
+        /// </summary>
+        /// <param name="FormNmae">消息发送者窗口名称</param>
+        ///  <param name="Modbus_TCP_D">要读取PLC的软元件</param>
+        ///  <param name="numerical">要读取PLC的类型</param>
+        /// <param name="address">请输入起始地址</param>
+        /// <param name="length">请输入要读取的长度</param>
+        /// <returns></returns>
+        public Operating<string> ReadPLCD(string FormNmae, Modbus_TCP_D Modbus_TCP_D, numerical_format numerical, string address, int length)
+        {
+            try
+            {
+                socket.Send(ReadPLCD(FormNmae, Functional.ReadModbusTCP_D, Modbus_TCP_D, numerical, address, length));
+                byte[] Data = new byte[1024];
+                socket.Receive(Data);
+                return this.ReadPLCDresult(Data);
+            }
+            catch (Exception e)
+            {
+                Err();
+                return new Operating<string>() { Content = null, ErrorCode = e.Message, IsSuccess = false };
+            }
+        }
+        /// <summary>
+        /// 读取Omron PLC--D区的值
+        /// </summary>
+        /// <param name="FormNmae">消息发送者窗口名称</param>
+        ///  <param name="Omron_D">要读取PLC的软元件</param>
+        ///  <param name="numerical">要读取PLC的类型</param>
+        /// <param name="address">请输入起始地址</param>
+        /// <param name="length">请输入要读取的长度</param>
+        /// <returns></returns>
+        public Operating<string> ReadPLCD(string FormNmae, Omron_D Omron_D, numerical_format numerical, string address, int length)
+        {
+            try
+            {
+                socket.Send(ReadPLCD(FormNmae, Functional.ReadOmronTCP_D, Omron_D, numerical, address, length));
+                byte[] Data = new byte[1024];
+                socket.Receive(Data);
+                return this.ReadPLCDresult(Data);
+            }
+            catch (Exception e)
+            {
+                Err();
+                return new Operating<string>() { Content = null, ErrorCode = e.Message, IsSuccess = false };
+            }
+        }
+        /// <summary>
+        /// 写入三菱PLC---M区的值
+        /// </summary>
+        /// <param name="FormNmae">消息发送者窗口名称</param>
+        /// <param name="mitsubishi">写入PLC的软元件</param>
+        /// <param name="address">请输入起始地址</param>
+        /// <param name="button_State">请需要写入的状态</param>
+        /// <returns></returns>
+        public Operating<string> WritePLCBool(string FormNmae, Mitsubishi_bit mitsubishi, string address, bool button_State)
+        {
+            try
+            {
+                socket.Send(WritePLCBool(FormNmae, Functional.Writemitsubishi_bool, mitsubishi , address,button_State));
+                byte[] Data = new byte[1024];
+                socket.Receive(Data);
+                return this.ReadPLCDresult(Data);
+            }
+            catch (Exception e)
+            {
+                Err();
+                return new Operating<string>() { Content = null, ErrorCode = e.Message, IsSuccess = false };
+            }
+        }
+        /// <summary>
+        /// 写入西门子PLC---M区的值
+        /// </summary>
+        /// <param name="FormNmae">消息发送者窗口名称</param>
+        /// <param name="mitsubishi">写入PLC的软元件</param>
+        /// <param name="address">请输入起始地址</param>
+        /// <param name="button_State">请需要写入的状态</param>
+        /// <returns></returns>
+        public Operating<string> WritePLCBool(string FormNmae, Siemens_bit mitsubishi, string address, bool button_State)
+        {
+            try
+            {
+                socket.Send(WritePLCBool(FormNmae, Functional.Writesiemens_bool, mitsubishi, address, button_State));
+                byte[] Data = new byte[1024];
+                socket.Receive(Data);
+                return this.ReadPLCDresult(Data);
+            }
+            catch (Exception e)
+            {
+                Err();
+                return new Operating<string>() { Content = null, ErrorCode = e.Message, IsSuccess = false };
+            }
+        }
+        /// <summary>
+        /// 写入Modbus tcp PLC---M区的值
+        /// </summary>
+        /// <param name="FormNmae">消息发送者窗口名称</param>
+        /// <param name="mitsubishi">写入PLC的软元件</param>
+        /// <param name="address">请输入起始地址</param>
+        /// <param name="button_State">请需要写入的状态</param>
+        /// <returns></returns>
+        public Operating<string> WritePLCBool(string FormNmae, Modbus_TCP_bit mitsubishi, string address, bool button_State)
+        {
+            try
+            {
+                socket.Send(WritePLCBool(FormNmae, Functional.WriteModbusTCP_bool, mitsubishi, address, button_State));
+                byte[] Data = new byte[1024];
+                socket.Receive(Data);
+                return this.ReadPLCDresult(Data);
+            }
+            catch (Exception e)
+            {
+                Err();
+                return new Operating<string>() { Content = null, ErrorCode = e.Message, IsSuccess = false };
+            }
+        }
+        /// <summary>
+        /// 写入欧姆龙 PLC---M区的值
+        /// </summary>
+        /// <param name="FormNmae">消息发送者窗口名称</param>
+        /// <param name="mitsubishi">写入PLC的软元件</param>
+        /// <param name="address">请输入起始地址</param>
+        /// <param name="button_State">请需要写入的状态</param>
+        /// <returns></returns>
+        public Operating<string> WritePLCBool(string FormNmae, Omron_bit mitsubishi, string address, bool button_State)
+        {
+            try
+            {
+                socket.Send(WritePLCBool(FormNmae, Functional.WriteOmronTCP_bool, mitsubishi, address, button_State));
+                byte[] Data = new byte[1024];
+                socket.Receive(Data);
+                return this.ReadPLCDresult(Data);
+            }
+            catch (Exception e)
+            {
+                Err();
+                return new Operating<string>() { Content = null, ErrorCode = e.Message, IsSuccess = false };
+            }
+        }
+        /// <summary>
+        /// 写入三菱PLC--D区 数据
+        /// </summary>
+        /// <param name="FormNmae">消息发生者窗口名称</param>
+        /// <param name="mitsubishi">写入的PLC的软元件</param>
+        /// <param name=" numerical">写入的PLC的类型</param>
+        /// <param name="address">>请输入起始地址</param>
+        /// <param name="value">写入内容</param>
+        /// <returns></returns>
+        public Operating<string> WritePLCD(string FormNmae, Mitsubishi_D mitsubishi, numerical_format numerical, string address , string value)
+        {
+            try
+            {
+                socket.Send(WritePLCD(FormNmae, Functional.Writemitsubishi_D, mitsubishi,numerical, address, value));
+                byte[] Data = new byte[1024];
+                socket.Receive(Data);
+                return this.ReadPLCDresult(Data);
+            }
+            catch (Exception e)
+            {
+                Err();
+                return new Operating<string>() { Content = null, ErrorCode = e.Message, IsSuccess = false };
+            }
+        }
+        /// <summary>
+        /// 写入西门子PLC--D区 数据
+        /// </summary>
+        /// <param name="FormNmae">消息发生者窗口名称</param>
+        /// <param name="mitsubishi">写入的PLC的软元件</param>
+        /// <param name=" numerical">写入的PLC的类型</param>
+        /// <param name="address">>请输入起始地址</param>
+        /// <param name="value">写入内容</param>
+        /// <returns></returns>
+        public Operating<string> WritePLCD(string FormNmae, Siemens_D mitsubishi, numerical_format numerical, string address, string value)
+        {
+            try
+            {
+                socket.Send(WritePLCD(FormNmae, Functional.Writesiemens_D, mitsubishi, numerical, address, value));
+                byte[] Data = new byte[1024];
+                socket.Receive(Data);
+                return this.ReadPLCDresult(Data);
+            }
+            catch (Exception e)
+            {
+                Err();
+                return new Operating<string>() { Content = null, ErrorCode = e.Message, IsSuccess = false };
+            }
+        }
+        /// <summary>
+        /// 写入Mosbu tcp PLC--D区 数据
+        /// </summary>
+        /// <param name="FormNmae">消息发生者窗口名称</param>
+        /// <param name="mitsubishi">写入的PLC的软元件</param>
+        /// <param name=" numerical">写入的PLC的类型</param>
+        /// <param name="address">>请输入起始地址</param>
+        /// <param name="value">写入内容</param>
+        /// <returns></returns>
+        public Operating<string> WritePLCD(string FormNmae, Modbus_TCP_D mitsubishi, numerical_format numerical, string address, string value)
+        {
+            try
+            {
+                socket.Send(WritePLCD(FormNmae, Functional.WriteModbusTCP_D, mitsubishi, numerical, address, value));
+                byte[] Data = new byte[1024];
+                socket.Receive(Data);
+                return this.ReadPLCDresult(Data);
+            }
+            catch (Exception e)
+            {
+                Err();
+                return new Operating<string>() { Content = null, ErrorCode = e.Message, IsSuccess = false };
+            }
+        }
+        /// <summary>
+        /// 写入欧姆龙 PLC--D区 数据
+        /// </summary>
+        /// <param name="FormNmae">消息发生者窗口名称</param>
+        /// <param name="mitsubishi">写入的PLC的软元件</param>
+        /// <param name=" numerical">写入的PLC的类型</param>
+        /// <param name="address">>请输入起始地址</param>
+        /// <param name="value">写入内容</param>
+        /// <returns></returns>
+        public Operating<string> WritePLCD(string FormNmae, Omron_D mitsubishi, numerical_format numerical, string address, string value)
+        {
+            try
+            {
+                socket.Send(WritePLCD(FormNmae, Functional.WriteOmronTCP_D, mitsubishi, numerical, address, value));
                 byte[] Data = new byte[1024];
                 socket.Receive(Data);
                 return this.ReadPLCDresult(Data);

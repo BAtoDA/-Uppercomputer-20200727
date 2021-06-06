@@ -24,6 +24,15 @@ namespace 服务器端.上位机通讯报文处理
         Readsiemens_D = 0X10,
         Writesiemens_bool = 0X11,
         Writesiemens_D = 0X12,
+        ReadModbusTCP_bool = 0X13,
+        ReadModbusTCP_D = 0X14,
+        WriteModbusTCP_bool = 0X15,
+        WriteModbusTCP_D = 0X16,
+        ReadOmronTCP_bool = 0X17,
+        ReadOmronTCP_D = 0X18,
+        WriteOmronTCP_bool = 0X19,
+        WriteOmronTCP_D = 0X20,
+
     }
     /// <summary>
     /// 用于读写上位机D区寄存器

@@ -59,8 +59,8 @@ namespace 自定义Uppercomputer_20200727
         private void Home_Shown(object sender, EventArgs e)
         {
             //进程间通讯程序 启动 
-           // Form1 form1 = new Form1();
-           // form1.Show();
+            //Form1 form1 = new Form1();
+            //form1.Show();
             //监听
             SocketServer socketServer = new SocketServer(new System.Net.IPEndPoint(System.Net.IPAddress.Parse("127.0.0.1"), 9500));
             socketServer.SocketLoad();

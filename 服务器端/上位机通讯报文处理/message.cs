@@ -260,8 +260,8 @@ namespace 服务器端.上位机通讯报文处理
         /// </summary>
         /// <param name="FormNmae">消息发生者窗口名称</param>
         /// <param name="functional">需要访问的设备功能码</param>
-        /// <param name="mitsubishi">写入的三菱PLC的软元件</param>
-        /// <param name=" numerical">写入的三菱PLC的类型</param>
+        /// <param name="mitsubishi">写入的PLC的软元件</param>
+        /// <param name=" numerical">写入的PLC的类型</param>
         /// <param name="address">>请输入起始地址</param>
         /// <param name="value">写入内容</param>
         /// <returns></returns>
