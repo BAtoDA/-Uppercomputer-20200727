@@ -114,7 +114,7 @@ namespace 自定义Uppercomputer_20200727.主页面.进程通讯消息处理
             finally
             {
                 //继续回调监听客户端
-                socket.BeginAccept(new AsyncCallback(Socketcall_back), socket);
+                socketload.BeginAccept(new AsyncCallback(Socketcall_back), socketload);
             }
         }
         /// <summary>
@@ -141,28 +141,31 @@ namespace 自定义Uppercomputer_20200727.主页面.进程通讯消息处理
         public void SocketRend(IAsyncResult async)
         {
             Socket socket = async.AsyncState as Socket;
-            try
+            lock (this)
             {
-                int d = socket.IOControl(IOControlCode.DataToRead, null, new byte[100]);
-                if (!SocketHeartbeat(socket)) return;
-                //获取接收字节长度
-                int index = socket.EndReceive(async);
-                string Data = Encoding.UTF8.GetString(reception, 0, index);
-                JavaScriptSerializer jss = new JavaScriptSerializer();
-                var da= jss.Deserialize<COPYDATASTRUCT>(Data);
-                Messagehandling messagehandling = new Messagehandling();
-                var jsondata= Encoding.UTF8.GetBytes(jss.Serialize(messagehandling.Manage(da)));
-                socket.BeginSend(jsondata, 0, jsondata.Length, SocketFlags.None, new AsyncCallback(SocketSendcall_back), $"向IP:发送：" + Data + "成功 \r\n");
-                socket.BeginReceive(reception, 0, reception.Length, SocketFlags.None, new AsyncCallback(SocketRend), socket);//异步接收数据
-            }
-            catch (Exception e)
-            {
-                Messagehandling messagehandling = new Messagehandling();
-                var da= messagehandling.Replymessage(new COPYDATASTRUCT() { lpData = e.Message, Address = " ", cbData = 0, characteristic = " ", Equipmenttype = " ", function = 0, length = "10", Type = " " }, e.Message, false);
-                JavaScriptSerializer jss = new JavaScriptSerializer();
-                var jsondata = Encoding.UTF8.GetBytes(jss.Serialize(da));
-                socket.BeginSend(jsondata, 0, jsondata.Length, SocketFlags.None, new AsyncCallback(SocketSendcall_back), $"向IP:发送：" + Data + "成功 \r\n");
-                socket.BeginReceive(reception, 0, reception.Length, SocketFlags.None, new AsyncCallback(SocketRend), socket);//异步接收数据
+                try
+                {
+                    int d = socket.IOControl(IOControlCode.DataToRead, null, new byte[100]);
+                    if (!SocketHeartbeat(socket)) return;
+                    //获取接收字节长度
+                    int index = socket.EndReceive(async);
+                    string Data = Encoding.UTF8.GetString(reception, 0, index);
+                    JavaScriptSerializer jss = new JavaScriptSerializer();
+                    var da = jss.Deserialize<COPYDATASTRUCT>(Data);
+                    Messagehandling messagehandling = new Messagehandling();
+                    var jsondata = Encoding.UTF8.GetBytes(jss.Serialize(messagehandling.Manage(da)));
+                    socket.BeginSend(jsondata, 0, jsondata.Length, SocketFlags.None, new AsyncCallback(SocketSendcall_back), $"向IP:发送：" + Data + "成功 \r\n");
+                    socket.BeginReceive(reception, 0, reception.Length, SocketFlags.None, new AsyncCallback(SocketRend), socket);//异步接收数据
+                }
+                catch (Exception e)
+                {
+                    Messagehandling messagehandling = new Messagehandling();
+                    var da = messagehandling.Replymessage(new COPYDATASTRUCT() { lpData = e.Message, Address = " ", cbData = 0, characteristic = " ", Equipmenttype = " ", function = 0, length = "10", Type = " " }, e.Message, false);
+                    JavaScriptSerializer jss = new JavaScriptSerializer();
+                    var jsondata = Encoding.UTF8.GetBytes(jss.Serialize(da));
+                    socket.BeginSend(jsondata, 0, jsondata.Length, SocketFlags.None, new AsyncCallback(SocketSendcall_back), $"向IP:发送：" + Data + "成功 \r\n");
+                    socket.BeginReceive(reception, 0, reception.Length, SocketFlags.None, new AsyncCallback(SocketRend), socket);//异步接收数据
+                }
             }
         }
         /// <summary>

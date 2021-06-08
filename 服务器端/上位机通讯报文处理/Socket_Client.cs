@@ -12,8 +12,8 @@ namespace 服务器端.上位机通讯报文处理
     /// <summary>
     /// 用于处理访问上位机互交通讯
     /// </summary>
-    class Socket_Client:message
-    {
+    public class Socket_Client:message
+     {
         /// <summary>
         /// 实例化一个套接字
         /// </summary>
