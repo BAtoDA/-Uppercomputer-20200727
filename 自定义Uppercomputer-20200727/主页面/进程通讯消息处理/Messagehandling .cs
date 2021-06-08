@@ -330,7 +330,7 @@ namespace 自定义Uppercomputer_20200727.主页面
                                 return Replymessage(oPYDATASTRUCT, jsonStr, true);
                             }
                             else
-                                throw new Exception($"三菱PLC未准备好 异常代码为：{Siemens_rea.PLCerr_content ?? "0"}");
+                                throw new Exception($"西门子PLC未准备好 异常代码为：{Siemens_rea.PLCerr_content ?? "0"}");
                         }
                         else
                             throw new Exception($"输入设备功能码错误：{oPYDATASTRUCT.Equipmenttype} 06功能码应为：{EnumValue<Siemens_D>()}");
@@ -345,24 +345,13 @@ namespace 自定义Uppercomputer_20200727.主页面
                             _ = oPYDATASTRUCT.Type == typeof(bool).Name ? true : throw new Exception($"输入类型:{oPYDATASTRUCT.Type}无法识别 正确类型应为：" + typeof(bool).Name);
                             int len = IsInt(oPYDATASTRUCT.length) ? Convert.ToInt32(oPYDATASTRUCT.length) : throw new Exception($"输入{oPYDATASTRUCT.length}长度错误 正确类型应为： 1");
                             _ = IsPLCType<Button_state>(oPYDATASTRUCT.lpData) == false ? throw new Exception($"输入内容{oPYDATASTRUCT.lpData}不正确 正确应为：{EnumValue<Button_state>()}") : oPYDATASTRUCT.lpData;
-                            IPLC_interface Mitsubishi_rea = new Mitsubishi_realize();
-                            if (Mitsubishi_rea.PLC_ready)
+                            IPLC_interface Siemens_rea = new Siemens_realize();
+                            if (Siemens_rea.PLC_ready)
                             {
-                                for (int i = 0; i < len; i++)
-                                {
-                                    if (IsInt(Address))
-                                    {
-                                        Mitsubishi_rea.PLC_write_M_bit(oPYDATASTRUCT.Equipmenttype.Trim(), (Convert.ToInt32(Address) + i).ToString(), (Button_state)Enum.Parse(typeof(Button_state), oPYDATASTRUCT.lpData));
-                                    }
-                                    else
-                                    {
-                                        string addres = (Convert.ToInt32(Address, 16) + i).ToString("X");
-                                        Mitsubishi_rea.PLC_write_M_bit(oPYDATASTRUCT.Equipmenttype.Trim(), addres, (Button_state)Enum.Parse(typeof(Button_state), oPYDATASTRUCT.lpData));
-                                    }
-                                }
+                                Siemens_rea.PLC_write_M_bit(oPYDATASTRUCT.Equipmenttype.Trim(), Address, (Button_state)Enum.Parse(typeof(Button_state), oPYDATASTRUCT.lpData));
                             }
                             else
-                                throw new Exception($"西门子PLC未准备好 异常代码为：{Mitsubishi_rea.PLCerr_content ?? "0"}");
+                                throw new Exception($"西门子PLC未准备好 异常代码为：{Siemens_rea.PLCerr_content ?? "0"}");
                             return Replymessage(oPYDATASTRUCT, "", true);
                         }
                         else

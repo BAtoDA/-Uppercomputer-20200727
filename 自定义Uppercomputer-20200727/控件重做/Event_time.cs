@@ -12,6 +12,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using 欧姆龙Fins协议.欧姆龙.报文处理;
 using 自定义Uppercomputer_20200727.EF实体模型;
 using 自定义Uppercomputer_20200727.PLC选择;
 using 自定义Uppercomputer_20200727.PLC选择.MODBUS_TCP监控窗口;
@@ -98,6 +99,7 @@ namespace 自定义Uppercomputer_20200727.控件重做
             //注册刷新事件
             this.Tick += Event_Tick;//注册事件
             busy = false;//指示定时器是否正在忙
+            
         }
         /// <summary>
         /// 无参数构造函数--用于报警条产生
@@ -251,6 +253,57 @@ namespace 自定义Uppercomputer_20200727.控件重做
                                 }
                             catch { }
                             break;
+                    }
+                    break;
+                case "OmronTCP":
+                    IPLC_interface Omron_TCP = new OmronFinsTcp();//实例化接口--实现MODBUS TCP
+                    if (Omron_TCP.PLC_ready)//PLC是否准备完成
+                    {
+                        switch (event_Message.类型)
+                        {
+                            case 0:
+                                List<bool> data = Omron_TCP.PLC_read_M_bit(event_Message.设备_地址.Trim(), event_Message.设备_具体地址.Trim());//读取状态
+                                trigger_Bit(data[0], event_Message);//判断bit触发条件
+                                break;
+                            case 1:
+                                string numerical = Omron_TCP.PLC_read_D_register(event_Message.设备_地址.Trim(), event_Message.设备_具体地址.Trim(), numerical_format.Signed_16_Bit);//读取字数据
+                                trigger_word(numerical, event_Message);//判断字触发条件
+                                break;
+                        }
+                    }
+                    break;
+                case "OmronUDP":
+                    IPLC_interface Omron_udp = new OmronFinsUDP();//实例化接口--实现MODBUS TCP
+                    if (Omron_udp.PLC_ready)//PLC是否准备完成
+                    {
+                        switch (event_Message.类型)
+                        {
+                            case 0:
+                                List<bool> data = Omron_udp.PLC_read_M_bit(event_Message.设备_地址.Trim(), event_Message.设备_具体地址.Trim());//读取状态
+                                trigger_Bit(data[0], event_Message);//判断bit触发条件
+                                break;
+                            case 1:
+                                string numerical = Omron_udp.PLC_read_D_register(event_Message.设备_地址.Trim(), event_Message.设备_具体地址.Trim(), numerical_format.Signed_16_Bit);//读取字数据
+                                trigger_word(numerical, event_Message);//判断字触发条件
+                                break;
+                        }
+                    }
+                    break;
+                case "OmronCIP":
+                    IPLC_interface Omron_cip = new OmronFinsCIP();//实例化接口--实现MODBUS TCP
+                    if (Omron_cip.PLC_ready)//PLC是否准备完成
+                    {
+                        switch (event_Message.类型)
+                        {
+                            case 0:
+                                List<bool> data = Omron_cip.PLC_read_M_bit(event_Message.设备_地址.Trim(), event_Message.设备_具体地址.Trim());//读取状态
+                                trigger_Bit(data[0], event_Message);//判断bit触发条件
+                                break;
+                            case 1:
+                                string numerical = Omron_cip.PLC_read_D_register(event_Message.设备_地址.Trim(), event_Message.设备_具体地址.Trim(), numerical_format.Signed_16_Bit);//读取字数据
+                                trigger_word(numerical, event_Message);//判断字触发条件
+                                break;
+                        }
                     }
                     break;
             }
@@ -440,6 +493,76 @@ namespace 自定义Uppercomputer_20200727.控件重做
                                 break;
                             case 1:
                                 string numerical = MODBUD_TCP.PLC_read_D_register(event_Message.设备_地址.Trim(), event_Message.设备_具体地址.Trim(), numerical_format.Signed_16_Bit);//读取字数据
+                                trigger_word(numerical, event_Message);//判断字触发条件
+                                break;
+                        }
+                    }
+                    break;
+                //添加 宏指令 触发报警功能-
+                case "HMI":
+
+                    switch (event_Message.类型)
+                    {
+                        case 0:
+                            if (macroinstruction_data<bool>.M_Data[event_Message.设备_具体地址.Trim().ToInt32()].IsNull() != true)
+                                trigger_Bit(macroinstruction_data<bool>.M_Data[event_Message.设备_具体地址.Trim().ToInt32()], event_Message);//判断bit触发条件
+                            break;
+                        case 1:
+                            try
+                            {
+                                if (macroinstruction_data<int>.D_Data[event_Message.设备_具体地址.Trim().ToInt32()].IsNull() != true)
+                                    trigger_word((Convert.ToInt32(macroinstruction_data<int>.D_Data[event_Message.设备_具体地址.Trim().ToInt32()])).ToString() ?? "0", event_Message);//判断字触发条件
+                            }
+                            catch { }
+                            break;
+                    }
+                    break;
+                case "OmronTCP":
+                    IPLC_interface Omron_TCP = new OmronFinsTcp();//实例化接口--实现MODBUS TCP
+                    if (Omron_TCP.PLC_ready)//PLC是否准备完成
+                    {
+                        switch (event_Message.类型)
+                        {
+                            case 0:
+                                List<bool> data = Omron_TCP.PLC_read_M_bit(event_Message.设备_地址.Trim(), event_Message.设备_具体地址.Trim());//读取状态
+                                trigger_Bit(data[0], event_Message);//判断bit触发条件
+                                break;
+                            case 1:
+                                string numerical = Omron_TCP.PLC_read_D_register(event_Message.设备_地址.Trim(), event_Message.设备_具体地址.Trim(), numerical_format.Signed_16_Bit);//读取字数据
+                                trigger_word(numerical, event_Message);//判断字触发条件
+                                break;
+                        }
+                    }
+                    break;
+                case "OmronUDP":
+                    IPLC_interface Omron_udp = new OmronFinsUDP();//实例化接口--实现MODBUS TCP
+                    if (Omron_udp.PLC_ready)//PLC是否准备完成
+                    {
+                        switch (event_Message.类型)
+                        {
+                            case 0:
+                                List<bool> data = Omron_udp.PLC_read_M_bit(event_Message.设备_地址.Trim(), event_Message.设备_具体地址.Trim());//读取状态
+                                trigger_Bit(data[0], event_Message);//判断bit触发条件
+                                break;
+                            case 1:
+                                string numerical = Omron_udp.PLC_read_D_register(event_Message.设备_地址.Trim(), event_Message.设备_具体地址.Trim(), numerical_format.Signed_16_Bit);//读取字数据
+                                trigger_word(numerical, event_Message);//判断字触发条件
+                                break;
+                        }
+                    }
+                    break;
+                case "OmronCIP":
+                    IPLC_interface Omron_cip = new OmronFinsCIP();//实例化接口--实现MODBUS TCP
+                    if (Omron_cip.PLC_ready)//PLC是否准备完成
+                    {
+                        switch (event_Message.类型)
+                        {
+                            case 0:
+                                List<bool> data = Omron_cip.PLC_read_M_bit(event_Message.设备_地址.Trim(), event_Message.设备_具体地址.Trim());//读取状态
+                                trigger_Bit(data[0], event_Message);//判断bit触发条件
+                                break;
+                            case 1:
+                                string numerical = Omron_cip.PLC_read_D_register(event_Message.设备_地址.Trim(), event_Message.设备_具体地址.Trim(), numerical_format.Signed_16_Bit);//读取字数据
                                 trigger_word(numerical, event_Message);//判断字触发条件
                                 break;
                         }
