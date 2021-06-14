@@ -608,16 +608,17 @@ namespace 自定义Uppercomputer_20200727
 
         private void Form2_Load(object sender, EventArgs e)//加载窗口
         {
+            if (!GetPidByProcess()) return;
             ToolStripManager.Renderer = new HZH_Controls.Controls.ProfessionalToolStripRendererEx();
             Form2_Leave(this, new EventArgs());
             UI_Schedule("开始加载控件", 30, true);
             var se = Task.Run(() =>
-             {
-                 From_Load_Add.imageLists_1 = new List<ImageList>() { this.imageList1, this.imageList2, this.imageList3 };
-                 using (From_Load_Add load_Add = new From_Load_Add(this.Name, this.Controls, new List<ImageList>() { this.imageList1, this.imageList2, this.imageList3 }, this)) ;//添加报警条
-                      using (From_Load_Add add = new From_Load_Add(this.Name, this.Controls, new List<ImageList>() { this.imageList1, this.imageList2, this.imageList3 }, this, true)) ;//添加普通文本
-                      UI_Schedule("开始正在显示UI", 90, true);
-             });
+            {
+                From_Load_Add.imageLists_1 = new List<ImageList>() { this.imageList1, this.imageList2, this.imageList3 };
+                using (dynamic load_Add = new From_Load_Add(this.Name, this.Controls, new List<ImageList>() { this.imageList1, this.imageList2, this.imageList3 }, this)) ;//添加报警条
+                using (dynamic add = new From_Load_Add(this.Name, this.Controls, new List<ImageList>() { this.imageList1, this.imageList2, this.imageList3 }, this, true)) ;//添加普通文本
+                UI_Schedule("开始正在显示UI", 90, true);
+            });
             se.Wait();
             this.timer3.Start();
             timer3.Interval = 100;
@@ -1060,11 +1061,30 @@ namespace 自定义Uppercomputer_20200727
         {
             //加载完成 开始布局控件上下层
             this.timer4.Stop();
+            if(GetPidByProcess())
             From_Load_Add.Stratum(this.Name, this);
             //开始判断是否重连 机制
             this.plCreconnectionTime1.Enabled =  true;
             this.plCreconnectionTime1.Start();
-
+      
+        }
+        /// <summary>
+        /// 判断程序是否在运行
+        /// true 该程序在电脑进程运行中  false 表示不在进程运行
+        /// 该方法主要用于避免继承过程中CLR 进入SQL数据库 查询数据从而卡死软件
+        /// </summary>
+        /// <param name="Name"></param>
+        /// <returns></returns>
+        private bool GetPidByProcess(string Name= "自定义Uppercomputer-20200727")
+        {
+            if (System.Diagnostics.Process.GetProcessesByName(Name).ToList().Count > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         private void Form2_FormClosing(object sender, FormClosingEventArgs e)

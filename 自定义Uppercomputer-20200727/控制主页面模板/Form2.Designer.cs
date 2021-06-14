@@ -330,6 +330,9 @@
             this.skinLabel1.Text = "主页面";
             this.skinLabel1.Visible = false;
             // 
+            // timer1
+            // 
+            // 
             // skinContextMenuStrip1
             // 
             this.skinContextMenuStrip1.Arrow = System.Drawing.Color.Black;
