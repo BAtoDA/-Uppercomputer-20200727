@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using 自定义Uppercomputer_20200727.三菱报文;
 using PLC通讯规范接口;
 using numerical_format = PLC通讯规范接口.numerical_format;
+using Sunny.UI;
 
 namespace 自定义Uppercomputer_20200727.PLC选择
 {
@@ -453,6 +454,46 @@ namespace 自定义Uppercomputer_20200727.PLC选择
                         return false;
             }
             return false;
+        }
+        /// <summary>
+        /// 正常消息弹窗
+        /// </summary>
+        /// <param name="desc"></param>
+        /// <param name="isDialog"></param>
+        /// <param name="timeout"></param>
+        public void ShowInfoNotifier(string desc, bool isDialog = false, int timeout = 2000)
+        {
+            UINotifierHelper.ShowNotifier(desc, UINotifierType.INFO, UILocalize.InfoTitle, false, timeout);
+        }
+        /// <summary>
+        /// 链接成功消息弹窗
+        /// </summary>
+        /// <param name="desc"></param>
+        /// <param name="isDialog"></param>
+        /// <param name="timeout"></param>
+        public void ShowSuccessNotifier(string desc, bool isDialog = false, int timeout = 2000)
+        {
+            UINotifierHelper.ShowNotifier(desc, UINotifierType.OK, UILocalize.SuccessTitle, false, timeout);
+        }
+        /// <summary>
+        /// 正在重新链接设备弹窗
+        /// </summary>
+        /// <param name="desc"></param>
+        /// <param name="isDialog"></param>
+        /// <param name="timeout"></param>
+        public void ShowWarningNotifier(string desc, bool isDialog = false, int timeout = 2000)
+        {
+            UINotifierHelper.ShowNotifier(desc, UINotifierType.WARNING, UILocalize.WarningTitle, false, timeout);
+        }
+        /// <summary>
+        /// 设备掉线弹窗
+        /// </summary>
+        /// <param name="desc"></param>
+        /// <param name="isDialog"></param>
+        /// <param name="timeout"></param>
+        public void ShowErrorNotifier(string desc, bool isDialog = false, int timeout = 2000)
+        {
+            UINotifierHelper.ShowNotifier(desc, UINotifierType.ERROR, UILocalize.ErrorTitle, false, timeout);
         }
     }
 }

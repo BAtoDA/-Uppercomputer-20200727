@@ -101,6 +101,7 @@ namespace 欧姆龙Fins协议.欧姆龙.报文处理
                 {
                     PLC_ready = true;//PLC开放正常
                     PLC_busy = false;//允许访问
+                    this.ShowSuccessNotifier("已成功链接到" + IPEndPoint.Address);
                     return "链接PLC正常";//已连接到服务器        
                 }
                 else
@@ -131,6 +132,7 @@ namespace 欧姆龙Fins协议.欧姆龙.报文处理
                 OperateResult connect = busTcpClient.Read("W0", 1);//是否打开成功？
                 if (connect.IsSuccess)
                 {
+                    this.ShowSuccessNotifier($"链接：欧姆龙PLC成功");
                     retry = retry > 3 ? 0 : retry;
                     PLC_ready = true;//PLC开放正常
                     PLC_busy = false;//允许访问
@@ -138,6 +140,7 @@ namespace 欧姆龙Fins协议.欧姆龙.报文处理
                 }
                 else
                 {
+                    this.ShowWarningNotifier($"链接：欧姆龙PLC失败正在重新链接");
                     PLC_ready = false;//PLC开放异常
                     PLC_busy = false;//允许访问
                     return ;//尝试连接PLC，如果连接成功则返回值为0                   
@@ -408,8 +411,9 @@ namespace 欧姆龙Fins协议.欧姆龙.报文处理
             {
                 retry += 1;//重试次数
                 PLCerr_content = DateTime.Now.ToString("[HH:mm:ss] ") + $"[{address}] 读取失败{Environment.NewLine}原因：{result.ToMessageShowString()}";
+                this.ShowWarningNotifier(PLCerr_content);
                 if (retry == 1)
-                    MessageBox.Show(DateTime.Now.ToString("[HH:mm:ss] ") + $"[{address}] 读取失败{Environment.NewLine}原因：{result.ToMessageShowString()}");
+                    ShowErrorNotifier(DateTime.Now.ToString("[HH:mm:ss] ") + $"[{address}] 读取失败{Environment.NewLine}原因：{result.ToMessageShowString()}");
                 if (retry >= 1)
                     err(new Exception("链接PLC异常"));
             }
@@ -441,6 +445,7 @@ namespace 欧姆龙Fins协议.欧姆龙.报文处理
             {
                 PLC_ready = false;//读取异常
                 PLCerr_content = DateTime.Now.ToString("[HH:mm:ss] ") + $"[{address}] 写入失败{Environment.NewLine}原因：{result.ToMessageShowString()}";
+                this.ShowWarningNotifier(PLCerr_content);
             }
             Thread.Sleep(5);
             PLC_busy = false;//允许访问

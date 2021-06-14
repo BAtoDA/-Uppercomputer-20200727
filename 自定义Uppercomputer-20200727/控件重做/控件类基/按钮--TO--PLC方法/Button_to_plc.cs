@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using CSEngineTest;
 using PLC通讯规范接口;
+using Sunny.UI;
 using 欧姆龙Fins协议.报文处理;
 using 欧姆龙Fins协议.欧姆龙.报文处理;
 using 自定义Uppercomputer_20200727.PLC选择;
@@ -48,7 +49,7 @@ namespace 自定义Uppercomputer_20200727.控件重做.控件类基.按钮__TO__
                         {
                             Button_write_select(command, mitsubishi_AxActUtlType, pattern, specific, different, pattern1, specific1);//根据按钮模式进行写入操作
                         }
-                        else MessageBox.Show("未连接设备：" + pLC.Trim(), "Err");//推出异常提示用户
+                        else UINotifierHelper.ShowNotifier("未连接设备：" + pLC.Trim()+ "Err", UINotifierType.WARNING, UILocalize.WarningTitle, false, 1000);//推出异常提示用户
                     }
                     else
                     {
@@ -57,7 +58,7 @@ namespace 自定义Uppercomputer_20200727.控件重做.控件类基.按钮__TO__
                         {
                             Button_write_select(command, mitsubishi, pattern, specific, different, pattern1, specific1);//根据按钮模式进行写入操作
                         }
-                        else MessageBox.Show("未连接设备：" + pLC.Trim(), "Err");//推出异常提示用户
+                        else UINotifierHelper.ShowNotifier("未连接设备：" + pLC.Trim() + "Err", UINotifierType.WARNING, UILocalize.WarningTitle, false, 1000);//推出异常提示用户
                     }
                     break;
                 case "Siemens":
@@ -66,7 +67,7 @@ namespace 自定义Uppercomputer_20200727.控件重做.控件类基.按钮__TO__
                     {
                         Button_write_select(command, Siemens, pattern, specific, different, pattern1, specific1);//根据按钮模式进行写入操作
                     }
-                    else MessageBox.Show("未连接设备：" + pLC.Trim(), "Err");//推出异常提示用户
+                    else UINotifierHelper.ShowNotifier("未连接设备：" + pLC.Trim() + "Err", UINotifierType.WARNING, UILocalize.WarningTitle, false, 1000);//推出异常提示用户
                     break;
                 case "Modbus_TCP":
                     IPLC_interface MODBUD_TCP = new MODBUD_TCP();//实例化接口--实现MODBUS TCP
@@ -74,7 +75,7 @@ namespace 自定义Uppercomputer_20200727.控件重做.控件类基.按钮__TO__
                     {
                         Button_write_select(command, MODBUD_TCP, pattern, specific, different, pattern1, specific1);//根据按钮模式进行写入操作
                     }
-                    else MessageBox.Show("未连接设备：" + pLC.Trim(), "Err");//推出异常提示用户
+                    else UINotifierHelper.ShowNotifier("未连接设备：" + pLC.Trim() + "Err", UINotifierType.WARNING, UILocalize.WarningTitle, false, 1000);//推出异常提示用户
                     break;
                 //访问 宏指令数据区--Data_M
                 case "HMI":
@@ -89,6 +90,7 @@ namespace 自定义Uppercomputer_20200727.控件重做.控件类基.按钮__TO__
                     {
                         Button_write_select(command, OmronTCP, pattern, specific, different, pattern1, specific1);//根据按钮模式进行写入操作
                     }
+                    else UINotifierHelper.ShowNotifier("未连接设备：" + pLC.Trim() + "Err", UINotifierType.WARNING, UILocalize.WarningTitle, false, 1000);//推出异常提示用户
                     break;
                 case "OmronUDP":
                     IPLC_interface OmronUDP =new OmronFinsUDP();//实例化接口
@@ -96,6 +98,7 @@ namespace 自定义Uppercomputer_20200727.控件重做.控件类基.按钮__TO__
                     {
                         Button_write_select(command, OmronUDP, pattern, specific, different, pattern1, specific1);//根据按钮模式进行写入操作
                     }
+                    else UINotifierHelper.ShowNotifier("未连接设备：" + pLC.Trim() + "Err", UINotifierType.WARNING, UILocalize.WarningTitle, false, 1000);//推出异常提示用户
                     break;
                 case "OmronCIP":
                     IPLC_interface OmronCIP =new OmronFinsCIP();//实例化接口
@@ -103,6 +106,7 @@ namespace 自定义Uppercomputer_20200727.控件重做.控件类基.按钮__TO__
                     {
                         Button_write_select(command, OmronCIP, pattern, specific, different, pattern1, specific1);//根据按钮模式进行写入操作
                     }
+                    else UINotifierHelper.ShowNotifier("未连接设备：" + pLC.Trim() + "Err", UINotifierType.WARNING, UILocalize.WarningTitle, false, 1000);//推出异常提示用户
                     break;
             }
             return "OK";

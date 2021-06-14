@@ -140,7 +140,10 @@
     </Reference>
     <Reference Include="SunnyUI, Version=2.2.6.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>第三方控件DLL\SunnyUI.dll</HintPath>
+      <HintPath>第三方控件DLL\最新第三方Dll\SunnyUI.dll</HintPath>
+    </Reference>
+    <Reference Include="SunnyUI.Common">
+      <HintPath>第三方控件DLL\最新第三方Dll\SunnyUI.Common.dll</HintPath>
     </Reference>
     <Reference Include="System">
       <Private>False</Private>

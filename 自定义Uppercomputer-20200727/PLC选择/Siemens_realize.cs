@@ -20,7 +20,7 @@ namespace 自定义Uppercomputer_20200727.PLC选择.MODBUS_TCP监控窗口
     /// </summary>
     class Siemens_realize : PLC_public_Class, IPLC_interface, macroinstruction_PLC_interface
     {
-        public IPEndPoint IPEndPoint { get; set; }//IP地址
+        public static IPEndPoint IPEndPoint { get; set; }//IP地址
         static private bool PLC_ready;//内部PLC状态
         static private int PLCerr_code;//内部报警代码
         static private string PLCerr_content;//内部报警内容
@@ -64,8 +64,8 @@ namespace 自定义Uppercomputer_20200727.PLC选择.MODBUS_TCP监控窗口
         /// <param name="siemensPLCS"></param>
         public Siemens_realize(IPEndPoint iPEndPoint, HslCommunication.Profinet.Siemens.SiemensPLCS siemensPLCS)//构造函数---初始化---open--并且判断用户选择的类型
         {
-            this.IPEndPoint = iPEndPoint;//获取IP地址
-            this.IPEndPoint.Port = int.Parse("102");//西门子S7默认端口
+            IPEndPoint = iPEndPoint;//获取IP地址
+            IPEndPoint.Port = int.Parse("102");//西门子S7默认端口
             siemensTcpNet = new SiemensS7Net(siemensPLCS);//实例化对象
             mutex = new Mutex();//实例化互斥锁(Mutex)
         }
@@ -90,14 +90,15 @@ namespace 自定义Uppercomputer_20200727.PLC选择.MODBUS_TCP监控窗口
                 {
                     PLC_ready = true;//PLC开放正常
                     Message_run = false;//复位标志位
-                    return "已成功链接到" + this.IPEndPoint.Address;
+                    this.ShowSuccessNotifier("已成功链接到" + IPEndPoint.Address);
+                    return "已成功链接到" + IPEndPoint.Address;
                 }
                 else
                 {
                     PLC_ready = false;//PLC开放异常
                     // 切断连接
                     siemensTcpNet.ConnectClose();
-                    MessageBox.Show("链接PLC" + this.IPEndPoint.Address.ToString() + "异常--请检查下位机状态");
+                    MessageBox.Show("链接PLC" + IPEndPoint.Address.ToString() + "异常--请检查下位机状态");
                     return "链接PLC异常";//尝试连接PLC，如果连接成功则返回值为0
                 }
 
@@ -123,6 +124,7 @@ namespace 自定义Uppercomputer_20200727.PLC选择.MODBUS_TCP监控窗口
                 OperateResult connect = siemensTcpNet.ConnectServer();//获取操作结果
                 if (connect.IsSuccess)//判断是否连接成功
                 {
+                    this.ShowSuccessNotifier($"链接：西门子PLC成功");
                     retry = retry > 3 ? 0 : retry;
                     PLC_ready = true;//PLC开放正常
                     Message_run = false;//复位标志位
@@ -130,6 +132,7 @@ namespace 自定义Uppercomputer_20200727.PLC选择.MODBUS_TCP监控窗口
                 }
                 else
                 {
+                    this.ShowWarningNotifier($"链接：西门子PLC失败正在重新链接");
                     PLC_ready = false;//PLC开放异常
                     // 切断连接
                     siemensTcpNet.ConnectClose();
@@ -450,8 +453,9 @@ namespace 自定义Uppercomputer_20200727.PLC选择.MODBUS_TCP监控窗口
             {
                 retry += 1;//重试次数
                 PLCerr_content = DateTime.Now.ToString("[HH:mm:ss] ") + $"[{address}] 读取失败{Environment.NewLine}原因：{result.ToMessageShowString()}";
+                this.ShowWarningNotifier(PLCerr_content);
                 if (retry==1)
-                    MessageBox.Show(DateTime.Now.ToString("[HH:mm:ss] ") + $"[{address}] 读取失败{Environment.NewLine}原因：{result.ToMessageShowString()}");
+                    this.ShowErrorNotifier(DateTime.Now.ToString("[HH:mm:ss] ") + $"[{address}] 读取失败{Environment.NewLine}原因：{result.ToMessageShowString()}");
                 if(retry>=1)
                     err(new Exception("链接PLC异常"));
             }
@@ -467,6 +471,7 @@ namespace 自定义Uppercomputer_20200727.PLC选择.MODBUS_TCP监控窗口
             if (result.IsSuccess != true)
             {
                 PLCerr_content = DateTime.Now.ToString("[HH:mm:ss] ") + $"[{address}] 写入失败{Environment.NewLine}原因：{result.ToMessageShowString()}";
+                this.ShowWarningNotifier(PLCerr_content);
             }
         }
         private void err(Exception e)

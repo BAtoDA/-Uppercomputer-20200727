@@ -33,7 +33,7 @@ namespace 自定义Uppercomputer_20200727.控件重做
         {
             //配置该控件默认参数
             this.Enabled = false;
-            this.Interval = 500;
+            this.Interval = 2000;
             Mitsubishi_ax = new Mitsubishi_axActUtlType();
             Mitsubishi_rea = new Mitsubishi_realize();
             MODBUD_tcp = new MODBUD_TCP();
@@ -43,52 +43,55 @@ namespace 自定义Uppercomputer_20200727.控件重做
             OmronFinsUDP = new OmronFinsUDP();
 
         }
-        protected async override void OnTick(EventArgs e)//重写定时器到达事件
+        protected  override void OnTick(EventArgs e)//重写定时器到达事件
         {
+            this.Interval = 2000;
 
-               await Task.Run(() =>
-                {
-                    lock (this)
-                    {
-                        //重连PLC机制
-                        if( Mitsubishi_ax.PLC_Reconnection&& Mitsubishi_ax.PLC_ready!=true)
-                        {
-                            Mitsubishi_ax.PLC_Close();
-                            Mitsubishi_ax.PLCreconnection();
-                        }
-                        if (Mitsubishi_rea.PLC_Reconnection && Mitsubishi_rea.PLC_ready != true)
-                        {
-                            Mitsubishi_rea.PLC_Close();
-                            Mitsubishi_rea.PLCreconnection();
-                        }
-                        if (MODBUD_tcp.PLC_Reconnection && MODBUD_tcp.PLC_ready != true)
-                        {
-                            MODBUD_tcp.PLC_Close();
-                            MODBUD_tcp.PLCreconnection();
-                        }
-                        if (Siemens_rea.PLC_Reconnection && Siemens_rea.PLC_ready != true)
-                        {
-                            Siemens_rea.PLC_Close();
-                            Siemens_rea.PLCreconnection();
-                        }
-                        if (OmronFinsCIP.PLC_Reconnection && OmronFinsCIP.PLC_ready != true)
-                        {
-                            OmronFinsCIP.PLC_Close();
-                            OmronFinsCIP.PLCreconnection();
-                        }
-                        if (OmronFinsTCP.PLC_Reconnection && OmronFinsTCP.PLC_ready != true)
-                        {
-                            OmronFinsTCP.PLC_Close();
-                            OmronFinsTCP.PLCreconnection();
-                        }
-                        if (OmronFinsUDP.PLC_Reconnection && OmronFinsUDP.PLC_ready != true)
-                        {
-                            OmronFinsUDP.PLC_Close();
-                            OmronFinsUDP.PLCreconnection();
-                        }
-                    }
-                });
-          
+            this.Stop();
+
+            //重连PLC机制
+            if (Mitsubishi_ax.PLC_Reconnection && Mitsubishi_ax.PLC_ready != true)
+            {
+                Mitsubishi_ax.PLC_Close();
+                Mitsubishi_ax.PLCreconnection();
+            }
+            if (Mitsubishi_rea.PLC_Reconnection && Mitsubishi_rea.PLC_ready != true)
+            {
+                Mitsubishi_rea.PLC_Close();
+                Mitsubishi_rea.PLCreconnection();
+            }
+            if (MODBUD_tcp.PLC_Reconnection && MODBUD_tcp.PLC_ready != true)
+            {
+                MODBUD_tcp.PLC_Close();
+                MODBUD_tcp.PLCreconnection();
+            }
+            if (Siemens_rea.PLC_Reconnection && Siemens_rea.PLC_ready != true)
+            {
+                Siemens_rea.PLC_Close();
+                Siemens_rea.PLCreconnection();
+            }
+            if (OmronFinsCIP.PLC_Reconnection && OmronFinsCIP.PLC_ready != true)
+            {
+                OmronFinsCIP.PLC_Close();
+                OmronFinsCIP.PLCreconnection();
+            }
+            if (OmronFinsTCP.PLC_Reconnection && OmronFinsTCP.PLC_ready != true)
+            {
+                OmronFinsTCP.PLC_Close();
+                OmronFinsTCP.PLCreconnection();
+            }
+            if (OmronFinsUDP.PLC_Reconnection && OmronFinsUDP.PLC_ready != true)
+            {
+                OmronFinsUDP.PLC_Close();
+                OmronFinsUDP.PLCreconnection();
+            }
+            this.Start();
+
+        }
+        protected override void Dispose(bool disposing)
+        {
+            this.Enabled = false;
+            base.Dispose(disposing);
         }
     }
 }

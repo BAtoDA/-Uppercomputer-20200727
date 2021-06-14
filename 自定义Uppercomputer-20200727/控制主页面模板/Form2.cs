@@ -1072,6 +1072,7 @@ namespace 自定义Uppercomputer_20200727
             WinMonitoring.UnregisterHotKey(Handle, 103);
 
             WinMonitoring.UnregisterHotKey(Handle, 104);
+            this.plCreconnectionTime1.Dispose();
             try
             {
                 if (!this.Capture) return;
