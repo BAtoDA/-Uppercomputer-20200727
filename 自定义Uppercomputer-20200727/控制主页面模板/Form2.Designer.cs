@@ -330,9 +330,6 @@
             this.skinLabel1.Text = "主页面";
             this.skinLabel1.Visible = false;
             // 
-            // timer1
-            // 
-            // 
             // skinContextMenuStrip1
             // 
             this.skinContextMenuStrip1.Arrow = System.Drawing.Color.Black;
@@ -1253,10 +1250,10 @@
         navigationMenuItem37,
         navigationMenuItem38,
         navigationMenuItem39};
-            this.ucNavigationMenu1.Location = new System.Drawing.Point(-1, 34);
+            this.ucNavigationMenu1.Location = new System.Drawing.Point(2, 34);
             this.ucNavigationMenu1.Name = "ucNavigationMenu1";
             this.ucNavigationMenu1.Padding = new System.Windows.Forms.Padding(30, 0, 0, 0);
-            this.ucNavigationMenu1.Size = new System.Drawing.Size(950, 45);
+            this.ucNavigationMenu1.Size = new System.Drawing.Size(946, 45);
             this.ucNavigationMenu1.TabIndex = 10;
             this.ucNavigationMenu1.TipColor = System.Drawing.Color.Red;
             this.ucNavigationMenu1.ClickItemed += new System.EventHandler(this.ucNavigationMenu1_ClickItemed);
@@ -1313,6 +1310,7 @@
             this.MinimumSize = new System.Drawing.Size(25, 25);
             this.MiniSize = new System.Drawing.Size(25, 25);
             this.Name = "Form2";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form2";
             this.Activated += new System.EventHandler(this.Form2_Activated);
             this.Deactivate += new System.EventHandler(this.Form2_Deactivate);

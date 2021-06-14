@@ -56,7 +56,7 @@ using 欧姆龙Fins协议.欧姆龙.报文处理;
 
 namespace 自定义Uppercomputer_20200727
 {
-    public partial class Form2 : CCWin.Skin_Mac
+    public partial class Form2 : CCWin.Skin_DevExpress
     {
         /// <该页面是模板通用页面->
         //1.声明自适应类实例
@@ -1077,14 +1077,7 @@ namespace 自定义Uppercomputer_20200727
         /// <returns></returns>
         private bool GetPidByProcess(string Name= "自定义Uppercomputer-20200727")
         {
-            if (System.Diagnostics.Process.GetProcessesByName(Name).ToList().Count > 0)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            return System.Diagnostics.Process.GetProcessesByName(Name).ToList().Count > 0 ? true : false;
         }
 
         private void Form2_FormClosing(object sender, FormClosingEventArgs e)
