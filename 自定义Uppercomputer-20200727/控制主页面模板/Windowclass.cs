@@ -12,7 +12,7 @@ namespace 自定义Uppercomputer_20200727.控制主页面模板
     class Windowclass: IDisposable
     {
         private Form Openfrom_1;
-        // private string[] FromnamTexe = new string[] { "主画面", "手动画面", "异常画面", "监视画面", "运转画面", "生产设置", "参数设置" };
+        private string[] FromnamTexe = new string[] { "主画面", "手动画面", "异常画面", "监视画面", "运转画面", "生产设置", "参数设置" };
         public Windowclass(Form Present, SkinButton[] Buttons, Form[] Formlist, SkinLabel Fromname, SkinButton skinButton)
         {      
             for (int i = 0; i < Formlist.Length; i++)
@@ -56,7 +56,8 @@ namespace 自定义Uppercomputer_20200727.控制主页面模板
             FormCollection formCollection = Application.OpenForms;//获取窗口集合
             for (int i = 0; i < formCollection.Count; i++)
             {
-                if (formCollection[i].Text != "Home" & formCollection[i].Text != Openfrom.Text)//关闭其余窗口
+                var form = formCollection[i] as Form2;
+                if (formCollection[i].Text != "Home" & formCollection[i].Text != Openfrom.Text&&form!=null)//关闭其余窗口
                 {
                     formCollection[i].Close();//关闭窗口     
                 }

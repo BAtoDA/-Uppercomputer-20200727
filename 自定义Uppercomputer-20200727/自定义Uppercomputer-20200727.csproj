@@ -606,6 +606,12 @@
     <Compile Include="控件重做\获取控件的全部属性\Control_property.Designer.cs">
       <DependentUpon>Control_property.cs</DependentUpon>
     </Compile>
+    <Compile Include="控制主页面\Form3.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="控制主页面\Form3.Designer.cs">
+      <DependentUpon>Form3.cs</DependentUpon>
+    </Compile>
     <Compile Include="控制主页面模板\doughnut_Chart_Add.cs" />
     <Compile Include="控制主页面模板\histogram_Chart_Add.cs" />
     <Compile Include="控制主页面模板\ihatetheqrcode_Add.cs" />
@@ -616,6 +622,12 @@
     <Compile Include="控制主页面模板\工业图形ADD\Valve_Add.cs" />
     <Compile Include="控制主页面模板\控件添加类重写\ControlAddBase.cs" />
     <Compile Include="控制主页面模板\控件自动改变大小\Resize.cs" />
+    <Compile Include="数据查询界面\SQLquery.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="数据查询界面\SQLquery.Designer.cs">
+      <DependentUpon>SQLquery.cs</DependentUpon>
+    </Compile>
     <Compile Include="文本输入键盘\keyboard.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -707,12 +719,6 @@
     <Compile Include="控件重做\SkinLabel_reform.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="控制主页面\Form3.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="控制主页面\Form3.Designer.cs">
-      <DependentUpon>Form3.cs</DependentUpon>
-    </Compile>
     <Compile Include="控制主页面模板\Form2.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -779,6 +785,44 @@
     <Compile Include="运转控制画面\Form7.Designer.cs">
       <DependentUpon>Form7.cs</DependentUpon>
     </Compile>
+    <Compile Include="非软件运行时控件\DADataGridView_TO_PLC.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="非软件运行时控件\PLC参数设置界面\ButtonBitForm1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="非软件运行时控件\PLC参数设置界面\ButtonBitForm1.Designer.cs">
+      <DependentUpon>ButtonBitForm1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="非软件运行时控件\PLC参数设置界面\ComboxForm1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="非软件运行时控件\PLC参数设置界面\ComboxForm1.Designer.cs">
+      <DependentUpon>ComboxForm1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="非软件运行时控件\PLC参数设置界面\TextboxDForm1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="非软件运行时控件\PLC参数设置界面\TextboxDForm1.Designer.cs">
+      <DependentUpon>TextboxDForm1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="非软件运行时控件\控件测试界面\TestForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="非软件运行时控件\控件测试界面\TestForm.Designer.cs">
+      <DependentUpon>TestForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="非软件运行时控件\控件类基\Button_base.cs" />
+    <Compile Include="非软件运行时控件\控件类基\Combox_base.cs" />
+    <Compile Include="非软件运行时控件\控件类基\DataGridViewPLC_base.cs" />
+    <Compile Include="非软件运行时控件\控件类基\Doughnut_Base.cs" />
+    <Compile Include="非软件运行时控件\控件类基\Flicker_base.cs" />
+    <Compile Include="非软件运行时控件\控件类基\Histogram_base.cs" />
+    <Compile Include="非软件运行时控件\控件类基\TextBox_base.cs" />
+    <Compile Include="非软件运行时控件\控件类基\按钮--TO--PLC方法\Button_PLC.cs" />
+    <Compile Include="非软件运行时控件\控件类基\文本--TO--PLC方法\TextBox_PLC.cs" />
+    <Compile Include="非软件运行时控件\控件类基\表格控件--TO--PLC\DataGridView_PLC.cs" />
+    <Compile Include="非软件运行时控件\控件类基\表格控件--TO--PLC\表格控件--TO--SQL\DADataGridView_SQL.cs" />
     <EmbeddedResource Include="PLC选择\MODBUS_TCP监控窗口\modbus_Form.resx">
       <DependentUpon>modbus_Form.cs</DependentUpon>
     </EmbeddedResource>
@@ -892,11 +936,11 @@
     <EmbeddedResource Include="控件重做\获取控件的全部属性\Control_property.resx">
       <DependentUpon>Control_property.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="控制主页面\Form3.resx">
-      <DependentUpon>Form3.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="控制主页面模板\Form2.resx">
       <DependentUpon>Form2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="数据查询界面\SQLquery.resx">
+      <DependentUpon>SQLquery.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="文本输入键盘\keyboard.resx">
       <DependentUpon>keyboard.cs</DependentUpon>
@@ -915,6 +959,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="运转控制画面\Form7.resx">
       <DependentUpon>Form7.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="非软件运行时控件\PLC参数设置界面\ButtonBitForm1.resx">
+      <DependentUpon>ButtonBitForm1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="非软件运行时控件\PLC参数设置界面\ComboxForm1.resx">
+      <DependentUpon>ComboxForm1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="非软件运行时控件\PLC参数设置界面\TextboxDForm1.resx">
+      <DependentUpon>TextboxDForm1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="非软件运行时控件\控件测试界面\TestForm.resx">
+      <DependentUpon>TestForm.cs</DependentUpon>
     </EmbeddedResource>
     <EntityDeploy Include="EF实体模型\Model1.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
@@ -1097,10 +1153,6 @@
     <ProjectReference Include="..\C#Dynamic macro instruction\CSEngineTest.csproj">
       <Project>{994E3EE9-10F4-461D-8F4A-0BEB6294395C}</Project>
       <Name>CSEngineTest</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\HslCommunicationDemo-master\HslCommunicationDemo\HslCommunicationDemo.csproj">
-      <Project>{3878075B-B8D7-4090-B094-29622581442F}</Project>
-      <Name>HslCommunicationDemo</Name>
     </ProjectReference>
     <ProjectReference Include="..\PLC通讯规范接口\PLC通讯规范接口.csproj">
       <Project>{f61e9338-2d7e-4a93-a7b8-acb591f01c47}</Project>

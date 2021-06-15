@@ -12,7 +12,6 @@ using System.Threading.Tasks;
 using System.IO.Ports;
 using System.Windows.Forms;
 using CCWin.SkinControl;
-using HslCommunicationDemo;
 using 自定义Uppercomputer_20200727.PLC选择;
 using 自定义Uppercomputer_20200727.修改参数界面;
 using 自定义Uppercomputer_20200727.修改参数界面.doughnut_Chart图形控件参数;
@@ -53,6 +52,7 @@ using System.Data.Entity;
 using CCWin.Win32.Const;
 using 自定义Uppercomputer_20200727.控制主页面模板.控件添加类重写;
 using 欧姆龙Fins协议.欧姆龙.报文处理;
+using 自定义Uppercomputer_20200727.数据查询界面;
 
 namespace 自定义Uppercomputer_20200727
 {
@@ -61,6 +61,10 @@ namespace 自定义Uppercomputer_20200727
         /// <该页面是模板通用页面->
         //1.声明自适应类实例
         AutoSizeFormClass asc = new AutoSizeFormClass();
+        /// <summary>
+        /// 标识该窗口是框架窗口
+        /// </summary>
+        public static bool frameForm { get; set; } = true;
         /// <summary>
         /// 构造函数
         /// </summary>
@@ -654,15 +658,14 @@ namespace 自定义Uppercomputer_20200727
             WinMonitoring.RegisterHotKey(Handle, 104, WinMonitoring.KeyModifiers.Ctrl, Keys.V);
         }
 
-        private void toolStripMenuItem2_Click(object sender, EventArgs e)//调用测试工具
+        private void toolStripMenuItem2_Click(object sender, EventArgs e)//调用SQL数据查询工具
         {
             //LogUtils日志
-            LogUtils.debugWrite("用户调用了 测试工具");
-            FormLoad formLoad = new FormLoad();
-            if (MessageBox.Show("该测试软件调用来源于：Git", "错误：ERR", MessageBoxButtons.YesNo) == DialogResult.Yes)
-                formLoad.ShowDialog();
+            LogUtils.debugWrite("用户调用了 SQL查询工具");
+            SQLquery lquery = new SQLquery();
+            lquery.ShowDialog();
             //LogUtils日志
-            LogUtils.debugWrite("用户关闭了 测试工具");
+            LogUtils.debugWrite("用户关闭了 SQL查询工具");
         }
         PLCselect_Form pLCselect_Form;
         private void toolStripMenuItem4_Click(object sender, EventArgs e)//开始链接设备--PLC
@@ -814,7 +817,7 @@ namespace 自定义Uppercomputer_20200727
                 case "链接设备":
                     toolStripMenuItem4_Click(sender, e);
                     return;
-                case "通讯测试":
+                case "数据查询"://
                     toolStripMenuItem2_Click(sender, e);
                     return;
                 case "编辑模式":
@@ -1078,6 +1081,12 @@ namespace 自定义Uppercomputer_20200727
         private bool GetPidByProcess(string Name= "自定义Uppercomputer-20200727")
         {
             return System.Diagnostics.Process.GetProcessesByName(Name).ToList().Count > 0 ? true : false;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            非软件运行时控件.控件测试界面.TestForm testForm = new 非软件运行时控件.控件测试界面.TestForm();
+            testForm.Show();
         }
 
         private void Form2_FormClosing(object sender, FormClosingEventArgs e)

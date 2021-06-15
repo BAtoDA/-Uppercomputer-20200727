@@ -11,7 +11,6 @@ using 自定义Uppercomputer_20200727.主页面;
 using System.Threading;
 using 自定义Uppercomputer_20200727.手动控制页面;
 using 自定义Uppercomputer_20200727.控制主页面;
-using HslCommunicationDemo;
 using 自定义Uppercomputer_20200727.PLC选择;
 using 自定义Uppercomputer_20200727.PLC选择.MODBUS_TCP监控窗口;
 using System.Diagnostics;

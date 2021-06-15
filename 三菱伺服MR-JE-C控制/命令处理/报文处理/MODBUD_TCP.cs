@@ -31,7 +31,7 @@ namespace 命令处理
         /// <summary>
         /// 引用HslCommunication.ModBus进行实现
         /// </summary>
-        public static ModBusTcpClient busTcpClient = null;//引用HslCommunication.ModBus进行实现
+        public static ModbusTcpNet busTcpClient = null;//引用HslCommunication.ModBus进行实现
                                                           //实现接口的属性
         /// <summary>
         /// 实现接口的属性 PLC状态
@@ -83,8 +83,9 @@ namespace 命令处理
             try
             {
                 busTcpClient?.ConnectClose();//切换模式
-                busTcpClient = new ModBusTcpClient(MODBUD_TCP.IPEndPoint.Address.ToString(), MODBUD_TCP.IPEndPoint.Port);//传入IP与端口
-                busTcpClient.ConnectTimeout = 1000;//X超时时间
+                busTcpClient = new ModbusTcpNet(MODBUD_TCP.IPEndPoint.Address.ToString(), MODBUD_TCP.IPEndPoint.Port);//传入IP与端口
+                busTcpClient.ConnectTimeOut = 1000;//X超时时间
+                busTcpClient.ReceiveTimeOut = 1000;
                 OperateResult connect = busTcpClient.ConnectServer();//是否打开成功？
                 if (connect.IsSuccess)
                 {
@@ -123,7 +124,7 @@ namespace 命令处理
                 try
                 {
                     mutex.WaitOne(3000);
-                    readResultRender(busTcpClient.ReadBoolCoil(ushort.Parse(id)), id, ref result);//格式--读取地址-地址，返回数据--地址决定了是Nmae的类型            
+                    readResultRender(busTcpClient.ReadBool(id), id, ref result);//格式--读取地址-地址，返回数据--地址决定了是Nmae的类型            
                     mutex.ReleaseMutex();
                 }
                 catch { }
@@ -146,7 +147,7 @@ namespace 命令处理
                 try
                 {
                     mutex.WaitOne(3000);
-                    writeResultRender(busTcpClient.WriteOneCoil(ushort.Parse(id), Convert.ToBoolean(button_State.ToInt32())), id);
+                    writeResultRender(busTcpClient.WriteCoil(id, Convert.ToBoolean(button_State.ToInt32())), id);
                     result = "1";//写入1   
                     mutex.ReleaseMutex();
                 }
@@ -175,44 +176,44 @@ namespace 命令处理
                         case numerical_format.Signed_16_Bit:
                         case numerical_format.BCD_16_Bit:
                             // 读取short变量
-                            readResultRender(busTcpClient.ReadShortRegister(ushort.Parse(id)), id, ref result);
+                            readResultRender(busTcpClient.ReadInt16(id), id, ref result);
                             break;
                         case numerical_format.Signed_32_Bit:
                         case numerical_format.BCD_32_Bit:
                             // 读取int变量
-                            readResultRender(busTcpClient.ReadIntRegister(ushort.Parse(id)), id, ref result);
+                            readResultRender(busTcpClient.ReadInt32(id), id, ref result);
                             break;
                         case numerical_format.Binary_16_Bit:
                             // 读取16位二进制数
                             String data_1 = Convert.ToString(result.ToInt32(), 2);
-                            readResultRender(busTcpClient.ReadShortRegister(ushort.Parse(id)), id, ref data_1);
+                            readResultRender(busTcpClient.ReadInt16(id), id, ref data_1);
                             break;
                         case numerical_format.Binary_32_Bit:
                             // 读取32位二进制数
                             String data_2 = Convert.ToString(result.ToInt32(), 2);
-                            readResultRender(busTcpClient.ReadIntRegister(ushort.Parse(id)), id, ref data_2);
+                            readResultRender(busTcpClient.ReadInt32(id), id, ref data_2);
                             break;
                         case numerical_format.Float_32_Bit:
                             // 读取float变量
-                            readResultRender(busTcpClient.ReadFloatRegister(ushort.Parse(id)), id, ref result);
+                            readResultRender(busTcpClient.ReadFloat(id), id, ref result);
                             break;
                         case numerical_format.Hex_16_Bit:
                             // 读取short变量
-                            readResultRender(busTcpClient.ReadShortRegister(ushort.Parse(id)), id, ref result);
+                            readResultRender(busTcpClient.ReadInt16(id), id, ref result);
                             result = Convert.ToInt32(result).ToString("X");
                             break;
                         case numerical_format.Hex_32_Bit:
                             // 读取int变量
-                            readResultRender(busTcpClient.ReadIntRegister(ushort.Parse(id)), id, ref result);
+                            readResultRender(busTcpClient.ReadInt32(id), id, ref result);
                             result = Convert.ToInt32(result).ToString("X");
                             break;
                         case numerical_format.Unsigned_16_Bit:
                             // 读取ushort变量
-                            readResultRender(busTcpClient.ReadUShortRegister(ushort.Parse(id)), id, ref result);
+                            readResultRender(busTcpClient.ReadUInt16(id), id, ref result);
                             break;
                         case numerical_format.Unsigned_32_Bit:
                             // 读取uint变量
-                            readResultRender(busTcpClient.ReadUIntRegister(ushort.Parse(id)), id, ref result);
+                            readResultRender(busTcpClient.ReadUInt32(id), id, ref result);
                             break;
                     }
                     mutex.ReleaseMutex();
@@ -241,32 +242,32 @@ namespace 命令处理
                     {
                         case numerical_format.Signed_16_Bit:
                         case numerical_format.BCD_16_Bit:
-                            writeResultRender(busTcpClient.WriteRegister(ushort.Parse(id), short.Parse(content)), id);
+                            writeResultRender(busTcpClient.Write(id, short.Parse(content)), id);
                             break;
                         case numerical_format.Signed_32_Bit:
                         case numerical_format.BCD_32_Bit:
-                            writeResultRender(busTcpClient.WriteRegister(ushort.Parse(id), int.Parse(content)), id);
+                            writeResultRender(busTcpClient.Write(id, int.Parse(content)), id);
                             break;
                         case numerical_format.Binary_16_Bit:
-                            writeResultRender(busTcpClient.WriteRegister(ushort.Parse(id), short.Parse(Convert.ToInt32(content, 2).ToString())), id);
+                            writeResultRender(busTcpClient.Write(id, short.Parse(Convert.ToInt32(content, 2).ToString())), id);
                             break;
                         case numerical_format.Binary_32_Bit:
-                            writeResultRender(busTcpClient.WriteRegister(ushort.Parse(id), int.Parse(Convert.ToInt32(content, 2).ToString())), id);
+                            writeResultRender(busTcpClient.Write(id, int.Parse(Convert.ToInt32(content, 2).ToString())), id);
                             break;
                         case numerical_format.Float_32_Bit:
-                            writeResultRender(busTcpClient.WriteRegister(ushort.Parse(id), float.Parse(content)), id);
+                            writeResultRender(busTcpClient.Write(id, float.Parse(content)), id);
                             break;
                         case numerical_format.Hex_16_Bit:
-                            writeResultRender(busTcpClient.WriteRegister(ushort.Parse(id), short.Parse(Convert.ToInt32(content, 16).ToString())), id);
+                            writeResultRender(busTcpClient.Write(id, short.Parse(Convert.ToInt32(content, 16).ToString())), id);
                             break;
                         case numerical_format.Hex_32_Bit:
-                            writeResultRender(busTcpClient.WriteRegister(ushort.Parse(id), int.Parse(Convert.ToInt32(content, 16).ToString())), id);
+                            writeResultRender(busTcpClient.Write(id, int.Parse(Convert.ToInt32(content, 16).ToString())), id);
                             break;
                         case numerical_format.Unsigned_16_Bit:
-                            writeResultRender(busTcpClient.WriteRegister(ushort.Parse(id), int.Parse(content)), id);
+                            writeResultRender(busTcpClient.Write(id, int.Parse(content)), id);
                             break;
                         case numerical_format.Unsigned_32_Bit:
-                            writeResultRender(busTcpClient.WriteRegister(ushort.Parse(id), uint.Parse(content)), id);
+                            writeResultRender(busTcpClient.Write(id, uint.Parse(content)), id);
                             break;
                     }
                     mutex.ReleaseMutex();

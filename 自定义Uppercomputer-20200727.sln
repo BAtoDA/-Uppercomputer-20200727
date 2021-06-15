@@ -5,8 +5,6 @@ VisualStudioVersion = 16.0.30309.148
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "自定义Uppercomputer-20200727", "自定义Uppercomputer-20200727\自定义Uppercomputer-20200727.csproj", "{DFCAAA72-68A3-4304-9D1A-615DCA585A05}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HslCommunicationDemo", "HslCommunicationDemo-master\HslCommunicationDemo\HslCommunicationDemo.csproj", "{3878075B-B8D7-4090-B094-29622581442F}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UI_Library_da", "UI_Library_da\UI_Library_da.csproj", "{90956435-00C0-45A2-A74E-AC9E3871CE85}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSEngineTest", "C#Dynamic macro instruction\CSEngineTest.csproj", "{994E3EE9-10F4-461D-8F4A-0BEB6294395C}"
@@ -37,10 +35,6 @@ Global
 		{DFCAAA72-68A3-4304-9D1A-615DCA585A05}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DFCAAA72-68A3-4304-9D1A-615DCA585A05}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DFCAAA72-68A3-4304-9D1A-615DCA585A05}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3878075B-B8D7-4090-B094-29622581442F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3878075B-B8D7-4090-B094-29622581442F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3878075B-B8D7-4090-B094-29622581442F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3878075B-B8D7-4090-B094-29622581442F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{90956435-00C0-45A2-A74E-AC9E3871CE85}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{90956435-00C0-45A2-A74E-AC9E3871CE85}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{90956435-00C0-45A2-A74E-AC9E3871CE85}.Release|Any CPU.ActiveCfg = Release|Any CPU

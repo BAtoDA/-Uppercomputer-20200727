@@ -8,6 +8,7 @@ using CCWin.SkinClass;
 using CCWin.SkinControl;
 using CSEngineTest;
 using PLC通讯规范接口;
+using Sunny.UI;
 using 欧姆龙Fins协议.欧姆龙.报文处理;
 using 自定义Uppercomputer_20200727.PLC选择;
 using 自定义Uppercomputer_20200727.PLC选择.MODBUS_TCP监控窗口;
@@ -44,7 +45,7 @@ namespace 自定义Uppercomputer_20200727.控件重做.控件类基.文本__TO__
                             else
                                 mitsubishi_AxActUtlType.PLC_write_D_register(pattern1, specific1, Data, Index(format));
                         }
-                        else MessageBox.Show("未连接设备：" + pLC.Trim(), "Err");//推出异常提示用户
+                        else UINotifierHelper.ShowNotifier("未连接设备：" + pLC.Trim() + "Err", UINotifierType.WARNING, UILocalize.WarningTitle, false, 1000);//推出异常提示用户
                     }
                     else
                     {
@@ -56,7 +57,7 @@ namespace 自定义Uppercomputer_20200727.控件重做.控件类基.文本__TO__
                             else
                                 mitsubishi.PLC_write_D_register(pattern1, specific1, Data, Index(format));
                         }
-                        else MessageBox.Show("未连接设备：" + pLC.Trim(), "Err");//推出异常提示
+                        else UINotifierHelper.ShowNotifier("未连接设备：" + pLC.Trim() + "Err", UINotifierType.WARNING, UILocalize.WarningTitle, false, 1000);//推出异常提示用户
                     }
                     break;
                 case "Siemens":
@@ -68,7 +69,7 @@ namespace 自定义Uppercomputer_20200727.控件重做.控件类基.文本__TO__
                         else
                             Siemens.PLC_write_D_register(pattern1, specific1, Data, Index(format));
                     }
-                    else MessageBox.Show("未连接设备：" + pLC.Trim(), "Err");//推出异常提示
+                    else UINotifierHelper.ShowNotifier("未连接设备：" + pLC.Trim() + "Err", UINotifierType.WARNING, UILocalize.WarningTitle, false, 1000);//推出异常提示用户
                     break;
                 case "Modbus_TCP":
                     IPLC_interface MODBUD_TCP = new MODBUD_TCP();//实例化接口--实现MODBUS TCP
@@ -79,7 +80,7 @@ namespace 自定义Uppercomputer_20200727.控件重做.控件类基.文本__TO__
                         else
                             MODBUD_TCP.PLC_write_D_register(pattern1, specific1, Data, Index(format));
                     }
-                    else MessageBox.Show("未连接设备：" + pLC.Trim(), "Err");//推出异常提示用户
+                    else UINotifierHelper.ShowNotifier("未连接设备：" + pLC.Trim() + "Err", UINotifierType.WARNING, UILocalize.WarningTitle, false, 1000);//推出异常提示用户
                     break;
                 //写入到 宏指令 静态区D_Data
                 case "HMI":
@@ -97,7 +98,7 @@ namespace 自定义Uppercomputer_20200727.控件重做.控件类基.文本__TO__
                         else
                             FinsTcp.PLC_write_D_register(pattern1, specific1, Data, Index(format));
                     }
-                    else MessageBox.Show("未连接设备：" + pLC.Trim(), "Err");//推出异常提示用户
+                    else UINotifierHelper.ShowNotifier("未连接设备：" + pLC.Trim() + "Err", UINotifierType.WARNING, UILocalize.WarningTitle, false, 1000);//推出异常提示用户
                     break;
                 case "OmronUDP":
                     IPLC_interface FinsUdp = new OmronFinsUDP();//实例化接口--实现OmronUDP
@@ -108,7 +109,7 @@ namespace 自定义Uppercomputer_20200727.控件重做.控件类基.文本__TO__
                         else
                             FinsUdp.PLC_write_D_register(pattern1, specific1, Data, Index(format));
                     }
-                    else MessageBox.Show("未连接设备：" + pLC.Trim(), "Err");//推出异常提示用户
+                    else UINotifierHelper.ShowNotifier("未连接设备：" + pLC.Trim() + "Err", UINotifierType.WARNING, UILocalize.WarningTitle, false, 1000);//推出异常提示用户
                     break;
                 case "OmronCIP":
                     IPLC_interface Finscip = new OmronFinsCIP();//实例化接口--实现OmronCIP
@@ -119,7 +120,7 @@ namespace 自定义Uppercomputer_20200727.控件重做.控件类基.文本__TO__
                         else
                             Finscip.PLC_write_D_register(pattern1, specific1, Data, Index(format));
                     }
-                    else MessageBox.Show("未连接设备：" + pLC.Trim(), "Err");//推出异常提示用户
+                    else UINotifierHelper.ShowNotifier("未连接设备：" + pLC.Trim() + "Err", UINotifierType.WARNING, UILocalize.WarningTitle, false, 1000);//推出异常提示用户
                     break;
             }
             return "OK_RUN";

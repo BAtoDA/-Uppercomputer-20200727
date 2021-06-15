@@ -14,7 +14,7 @@ namespace 自定义Uppercomputer_20200727.控件重做
     /// <summary>
     /// 继承与系统定时器 用于处理PLC重连机制
     /// </summary>
-    [ToolboxItem(true)]
+    [ToolboxItem(false)]
     [Browsable(true)]
     [Description("PLC后台定时打开,刷新,重新链接控件")]
     class PLCreconnectionTime :System.Windows.Forms.Timer

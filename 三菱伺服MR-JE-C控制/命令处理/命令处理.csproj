@@ -38,7 +38,7 @@
     </Reference>
     <Reference Include="HslCommunication, Version=4.3.2.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\第三方控件DLL\HslCommunication.dll</HintPath>
+      <HintPath>..\..\自定义Uppercomputer-20200727\第三方控件DLL\HslCommunication.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
