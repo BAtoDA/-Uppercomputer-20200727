@@ -22,8 +22,40 @@ namespace 自定义Uppercomputer_20200727.非软件运行时控件.PLC参数设�
             this.combox = combox;
             this.indx = indx;
             this.addeip = addeip;
+            //判断传入的PLC是否符合辅助触点
+            
+            switch (combox)
+            {
+                case 0:
+                    if(GetEnum<Mitsubishi_bit>(indx.Trim())==false)
+                    {
+                        this.uiComboBox2.DataSource = Enum.GetNames(typeof(Mitsubishi_bit)).ToList();
+                    }
+                    break;
+                case 1:
+                    if (GetEnum<Siemens_bit>(indx.Trim()) == false)
+                    {
+                        this.uiComboBox2.DataSource = Enum.GetNames(typeof(Siemens_bit)).ToList();
+                    }
+                    break;
+                case 2:
+                    if (GetEnum<Modbus_TCP_bit>(indx.Trim()) == false)
+                    {
+                        this.uiComboBox2.DataSource = Enum.GetNames(typeof(Modbus_TCP_bit)).ToList();
+                    }
+                    break;
+            }
         }
-
+        /// <summary>
+        /// 查找指定PLC辅助触点 找到TRUE 找不到false
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="Name"></param>
+        /// <returns></returns>
+        private bool GetEnum<T>(string Name)where T:Enum
+        {
+            return Enum.GetName(typeof(T), Name)==null?false:true;
+        }
         private void ComboBoxSelecte(int data)
         {
             switch (data)

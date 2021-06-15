@@ -6,6 +6,7 @@ using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 using PLC通讯规范接口;
+using 自定义Uppercomputer_20200727.非软件运行时控件.按钮操作模式;
 
 namespace 自定义Uppercomputer_20200727.非软件运行时控件.控件类基
 {
@@ -77,7 +78,7 @@ namespace 自定义Uppercomputer_20200727.非软件运行时控件.控件类基
         /// <summary>
         /// 按钮操作模式
         /// </summary>
-        Button_pattern Pattern { get; set; }
+         DAButton_pattern Pattern { get; set; }
         /// <summary>
         /// 控件刷新定时器
         /// </summary>

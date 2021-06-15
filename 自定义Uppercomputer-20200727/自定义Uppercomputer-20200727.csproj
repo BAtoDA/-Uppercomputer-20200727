@@ -199,6 +199,12 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="zxing, Version=0.16.6.0, Culture=neutral, PublicKeyToken=4e88037ac681fe60, processorArchitecture=MSIL">
+      <HintPath>..\packages\ZXing.Net.0.16.6\lib\net47\zxing.dll</HintPath>
+    </Reference>
+    <Reference Include="zxing.presentation, Version=0.16.6.0, Culture=neutral, PublicKeyToken=4e88037ac681fe60, processorArchitecture=MSIL">
+      <HintPath>..\packages\ZXing.Net.0.16.6\lib\net47\zxing.presentation.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EF实体模型\AnalogMeter_Class.cs">
@@ -785,7 +791,7 @@
     <Compile Include="运转控制画面\Form7.Designer.cs">
       <DependentUpon>Form7.cs</DependentUpon>
     </Compile>
-    <Compile Include="非软件运行时控件\DADataGridView_TO_PLC.cs">
+    <Compile Include="非软件运行时控件\基本控件\DADataGridView_TO_PLC.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="非软件运行时控件\PLC参数设置界面\ButtonBitForm1.cs">
@@ -806,6 +812,83 @@
     <Compile Include="非软件运行时控件\PLC参数设置界面\TextboxDForm1.Designer.cs">
       <DependentUpon>TextboxDForm1.cs</DependentUpon>
     </Compile>
+    <Compile Include="非软件运行时控件\二维码生成\IhatetheqrcodeCreate.cs" />
+    <Compile Include="非软件运行时控件\基本控件\DAAlarmLamp.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="非软件运行时控件\基本控件\DAAnalogMeter.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="非软件运行时控件\基本控件\DABottle.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="非软件运行时控件\基本控件\DAButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="非软件运行时控件\基本控件\DACheckBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="非软件运行时控件\基本控件\DACombox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="非软件运行时控件\基本控件\DAConduit.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="非软件运行时控件\基本控件\DADataGridView_PLCSQL.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="非软件运行时控件\基本控件\DADataGridView_TO_SQL.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="非软件运行时控件\基本控件\DAIhatetheqrcode_PLC.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="非软件运行时控件\基本控件\DALedBulb.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="非软件运行时控件\基本控件\DAMeter.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="非软件运行时控件\基本控件\DAPond.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="非软件运行时控件\基本控件\DAProcessEllipse.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="非软件运行时控件\基本控件\DAProcessWave.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="非软件运行时控件\基本控件\DARotor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="非软件运行时控件\基本控件\DASignalLamp.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="非软件运行时控件\基本控件\DASwitch.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="非软件运行时控件\基本控件\DATextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="非软件运行时控件\基本控件\DAThermometer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="非软件运行时控件\基本控件\Doughnut_PLC.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="非软件运行时控件\基本控件\Histogram_PLC.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="非软件运行时控件\基本控件\IhatetheqrcodeSQL.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="非软件运行时控件\基本控件\IhatetheqrcodeSQL.Designer.cs">
+      <DependentUpon>IhatetheqrcodeSQL.cs</DependentUpon>
+    </Compile>
+    <Compile Include="非软件运行时控件\基本控件\Oscillogram_PLC.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="非软件运行时控件\按钮操作模式\Button_pattern.cs" />
     <Compile Include="非软件运行时控件\控件测试界面\TestForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -823,6 +906,18 @@
     <Compile Include="非软件运行时控件\控件类基\文本--TO--PLC方法\TextBox_PLC.cs" />
     <Compile Include="非软件运行时控件\控件类基\表格控件--TO--PLC\DataGridView_PLC.cs" />
     <Compile Include="非软件运行时控件\控件类基\表格控件--TO--PLC\表格控件--TO--SQL\DADataGridView_SQL.cs" />
+    <Compile Include="非软件运行时控件\文本输入键盘\keyboard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="非软件运行时控件\文本输入键盘\keyboard.Designer.cs">
+      <DependentUpon>keyboard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="非软件运行时控件\文本输入键盘\keyboard_Hex.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="非软件运行时控件\文本输入键盘\keyboard_Hex.Designer.cs">
+      <DependentUpon>keyboard_Hex.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="PLC选择\MODBUS_TCP监控窗口\modbus_Form.resx">
       <DependentUpon>modbus_Form.cs</DependentUpon>
     </EmbeddedResource>
@@ -969,8 +1064,17 @@
     <EmbeddedResource Include="非软件运行时控件\PLC参数设置界面\TextboxDForm1.resx">
       <DependentUpon>TextboxDForm1.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="非软件运行时控件\基本控件\IhatetheqrcodeSQL.resx">
+      <DependentUpon>IhatetheqrcodeSQL.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="非软件运行时控件\控件测试界面\TestForm.resx">
       <DependentUpon>TestForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="非软件运行时控件\文本输入键盘\keyboard.resx">
+      <DependentUpon>keyboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="非软件运行时控件\文本输入键盘\keyboard_Hex.resx">
+      <DependentUpon>keyboard_Hex.cs</DependentUpon>
     </EmbeddedResource>
     <EntityDeploy Include="EF实体模型\Model1.edmx">
       <Generator>EntityModelCodeGenerator</Generator>

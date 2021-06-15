@@ -7,29 +7,29 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Bottom_Control.基本控件;
 using CCWin;
 using CCWin.SkinClass;
 using CCWin.SkinControl;
-using 自定义Uppercomputer_20200727.EF实体模型;
+using 自定义Uppercomputer_20200727.非软件运行时控件.基本控件;
 
-namespace 自定义Uppercomputer_20200727.文本输入键盘
+namespace 自定义Uppercomputer_20200727.非软件运行时控件.文本输入键盘
 {
     public partial class keyboard_Hex:Skin_VS
     {
         string Name_1;//定义用户传入的文本
-        numerical_Class numerical_Class;//用户控件参数
+        DATextBox textBox;//获取该控件的参数
         public string O_Text { get => this.skinTextBox3.Text; } //输出文本自读---
-        public keyboard_Hex(string Nmme,numerical_Class numerical_Class)//构造函数-
+        public keyboard_Hex(string Nmme, DATextBox textBox)//构造函数-
         {
             InitializeComponent();
             this.Name_1 = Nmme;
-            this.numerical_Class = numerical_Class;
+            this.textBox = textBox;
         }
-
         private void keyboard_Hex_Shown(object sender, EventArgs e)//加载控件状态
         {
             this.skinTextBox3.Text = this.Name_1.Trim();//写入上次值
-            string[] data = Constraints_data(numerical_Class.资料格式.Trim());//获取最大值-最小值
+            string[] data = Constraints_data(textBox.numerical.ToString());//获取最大值-最小值
             this.skinTextBox1.Text = data[0];//填充最大值
             this.skinTextBox2.Text = data[1];//填充最小值
             var skinButton_list = (from Control pi in this.Controls where pi is SkinButton select pi).ToList();//获取窗口控件集合
@@ -49,8 +49,8 @@ namespace 自定义Uppercomputer_20200727.文本输入键盘
         private string Button_text_add(object send)//实现刻录字符
         {
             string data = this.skinTextBox3.Text + ((SkinButton)send).Text.Trim();//在最后一个添加字符
-            if (numerical_Class.读写设备.Trim() == "HMI") return data;//用户使用了宏指令内部寄存器直接刻录
-            if (numerical_KeyPress_import(data, numerical_Class.资料格式.Trim()))//判断数据是否溢出
+            if (textBox.Plc.ToString() == "HMI") return data;//用户使用了宏指令内部寄存器直接刻录
+            if (numerical_KeyPress_import(data, textBox.numerical.ToString()))//判断数据是否溢出
             {
                 return backspace(data);//移除最后一位 返回数据 
             }
@@ -92,10 +92,10 @@ namespace 自定义Uppercomputer_20200727.文本输入键盘
             {
                 case "Hex_16_Bit":
                     //最大值
-                    if (numerical_Class.小数点以上位数.ToInt32() >= 4)
+                    if (textBox.Decimal_Above >= 4)
                         data[0] = "7FFF";//大于限制默认填充最大值
                     else
-                        for (int i = 0; i < numerical_Class.小数点以上位数.ToInt32(); i++)//先填充最大值
+                        for (int i = 0; i < textBox.Decimal_Above; i++)//先填充最大值
                         {
                             data[0] += "F";
                         }
@@ -104,10 +104,10 @@ namespace 自定义Uppercomputer_20200727.文本输入键盘
                     break;
                     case "Hex_32_Bit":
                     //最大值
-                    if (numerical_Class.小数点以上位数.ToInt32() >= 8)
+                    if (textBox.Decimal_Above >= 8)
                         data[0] = "7FFFFFFF";//大于限制默认填充最大值
                     else
-                        for (int i = 0; i < numerical_Class.小数点以上位数.ToInt32(); i++)//先填充最大值
+                        for (int i = 0; i <textBox.Decimal_Above; i++)//先填充最大值
                         {
                             data[0] += "F";
                         }
