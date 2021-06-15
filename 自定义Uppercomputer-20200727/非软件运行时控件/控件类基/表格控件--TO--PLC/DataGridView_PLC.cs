@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using PLC通讯规范接口;
+using 欧姆龙Fins协议.欧姆龙.报文处理;
 using 自定义Uppercomputer_20200727.PLC选择;
 using 自定义Uppercomputer_20200727.PLC选择.MODBUS_TCP监控窗口;
 
@@ -46,11 +47,35 @@ namespace 自定义Uppercomputer_20200727.非软件运行时控件.控件类基.
                     }
                     break;
                 case PLC.Modbus_TCP:
-                    MODBUD_TCP MODBUD_TCP = new MODBUD_TCP();//实例化接口--实现MODBUS TCP
-                    if (MODBUD_TCP.IPLC_interface_PLC_ready)
+                    IPLC_interface MODBUD_TCP = new MODBUD_TCP();//实例化接口--实现MODBUS TCP
+                    if (MODBUD_TCP.PLC_ready)
                     {
                         for (int i = 0; i < Idx; i++)
                             Data.Add(MODBUD_TCP.PLC_read_D_register(textBox.PLC_Contact, dataGridView.PLC_address[i].ToString(), dataGridView.DataGridView_numerical[i]));
+                    }
+                    break;
+                case PLC.OmronTCP:
+                    IPLC_interface OmronFinsTCP = new OmronFinsCIP();//实例化接口
+                    if (OmronFinsTCP.PLC_ready)
+                    {
+                        for (int i = 0; i < Idx; i++)
+                            Data.Add(OmronFinsTCP.PLC_read_D_register(textBox.PLC_Contact, dataGridView.PLC_address[i].ToString(), dataGridView.DataGridView_numerical[i]));
+                    }
+                    break;
+                case PLC.OmronUDP:
+                    IPLC_interface OmronFinsUDP = new OmronFinsUDP();//实例化接口
+                    if (OmronFinsUDP.PLC_ready)
+                    {
+                        for (int i = 0; i < Idx; i++)
+                            Data.Add(OmronFinsUDP.PLC_read_D_register(textBox.PLC_Contact, dataGridView.PLC_address[i].ToString(), dataGridView.DataGridView_numerical[i]));
+                    }
+                    break;
+                case PLC.OmronCIP:
+                    IPLC_interface OmronFinsCIP = new OmronFinsCIP();//实例化接口
+                    if (OmronFinsCIP.PLC_ready)
+                    {
+                        for (int i = 0; i < Idx; i++)
+                            Data.Add(OmronFinsCIP.PLC_read_D_register(textBox.PLC_Contact, dataGridView.PLC_address[i].ToString(), dataGridView.DataGridView_numerical[i]));
                     }
                     break;
             }
@@ -78,11 +103,35 @@ namespace 自定义Uppercomputer_20200727.非软件运行时控件.控件类基.
                     }
                     break;
                 case PLC.Modbus_TCP:
-                    MODBUD_TCP MODBUD_TCP = new MODBUD_TCP();//实例化接口--实现MODBUS TCP
-                    if (MODBUD_TCP.IPLC_interface_PLC_ready)
+                    IPLC_interface MODBUD_TCP = new MODBUD_TCP();//实例化接口--实现MODBUS TCP
+                    if (MODBUD_TCP.PLC_ready)
                     {
                         for (int i = 0; i < Idx; i++)
                             Data.Add(MODBUD_TCP.PLC_read_D_register(textBox.PLC_Contact, dataGridView.Total_address[i].ToString(), dataGridView.Histogram_numerical[i]));
+                    }
+                    break;
+                case PLC.OmronTCP:
+                    IPLC_interface OmronFinsTCP = new OmronFinsCIP();//实例化接口
+                    if (OmronFinsTCP.PLC_ready)
+                    {
+                        for (int i = 0; i < Idx; i++)
+                            Data.Add(OmronFinsTCP.PLC_read_D_register(textBox.PLC_Contact, dataGridView.Total_address[i].ToString(), dataGridView.Histogram_numerical[i]));
+                    }
+                    break;
+                case PLC.OmronUDP:
+                    IPLC_interface OmronFinsUDP = new OmronFinsUDP();//实例化接口
+                    if (OmronFinsUDP.PLC_ready)
+                    {
+                        for (int i = 0; i < Idx; i++)
+                            Data.Add(OmronFinsUDP.PLC_read_D_register(textBox.PLC_Contact, dataGridView.Total_address[i].ToString(), dataGridView.Histogram_numerical[i]));
+                    }
+                    break;
+                case PLC.OmronCIP:
+                    IPLC_interface OmronFinsCIP = new OmronFinsCIP();//实例化接口
+                    if (OmronFinsCIP.PLC_ready)
+                    {
+                        for (int i = 0; i < Idx; i++)
+                            Data.Add(OmronFinsCIP.PLC_read_D_register(textBox.PLC_Contact, dataGridView.Total_address[i].ToString(), dataGridView.Histogram_numerical[i]));
                     }
                     break;
             }

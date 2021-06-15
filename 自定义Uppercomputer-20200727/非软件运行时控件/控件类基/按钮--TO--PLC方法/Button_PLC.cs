@@ -7,9 +7,13 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using PLC通讯规范接口;
+using Sunny.UI;
+using 欧姆龙Fins协议.欧姆龙.报文处理;
 using 自定义Uppercomputer_20200727.PLC选择;
 using 自定义Uppercomputer_20200727.PLC选择.MODBUS_TCP监控窗口;
+using 自定义Uppercomputer_20200727.控件重做;
 using 自定义Uppercomputer_20200727.控件重做.控件类基;
+using 自定义Uppercomputer_20200727.非软件运行时控件.基本控件;
 
 namespace 自定义Uppercomputer_20200727.非软件运行时控件.控件类基.按钮_TO_PLC方法
 {
@@ -37,7 +41,7 @@ namespace 自定义Uppercomputer_20200727.非软件运行时控件.控件类基.
                     {
                         Button_write_select(Button.Pattern.ToString(), mitsubishi, Button);//根据按钮模式进行写入操作
                     }
-                    else MessageBox.Show("未连接设备：" + pLC.Trim(), "Err");//推出异常提示用户
+                    else UINotifierHelper.ShowNotifier("未连接设备：" + pLC.Trim() + "Err", UINotifierType.WARNING, UILocalize.WarningTitle, false, 1000);//推出异常提示用户
 
                     break;
                 case "Siemens":
@@ -46,17 +50,40 @@ namespace 自定义Uppercomputer_20200727.非软件运行时控件.控件类基.
                     {
                         Button_write_select(Button.Pattern.ToString(), Siemens, Button);//根据按钮模式进行写入操作
                     }
-                    else MessageBox.Show("未连接设备：" + pLC.Trim(), "Err");//推出异常提示用户
+                    else UINotifierHelper.ShowNotifier("未连接设备：" + pLC.Trim() + "Err", UINotifierType.WARNING, UILocalize.WarningTitle, false, 1000);//推出异常提示用户
                     break;
                 case "Modbus_TCP":
-                    MODBUD_TCP MODBUD_TCP = new MODBUD_TCP();//实例化接口--实现MODBUS TCP
-                    if (MODBUD_TCP.IPLC_interface_PLC_ready)//PLC是否准备完成
+                    IPLC_interface MODBUD_TCP = new MODBUD_TCP();//实例化接口--实现MODBUS TCP
+                    if (MODBUD_TCP.PLC_ready)//PLC是否准备完成
                     {
                         Button_write_select(Button.Pattern.ToString(), MODBUD_TCP, Button);//根据按钮模式进行写入操作
                     }
-                    else MessageBox.Show("未连接设备：" + pLC.Trim(), "Err");//推出异常提示用户
+                    else UINotifierHelper.ShowNotifier("未连接设备：" + pLC.Trim() + "Err", UINotifierType.WARNING, UILocalize.WarningTitle, false, 1000);//推出异常提示用户
                     break;
-
+                case "OmronTCP":
+                    IPLC_interface OmronTCP = new OmronFinsTcp();//实例化接口
+                    if (OmronTCP.PLC_ready)//PLC是否准备完成
+                    {
+                        Button_write_select(Button.Pattern.ToString(), OmronTCP, Button);//根据按钮模式进行写入操作
+                    }
+                    else UINotifierHelper.ShowNotifier("未连接设备：" + pLC.Trim() + "Err", UINotifierType.WARNING, UILocalize.WarningTitle, false, 1000);//推出异常提示用户
+                    break;
+                case "OmronUDP":
+                    IPLC_interface OmronUDP = new OmronFinsUDP();//实例化接口
+                    if (OmronUDP.PLC_ready)//PLC是否准备完成
+                    {
+                        Button_write_select(Button.Pattern.ToString(), OmronUDP, Button);//根据按钮模式进行写入操作
+                    }
+                    else UINotifierHelper.ShowNotifier("未连接设备：" + pLC.Trim() + "Err", UINotifierType.WARNING, UILocalize.WarningTitle, false, 1000);//推出异常提示用户
+                    break;
+                case "OmronCIP":
+                    IPLC_interface OmronCIP = new OmronFinsCIP();//实例化接口
+                    if (OmronCIP.PLC_ready)//PLC是否准备完成
+                    {
+                        Button_write_select(Button.Pattern.ToString(), OmronCIP, Button);//根据按钮模式进行写入操作
+                    }
+                    else UINotifierHelper.ShowNotifier("未连接设备：" + pLC.Trim() + "Err", UINotifierType.WARNING, UILocalize.WarningTitle, false, 1000);//推出异常提示用户
+                    break;
             }
             return "OK";
         }
@@ -71,7 +98,7 @@ namespace 自定义Uppercomputer_20200727.非软件运行时控件.控件类基.
                     {
                         Button_write_select("复归型_Off", mitsubishi, Button);//根据按钮模式进行写入操作
                     }
-                    else MessageBox.Show("未连接设备：" + pLC.Trim(), "Err");//推出异常提示用户
+                    else UINotifierHelper.ShowNotifier("未连接设备：" + pLC.Trim() + "Err", UINotifierType.WARNING, UILocalize.WarningTitle, false, 1000);//推出异常提示用户
 
                     break;
                 case "Siemens":
@@ -80,22 +107,45 @@ namespace 自定义Uppercomputer_20200727.非软件运行时控件.控件类基.
                     {
                         Button_write_select("复归型_Off", Siemens, Button);//根据按钮模式进行写入操作
                     }
-                    else MessageBox.Show("未连接设备：" + pLC.Trim(), "Err");//推出异常提示用户
+                    else UINotifierHelper.ShowNotifier("未连接设备：" + pLC.Trim() + "Err", UINotifierType.WARNING, UILocalize.WarningTitle, false, 1000);//推出异常提示用户
                     break;
                 case "Modbus_TCP":
-                    MODBUD_TCP MODBUD_TCP = new MODBUD_TCP();//实例化接口--实现三菱仿真
-                    if (MODBUD_TCP.IPLC_interface_PLC_ready)//PLC是否准备完成
+                    IPLC_interface MODBUD_TCP = new MODBUD_TCP();//实例化接口--实现三菱仿真
+                    if (MODBUD_TCP.PLC_ready)//PLC是否准备完成
                     {
                         Button_write_select("复归型_Off", MODBUD_TCP, Button);//根据按钮模式进行写入操作
                     }
-                    else MessageBox.Show("未连接设备：" + pLC.Trim(), "Err");//推出异常提示用户
+                    else UINotifierHelper.ShowNotifier("未连接设备：" + pLC.Trim() + "Err", UINotifierType.WARNING, UILocalize.WarningTitle, false, 1000);//推出异常提示用户
+                    break;
+                case "OmronTCP":
+                    IPLC_interface OmronTCP = new OmronFinsTcp();//实例化接口
+                    if (OmronTCP.PLC_ready)//PLC是否准备完成
+                    {
+                        Button_write_select("复归型_Off", OmronTCP, Button);//根据按钮模式进行写入操作
+                    }
+                    else UINotifierHelper.ShowNotifier("未连接设备：" + pLC.Trim() + "Err", UINotifierType.WARNING, UILocalize.WarningTitle, false, 1000);//推出异常提示用户
+                    break;
+                case "OmronUDP":
+                    IPLC_interface OmronUDP = new OmronFinsUDP();//实例化接口
+                    if (OmronUDP.PLC_ready)//PLC是否准备完成
+                    {
+                        Button_write_select("复归型_Off", OmronUDP, Button);//根据按钮模式进行写入操作
+                    }
+                    else UINotifierHelper.ShowNotifier("未连接设备：" + pLC.Trim() + "Err", UINotifierType.WARNING, UILocalize.WarningTitle, false, 1000);//推出异常提示用户
+                    break;
+                case "OmronCIP":
+                    IPLC_interface OmronCIP = new OmronFinsCIP();//实例化接口
+                    if (OmronCIP.PLC_ready)//PLC是否准备完成
+                    {
+                        Button_write_select("复归型_Off", OmronCIP, Button);//根据按钮模式进行写入操作
+                    }
+                    else UINotifierHelper.ShowNotifier("未连接设备：" + pLC.Trim() + "Err", UINotifierType.WARNING, UILocalize.WarningTitle, false, 1000);//推出异常提示用户
                     break;
             }
             return "OK";
         }
         private void Button_write_select(string Name, IPLC_interface pLC_Interface, Button_base Button)//按照按钮模式写入
         {
-            //string[] Data = Button_Class(Button);
             switch (Name)
             {
                 case "Set_as_on"://设置常ON
@@ -155,7 +205,7 @@ namespace 自定义Uppercomputer_20200727.非软件运行时控件.控件类基.
                     {
                         List<bool> data = mitsubishi.PLC_read_M_bit(button_base.PLC_Contact, button_base.PLC_Address);//读取状态
                         button_State = data[0] == true ? Button_state.ON : Button_state.Off;
-                       // button_state(button, button_State);
+                        button_state(button, button_State);
                     }
                     break;
                 case PLC.Siemens:
@@ -164,16 +214,43 @@ namespace 自定义Uppercomputer_20200727.非软件运行时控件.控件类基.
                     {
                         List<bool> data = Siemens.PLC_read_M_bit(button_base.PLC_Contact, button_base.PLC_Address);//读取状态
                         button_State = data[0] == true ? Button_state.ON : Button_state.Off;
-                        //button_state(button, button_State);
+                        button_state(button, button_State);
                     }
                     break;
                 case PLC.Modbus_TCP:
-                    MODBUD_TCP MODBUD_TCP = new MODBUD_TCP();//实例化接口--实现MODBUS TCP
-                    if (MODBUD_TCP.IPLC_interface_PLC_ready)//PLC是否准备完成
+                    IPLC_interface MODBUD_TCP = new MODBUD_TCP();//实例化接口--实现MODBUS TCP
+                    if (MODBUD_TCP.PLC_ready)//PLC是否准备完成
                     {
                         List<bool> data = MODBUD_TCP.PLC_read_M_bit(button_base.PLC_Contact, button_base.PLC_Address);//读取状态
                         button_State = data[0] == true ? Button_state.ON : Button_state.Off;
-                       // button_state(button, button_State);
+                        button_state(button, button_State);
+                    }
+                    break;
+                case PLC.OmronTCP:
+                    IPLC_interface OmronFins_TCP = new OmronFinsTcp();//实例化接口--实现MODBUS TCP
+                    if (OmronFins_TCP.PLC_ready)//PLC是否准备完成
+                    {
+                        List<bool> data = OmronFins_TCP.PLC_read_M_bit(button_base.PLC_Contact, button_base.PLC_Address);//读取状态
+                        button_State = data[0] == true ? Button_state.ON : Button_state.Off;
+                        button_state(button, button_State);
+                    }
+                    break;
+                case PLC.OmronUDP:
+                    IPLC_interface OmronFins_UDP = new OmronFinsUDP();//实例化接口--实现MODBUS TCP
+                    if (OmronFins_UDP.PLC_ready)//PLC是否准备完成
+                    {
+                        List<bool> data = OmronFins_UDP.PLC_read_M_bit(button_base.PLC_Contact, button_base.PLC_Address);//读取状态
+                        button_State = data[0] == true ? Button_state.ON : Button_state.Off;
+                        button_state(button, button_State);
+                    }
+                    break;
+                case PLC.OmronCIP:
+                    IPLC_interface OmronFins_CIP = new OmronFinsCIP();//实例化接口--实现MODBUS TCP
+                    if (OmronFins_CIP.PLC_ready)//PLC是否准备完成
+                    {
+                        List<bool> data = OmronFins_CIP.PLC_read_M_bit(button_base.PLC_Contact, button_base.PLC_Address);//读取状态
+                        button_State = data[0] == true ? Button_state.ON : Button_state.Off;
+                        button_state(button, button_State);
                     }
                     break;
             }
@@ -184,113 +261,113 @@ namespace 自定义Uppercomputer_20200727.非软件运行时控件.控件类基.
         /// <param name="button_Reform"></param>
         /// <param name="button_Classes"></param>
         /// <param name="button_State"></param>
-        //private void button_state(Control button, Button_state button_State)//填充按钮类
-        //{
-        //    switch (button.GetType().Name)
-        //    {
-        //        case "DAButton":
-        //            DAButton Dabutton = button as DAButton;
-        //            Dabutton.Text = button_State == Button_state.ON ? Dabutton.Text_ON : Dabutton.Text_OFF;
-        //            Dabutton.BaseColor = button_State == Button_state.ON ? Dabutton.Backdrop_ON : Dabutton.Backdrop_OFF;
-        //            //Dabutton.RectColor = Dabutton.FillColor;
-        //            break;
-        //        case "DACheckBox":
-        //            DACheckBox daCheckBox = button as DACheckBox;
-        //            daCheckBox.Text = button_State == Button_state.ON ? daCheckBox.Text_ON : daCheckBox.Text_OFF;
-        //            daCheckBox.BackColor = button_State == Button_state.ON ? daCheckBox.Backdrop_ON : daCheckBox.Backdrop_OFF;
-        //            daCheckBox.Checked = button_State == Button_state.ON ? true : false;
-        //            break;
-        //        case "DASwitch":
-        //            DASwitch daSwitch = button as DASwitch;
-        //            daSwitch.Text = button_State == Button_state.ON ? daSwitch.Text_ON : daSwitch.Text_OFF;
-        //            daSwitch.FalseColor = daSwitch.Backdrop_OFF;
-        //            daSwitch.TrueColor = daSwitch.Backdrop_ON;
-        //            daSwitch.Checked = Convert.ToBoolean(button_State);
-        //            break;
-        //        case "DAConduit":
-        //            DAConduit daConduit = button as DAConduit;
-        //            daConduit.Text = button_State == Button_state.ON ? daConduit.Text_ON : daConduit.Text_OFF;
-        //            daConduit.LiquidColor = button_State == Button_state.ON ? daConduit.Backdrop_ON : daConduit.Backdrop_OFF;
-        //            daConduit.LiquidDirection = button_State == Button_state.ON ? HZH_Controls.Controls.LiquidDirection.Forward : HZH_Controls.Controls.LiquidDirection.Backward;
-        //            break;
-        //        case "DARotor":
-        //            DARotor daRotor = button as DARotor;
-        //            daRotor.Text = button_State == Button_state.ON ? daRotor.Text_ON : daRotor.Text_OFF;
-        //            daRotor.RotorAround = button_State == Button_state.ON ? HZH_Controls.Controls.RotorAround.Clockwise : HZH_Controls.Controls.RotorAround.Counterclockwise;
-        //            break;
-        //        case "DALedBulb":
-        //            DALedBulb daLedBulb = button as DALedBulb;
-        //            daLedBulb.Text = button_State == Button_state.ON ? daLedBulb.Text_ON : daLedBulb.Text_OFF;
-        //            daLedBulb.Color = button_State == Button_state.ON ? daLedBulb.Backdrop_ON : daLedBulb.Backdrop_OFF;
-        //            break;
-        //        case "DASignalLamp":
-        //            DASignalLamp daSignalLamp = button as DASignalLamp;
-        //            daSignalLamp.Text = button_State == Button_state.ON ? daSignalLamp.Text_ON : daSignalLamp.Text_OFF;
-        //            if(daSignalLamp.I_Flicker& daSignalLamp.O_Flicker == false&button_State == Button_state.Off)
-        //            {
-        //                daSignalLamp.LampColor[0] = button_State == Button_state.ON ? daSignalLamp.Backdrop_ON : daSignalLamp.Backdrop_OFF;
-        //                daSignalLamp.TwinkleSpeed = 0;
-        //                return;
-        //            }
-        //            if (daSignalLamp.I_Flicker==false & daSignalLamp.O_Flicker& button_State == Button_state.ON)
-        //            {
-        //                daSignalLamp.LampColor[0] = button_State == Button_state.ON ? daSignalLamp.Backdrop_ON : daSignalLamp.Backdrop_OFF;
-        //                daSignalLamp.TwinkleSpeed = 0;
-        //                return;
-        //            }
-        //            if (daSignalLamp.O_Flicker&button_State==Button_state.Off)
-        //            {
-        //                daSignalLamp.LampColor = daSignalLamp.O_FlickerColor;
-        //                daSignalLamp.TwinkleSpeed = daSignalLamp.O_FlickerTime;
-        //                return;
-        //            }
-        //            if (daSignalLamp.I_Flicker & button_State == Button_state.ON)
-        //            {
-        //                daSignalLamp.LampColor = daSignalLamp.I_FlickerColor;
-        //                daSignalLamp.TwinkleSpeed = daSignalLamp.I_FlickerTime;
-        //                return;
-        //            }
-        //            if (daSignalLamp.O_Flicker == false & daSignalLamp.I_Flicker == false)
-        //            {
-        //                daSignalLamp.LampColor[0] = button_State == Button_state.ON ? daSignalLamp.Backdrop_ON : daSignalLamp.Backdrop_OFF;
-        //                daSignalLamp.TwinkleSpeed = 0;
-        //            }
-        //            break;
-        //        case "DAAlarmLamp":
-        //            DAAlarmLamp daAlarmLamp = button as DAAlarmLamp;
-        //            daAlarmLamp.Text = button_State == Button_state.ON ? daAlarmLamp.Text_ON : daAlarmLamp.Text_OFF;
-        //            if (daAlarmLamp.I_Flicker & daAlarmLamp.O_Flicker == false & button_State == Button_state.Off)
-        //            {
-        //                daAlarmLamp.LampColor[0] = button_State == Button_state.ON ? daAlarmLamp.Backdrop_ON : daAlarmLamp.Backdrop_OFF;
-        //                daAlarmLamp.TwinkleSpeed = 0;
-        //                return;
-        //            }
-        //            if (daAlarmLamp.I_Flicker == false & daAlarmLamp.O_Flicker & button_State == Button_state.ON)
-        //            {
-        //                daAlarmLamp.LampColor[0] = button_State == Button_state.ON ? daAlarmLamp.Backdrop_ON : daAlarmLamp.Backdrop_OFF;
-        //                daAlarmLamp.TwinkleSpeed = 0;
-        //                return;
-        //            }
-        //            if (daAlarmLamp.O_Flicker & button_State == Button_state.Off)
-        //            {
-        //                daAlarmLamp.LampColor = daAlarmLamp.O_FlickerColor;
-        //                daAlarmLamp.TwinkleSpeed = daAlarmLamp.O_FlickerTime;
-        //                return;
-        //            }
-        //            if (daAlarmLamp.I_Flicker & button_State == Button_state.ON)
-        //            {
-        //                daAlarmLamp.LampColor = daAlarmLamp.I_FlickerColor;
-        //                daAlarmLamp.TwinkleSpeed = daAlarmLamp.I_FlickerTime;
-        //                return;
-        //            }
-        //            if (daAlarmLamp.O_Flicker == false & daAlarmLamp.I_Flicker == false)
-        //            {
-        //                daAlarmLamp.LampColor[0] = button_State == Button_state.ON ? daAlarmLamp.Backdrop_ON : daAlarmLamp.Backdrop_OFF;
-        //                daAlarmLamp.TwinkleSpeed = 0;
-        //            }
-        //            break;
-        //    }
-        //}
+        private void button_state(Control button, Button_state button_State)//填充按钮类
+        {
+            switch (button.GetType().Name)
+            {
+                case "DAButton":
+                    DAButton Dabutton = button as DAButton;
+                    Dabutton.Text = button_State == Button_state.ON ? Dabutton.Text_ON : Dabutton.Text_OFF;
+                    Dabutton.BaseColor = button_State == Button_state.ON ? Dabutton.Backdrop_ON : Dabutton.Backdrop_OFF;
+                    //Dabutton.RectColor = Dabutton.FillColor;
+                    break;
+                case "DACheckBox":
+                    DACheckBox daCheckBox = button as DACheckBox;
+                    daCheckBox.Text = button_State == Button_state.ON ? daCheckBox.Text_ON : daCheckBox.Text_OFF;
+                    daCheckBox.BackColor = button_State == Button_state.ON ? daCheckBox.Backdrop_ON : daCheckBox.Backdrop_OFF;
+                    daCheckBox.Checked = button_State == Button_state.ON ? true : false;
+                    break;
+                case "DASwitch":
+                    DASwitch daSwitch = button as DASwitch;
+                    daSwitch.Text = button_State == Button_state.ON ? daSwitch.Text_ON : daSwitch.Text_OFF;
+                    daSwitch.FalseColor = daSwitch.Backdrop_OFF;
+                    daSwitch.TrueColor = daSwitch.Backdrop_ON;
+                    daSwitch.Checked = Convert.ToBoolean(button_State);
+                    break;
+                case "DAConduit":
+                    DAConduit daConduit = button as DAConduit;
+                    daConduit.Text = button_State == Button_state.ON ? daConduit.Text_ON : daConduit.Text_OFF;
+                    daConduit.LiquidColor = button_State == Button_state.ON ? daConduit.Backdrop_ON : daConduit.Backdrop_OFF;
+                    daConduit.LiquidDirection = button_State == Button_state.ON ? HZH_Controls.Controls.LiquidDirection.Forward : HZH_Controls.Controls.LiquidDirection.Backward;
+                    break;
+                case "DARotor":
+                    DARotor daRotor = button as DARotor;
+                    daRotor.Text = button_State == Button_state.ON ? daRotor.Text_ON : daRotor.Text_OFF;
+                    daRotor.RotorAround = button_State == Button_state.ON ? HZH_Controls.Controls.RotorAround.Clockwise : HZH_Controls.Controls.RotorAround.Counterclockwise;
+                    break;
+                case "DALedBulb":
+                    DALedBulb daLedBulb = button as DALedBulb;
+                    daLedBulb.Text = button_State == Button_state.ON ? daLedBulb.Text_ON : daLedBulb.Text_OFF;
+                    daLedBulb.Color = button_State == Button_state.ON ? daLedBulb.Backdrop_ON : daLedBulb.Backdrop_OFF;
+                    break;
+                case "DASignalLamp":
+                    DASignalLamp daSignalLamp = button as DASignalLamp;
+                    daSignalLamp.Text = button_State == Button_state.ON ? daSignalLamp.Text_ON : daSignalLamp.Text_OFF;
+                    if (daSignalLamp.I_Flicker & daSignalLamp.O_Flicker == false & button_State == Button_state.Off)
+                    {
+                        daSignalLamp.LampColor[0] = button_State == Button_state.ON ? daSignalLamp.Backdrop_ON : daSignalLamp.Backdrop_OFF;
+                        daSignalLamp.TwinkleSpeed = 0;
+                        return;
+                    }
+                    if (daSignalLamp.I_Flicker == false & daSignalLamp.O_Flicker & button_State == Button_state.ON)
+                    {
+                        daSignalLamp.LampColor[0] = button_State == Button_state.ON ? daSignalLamp.Backdrop_ON : daSignalLamp.Backdrop_OFF;
+                        daSignalLamp.TwinkleSpeed = 0;
+                        return;
+                    }
+                    if (daSignalLamp.O_Flicker & button_State == Button_state.Off)
+                    {
+                        daSignalLamp.LampColor = daSignalLamp.O_FlickerColor;
+                        daSignalLamp.TwinkleSpeed = daSignalLamp.O_FlickerTime;
+                        return;
+                    }
+                    if (daSignalLamp.I_Flicker & button_State == Button_state.ON)
+                    {
+                        daSignalLamp.LampColor = daSignalLamp.I_FlickerColor;
+                        daSignalLamp.TwinkleSpeed = daSignalLamp.I_FlickerTime;
+                        return;
+                    }
+                    if (daSignalLamp.O_Flicker == false & daSignalLamp.I_Flicker == false)
+                    {
+                        daSignalLamp.LampColor[0] = button_State == Button_state.ON ? daSignalLamp.Backdrop_ON : daSignalLamp.Backdrop_OFF;
+                        daSignalLamp.TwinkleSpeed = 0;
+                    }
+                    break;
+                case "DAAlarmLamp":
+                    DAAlarmLamp daAlarmLamp = button as DAAlarmLamp;
+                    daAlarmLamp.Text = button_State == Button_state.ON ? daAlarmLamp.Text_ON : daAlarmLamp.Text_OFF;
+                    if (daAlarmLamp.I_Flicker & daAlarmLamp.O_Flicker == false & button_State == Button_state.Off)
+                    {
+                        daAlarmLamp.LampColor[0] = button_State == Button_state.ON ? daAlarmLamp.Backdrop_ON : daAlarmLamp.Backdrop_OFF;
+                        daAlarmLamp.TwinkleSpeed = 0;
+                        return;
+                    }
+                    if (daAlarmLamp.I_Flicker == false & daAlarmLamp.O_Flicker & button_State == Button_state.ON)
+                    {
+                        daAlarmLamp.LampColor[0] = button_State == Button_state.ON ? daAlarmLamp.Backdrop_ON : daAlarmLamp.Backdrop_OFF;
+                        daAlarmLamp.TwinkleSpeed = 0;
+                        return;
+                    }
+                    if (daAlarmLamp.O_Flicker & button_State == Button_state.Off)
+                    {
+                        daAlarmLamp.LampColor = daAlarmLamp.O_FlickerColor;
+                        daAlarmLamp.TwinkleSpeed = daAlarmLamp.O_FlickerTime;
+                        return;
+                    }
+                    if (daAlarmLamp.I_Flicker & button_State == Button_state.ON)
+                    {
+                        daAlarmLamp.LampColor = daAlarmLamp.I_FlickerColor;
+                        daAlarmLamp.TwinkleSpeed = daAlarmLamp.I_FlickerTime;
+                        return;
+                    }
+                    if (daAlarmLamp.O_Flicker == false & daAlarmLamp.I_Flicker == false)
+                    {
+                        daAlarmLamp.LampColor[0] = button_State == Button_state.ON ? daAlarmLamp.Backdrop_ON : daAlarmLamp.Backdrop_OFF;
+                        daAlarmLamp.TwinkleSpeed = 0;
+                    }
+                    break;
+            }
+        }
         /// <summary>
         /// 索引该值是否在符合当前PLC
         /// </summary>
@@ -306,6 +383,10 @@ namespace 自定义Uppercomputer_20200727.非软件运行时控件.控件类基.
                     return Enum.GetNames(typeof(Siemens_bit)).Where(pi => pi.ToString() == data).FirstOrDefault() == null ? false : true;
                 case PLC.Modbus_TCP:
                     return Enum.GetNames(typeof(Modbus_TCP_bit)).Where(pi => pi.ToString() == data).FirstOrDefault() == null ? false : true;
+                case PLC.OmronCIP:
+                case PLC.OmronTCP:
+                case PLC.OmronUDP:
+                    return Enum.GetNames(typeof(Omron_bit)).Where(pi => pi.ToString() == data).FirstOrDefault() == null ? false : true;
             }
             return true;
         }

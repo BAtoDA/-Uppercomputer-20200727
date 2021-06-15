@@ -43,7 +43,7 @@ namespace 自定义Uppercomputer_20200727.非软件运行时控件.基本控件
             get => plc_Enable;
             set => plc_Enable = value;
         }
-        private bool plc_Enable = false;
+        private bool plc_Enable = true;
         [Description("选择PLC类型\r\n默认三菱PLC"), Category("PLC类型")]
         [DefaultValue(typeof(PLC), "Mitsubishi")]
         public PLC Plc

@@ -13,14 +13,14 @@ namespace PLC通讯规范接口
 
     public enum PLC
     {
-        Mitsubishi,
-        Siemens,
-        Modbus_TCP,
-        HMI,
-        OmronTCP,
-        OmronCIP,
-        OmronUDP,
-        Fanuc
+        Mitsubishi=00,
+        Siemens=01,
+        Modbus_TCP=02,
+        HMI=03,
+        OmronTCP=04,
+        OmronCIP=05,
+        OmronUDP=06,
+        Fanuc=07
     }
     /// <summary>
     /// PLC各可访问软元件  三菱-bit位

@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using PLC通讯规范接口;
+using Sunny.UI;
+using 欧姆龙Fins协议.欧姆龙.报文处理;
 using 自定义Uppercomputer_20200727.PLC选择;
 using 自定义Uppercomputer_20200727.PLC选择.MODBUS_TCP监控窗口;
 
@@ -31,7 +33,7 @@ namespace 自定义Uppercomputer_20200727.非软件运行时控件.控件类基.
                     {
                         mitsubishi.PLC_write_D_register(textBox.PLC_Contact, textBox.PLC_Address, textBox.Control_Text, textBox.numerical);
                     }
-                    else MessageBox.Show("未连接设备：" + textBox.Plc.ToString(), "Err");//推出异常提示
+                    else UINotifierHelper.ShowNotifier("未连接设备：" + textBox.Plc + "Err", UINotifierType.WARNING, UILocalize.WarningTitle, false, 1000);//推出异常提示用户
                     break;
                 case PLC.Siemens:
                     IPLC_interface Siemens = new Siemens_realize();//实例化接口--实现西门子在线访问
@@ -39,15 +41,39 @@ namespace 自定义Uppercomputer_20200727.非软件运行时控件.控件类基.
                     {
                         Siemens.PLC_write_D_register(textBox.PLC_Contact, textBox.PLC_Address, textBox.Control_Text, textBox.numerical);
                     }
-                    else MessageBox.Show("未连接设备：" + textBox.Plc.ToString(), "Err");//推出异常提示
+                    else UINotifierHelper.ShowNotifier("未连接设备：" + textBox.Plc + "Err", UINotifierType.WARNING, UILocalize.WarningTitle, false, 1000);//推出异常提示用户
                     break;
                 case PLC.Modbus_TCP:
-                    MODBUD_TCP MODBUD_TCP = new MODBUD_TCP();//实例化接口--实现MODBUS TCP
-                    if (MODBUD_TCP.IPLC_interface_PLC_ready)
+                    IPLC_interface MODBUD_TCP = new MODBUD_TCP();//实例化接口--实现MODBUS TCP
+                    if (MODBUD_TCP.PLC_ready)
                     {
                         MODBUD_TCP.PLC_write_D_register(textBox.PLC_Contact, textBox.PLC_Address, textBox.Control_Text, textBox.numerical);
                     }
-                    else MessageBox.Show("未连接设备：" + textBox.Plc.ToString(), "Err");//推出异常提示用户
+                    else UINotifierHelper.ShowNotifier("未连接设备：" + textBox.Plc + "Err", UINotifierType.WARNING, UILocalize.WarningTitle, false, 1000);//推出异常提示用户
+                    break;
+                case PLC.OmronTCP:
+                    IPLC_interface OmronFinsTcp = new OmronFinsTcp();//实例化接口--实现欧姆龙
+                    if (OmronFinsTcp.PLC_ready)
+                    {
+                        OmronFinsTcp.PLC_write_D_register(textBox.PLC_Contact, textBox.PLC_Address, textBox.Control_Text, textBox.numerical);
+                    }
+                    else UINotifierHelper.ShowNotifier("未连接设备：" + textBox.Plc + "Err", UINotifierType.WARNING, UILocalize.WarningTitle, false, 1000);//推出异常提示用户
+                    break;
+                case PLC.OmronUDP:
+                    IPLC_interface OmronFinsUDP = new OmronFinsUDP();//实例化接口--实现欧姆龙
+                    if (OmronFinsUDP.PLC_ready)
+                    {
+                        OmronFinsUDP.PLC_write_D_register(textBox.PLC_Contact, textBox.PLC_Address, textBox.Control_Text, textBox.numerical);
+                    }
+                    else UINotifierHelper.ShowNotifier("未连接设备：" + textBox.Plc + "Err", UINotifierType.WARNING, UILocalize.WarningTitle, false, 1000);//推出异常提示用户
+                    break;
+                case PLC.OmronCIP:
+                    IPLC_interface OmronFinsCIP = new OmronFinsCIP();//实例化接口--实现欧姆龙
+                    if (OmronFinsCIP.PLC_ready)
+                    {
+                        OmronFinsCIP.PLC_write_D_register(textBox.PLC_Contact, textBox.PLC_Address, textBox.Control_Text, textBox.numerical);
+                    }
+                    else UINotifierHelper.ShowNotifier("未连接设备：" + textBox.Plc + "Err", UINotifierType.WARNING, UILocalize.WarningTitle, false, 1000);//推出异常提示用户
                     break;
             }
             return "OK_RUN";
@@ -93,6 +119,30 @@ namespace 自定义Uppercomputer_20200727.非软件运行时控件.控件类基.
                     {
                         //由于modbus_TCP读写状态不同 读输出 写输入模式 
                         string data = MODBUD_TCP.PLC_read_D_register(textBox.PLC_Contact, textBox.PLC_Address, textBox.numerical);//读取PLC数值
+                        TextBox_state(textBox, data);//填充文本数据--自动判断用户设定的小数点位置--多余的异常
+                    }
+                    break;
+                case PLC.OmronTCP:
+                    IPLC_interface OmronFinsTcp = new OmronFinsTcp();//实例化接口-
+                    if (OmronFinsTcp.PLC_ready)//PLC是否准备完成
+                    {
+                        string data = OmronFinsTcp.PLC_read_D_register(textBox.PLC_Contact, textBox.PLC_Address, textBox.numerical);//读取PLC数值
+                        TextBox_state(textBox, data);//填充文本数据--自动判断用户设定的小数点位置--多余的异常
+                    }
+                    break;
+                case PLC.OmronUDP:
+                    IPLC_interface OmronFinsUDP = new OmronFinsUDP();//实例化接口-
+                    if (OmronFinsUDP.PLC_ready)//PLC是否准备完成
+                    {
+                        string data = OmronFinsUDP.PLC_read_D_register(textBox.PLC_Contact, textBox.PLC_Address, textBox.numerical);//读取PLC数值
+                        TextBox_state(textBox, data);//填充文本数据--自动判断用户设定的小数点位置--多余的异常
+                    }
+                    break;
+                case PLC.OmronCIP:
+                    IPLC_interface OmronFinsCIP = new OmronFinsCIP();//实例化接口-
+                    if (OmronFinsCIP.PLC_ready)//PLC是否准备完成
+                    {
+                        string data = OmronFinsCIP.PLC_read_D_register(textBox.PLC_Contact, textBox.PLC_Address, textBox.numerical);//读取PLC数值
                         TextBox_state(textBox, data);//填充文本数据--自动判断用户设定的小数点位置--多余的异常
                     }
                     break;

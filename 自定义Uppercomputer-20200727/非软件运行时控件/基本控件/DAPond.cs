@@ -56,7 +56,7 @@ namespace Bottom_Control.基本控件
             get => plc_Enable;
             set => plc_Enable = value;
         }
-        private bool plc_Enable = false;
+        private bool plc_Enable = true;
 
         public void Modifications_Eeve(object send, EventArgs e)
         {
