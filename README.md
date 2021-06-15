@@ -55,6 +55,12 @@
  下一步计划：  
  1.优化代码与精简代码    
  2.添加更多免开发的控件  
+ 
+ ![image](https://user-images.githubusercontent.com/60955669/122012128-69276780-cdef-11eb-95d5-56fffdcc3070.png)
+
+
+ 
+ 
 BUG与反馈：  
 开源自由就好BUG什么的肯定有哈哈。  
 
