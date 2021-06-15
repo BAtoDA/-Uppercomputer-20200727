@@ -60,8 +60,21 @@ namespace 自定义Uppercomputer_20200727.非软件运行时控件.基本控件
         {
             gridView_SQL = new DADataGridView_SQL(this.SqlString,SqlSurface_Name);
         }
+        /// <summary>
+        /// 判断程序是否在运行
+        /// true 该程序在电脑进程运行中  false 表示不在进程运行
+        /// 该方法主要用于避免继承过程中CLR 进入SQL数据库 查询数据从而卡死软件
+        /// </summary>
+        /// <param name="Name"></param>
+        /// <returns></returns>
+        public bool GetPidByProcess(string Name = "自定义Uppercomputer-20200727")
+        {
+            return System.Diagnostics.Process.GetProcessesByName(Name).ToList().Count > 0 ? true : false;
+        }
         protected override void OnParentChanged(EventArgs e)//加载状态栏
         {
+            //判断程序是否在进程中运行？
+            if (!GetPidByProcess()) return;
             //添加控件参数
             if (!SQL_Enable) return;
             this.BeginInvoke((EventHandler)delegate
@@ -84,6 +97,8 @@ namespace 自定义Uppercomputer_20200727.非软件运行时控件.基本控件
         }
         protected override void OnCellEndEdit(DataGridViewCellEventArgs e)//编辑模式结束
         {
+            //判断程序是否在进程中运行？
+            if (!GetPidByProcess()) return;
             this.BeginInvoke((EventHandler)delegate
             {
                 if (!SQL_Enable) return;
@@ -100,6 +115,8 @@ namespace 自定义Uppercomputer_20200727.非软件运行时控件.基本控件
         }
         protected override void OnUserDeletedRow(DataGridViewRowEventArgs e)//用户删除行完成
         {
+            //判断程序是否在进程中运行？
+            if (!GetPidByProcess()) return;
             base.OnUserDeletedRow(e);
             this.BeginInvoke((EventHandler)delegate
             {

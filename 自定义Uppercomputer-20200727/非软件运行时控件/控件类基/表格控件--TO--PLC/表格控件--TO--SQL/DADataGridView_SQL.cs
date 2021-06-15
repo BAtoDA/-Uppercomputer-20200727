@@ -5,6 +5,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using CCWin.SkinControl;
 
 namespace 自定义Uppercomputer_20200727.非软件运行时控件.控件类基.表格控件__TO__PLC.表格控件__TO__SQL
@@ -34,19 +35,19 @@ namespace 自定义Uppercomputer_20200727.非软件运行时控件.控件类基.
             this.sqlDataAdapter = new SqlDataAdapter(SQL_statement, sqlConnection);//数据对象
             this.dataTable = new DataTable();//实例化缓存对象
         }
-        public void skinDataGridView_update(SkinDataGridView skinDataGridView)//获取数据库数据--更新表
+        public void skinDataGridView_update(DataGridView skinDataGridView)//获取数据库数据--更新表
         {
             this.dataTable = new DataTable();//实例化缓存对象
             this.sqlDataAdapter.Fill(this.dataTable);//获取表
             skinDataGridView.DataSource = this.dataTable;//绑定数据源
         }
-        public void skinDataGridView_modification(SkinDataGridView skinDataGridView)//获取数据库数据--修改表
+        public void skinDataGridView_modification(DataGridView skinDataGridView)//获取数据库数据--修改表
         {
             this.dataTable = new DataTable();//实例化缓存对象
             this.sqlCommandBuilder = new SqlCommandBuilder(this.sqlDataAdapter);
             this.sqlDataAdapter.Update((DataTable)skinDataGridView.DataSource);
         }
-        public void skinDataGridView_RemoveAt(SkinDataGridView skinDataGridView)//获取数据库数据--删除行
+        public void skinDataGridView_RemoveAt(DataGridView skinDataGridView)//获取数据库数据--删除行
         {
             skinDataGridView.Rows.RemoveAt(skinDataGridView.CurrentCell.RowIndex);
             this.sqlCommandBuilder = new SqlCommandBuilder(this.sqlDataAdapter);

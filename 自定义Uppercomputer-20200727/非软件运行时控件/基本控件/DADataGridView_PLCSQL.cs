@@ -34,7 +34,7 @@ namespace 自定义Uppercomputer_20200727.非软件运行时控件.基本控件
     [ToolboxItem(true)]
     [Browsable(true)]
     [Description("实现上位机底层控件 定时从PLC自定寄存器读取数据 保存到SQL数据库  -不再公共运行时")]
-    public class DADataGridView_PLCSQL : SkinDataGridView, TextBox_base, DataGridViewPLC_base
+    public class DADataGridView_PLCSQL : DataGridView, TextBox_base, DataGridViewPLC_base
     {
         #region 实现接口参数
         public event EventHandler Modification;
@@ -166,6 +166,8 @@ namespace 自定义Uppercomputer_20200727.非软件运行时控件.基本控件
         }
         protected override void OnParentChanged(EventArgs e)//加载状态栏
         {
+            //判断程序是否在进程中运行？
+            if (!pLC.GetPidByProcess()) return;
             //添加控件参数
             if (!SQL_Enable) return;
             if (this.DataSource != null || this.IsDisposed || this.Created == false) return;

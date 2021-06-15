@@ -31,7 +31,7 @@ namespace 自定义Uppercomputer_20200727.非软件运行时控件
     [ToolboxItem(true)]
     [Browsable(true)]
     [Description("实现上位机底层控件 定时从PLC自定寄存器读取数据  PLC读取表格类 -不再公共运行时")]
-    public class DADataGridView_TO_PLC: SkinDataGridView, TextBox_base, DataGridViewPLC_base
+    public class DADataGridView_TO_PLC: DataGridView, TextBox_base, DataGridViewPLC_base
     {
         #region 实现接口参数
         [Browsable(false)]
@@ -140,15 +140,12 @@ namespace 自定义Uppercomputer_20200727.非软件运行时控件
         public DADataGridView_TO_PLC()
         {
             pLC = new DataGridView_PLC();
-            load();
 
-        }
-        private void load()
-        {
-     
         }
         protected override void OnParentChanged(EventArgs e)//加载状态栏
         {
+            //判断程序是否在进程中运行？
+            if (!pLC.GetPidByProcess()) return;
             //添加控件参数
             this.Columns.Clear();
             for (int i = 0; i < this.DataGridView_Name.Length; i++)
@@ -174,8 +171,6 @@ namespace 自定义Uppercomputer_20200727.非软件运行时控件
                 Siz += this.Columns[i].Width;
             }
             this.Size = new Size(Siz + 60, this.Size.Height);
-            //判断程序是否在进程中运行？
-            if (!pLC.GetPidByProcess()) return;
             PLC_time.Start();
             PLC_time.Tick += new EventHandler(Time_tick);
 
