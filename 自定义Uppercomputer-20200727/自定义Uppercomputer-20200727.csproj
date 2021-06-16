@@ -1150,6 +1150,15 @@
     <None Include="Resources\大数据图片_b.jpg" />
     <None Include="Resources\3046502_105311288000_2.jpg" />
     <None Include="Resources\h1.ico" />
+    <None Include="Resources\11.png" />
+    <None Include="Resources\21.png" />
+    <None Include="Resources\31.png" />
+    <None Include="Resources\41.png" />
+    <None Include="Resources\51.png" />
+    <None Include="Resources\61.png" />
+    <None Include="Resources\71.png" />
+    <None Include="Resources\81.png" />
+    <None Include="Resources\91.png" />
     <Content Include="Resources\替换运行主页面.png" />
     <Content Include="图库\按钮图标\5834\102.ico" />
     <Content Include="图库\按钮图标\5834\112.ico" />

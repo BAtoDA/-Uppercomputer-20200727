@@ -30,5 +30,10 @@ namespace 自定义Uppercomputer_20200727.控制主页面模板
             });
             this.ucListExt1.SetList(data);
         }
+
+        private void uiHeaderButton12_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
