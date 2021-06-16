@@ -155,7 +155,6 @@
             this.timer4 = new System.Windows.Forms.Timer(this.components);
             this.userControl11 = new UI_Library_da.UI加载进度条.UserControl1();
             this.plCreconnectionTime1 = new 自定义Uppercomputer_20200727.控件重做.PLCreconnectionTime();
-            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.skinContextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -1284,16 +1283,6 @@
             // 
             this.plCreconnectionTime1.Interval = 2000;
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(53, 115);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(107, 102);
-            this.button1.TabIndex = 11;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1303,7 +1292,6 @@
             this.ClientSize = new System.Drawing.Size(950, 654);
             this.CloseBoxSize = new System.Drawing.Size(25, 25);
             this.ContextMenuStrip = this.skinContextMenuStrip1;
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.ucNavigationMenu1);
             this.Controls.Add(this.userControl11);
             this.Controls.Add(this.skinLabel1);
@@ -1422,6 +1410,5 @@
         private System.Windows.Forms.ImageList Aligning;
         private System.Windows.Forms.Timer timer4;
         private 控件重做.PLCreconnectionTime plCreconnectionTime1;
-        private System.Windows.Forms.Button button1;
     }
 }

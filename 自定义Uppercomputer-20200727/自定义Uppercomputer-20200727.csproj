@@ -620,6 +620,12 @@
       <DependentUpon>Form3.cs</DependentUpon>
     </Compile>
     <Compile Include="控制主页面模板\doughnut_Chart_Add.cs" />
+    <Compile Include="控制主页面模板\Form2derma.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="控制主页面模板\Form2derma.Designer.cs">
+      <DependentUpon>Form2derma.cs</DependentUpon>
+    </Compile>
     <Compile Include="控制主页面模板\histogram_Chart_Add.cs" />
     <Compile Include="控制主页面模板\ihatetheqrcode_Add.cs" />
     <Compile Include="控制主页面模板\oscillogram_Chart_Add.cs" />
@@ -1034,6 +1040,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="控制主页面模板\Form2.resx">
       <DependentUpon>Form2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="控制主页面模板\Form2derma.resx">
+      <DependentUpon>Form2derma.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="数据查询界面\SQLquery.resx">
       <DependentUpon>SQLquery.cs</DependentUpon>
