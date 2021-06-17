@@ -41,6 +41,7 @@ using 自定义Uppercomputer_20200727.数据查询界面;
 using 自定义Uppercomputer_20200727.软件说明;
 using 自定义Uppercomputer_20200727.宏指令实现与对接;
 using 自定义Uppercomputer_20200727.控件重做.复制粘贴接口;
+using Sunny.UI;
 
 namespace 自定义Uppercomputer_20200727.控制主页面模板
 {
@@ -71,11 +72,11 @@ namespace 自定义Uppercomputer_20200727.控制主页面模板
             SkinButton skinButton = (SkinButton)sender;
             if (skinButton.Text == this.Text) return;
             string Data = this.Text;
-            using (Windowclass windowclass = new Windowclass(this, new SkinButton[] { this.skinButton1, this.skinButton2, this.skinButton3,
-                this.skinButton4, this.skinButton5, this.skinButton6,this.skinButton7}, new Form[] {new Form3(), new Form4(),new Form5()
-                , new Form6(),new Form7(), new 生产设置画面.Form8(), new 参数设置画面.Form9()}, this.skinLabel1, skinButton))
-            {
-            }
+            //using (Windowclass windowclass = new Windowclass(this, new SkinButton[] { this.skinButton1, this.skinButton2, this.skinButton3,
+            //    this.skinButton4, this.skinButton5, this.skinButton6,this.skinButton7}, new Form[] {new Form3(), new Form4(),new Form5()
+            //    , new Form6(),new Form7(), new 生产设置画面.Form8(), new 参数设置画面.Form9()}, this.skinLabel1, skinButton))
+            //{
+            //}
         }
         //窗口预定事件
         private void Form2_MouseMove(object sender, MouseEventArgs e)
@@ -102,15 +103,16 @@ namespace 自定义Uppercomputer_20200727.控制主页面模板
         protected override void OnLoad(EventArgs e)
         {
             if (!GetPidByProcess()) return;
+            ShowWaitForm();
             ToolStripManager.Renderer = new HZH_Controls.Controls.ProfessionalToolStripRendererEx();
             Form2_Leave(this, new EventArgs());
-           // UI_Schedule("开始加载控件", 30, true);
+            UI_Schedule("开始加载控件", 30, true);
             var se = Task.Run(() =>
             {
                 From_Load_Add.imageLists_1 = new List<ImageList>() { this.imageList1, this.imageList2, this.imageList3 };
                 using (dynamic load_Add = new From_Load_Add(this.Name, this.Controls, new List<ImageList>() { this.imageList1, this.imageList2, this.imageList3 }, this)) ;//添加报警条
                 using (dynamic add = new From_Load_Add(this.Name, this.Controls, new List<ImageList>() { this.imageList1, this.imageList2, this.imageList3 }, this, true)) ;//添加普通文本
-              //  UI_Schedule("开始正在显示UI", 90, true);
+                UI_Schedule("开始正在显示UI", 90, true);
             });
             se.Wait();
             this.timer3.Start();
@@ -280,11 +282,17 @@ namespace 自定义Uppercomputer_20200727.控制主页面模板
             this.timer3.Stop();
 
         }
+        /// <summary>
+        /// 加载进度条
+        /// </summary>
+        /// <param name="Text"></param>
+        /// <param name="Vaule"></param>
+        /// <param name="Visible"></param>
         public void UI_Schedule(string Text, int Vaule, bool Visible)//加载UI控件控制
         {
-            //this.userControl11.Display = Visible;
-            //this.userControl11.Schedule = Vaule;
-            //this.userControl11.Schedule_Text = Text;
+            SetWaitFormDescription(Text + $"{Vaule}%");
+            if (!Visible)
+                HideWaitForm();
             //LogUtils日志
             LogUtils.debugWrite(this.Text + this.Name + Text + $"进度{Vaule}");
         }
@@ -953,18 +961,20 @@ namespace 自定义Uppercomputer_20200727.控制主页面模板
             this.plCreconnectionTime1.Dispose();
             try
             {
-                if (!this.Capture) return;
-                if (MessageBox.Show("该窗口是主窗口是否要退出程序？", "Err", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                if (!Capture) return;
+                if (ShowAskDialog("确认信息提示框"))
                 {
+                    ShowSuccessTip("您点击了确定按钮");
                     //LogUtils日志
                     LogUtils.debugWrite($"用户关闭了软件");
                     Application.Exit();//关闭所有窗口
                 }
                 else
                 {
+                    ShowErrorTip("您点击了取消按钮");
                     e.Cancel = true;//取消
                     return;//返回方法
-                }
+                }          
             }
             catch { }
         }
@@ -1011,7 +1021,7 @@ namespace 自定义Uppercomputer_20200727.控制主页面模板
             //判断用户选择的功能
             if (!edit_mode)
             {
-                MessageBox.Show("未进入编辑模式：请开启编辑模式", "Err");
+                ShowErrorDialog("未进入编辑模式：请开启编辑模式", "Err");
                 return;
             }
             #region 添加控件选项判断需要开启编辑模式
