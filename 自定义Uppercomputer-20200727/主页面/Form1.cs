@@ -1,32 +1,21 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using 自定义Uppercomputer_20200727.主页面;
 using System.Threading;
-using 自定义Uppercomputer_20200727.手动控制页面;
 using 自定义Uppercomputer_20200727.控制主页面;
-using 自定义Uppercomputer_20200727.PLC选择;
-using 自定义Uppercomputer_20200727.PLC选择.MODBUS_TCP监控窗口;
 using System.Diagnostics;
 using 自定义Uppercomputer_20200727.EF实体模型;
 using 自定义Uppercomputer_20200727.EF实体模型.XML;
 using CCWin.SkinControl;
-using HZH_Controls.Forms;
 using 自定义Uppercomputer_20200727.Nlog;
 using System.Xml;
-using 自定义Uppercomputer_20200727.EF实体模型.EFtoSQL操作类重写;
 using System.IO;
 using System.Runtime.InteropServices;
 using static PLC通讯规范接口.Request;
-using Nancy.Json;
-using 服务器端;
 using 自定义Uppercomputer_20200727.主页面.进程通讯消息处理;
+using 自定义Uppercomputer_20200727.控制主页面模板;
 
 namespace 自定义Uppercomputer_20200727
 {
@@ -90,8 +79,12 @@ namespace 自定义Uppercomputer_20200727
             return false;//返回标志位
         }
 
+        [Obsolete]
         private void timer1_Tick(object sender, EventArgs e)
         {
+            //测试代码
+            Form2derma form2Derma = new Form2derma();
+            form2Derma.Show();
             this.timer1.Stop();
             XmlClick();
             LogUtils.deleteLogFile(@Application.StartupPath);//检查是否有超过2个月的日志 进行删除操作

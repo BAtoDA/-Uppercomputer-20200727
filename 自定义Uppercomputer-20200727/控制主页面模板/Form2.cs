@@ -79,7 +79,7 @@ namespace 自定义Uppercomputer_20200727
                  | ControlStyles.UserPaint
                  | ControlStyles.SupportsTransparentBackColor,
                true);
-
+            ToolStripManager.Renderer = new HZH_Controls.Controls.ProfessionalToolStripRendererEx();
         }
         private void skinButton1_Click(object sender, EventArgs e)//公用页面处理
         {
