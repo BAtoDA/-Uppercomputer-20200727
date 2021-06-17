@@ -83,7 +83,7 @@ namespace 自定义Uppercomputer_20200727
         private void timer1_Tick(object sender, EventArgs e)
         {
             //测试代码
-            Form2derma form2Derma = new Form2derma();
+            控制主页面模板.Form2derma form2Derma = new 控制主页面模板.Form2derma();
             form2Derma.Show();
             this.timer1.Stop();
             XmlClick();

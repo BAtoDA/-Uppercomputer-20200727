@@ -707,7 +707,7 @@ namespace 自定义Uppercomputer_20200727
             this.ucNavigationMenu1.Enabled = false;
             this.ucNavigationMenu1.Items[6].TipText = edit_mode == true ? "开" : "关";//改变状态栏提示文字
             this.ucNavigationMenu1.Enabled = true;
-            if (edit_mode) { PLC_read_ok = false; PLC_read_Tick = false; };//指示用户开始了编辑模式
+            //if (edit_mode) { PLC_read_ok = false; PLC_read_Tick = false; };//指示用户开始了编辑模式
             asc.RenewControlRect(this);//实时保存控件大小与位置
 
             try
@@ -723,8 +723,6 @@ namespace 自定义Uppercomputer_20200727
             }
             catch { }
         }
-        bool PLC_read_Tick = false;//指示是否遍历窗口完成
-        bool PLC_read_ok = false;//指示是否遍历控件是否完成--
 
         private void toolStripMenuItem6_Click(object sender, EventArgs e)//用户点击了报警注册
         {

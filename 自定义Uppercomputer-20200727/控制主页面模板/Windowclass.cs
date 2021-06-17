@@ -56,7 +56,7 @@ namespace 自定义Uppercomputer_20200727.控制主页面模板
             FormCollection formCollection = Application.OpenForms;//获取窗口集合
             for (int i = 0; i < formCollection.Count; i++)
             {
-                var form = formCollection[i] as Form2;
+                var form = formCollection[i] as Form2derma;
                 if (formCollection[i].Text != "Home" & formCollection[i].Text != Openfrom.Text&&form!=null)//关闭其余窗口
                 {
                     formCollection[i].Close();//关闭窗口     
