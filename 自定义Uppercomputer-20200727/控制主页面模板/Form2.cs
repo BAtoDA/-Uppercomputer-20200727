@@ -53,18 +53,24 @@ using CCWin.Win32.Const;
 using 自定义Uppercomputer_20200727.控制主页面模板.控件添加类重写;
 using 欧姆龙Fins协议.欧姆龙.报文处理;
 using 自定义Uppercomputer_20200727.数据查询界面;
+using 自定义Uppercomputer_20200727.控制主页面模板.模板窗口接口;
 
 namespace 自定义Uppercomputer_20200727
 {
-    public partial class Form2 : CCWin.Skin_DevExpress
+    public partial class Form2 : CCWin.Skin_DevExpress, FormIdentification
     {
         /// <该页面是模板通用页面->
         //1.声明自适应类实例
         AutoSizeFormClass asc = new AutoSizeFormClass();
         /// <summary>
         /// 标识该窗口是框架窗口
+        /// 默认所有窗口都是切换完成后自动关闭
         /// </summary>
-        public static bool frameForm { get; set; } = true;
+        private bool frameForm { get; set; } = true;
+
+        public bool IsCloseForm { get => frameForm; }
+        public bool IsfunctionKey { get; set; } = false;
+
         /// <summary>
         /// 构造函数
         /// </summary>
@@ -83,13 +89,15 @@ namespace 自定义Uppercomputer_20200727
         }
         private void skinButton1_Click(object sender, EventArgs e)//公用页面处理
         {
-            SkinButton skinButton = (SkinButton)sender;
-            if (skinButton.Text == this.skinLabel1.Text) return;
-            string Data = this.skinLabel1.Text;
-            using (Windowclass windowclass = new Windowclass(this, new SkinButton[] { this.skinButton1, this.skinButton2, this.skinButton3,
-                this.skinButton4, this.skinButton5, this.skinButton6,this.skinButton7}, new Form[] {new Form3(), new Form4(),new Form5()
-                , new Form6(),new Form7(), new 生产设置画面.Form8(), new 参数设置画面.Form9()}, this.skinLabel1, skinButton))
+            lock (this)
             {
+                SkinButton skinButton = (SkinButton)sender;
+                if (skinButton.Text == this.skinLabel1.Text || IsfunctionKey == false) return;
+                string Data = this.skinLabel1.Text;
+                using (Windowclass windowclass = new Windowclass(this, new Form[] {new Form3(), new Form4(),new Form5()
+                , new Form6(),new Form7(), new 生产设置画面.Form8(), new 参数设置画面.Form9()}, skinButton))
+                {
+                }
             }
         }
         private void skinContextMenuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
@@ -785,6 +793,7 @@ namespace 自定义Uppercomputer_20200727
             UI_Schedule("加载完成", 100, true);
             Thread.Sleep(50);
             UI_Schedule("加载完成", 100, false);
+            IsfunctionKey = true;
             this.timer4.Enabled = true;
             this.timer4.Start();
             this.timer3.Stop();

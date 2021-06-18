@@ -83,6 +83,7 @@ namespace 自定义Uppercomputer_20200727.控件重做.控件类基.按钮__TO__
                         state = Button_HMI_public.Button_HMI_write_select(Convert.ToInt32(specific), command);//根据按钮模式进行写入操作 
                     else
                         state = Button_HMI_public.Button_HMI_write_select(Convert.ToInt32(specific), command);//根据按钮模式进行写入操作 
+                    ShowSuccessTip($"向设备写入{command}成功");
                     break;
                 case "OmronTCP":
                     IPLC_interface OmronTCP = new OmronFinsTcp();//实例化接口
@@ -180,6 +181,7 @@ namespace 自定义Uppercomputer_20200727.控件重做.控件类基.按钮__TO__
                     state = false;//标志位
                     break;
             }
+            ShowSuccessTip($"向设备写入{Name}成功");
         }
         /// <summary>
         /// 定时刷新控件
@@ -278,6 +280,22 @@ namespace 自定义Uppercomputer_20200727.控件重做.控件类基.按钮__TO__
             }
             return contentAlignment;//返回数据
         }
+        /// <summary>
+        /// 显示成功消息
+        /// </summary>
+        /// <param name="text">消息文本</param>
+        /// <param name="delay">消息停留时长(ms)。默认1秒</param>
+        /// <param name="floating">是否漂浮</param>
+        public void ShowSuccessTip(string text, int delay = 1000, bool floating = true)
+            => UIMessageTip.ShowOk(text, delay, floating);
+        /// <summary>
+        /// 显示警告消息
+        /// </summary>
+        /// <param name="text">消息文本</param>
+        /// <param name="delay">消息停留时长(ms)。默认1秒</param>
+        /// <param name="floating">是否漂浮</param>
+        public void ShowWarningTip(string text, int delay = 1000, bool floating = true)
+            => UIMessageTip.ShowWarning(text, delay, floating);
         public Button_to_plc()
         {
             Dispose(false);

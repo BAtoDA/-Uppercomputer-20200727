@@ -31,76 +31,76 @@ namespace 自定义Uppercomputer_20200727.控制主页面模板
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form2derma));
-            System.Windows.Forms.TreeNode treeNode40 = new System.Windows.Forms.TreeNode("Button_按钮");
-            System.Windows.Forms.TreeNode treeNode41 = new System.Windows.Forms.TreeNode("透明化_Button");
-            System.Windows.Forms.TreeNode treeNode42 = new System.Windows.Forms.TreeNode("CheckBox 单选按钮");
-            System.Windows.Forms.TreeNode treeNode43 = new System.Windows.Forms.TreeNode("Switch_切换开关");
-            System.Windows.Forms.TreeNode treeNode44 = new System.Windows.Forms.TreeNode("按钮类", new System.Windows.Forms.TreeNode[] {
-            treeNode40,
-            treeNode41,
-            treeNode42,
-            treeNode43});
-            System.Windows.Forms.TreeNode treeNode45 = new System.Windows.Forms.TreeNode("Label_文本");
-            System.Windows.Forms.TreeNode treeNode46 = new System.Windows.Forms.TreeNode("Texebox_数值");
-            System.Windows.Forms.TreeNode treeNode47 = new System.Windows.Forms.TreeNode("LedDisplay数值显示");
-            System.Windows.Forms.TreeNode treeNode48 = new System.Windows.Forms.TreeNode("文本类", new System.Windows.Forms.TreeNode[] {
-            treeNode45,
-            treeNode46,
-            treeNode47});
-            System.Windows.Forms.TreeNode treeNode49 = new System.Windows.Forms.TreeNode("ScrollingText报警滚动条");
-            System.Windows.Forms.TreeNode treeNode50 = new System.Windows.Forms.TreeNode("报警类", new System.Windows.Forms.TreeNode[] {
-            treeNode49});
-            System.Windows.Forms.TreeNode treeNode51 = new System.Windows.Forms.TreeNode("LedBulb指示灯");
-            System.Windows.Forms.TreeNode treeNode52 = new System.Windows.Forms.TreeNode("指示类", new System.Windows.Forms.TreeNode[] {
-            treeNode51});
-            System.Windows.Forms.TreeNode treeNode53 = new System.Windows.Forms.TreeNode("histogram_Chart柱形图");
-            System.Windows.Forms.TreeNode treeNode54 = new System.Windows.Forms.TreeNode("doughnut_Chart圆形图");
-            System.Windows.Forms.TreeNode treeNode55 = new System.Windows.Forms.TreeNode("oscillogram_Chart波形图");
-            System.Windows.Forms.TreeNode treeNode56 = new System.Windows.Forms.TreeNode("oscillogram_Chart波形图");
-            System.Windows.Forms.TreeNode treeNode57 = new System.Windows.Forms.TreeNode("VScrollBar_横向移动图形");
-            System.Windows.Forms.TreeNode treeNode58 = new System.Windows.Forms.TreeNode("lmage_图片");
-            System.Windows.Forms.TreeNode treeNode59 = new System.Windows.Forms.TreeNode("GroupBox四方边框条");
-            System.Windows.Forms.TreeNode treeNode60 = new System.Windows.Forms.TreeNode("图形", new System.Windows.Forms.TreeNode[] {
-            treeNode53,
-            treeNode54,
-            treeNode55,
-            treeNode56,
-            treeNode57,
-            treeNode58,
-            treeNode59});
-            System.Windows.Forms.TreeNode treeNode61 = new System.Windows.Forms.TreeNode("AnalogMeter百分百表盘");
-            System.Windows.Forms.TreeNode treeNode62 = new System.Windows.Forms.TreeNode("表盘", new System.Windows.Forms.TreeNode[] {
-            treeNode61});
-            System.Windows.Forms.TreeNode treeNode63 = new System.Windows.Forms.TreeNode("二维码/条形码");
-            System.Windows.Forms.TreeNode treeNode64 = new System.Windows.Forms.TreeNode("二维码", new System.Windows.Forms.TreeNode[] {
-            treeNode63});
-            System.Windows.Forms.TreeNode treeNode65 = new System.Windows.Forms.TreeNode("功能键_画面切换");
-            System.Windows.Forms.TreeNode treeNode66 = new System.Windows.Forms.TreeNode("ComboBox下拉菜单");
-            System.Windows.Forms.TreeNode treeNode67 = new System.Windows.Forms.TreeNode("功能键", new System.Windows.Forms.TreeNode[] {
-            treeNode65,
-            treeNode66});
-            System.Windows.Forms.TreeNode treeNode68 = new System.Windows.Forms.TreeNode("Conveyor运输带");
-            System.Windows.Forms.TreeNode treeNode69 = new System.Windows.Forms.TreeNode("Valve流体阀门");
-            System.Windows.Forms.TreeNode treeNode70 = new System.Windows.Forms.TreeNode("工业图形类", new System.Windows.Forms.TreeNode[] {
-            treeNode68,
-            treeNode69});
-            System.Windows.Forms.TreeNode treeNode71 = new System.Windows.Forms.TreeNode("添加控件", new System.Windows.Forms.TreeNode[] {
-            treeNode44,
-            treeNode48,
-            treeNode50,
-            treeNode52,
-            treeNode60,
-            treeNode62,
-            treeNode64,
-            treeNode67,
-            treeNode70});
-            System.Windows.Forms.TreeNode treeNode72 = new System.Windows.Forms.TreeNode("注册报警");
-            System.Windows.Forms.TreeNode treeNode73 = new System.Windows.Forms.TreeNode("宏指令");
-            System.Windows.Forms.TreeNode treeNode74 = new System.Windows.Forms.TreeNode("链接设备");
-            System.Windows.Forms.TreeNode treeNode75 = new System.Windows.Forms.TreeNode("伺服控制");
-            System.Windows.Forms.TreeNode treeNode76 = new System.Windows.Forms.TreeNode("编辑模式");
-            System.Windows.Forms.TreeNode treeNode77 = new System.Windows.Forms.TreeNode("数据查询");
-            System.Windows.Forms.TreeNode treeNode78 = new System.Windows.Forms.TreeNode("关于");
+            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Button_按钮");
+            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("透明化_Button");
+            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("CheckBox 单选按钮");
+            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Switch_切换开关");
+            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("按钮类", new System.Windows.Forms.TreeNode[] {
+            treeNode1,
+            treeNode2,
+            treeNode3,
+            treeNode4});
+            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("Label_文本");
+            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("Texebox_数值");
+            System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("LedDisplay数值显示");
+            System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("文本类", new System.Windows.Forms.TreeNode[] {
+            treeNode6,
+            treeNode7,
+            treeNode8});
+            System.Windows.Forms.TreeNode treeNode10 = new System.Windows.Forms.TreeNode("ScrollingText报警滚动条");
+            System.Windows.Forms.TreeNode treeNode11 = new System.Windows.Forms.TreeNode("报警类", new System.Windows.Forms.TreeNode[] {
+            treeNode10});
+            System.Windows.Forms.TreeNode treeNode12 = new System.Windows.Forms.TreeNode("LedBulb指示灯");
+            System.Windows.Forms.TreeNode treeNode13 = new System.Windows.Forms.TreeNode("指示类", new System.Windows.Forms.TreeNode[] {
+            treeNode12});
+            System.Windows.Forms.TreeNode treeNode14 = new System.Windows.Forms.TreeNode("histogram_Chart柱形图");
+            System.Windows.Forms.TreeNode treeNode15 = new System.Windows.Forms.TreeNode("doughnut_Chart圆形图");
+            System.Windows.Forms.TreeNode treeNode16 = new System.Windows.Forms.TreeNode("oscillogram_Chart波形图");
+            System.Windows.Forms.TreeNode treeNode17 = new System.Windows.Forms.TreeNode("oscillogram_Chart波形图");
+            System.Windows.Forms.TreeNode treeNode18 = new System.Windows.Forms.TreeNode("VScrollBar_横向移动图形");
+            System.Windows.Forms.TreeNode treeNode19 = new System.Windows.Forms.TreeNode("lmage_图片");
+            System.Windows.Forms.TreeNode treeNode20 = new System.Windows.Forms.TreeNode("GroupBox四方边框条");
+            System.Windows.Forms.TreeNode treeNode21 = new System.Windows.Forms.TreeNode("图形", new System.Windows.Forms.TreeNode[] {
+            treeNode14,
+            treeNode15,
+            treeNode16,
+            treeNode17,
+            treeNode18,
+            treeNode19,
+            treeNode20});
+            System.Windows.Forms.TreeNode treeNode22 = new System.Windows.Forms.TreeNode("AnalogMeter百分百表盘");
+            System.Windows.Forms.TreeNode treeNode23 = new System.Windows.Forms.TreeNode("表盘", new System.Windows.Forms.TreeNode[] {
+            treeNode22});
+            System.Windows.Forms.TreeNode treeNode24 = new System.Windows.Forms.TreeNode("二维码/条形码");
+            System.Windows.Forms.TreeNode treeNode25 = new System.Windows.Forms.TreeNode("二维码", new System.Windows.Forms.TreeNode[] {
+            treeNode24});
+            System.Windows.Forms.TreeNode treeNode26 = new System.Windows.Forms.TreeNode("功能键_画面切换");
+            System.Windows.Forms.TreeNode treeNode27 = new System.Windows.Forms.TreeNode("ComboBox下拉菜单");
+            System.Windows.Forms.TreeNode treeNode28 = new System.Windows.Forms.TreeNode("功能键", new System.Windows.Forms.TreeNode[] {
+            treeNode26,
+            treeNode27});
+            System.Windows.Forms.TreeNode treeNode29 = new System.Windows.Forms.TreeNode("Conveyor运输带");
+            System.Windows.Forms.TreeNode treeNode30 = new System.Windows.Forms.TreeNode("Valve流体阀门");
+            System.Windows.Forms.TreeNode treeNode31 = new System.Windows.Forms.TreeNode("工业图形类", new System.Windows.Forms.TreeNode[] {
+            treeNode29,
+            treeNode30});
+            System.Windows.Forms.TreeNode treeNode32 = new System.Windows.Forms.TreeNode("添加控件", new System.Windows.Forms.TreeNode[] {
+            treeNode5,
+            treeNode9,
+            treeNode11,
+            treeNode13,
+            treeNode21,
+            treeNode23,
+            treeNode25,
+            treeNode28,
+            treeNode31});
+            System.Windows.Forms.TreeNode treeNode33 = new System.Windows.Forms.TreeNode("注册报警");
+            System.Windows.Forms.TreeNode treeNode34 = new System.Windows.Forms.TreeNode("宏指令");
+            System.Windows.Forms.TreeNode treeNode35 = new System.Windows.Forms.TreeNode("链接设备");
+            System.Windows.Forms.TreeNode treeNode36 = new System.Windows.Forms.TreeNode("伺服控制");
+            System.Windows.Forms.TreeNode treeNode37 = new System.Windows.Forms.TreeNode("编辑模式");
+            System.Windows.Forms.TreeNode treeNode38 = new System.Windows.Forms.TreeNode("数据查询");
+            System.Windows.Forms.TreeNode treeNode39 = new System.Windows.Forms.TreeNode("关于");
             this.uiPanel1 = new Sunny.UI.UIPanel();
             this.uiHeaderButton13 = new Sunny.UI.UIHeaderButton();
             this.uiHeaderButton12 = new Sunny.UI.UIHeaderButton();
@@ -177,8 +177,8 @@ namespace 自定义Uppercomputer_20200727.控制主页面模板
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.timer3 = new System.Windows.Forms.Timer(this.components);
-            this.plCreconnectionTime1 = new 自定义Uppercomputer_20200727.控件重做.PLCreconnectionTime();
             this.timer4 = new System.Windows.Forms.Timer(this.components);
+            this.plCreconnectionTime1 = new 自定义Uppercomputer_20200727.控件重做.PLCreconnectionTime();
             this.uiPanel1.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -223,6 +223,7 @@ namespace 自定义Uppercomputer_20200727.控制主页面模板
             this.uiHeaderButton13.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiHeaderButton13.Name = "uiHeaderButton13";
             this.uiHeaderButton13.Padding = new System.Windows.Forms.Padding(0, 5, 0, 3);
+            this.uiHeaderButton13.PageIndex = 6;
             this.uiHeaderButton13.Radius = 0;
             this.uiHeaderButton13.RadiusSides = Sunny.UI.UICornerRadiusSides.None;
             this.uiHeaderButton13.RectSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.None;
@@ -232,6 +233,7 @@ namespace 自定义Uppercomputer_20200727.控制主页面模板
             this.uiHeaderButton13.Symbol = 0;
             this.uiHeaderButton13.TabIndex = 8;
             this.uiHeaderButton13.Text = "设置";
+            this.uiHeaderButton13.Click += new System.EventHandler(this.Form_Click);
             // 
             // uiHeaderButton12
             // 
@@ -245,10 +247,11 @@ namespace 自定义Uppercomputer_20200727.控制主页面模板
             this.uiHeaderButton12.ForePressColor = System.Drawing.Color.FromArgb(((int)(((byte)(130)))), ((int)(((byte)(130)))), ((int)(((byte)(130)))));
             this.uiHeaderButton12.ForeSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(130)))), ((int)(((byte)(130)))), ((int)(((byte)(130)))));
             this.uiHeaderButton12.Image = global::自定义Uppercomputer_20200727.Properties.Resources._4;
-            this.uiHeaderButton12.Location = new System.Drawing.Point(694, 3);
+            this.uiHeaderButton12.Location = new System.Drawing.Point(706, 3);
             this.uiHeaderButton12.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiHeaderButton12.Name = "uiHeaderButton12";
             this.uiHeaderButton12.Padding = new System.Windows.Forms.Padding(0, 5, 0, 3);
+            this.uiHeaderButton12.PageIndex = 5;
             this.uiHeaderButton12.Radius = 0;
             this.uiHeaderButton12.RadiusSides = Sunny.UI.UICornerRadiusSides.None;
             this.uiHeaderButton12.RectSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.None;
@@ -258,6 +261,7 @@ namespace 自定义Uppercomputer_20200727.控制主页面模板
             this.uiHeaderButton12.Symbol = 0;
             this.uiHeaderButton12.TabIndex = 7;
             this.uiHeaderButton12.Text = "生产";
+            this.uiHeaderButton12.Click += new System.EventHandler(this.Form_Click);
             // 
             // uiHeaderButton11
             // 
@@ -271,10 +275,11 @@ namespace 自定义Uppercomputer_20200727.控制主页面模板
             this.uiHeaderButton11.ForePressColor = System.Drawing.Color.FromArgb(((int)(((byte)(130)))), ((int)(((byte)(130)))), ((int)(((byte)(130)))));
             this.uiHeaderButton11.ForeSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(130)))), ((int)(((byte)(130)))), ((int)(((byte)(130)))));
             this.uiHeaderButton11.Image = global::自定义Uppercomputer_20200727.Properties.Resources._8;
-            this.uiHeaderButton11.Location = new System.Drawing.Point(546, 3);
+            this.uiHeaderButton11.Location = new System.Drawing.Point(573, 3);
             this.uiHeaderButton11.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiHeaderButton11.Name = "uiHeaderButton11";
             this.uiHeaderButton11.Padding = new System.Windows.Forms.Padding(0, 5, 0, 3);
+            this.uiHeaderButton11.PageIndex = 4;
             this.uiHeaderButton11.Radius = 0;
             this.uiHeaderButton11.RadiusSides = Sunny.UI.UICornerRadiusSides.None;
             this.uiHeaderButton11.RectSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.None;
@@ -284,6 +289,7 @@ namespace 自定义Uppercomputer_20200727.控制主页面模板
             this.uiHeaderButton11.Symbol = 0;
             this.uiHeaderButton11.TabIndex = 6;
             this.uiHeaderButton11.Text = "运转";
+            this.uiHeaderButton11.Click += new System.EventHandler(this.Form_Click);
             // 
             // uiHeaderButton10
             // 
@@ -297,10 +303,11 @@ namespace 自定义Uppercomputer_20200727.控制主页面模板
             this.uiHeaderButton10.ForePressColor = System.Drawing.Color.FromArgb(((int)(((byte)(130)))), ((int)(((byte)(130)))), ((int)(((byte)(130)))));
             this.uiHeaderButton10.ForeSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(130)))), ((int)(((byte)(130)))), ((int)(((byte)(130)))));
             this.uiHeaderButton10.Image = global::自定义Uppercomputer_20200727.Properties.Resources._5;
-            this.uiHeaderButton10.Location = new System.Drawing.Point(410, 5);
+            this.uiHeaderButton10.Location = new System.Drawing.Point(429, 5);
             this.uiHeaderButton10.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiHeaderButton10.Name = "uiHeaderButton10";
             this.uiHeaderButton10.Padding = new System.Windows.Forms.Padding(0, 5, 0, 3);
+            this.uiHeaderButton10.PageIndex = 3;
             this.uiHeaderButton10.Radius = 0;
             this.uiHeaderButton10.RadiusSides = Sunny.UI.UICornerRadiusSides.None;
             this.uiHeaderButton10.RectSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.None;
@@ -310,6 +317,7 @@ namespace 自定义Uppercomputer_20200727.控制主页面模板
             this.uiHeaderButton10.Symbol = 0;
             this.uiHeaderButton10.TabIndex = 5;
             this.uiHeaderButton10.Text = "监视";
+            this.uiHeaderButton10.Click += new System.EventHandler(this.Form_Click);
             // 
             // uiHeaderButton9
             // 
@@ -323,10 +331,11 @@ namespace 自定义Uppercomputer_20200727.控制主页面模板
             this.uiHeaderButton9.ForePressColor = System.Drawing.Color.FromArgb(((int)(((byte)(130)))), ((int)(((byte)(130)))), ((int)(((byte)(130)))));
             this.uiHeaderButton9.ForeSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(130)))), ((int)(((byte)(130)))), ((int)(((byte)(130)))));
             this.uiHeaderButton9.Image = global::自定义Uppercomputer_20200727.Properties.Resources._2;
-            this.uiHeaderButton9.Location = new System.Drawing.Point(267, 2);
+            this.uiHeaderButton9.Location = new System.Drawing.Point(290, 2);
             this.uiHeaderButton9.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiHeaderButton9.Name = "uiHeaderButton9";
             this.uiHeaderButton9.Padding = new System.Windows.Forms.Padding(0, 5, 0, 3);
+            this.uiHeaderButton9.PageIndex = 2;
             this.uiHeaderButton9.Radius = 0;
             this.uiHeaderButton9.RadiusSides = Sunny.UI.UICornerRadiusSides.None;
             this.uiHeaderButton9.RectSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.None;
@@ -336,6 +345,7 @@ namespace 自定义Uppercomputer_20200727.控制主页面模板
             this.uiHeaderButton9.Symbol = 0;
             this.uiHeaderButton9.TabIndex = 4;
             this.uiHeaderButton9.Text = "异常";
+            this.uiHeaderButton9.Click += new System.EventHandler(this.Form_Click);
             // 
             // uiHeaderButton8
             // 
@@ -349,10 +359,11 @@ namespace 自定义Uppercomputer_20200727.控制主页面模板
             this.uiHeaderButton8.ForePressColor = System.Drawing.Color.FromArgb(((int)(((byte)(130)))), ((int)(((byte)(130)))), ((int)(((byte)(130)))));
             this.uiHeaderButton8.ForeSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(130)))), ((int)(((byte)(130)))), ((int)(((byte)(130)))));
             this.uiHeaderButton8.Image = global::自定义Uppercomputer_20200727.Properties.Resources._6;
-            this.uiHeaderButton8.Location = new System.Drawing.Point(132, 3);
+            this.uiHeaderButton8.Location = new System.Drawing.Point(151, 3);
             this.uiHeaderButton8.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiHeaderButton8.Name = "uiHeaderButton8";
             this.uiHeaderButton8.Padding = new System.Windows.Forms.Padding(0, 5, 0, 3);
+            this.uiHeaderButton8.PageIndex = 1;
             this.uiHeaderButton8.Radius = 0;
             this.uiHeaderButton8.RadiusSides = Sunny.UI.UICornerRadiusSides.None;
             this.uiHeaderButton8.RectSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.None;
@@ -362,6 +373,7 @@ namespace 自定义Uppercomputer_20200727.控制主页面模板
             this.uiHeaderButton8.Symbol = 0;
             this.uiHeaderButton8.TabIndex = 3;
             this.uiHeaderButton8.Text = "手动";
+            this.uiHeaderButton8.Click += new System.EventHandler(this.Form_Click);
             // 
             // uiHeaderButton2
             // 
@@ -375,7 +387,7 @@ namespace 自定义Uppercomputer_20200727.控制主页面模板
             this.uiHeaderButton2.ForePressColor = System.Drawing.Color.FromArgb(((int)(((byte)(130)))), ((int)(((byte)(130)))), ((int)(((byte)(130)))));
             this.uiHeaderButton2.ForeSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(130)))), ((int)(((byte)(130)))), ((int)(((byte)(130)))));
             this.uiHeaderButton2.Image = global::自定义Uppercomputer_20200727.Properties.Resources._1;
-            this.uiHeaderButton2.Location = new System.Drawing.Point(11, 2);
+            this.uiHeaderButton2.Location = new System.Drawing.Point(14, 2);
             this.uiHeaderButton2.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiHeaderButton2.Name = "uiHeaderButton2";
             this.uiHeaderButton2.Padding = new System.Windows.Forms.Padding(0, 5, 0, 3);
@@ -388,6 +400,7 @@ namespace 自定义Uppercomputer_20200727.控制主页面模板
             this.uiHeaderButton2.Symbol = 0;
             this.uiHeaderButton2.TabIndex = 2;
             this.uiHeaderButton2.Text = "主页";
+            this.uiHeaderButton2.Click += new System.EventHandler(this.Form_Click);
             // 
             // treeViewEx3
             // 
@@ -408,93 +421,93 @@ namespace 自定义Uppercomputer_20200727.控制主页面模板
             this.treeViewEx3.NodeForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(62)))), ((int)(((byte)(62)))));
             this.treeViewEx3.NodeHeight = 50;
             this.treeViewEx3.NodeIsShowSplitLine = false;
-            treeNode40.Name = "节点10";
-            treeNode40.Text = "Button_按钮";
-            treeNode41.Name = "节点11";
-            treeNode41.Text = "透明化_Button";
-            treeNode42.Name = "节点12";
-            treeNode42.Text = "CheckBox 单选按钮";
-            treeNode43.Name = "节点13";
-            treeNode43.Text = "Switch_切换开关";
-            treeNode44.Name = "节点15";
-            treeNode44.Text = "按钮类";
-            treeNode45.Name = "节点17";
-            treeNode45.Text = "Label_文本";
-            treeNode46.Name = "节点18";
-            treeNode46.Text = "Texebox_数值";
-            treeNode47.Name = "节点19";
-            treeNode47.Text = "LedDisplay数值显示";
-            treeNode48.Name = "节点16";
-            treeNode48.Text = "文本类";
-            treeNode49.Name = "节点21";
-            treeNode49.Text = "ScrollingText报警滚动条";
-            treeNode50.Name = "节点20";
-            treeNode50.Text = "报警类";
-            treeNode51.Name = "节点24";
-            treeNode51.Text = "LedBulb指示灯";
-            treeNode52.Name = "节点23";
-            treeNode52.Text = "指示类";
-            treeNode53.Name = "节点27";
-            treeNode53.Text = "histogram_Chart柱形图";
-            treeNode54.Name = "节点28";
-            treeNode54.Text = "doughnut_Chart圆形图";
-            treeNode55.Name = "节点29";
-            treeNode55.Text = "oscillogram_Chart波形图";
-            treeNode56.Name = "节点30";
-            treeNode56.Text = "oscillogram_Chart波形图";
-            treeNode57.Name = "节点31";
-            treeNode57.Text = "VScrollBar_横向移动图形";
-            treeNode58.Name = "节点32";
-            treeNode58.Text = "lmage_图片";
-            treeNode59.Name = "节点33";
-            treeNode59.Text = "GroupBox四方边框条";
-            treeNode60.Name = "节点26";
-            treeNode60.Text = "图形";
-            treeNode61.Name = "节点36";
-            treeNode61.Text = "AnalogMeter百分百表盘";
-            treeNode62.Name = "节点34";
-            treeNode62.Text = "表盘";
-            treeNode63.Name = "节点37";
-            treeNode63.Text = "二维码/条形码";
-            treeNode64.Name = "节点35";
-            treeNode64.Text = "二维码";
-            treeNode65.Name = "节点41";
-            treeNode65.Text = "功能键_画面切换";
-            treeNode66.Name = "节点42";
-            treeNode66.Text = "ComboBox下拉菜单";
-            treeNode67.Name = "节点39";
-            treeNode67.Text = "功能键";
-            treeNode68.Name = "节点43";
-            treeNode68.Text = "Conveyor运输带";
-            treeNode69.Name = "节点44";
-            treeNode69.Text = "Valve流体阀门";
-            treeNode70.Name = "节点40";
-            treeNode70.Text = "工业图形类";
-            treeNode71.Name = "节点0";
-            treeNode71.Text = "添加控件";
-            treeNode72.Name = "节点1";
-            treeNode72.Text = "注册报警";
-            treeNode73.Name = "节点2";
-            treeNode73.Text = "宏指令";
-            treeNode74.Name = "节点3";
-            treeNode74.Text = "链接设备";
-            treeNode75.Name = "节点4";
-            treeNode75.Text = "伺服控制";
-            treeNode76.Name = "节点5";
-            treeNode76.Text = "编辑模式";
-            treeNode77.Name = "节点6";
-            treeNode77.Text = "数据查询";
-            treeNode78.Name = "节点7";
-            treeNode78.Text = "关于";
+            treeNode1.Name = "节点10";
+            treeNode1.Text = "Button_按钮";
+            treeNode2.Name = "节点11";
+            treeNode2.Text = "透明化_Button";
+            treeNode3.Name = "节点12";
+            treeNode3.Text = "CheckBox 单选按钮";
+            treeNode4.Name = "节点13";
+            treeNode4.Text = "Switch_切换开关";
+            treeNode5.Name = "节点15";
+            treeNode5.Text = "按钮类";
+            treeNode6.Name = "节点17";
+            treeNode6.Text = "Label_文本";
+            treeNode7.Name = "节点18";
+            treeNode7.Text = "Texebox_数值";
+            treeNode8.Name = "节点19";
+            treeNode8.Text = "LedDisplay数值显示";
+            treeNode9.Name = "节点16";
+            treeNode9.Text = "文本类";
+            treeNode10.Name = "节点21";
+            treeNode10.Text = "ScrollingText报警滚动条";
+            treeNode11.Name = "节点20";
+            treeNode11.Text = "报警类";
+            treeNode12.Name = "节点24";
+            treeNode12.Text = "LedBulb指示灯";
+            treeNode13.Name = "节点23";
+            treeNode13.Text = "指示类";
+            treeNode14.Name = "节点27";
+            treeNode14.Text = "histogram_Chart柱形图";
+            treeNode15.Name = "节点28";
+            treeNode15.Text = "doughnut_Chart圆形图";
+            treeNode16.Name = "节点29";
+            treeNode16.Text = "oscillogram_Chart波形图";
+            treeNode17.Name = "节点30";
+            treeNode17.Text = "oscillogram_Chart波形图";
+            treeNode18.Name = "节点31";
+            treeNode18.Text = "VScrollBar_横向移动图形";
+            treeNode19.Name = "节点32";
+            treeNode19.Text = "lmage_图片";
+            treeNode20.Name = "节点33";
+            treeNode20.Text = "GroupBox四方边框条";
+            treeNode21.Name = "节点26";
+            treeNode21.Text = "图形";
+            treeNode22.Name = "节点36";
+            treeNode22.Text = "AnalogMeter百分百表盘";
+            treeNode23.Name = "节点34";
+            treeNode23.Text = "表盘";
+            treeNode24.Name = "节点37";
+            treeNode24.Text = "二维码/条形码";
+            treeNode25.Name = "节点35";
+            treeNode25.Text = "二维码";
+            treeNode26.Name = "节点41";
+            treeNode26.Text = "功能键_画面切换";
+            treeNode27.Name = "节点42";
+            treeNode27.Text = "ComboBox下拉菜单";
+            treeNode28.Name = "节点39";
+            treeNode28.Text = "功能键";
+            treeNode29.Name = "节点43";
+            treeNode29.Text = "Conveyor运输带";
+            treeNode30.Name = "节点44";
+            treeNode30.Text = "Valve流体阀门";
+            treeNode31.Name = "节点40";
+            treeNode31.Text = "工业图形类";
+            treeNode32.Name = "节点0";
+            treeNode32.Text = "添加控件";
+            treeNode33.Name = "节点1";
+            treeNode33.Text = "注册报警";
+            treeNode34.Name = "节点2";
+            treeNode34.Text = "宏指令";
+            treeNode35.Name = "节点3";
+            treeNode35.Text = "链接设备";
+            treeNode36.Name = "节点4";
+            treeNode36.Text = "伺服控制";
+            treeNode37.Name = "节点5";
+            treeNode37.Text = "编辑模式";
+            treeNode38.Name = "节点6";
+            treeNode38.Text = "数据查询";
+            treeNode39.Name = "节点7";
+            treeNode39.Text = "关于";
             this.treeViewEx3.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode71,
-            treeNode72,
-            treeNode73,
-            treeNode74,
-            treeNode75,
-            treeNode76,
-            treeNode77,
-            treeNode78});
+            treeNode32,
+            treeNode33,
+            treeNode34,
+            treeNode35,
+            treeNode36,
+            treeNode37,
+            treeNode38,
+            treeNode39});
             this.treeViewEx3.NodeSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(77)))), ((int)(((byte)(59)))));
             this.treeViewEx3.NodeSelectedForeColor = System.Drawing.Color.White;
             this.treeViewEx3.NodeSplitLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
@@ -1003,13 +1016,13 @@ namespace 自定义Uppercomputer_20200727.控制主页面模板
             this.timer3.Interval = 1000;
             this.timer3.Tick += new System.EventHandler(this.timer3_Tick);
             // 
-            // plCreconnectionTime1
-            // 
-            this.plCreconnectionTime1.Interval = 2000;
-            // 
             // timer4
             // 
             this.timer4.Tick += new System.EventHandler(this.timer4_Tick);
+            // 
+            // plCreconnectionTime1
+            // 
+            this.plCreconnectionTime1.Interval = 2000;
             // 
             // Form2derma
             // 
@@ -1018,10 +1031,7 @@ namespace 自定义Uppercomputer_20200727.控制主页面模板
             this.Controls.Add(this.treeViewEx3);
             this.Controls.Add(this.uiPanel1);
             this.Name = "Form2derma";
-            this.RectColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(144)))), ((int)(((byte)(198)))));
-            this.Style = Sunny.UI.UIStyle.Custom;
             this.Text = "Form2";
-            this.TitleColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(144)))), ((int)(((byte)(198)))));
             this.Activated += new System.EventHandler(this.Form2_Activated);
             this.Deactivate += new System.EventHandler(this.Form2_Deactivate);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form2_FormClosing);

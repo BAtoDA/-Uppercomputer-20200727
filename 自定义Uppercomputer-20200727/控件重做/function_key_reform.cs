@@ -65,8 +65,8 @@ namespace 自定义Uppercomputer_20200727.控件重做
             form2.Name = this.Name.Trim();//设置窗口标识
             form2.WindowState = FormWindowState.Normal;//居中显示
             form2.BackgroundImageLayout = ImageLayout.Stretch; //自动适应
-            SkinLabel Label_Text = (SkinLabel)(from Control pi in form2.Controls where pi is SkinLabel select pi).First();
-            Label_Text.Text = this.Text.Trim();//设置窗口名称
+           // SkinLabel Label_Text = (SkinLabel)(from Control pi in form2.Controls where pi is SkinLabel select pi).First();
+            //Label_Text.Text = this.Text.Trim();//设置窗口名称
             form2.Show();//显示窗口
             Release(form2);
         }

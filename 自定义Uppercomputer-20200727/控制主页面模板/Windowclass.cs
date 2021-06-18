@@ -6,62 +6,88 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Threading;
+using 自定义Uppercomputer_20200727.控制主页面模板.模板窗口接口;
+using System.Diagnostics;
+
 namespace 自定义Uppercomputer_20200727.控制主页面模板
 {
     /// <页面转换处理>
     class Windowclass: IDisposable
     {
         private Form Openfrom_1;
-        private string[] FromnamTexe = new string[] { "主画面", "手动画面", "异常画面", "监视画面", "运转画面", "生产设置", "参数设置" };
-        public Windowclass(Form Present, SkinButton[] Buttons, Form[] Formlist, SkinLabel Fromname, SkinButton skinButton)
+        public static string[] FromnamTexe = new string[] { "主画面", "手动画面", "异常画面", "监视画面", "运转控制", "生产设置", "参数设置" };
+        public Windowclass(Form Present, Form[] Formlist, SkinButton skinButton)
         {      
             for (int i = 0; i < Formlist.Length; i++)
             {
-                if (Buttons[i].Name == skinButton.Name)
+                if (FromnamTexe[i] == skinButton.Text)
                 {
                     foreach (var Form_dispose in Formlist)
                     {
                         if (Formlist[i].Name != Form_dispose.Name)
                             Form_dispose.Close();
                     }
-                    Fromtraverse(Present, Formlist[i], Buttons[i].Text);
+                    Fromtraverse(Present, Formlist[i], FromnamTexe[i]);
+                }
+            }
+        }
+        public Windowclass(Form Present, Form[] Formlist, int FormName)
+        {
+            for (int i = 0; i < Formlist.Length; i++)
+            {
+                if (FromnamTexe[i] == FromnamTexe[FormName])
+                {
+                    foreach (var Form_dispose in Formlist)
+                    {
+                        if (Formlist[i].Name != Form_dispose.Name)
+                            Form_dispose.Close();
+                    }
+                    Fromtraverse(Present, Formlist[i], FromnamTexe[i]);
                 }
             }
         }
         private void Fromtraverse(Form Present, Form Openfrom, string Name)
         {
-            foreach (Form frm in Application.OpenForms)//遍历所有窗口
+            foreach (var frm in from Form frm in Application.OpenForms//遍历所有窗口
+                                where frm.Name == Openfrom.Name//判断窗口是否打开
+                                select frm)
             {
-                if (frm.Name == Openfrom.Name)//判断窗口是否打开
-                {
-                    frm.Activate();//激活窗口
-                    frm.WindowState = FormWindowState.Normal;//居中显示
-                    //frm.WindowState = FormWindowState.Maximized;//开机最大化
-                    Openfrom.Close();
-                    return;//如果窗口已打开就放回方法
-                }
+                frm.Activate();//激活窗口
+                frm.WindowState = FormWindowState.Normal;//居中显示
+                Openfrom.Close();
+                return;//如果窗口已打开就放回方法
             }
+
+            NewMethod(Openfrom, Name);
+        }
+
+        private void NewMethod(Form Openfrom, string Name)
+        {
             this.Openfrom_1 = Openfrom;
             Openfrom.Show();
             Openfrom.WindowState = FormWindowState.Normal;//居中显示
-           // Openfrom.Size = new System.Drawing.Size(1071, 745);//设置窗口大小
             Openfrom.BackgroundImageLayout = ImageLayout.Stretch; //自动适应
             Openfrom.Text = Name;
-            SkinLabel Label_Text = (SkinLabel)(from Control pi in Openfrom.Controls where pi is SkinLabel select pi).First();
-            Label_Text.Text = Name;
+            //SkinLabel Label_Text = (SkinLabel)(from Control pi in Openfrom.Controls where pi is SkinLabel select pi).First();
+            //Label_Text.Text = Name;
         }
+
         static public void Release(Form Openfrom)
         {
             if (Openfrom.IsNull()) return;
-            FormCollection formCollection = Application.OpenForms;//获取窗口集合
+            FormCollection formCollection = Application.OpenForms;//获取窗口集合     
+            List<Form> formclose = new List<Form>();
             for (int i = 0; i < formCollection.Count; i++)
             {
-                var form = formCollection[i] as Form2derma;
-                if (formCollection[i].Text != "Home" & formCollection[i].Text != Openfrom.Text&&form!=null)//关闭其余窗口
-                {
-                    formCollection[i].Close();//关闭窗口     
-                }
+                //判断该窗口是否实现FormIdentification接口
+                if ((formCollection[i] as FormIdentification) == null)
+                    continue;
+                var form = formCollection[i] as FormIdentification;
+                if (formCollection[i].Text == Openfrom.Text || !form.IsCloseForm)//关闭其余窗口                
+                    continue;
+                formclose.Add(formCollection[i]);
             }
+            formclose.ForEach(s1 => { s1.Close(); });
         }
         //这里实现IDisposable 接口
         public Windowclass()

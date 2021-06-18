@@ -42,13 +42,28 @@ using 自定义Uppercomputer_20200727.软件说明;
 using 自定义Uppercomputer_20200727.宏指令实现与对接;
 using 自定义Uppercomputer_20200727.控件重做.复制粘贴接口;
 using Sunny.UI;
+using 自定义Uppercomputer_20200727.控制主页面;
+using 自定义Uppercomputer_20200727.手动控制页面;
+using 自定义Uppercomputer_20200727.监视画面;
+using 自定义Uppercomputer_20200727.运转控制画面;
+using 自定义Uppercomputer_20200727.生产设置画面;
+using 自定义Uppercomputer_20200727.参数设置画面;
+using 自定义Uppercomputer_20200727.控制主页面模板.模板窗口接口;
 
 namespace 自定义Uppercomputer_20200727.控制主页面模板
 {
-    public partial class Form2derma :Sunny.UI.UIForm
+    public partial class Form2derma :Sunny.UI.UIForm, FormIdentification
     {
         //1.声明自适应类实例
         AutoSizeFormClass asc = new AutoSizeFormClass();
+        /// <summary>
+        /// 标识该窗口是框架窗口
+        /// 默认所有窗口都是切换完成后自动关闭
+        /// </summary>
+        private bool frameForm { get; set; } = true;
+
+        public bool IsCloseForm { get => frameForm; }
+        public bool IsfunctionKey { get; set; } = false;
         public Form2derma()
         {
             InitializeComponent();
@@ -67,16 +82,18 @@ namespace 自定义Uppercomputer_20200727.控制主页面模板
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void skinButton1_Click(object sender, EventArgs e)//公用页面处理
+        private void Form_Click(object sender, EventArgs e)//公用页面处理
         {
-            SkinButton skinButton = (SkinButton)sender;
-            if (skinButton.Text == this.Text) return;
-            string Data = this.Text;
-            //using (Windowclass windowclass = new Windowclass(this, new SkinButton[] { this.skinButton1, this.skinButton2, this.skinButton3,
-            //    this.skinButton4, this.skinButton5, this.skinButton6,this.skinButton7}, new Form[] {new Form3(), new Form4(),new Form5()
-            //    , new Form6(),new Form7(), new 生产设置画面.Form8(), new 参数设置画面.Form9()}, this.skinLabel1, skinButton))
-            //{
-            //}
+            lock (this)
+            {
+                UIHeaderButton button = (UIHeaderButton)sender;
+                if (Windowclass.FromnamTexe[button.PageIndex] == this.Text || IsfunctionKey == false) return;
+                string Data = this.Text;
+                using (Windowclass windowclass = new Windowclass(this, new Form[] {new Form3(), new Form4(),new Form5()
+                , new Form6(),new Form7(), new Form8(), new Form9()}, button.PageIndex))
+                {
+                }
+            }
         }
         //窗口预定事件
         private void Form2_MouseMove(object sender, MouseEventArgs e)
@@ -99,22 +116,19 @@ namespace 自定义Uppercomputer_20200727.控制主页面模板
         private const int AW_SLIDE = 0x40000;//使用滑动类型动画效果，默认为滚动动画类型，当使用AW_CENTER标志时，这个标志就被忽略
         private const int AW_BLEND = 0x80000;//使用淡入淡出效果
         #endregion
-
+        
         protected override void OnLoad(EventArgs e)
         {
+            base.OnLoad(e);
             if (!GetPidByProcess()) return;
+            ///加载时不能切换界面--导航栏键不能使用
+            //foreach (Control i in uiPanel1.Controls)           
+            //    i.Enabled = false;        
             ShowWaitForm();
             ToolStripManager.Renderer = new HZH_Controls.Controls.ProfessionalToolStripRendererEx();
             Form2_Leave(this, new EventArgs());
             UI_Schedule("开始加载控件", 30, true);
-            var se = Task.Run(() =>
-            {
-                From_Load_Add.imageLists_1 = new List<ImageList>() { this.imageList1, this.imageList2, this.imageList3 };
-                using (dynamic load_Add = new From_Load_Add(this.Name, this.Controls, new List<ImageList>() { this.imageList1, this.imageList2, this.imageList3 }, this)) ;//添加报警条
-                using (dynamic add = new From_Load_Add(this.Name, this.Controls, new List<ImageList>() { this.imageList1, this.imageList2, this.imageList3 }, this, true)) ;//添加普通文本
-                UI_Schedule("开始正在显示UI", 90, true);
-            });
-            se.Wait();
+            NewMethod();
             this.timer3.Start();
             timer3.Interval = 100;
             asc.RenewControlRect(this);
@@ -131,12 +145,28 @@ namespace 自定义Uppercomputer_20200727.控制主页面模板
             CSEngineTest.PLC.OmronTcp = new OmronFinsTcp();//实例化接口;
             CSEngineTest.PLC.OmronUdp = new OmronFinsUDP();//实例化接口;
         }
+        /// <summary>
+        /// 加载窗口控件任务
+        /// </summary>
+        private void NewMethod()
+        {
+            var se = Task.Run(() =>
+            {
+                From_Load_Add.imageLists_1 = new List<ImageList>() { this.imageList1, this.imageList2, this.imageList3 };
+                using (dynamic load_Add = new From_Load_Add(this.Name, this.Controls, new List<ImageList>() { this.imageList1, this.imageList2, this.imageList3 }, this)) ;//添加报警条
+                using (dynamic add = new From_Load_Add(this.Name, this.Controls, new List<ImageList>() { this.imageList1, this.imageList2, this.imageList3 }, this, true)) ;//添加普通文本
+                UI_Schedule("开始正在显示UI", 90, true);
+            });
+            se.Wait();
+        }
 
         protected override void OnShown(EventArgs e)
         {
+            this.Visible = true;
+            this.ShowInTaskbar = true;
             this.timer2.Start();//运行定时器监控
-            //UI_Schedule("开始正在显示UI", 90, true);
-            if (edit_mode) this.toolStripMenuItem5.Text = "退出编辑模式"; else this.toolStripMenuItem5.Text = "开启编辑模式";//改变显示文本  
+            UI_Schedule("开始正在显示UI", 50, true);
+            if (Form2.edit_mode) this.toolStripMenuItem5.Text = "退出编辑模式"; else this.toolStripMenuItem5.Text = "开启编辑模式";//改变显示文本  
             // 编辑模式 在记录日志
             this.toolStripMenuItem5.TextChanged += ((send1, e1) =>
             {
@@ -161,43 +191,33 @@ namespace 自定义Uppercomputer_20200727.控制主页面模板
         private void toolStripMenuItem4_Click(object sender, EventArgs e)//开始链接设备--PLC
         {
 
-            if (!pLCselect_Form.IsNull())
+            if (!pLCselect_Form.IsNull() && pLCselect_Form.Hiel)
             {
-                if (pLCselect_Form.Hiel)
-                {
-                    //LogUtils日志
-                    LogUtils.debugWrite("用户激活了 链接设备界面");
-                    pLCselect_Form.Activate();
-                    return;
-                }
+                //LogUtils日志
+                LogUtils.debugWrite("用户激活了 链接设备界面");
+                pLCselect_Form.Activate();
+                return;
             }
             //LogUtils日志
             LogUtils.debugWrite("用户调用了 链接设备界面");
             pLCselect_Form = new PLCselect_Form();
             pLCselect_Form.Show();
         }
-        public static bool edit_mode = false;//指示用户是否进入编辑模式
         private void toolStripMenuItem5_Click(object sender, EventArgs e)//用户进入编辑模式
         {
-            if (edit_mode) edit_mode = false; else edit_mode = true;//改变状态
-            if (edit_mode) this.toolStripMenuItem5.Text = "退出编辑模式"; else this.toolStripMenuItem5.Text = "开启编辑模式";//改变显示文本
-            this.toolStripMenuItem1.Enabled = edit_mode;
-            this.toolStripMenuItem6.Enabled = edit_mode;
-            this.toolStripMenuItem16.Enabled = edit_mode;
-            //this.ucNavigationMenu1.Enabled = false;
-            //this.ucNavigationMenu1.Items[6].TipText = edit_mode == true ? "开" : "关";//改变状态栏提示文字
-            //this.ucNavigationMenu1.Enabled = true;
+            if (Form2.edit_mode) Form2.edit_mode = false; else Form2.edit_mode = true;//改变状态
+            if (Form2.edit_mode) this.toolStripMenuItem5.Text = "退出编辑模式"; else this.toolStripMenuItem5.Text = "开启编辑模式";//改变显示文本
+            this.toolStripMenuItem1.Enabled = Form2.edit_mode;
+            this.toolStripMenuItem6.Enabled = Form2.edit_mode;
+            toolStripMenuItem16.Enabled = Form2.edit_mode;
         }
         private void timer2_Tick(object sender, EventArgs e)//实时刷新用户是否进入 与退出编辑模式
         {
-            if (edit_mode) this.toolStripMenuItem5.Text = "退出编辑模式"; else this.toolStripMenuItem5.Text = "开启编辑模式";//改变显示文本
-            this.toolStripMenuItem1.Enabled = edit_mode;
-            this.toolStripMenuItem6.Enabled = edit_mode;
-            this.toolStripMenuItem16.Enabled = edit_mode;
-            //this.ucNavigationMenu1.Enabled = false;
-            //this.ucNavigationMenu1.Items[6].TipText = edit_mode == true ? "开" : "关";//改变状态栏提示文字
-            //this.ucNavigationMenu1.Enabled = true;
-            if (edit_mode) { PLC_read_ok = false; PLC_read_Tick = false; };//指示用户开始了编辑模式
+            if (Form2.edit_mode) this.toolStripMenuItem5.Text = "退出编辑模式"; else this.toolStripMenuItem5.Text = "开启编辑模式";//改变显示文本
+            this.toolStripMenuItem1.Enabled = Form2.edit_mode;
+            this.toolStripMenuItem6.Enabled = Form2.edit_mode;
+            this.toolStripMenuItem16.Enabled = Form2.edit_mode;
+            if (Form2.edit_mode) { PLC_read_ok = false; PLC_read_Tick = false; };//指示用户开始了编辑模式
             asc.RenewControlRect(this);//实时保存控件大小与位置
 
             try
@@ -268,8 +288,7 @@ namespace 自定义Uppercomputer_20200727.控制主页面模板
         private void timer3_Tick(object sender, EventArgs e)
         {
             //模糊查询导航栏固定功能键
-            var inr = (from Control pi in this.Controls where pi.Name.Contains("skinButton") select pi).Select(pi => pi).ToList();
-            foreach (var i in inr)
+            foreach (Control i in uiPanel1.Controls)
             {
                 i.Enabled = true;
                 i.SendToBack();
@@ -277,6 +296,7 @@ namespace 自定义Uppercomputer_20200727.控制主页面模板
             UI_Schedule("加载完成", 100, true);
             Thread.Sleep(50);
             UI_Schedule("加载完成", 100, false);
+            IsfunctionKey = true;
             this.timer4.Enabled = true;
             this.timer4.Start();
             this.timer3.Stop();
@@ -834,7 +854,7 @@ namespace 自定义Uppercomputer_20200727.控制主页面模板
                     {
                         case 103:     //按下的是Ctrl+C 触发了复制控件
                             var conrt = GetFocusedControl();//获取控件
-                            if (conrt == null || !edit_mode) return;
+                            if (conrt == null || !Form2.edit_mode) return;
                             //判断改控件是否实现接口
                             if ((conrt as ControlCopy) != null)
                             {
@@ -852,7 +872,7 @@ namespace 自定义Uppercomputer_20200727.控制主页面模板
                             break;
                         case 104:     //按下的是Ctrl+V 触发了粘贴控件
                             //判断粘贴板是否有控件
-                            if (control != null || !edit_mode)
+                            if (control != null || !Form2.edit_mode)
                             {
                                 //遍历当前窗口--改控件的编号
                                 var cont = (from Control pi in this.Controls where pi.GetType().UnderlyingSystemType.Name == control.GetType().UnderlyingSystemType.Name select pi).ToList();
@@ -988,7 +1008,8 @@ namespace 自定义Uppercomputer_20200727.控制主页面模板
         {
             //LogUtils日志
             LogUtils.debugWrite($"用户点击了：" + e.Node.Text);
-
+            ShowInfoTip($"用户点击了：" + e.Node.Text,500);   
+            
             #region 不需要开启编辑模式的功能
             switch (e.Node.Text)
             {
@@ -1019,7 +1040,7 @@ namespace 自定义Uppercomputer_20200727.控制主页面模板
             }
             #endregion
             //判断用户选择的功能
-            if (!edit_mode)
+            if (!Form2.edit_mode)
             {
                 ShowErrorDialog("未进入编辑模式：请开启编辑模式", "Err");
                 return;
@@ -1099,7 +1120,7 @@ namespace 自定义Uppercomputer_20200727.控制主页面模板
             #region 其他功能选项需要开启编辑模式
             switch (e.Node.Text)
             {
-                case "报警注册":
+                case "注册报警":
                     toolStripMenuItem6_Click(sender, e);
                     break;
                 case "宏指令":

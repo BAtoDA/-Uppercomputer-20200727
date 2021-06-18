@@ -197,7 +197,6 @@ namespace 自定义Uppercomputer_20200727.控件重做
             LedBulb_Class = null;
             PLC_time.Dispose();
             menuStrip_Reform.Dispose();
-            base.Dispose(disposing);
         }
         /// <summary>
         /// 填充指示灯类

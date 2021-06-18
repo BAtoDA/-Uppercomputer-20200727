@@ -16,11 +16,20 @@ using System.Runtime.InteropServices;
 using static PLC通讯规范接口.Request;
 using 自定义Uppercomputer_20200727.主页面.进程通讯消息处理;
 using 自定义Uppercomputer_20200727.控制主页面模板;
+using 自定义Uppercomputer_20200727.控制主页面模板.模板窗口接口;
 
 namespace 自定义Uppercomputer_20200727
 {
-    public partial class Home : Form
+    public partial class Home : Form, FormIdentification
     {
+        /// <summary>
+        /// 标识该窗口是框架窗口
+        /// 默认所有窗口都是切换完成后自动关闭
+        /// </summary>
+        private bool frameForm { get; set; } = false;
+
+        public bool IsCloseForm { get => frameForm; }
+        public bool IsfunctionKey { get; set; }
         public Home()
         {
             InitializeComponent();
@@ -82,9 +91,6 @@ namespace 自定义Uppercomputer_20200727
         [Obsolete]
         private void timer1_Tick(object sender, EventArgs e)
         {
-            //测试代码
-            控制主页面模板.Form2derma form2Derma = new 控制主页面模板.Form2derma();
-            form2Derma.Show();
             this.timer1.Stop();
             XmlClick();
             LogUtils.deleteLogFile(@Application.StartupPath);//检查是否有超过2个月的日志 进行删除操作

@@ -25,8 +25,10 @@ namespace 自定义Uppercomputer_20200727.EF实体模型.EFtoSQL操作类重写
         /// </summary>
         public UppercomputerEntities2 EFsurface()
         {
-            UppercomputerEntities2 db = new UppercomputerEntities2();
-            EFbase = new List<dynamic>()
+            lock (this)
+            {
+                UppercomputerEntities2 db = new UppercomputerEntities2();
+                EFbase = new List<dynamic>()
                 {
 #region SQL参数表
                 db.AnalogMeter_parameter,
@@ -83,7 +85,8 @@ namespace 自定义Uppercomputer_20200727.EF实体模型.EFtoSQL操作类重写
                     db.Valve_Class
 #endregion
             };
-            return db;
+                return db;
+            }
         }
         /// <summary>
         /// 查询EF类参数 根据泛型<T>自动推断需要查询的表

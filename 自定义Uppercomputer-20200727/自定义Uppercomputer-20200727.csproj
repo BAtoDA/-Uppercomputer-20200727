@@ -635,6 +635,7 @@
     <Compile Include="控制主页面模板\工业图形ADD\Valve_Add.cs" />
     <Compile Include="控制主页面模板\控件添加类重写\ControlAddBase.cs" />
     <Compile Include="控制主页面模板\控件自动改变大小\Resize.cs" />
+    <Compile Include="控制主页面模板\模板窗口接口\FormIdentification.cs" />
     <Compile Include="数据查询界面\SQLquery.cs">
       <SubType>Form</SubType>
     </Compile>

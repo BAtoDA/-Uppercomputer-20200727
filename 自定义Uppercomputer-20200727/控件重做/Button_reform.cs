@@ -2,6 +2,7 @@
 using CCWin.SkinControl;
 using DragResizeControlWindowsDrawDemo;
 using PLC通讯规范接口;
+using Sunny.UI;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -279,5 +280,7 @@ namespace 自定义Uppercomputer_20200727.控件重做
         public void ControlRefresh(Button_state button_State)
         {
         }
+      
+
     }
 }
