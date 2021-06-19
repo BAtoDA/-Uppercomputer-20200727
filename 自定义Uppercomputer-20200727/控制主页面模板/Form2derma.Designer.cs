@@ -406,12 +406,12 @@ namespace 自定义Uppercomputer_20200727.控制主页面模板
             // 
             this.treeViewEx3.BackColor = System.Drawing.Color.White;
             this.treeViewEx3.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.treeViewEx3.CheckBoxes = true;
+            this.treeViewEx3.Cursor = System.Windows.Forms.Cursors.Hand;
             this.treeViewEx3.DrawMode = System.Windows.Forms.TreeViewDrawMode.OwnerDrawAll;
             this.treeViewEx3.FullRowSelect = true;
             this.treeViewEx3.HideSelection = false;
             this.treeViewEx3.IsShowByCustomModel = true;
-            this.treeViewEx3.IsShowTip = false;
+            this.treeViewEx3.IsShowTip = true;
             this.treeViewEx3.ItemHeight = 50;
             this.treeViewEx3.Location = new System.Drawing.Point(3, 38);
             this.treeViewEx3.LstTips = ((System.Collections.Generic.Dictionary<string, string>)(resources.GetObject("treeViewEx3.LstTips")));
@@ -516,7 +516,7 @@ namespace 自定义Uppercomputer_20200727.控制主页面模板
             this.treeViewEx3.ShowLines = false;
             this.treeViewEx3.ShowPlusMinus = false;
             this.treeViewEx3.ShowRootLines = false;
-            this.treeViewEx3.Size = new System.Drawing.Size(198, 519);
+            this.treeViewEx3.Size = new System.Drawing.Size(179, 519);
             this.treeViewEx3.TabIndex = 5;
             this.treeViewEx3.TipFont = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.treeViewEx3.TipImage = ((System.Drawing.Image)(resources.GetObject("treeViewEx3.TipImage")));

@@ -962,7 +962,7 @@ namespace 自定义Uppercomputer_20200727
         /// <summary>
         /// 粘贴板
         /// </summary>
-        static Control control;
+        public static Control control;
         /// <summary>
         /// 监视Windows消息 重载WndProc方法，用于实现热键响应
         /// </summary>

@@ -44,6 +44,7 @@ namespace 自定义Uppercomputer_20200727.控件重做.控件类基.文本__TO__
                                 mitsubishi_AxActUtlType.PLC_write_D_register(pattern, specific, Data, Index(format));
                             else
                                 mitsubishi_AxActUtlType.PLC_write_D_register(pattern1, specific1, Data, Index(format));
+                            ShowSuccessTip($"向设备:{mitsubishi_AxActUtlType.GetType().Name} 地址:{(different == 0 ? pattern + specific : pattern1 + specific1)}写入:{ Data}",500);
                         }
                         else UINotifierHelper.ShowNotifier("未连接设备：" + pLC.Trim() + "Err", UINotifierType.WARNING, UILocalize.WarningTitle, false, 1000);//推出异常提示用户
                     }
@@ -56,6 +57,7 @@ namespace 自定义Uppercomputer_20200727.控件重做.控件类基.文本__TO__
                                 mitsubishi.PLC_write_D_register(pattern, specific, Data, Index(format));
                             else
                                 mitsubishi.PLC_write_D_register(pattern1, specific1, Data, Index(format));
+                            ShowSuccessTip($"向设备:{mitsubishi.GetType().Name} 地址:{(different == 0 ? pattern + specific : pattern1 + specific1)}写入:{ Data}", 500);
                         }
                         else UINotifierHelper.ShowNotifier("未连接设备：" + pLC.Trim() + "Err", UINotifierType.WARNING, UILocalize.WarningTitle, false, 1000);//推出异常提示用户
                     }
@@ -68,6 +70,7 @@ namespace 自定义Uppercomputer_20200727.控件重做.控件类基.文本__TO__
                             Siemens.PLC_write_D_register(pattern, specific, Data, Index(format));
                         else
                             Siemens.PLC_write_D_register(pattern1, specific1, Data, Index(format));
+                        ShowSuccessTip($"向设备:{Siemens.GetType().Name} 地址:{(different == 0 ? pattern + specific : pattern1 + specific1)}写入:{ Data}", 500);
                     }
                     else UINotifierHelper.ShowNotifier("未连接设备：" + pLC.Trim() + "Err", UINotifierType.WARNING, UILocalize.WarningTitle, false, 1000);//推出异常提示用户
                     break;
@@ -79,6 +82,7 @@ namespace 自定义Uppercomputer_20200727.控件重做.控件类基.文本__TO__
                             MODBUD_TCP.PLC_write_D_register(pattern, specific, Data, Index(format));
                         else
                             MODBUD_TCP.PLC_write_D_register(pattern1, specific1, Data, Index(format));
+                        ShowSuccessTip($"向设备:{MODBUD_TCP.GetType().Name} 地址:{(different == 0 ? pattern + specific : pattern1 + specific1)}写入:{ Data}", 500);
                     }
                     else UINotifierHelper.ShowNotifier("未连接设备：" + pLC.Trim() + "Err", UINotifierType.WARNING, UILocalize.WarningTitle, false, 1000);//推出异常提示用户
                     break;
@@ -88,6 +92,7 @@ namespace 自定义Uppercomputer_20200727.控件重做.控件类基.文本__TO__
                         macroinstruction_data<int>.D_Data[specific.ToInt32()] = Data;
                     else
                         macroinstruction_data<int>.D_Data[specific1.ToInt32()] = Data;
+                    ShowSuccessTip($"向设备:HMI 地址:{(different == 0 ? pattern + specific : pattern1 + specific1)}写入:{ Data}", 500);
                     break;
                 case "OmronTCP":
                     IPLC_interface FinsTcp = new OmronFinsTcp();//实例化接口--实现OmronTCP
@@ -97,6 +102,7 @@ namespace 自定义Uppercomputer_20200727.控件重做.控件类基.文本__TO__
                             FinsTcp.PLC_write_D_register(pattern, specific, Data, Index(format));
                         else
                             FinsTcp.PLC_write_D_register(pattern1, specific1, Data, Index(format));
+                        ShowSuccessTip($"向设备:{FinsTcp.GetType().Name} 地址:{(different == 0 ? pattern + specific : pattern1 + specific1)}写入:{ Data}", 500);
                     }
                     else UINotifierHelper.ShowNotifier("未连接设备：" + pLC.Trim() + "Err", UINotifierType.WARNING, UILocalize.WarningTitle, false, 1000);//推出异常提示用户
                     break;
@@ -108,6 +114,7 @@ namespace 自定义Uppercomputer_20200727.控件重做.控件类基.文本__TO__
                             FinsUdp.PLC_write_D_register(pattern, specific, Data, Index(format));
                         else
                             FinsUdp.PLC_write_D_register(pattern1, specific1, Data, Index(format));
+                        ShowSuccessTip($"向设备:{FinsUdp.GetType().Name} 地址:{(different == 0 ? pattern + specific : pattern1 + specific1)}写入:{ Data}", 500);
                     }
                     else UINotifierHelper.ShowNotifier("未连接设备：" + pLC.Trim() + "Err", UINotifierType.WARNING, UILocalize.WarningTitle, false, 1000);//推出异常提示用户
                     break;
@@ -119,6 +126,7 @@ namespace 自定义Uppercomputer_20200727.控件重做.控件类基.文本__TO__
                             Finscip.PLC_write_D_register(pattern, specific, Data, Index(format));
                         else
                             Finscip.PLC_write_D_register(pattern1, specific1, Data, Index(format));
+                        ShowSuccessTip($"向设备:{Finscip.GetType().Name} 地址:{(different == 0 ? pattern + specific : pattern1 + specific1)}写入:{ Data}", 500);
                     }
                     else UINotifierHelper.ShowNotifier("未连接设备：" + pLC.Trim() + "Err", UINotifierType.WARNING, UILocalize.WarningTitle, false, 1000);//推出异常提示用户
                     break;
@@ -318,6 +326,13 @@ namespace 自定义Uppercomputer_20200727.控件重做.控件类基.文本__TO__
             }
             return data;
         }
-
+        /// <summary>
+        /// 显示成功消息
+        /// </summary>
+        /// <param name="text">消息文本</param>
+        /// <param name="delay">消息停留时长(ms)。默认1秒</param>
+        /// <param name="floating">是否漂浮</param>
+        public void ShowSuccessTip(string text, int delay = 1000, bool floating = true)
+            => UIMessageTip.ShowOk(text, delay, floating);
     }
 }

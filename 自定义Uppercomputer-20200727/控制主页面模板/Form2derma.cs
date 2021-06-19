@@ -836,10 +836,6 @@ namespace 自定义Uppercomputer_20200727.控制主页面模板
             WinMonitoring.UnregisterHotKey(Handle, 104);
         }
         /// <summary>
-        /// 粘贴板
-        /// </summary>
-        static Control control;
-        /// <summary>
         /// 监视Windows消息 重载WndProc方法，用于实现热键响应
         /// </summary>
         /// <param name="m"></param>
@@ -858,8 +854,8 @@ namespace 自定义Uppercomputer_20200727.控制主页面模板
                             //判断改控件是否实现接口
                             if ((conrt as ControlCopy) != null)
                             {
-                                control = GetFocusedControl();//获取需要复制的控件
-                                CopyControl copyControl = new CopyControl($"Copy 控件:{control.Name}成功", this);
+                                Form2.control = GetFocusedControl();//获取需要复制的控件
+                                CopyControl copyControl = new CopyControl($"Copy 控件:{Form2.control.Name}成功", this);
                                 copyControl.Location = new Point(this.Size.Width / 2 - 150, 80);
                                 this.Controls.Add(copyControl);
                             }
@@ -872,23 +868,23 @@ namespace 自定义Uppercomputer_20200727.控制主页面模板
                             break;
                         case 104:     //按下的是Ctrl+V 触发了粘贴控件
                             //判断粘贴板是否有控件
-                            if (control != null || !Form2.edit_mode)
+                            if (Form2.control != null || !Form2.edit_mode)
                             {
                                 //遍历当前窗口--改控件的编号
-                                var cont = (from Control pi in this.Controls where pi.GetType().UnderlyingSystemType.Name == control.GetType().UnderlyingSystemType.Name select pi).ToList();
+                                var cont = (from Control pi in this.Controls where pi.GetType().UnderlyingSystemType.Name == Form2.control.GetType().UnderlyingSystemType.Name select pi).ToList();
                                 int dex = 0;
                             inedx:
                                 dex += 1;
-                                string Name = control.GetType().Name + dex;//先定义名称
+                                string Name = Form2.control.GetType().Name + dex;//先定义名称
                                 foreach (Control i in this.Controls)//遍历窗口是否有该名称存在
                                 {
                                     if (i.Name == Name) goto inedx;
                                 }
-                                CopyControl copyControl = new CopyControl($"粘贴控件:{control.Name}成功", this);
+                                CopyControl copyControl = new CopyControl($"粘贴控件:{Form2.control.Name}成功", this);
                                 copyControl.Location = new Point(this.Size.Width / 2 - 150, 80);
                                 this.Controls.Add(copyControl);
                                 //产生新的控件
-                                var contrs = (control as ControlCopy).Objectproperty(Name, this);
+                                var contrs = (Form2.control as ControlCopy).Objectproperty(Name, this);
                                 this.Controls.Add(contrs);
                                 contrs.BringToFront();
                             }

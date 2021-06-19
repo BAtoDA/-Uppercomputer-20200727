@@ -83,7 +83,6 @@ namespace 自定义Uppercomputer_20200727.控件重做.控件类基.按钮__TO__
                         state = Button_HMI_public.Button_HMI_write_select(Convert.ToInt32(specific), command);//根据按钮模式进行写入操作 
                     else
                         state = Button_HMI_public.Button_HMI_write_select(Convert.ToInt32(specific), command);//根据按钮模式进行写入操作 
-                    ShowSuccessTip($"向设备写入{command}成功");
                     break;
                 case "OmronTCP":
                     IPLC_interface OmronTCP = new OmronFinsTcp();//实例化接口
@@ -147,23 +146,27 @@ namespace 自定义Uppercomputer_20200727.控件重做.控件类基.按钮__TO__
                         pLC_Interface.PLC_write_M_bit(pattern, specific, PLC通讯规范接口.Button_state.ON);//写入常ON
                     else
                         pLC_Interface.PLC_write_M_bit(pattern1, specific1, PLC通讯规范接口.Button_state.ON);//写入常ON
+                    ShowSuccessTip($"向设备:{pLC_Interface.GetType().Name} 地址:{(different==0?pattern+specific: pattern1+specific1)}写入{true} 成功",500);
                     break;
                 case "Set_as_off"://设置常OFF
                     if (different == 0)
                         pLC_Interface.PLC_write_M_bit(pattern, specific, PLC通讯规范接口.Button_state.Off);//写入常Off
                     else
                         pLC_Interface.PLC_write_M_bit(pattern1, specific1, PLC通讯规范接口.Button_state.Off);//写入常Off
+                    ShowSuccessTip($"向设备:{pLC_Interface.GetType().Name} 地址:{(different == 0 ? pattern + specific : pattern1 + specific1)}写入{false} 成功",500);
                     break;
                 case "切换开关":
                     if (different == 0)
                     {
                         List<bool> data = pLC_Interface.PLC_read_M_bit(pattern, specific);//先读取要写入的状态
                         pLC_Interface.PLC_write_M_bit(pattern, specific, data[0] == true ? PLC通讯规范接口.Button_state.Off : PLC通讯规范接口.Button_state.ON);//根据要写入的状态进行取反
+                        ShowSuccessTip($"向设备:{pLC_Interface.GetType().Name} 地址:{pattern + specific}写入{(data[0]?false:true)} 成功",500);
                     }
                     else
                     {
                         List<bool> data = pLC_Interface.PLC_read_M_bit(pattern1, specific1);//先读取要写入的状态
                         pLC_Interface.PLC_write_M_bit(pattern1, specific1, data[0] == true ? PLC通讯规范接口.Button_state.Off : PLC通讯规范接口.Button_state.ON);//根据要写入的状态进行取反
+                        ShowSuccessTip($"向设备:{pLC_Interface.GetType().Name} 地址:{pattern1 + specific1}写入{(data[0] ? true : false)} 成功",500);
                     }
                     break;
                 case "复归型":
@@ -171,7 +174,8 @@ namespace 自定义Uppercomputer_20200727.控件重做.控件类基.按钮__TO__
                         pLC_Interface.PLC_write_M_bit(pattern, specific, PLC通讯规范接口.Button_state.ON);//先写入ON--后用事件复位-off
                     else
                         pLC_Interface.PLC_write_M_bit(pattern1, specific1, PLC通讯规范接口.Button_state.ON);//先写入ON--后用事件复位-off
-                    state = true;//标志位                      
+                    state = true;//标志位
+                    ShowSuccessTip($"向设备:{pLC_Interface.GetType().Name} 地址:{(different == 0 ? pattern + specific : pattern1 + specific1)}写入{true} 成功",500);
                     break;
                 case "复归型_Off":
                     if (different == 0)
@@ -181,7 +185,6 @@ namespace 自定义Uppercomputer_20200727.控件重做.控件类基.按钮__TO__
                     state = false;//标志位
                     break;
             }
-            ShowSuccessTip($"向设备写入{Name}成功");
         }
         /// <summary>
         /// 定时刷新控件
