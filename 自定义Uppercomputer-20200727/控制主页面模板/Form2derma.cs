@@ -217,7 +217,6 @@ namespace 自定义Uppercomputer_20200727.控制主页面模板
             this.toolStripMenuItem1.Enabled = Form2.edit_mode;
             this.toolStripMenuItem6.Enabled = Form2.edit_mode;
             this.toolStripMenuItem16.Enabled = Form2.edit_mode;
-            if (Form2.edit_mode) { PLC_read_ok = false; PLC_read_Tick = false; };//指示用户开始了编辑模式
             asc.RenewControlRect(this);//实时保存控件大小与位置
 
             try
@@ -233,8 +232,6 @@ namespace 自定义Uppercomputer_20200727.控制主页面模板
             }
             catch { }
         }
-        bool PLC_read_Tick = false;//指示是否遍历窗口完成
-        bool PLC_read_ok = false;//指示是否遍历控件是否完成--
 
         private void toolStripMenuItem6_Click(object sender, EventArgs e)//用户点击了报警注册
         {

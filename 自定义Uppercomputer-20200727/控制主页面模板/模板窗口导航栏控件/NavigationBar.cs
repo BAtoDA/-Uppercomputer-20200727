@@ -24,6 +24,19 @@ namespace 自定义Uppercomputer_20200727.控制主页面模板.模板窗口导�
         /// 传入子节点名称
         /// </summary>
         public event EventHandler NavigationitemClick;
+        /// <summary>
+        /// 展开与收缩导航栏
+        /// true 展开导航栏 false 收缩导航栏
+        /// </summary>
+        public bool Openingclosing 
+        {
+            get => pictureBox1Click;
+            set
+            {
+                pictureBox1Click = value;
+                pictureBox1_Click(value,new EventArgs());
+            }
+        }
         public NavigationBar()
         {
             InitializeComponent();
@@ -31,10 +44,10 @@ namespace 自定义Uppercomputer_20200727.控制主页面模板.模板窗口导�
         protected override void OnLoad(EventArgs e)
         {
             before = this.Size;
-            //before.Height +=50;
             optionPalette1.Enabled = false;
             optionPalette1.Visible = false;
-            optionPalette1.Size = new Size(76, this.Height-40);
+            optionPalette1.Size = new Size(76, this.Height - 40);
+            this.pictureBox1.Location = new Point(26, 0);
             base.OnLoad(e);
         }
         protected override void OnResize(EventArgs e)
@@ -52,6 +65,7 @@ namespace 自定义Uppercomputer_20200727.控制主页面模板.模板窗口导�
             this.uiNavMenu1.Size = new Size(this.Size.Width, this.Size.Height - 30);
             base.OnPaint(e);
         }
+        bool pictureBox1Click;
         /// <summary>
         /// 按下是缩小导航栏
         /// </summary>
@@ -60,7 +74,7 @@ namespace 自定义Uppercomputer_20200727.控制主页面模板.模板窗口导�
         private void pictureBox1_Click(object sender, EventArgs e)
         {
             //判断是否在缩小状态
-            if(this.Size.Width<101)
+            if(pictureBox1Click)
             {
                 //恢复之前大小
                 this.Size = before;
@@ -70,6 +84,7 @@ namespace 自定义Uppercomputer_20200727.控制主页面模板.模板窗口导�
                 this.pictureBox1.Location = new Point(this.pictureBox1.Location.X + 14, this.pictureBox1.Location.Y);
                 optionPalette1.Enabled = false;
                 optionPalette1.Visible = false;
+                pictureBox1Click = false;
             }
             else
             {
@@ -81,6 +96,7 @@ namespace 自定义Uppercomputer_20200727.控制主页面模板.模板窗口导�
                 this.pictureBox1.Location = new Point(this.pictureBox1.Location.X - 14, this.pictureBox1.Location.Y);
                 optionPalette1.Enabled = true;
                 optionPalette1.Visible = true;
+                pictureBox1Click = true;
             }
         }
 
@@ -92,7 +108,8 @@ namespace 自定义Uppercomputer_20200727.控制主页面模板.模板窗口导�
 
         private void uiNavMenu1_MenuItemClick(TreeNode node, NavMenuItem item, int pageIndex)
         {
-
+            if (NavigationitemClick != null)
+                NavigationitemClick(node, new EventArgs());
         }
     }
 }

@@ -162,7 +162,6 @@ namespace 自定义Uppercomputer_20200727.控件重做
             this.menuStrip_Reform.Dispose();
             this.PLC_time.Dispose();
             DragResizeControl.UnRegisterControl(this);
-            base.Dispose(disposing);
         }
         /// <summary>
         /// 填充文本数据

@@ -1046,13 +1046,6 @@ namespace 自定义Uppercomputer_20200727.控制主页面模板
 
         #endregion
 
-        private Sunny.UI.UIPanel uiPanel2;
-        private Sunny.UI.UIHeaderButton uiHeaderButton6;
-        private Sunny.UI.UIHeaderButton uiHeaderButton7;
-        private Sunny.UI.UIHeaderButton uiHeaderButton4;
-        private Sunny.UI.UIHeaderButton uiHeaderButton5;
-        private Sunny.UI.UIHeaderButton uiHeaderButton3;
-        private Sunny.UI.UIHeaderButton uiHeaderButton1;
         private Sunny.UI.UIPanel uiPanel1;
         private Sunny.UI.UIHeaderButton uiHeaderButton11;
         private Sunny.UI.UIHeaderButton uiHeaderButton10;
@@ -1063,16 +1056,6 @@ namespace 自定义Uppercomputer_20200727.控制主页面模板
         private Sunny.UI.UIHeaderButton uiHeaderButton12;
         private HZH_Controls.Controls.TreeViewEx treeViewEx3;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
-        //private System.Windows.Forms.ToolStripMenuItem 菜单1ToolStripMenuItem11;
-        //private System.Windows.Forms.ToolStripMenuItem 菜单1ToolStripMenuItem16;
-        //private System.Windows.Forms.ToolStripMenuItem 菜单1ToolStripMenuItem17;
-        //private System.Windows.Forms.ToolStripMenuItem 菜单1ToolStripMenuItem12;
-        //private System.Windows.Forms.ToolStripMenuItem 菜单1ToolStripMenuItem13;
-        //private System.Windows.Forms.ToolStripMenuItem 菜单1ToolStripMenuItem18;
-        //private System.Windows.Forms.ToolStripMenuItem 菜单1ToolStripMenuItem19;
-        //private System.Windows.Forms.ToolStripMenuItem 菜单1ToolStripMenuItem14;
-        //private System.Windows.Forms.ToolStripMenuItem 菜单1ToolStripMenuItem15;
-        //private System.Windows.Forms.ToolStripMenuItem 菜单1ToolStripMenuItem20;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
