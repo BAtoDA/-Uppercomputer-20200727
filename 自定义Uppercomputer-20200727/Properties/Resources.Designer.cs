@@ -193,6 +193,26 @@ namespace 自定义Uppercomputer_20200727.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
+        internal static System.Drawing.Bitmap QQ截图20210619141336 {
+            get {
+                object obj = ResourceManager.GetObject("QQ截图20210619141336", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap QQ截图202106191413361 {
+            get {
+                object obj = ResourceManager.GetObject("QQ截图202106191413361", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
         internal static System.Drawing.Bitmap 主页面 {
             get {
                 object obj = ResourceManager.GetObject("主页面", resourceCulture);

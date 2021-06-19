@@ -626,6 +626,12 @@
     <Compile Include="控制主页面模板\Form2derma.Designer.cs">
       <DependentUpon>Form2derma.cs</DependentUpon>
     </Compile>
+    <Compile Include="控制主页面模板\Form2derma1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="控制主页面模板\Form2derma1.Designer.cs">
+      <DependentUpon>Form2derma1.cs</DependentUpon>
+    </Compile>
     <Compile Include="控制主页面模板\histogram_Chart_Add.cs" />
     <Compile Include="控制主页面模板\ihatetheqrcode_Add.cs" />
     <Compile Include="控制主页面模板\oscillogram_Chart_Add.cs" />
@@ -635,6 +641,24 @@
     <Compile Include="控制主页面模板\工业图形ADD\Valve_Add.cs" />
     <Compile Include="控制主页面模板\控件添加类重写\ControlAddBase.cs" />
     <Compile Include="控制主页面模板\控件自动改变大小\Resize.cs" />
+    <Compile Include="控制主页面模板\模板窗口导航栏控件\NavigationBar.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="控制主页面模板\模板窗口导航栏控件\NavigationBar.Designer.cs">
+      <DependentUpon>NavigationBar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="控制主页面模板\模板窗口导航栏控件\Option.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="控制主页面模板\模板窗口导航栏控件\Option.Designer.cs">
+      <DependentUpon>Option.cs</DependentUpon>
+    </Compile>
+    <Compile Include="控制主页面模板\模板窗口导航栏控件\OptionPalette.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="控制主页面模板\模板窗口导航栏控件\OptionPalette.Designer.cs">
+      <DependentUpon>OptionPalette.cs</DependentUpon>
+    </Compile>
     <Compile Include="控制主页面模板\模板窗口接口\FormIdentification.cs" />
     <Compile Include="数据查询界面\SQLquery.cs">
       <SubType>Form</SubType>
@@ -1045,6 +1069,18 @@
     <EmbeddedResource Include="控制主页面模板\Form2derma.resx">
       <DependentUpon>Form2derma.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="控制主页面模板\Form2derma1.resx">
+      <DependentUpon>Form2derma1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="控制主页面模板\模板窗口导航栏控件\NavigationBar.resx">
+      <DependentUpon>NavigationBar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="控制主页面模板\模板窗口导航栏控件\Option.resx">
+      <DependentUpon>Option.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="控制主页面模板\模板窗口导航栏控件\OptionPalette.resx">
+      <DependentUpon>OptionPalette.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="数据查询界面\SQLquery.resx">
       <DependentUpon>SQLquery.cs</DependentUpon>
     </EmbeddedResource>
@@ -1160,6 +1196,8 @@
     <None Include="Resources\71.png" />
     <None Include="Resources\81.png" />
     <None Include="Resources\91.png" />
+    <None Include="Resources\QQ截图20210619141336.png" />
+    <None Include="Resources\QQ截图202106191413361.png" />
     <Content Include="Resources\替换运行主页面.png" />
     <Content Include="图库\按钮图标\5834\102.ico" />
     <Content Include="图库\按钮图标\5834\112.ico" />

@@ -91,6 +91,9 @@ namespace 自定义Uppercomputer_20200727
         [Obsolete]
         private void timer1_Tick(object sender, EventArgs e)
         {
+            ///测试代码
+            Form2derma1 derma1  = new Form2derma1();
+            derma1.Show();
             this.timer1.Stop();
             XmlClick();
             LogUtils.deleteLogFile(@Application.StartupPath);//检查是否有超过2个月的日志 进行删除操作
