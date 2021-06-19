@@ -21,8 +21,9 @@
                                                            控件组成    
 
 ![image](https://user-images.githubusercontent.com/60955669/119997409-4a109380-c002-11eb-91c2-3704899ab6dd.png)  
+![image](https://user-images.githubusercontent.com/60955669/122012128-69276780-cdef-11eb-95d5-56fffdcc3070.png)
 
-                                                       更改后EF实体模型到SLQLite数据库    
+                                                     更改后EF实体模型到SLQLite数据库    
 ![image](https://user-images.githubusercontent.com/60955669/120075356-82cc6d80-c0d3-11eb-843c-818b62cb9fdf.png) 
 1.实现逻辑先把表填充到List<dynamic> EFbase泛型集合（默认已经填充如有新表填充一下就行） 然后找到你想要的方法填写好Button_Parameter_inquire<T>（string ID） 泛型约束 代码会自动跟踪到你需要的表 根据ID主键进行SQL数据查询
   这样大量减少EF操作SQL的代码 当然实现这种逻辑归功于DLR动态编程。  
@@ -41,7 +42,7 @@
 提取码：wlei   
 复制这段内容后打开百度网盘手机App，操作更方便哦   
 
-                                                       版本更新    
+                                                            版本更新    
  2020年7月开发该项目V1.0版本。    
  2021年1月添加控件自动引导线V1.1版本。    
  2021年5月使用SQLlite数据库V1.2版本。  
@@ -54,8 +55,12 @@
  1.优化代码与精简代码。    
  2.添加更多免开发的控件。  
  3.UI界面模板开发。
- ![image](https://user-images.githubusercontent.com/60955669/122012128-69276780-cdef-11eb-95d5-56fffdcc3070.png)
-
+![image](https://user-images.githubusercontent.com/60955669/122644630-c9e4d600-d148-11eb-9892-f3504c6e8db2.png)
+![image](https://user-images.githubusercontent.com/60955669/122644638-d10be400-d148-11eb-8f65-a36b0539c2ff.png)
+![image](https://user-images.githubusercontent.com/60955669/122644644-df5a0000-d148-11eb-9ee8-410203d1b832.png)
+![image](https://user-images.githubusercontent.com/60955669/122644652-ea149500-d148-11eb-841f-a0f155b066e5.png)
+![image](https://user-images.githubusercontent.com/60955669/122644661-f4369380-d148-11eb-89a9-a78fa82b6c54.png)
+![image](https://user-images.githubusercontent.com/60955669/122644664-fa2c7480-d148-11eb-80f0-cf3baedb0e45.png)
 
  
  
