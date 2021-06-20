@@ -1007,12 +1007,14 @@ namespace 自定义Uppercomputer_20200727.控制主页面模板
         /// <param name="e"></param>
         private void navigationBar1_NavigationitemClick(object sender, EventArgs e)
         {
+            //反射获取类型
+            dynamic contrs = sender;
             //LogUtils日志
-            LogUtils.debugWrite($"用户点击了：" + sender.ToString());
-            ShowInfoTip($"用户点击了：" + sender.ToString(), 500);
+            LogUtils.debugWrite($"用户点击了：" + contrs.Text);
+            ShowInfoTip($"用户点击了：" + contrs.Text, 500);
 
             #region 不需要开启编辑模式的功能
-            switch (sender.ToString())
+            switch (contrs.Text)
             {
                 case "链接设备":
                     toolStripMenuItem4_Click(sender, e);
@@ -1047,7 +1049,7 @@ namespace 自定义Uppercomputer_20200727.控制主页面模板
                 return;
             }
             #region 添加控件选项判断需要开启编辑模式
-            switch (sender.ToString())
+            switch (contrs.Text)
             {
                 case "Button_按钮":
                     buttton按钮ToolStripMenuItem_Click(sender, e);
@@ -1119,7 +1121,7 @@ namespace 自定义Uppercomputer_20200727.控制主页面模板
             }
             #endregion
             #region 其他功能选项需要开启编辑模式
-            switch (sender.ToString())
+            switch (contrs.Text)
             {
                 case "注册报警":
                     toolStripMenuItem6_Click(sender, e);

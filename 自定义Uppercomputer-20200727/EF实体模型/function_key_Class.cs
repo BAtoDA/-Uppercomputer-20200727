@@ -16,6 +16,7 @@ namespace 自定义Uppercomputer_20200727.EF实体模型
     {
         public string ID { get; set; }
         public string FORM { get; set; }
+        public string OpenForm { get; set; }
         public string Control_type { get; set; }
         public int Control_state_0 { get; set; }
         public string Control_state_0_typeface { get; set; }

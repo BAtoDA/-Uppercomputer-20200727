@@ -148,7 +148,12 @@ namespace 自定义Uppercomputer_20200727.EF实体模型
         {
             using (UppercomputerEntities2 model = new UppercomputerEntities2())
             {
-
+                //执行修改功能键主属性
+                function_key_parameter control = model.function_key_parameter.Where(pi => pi.ID == ID).FirstOrDefault();//查询数据库是否有该ID   
+                #region 要修改的属性
+                control.OpenForm = function_key_Parameter.OpenForm;//获取对象
+                #endregion       
+                model.SaveChanges();//执行操作
                 //执行修改标签类字体参数操作
                 Tag_common_parameters button_parameters = model.Tag_common_parameters.Where(pi => pi.ID == ID).FirstOrDefault();//查询数据库是否有该ID
                 #region 要修改的属性

@@ -10,6 +10,8 @@ using System.Windows.Forms;
 
 namespace 自定义Uppercomputer_20200727.控制主页面模板.模板窗口导航栏控件
 {
+    [ToolboxItem(false)]
+    [Browsable(false)]
     public partial class Option : UserControl
     {
         /// <summary>

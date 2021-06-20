@@ -81,6 +81,7 @@ namespace 自定义Uppercomputer_20200727.修改参数界面.function_key功能�
                 this.skinTextBox2.Text = ((function_key_reform)this.all_purpose).Location.Y.ToString();//控件位置Y轴
                 this.skinTextBox4.Text = ((function_key_reform)this.all_purpose).Size.Width.ToString();//控件大小宽度
                 this.skinTextBox3.Text = ((function_key_reform)this.all_purpose).Size.Height.ToString();//控件大小宽度
+                skinComboBox6.SelectedIndex = 0;
             }
         }
         private void List_Index()
@@ -102,6 +103,8 @@ namespace 自定义Uppercomputer_20200727.修改参数界面.function_key功能�
             this.skinTextBox3.Text = point_or_Size(label.size)[1].ToString();//控件大小宽度
             //获取颜色设置
             indexes.Button_ComboBoxIndex_fill(label.colour_0.Trim(), ref this.colorComboBox2);
+            //设置继承的窗口
+            skinComboBox6.Text = label.OpenForm.Trim();
         }
         private void Modification_function_key_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -139,7 +142,8 @@ namespace 自定义Uppercomputer_20200727.修改参数界面.function_key功能�
             return new function_key_parameter
             {
                 ID = skinTextBox1.Text,
-                FORM = From_Name.Trim()
+                FORM = From_Name.Trim(),
+                OpenForm = skinComboBox6.Text.Trim()
             };
         }
         private Tag_common_parameters tag_Common_Parameters()//获取要写入的标签参数

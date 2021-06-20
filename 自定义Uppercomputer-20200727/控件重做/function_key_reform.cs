@@ -14,6 +14,7 @@ using 自定义Uppercomputer_20200727.EF实体模型.EFtoSQL操作类重写;
 using 自定义Uppercomputer_20200727.修改参数界面;
 using 自定义Uppercomputer_20200727.控件重做.复制粘贴接口;
 using 自定义Uppercomputer_20200727.控件重做.按钮类与宏指令通用类;
+using 自定义Uppercomputer_20200727.控制主页面模板;
 
 namespace 自定义Uppercomputer_20200727.控件重做
 {
@@ -31,7 +32,6 @@ namespace 自定义Uppercomputer_20200727.控件重做
         /// </summary>
         public function_key_reform()
         {
-            //this.InitChart_load();//初始化
             this.menuStrip_Reform = new SkinContextMenuStrip_reform();//实例化右键菜单
             this.ContextMenuStrip = this.menuStrip_Reform;//绑定右键菜单
             this.Cursor = Cursors.Hand;//改变鼠标状态
@@ -50,6 +50,7 @@ namespace 自定义Uppercomputer_20200727.控件重做
         protected override void OnClick(EventArgs e)
         {
             base.OnClick(e);
+            dynamic ContrForm= EFQuery(this.Parent + "-" + this.Name);
             if (Form2.edit_mode) return;//返回方法--用户开启了编辑模式
             foreach (Form frm in Application.OpenForms)//遍历所有窗口
             {
@@ -60,28 +61,37 @@ namespace 自定义Uppercomputer_20200727.控件重做
                     return;//如果窗口已打开就放回方法
                 }
             }
-            Form2 form2 = new Form2();//实例化模板类--基类所有窗口继承于此类
-            form2.Text = this.Name.Trim();//设置窗口名称
-            form2.Name = this.Name.Trim();//设置窗口标识
-            form2.WindowState = FormWindowState.Normal;//居中显示
-            form2.BackgroundImageLayout = ImageLayout.Stretch; //自动适应
-           // SkinLabel Label_Text = (SkinLabel)(from Control pi in form2.Controls where pi is SkinLabel select pi).First();
-            //Label_Text.Text = this.Text.Trim();//设置窗口名称
-            form2.Show();//显示窗口
-            Release(form2);
+            //Form2 form2 = new Form2();//实例化模板类--基类所有窗口继承于此类
+            ContrForm.Text = this.Name.Trim();//设置窗口名称
+            ContrForm.Name = this.Name.Trim();//设置窗口标识
+            ContrForm.WindowState = FormWindowState.Normal;//居中显示
+            ContrForm.BackgroundImageLayout = ImageLayout.Stretch; //自动适应
+            ContrForm.Show();//显示窗口
+            Windowclass.Release(ContrForm);
         }
-        static public void Release(Form Openfrom)
+        /// <summary>
+        /// 查询数据 获取继承的窗口
+        /// </summary>
+        /// <param name="ID"></param>
+        /// <returns></returns>
+        private dynamic EFQuery(string ID)
         {
-            if (Openfrom.IsNull()) return;
-            FormCollection formCollection = Application.OpenForms;//获取窗口集合
-            for (int i = 0; i < formCollection.Count; i++)
+            //查询数据库获取当前控件数据
+            function_key_EF function_Key_EF = new function_key_EF();
+            var contrsEF = function_Key_EF.function_key_Parameter_Query(ID);
+            if (contrsEF != null)
             {
-                var form = formCollection[i] as Form2;
-                if (formCollection[i].Text != "Home" & formCollection[i].Text != Openfrom.Text && form != null)//关闭其余窗口
+                switch (contrsEF.OpenForm.Trim())
                 {
-                    formCollection[i].Close();//关闭窗口     
+                    case "Form2":
+                        return new Form2();
+                    case "Form2derma":
+                        return new Form2derma();
+                    case "Form2derma1":
+                        return new Form2derma1();
                 }
             }
+            return new Form2();
         }
         /// <方法重写当鼠标移到控件时获取——ID>
         private void MouseEnter_reform(object send, EventArgs e)

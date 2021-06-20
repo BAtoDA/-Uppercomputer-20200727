@@ -68,8 +68,6 @@ namespace 自定义Uppercomputer_20200727.控制主页面模板
             Openfrom.WindowState = FormWindowState.Normal;//居中显示
             Openfrom.BackgroundImageLayout = ImageLayout.Stretch; //自动适应
             Openfrom.Text = Name;
-            //SkinLabel Label_Text = (SkinLabel)(from Control pi in Openfrom.Controls where pi is SkinLabel select pi).First();
-            //Label_Text.Text = Name;
         }
 
         static public void Release(Form Openfrom)

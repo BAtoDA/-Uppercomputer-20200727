@@ -68,6 +68,8 @@
             this.skinButton2 = new CCWin.SkinControl.SkinButton();
             this.skinGroupBox11 = new CCWin.SkinControl.SkinGroupBox();
             this.skinButton3 = new CCWin.SkinControl.SkinButton();
+            this.skinLabel9 = new CCWin.SkinControl.SkinLabel();
+            this.skinComboBox6 = new CCWin.SkinControl.SkinComboBox();
             this.skinTabControl1.SuspendLayout();
             this.skinTabPage1.SuspendLayout();
             this.skinGroupBox13.SuspendLayout();
@@ -102,7 +104,7 @@
             this.skinTabControl1.PageHover = ((System.Drawing.Image)(resources.GetObject("skinTabControl1.PageHover")));
             this.skinTabControl1.PageImagePosition = CCWin.SkinControl.SkinTabControl.ePageImagePosition.Left;
             this.skinTabControl1.PageNorml = null;
-            this.skinTabControl1.SelectedIndex = 2;
+            this.skinTabControl1.SelectedIndex = 0;
             this.skinTabControl1.Size = new System.Drawing.Size(399, 601);
             this.skinTabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.skinTabControl1.TabIndex = 21;
@@ -126,14 +128,16 @@
             // 
             this.skinGroupBox13.BackColor = System.Drawing.Color.Transparent;
             this.skinGroupBox13.BorderColor = System.Drawing.Color.Red;
+            this.skinGroupBox13.Controls.Add(this.skinComboBox6);
+            this.skinGroupBox13.Controls.Add(this.skinLabel9);
             this.skinGroupBox13.Controls.Add(this.colorComboBox2);
             this.skinGroupBox13.Controls.Add(this.skinLabel24);
             this.skinGroupBox13.ForeColor = System.Drawing.Color.Blue;
-            this.skinGroupBox13.Location = new System.Drawing.Point(4, 227);
+            this.skinGroupBox13.Location = new System.Drawing.Point(4, 213);
             this.skinGroupBox13.Name = "skinGroupBox13";
             this.skinGroupBox13.RectBackColor = System.Drawing.Color.White;
             this.skinGroupBox13.RoundStyle = CCWin.SkinClass.RoundStyle.All;
-            this.skinGroupBox13.Size = new System.Drawing.Size(391, 98);
+            this.skinGroupBox13.Size = new System.Drawing.Size(391, 134);
             this.skinGroupBox13.TabIndex = 22;
             this.skinGroupBox13.TabStop = false;
             this.skinGroupBox13.Text = "图形样式";
@@ -148,6 +152,147 @@
             this.colorComboBox2.FormattingEnabled = true;
             this.colorComboBox2.ItemHeight = 25;
             this.colorComboBox2.Items.AddRange(new object[] {
+            "Transparent",
+            "AliceBlue",
+            "AntiqueWhite",
+            "Aqua",
+            "Aquamarine",
+            "Azure",
+            "Beige",
+            "Bisque",
+            "Black",
+            "BlanchedAlmond",
+            "Blue",
+            "BlueViolet",
+            "Brown",
+            "BurlyWood",
+            "CadetBlue",
+            "Chartreuse",
+            "Chocolate",
+            "Coral",
+            "CornflowerBlue",
+            "Cornsilk",
+            "Crimson",
+            "Cyan",
+            "DarkBlue",
+            "DarkCyan",
+            "DarkGoldenrod",
+            "DarkGray",
+            "DarkGreen",
+            "DarkKhaki",
+            "DarkMagenta",
+            "DarkOliveGreen",
+            "DarkOrange",
+            "DarkOrchid",
+            "DarkRed",
+            "DarkSalmon",
+            "DarkSeaGreen",
+            "DarkSlateBlue",
+            "DarkSlateGray",
+            "DarkTurquoise",
+            "DarkViolet",
+            "DeepPink",
+            "DeepSkyBlue",
+            "DimGray",
+            "DodgerBlue",
+            "Firebrick",
+            "FloralWhite",
+            "ForestGreen",
+            "Fuchsia",
+            "Gainsboro",
+            "GhostWhite",
+            "Gold",
+            "Goldenrod",
+            "Gray",
+            "Green",
+            "GreenYellow",
+            "Honeydew",
+            "HotPink",
+            "IndianRed",
+            "Indigo",
+            "Ivory",
+            "Khaki",
+            "Lavender",
+            "LavenderBlush",
+            "LawnGreen",
+            "LemonChiffon",
+            "LightBlue",
+            "LightCoral",
+            "LightCyan",
+            "LightGoldenrodYellow",
+            "LightGreen",
+            "LightGray",
+            "LightPink",
+            "LightSalmon",
+            "LightSeaGreen",
+            "LightSkyBlue",
+            "LightSlateGray",
+            "LightSteelBlue",
+            "LightYellow",
+            "Lime",
+            "LimeGreen",
+            "Linen",
+            "Magenta",
+            "Maroon",
+            "MediumAquamarine",
+            "MediumBlue",
+            "MediumOrchid",
+            "MediumPurple",
+            "MediumSeaGreen",
+            "MediumSlateBlue",
+            "MediumSpringGreen",
+            "MediumTurquoise",
+            "MediumVioletRed",
+            "MidnightBlue",
+            "MintCream",
+            "MistyRose",
+            "Moccasin",
+            "NavajoWhite",
+            "Navy",
+            "OldLace",
+            "Olive",
+            "OliveDrab",
+            "Orange",
+            "OrangeRed",
+            "Orchid",
+            "PaleGoldenrod",
+            "PaleGreen",
+            "PaleTurquoise",
+            "PaleVioletRed",
+            "PapayaWhip",
+            "PeachPuff",
+            "Peru",
+            "Pink",
+            "Plum",
+            "PowderBlue",
+            "Purple",
+            "Red",
+            "RosyBrown",
+            "RoyalBlue",
+            "SaddleBrown",
+            "Salmon",
+            "SandyBrown",
+            "SeaGreen",
+            "SeaShell",
+            "Sienna",
+            "Silver",
+            "SkyBlue",
+            "SlateBlue",
+            "SlateGray",
+            "Snow",
+            "SpringGreen",
+            "SteelBlue",
+            "Tan",
+            "Teal",
+            "Thistle",
+            "Tomato",
+            "Turquoise",
+            "Violet",
+            "Wheat",
+            "White",
+            "WhiteSmoke",
+            "Yellow",
+            "YellowGreen",
             "White",
             "Transparent",
             "Red",
@@ -2404,7 +2549,7 @@
             "WhiteSmoke",
             "Yellow",
             "YellowGreen"});
-            this.colorComboBox2.Location = new System.Drawing.Point(146, 37);
+            this.colorComboBox2.Location = new System.Drawing.Point(146, 43);
             this.colorComboBox2.Margin = new System.Windows.Forms.Padding(2);
             this.colorComboBox2.Name = "colorComboBox2";
             this.colorComboBox2.Size = new System.Drawing.Size(156, 31);
@@ -2416,7 +2561,7 @@
             this.skinLabel24.BackColor = System.Drawing.Color.Transparent;
             this.skinLabel24.BorderColor = System.Drawing.Color.White;
             this.skinLabel24.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.skinLabel24.Location = new System.Drawing.Point(35, 41);
+            this.skinLabel24.Location = new System.Drawing.Point(35, 47);
             this.skinLabel24.Name = "skinLabel24";
             this.skinLabel24.Size = new System.Drawing.Size(110, 21);
             this.skinLabel24.TabIndex = 7;
@@ -2488,6 +2633,147 @@
             this.colorComboBox1.FormattingEnabled = true;
             this.colorComboBox1.ItemHeight = 25;
             this.colorComboBox1.Items.AddRange(new object[] {
+            "White",
+            "Transparent",
+            "Red",
+            "AliceBlue",
+            "AntiqueWhite",
+            "Aqua",
+            "Aquamarine",
+            "Azure",
+            "Beige",
+            "Bisque",
+            "Black",
+            "BlanchedAlmond",
+            "Blue",
+            "BlueViolet",
+            "Brown",
+            "BurlyWood",
+            "CadetBlue",
+            "Chartreuse",
+            "Chocolate",
+            "Coral",
+            "CornflowerBlue",
+            "Cornsilk",
+            "Crimson",
+            "Cyan",
+            "DarkBlue",
+            "DarkCyan",
+            "DarkGoldenrod",
+            "DarkGray",
+            "DarkGreen",
+            "DarkKhaki",
+            "DarkMagenta",
+            "DarkOliveGreen",
+            "DarkOrange",
+            "DarkOrchid",
+            "DarkRed",
+            "DarkSalmon",
+            "DarkSeaGreen",
+            "DarkSlateBlue",
+            "DarkSlateGray",
+            "DarkTurquoise",
+            "DarkViolet",
+            "DeepPink",
+            "DeepSkyBlue",
+            "DimGray",
+            "DodgerBlue",
+            "Firebrick",
+            "FloralWhite",
+            "ForestGreen",
+            "Fuchsia",
+            "Gainsboro",
+            "GhostWhite",
+            "Gold",
+            "Goldenrod",
+            "Gray",
+            "Green",
+            "GreenYellow",
+            "Honeydew",
+            "HotPink",
+            "IndianRed",
+            "Indigo",
+            "Ivory",
+            "Khaki",
+            "Lavender",
+            "LavenderBlush",
+            "LawnGreen",
+            "LemonChiffon",
+            "LightBlue",
+            "LightCoral",
+            "LightCyan",
+            "LightGoldenrodYellow",
+            "LightGreen",
+            "LightGray",
+            "LightPink",
+            "LightSalmon",
+            "LightSeaGreen",
+            "LightSkyBlue",
+            "LightSlateGray",
+            "LightSteelBlue",
+            "LightYellow",
+            "Lime",
+            "LimeGreen",
+            "Linen",
+            "Magenta",
+            "Maroon",
+            "MediumAquamarine",
+            "MediumBlue",
+            "MediumOrchid",
+            "MediumPurple",
+            "MediumSeaGreen",
+            "MediumSlateBlue",
+            "MediumSpringGreen",
+            "MediumTurquoise",
+            "MediumVioletRed",
+            "MidnightBlue",
+            "MintCream",
+            "MistyRose",
+            "Moccasin",
+            "NavajoWhite",
+            "Navy",
+            "OldLace",
+            "Olive",
+            "OliveDrab",
+            "Orange",
+            "OrangeRed",
+            "Orchid",
+            "PaleGoldenrod",
+            "PaleGreen",
+            "PaleTurquoise",
+            "PaleVioletRed",
+            "PapayaWhip",
+            "PeachPuff",
+            "Peru",
+            "Pink",
+            "Plum",
+            "PowderBlue",
+            "Purple",
+            "RosyBrown",
+            "RoyalBlue",
+            "SaddleBrown",
+            "Salmon",
+            "SandyBrown",
+            "SeaGreen",
+            "SeaShell",
+            "Sienna",
+            "Silver",
+            "SkyBlue",
+            "SlateBlue",
+            "SlateGray",
+            "Snow",
+            "SpringGreen",
+            "SteelBlue",
+            "Tan",
+            "Teal",
+            "Thistle",
+            "Tomato",
+            "Turquoise",
+            "Violet",
+            "Wheat",
+            "WhiteSmoke",
+            "Yellow",
+            "YellowGreen",
             "White",
             "Transparent",
             "Red",
@@ -4460,6 +4746,33 @@
             this.skinButton3.UseVisualStyleBackColor = false;
             this.skinButton3.Click += new System.EventHandler(this.skinButton3_Click);
             // 
+            // skinLabel9
+            // 
+            this.skinLabel9.AutoSize = true;
+            this.skinLabel9.BackColor = System.Drawing.Color.Transparent;
+            this.skinLabel9.BorderColor = System.Drawing.Color.White;
+            this.skinLabel9.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.skinLabel9.Location = new System.Drawing.Point(35, 98);
+            this.skinLabel9.Name = "skinLabel9";
+            this.skinLabel9.Size = new System.Drawing.Size(110, 21);
+            this.skinLabel9.TabIndex = 23;
+            this.skinLabel9.Text = "图形模板窗口:";
+            // 
+            // skinComboBox6
+            // 
+            this.skinComboBox6.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.skinComboBox6.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.skinComboBox6.FormattingEnabled = true;
+            this.skinComboBox6.Items.AddRange(new object[] {
+            "Form2",
+            "Form2derma",
+            "Form2derma1"});
+            this.skinComboBox6.Location = new System.Drawing.Point(146, 98);
+            this.skinComboBox6.Name = "skinComboBox6";
+            this.skinComboBox6.Size = new System.Drawing.Size(156, 22);
+            this.skinComboBox6.TabIndex = 13;
+            this.skinComboBox6.WaterText = "";
+            // 
             // Modification_function_key
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -4533,5 +4846,7 @@
         private CCWin.SkinControl.SkinGroupBox skinGroupBox13;
         private 控件重做.ColorComboBox colorComboBox2;
         private CCWin.SkinControl.SkinLabel skinLabel24;
+        private CCWin.SkinControl.SkinComboBox skinComboBox6;
+        private CCWin.SkinControl.SkinLabel skinLabel9;
     }
 }
