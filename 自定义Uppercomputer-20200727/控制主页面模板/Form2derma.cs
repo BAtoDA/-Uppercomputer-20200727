@@ -121,6 +121,8 @@ namespace 自定义Uppercomputer_20200727.控制主页面模板
         {
             base.OnLoad(e);
             if (!GetPidByProcess()) return;
+            //判断主窗口是否在运行
+            if (!Program.OPENCLOASE) return;
             ///加载时不能切换界面--导航栏键不能使用
             //foreach (Control i in uiPanel1.Controls)           
             //    i.Enabled = false;        

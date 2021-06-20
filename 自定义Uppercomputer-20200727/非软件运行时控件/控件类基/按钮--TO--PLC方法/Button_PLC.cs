@@ -265,6 +265,7 @@ namespace 自定义Uppercomputer_20200727.非软件运行时控件.控件类基.
                     break;
                 case PLC通讯规范接口.PLC.HMI:
                     button_State = macroinstruction_data<bool>.M_Data[Convert.ToInt32(button_base.PLC_Address)] == true ? Button_state.ON : Button_state.Off;
+                    button_state(button, button_State);
                     break;
             }
         }

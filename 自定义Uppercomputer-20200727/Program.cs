@@ -13,6 +13,7 @@ namespace 自定义Uppercomputer_20200727
 {
     static class Program
     {
+        public static bool OPENCLOASE = false;
         /// <summary>
         /// 应用程序的主入口点。
         /// </summary>
@@ -32,6 +33,7 @@ namespace 自定义Uppercomputer_20200727
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Home());
+            OPENCLOASE = true;
         }
         /// <summary>
         /// 处理非线程异常  保存到日志中

@@ -621,6 +621,8 @@ namespace 自定义Uppercomputer_20200727
         private void Form2_Load(object sender, EventArgs e)//加载窗口
         {
             if (!GetPidByProcess()) return;
+            //判断主窗口是否在运行
+            if (!Program.OPENCLOASE) return;
             ToolStripManager.Renderer = new HZH_Controls.Controls.ProfessionalToolStripRendererEx();
             Form2_Leave(this, new EventArgs());
             UI_Schedule("开始加载控件", 30, true);

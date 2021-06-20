@@ -162,6 +162,8 @@ namespace 自定义Uppercomputer_20200727.控制主页面模板
         /// </summary>
         private void NewMethod()
         {
+            //判断主窗口是否在运行
+            if (!Program.OPENCLOASE) return;
             var se = Task.Run(() =>
             {
                 From_Load_Add.imageLists_1 = new List<ImageList>() { this.imageList1, this.imageList2, this.imageList3 };
@@ -1181,6 +1183,7 @@ namespace 自定义Uppercomputer_20200727.控制主页面模板
         {
             UIWaitFormService.HideWaitForm();
         }
+
         /// <summary>
         /// 设置等待提示窗描述文字
         /// </summary>
