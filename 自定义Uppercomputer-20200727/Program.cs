@@ -24,7 +24,10 @@ namespace 自定义Uppercomputer_20200727
             Application.SetUnhandledExceptionMode(UnhandledExceptionMode.CatchException);
 
             //全局异常捕捉
-
+            Application.ApplicationExit += ((send, e) =>
+            {
+                OPENCLOASE = false;
+            });
             //处理UI线程异常
             Application.ThreadException += Application_ThreadException;
             //处理非UI线程异常
@@ -32,8 +35,10 @@ namespace 自定义Uppercomputer_20200727
             //主函数
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Home());
             OPENCLOASE = true;
+            Application.Run(new Home());
+            OPENCLOASE = false;
+
         }
         /// <summary>
         /// 处理非线程异常  保存到日志中

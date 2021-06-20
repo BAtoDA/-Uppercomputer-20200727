@@ -17,5 +17,10 @@ namespace 自定义Uppercomputer_20200727.手动控制页面
         {
             InitializeComponent();
         }
+
+        protected override void OnLoad(EventArgs e)
+        {
+            base.OnLoad(e);
+        }
     }
 }

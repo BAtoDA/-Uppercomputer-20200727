@@ -634,6 +634,10 @@ namespace 自定义Uppercomputer_20200727
                 UI_Schedule("开始正在显示UI", 90, true);
             });
             se.Wait();
+            //测试代码
+            this.timer2.Enabled = true;
+            this.timer2.Start();
+            this.timer3.Enabled = true;
             this.timer3.Start();
             timer3.Interval = 100;
             asc.RenewControlRect(this);

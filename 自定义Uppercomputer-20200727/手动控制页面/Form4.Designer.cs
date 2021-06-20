@@ -40,7 +40,7 @@
             this.daButton1.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(131)))), ((int)(((byte)(229)))));
             this.daButton1.ControlState = CCWin.SkinClass.ControlState.Normal;
             this.daButton1.DownBack = null;
-            this.daButton1.Location = new System.Drawing.Point(381, 100);
+            this.daButton1.Location = new System.Drawing.Point(419, 226);
             this.daButton1.MouseBack = null;
             this.daButton1.Name = "daButton1";
             this.daButton1.NormlBack = null;
@@ -49,7 +49,7 @@
             this.daButton1.PLC_Address = "1";
             this.daButton1.PLC_Contact = "Data_Bit";
             this.daButton1.PLC_Enable = true;
-            this.daButton1.Size = new System.Drawing.Size(75, 23);
+            this.daButton1.Size = new System.Drawing.Size(140, 75);
             this.daButton1.TabIndex = 2;
             this.daButton1.Text = "OFF";
             this.daButton1.UseVisualStyleBackColor = false;
