@@ -36,7 +36,7 @@ namespace 自定义Uppercomputer_20200727.EF实体模型
         }
         public UppercomputerEntities2():base("SqliteTest")
         {
-
+            this.Database.CommandTimeout = 2000;
         }
         /// <summary>
         /// 创建链接字符串

@@ -60,7 +60,7 @@ namespace 自定义Uppercomputer_20200727.非软件运行时控件
         public bool PLC_Enable
         {
             get => plc_Enable;
-            set => plc_Enable = value;
+            set => plc_Enable = false;
         }
         private PLC pLC_valu;
         public void Modifications_Eeve(object send, EventArgs e)

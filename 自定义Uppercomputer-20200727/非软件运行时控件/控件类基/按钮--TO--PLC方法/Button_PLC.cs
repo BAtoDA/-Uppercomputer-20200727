@@ -6,6 +6,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CSEngineTest;
 using PLC通讯规范接口;
 using Sunny.UI;
 using 欧姆龙Fins协议.欧姆龙.报文处理;
@@ -14,6 +15,7 @@ using 自定义Uppercomputer_20200727.PLC选择.MODBUS_TCP监控窗口;
 using 自定义Uppercomputer_20200727.控件重做;
 using 自定义Uppercomputer_20200727.控件重做.控件类基;
 using 自定义Uppercomputer_20200727.非软件运行时控件.基本控件;
+using PLC = PLC通讯规范接口.PLC;
 
 namespace 自定义Uppercomputer_20200727.非软件运行时控件.控件类基.按钮_TO_PLC方法
 {
@@ -84,6 +86,10 @@ namespace 自定义Uppercomputer_20200727.非软件运行时控件.控件类基.
                     }
                     else UINotifierHelper.ShowNotifier("未连接设备：" + pLC.Trim() + "Err", UINotifierType.WARNING, UILocalize.WarningTitle, false, 1000);//推出异常提示用户
                     break;
+                //访问 宏指令数据区--Data_M
+                case "HMI":
+                        state = Button_HMI_public.Button_HMI_write_select(Convert.ToInt32(Button.PLC_Address), Button);//根据按钮模式进行写入操作 
+                    break;
             }
             return "OK";
         }
@@ -140,6 +146,10 @@ namespace 自定义Uppercomputer_20200727.非软件运行时控件.控件类基.
                         Button_write_select("复归型_Off", OmronCIP, Button);//根据按钮模式进行写入操作
                     }
                     else UINotifierHelper.ShowNotifier("未连接设备：" + pLC.Trim() + "Err", UINotifierType.WARNING, UILocalize.WarningTitle, false, 1000);//推出异常提示用户
+                    break;
+                      //访问 宏指令数据区--Data_M
+                case "HMI":
+                        state = Button_HMI_public.Button_HMI_write_select(Convert.ToInt32(Button.PLC_Address), Button, "复归型_Off");//根据按钮模式进行写入操作 
                     break;
             }
             return "OK";
@@ -252,6 +262,9 @@ namespace 自定义Uppercomputer_20200727.非软件运行时控件.控件类基.
                         button_State = data[0] == true ? Button_state.ON : Button_state.Off;
                         button_state(button, button_State);
                     }
+                    break;
+                case PLC通讯规范接口.PLC.HMI:
+                    button_State = macroinstruction_data<bool>.M_Data[Convert.ToInt32(button_base.PLC_Address)] == true ? Button_state.ON : Button_state.Off;
                     break;
             }
         }
@@ -387,6 +400,8 @@ namespace 自定义Uppercomputer_20200727.非软件运行时控件.控件类基.
                 case PLC.OmronTCP:
                 case PLC.OmronUDP:
                     return Enum.GetNames(typeof(Omron_bit)).Where(pi => pi.ToString() == data).FirstOrDefault() == null ? false : true;
+                case PLC.HMI:
+                    return Enum.GetNames(typeof(HMI_bit)).Where(pi => pi.ToString() == data).FirstOrDefault() == null ? false : true;
             }
             return true;
         }

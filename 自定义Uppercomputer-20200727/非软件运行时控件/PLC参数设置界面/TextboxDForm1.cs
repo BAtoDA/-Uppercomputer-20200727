@@ -44,6 +44,9 @@ namespace 自定义Uppercomputer_20200727.非软件运行时控件.PLC参数设�
                         this.uiComboBox2.DataSource = Enum.GetNames(typeof(Modbus_TCP_bit)).ToList();
                     }
                     break;
+                case 3:
+                    this.uiComboBox2.DataSource = Enum.GetNames(typeof(HMI_D)).ToList();
+                    break;
                 case 4:
                 case 5:
                 case 6:
@@ -77,6 +80,17 @@ namespace 自定义Uppercomputer_20200727.非软件运行时控件.PLC参数设�
                     break;
                 case 2:
                     this.uiComboBox2.DataSource = Enum.GetNames(typeof(Modbus_TCP_D)).ToList();
+                    break;
+                case 3:
+                    this.uiComboBox2.DataSource = Enum.GetNames(typeof(HMI_D)).ToList();
+                    break;
+                case 4:
+                case 5:
+                case 6:
+                    if (GetEnum<Omron_D>(indx.Trim()) == false)
+                    {
+                        this.uiComboBox2.DataSource = Enum.GetNames(typeof(Omron_bit)).ToList();
+                    }
                     break;
             }
             this.uiComboBox2.SelectedIndex = 0;

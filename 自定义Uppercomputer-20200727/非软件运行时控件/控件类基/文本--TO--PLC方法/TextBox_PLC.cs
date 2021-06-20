@@ -4,11 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CCWin.SkinControl;
+using CSEngineTest;
 using PLC通讯规范接口;
 using Sunny.UI;
 using 欧姆龙Fins协议.欧姆龙.报文处理;
 using 自定义Uppercomputer_20200727.PLC选择;
 using 自定义Uppercomputer_20200727.PLC选择.MODBUS_TCP监控窗口;
+using PLC = PLC通讯规范接口.PLC;
 
 namespace 自定义Uppercomputer_20200727.非软件运行时控件.控件类基.文本__TO__PLC方法
 {
@@ -74,6 +77,10 @@ namespace 自定义Uppercomputer_20200727.非软件运行时控件.控件类基.
                         OmronFinsCIP.PLC_write_D_register(textBox.PLC_Contact, textBox.PLC_Address, textBox.Control_Text, textBox.numerical);
                     }
                     else UINotifierHelper.ShowNotifier("未连接设备：" + textBox.Plc + "Err", UINotifierType.WARNING, UILocalize.WarningTitle, false, 1000);//推出异常提示用户
+                    break;
+                //写入到 宏指令 静态区D_Data
+                case PLC.HMI:
+                    macroinstruction_data<int>.D_Data[Convert.ToInt32(textBox.PLC_Address)] = textBox.Control_Text;
                     break;
             }
             return "OK_RUN";
@@ -146,6 +153,13 @@ namespace 自定义Uppercomputer_20200727.非软件运行时控件.控件类基.
                         TextBox_state(textBox, data);//填充文本数据--自动判断用户设定的小数点位置--多余的异常
                     }
                     break;
+                case PLC.HMI:
+                    if (macroinstruction_data<int>.D_Data[Convert.ToInt32(textBox.PLC_Address)].IsNull() != true)
+                    {
+                        string data = Convert.ToString(macroinstruction_data<int>.D_Data[Convert.ToInt32(textBox.PLC_Address)] ?? "0");//直接填充数据
+                        TextBox_state(textBox, data);//填充文本数据--自动判断用户设定的小数点位置--多余的异常
+                    }
+                    break;
             }
         }
         /// <summary>
@@ -167,6 +181,8 @@ namespace 自定义Uppercomputer_20200727.非软件运行时控件.控件类基.
                 case PLC.OmronTCP:
                 case PLC.OmronUDP:
                     return Enum.GetNames(typeof(Omron_D)).Where(pi => pi.ToString() == data).FirstOrDefault() == null ? false : true;
+                case PLC.HMI:
+                      return Enum.GetNames(typeof(HMI_D)).Where(pi => pi.ToString() == data).FirstOrDefault() == null ? false : true;
             }
             return true;
         }
@@ -207,6 +223,8 @@ namespace 自定义Uppercomputer_20200727.非软件运行时控件.控件类基.
                 case PLC.OmronTCP:
                 case PLC.OmronUDP:
                     return Enum.GetNames(typeof(Omron_D))[0];
+                case PLC.HMI:
+                    return Enum.GetNames(typeof(HMI_D))[0];
             }
             return "D";
         }

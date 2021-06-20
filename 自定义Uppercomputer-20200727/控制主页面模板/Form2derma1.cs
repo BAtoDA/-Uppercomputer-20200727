@@ -48,6 +48,7 @@ using 自定义Uppercomputer_20200727.监视画面;
 using 自定义Uppercomputer_20200727.运转控制画面;
 using 自定义Uppercomputer_20200727.控制主页面;
 using 自定义Uppercomputer_20200727.手动控制页面;
+using 自定义Uppercomputer_20200727.EF实体模型;
 
 namespace 自定义Uppercomputer_20200727.控制主页面模板
 {
@@ -134,10 +135,7 @@ namespace 自定义Uppercomputer_20200727.控制主页面模板
         {
             base.OnLoad(e);
             if (!GetPidByProcess()) return;
-            this.navigationBar1.Openingclosing = false;
-            ///加载时不能切换界面--导航栏键不能使用
-            //foreach (Control i in uiPanel1.Controls)           
-            //    i.Enabled = false;        
+            this.navigationBar1.Openingclosing = false;     
             ShowWaitForm();
             ToolStripManager.Renderer = new HZH_Controls.Controls.ProfessionalToolStripRendererEx();
             Form2_Leave(this, new EventArgs());

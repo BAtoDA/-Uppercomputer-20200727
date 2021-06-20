@@ -43,7 +43,7 @@ namespace 自定义Uppercomputer_20200727.非软件运行时控件.基本控件
             get => plc_Enable;
             set => plc_Enable = value;
         }
-        private bool plc_Enable = true;
+        private bool plc_Enable = false;
         [Description("选择PLC类型\r\n默认三菱PLC"), Category("PLC类型")]
         [DefaultValue(typeof(PLC), "Mitsubishi")]
         public PLC Plc
@@ -71,6 +71,7 @@ namespace 自定义Uppercomputer_20200727.非软件运行时控件.基本控件
             pLC_valu = buttonBitForm.pLC;
             PLC_Contact = buttonBitForm.PLC_parameter[1];
             plc_Address = buttonBitForm.PLC_parameter[2];
+            this.Modification -= new EventHandler(Modifications_Eeve);
         }
         [Description("PLC读取触点"), Category("PLC类型")]
         public string PLC_Contact
@@ -132,6 +133,7 @@ namespace 自定义Uppercomputer_20200727.非软件运行时控件.基本控件
             plc = new Button_PLC();
             PLC_time.Start();
             PLC_time.Tick += new EventHandler(Time_tick);
+            this.Modification -= new EventHandler(Modifications_Eeve);
         }
 
         protected override void OnMouseDown(MouseEventArgs e)//重写点击事件

@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using 自定义Uppercomputer_20200727.非软件运行时控件.控件类基;
 
 namespace 自定义Uppercomputer_20200727.控件重做
 {
@@ -41,6 +42,82 @@ namespace 自定义Uppercomputer_20200727.控件重做
                     }
                     break;
                 case "复归型":
+                    macroinstruction_data<bool>.M_Data[ID] = true;//先写入ON--后用事件复位-off       
+                    state = true;
+                    ShowSuccessTip($"向设备:HMI 地址:{ID}写入{true} 成功");
+                    break;
+                case "复归型_Off":
+                    Thread.Sleep(100);//延时300ms复位
+                    macroinstruction_data<bool>.M_Data[ID] = false;//先写入ON--后用事件复位-off
+                    break;
+            }
+            return state;
+        }
+        public static bool Button_HMI_write_select(int ID, Button_base Button)//按照按钮模式写入
+        {
+            bool state = false;
+            switch (Button.Pattern.ToString())
+            {
+                case "Set_as_on"://设置常ON
+                    macroinstruction_data<bool>.M_Data[ID] = true; //写入常ON
+                    ShowSuccessTip($"向设备:HMI 地址:{ID}写入{true} 成功");
+                    break;
+                case "Set_as_off"://设置常OFF
+                    macroinstruction_data<bool>.M_Data[ID] = false; //写入常Off
+                    ShowSuccessTip($"向设备:HMI 地址:{ID}写入{false} 成功");
+                    break;
+                case "selector_witch":
+                    //根据要写入的状态进行取反
+                    if (macroinstruction_data<bool>.M_Data[ID] == true)
+                    {
+                        macroinstruction_data<bool>.M_Data[ID] = false;
+                        ShowSuccessTip($"向设备:HMI 地址:{ID} 写入{false} 成功");
+                    }
+                    else
+                    {
+                        macroinstruction_data<bool>.M_Data[ID] = true;
+                        ShowSuccessTip($"向设备:HMI 地址:{ID} 写入{true} 成功");
+                    }
+                    break;
+                case "Regression":
+                    macroinstruction_data<bool>.M_Data[ID] = true;//先写入ON--后用事件复位-off       
+                    state = true;
+                    ShowSuccessTip($"向设备:HMI 地址:{ID}写入{true} 成功");
+                    break;
+                case "复归型_Off":
+                    Thread.Sleep(100);//延时300ms复位
+                    macroinstruction_data<bool>.M_Data[ID] = false;//先写入ON--后用事件复位-off
+                    break;
+            }
+            return state;
+        }
+        public static bool Button_HMI_write_select(int ID, Button_base Button,string state1)//按照按钮模式写入
+        {
+            bool state = false;
+            switch (state1)
+            {
+                case "Set_as_on"://设置常ON
+                    macroinstruction_data<bool>.M_Data[ID] = true; //写入常ON
+                    ShowSuccessTip($"向设备:HMI 地址:{ID}写入{true} 成功");
+                    break;
+                case "Set_as_off"://设置常OFF
+                    macroinstruction_data<bool>.M_Data[ID] = false; //写入常Off
+                    ShowSuccessTip($"向设备:HMI 地址:{ID}写入{false} 成功");
+                    break;
+                case "selector_witch":
+                    //根据要写入的状态进行取反
+                    if (macroinstruction_data<bool>.M_Data[ID] == true)
+                    {
+                        macroinstruction_data<bool>.M_Data[ID] = false;
+                        ShowSuccessTip($"向设备:HMI 地址:{ID} 写入{false} 成功");
+                    }
+                    else
+                    {
+                        macroinstruction_data<bool>.M_Data[ID] = true;
+                        ShowSuccessTip($"向设备:HMI 地址:{ID} 写入{true} 成功");
+                    }
+                    break;
+                case "Regression":
                     macroinstruction_data<bool>.M_Data[ID] = true;//先写入ON--后用事件复位-off       
                     state = true;
                     ShowSuccessTip($"向设备:HMI 地址:{ID}写入{true} 成功");

@@ -47,6 +47,7 @@ namespace 自定义Uppercomputer_20200727.非软件运行时控件.PLC参数设�
             this.uiButton1.Font = new System.Drawing.Font("微软雅黑", 12F);
             this.uiButton1.Location = new System.Drawing.Point(104, 201);
             this.uiButton1.Margin = new System.Windows.Forms.Padding(2);
+            this.uiButton1.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiButton1.Name = "uiButton1";
             this.uiButton1.Size = new System.Drawing.Size(99, 39);
             this.uiButton1.TabIndex = 7;
@@ -62,22 +63,25 @@ namespace 自定义Uppercomputer_20200727.非软件运行时控件.PLC参数设�
             this.uiTextBox1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.uiTextBox1.Maximum = 2147483647D;
             this.uiTextBox1.Minimum = -2147483648D;
+            this.uiTextBox1.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiTextBox1.Name = "uiTextBox1";
             this.uiTextBox1.Padding = new System.Windows.Forms.Padding(3);
             this.uiTextBox1.Size = new System.Drawing.Size(138, 29);
             this.uiTextBox1.TabIndex = 6;
             this.uiTextBox1.Text = "00";
+            this.uiTextBox1.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
             this.uiTextBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.KeyPress_reform);
             // 
             // uiComboBox2
             // 
+            this.uiComboBox2.DataSource = null;
             this.uiComboBox2.FillColor = System.Drawing.Color.White;
             this.uiComboBox2.Font = new System.Drawing.Font("微软雅黑", 12F);
             this.uiComboBox2.Location = new System.Drawing.Point(104, 102);
             this.uiComboBox2.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.uiComboBox2.MinimumSize = new System.Drawing.Size(38, 0);
             this.uiComboBox2.Name = "uiComboBox2";
-            this.uiComboBox2.Padding = new System.Windows.Forms.Padding(0, 0, 30, 0);
+            this.uiComboBox2.Padding = new System.Windows.Forms.Padding(0, 0, 30, 2);
             this.uiComboBox2.Size = new System.Drawing.Size(138, 29);
             this.uiComboBox2.TabIndex = 5;
             this.uiComboBox2.Text = "uiComboBox2";
@@ -85,18 +89,22 @@ namespace 自定义Uppercomputer_20200727.非软件运行时控件.PLC参数设�
             // 
             // uiComboBox1
             // 
+            this.uiComboBox1.DataSource = null;
             this.uiComboBox1.FillColor = System.Drawing.Color.White;
             this.uiComboBox1.Font = new System.Drawing.Font("微软雅黑", 12F);
             this.uiComboBox1.Items.AddRange(new object[] {
             "Mitsubishi",
             "Siemens",
             "MODBUS_TCP",
-            "HMI"});
+            "HMI",
+            "OmronTCP",
+            "OmronCIP",
+            "OmronUDP"});
             this.uiComboBox1.Location = new System.Drawing.Point(104, 54);
             this.uiComboBox1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.uiComboBox1.MinimumSize = new System.Drawing.Size(38, 0);
             this.uiComboBox1.Name = "uiComboBox1";
-            this.uiComboBox1.Padding = new System.Windows.Forms.Padding(0, 0, 30, 0);
+            this.uiComboBox1.Padding = new System.Windows.Forms.Padding(0, 0, 30, 2);
             this.uiComboBox1.Size = new System.Drawing.Size(138, 29);
             this.uiComboBox1.TabIndex = 3;
             this.uiComboBox1.Text = "Mitsubishi";
@@ -155,10 +163,12 @@ namespace 自定义Uppercomputer_20200727.非软件运行时控件.PLC参数设�
             this.uiPanel1.Font = new System.Drawing.Font("微软雅黑", 12F);
             this.uiPanel1.Location = new System.Drawing.Point(2, 35);
             this.uiPanel1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.uiPanel1.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiPanel1.Name = "uiPanel1";
             this.uiPanel1.Size = new System.Drawing.Size(338, 280);
             this.uiPanel1.TabIndex = 1;
             this.uiPanel1.Text = " ";
+            this.uiPanel1.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // uiLabel4
             // 

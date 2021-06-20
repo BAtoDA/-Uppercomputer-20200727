@@ -660,6 +660,12 @@
       <DependentUpon>OptionPalette.cs</DependentUpon>
     </Compile>
     <Compile Include="控制主页面模板\模板窗口接口\FormIdentification.cs" />
+    <Compile Include="控制主页面模板\测试窗口\Form12222.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="控制主页面模板\测试窗口\Form12222.Designer.cs">
+      <DependentUpon>Form12222.cs</DependentUpon>
+    </Compile>
     <Compile Include="数据查询界面\SQLquery.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1080,6 +1086,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="控制主页面模板\模板窗口导航栏控件\OptionPalette.resx">
       <DependentUpon>OptionPalette.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="控制主页面模板\测试窗口\Form12222.resx">
+      <DependentUpon>Form12222.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="数据查询界面\SQLquery.resx">
       <DependentUpon>SQLquery.cs</DependentUpon>
