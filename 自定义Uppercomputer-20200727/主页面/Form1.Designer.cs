@@ -121,6 +121,7 @@
             this.Name = "Home";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Home";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Home_FormClosing);
             this.Shown += new System.EventHandler(this.Home_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.axActUtlType1)).EndInit();
             this.ResumeLayout(false);

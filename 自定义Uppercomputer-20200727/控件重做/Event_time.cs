@@ -58,7 +58,7 @@ namespace 自定义Uppercomputer_20200727.控件重做
         /// <summary>
         /// 指示上次遍历已经登录的事件
         /// </summary>
-        private int Event_quantity = 0;//指示上次遍历已经登录的事件
+        private ConcurrentBag<自定义Uppercomputer_20200727.EF实体模型.Event_message> Event_quantity=new ConcurrentBag<EF实体模型.Event_message>();//指示上次遍历已经登录的事件
         /// <summary>
         /// 指示定时器是否正在忙
         /// </summary>
@@ -75,6 +75,10 @@ namespace 自定义Uppercomputer_20200727.控件重做
         /// 定义安全集合
         /// </summary>
         private ConcurrentBag<自定义Uppercomputer_20200727.EF实体模型.Event_message> event_Messages;//定义安全集合
+        /// <summary>
+        /// 报警事件刷新完成
+        /// </summary>
+        public event EventHandler History;
 
         //该参数用于报警条
         /// <summary>
@@ -305,13 +309,19 @@ namespace 自定义Uppercomputer_20200727.控件重做
                     }
                     break;
             }
-            //开始把事件显示到表中
-            if (register_Event.Count == Event_quantity) return;//返回方法不做显示登录
+            //if (register_Event.Count == Event_quantity) return;//返回方法不做显示登录
             event_Messages = new ConcurrentBag<EF实体模型.Event_message>();
+            //开始把事件显示到表中
+            if (register_Event.Intersect(Event_quantity).ToList().Count != 0|| (register_Event.Count==0&&Event_quantity.Count==0)) return;
+            //找出不同的元素(即交集的补集)
+            var diffArr = register_Event.Where(c => !Event_quantity.Contains(c)).ToArray();
+            //遍历完成启动事件
+            if (History != null)
+                this.History.Invoke(diffArr, new EventArgs());
             foreach (var i in register_Event) event_Messages.Add(i);
-            //form_run.DataGridView(event_Messages);//事件显示登录
             ((dynamic)form_run).DataGridView(event_Messages);//事件显示登录
-            Event_quantity = register_Event.Count;//记录保持     
+            Event_quantity = new ConcurrentBag<EF实体模型.Event_message>();
+            register_Event.ForEach(s1=> { Event_quantity.Add(s1); });//记录保持     
         }
         /// <summary>
         /// 位触发条件
@@ -566,12 +576,13 @@ namespace 自定义Uppercomputer_20200727.控件重做
                     break;
 
             }
-            //开始把事件显示到表中
-            if (register_Event.Count == Event_quantity) return;//返回方法不做显示登录
             event_Messages = new ConcurrentBag<EF实体模型.Event_message>();
+            //开始把事件显示到表中
+            if (register_Event.Intersect(Event_quantity).Count() != 0) return;
             foreach (var i in register_Event) event_Messages.Add(i);
             scrollingText_event(scrollingText,event_Messages);//事件显示登录
-            Event_quantity = register_Event.Count;//记录保持     
+            Event_quantity = new ConcurrentBag<EF实体模型.Event_message>();
+            register_Event.ForEach(s1 => { Event_quantity.Add(s1); });//记录保持      
         }
         /// <summary>
         /// 填充报警内容
@@ -605,7 +616,8 @@ namespace 自定义Uppercomputer_20200727.控件重做
                 skinDataGridView.Rows[i].Cells[4].Value = i.ToString();
                 skinDataGridView.Rows.Add();//先添加行
             }
-            Event_quantity = register_Event.Count;//记录保持            
+            Event_quantity = new ConcurrentBag<EF实体模型.Event_message>();
+            register_Event.ForEach(s1 => { Event_quantity.Add(s1); });//记录保持          
         }
         protected override void Dispose(bool disposing)
         {

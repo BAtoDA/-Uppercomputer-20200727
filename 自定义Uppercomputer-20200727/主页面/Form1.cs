@@ -17,6 +17,9 @@ using static PLC通讯规范接口.Request;
 using 自定义Uppercomputer_20200727.主页面.进程通讯消息处理;
 using 自定义Uppercomputer_20200727.控制主页面模板;
 using 自定义Uppercomputer_20200727.控制主页面模板.模板窗口接口;
+using 自定义Uppercomputer_20200727.控件重做;
+using System.Collections.Concurrent;
+using System.Collections.Generic;
 
 namespace 自定义Uppercomputer_20200727
 {
@@ -63,7 +66,9 @@ namespace 自定义Uppercomputer_20200727
             socketServer.SocketLoad();
             //LogUtils日志
             LogUtils.debugWrite("开始加载程序集"+axActUtlType1.Name);
-            ActUtlType = this.axActUtlType1;        
+            ActUtlType = this.axActUtlType1;
+            //启动报警历史记录
+            History_Shown();
         }
         public void BindingProcessMsg(string strText, int intValue)
         {
@@ -219,6 +224,76 @@ namespace 自定义Uppercomputer_20200727
             }
 
         }
-        
+        //报警历史登录 --实现--
+        Event_time event_Time;//事件刷新定时器
+        Mutex mutex;//线程锁
+        System.Windows.Forms.Timer refresh;//事件刷新定时器
+        SkinDataGridView HistorygridView;
+        private void refresh_Tick(object sender, EventArgs e)//定时器指示窗口是否忙
+        {
+            event_Time.Form_busy = Form2.edit_mode;//指示着用户是否开启编辑模式
+        }
+        private void History_Shown()//显示窗口事件
+        {
+            HistorygridView = new SkinDataGridView();
+            mutex = new Mutex();
+            refresh = new System.Windows.Forms.Timer();//实例化刷新定时器
+            refresh.Tick += refresh_Tick;//注册事件
+            refresh.Enabled = true;
+            refresh.Interval = 2000;//默认2秒一刷
+            refresh.Start();
+            event_Time = new Event_time(HistorygridView, this);//开始事件登录
+            event_Time.Start();//运行定时器
+            event_Time.History += HistorySQL;
+
+        }
+
+        private void Home_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            refresh.Stop();
+            refresh.Dispose();
+            event_Time.Stop();
+            if (event_Time.Event_thread != null) event_Time.Event_thread.Abort();//结束任务
+            event_Time.Dispose();
+        }
+        /// <summary>
+        /// 报警历史到SQL数据库中
+        /// </summary>
+        /// <param name="send"></param>
+        /// <param name="e"></param>
+        private void HistorySQL(object send,EventArgs e)
+        {
+
+        }
+        /// <summary>
+        /// 登录事件刷新方法 不可删除
+        /// </summary>
+        /// <param name="register_Event_1"></param>
+        public void DataGridView(ConcurrentBag<自定义Uppercomputer_20200727.EF实体模型.Event_message> register_Event_1)//显示已经登录的事件
+        {
+            if (this.IsHandleCreated != true) return;//判断创建是否加载完成            
+            //this.BeginInvoke((MethodInvoker)delegate ()
+            //{
+            //    lock (this)
+            //    {
+            //        mutex.WaitOne();
+            //        List<自定义Uppercomputer_20200727.EF实体模型.Event_message> register_Event = register_Event_1.ToList();//获取对象
+            //        if (HistorygridView.Rows.Count < 0) return;//如果控件为null直接返回
+            //        HistorygridView.Rows.Clear();//清除所有数据
+            //        HistorygridView.Rows.Add();//先添加行            
+            //        for (int i = 0; i < register_Event.Count; i++)
+            //        {
+            //            if (HistorygridView.Rows.Count < i) HistorygridView.Rows.Add();//先添加行 
+            //            HistorygridView.Rows[i].Cells[0].Value = register_Event[i].ID;
+            //            HistorygridView.Rows[i].Cells[1].Value = DateTime.Now.ToString();
+            //            HistorygridView.Rows[i].Cells[2].Value = DateTime.Now.Date.ToString();
+            //            HistorygridView.Rows[i].Cells[3].Value = register_Event[i].报警内容.Trim();
+            //            HistorygridView.Rows[i].Cells[4].Value = i.ToString();
+            //            HistorygridView.Rows.Add();//先添加行
+            //        }
+            //        mutex.ReleaseMutex();
+            //    }
+            //});
+        }
     }
 }
