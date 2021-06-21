@@ -153,6 +153,16 @@ namespace 自定义Uppercomputer_20200727.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
+        internal static System.Drawing.Bitmap _7adebb2cb5ace3f8ba3b7041c37e4ca2_210x210 {
+            get {
+                object obj = ResourceManager.GetObject("7adebb2cb5ace3f8ba3b7041c37e4ca2-210x210", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
         internal static System.Drawing.Bitmap _8 {
             get {
                 object obj = ResourceManager.GetObject("8", resourceCulture);
@@ -173,6 +183,27 @@ namespace 自定义Uppercomputer_20200727.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
+        internal static System.Drawing.Bitmap _9d500fa45e672616992749ca20acbdf0_210x210 {
+            get {
+                object obj = ResourceManager.GetObject("9d500fa45e672616992749ca20acbdf0-210x210", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap aHR0cDovL3d3dy55M3EubmV0L3FmeS1jb250ZW50L3VwbG9hZHMvMjAyMC8xMC85OWYxNDAxNjY0OTRjZGM3MDEzNjMwZmEwYzAwZTY1NS0yMTB4MjEwLnBuZw_p_p100_p_3D_p_p100_p_3D {
+            get {
+                object obj = ResourceManager.GetObject("aHR0cDovL3d3dy55M3EubmV0L3FmeS1jb250ZW50L3VwbG9hZHMvMjAyMC8xMC85OWYxNDAxNjY0OTRjZ" +
+                        "GM3MDEzNjMwZmEwYzAwZTY1NS0yMTB4MjEwLnBuZw_p_p100_p_3D_p_p100_p_3D", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
         internal static System.Drawing.Bitmap h1 {
             get {
                 object obj = ResourceManager.GetObject("h1", resourceCulture);
@@ -186,6 +217,16 @@ namespace 自定义Uppercomputer_20200727.Properties {
         internal static System.Drawing.Bitmap h11 {
             get {
                 object obj = ResourceManager.GetObject("h11", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap Mini_Windows {
+            get {
+                object obj = ResourceManager.GetObject("Mini Windows", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

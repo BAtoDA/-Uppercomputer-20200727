@@ -9,6 +9,8 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using 自定义Uppercomputer_20200727.Nlog;
+using 自定义Uppercomputer_20200727.异常界面.报警历史;
 using 自定义Uppercomputer_20200727.控件重做;
 
 namespace 自定义Uppercomputer_20200727.异常界面
@@ -25,16 +27,15 @@ namespace 自定义Uppercomputer_20200727.异常界面
 
         private void refresh_Tick(object sender, EventArgs e)//定时器指示窗口是否忙
         {
-        
-            event_Time.Form_busy = Form2.edit_mode;//指示着用户是否开启编辑模式
-        }
+           event_Time.Form_busy = Form2.edit_mode;//指示着用户是否开启编辑模式
+        } 
         System.Windows.Forms.Timer refresh;//事件刷新定时器
         private void Form5_Shown(object sender, EventArgs e)//显示窗口事件
         {
             refresh = new System.Windows.Forms.Timer();//实例化刷新定时器
             refresh.Tick += refresh_Tick;//注册事件
             refresh.Enabled = true;
-            refresh.Interval = 3000;//默认3秒一刷
+            refresh.Interval = 2000;//默认2秒一刷
             refresh.Start();
             event_Time = new Event_time(this.skinDataGridView1,this);//开始事件登录
             event_Time.Start();//运行定时器
@@ -53,7 +54,7 @@ namespace 自定义Uppercomputer_20200727.异常界面
         {
             if (this.IsHandleCreated != true) return;//判断创建是否加载完成            
             this.BeginInvoke((MethodInvoker)delegate ()
-        {
+            {
             lock (this)
             {
                 mutex.WaitOne();
@@ -73,8 +74,34 @@ namespace 自定义Uppercomputer_20200727.异常界面
                 }
                 mutex.ReleaseMutex();
             }
-        });
+            });
+        }
+        /// <summary>
+        /// 用户点击了事件注册
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void uiButton1_Click(object sender, EventArgs e)
+        {
+            //LogUtils日志
+            LogUtils.debugWrite($"用户点击了 报警注册界面");
 
+            Event_registration event_Registration = new Event_registration();//实例化报警注册窗口
+            event_Registration.ShowDialog();//弹出窗口
+            //LogUtils日志
+            LogUtils.debugWrite($"用户点关闭 报警注册界面");
+        }
+        /// <summary>
+        /// 报警历史
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void uiButton2_Click(object sender, EventArgs e)
+        {
+            //LogUtils日志
+            LogUtils.debugWrite($"用户点击了 报警历史界面");
+            HistoryErr historyErr = new HistoryErr();
+            historyErr.Show();
         }
     }
 }

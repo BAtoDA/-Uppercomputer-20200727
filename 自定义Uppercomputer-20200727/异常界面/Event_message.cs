@@ -80,7 +80,6 @@ namespace 自定义Uppercomputer_20200727.异常界面
                 this.skinComboBox3.Visible = true;
                 this.skinLabel1.Visible = true;
                 this.skinLabel2.Visible = false;
-
             }
             else
             {
