@@ -70,7 +70,7 @@ namespace 自定义Uppercomputer_20200727.控件重做
         /// <summary>
         /// 需要显示报警的窗口对象
         /// </summary>
-        public Form5 form_run;
+        public Form form_run;
         /// <summary>
         /// 定义安全集合
         /// </summary>
@@ -85,7 +85,7 @@ namespace 自定义Uppercomputer_20200727.控件重做
         /// 获取报警条
         /// </summary>
         private ScrollingText_reform scrollingText;//获取报警条
-        public Event_time(DataGridView SkinDataGridView_1, Form5 form)//构造函数
+        public Event_time(DataGridView SkinDataGridView_1, Form form)//构造函数
         {
             //实例化一些对象
             register_Event = new List<自定义Uppercomputer_20200727.EF实体模型.Event_message>();//实例化已注册表
@@ -131,7 +131,6 @@ namespace 自定义Uppercomputer_20200727.控件重做
 
             if (Form_busy != false) { Event_ok = false; return; }//指示着窗口正忙--启用编辑模式
             if (busy != false) { return; }//指示着窗口正忙--正在遍历任务 
-                                          //ThreadPool.QueueUserWorkItem((da_e) =>//加入序列线程池
             lock (ese)
             {
                 Event_thread = new Thread(() =>//改为线程使用
@@ -142,7 +141,6 @@ namespace 自定义Uppercomputer_20200727.控件重做
                     {
                         register_Event.Clear();//清空已注册表
                         Event.Clear();//清空事件表
-                                      //SkinDataGridView.Rows.Clear();//清空已经显示的报警
                         Event = Event_EF.Event_Query();//获取所有事件
                         Event_ok = true;//遍历完成指示
                     }
@@ -311,7 +309,8 @@ namespace 自定义Uppercomputer_20200727.控件重做
             if (register_Event.Count == Event_quantity) return;//返回方法不做显示登录
             event_Messages = new ConcurrentBag<EF实体模型.Event_message>();
             foreach (var i in register_Event) event_Messages.Add(i);
-            form_run.DataGridView(event_Messages);//事件显示登录
+            //form_run.DataGridView(event_Messages);//事件显示登录
+            ((dynamic)form_run).DataGridView(event_Messages);//事件显示登录
             Event_quantity = register_Event.Count;//记录保持     
         }
         /// <summary>
@@ -396,8 +395,6 @@ namespace 自定义Uppercomputer_20200727.控件重做
             if (busy != false) { return; }//指示着窗口正忙--正在遍历任务 
             ThreadPool.QueueUserWorkItem((da_e) =>//加入序列线程池
             { 
-            //lock (ese)
-            //{
                 Thread.Sleep(100);//保证线程安全
                 busy = true;//指示定时器是否正在忙
                 if (Event_ok != true)//指示着上一次是否遍历过
@@ -414,7 +411,6 @@ namespace 自定义Uppercomputer_20200727.控件重做
                     plc(Event[i], scrollingText);//遍历事件
                 }
                 busy = false;//指示定时器是否正在忙
-           // }
             });
         }
         /// <summary>

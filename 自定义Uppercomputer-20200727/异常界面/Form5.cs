@@ -27,7 +27,7 @@ namespace 自定义Uppercomputer_20200727.异常界面
 
         private void refresh_Tick(object sender, EventArgs e)//定时器指示窗口是否忙
         {
-           event_Time.Form_busy = Form2.edit_mode;//指示着用户是否开启编辑模式
+            event_Time.Form_busy = Form2.edit_mode;//指示着用户是否开启编辑模式
         } 
         System.Windows.Forms.Timer refresh;//事件刷新定时器
         private void Form5_Shown(object sender, EventArgs e)//显示窗口事件
@@ -50,6 +50,10 @@ namespace 自定义Uppercomputer_20200727.异常界面
             event_Time.Dispose();
             Thread.Sleep(200);
         }
+        /// <summary>
+        /// 登录事件刷新方法 不可删除
+        /// </summary>
+        /// <param name="register_Event_1"></param>
         public void DataGridView(ConcurrentBag<自定义Uppercomputer_20200727.EF实体模型.Event_message> register_Event_1)//显示已经登录的事件
         {
             if (this.IsHandleCreated != true) return;//判断创建是否加载完成            
