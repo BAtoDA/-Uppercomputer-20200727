@@ -204,6 +204,39 @@ namespace 自定义Uppercomputer_20200727.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
+        internal static System.Drawing.Bitmap aHR0cDovL3d3dy55M3EubmV0L3FmeS1jb250ZW50L3VwbG9hZHMvMjAyMS8wNi82ZWE2YTY0YjM1Y2E3MDMwMWM5MTIxMDZiNzMyNzI0MS0yMTB4MjEwLnBuZw_p_p100_p_3D_p_p100_p_3D {
+            get {
+                object obj = ResourceManager.GetObject("aHR0cDovL3d3dy55M3EubmV0L3FmeS1jb250ZW50L3VwbG9hZHMvMjAyMS8wNi82ZWE2YTY0YjM1Y2E3M" +
+                        "DMwMWM5MTIxMDZiNzMyNzI0MS0yMTB4MjEwLnBuZw_p_p100_p_3D_p_p100_p_3D", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap aHR0cDovL3d3dy55M3EubmV0L3FmeS1jb250ZW50L3VwbG9hZHMvMjAyMS8wNi8wYTAwMzU0ODkxM2FmZmZlMGZjNzMyMTFiNDZkYmQzOS0yMTB4MjEwLnBuZw_p_p100_p_3D_p_p100_p_3D {
+            get {
+                object obj = ResourceManager.GetObject("aHR0cDovL3d3dy55M3EubmV0L3FmeS1jb250ZW50L3VwbG9hZHMvMjAyMS8wNi8wYTAwMzU0ODkxM2FmZ" +
+                        "mZlMGZjNzMyMTFiNDZkYmQzOS0yMTB4MjEwLnBuZw_p_p100_p_3D_p_p100_p_3D", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap aHR0cDovL3d3dy55M3EubmV0L3FmeS1jb250ZW50L3VwbG9hZHMvMjAyMS8wNi8yYTQ1ZGEwOWQ1NzcwNWJkNzA3ZDY5YTBlYmVmMWM1Zi0yMTB4MjEwLnBuZw_p_p100_p_3D_p_p100_p_3D {
+            get {
+                object obj = ResourceManager.GetObject("aHR0cDovL3d3dy55M3EubmV0L3FmeS1jb250ZW50L3VwbG9hZHMvMjAyMS8wNi8yYTQ1ZGEwOWQ1NzcwN" +
+                        "WJkNzA3ZDY5YTBlYmVmMWM1Zi0yMTB4MjEwLnBuZw_p_p100_p_3D_p_p100_p_3D", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
         internal static System.Drawing.Bitmap h1 {
             get {
                 object obj = ResourceManager.GetObject("h1", resourceCulture);

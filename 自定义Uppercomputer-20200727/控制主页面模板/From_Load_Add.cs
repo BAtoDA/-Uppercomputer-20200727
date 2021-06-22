@@ -39,7 +39,7 @@ namespace 自定义Uppercomputer_20200727.控制主页面模板
         private async void Conrolt_add(string From_Name, ControlCollection control, List<ImageList> imageLists_1, Form form)
         {
             Button_EFbase parameter_Query_Add = new Button_EFbase();//创建EF查询对象
-            await Task.Run(() =>
+            Form_event.BeginInvoke((EventHandler)delegate
             {
                 Load_Add(parameter_Query_Add.Button_Parameter_Query<Button_Class>(From_Name, "FORM"));
                 Load_Add(parameter_Query_Add.Button_Parameter_Query<picture_Class>(From_Name, "FORM"));
@@ -49,6 +49,9 @@ namespace 自定义Uppercomputer_20200727.控制主页面模板
                 Load_Add(parameter_Query_Add.Button_Parameter_Query<LedBulb_Class>(From_Name, "FORM"));
                 Load_Add(parameter_Query_Add.Button_Parameter_Query<ImageButton_Class>(From_Name, "FORM"));
                 Load_Add(parameter_Query_Add.Button_Parameter_Query<doughnut_Chart_Class>(From_Name, "FORM"));
+            });
+            Form_event.BeginInvoke((EventHandler)delegate
+            {
                 Load_Add(parameter_Query_Add.Button_Parameter_Query<histogram_Chart_Class>(From_Name, "FORM"));
                 Load_Add(parameter_Query_Add.Button_Parameter_Query<oscillogram_Chart_Class>(From_Name, "FORM"));
                 Load_Add(parameter_Query_Add.Button_Parameter_Query<AnalogMeter_Class>(From_Name, "FORM"));

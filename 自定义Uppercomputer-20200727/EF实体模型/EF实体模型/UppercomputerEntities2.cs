@@ -145,6 +145,7 @@ namespace 自定义Uppercomputer_20200727.EF实体模型
         public virtual DbSet<Conveyor_Class> Conveyor_Class { get; set; }
         public virtual DbSet<Valve_parameter> Valve_parameter { get; set; }
         public virtual DbSet<Valve_Class> Valve_Class { get; set; }
+        public virtual DbSet<Alarmhistories> Alarmhistory { get; set; }
         #endregion
     }
 }

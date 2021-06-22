@@ -82,7 +82,8 @@ namespace 自定义Uppercomputer_20200727.EF实体模型.EFtoSQL操作类重写
                     db.Conveyor_parameter,
                     db.Conveyor_Class,
                     db.Valve_parameter,
-                    db.Valve_Class
+                    db.Valve_Class,
+                    db.Alarmhistory
 #endregion
             };
                 return db;
@@ -170,6 +171,27 @@ namespace 自定义Uppercomputer_20200727.EF实体模型.EFtoSQL操作类重写
             }
         }
         /// <summary>
+        /// 插入参数--可以不使用<T>去约束 IDE根据传入参数的对象自动推断
+        /// </summary>
+        /// <typeparam name="T">传入约束类型</typeparam>
+        /// <param name="parameter">该类型的对象</param>
+        /// <returns></returns>
+        public string Button_Parameter_Add<T>(T parameter,int id)
+        {
+            lock (this)
+            {
+                mutex.WaitOne(3000);
+                UppercomputerEntities2 db = new Button_EFbase().EFsurface();
+                //查询泛型约束 需要修改的表
+                var surface = EFbase.Where(pi => pi.GetType().GenericTypeArguments[0].Name == typeof(T).Name).FirstOrDefault();
+                //表示SQL中不存在该ID数据--允许插入数据
+                surface.Add(parameter);//构造添加到表的SQL语句
+                db.SaveChanges();//执行操作
+                return "OK";
+                mutex.ReleaseMutex();
+            }
+        }
+        /// <summary>
         /// 查询参数 根据泛型<T>自动推断需要查询的表
         /// </summary>
         /// <typeparam name="T">传入约束类型</typeparam>
@@ -187,8 +209,8 @@ namespace 自定义Uppercomputer_20200727.EF实体模型.EFtoSQL操作类重写
                         _ = new Button_EFbase().EFsurface();
                         //查询泛型约束 需要修改的表
                         var surface = EFbase.Where(pi => pi.GetType().GenericTypeArguments[0].Name == typeof(T).Name).FirstOrDefault();
-                        //var reachanull = (from pi in (IQueryable<T>)surface where true select pi).FirstOrDefault();
-                        if ((IQueryable<T>)surface == null) continue;
+                        var reachanull = (from pi in (IQueryable<T>)surface where true select pi).FirstOrDefault();
+                        if ((IQueryable<T>)surface == null|| reachanull==null) continue;
                         var reach = (from pi in (IQueryable<T>)surface where true select pi).ToList();
                         if (reach.Count == 0)
                             reach = (from pi in (IQueryable<T>)surface where true select pi).ToList();
@@ -211,6 +233,7 @@ namespace 自定义Uppercomputer_20200727.EF实体模型.EFtoSQL操作类重写
             }
             return new T();
         }
+     
         /// <summary>
         /// 查询窗口参数根据field去判断 根据泛型<T>自动推断需要查询的表
         /// </summary>

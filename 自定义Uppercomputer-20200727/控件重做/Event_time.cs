@@ -139,7 +139,7 @@ namespace 自定义Uppercomputer_20200727.控件重做
             {
                 Event_thread = new Thread(() =>//改为线程使用
                 {
-                    Thread.Sleep(100);//保证线程安全
+                    Thread.Sleep(10);//保证线程安全
                     busy = true;//指示定时器是否正在忙
                     if (Event_ok != true)//指示着上一次是否遍历过
                     {
@@ -244,15 +244,15 @@ namespace 自定义Uppercomputer_20200727.控件重做
                     switch (event_Message.类型)
                     {
                         case 0:
-                            if (macroinstruction_data<bool>.M_Data[event_Message.设备_具体地址.Trim().ToInt32()].IsNull()!=true)
+                            if (macroinstruction_data<bool>.M_Data[event_Message.设备_具体地址.Trim().ToInt32()].IsNull() != true)
                                 trigger_Bit(macroinstruction_data<bool>.M_Data[event_Message.设备_具体地址.Trim().ToInt32()], event_Message);//判断bit触发条件
                             break;
-                        case 1:                         
-                                try
-                                {
-                                     if (macroinstruction_data<int>.D_Data[event_Message.设备_具体地址.Trim().ToInt32()].IsNull() != true)
-                                     trigger_word((Convert.ToInt32(macroinstruction_data<int>.D_Data[event_Message.设备_具体地址.Trim().ToInt32()])).ToString() ?? "0", event_Message);//判断字触发条件
-                                }
+                        case 1:
+                            try
+                            {
+                                if (macroinstruction_data<int>.D_Data[event_Message.设备_具体地址.Trim().ToInt32()].IsNull() != true)
+                                    trigger_word((Convert.ToInt32(macroinstruction_data<int>.D_Data[event_Message.设备_具体地址.Trim().ToInt32()])).ToString() ?? "0", event_Message);//判断字触发条件
+                            }
                             catch { }
                             break;
                     }
@@ -310,18 +310,23 @@ namespace 自定义Uppercomputer_20200727.控件重做
                     break;
             }
             //if (register_Event.Count == Event_quantity) return;//返回方法不做显示登录
-            event_Messages = new ConcurrentBag<EF实体模型.Event_message>();
-            //开始把事件显示到表中
-            if (register_Event.Intersect(Event_quantity).ToList().Count != 0|| (register_Event.Count==0&&Event_quantity.Count==0)) return;
-            //找出不同的元素(即交集的补集)
-            var diffArr = register_Event.Where(c => !Event_quantity.Contains(c)).ToArray();
-            //遍历完成启动事件
-            if (History != null)
-                this.History.Invoke(diffArr, new EventArgs());
-            foreach (var i in register_Event) event_Messages.Add(i);
-            ((dynamic)form_run).DataGridView(event_Messages);//事件显示登录
-            Event_quantity = new ConcurrentBag<EF实体模型.Event_message>();
-            register_Event.ForEach(s1=> { Event_quantity.Add(s1); });//记录保持     
+            lock (this)
+            {
+                event_Messages = new ConcurrentBag<EF实体模型.Event_message>();
+                //找出不同的元素(即交集的补集)
+                var diffArr = register_Event.Where(c => !Event_quantity.Contains(c)).ToList();
+                var diffArr1 = Event_quantity.Where(c => !register_Event.Contains(c)).ToList();
+                //开始把事件显示到表中
+                if ((diffArr.Count == 0 && diffArr1.Count == 0) || (register_Event.Count == 0 && Event_quantity.Count == 0)) return;
+
+                //遍历完成启动事件
+                if (History != null)
+                    this.History.Invoke(diffArr.Count == 0 ? diffArr1 : diffArr, new EventArgs());
+                foreach (var i in register_Event) event_Messages.Add(i);
+                ((dynamic)form_run).DataGridView(event_Messages);//事件显示登录
+                Event_quantity = new ConcurrentBag<EF实体模型.Event_message>();
+                register_Event.ForEach(s1 => { Event_quantity.Add(s1); });//记录保持     
+            }
         }
         /// <summary>
         /// 位触发条件
@@ -574,11 +579,14 @@ namespace 自定义Uppercomputer_20200727.控件重做
                         }
                     }
                     break;
-
             }
             event_Messages = new ConcurrentBag<EF实体模型.Event_message>();
+            //找出不同的元素(即交集的补集)
+            var diffArr = register_Event.Where(c => !Event_quantity.Contains(c)).ToList();
+            var diffArr1 = Event_quantity.Where(c => !register_Event.Contains(c)).ToList();
             //开始把事件显示到表中
-            if (register_Event.Intersect(Event_quantity).Count() != 0) return;
+            if ((diffArr.Count == 0 && diffArr1.Count == 0) || (register_Event.Count == 0 && Event_quantity.Count == 0)) return;
+
             foreach (var i in register_Event) event_Messages.Add(i);
             scrollingText_event(scrollingText,event_Messages);//事件显示登录
             Event_quantity = new ConcurrentBag<EF实体模型.Event_message>();

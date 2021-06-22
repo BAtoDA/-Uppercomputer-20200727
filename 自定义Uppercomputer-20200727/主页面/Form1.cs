@@ -20,6 +20,7 @@ using 自定义Uppercomputer_20200727.控制主页面模板.模板窗口接口;
 using 自定义Uppercomputer_20200727.控件重做;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
+using 自定义Uppercomputer_20200727.EF实体模型.EFtoSQL操作类重写;
 
 namespace 自定义Uppercomputer_20200727
 {
@@ -257,13 +258,82 @@ namespace 自定义Uppercomputer_20200727
             event_Time.Dispose();
         }
         /// <summary>
+        /// 用于记录已经发生的报警--用于显示处理时间
+        /// </summary>
+        private List<Alarmhistories> EventMessages=new List<Alarmhistories>();
+        /// <summary>
+        /// 用于记录已经发生的报 
+        /// </summary>
+        private List<Event_message> Event = new List<Event_message>();
+        /// <summary>
         /// 报警历史到SQL数据库中
         /// </summary>
         /// <param name="send"></param>
         /// <param name="e"></param>
         private void HistorySQL(object send,EventArgs e)
         {
+            Button_EFbase db = new Button_EFbase();
+            var Eventdata = ((List<Event_message>)send).ToList();
+            //找出不同的元素(即交集的补集)
+            foreach (var i in ((List<Event_message>)send))
+            {
+                var data = EventMessages.Where(pi => pi.设备.Trim() == i.设备.Trim() && pi.设备_具体地址.Trim() == i.设备_具体地址.Trim() && pi.设备_地址.Trim() == i.设备_地址.Trim() && pi.报警内容.Trim() == i.报警内容.Trim()).FirstOrDefault();
+                if(data!=null)
+                {
+                    data.处理完成时间 = DateTime.Now.ToString("F");
+                    //上传到SQL
+                    db.Button_Parameter_Add(data, 0);
+                    //移除对象
+                    EventMessages.Remove(data);
+                    Event.Remove(i);
+                    Eventdata.Remove(i);
+                }
+            }
+            var diffArr = Eventdata.Where(c => !Event.Contains(c)).ToList();
+            //var diffArr1 = Event.Where(c => !Eventdata.Contains(c)).ToList();
 
+            foreach (var i in diffArr)
+            {
+                var data = EventMessages.Where(pi => pi.设备.Trim() == i.设备.Trim() && pi.设备_具体地址.Trim() == i.设备_具体地址.Trim() && pi.设备_地址.Trim() == i.设备_地址.Trim() && pi.报警内容.Trim() == i.报警内容.Trim()).FirstOrDefault();
+                if (data == null)
+                {
+                    Event.Add(i);
+                    //转换数据到浅表
+                    EventMessages.Add(new Alarmhistories()
+                    {
+                        设备_具体地址 = i.设备_具体地址,
+                        报警内容 = i.报警内容,
+                        设备 = i.设备,
+                        设备_地址 = i.设备_地址,
+                        报警时间 = DateTime.Now.ToString("F"),
+                        处理完成时间 = null,
+                        事件关联ID = i.ID,
+                        类型 = Convert.ToBoolean(i.类型),
+                        ID=0
+                    });
+                }
+                else
+                {
+                    data.处理完成时间 = DateTime.Now.ToString("F");
+                    //上传到SQL
+                    db.Button_Parameter_Add(data, 0);
+                    //移除对象
+                    EventMessages.Remove(data);
+                    Event.Remove(i);
+                }
+            }
+            ////表中没有数据
+            //if (diffArr.Count ==0)
+            //{
+            //    foreach (var i in EventMessages)
+            //    {
+            //        i.处理完成时间 = DateTime.Now.ToString("f");
+            //        //上传到SQL
+            //        // db.Button_Parameter_Add(i, 0);
+            //    }
+            //    EventMessages.Clear();
+            //    Event.Clear();
+            //}
         }
         /// <summary>
         /// 登录事件刷新方法 不可删除
@@ -272,28 +342,6 @@ namespace 自定义Uppercomputer_20200727
         public void DataGridView(ConcurrentBag<自定义Uppercomputer_20200727.EF实体模型.Event_message> register_Event_1)//显示已经登录的事件
         {
             if (this.IsHandleCreated != true) return;//判断创建是否加载完成            
-            //this.BeginInvoke((MethodInvoker)delegate ()
-            //{
-            //    lock (this)
-            //    {
-            //        mutex.WaitOne();
-            //        List<自定义Uppercomputer_20200727.EF实体模型.Event_message> register_Event = register_Event_1.ToList();//获取对象
-            //        if (HistorygridView.Rows.Count < 0) return;//如果控件为null直接返回
-            //        HistorygridView.Rows.Clear();//清除所有数据
-            //        HistorygridView.Rows.Add();//先添加行            
-            //        for (int i = 0; i < register_Event.Count; i++)
-            //        {
-            //            if (HistorygridView.Rows.Count < i) HistorygridView.Rows.Add();//先添加行 
-            //            HistorygridView.Rows[i].Cells[0].Value = register_Event[i].ID;
-            //            HistorygridView.Rows[i].Cells[1].Value = DateTime.Now.ToString();
-            //            HistorygridView.Rows[i].Cells[2].Value = DateTime.Now.Date.ToString();
-            //            HistorygridView.Rows[i].Cells[3].Value = register_Event[i].报警内容.Trim();
-            //            HistorygridView.Rows[i].Cells[4].Value = i.ToString();
-            //            HistorygridView.Rows.Add();//先添加行
-            //        }
-            //        mutex.ReleaseMutex();
-            //    }
-            //});
         }
     }
 }
