@@ -59,9 +59,6 @@ namespace 自定义Uppercomputer_20200727
         public static string SQLpassword { get; set; } = "3131458";
         private void Home_Shown(object sender, EventArgs e)
         {
-            //进程间通讯程序 启动 
-            //Form1 form1 = new Form1();
-            //form1.Show();
             //监听
             SocketServer socketServer = new SocketServer(new System.Net.IPEndPoint(System.Net.IPAddress.Parse("127.0.0.1"), 9500));
             socketServer.SocketLoad();
@@ -246,7 +243,6 @@ namespace 自定义Uppercomputer_20200727
             event_Time = new Event_time(HistorygridView, this);//开始事件登录
             event_Time.Start();//运行定时器
             event_Time.History += HistorySQL;
-
         }
 
         private void Home_FormClosing(object sender, FormClosingEventArgs e)
@@ -290,7 +286,6 @@ namespace 自定义Uppercomputer_20200727
                 }
             }
             var diffArr = Eventdata.Where(c => !Event.Contains(c)).ToList();
-            //var diffArr1 = Event.Where(c => !Eventdata.Contains(c)).ToList();
 
             foreach (var i in diffArr)
             {

@@ -16,10 +16,6 @@ namespace 自定义Uppercomputer_20200727.异常界面.报警历史
 {
     public partial class HistoryErr : CCWin.Skin_DevExpress
     {
-        /// <summary>
-        /// 用于保存历史报警源数据
-        /// </summary>
-        List<Alarmhistories> alarmhistories = new List<Alarmhistories>();
         public HistoryErr()
         {
             InitializeComponent();
@@ -35,7 +31,6 @@ namespace 自定义Uppercomputer_20200727.异常界面.报警历史
             using (UppercomputerEntities2 db = new UppercomputerEntities2())
             {
                 var data = db.Alarmhistory.Where(pi => true).Select(p => p).ToList();
-                alarmhistories = data;
                 var query = (from q in data where DateTime.Parse(q.报警时间.Trim()).ToString("D") == DateTime.Now.ToString("D") select q).ToList();
                 //填充当天报警次数
                 this.uiLabel2.Text = query.Count.ToString();
@@ -48,6 +43,24 @@ namespace 自定义Uppercomputer_20200727.异常界面.报警历史
                 this.uiLabel5.Text = Monthly.Count.ToString();
                 //填充报警历史
                 this.uiDataGridView1.DataSource = data;
+                alarmhistories = data;
+                //填充报警历史的查询项
+                this.uiComboBox1.Items.Clear();
+                this.uiComboBox2.Items.Clear();
+                this.uiComboBox3.Items.Clear();
+                data.ForEach(s => 
+                {
+                    this.uiComboBox1.Items.Add(s.报警时间.Trim());
+                    this.uiComboBox2.Items.Add(s.处理完成时间.Trim());
+                    this.uiComboBox3.Items.Add(s.设备.Trim());
+                
+                });
+                this.uiComboBox1.Items.Add("全部");
+                this.uiComboBox2.Items.Add("全部");
+                this.uiComboBox3.Items.Add("全部");
+                this.uiComboBox1.Text = "全部";
+                this.uiComboBox2.Text = "全部";
+                this.uiComboBox3.Text = "全部";
                 //填充报警注册内容
                 var Gridviwe2 = db.Event_message.Where(pi => true).ToList();
                 Gridviwe2.ForEach(s =>
@@ -127,7 +140,6 @@ namespace 自定义Uppercomputer_20200727.异常界面.报警历史
             using (UppercomputerEntities2 db = new UppercomputerEntities2())
             {
                 var data = db.Alarmhistory.Where(pi => true).Select(p => p).ToList();
-                alarmhistories = data;
                 var query = (from q in data where DateTime.Parse(q.报警时间.Trim()).ToString("D") == DateTime.Now.ToString("D") select q).ToList();
                 //填充当天报警次数
                 this.uiLabel2.Text = query.Count.ToString();
@@ -265,8 +277,8 @@ namespace 自定义Uppercomputer_20200727.异常界面.报警历史
             }
             uiDataGridView3.DataSource = showErrs;
             uiDataGridView3.Columns[0].Width = 300;
-            uiDataGridView3.Columns[2].Width = 35;
-            uiDataGridView3.Columns[3].Width = 35;
+            uiDataGridView3.Columns[2].Width = 80;
+            uiDataGridView3.Columns[3].Width = 50;
             uiDataGridView3.Columns[4].Width = 70;
         }
         /// <summary>
@@ -331,6 +343,31 @@ namespace 自定义Uppercomputer_20200727.异常界面.报警历史
         {
             HistoryErrTiming();
         }
+        /// <summary>
+        /// 用于保存历史报警源数据
+        /// </summary>
+        List<Alarmhistories> alarmhistories = new List<Alarmhistories>();
+        /// <summary>
+        /// 用户点击了刷新数据源
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void uiButton1_Click(object sender, EventArgs e)
+        {
+            using(UppercomputerEntities2 db=new UppercomputerEntities2())
+            {
+                alarmhistories = db.Alarmhistory.Where(pi => true).OrderBy(p=>p.报警时间.Trim()).ToList();
+                this.uiDataGridView1.DataSource = alarmhistories;
+            }
+        }
+        /// <summary>
+        /// 查询报警历史
+        /// </summary>
+        public void QueryErr(object sender, EventArgs e)
+        {
+            if (this.uiDataGridView1.DataSource != null&& alarmhistories!=null)
+                this.uiDataGridView1.DataSource= alarmhistories.Where(pi => pi.报警时间 == (uiComboBox1.Text == "全部" ? pi.报警时间 : uiComboBox1.Text) && pi.处理完成时间 == (uiComboBox2.Text == "全部" ? pi.处理完成时间 : uiComboBox2.Text) && pi.设备 == (this.uiComboBox3.Text == "全部" ? pi.设备 : this.uiComboBox3.Text)).OrderBy(x=>x.报警时间.Trim()).ToList();
+        }
     }
     public class StoreInfo
     {
@@ -342,7 +379,6 @@ namespace 自定义Uppercomputer_20200727.异常界面.报警历史
     {
         public string ErrID { get; set; }
         public IGrouping<string,Alarmhistories> List { get; set; }
-
     }
     [Serializable]
     public class ShowErr
