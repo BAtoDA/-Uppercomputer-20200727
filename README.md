@@ -63,9 +63,8 @@
 ![image](https://user-images.githubusercontent.com/60955669/122644652-ea149500-d148-11eb-841f-a0f155b066e5.png)
 ![image](https://user-images.githubusercontent.com/60955669/122644661-f4369380-d148-11eb-89a9-a78fa82b6c54.png)
 ![image](https://user-images.githubusercontent.com/60955669/122644664-fa2c7480-d148-11eb-80f0-cf3baedb0e45.png) ![image](https://user-images.githubusercontent.com/60955669/122659540-ccc4e280-d1ab-11eb-80f7-58e27299fd0b.png)
+![@N@AAWKXC0{}5`Y%WZN4A03](https://user-images.githubusercontent.com/60955669/123022820-f0389900-d408-11eb-9970-8d7f57fba15f.png)
 
-
- 
  
 BUG与反馈：  
 开源自由就好BUG什么的肯定有哈哈。  
