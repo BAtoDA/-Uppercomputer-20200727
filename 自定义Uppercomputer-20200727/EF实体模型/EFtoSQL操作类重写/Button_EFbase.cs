@@ -27,7 +27,7 @@ namespace 自定义Uppercomputer_20200727.EF实体模型.EFtoSQL操作类重写
         {
             lock (this)
             {
-                mutex.WaitOne(3000);
+                //mutex.WaitOne(3000);
                 UppercomputerEntities2 db = new UppercomputerEntities2();
                 EFbase = new List<dynamic>()
                 {
@@ -87,7 +87,7 @@ namespace 自定义Uppercomputer_20200727.EF实体模型.EFtoSQL操作类重写
                     db.Alarmhistory
 #endregion
             };
-                mutex.ReleaseMutex();
+                //mutex.ReleaseMutex();
                 return db;
             }
         }
@@ -101,7 +101,7 @@ namespace 自定义Uppercomputer_20200727.EF实体模型.EFtoSQL操作类重写
         {
             lock (muxt)
             {
-                mutex.WaitOne(3000);
+              //  mutex.WaitOne(3000);
                 var entities2 = new Button_EFbase();
                 entities2.EFsurface();
                 //查询泛型约束 需要修改的表
@@ -114,7 +114,7 @@ namespace 自定义Uppercomputer_20200727.EF实体模型.EFtoSQL操作类重写
                         return "OK";
                     }
                 }
-                mutex.ReleaseMutex();
+              //  mutex.ReleaseMutex();
                 return "NG";
             }
         }
@@ -151,7 +151,7 @@ namespace 自定义Uppercomputer_20200727.EF实体模型.EFtoSQL操作类重写
         {
             lock (this)
             {
-                mutex.WaitOne(3000);
+               // mutex.WaitOne(3000);
                 UppercomputerEntities2 db = new Button_EFbase().EFsurface();
                 //查询泛型约束 需要修改的表
                 var surface = EFbase.Where(pi => pi.GetType().GenericTypeArguments[0].Name == typeof(T).Name).FirstOrDefault();
@@ -168,7 +168,7 @@ namespace 自定义Uppercomputer_20200727.EF实体模型.EFtoSQL操作类重写
                     db.SaveChanges();//执行操作
                     return "OK";
                 }
-                mutex.ReleaseMutex();
+               // mutex.ReleaseMutex();
                 return "NG";
             }
         }
@@ -182,14 +182,14 @@ namespace 自定义Uppercomputer_20200727.EF实体模型.EFtoSQL操作类重写
         {
             lock (this)
             {
-                mutex.WaitOne(3000);
+               // mutex.WaitOne(3000);
                 UppercomputerEntities2 db = new Button_EFbase().EFsurface();
                 //查询泛型约束 需要修改的表
                 var surface = EFbase.Where(pi => pi.GetType().GenericTypeArguments[0].Name == typeof(T).Name).FirstOrDefault();
                 //表示SQL中不存在该ID数据--允许插入数据
                 surface.Add(parameter);//构造添加到表的SQL语句
                 db.SaveChanges();//执行操作
-                mutex.ReleaseMutex();
+               // mutex.ReleaseMutex();
                 return "OK";
             }
         }
@@ -199,38 +199,29 @@ namespace 自定义Uppercomputer_20200727.EF实体模型.EFtoSQL操作类重写
         /// <typeparam name="T">传入约束类型</typeparam>
         /// <param name="ID">查询条件内容</param>
         /// <returns></returns>
-        public T Button_Parameter_Query<T>(string ID)where T:new()
+        public T Button_Parameter_Query<T>(string ID) where T : new()
         {
-            for (int i = 0; i < 3; i ++)
+            lock (this)
             {
-                try
+                // mutex.WaitOne(3000);
+                _ = new Button_EFbase().EFsurface();
+                //查询泛型约束 需要修改的表
+                var surface = EFbase.Where(pi => pi.GetType().GenericTypeArguments[0].Name == typeof(T).Name).FirstOrDefault();
+                if (surface != null)
                 {
-                    lock (this)
+                    var rew = (IQueryable<T>)surface;
+                    var reachanull = rew.Where(pi => true).FirstOrDefault();
+                    var reach = rew.Where(p => true).ToList();
+                    //查询SQL数据
+                    foreach (dynamic i1 in reach)
                     {
-                        mutex.WaitOne(3000);
-                        _ = new Button_EFbase().EFsurface();
-                        //查询泛型约束 需要修改的表
-                        var surface = EFbase.Where(pi => pi.GetType().GenericTypeArguments[0].Name == typeof(T).Name).FirstOrDefault();
-                        var reachanull = (from pi in (IQueryable<T>)surface where true select pi).FirstOrDefault();
-                        if ((IQueryable<T>)surface == null|| reachanull==null) continue;
-                        var reach = (from pi in (IQueryable<T>)surface where true select pi).ToList();
-                        if (reach.Count == 0)
-                            reach = (from pi in (IQueryable<T>)surface where true select pi).ToList();
-                        //查询SQL数据
-                        foreach (dynamic i1 in reach)
+                        if (i1.ID.Trim() == ID.Trim())
                         {
-                            if (i1.ID.Trim() == ID.Trim())
-                            {
-                                return i1;
-                            }
+                            return i1;
                         }
-                        mutex.ReleaseMutex();
-                        return new T();
                     }
-                }
-                catch
-                {
-                    continue;
+                    // mutex.ReleaseMutex();
+                    return new T();
                 }
             }
             return new T();
@@ -249,40 +240,44 @@ namespace 自定义Uppercomputer_20200727.EF实体模型.EFtoSQL操作类重写
             {
                 lock (mux)
                 {
-                    mutex.WaitOne(5000);
+                    //mutex.WaitOne(5000);
                     //创建表
                     List<T> Data = new List<T>();
                     _ = new Button_EFbase().EFsurface();
                     //查询泛型约束 需要修改的表
                     var surface = EFbase.Where(pi => pi.GetType().GenericTypeArguments[0].Name == typeof(T).Name).FirstOrDefault();
-                    var reachanull = (from pi in (IQueryable<T>)surface where true select pi).FirstOrDefault();
-                    if ((IQueryable<T>)surface == null || reachanull == null) continue;
-                    //查询SQL数据
-                    switch (field)
+                    if (surface != null)
                     {
-                        case "FORM":
-                            foreach (dynamic i1 in from pi in (IQueryable<T>)surface where true select pi)
-                            {
-                                if (i1.FORM.Trim() == FORM.Trim())
+                        var reach = (IQueryable<T>)surface;
+                        var reachanull = reach.Where(p => true).FirstOrDefault();
+                        if ((IQueryable<T>)surface == null || reachanull == null) continue;
+                        //查询SQL数据
+                        switch (field)
+                        {
+                            case "FORM":
+                                foreach (dynamic i1 in from pi in (IQueryable<T>)surface where true select pi)
                                 {
-                                    Data.Add(i1);
-                                }
+                                    if (i1.FORM.Trim() == FORM.Trim())
+                                    {
+                                        Data.Add(i1);
+                                    }
 
-                            }
-                            return Data;
-                        case "控件归属":
-                            foreach (dynamic i1 in from pi in (IQueryable<T>)surface where true select pi)
-                            {
-                                if (i1.控件归属.Trim() == FORM.Trim())
+                                }
+                                return Data;
+                            case "控件归属":
+                                foreach (dynamic i1 in from pi in (IQueryable<T>)surface where true select pi)
                                 {
-                                    Data.Add(i1);
-                                }
+                                    if (i1.控件归属.Trim() == FORM.Trim())
+                                    {
+                                        Data.Add(i1);
+                                    }
 
-                            }
-                            return Data;
+                                }
+                                return Data;
+                        }
+                        // mutex.ReleaseMutex();
+                        return Data;
                     }
-                    mutex.ReleaseMutex();
-                    return Data;            
                 }
             }
             return new List<T>();
@@ -367,21 +362,24 @@ namespace 自定义Uppercomputer_20200727.EF实体模型.EFtoSQL操作类重写
         /// <returns></returns>
         public string Button_Parameter_delete<T>(string ID)
         {
-            mutex.WaitOne(5000);
+           // mutex.WaitOne(5000);
             var db = new Button_EFbase().EFsurface();
             //查询泛型约束 需要修改的表
             var surface = EFbase.Where(pi => pi.GetType().GenericTypeArguments[0].Name == typeof(T).Name).FirstOrDefault();
-            //查询SQL数据
-            foreach (dynamic i1 in from pi in (IQueryable<T>)surface where true select pi)
+            if (surface != null)
             {
-                if (i1.ID.Trim() == ID.Trim())
+                //查询SQL数据
+                foreach (dynamic i1 in from pi in (IQueryable<T>)surface where true select pi)
                 {
-                    surface.Remove(i1);
-                    db.SaveChanges();
-                    return "OK";
+                    if (i1.ID.Trim() == ID.Trim())
+                    {
+                        surface.Remove(i1);
+                        db.SaveChanges();
+                        return "OK";
+                    }
                 }
             }
-            mutex.ReleaseMutex();
+           // mutex.ReleaseMutex();
             return "NG";
         }
         /// <summary>
@@ -471,7 +469,7 @@ namespace 自定义Uppercomputer_20200727.EF实体模型.EFtoSQL操作类重写
         /// <returns></returns>
         public string Button_Parameter_modification<T>(string ID,T Parameter)
         {
-            mutex.WaitOne(5000);
+          //  mutex.WaitOne(5000);
             //获取实体模型对象
             var db = new Button_EFbase().EFsurface();
             //查询泛型约束 需要修改的表
@@ -511,7 +509,7 @@ namespace 自定义Uppercomputer_20200727.EF实体模型.EFtoSQL操作类重写
                         i1.FROM= Form;
                     }
                     db.SaveChanges();
-                    mutex.ReleaseMutex();
+                  //  mutex.ReleaseMutex();
                     return "OK"; 
                 }
             }

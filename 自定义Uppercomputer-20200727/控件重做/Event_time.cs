@@ -310,24 +310,33 @@ namespace 自定义Uppercomputer_20200727.控件重做
                     break;
             }
             //if (register_Event.Count == Event_quantity) return;//返回方法不做显示登录
-            lock (this)
-            {
-                event_Messages = new ConcurrentBag<EF实体模型.Event_message>();
-                //找出不同的元素(即交集的补集)
-                var diffArr = register_Event.Where(c => !Event_quantity.Contains(c)).ToList();
-                var diffArr1 = Event_quantity.Where(c => !register_Event.Contains(c)).ToList();
-                //开始把事件显示到表中
-                if ((diffArr.Count == 0 && diffArr1.Count == 0) || (register_Event.Count == 0 && Event_quantity.Count == 0)) return;
-
-                //遍历完成启动事件
-                if (History != null)
-                    this.History.Invoke(diffArr.Count == 0 ? diffArr1 : diffArr, new EventArgs());
-                foreach (var i in register_Event) event_Messages.Add(i);
-                ((dynamic)form_run).DataGridView(event_Messages);//事件显示登录
-                Event_quantity = new ConcurrentBag<EF实体模型.Event_message>();
-                register_Event.ForEach(s1 => { Event_quantity.Add(s1); });//记录保持     
-            }
+            NewMethod();
         }
+
+        private async void NewMethod()
+        {
+            await Task.Run(() =>
+            {
+                lock (this)
+                {
+                    event_Messages = new ConcurrentBag<EF实体模型.Event_message>();
+                    //找出不同的元素(即交集的补集)
+                    var diffArr = register_Event.Where(c => !Event_quantity.Contains(c)).ToList();
+                    var diffArr1 = Event_quantity.Where(c => !register_Event.Contains(c)).ToList();
+                    //开始把事件显示到表中
+                    if ((diffArr.Count == 0 && diffArr1.Count == 0) || (register_Event.Count == 0 && Event_quantity.Count == 0)) return;
+
+                    //遍历完成启动事件
+                    if (History != null)
+                        this.History.Invoke(diffArr.Count == 0 ? diffArr1 : diffArr, new EventArgs());
+                    foreach (var i in register_Event) event_Messages.Add(i);
+                    ((dynamic)form_run).DataGridView(event_Messages);//事件显示登录
+                    Event_quantity = new ConcurrentBag<EF实体模型.Event_message>();
+                    register_Event.ForEach(s1 => { Event_quantity.Add(s1); });//记录保持     
+                }
+            });
+        }
+
         /// <summary>
         /// 位触发条件
         /// </summary>

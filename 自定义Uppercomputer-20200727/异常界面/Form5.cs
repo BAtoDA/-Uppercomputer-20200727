@@ -54,30 +54,30 @@ namespace 自定义Uppercomputer_20200727.异常界面
         /// 登录事件刷新方法 不可删除
         /// </summary>
         /// <param name="register_Event_1"></param>
-        public void DataGridView(ConcurrentBag<自定义Uppercomputer_20200727.EF实体模型.Event_message> register_Event_1)//显示已经登录的事件
+        public async void DataGridView(ConcurrentBag<自定义Uppercomputer_20200727.EF实体模型.Event_message> register_Event_1)//显示已经登录的事件
         {
             if (this.IsHandleCreated != true) return;//判断创建是否加载完成            
-            this.BeginInvoke((MethodInvoker)delegate ()
+           await Task.Run(()=>
             {
-            lock (this)
-            {
-                mutex.WaitOne();
-                List<自定义Uppercomputer_20200727.EF实体模型.Event_message> register_Event = register_Event_1.ToList();//获取对象
-                if (this.skinDataGridView1.Rows.Count < 0) return;//如果控件为null直接返回
-                this.skinDataGridView1.Rows.Clear();//清除所有数据
-                this.skinDataGridView1.Rows.Add();//先添加行            
-                for (int i = 0; i < register_Event.Count; i++)
+                lock (this)
                 {
-                    if (this.skinDataGridView1.Rows.Count < i) this.skinDataGridView1.Rows.Add();//先添加行 
-                    this.skinDataGridView1.Rows[i].Cells[0].Value = register_Event[i].ID;
-                    this.skinDataGridView1.Rows[i].Cells[1].Value = DateTime.Now.ToString();
-                    this.skinDataGridView1.Rows[i].Cells[2].Value = DateTime.Now.Date.ToString();
-                    this.skinDataGridView1.Rows[i].Cells[3].Value = register_Event[i].报警内容.Trim();
-                    this.skinDataGridView1.Rows[i].Cells[4].Value = i.ToString();
-                    this.skinDataGridView1.Rows.Add();//先添加行
+                    //  mutex.WaitOne();
+                    List<自定义Uppercomputer_20200727.EF实体模型.Event_message> register_Event = register_Event_1.ToList();//获取对象
+                    if (this.skinDataGridView1.Rows.Count < 0) return;//如果控件为null直接返回
+                    this.skinDataGridView1.Rows.Clear();//清除所有数据
+                    this.skinDataGridView1.Rows.Add();//先添加行            
+                    for (int i = 0; i < register_Event.Count; i++)
+                    {
+                        if (this.skinDataGridView1.Rows.Count < i) this.skinDataGridView1.Rows.Add();//先添加行 
+                        this.skinDataGridView1.Rows[i].Cells[0].Value = register_Event[i].ID;
+                        this.skinDataGridView1.Rows[i].Cells[1].Value = DateTime.Now.ToString();
+                        this.skinDataGridView1.Rows[i].Cells[2].Value = DateTime.Now.Date.ToString();
+                        this.skinDataGridView1.Rows[i].Cells[3].Value = register_Event[i].报警内容.Trim();
+                        this.skinDataGridView1.Rows[i].Cells[4].Value = i.ToString();
+                        this.skinDataGridView1.Rows.Add();//先添加行
+                    }
+                    //   mutex.ReleaseMutex();
                 }
-                mutex.ReleaseMutex();
-            }
             });
         }
         /// <summary>

@@ -131,7 +131,7 @@ namespace 自定义Uppercomputer_20200727.控制主页面模板
         private const int AW_BLEND = 0x80000;//使用淡入淡出效果
         #endregion
 
-        protected override void OnLoad(EventArgs e)
+        protected async override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
             if (!GetPidByProcess()) return;
@@ -166,16 +166,15 @@ namespace 自定义Uppercomputer_20200727.控制主页面模板
         /// <summary>
         /// 加载窗口控件任务
         /// </summary>
-        private void NewMethod()
+        private async void NewMethod()
         {
-            var se = Task.Run(() =>
-            {
-                From_Load_Add.imageLists_1 = new List<ImageList>() { this.imageList1, this.imageList2, this.imageList3 };
-                using (dynamic load_Add = new From_Load_Add(this.Name, this.Controls, new List<ImageList>() { this.imageList1, this.imageList2, this.imageList3 }, this)) ;//添加报警条
+            await Task.Run(() =>
+             {
+                 From_Load_Add.imageLists_1 = new List<ImageList>() { this.imageList1, this.imageList2, this.imageList3 };
+                 using (dynamic load_Add = new From_Load_Add(this.Name, this.Controls, new List<ImageList>() { this.imageList1, this.imageList2, this.imageList3 }, this)) ;//添加报警条
                 using (dynamic add = new From_Load_Add(this.Name, this.Controls, new List<ImageList>() { this.imageList1, this.imageList2, this.imageList3 }, this, true)) ;//添加普通文本
                 UI_Schedule("开始正在显示UI", 90, true);
-            });
-            se.Wait();
+             });
         }
 
         protected override void OnShown(EventArgs e)

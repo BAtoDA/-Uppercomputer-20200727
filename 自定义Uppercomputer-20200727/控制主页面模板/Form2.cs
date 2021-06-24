@@ -618,7 +618,7 @@ namespace 自定义Uppercomputer_20200727
         private const int AW_BLEND = 0x80000;//使用淡入淡出效果
         #endregion
 
-        private void Form2_Load(object sender, EventArgs e)//加载窗口
+        private  void Form2_Load(object sender, EventArgs e)//加载窗口
         {
             if (!GetPidByProcess()) return;
             //判断主窗口是否在运行
@@ -626,14 +626,7 @@ namespace 自定义Uppercomputer_20200727
             ToolStripManager.Renderer = new HZH_Controls.Controls.ProfessionalToolStripRendererEx();
             Form2_Leave(this, new EventArgs());
             UI_Schedule("开始加载控件", 30, true);
-            var se = Task.Run(() =>
-            {
-                From_Load_Add.imageLists_1 = new List<ImageList>() { this.imageList1, this.imageList2, this.imageList3 };
-                using (dynamic load_Add = new From_Load_Add(this.Name, this.Controls, new List<ImageList>() { this.imageList1, this.imageList2, this.imageList3 }, this)) ;//添加报警条
-                using (dynamic add = new From_Load_Add(this.Name, this.Controls, new List<ImageList>() { this.imageList1, this.imageList2, this.imageList3 }, this, true)) ;//添加普通文本
-                UI_Schedule("开始正在显示UI", 90, true);
-            });
-            se.Wait();
+            NewMethod();
             //测试代码
             this.timer2.Enabled = true;
             this.timer2.Start();
@@ -653,6 +646,17 @@ namespace 自定义Uppercomputer_20200727
             CSEngineTest.PLC.OmronCip = new OmronFinsCIP();//实例化接口;
             CSEngineTest.PLC.OmronTcp = new OmronFinsTcp();//实例化接口;
             CSEngineTest.PLC.OmronUdp = new OmronFinsUDP();//实例化接口;
+        }
+
+        private async void NewMethod()
+        {
+            await Task.Run(() =>
+            {
+                From_Load_Add.imageLists_1 = new List<ImageList>() { this.imageList1, this.imageList2, this.imageList3 };
+                using (dynamic load_Add = new From_Load_Add(this.Name, this.Controls, new List<ImageList>() { this.imageList1, this.imageList2, this.imageList3 }, this)) ;//添加报警条
+                using (dynamic add = new From_Load_Add(this.Name, this.Controls, new List<ImageList>() { this.imageList1, this.imageList2, this.imageList3 }, this, true)) ;//添加普通文本
+                UI_Schedule("开始正在显示UI", 90, true);
+            });
         }
 
         private void Form2_Shown(object sender, EventArgs e)//添加控件

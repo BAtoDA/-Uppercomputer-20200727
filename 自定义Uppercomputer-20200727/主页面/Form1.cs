@@ -65,8 +65,6 @@ namespace 自定义Uppercomputer_20200727
             //LogUtils日志
             LogUtils.debugWrite("开始加载程序集"+axActUtlType1.Name);
             ActUtlType = this.axActUtlType1;
-            //启动报警历史记录
-            History_Shown();
         }
         public void BindingProcessMsg(string strText, int intValue)
         {
@@ -140,6 +138,8 @@ namespace 自定义Uppercomputer_20200727
             }
             else
                 timer.Start();
+            //启动报警历史记录
+            History_Shown();
             BindingProcessMsg("配置完成正在打开软件", 100);
         }
         [Obsolete]

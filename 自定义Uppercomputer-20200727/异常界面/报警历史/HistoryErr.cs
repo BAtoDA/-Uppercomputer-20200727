@@ -25,109 +25,118 @@ namespace 自定义Uppercomputer_20200727.异常界面.报警历史
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void HistoryErr_Load(object sender, EventArgs e)
+        private async void HistoryErr_Load(object sender, EventArgs e)
         {
-            //从数据获取数据
-            using (UppercomputerEntities2 db = new UppercomputerEntities2())
+            await Task.Run(() =>
             {
-                var data = db.Alarmhistory.Where(pi => true).Select(p => p).ToList();
-                var query = (from q in data where DateTime.Parse(q.报警时间.Trim()).ToString("D") == DateTime.Now.ToString("D") select q).ToList();
-                //填充当天报警次数
-                this.uiLabel2.Text = query.Count.ToString();
-                //填充7天警告次数
-                var query1 = (from q in data where (DateTime.Parse(DateTime.Now.ToString("F")) - DateTime.Parse(q.报警时间.Trim())).Days >= 0 && (DateTime.Parse(DateTime.Now.ToString("F")) - DateTime.Parse(q.报警时间.Trim())).Days <= 7 select q).ToList();
-                this.uiLabel3.Text = query1.Count.ToString();
-                //查询月度警告次数
-                var Monthly = (from q in data where (DateTime.Parse(DateTime.Now.ToString("Y")) == DateTime.Parse(DateTime.Parse(q.报警时间.Trim()).ToString("Y"))) select q).ToList();
-                //填充月底报警次数
-                this.uiLabel5.Text = Monthly.Count.ToString();
-                //填充报警历史
-                this.uiDataGridView1.DataSource = data;
-                alarmhistories = data;
-                //填充报警历史的查询项
-                this.uiComboBox1.Items.Clear();
-                this.uiComboBox2.Items.Clear();
-                this.uiComboBox3.Items.Clear();
-                data.ForEach(s => 
+                //从数据获取数据
+                using (UppercomputerEntities2 db = new UppercomputerEntities2())
                 {
-                    this.uiComboBox1.Items.Add(s.报警时间.Trim());
-                    this.uiComboBox2.Items.Add(s.处理完成时间.Trim());
-                    this.uiComboBox3.Items.Add(s.设备.Trim());
-                
-                });
-                this.uiComboBox1.Items.Add("全部");
-                this.uiComboBox2.Items.Add("全部");
-                this.uiComboBox3.Items.Add("全部");
-                this.uiComboBox1.Text = "全部";
-                this.uiComboBox2.Text = "全部";
-                this.uiComboBox3.Text = "全部";
-                //填充报警注册内容
-                var Gridviwe2 = db.Event_message.Where(pi => true).ToList();
-                Gridviwe2.ForEach(s =>
-                {
-                    s.位触发条件= s.位触发条件.Trim();
-                    s.报警内容=s.报警内容.Trim();
-                    s.字触发条件=s.字触发条件.Trim();
-                    s.字触发条件_具体 = s.字触发条件_具体.Trim();
-                    s.设备 = s.设备.Trim();
-                    s.设备_具体地址 = s.设备_具体地址.Trim();
-                    s.设备_地址 = s.设备_地址.Trim();
-                });
-                this.uiDataGridView2.DataSource = Gridviwe2;
-                 //生成分析7天警告报表
-                 //把7天结果LINQ分组
-                var grouping = query1.GroupBy(pi => DateTime.Parse(pi.报警时间.Trim()).Date).Select(group => new StoreInfo
-                {
-                    StoreID = group.Key,
-                    List = group.ToList()
-                }).ToList();
-                //获取后7天的日期
-                string[] Days = new string[7];
-                for (int i = 0; i < Days.Length; i++)
-                    Days[i] = DateTime.Now.AddDays(Convert.ToInt16($"-{i}")).ToString(); //当前时间减去7天
-                //计算每天处理异常的总时间
-                List<Tuple<int, string>> Histogramdata = new List<Tuple<int, string>>();
-                DateTime dateTime = DateTime.Parse(DateTime.Now.ToString("yyyy - MM - dd"));
-                int quantity = 0;
-                foreach (var i in Days)
-                {
-                    dateTime = DateTime.Parse(DateTime.Now.ToString("yyyy - MM - dd"));
-                    quantity = 0;
-                    var group = grouping.Where(pi => pi.StoreID.ToString("D") == DateTime.Parse(i.Trim()).ToString("D")).Select(pi => pi).FirstOrDefault();
-                    if (group != null)
+                    var data = db.Alarmhistory.Where(pi => true).Select(p => p).ToList();
+                    var query = (from q in data where DateTime.Parse(q.报警时间.Trim()).ToString("D") == DateTime.Now.ToString("D") select q).ToList();
+                    //填充当天报警次数
+                    this.uiLabel2.Text = query.Count.ToString();
+                    //填充7天警告次数
+                    var query1 = (from q in data where (DateTime.Parse(DateTime.Now.ToString("F")) - DateTime.Parse(q.报警时间.Trim())).Days >= 0 && (DateTime.Parse(DateTime.Now.ToString("F")) - DateTime.Parse(q.报警时间.Trim())).Days <= 7 select q).ToList();
+                    this.uiLabel3.Text = query1.Count.ToString();
+                    //查询月度警告次数
+                    var Monthly = (from q in data where (DateTime.Parse(DateTime.Now.ToString("Y")) == DateTime.Parse(DateTime.Parse(q.报警时间.Trim()).ToString("Y"))) select q).ToList();
+                    //填充月底报警次数
+                    this.uiLabel5.Text = Monthly.Count.ToString();
+                    //填充报警历史
+                    this.BeginInvoke((EventHandler)delegate
                     {
-                        var grouptime = group.List.Where(pi => DateTime.Parse(pi.报警时间.Trim()).ToString("D") == DateTime.Parse(i.Trim()).ToString("D")).Select(P => new { DatetimeName = DateTime.Parse(P.处理完成时间.Trim()) - DateTime.Parse(P.报警时间.Trim()) }).ToList();
-                        //求和时间
-                        grouptime.ForEach(s => 
+                        this.uiDataGridView1.DataSource = data;
+                        alarmhistories = data;
+                    //填充报警历史的查询项
+                    this.uiComboBox1.Items.Clear();
+                        this.uiComboBox2.Items.Clear();
+                        this.uiComboBox3.Items.Clear();
+                        data.ForEach(s =>
                         {
-                            dateTime += s.DatetimeName;
-                        });
-                        quantity = grouptime.Count;
-                    }
-                    Histogramdata.Add(new Tuple<int, string>(quantity, dateTime.ToString("T")));
-                }
-                //填充7天警告分析图形
-                Histogram(Days,Histogramdata);
+                            this.uiComboBox1.Items.Add(s.报警时间.Trim());
+                            this.uiComboBox2.Items.Add(s.处理完成时间.Trim());
+                            this.uiComboBox3.Items.Add(s.设备.Trim());
 
-                //填充警告处理用时
-                this.uiLabel16.Text = Histogramdata[0].Item2;//当天用时
-                //处理7天用时
-                TimeSpan dateTim = MonthlyErr(query1, query1.Count);               
-                this.uiLabel14.Text = $"{(24 * dateTim.Days)+ dateTim.Hours}:{dateTim.Minutes}:{dateTim.Seconds}";
-                //填充月度处理用时
-                dateTim = new TimeSpan();
-                MonthlyErr(Monthly).ForEach(s =>
-                {
-                    dateTim += TimeSpan.Parse(s.Item2.Trim());
-                });
-                this.uiLabel12.Text = $"{(24 * dateTim.Days)+ dateTim.Hours}:{dateTim.Minutes}:{dateTim.Seconds}";
-                //填充设备警告分析
-                //查找重复最多的数据--意味着报警最多的
-                EquipmentErr(Monthly);
-                //启用定时刷新
-                timer1.Enabled = true;
-                timer1.Start();
-            }
+                        });
+                        this.uiComboBox1.Items.Add("全部");
+                        this.uiComboBox2.Items.Add("全部");
+                        this.uiComboBox3.Items.Add("全部");
+                        this.uiComboBox1.Text = "全部";
+                        this.uiComboBox2.Text = "全部";
+                        this.uiComboBox3.Text = "全部";
+                    //填充报警注册内容
+                    var Gridviwe2 = db.Event_message.Where(pi => true).ToList();
+                        Gridviwe2.ForEach(s =>
+                    {
+                        s.位触发条件 = s.位触发条件.Trim();
+                        s.报警内容 = s.报警内容.Trim();
+                        s.字触发条件 = s.字触发条件.Trim();
+                        s.字触发条件_具体 = s.字触发条件_具体.Trim();
+                        s.设备 = s.设备.Trim();
+                        s.设备_具体地址 = s.设备_具体地址.Trim();
+                        s.设备_地址 = s.设备_地址.Trim();
+                    });
+                        this.uiDataGridView2.DataSource = Gridviwe2;
+                    });
+                    //生成分析7天警告报表
+                    //把7天结果LINQ分组
+                    var grouping = query1.GroupBy(pi => DateTime.Parse(pi.报警时间.Trim()).Date).Select(group => new StoreInfo
+                    {
+                        StoreID = group.Key,
+                        List = group.ToList()
+                    }).ToList();
+                    //获取后7天的日期
+                    string[] Days = new string[7];
+                    for (int i = 0; i < Days.Length; i++)
+                        Days[i] = DateTime.Now.AddDays(Convert.ToInt16($"-{i}")).ToString(); //当前时间减去7天
+                                                                                             //计算每天处理异常的总时间
+                    List<Tuple<int, string>> Histogramdata = new List<Tuple<int, string>>();
+                    DateTime dateTime = DateTime.Parse(DateTime.Now.ToString("yyyy - MM - dd"));
+                    int quantity = 0;
+                    foreach (var i in Days)
+                    {
+                        dateTime = DateTime.Parse(DateTime.Now.ToString("yyyy - MM - dd"));
+                        quantity = 0;
+                        var group = grouping.Where(pi => pi.StoreID.ToString("D") == DateTime.Parse(i.Trim()).ToString("D")).Select(pi => pi).FirstOrDefault();
+                        if (group != null)
+                        {
+                            var grouptime = group.List.Where(pi => DateTime.Parse(pi.报警时间.Trim()).ToString("D") == DateTime.Parse(i.Trim()).ToString("D")).Select(P => new { DatetimeName = DateTime.Parse(P.处理完成时间.Trim()) - DateTime.Parse(P.报警时间.Trim()) }).ToList();
+                            //求和时间
+                            grouptime.ForEach(s =>
+                            {
+                                dateTime += s.DatetimeName;
+                            });
+                            quantity = grouptime.Count;
+                        }
+                        Histogramdata.Add(new Tuple<int, string>(quantity, dateTime.ToString("T")));
+                    }
+                    //填充7天警告分析图形
+                    this.BeginInvoke((EventHandler)delegate
+                    {
+                        Histogram(Days, Histogramdata);
+                    });
+
+                    //填充警告处理用时
+                    this.uiLabel16.Text = Histogramdata[0].Item2;//当天用时
+                                                                 //处理7天用时
+                    TimeSpan dateTim = MonthlyErr(query1, query1.Count);
+                    this.uiLabel14.Text = $"{(24 * dateTim.Days) + dateTim.Hours}:{dateTim.Minutes}:{dateTim.Seconds}";
+                    //填充月度处理用时
+                    dateTim = new TimeSpan();
+                    MonthlyErr(Monthly).ForEach(s =>
+                    {
+                        dateTim += TimeSpan.Parse(s.Item2.Trim());
+                    });
+                    this.uiLabel12.Text = $"{(24 * dateTim.Days) + dateTim.Hours}:{dateTim.Minutes}:{dateTim.Seconds}";
+                    //填充设备警告分析
+                    //查找重复最多的数据--意味着报警最多的
+                    EquipmentErr(Monthly);
+                }
+            });
+            //启用定时刷新
+            timer1.Enabled = true;
+            timer1.Start();
         }
         /// <summary>
         /// 定时刷新--加载数据
@@ -183,8 +192,10 @@ namespace 自定义Uppercomputer_20200727.异常界面.报警历史
                     Histogramdata.Add(new Tuple<int, string>(quantity, dateTime.ToString("T")));
                 }
                 //填充7天警告分析图形
-                Histogram(Days, Histogramdata);
-
+                this.BeginInvoke((EventHandler)delegate
+                {
+                    Histogram(Days, Histogramdata);
+                });
                 //填充警告处理用时
                 this.uiLabel16.Text = Histogramdata[0].Item2;//当天用时
                 //处理7天用时
@@ -200,9 +211,6 @@ namespace 自定义Uppercomputer_20200727.异常界面.报警历史
                 //填充设备警告分析
                 //查找重复最多的数据--意味着报警最多的
                 EquipmentErr(Monthly);
-                //启用定时刷新
-                timer1.Enabled = true;
-                timer1.Start();
             }
         }
         /// <summary>
@@ -275,11 +283,14 @@ namespace 自定义Uppercomputer_20200727.异常界面.报警历史
                     showErrs.Add(new ShowErr() {  报警内容 = ErrData.报警内容.Trim(), 设备 = ErrData.设备.Trim(), 地址 = ErrData.设备_地址.Trim() + ErrData.设备_具体地址.Trim(), 用时 = Errtime, 次数 = data[i].List.Count() });
                 }
             }
-            uiDataGridView3.DataSource = showErrs;
-            uiDataGridView3.Columns[0].Width = 300;
-            uiDataGridView3.Columns[2].Width = 80;
-            uiDataGridView3.Columns[3].Width = 50;
-            uiDataGridView3.Columns[4].Width = 70;
+            this.BeginInvoke((EventHandler)delegate
+            {
+                uiDataGridView3.DataSource = showErrs.OrderByDescending(x => x.次数).Select(pi => pi).ToList();
+                uiDataGridView3.Columns[0].Width = 300;
+                uiDataGridView3.Columns[2].Width = 80;
+                uiDataGridView3.Columns[3].Width = 50;
+                uiDataGridView3.Columns[4].Width = 70;
+            });
         }
         /// <summary>
         /// 计算的报警处理用时
@@ -339,9 +350,13 @@ namespace 自定义Uppercomputer_20200727.异常界面.报警历史
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void timer1_Tick(object sender, EventArgs e)
+        private async void timer1_Tick(object sender, EventArgs e)
         {
-            HistoryErrTiming();
+            await Task.Run(() =>
+            {
+                HistoryErrTiming();
+            });
+
         }
         /// <summary>
         /// 用于保存历史报警源数据
