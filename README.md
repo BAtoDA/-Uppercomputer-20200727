@@ -52,6 +52,7 @@
  2021年6月3日添加其他软件访问上位机内部软元件与穿透上位机进行对其他设备访问 V1.5版本。  
  2021年6月15日添加允许开发人员对上位机 进行IDE编辑与设计其他界面  并且添加一些免开发的控件方便开发人员进行开发  V1.6版本。  
  2021年6月19日添加皮肤进行UI界面 模板开发适配 这样不用固定一个模板。    
+ 2021年6月23日添加报警监控界面 用户可以全面监控异常的数据和处理时间。
  下一步计划：  
  1.优化代码与精简代码。    
  2.添加更多免开发的控件。  
@@ -62,9 +63,8 @@
 ![image](https://user-images.githubusercontent.com/60955669/122644652-ea149500-d148-11eb-841f-a0f155b066e5.png)
 ![image](https://user-images.githubusercontent.com/60955669/122644661-f4369380-d148-11eb-89a9-a78fa82b6c54.png)
 ![image](https://user-images.githubusercontent.com/60955669/122644664-fa2c7480-d148-11eb-80f0-cf3baedb0e45.png) ![image](https://user-images.githubusercontent.com/60955669/122659540-ccc4e280-d1ab-11eb-80f7-58e27299fd0b.png)
+![@N@AAWKXC0{}5`Y%WZN4A03](https://user-images.githubusercontent.com/60955669/123022820-f0389900-d408-11eb-9970-8d7f57fba15f.png)
 
-
- 
  
 BUG与反馈：  
 开源自由就好BUG什么的肯定有哈哈。  
