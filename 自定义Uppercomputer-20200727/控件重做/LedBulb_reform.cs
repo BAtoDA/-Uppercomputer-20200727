@@ -233,7 +233,7 @@ namespace 自定义Uppercomputer_20200727.控件重做
             {
                 try
                 {
-                    if (Form2.edit_mode == true)
+                    if (Form2.edit_mode == true||this.Parent==null)
                     {
                         _Class = null;
                         return;//返回方法

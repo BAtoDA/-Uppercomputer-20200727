@@ -148,7 +148,7 @@ namespace 自定义Uppercomputer_20200727.控件重做
             }
             write_ok = true;//允许修改控件
             //把控件文本写到PLC
-            TextBox.plc(numerical_Classes.读写设备.Trim(),numerical_Classes.资料格式.Trim(),numerical_Classes.读写设备_地址.Trim(),numerical_Classes.读写设备_地址_具体地址.Trim(),numerical_Classes.读写不同地址_ON_OFF,numerical_Classes.写设备_地址_复选.Trim(),numerical_Classes.写设备_地址_具体地址_复选.Trim(),this.Text);//选择相应PLC 进行写入
+            TextBox.plc(numerical_Classes.读写设备.Trim(),numerical_Classes.资料格式.Trim(),numerical_Classes.读写设备_地址.Trim(),numerical_Classes.读写设备_地址_具体地址.Trim(), (int)numerical_Classes.读写不同地址_ON_OFF,numerical_Classes.写设备_地址_复选.Trim(),numerical_Classes.写设备_地址_具体地址_复选.Trim(),this.Text);//选择相应PLC 进行写入
         }
         protected override void Dispose(bool disposing)
         {
@@ -194,25 +194,30 @@ namespace 自定义Uppercomputer_20200727.控件重做
         {
             lock (this)
             {
-                try
-                {
-                    if (Form2.edit_mode == true)
+                //try
+                //{
+                    if (Form2.edit_mode == true || this.Parent == null)
                     {
                         _Class = null;
                         return;//返回方法
                     }
-                    if (_Class.IsNull()||_Class.ID.IsNull())
+                    if (_Class.IsNull() || _Class.ID.IsNull())
                     {
-                        Button_EFbase EF = new Button_EFbase();//实例化EF
-                        _Class = EF.Button_Parameter_Query<numerical_Class>(this.Parent + "- " + this.Name);//查询控件参数
+                        using(UppercomputerEntities2 db=new UppercomputerEntities2())
+                        {
+                        string EFid = this.Parent + "- " + this.Name;
+                            _Class = db.numerical_Class.Where(p => p.ID.Trim() == EFid).FirstOrDefault();
+                        }
+                        //Button_EFbase EF = new Button_EFbase();//实例化EF
+                        //_Class = EF.Button_Parameter_Query<numerical_Class>(this.Parent + "- " + this.Name);//查询控件参数
                     }
                     if (_Class.ID.IsNull()) return;
                     this.TextBox_state(this, _Class, TextBox.Refresh(_Class.读写设备.Trim(), _Class.资料格式.Trim(), _Class.读写设备_地址.Trim(), _Class.读写设备_地址_具体地址.Trim()));
-                }
-                catch
-                {
+                //}
+                //catch
+                //{
 
-                }
+                //}
             }
         }
         /// <summary>

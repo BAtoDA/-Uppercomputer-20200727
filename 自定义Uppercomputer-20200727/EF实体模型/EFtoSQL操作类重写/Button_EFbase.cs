@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using 自定义Uppercomputer_20200727.Nlog;
 
 namespace 自定义Uppercomputer_20200727.EF实体模型.EFtoSQL操作类重写
 {
@@ -18,12 +19,13 @@ namespace 自定义Uppercomputer_20200727.EF实体模型.EFtoSQL操作类重写
         public Button_EFbase()
         {
             mutex = new Mutex();//实例化互斥锁(Mutex)    
+            EFsurface();
         }
-        public static List<dynamic> EFbase { get; set; }
+        public  List<dynamic> EFbase { get; set; }
         /// <summary>
         /// 默认添加EF中所有的表属性对象 
         /// </summary>
-        public UppercomputerEntities2 EFsurface()
+        public  UppercomputerEntities2 EFsurface()
         {
             lock (this)
             {
@@ -105,7 +107,7 @@ namespace 自定义Uppercomputer_20200727.EF实体模型.EFtoSQL操作类重写
                 var entities2 = new Button_EFbase();
                 entities2.EFsurface();
                 //查询泛型约束 需要修改的表
-                var surface = EFbase.Where(pi => pi.GetType().GenericTypeArguments[0].Name == typeof(T).Name).FirstOrDefault();
+                var surface = entities2.EFbase.Where(pi => pi.GetType().GenericTypeArguments[0].Name == typeof(T).Name).FirstOrDefault();
                 //查询SQL数据
                 foreach (dynamic i1 in from pi in (IQueryable<T>)surface where true select pi)
                 {
@@ -180,18 +182,18 @@ namespace 自定义Uppercomputer_20200727.EF实体模型.EFtoSQL操作类重写
         /// <returns></returns>
         public string Button_Parameter_Add<T>(T parameter,int id)
         {
+            mutex.WaitOne(3000);
             lock (this)
             {
-               // mutex.WaitOne(3000);
                 UppercomputerEntities2 db = new Button_EFbase().EFsurface();
                 //查询泛型约束 需要修改的表
                 var surface = EFbase.Where(pi => pi.GetType().GenericTypeArguments[0].Name == typeof(T).Name).FirstOrDefault();
                 //表示SQL中不存在该ID数据--允许插入数据
                 surface.Add(parameter);//构造添加到表的SQL语句
                 db.SaveChanges();//执行操作
-               // mutex.ReleaseMutex();
                 return "OK";
             }
+            mutex.ReleaseMutex();
         }
         /// <summary>
         /// 查询参数 根据泛型<T>自动推断需要查询的表
@@ -201,32 +203,35 @@ namespace 自定义Uppercomputer_20200727.EF实体模型.EFtoSQL操作类重写
         /// <returns></returns>
         public T Button_Parameter_Query<T>(string ID) where T : new()
         {
+            mutex.WaitOne(5000);
             lock (this)
             {
-                // mutex.WaitOne(3000);
-                _ = new Button_EFbase().EFsurface();
-                //查询泛型约束 需要修改的表
-                var surface = EFbase.Where(pi => pi.GetType().GenericTypeArguments[0].Name == typeof(T).Name).FirstOrDefault();
-                if (surface != null)
-                {
-                    var rew = (IQueryable<T>)surface;
-                    var reachanull = rew.Where(pi => true).FirstOrDefault();
-                    var reach = rew.Where(p => true).ToList();
-                    //查询SQL数据
-                    foreach (dynamic i1 in reach)
+                //try
+                //{
+                    _ = new Button_EFbase().EFsurface();
+                    //查询泛型约束 需要修改的表
+                    var surface = EFbase.Where(pi => pi.GetType().GenericTypeArguments[0].Name == typeof(T).Name).FirstOrDefault();
+                    if (surface != null)
                     {
-                        if (i1.ID.Trim() == ID.Trim())
+                        var rew = (IQueryable<T>)surface;                  
+                        if (rew != null && surface!=null)
                         {
-                            return i1;
+                            //查询SQL数据
+                            foreach (dynamic i1 in rew.Where(p=>true).ToList())
+                            {
+                                if (i1.ID!=null&&i1.ID.Trim() == ID.Trim())
+                                {
+                                    return i1;
+                                }
+                            }
+                            return new T();
                         }
                     }
-                    // mutex.ReleaseMutex();
                     return new T();
-                }
             }
-            return new T();
+            mutex.ReleaseMutex();
         }
-     
+
         /// <summary>
         /// 查询窗口参数根据field去判断 根据泛型<T>自动推断需要查询的表
         /// </summary>
@@ -236,11 +241,11 @@ namespace 自定义Uppercomputer_20200727.EF实体模型.EFtoSQL操作类重写
         /// <returns></returns>
         public List<T> Button_Parameter_Query<T>(string FORM,string field) where T : new()
         {
+            mutex.WaitOne(5000);
             for (int i = 0; i < 3; i++)
             {
                 lock (mux)
                 {
-                    //mutex.WaitOne(5000);
                     //创建表
                     List<T> Data = new List<T>();
                     _ = new Button_EFbase().EFsurface();
@@ -275,10 +280,10 @@ namespace 自定义Uppercomputer_20200727.EF实体模型.EFtoSQL操作类重写
                                 }
                                 return Data;
                         }
-                        // mutex.ReleaseMutex();
                         return Data;
                     }
                 }
+                mutex.ReleaseMutex();
             }
             return new List<T>();
         }
@@ -362,7 +367,7 @@ namespace 自定义Uppercomputer_20200727.EF实体模型.EFtoSQL操作类重写
         /// <returns></returns>
         public string Button_Parameter_delete<T>(string ID)
         {
-           // mutex.WaitOne(5000);
+            mutex.WaitOne(5000);
             var db = new Button_EFbase().EFsurface();
             //查询泛型约束 需要修改的表
             var surface = EFbase.Where(pi => pi.GetType().GenericTypeArguments[0].Name == typeof(T).Name).FirstOrDefault();
@@ -379,8 +384,8 @@ namespace 自定义Uppercomputer_20200727.EF实体模型.EFtoSQL操作类重写
                     }
                 }
             }
-           // mutex.ReleaseMutex();
             return "NG";
+            mutex.ReleaseMutex();
         }
         /// <summary>
         /// 修改参数 根据泛型<T>自动推断需要查询的表

@@ -157,9 +157,9 @@ namespace 自定义Uppercomputer_20200727.控制主页面模板
              {
                  From_Load_Add.imageLists_1 = new List<ImageList>() { this.imageList1, this.imageList2, this.imageList3 };
                  using (dynamic load_Add = new From_Load_Add(this.Name, this.Controls, new List<ImageList>() { this.imageList1, this.imageList2, this.imageList3 }, this)) ;//添加报警条
-                using (dynamic add = new From_Load_Add(this.Name, this.Controls, new List<ImageList>() { this.imageList1, this.imageList2, this.imageList3 }, this, true)) ;//添加普通文本
-                UI_Schedule("开始正在显示UI", 90, true);
+                using (dynamic add = new From_Load_Add(this.Name, this.Controls, new List<ImageList>() { this.imageList1, this.imageList2, this.imageList3 }, this, true)) ;//添加普通文本              
              });
+            UI_Schedule("开始正在显示UI", 90, true);
         }
 
         protected override void OnShown(EventArgs e)

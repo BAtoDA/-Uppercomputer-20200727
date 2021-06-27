@@ -354,7 +354,8 @@ namespace 自定义Uppercomputer_20200727.异常界面.报警历史
         {
             await Task.Run(() =>
             {
-                HistoryErrTiming();
+                if (this.Handle != null)
+                    HistoryErrTiming();
             });
 
         }
