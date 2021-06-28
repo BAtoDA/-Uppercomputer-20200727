@@ -55,9 +55,10 @@
  2021年6月26日优化报警监控界面 采用异步加载方式处理比较多的数据。
  2021年6月27日修复EF偶然出现查询为NULL问题。
  下一步计划：  
- 1.优化代码与精简代码。    
- 2.添加更多免开发的控件。  
- 3.UI界面模板开发。
+ 1.计划新增数字展示
+ 2.优化代码与精简代码。    
+ 3.添加更多免开发的控件。  
+ 4.UI界面模板开发。
 ![image](https://user-images.githubusercontent.com/60955669/122644630-c9e4d600-d148-11eb-9892-f3504c6e8db2.png)
 ![image](https://user-images.githubusercontent.com/60955669/122644638-d10be400-d148-11eb-8f65-a36b0539c2ff.png)
 ![image](https://user-images.githubusercontent.com/60955669/122644644-df5a0000-d148-11eb-9ee8-410203d1b832.png)
