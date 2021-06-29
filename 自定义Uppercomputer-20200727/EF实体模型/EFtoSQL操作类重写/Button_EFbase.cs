@@ -203,7 +203,7 @@ namespace 自定义Uppercomputer_20200727.EF实体模型.EFtoSQL操作类重写
         /// <returns></returns>
         public T Button_Parameter_Query<T>(string ID) where T : new()
         {
-            mutex.WaitOne(5000);
+          //  mutex.WaitOne(5000);
             lock (this)
             {
                 //try
@@ -229,7 +229,7 @@ namespace 自定义Uppercomputer_20200727.EF实体模型.EFtoSQL操作类重写
                     }
                     return new T();
             }
-            mutex.ReleaseMutex();
+           // mutex.ReleaseMutex();
         }
 
         /// <summary>

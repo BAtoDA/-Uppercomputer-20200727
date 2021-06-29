@@ -1,0 +1,98 @@
+﻿/*简单初始化*/
+html {
+    font-size: 100px; /*设置html字体大小以便rem*/
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+
+}
+
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+}
+/*主页面布局方式--自动*/
+.t_main {
+    text-align: center;
+}
+/*头部标题底层--显示图片--布满页面*/
+.t_container {
+    width: 100%;
+    height: 100%;
+    background: url('../img/bg_body.jpg') no-repeat;
+    background-size: 100% 100%;
+}
+/*头部标题--显示图片--布满页面*/
+.t_h_bg {
+    width: 100%;
+    height: 80px;
+    line-height: 80px;
+    background: url('../img/t_header.png') no-repeat;
+    background-size: 100% 100%;
+    text-align: center;
+}
+/*头部标题--字体显示--布满页面*/
+.t_h_bg_frin {
+    color: #ffffff;
+    font-size: 35%;
+    text-align: center;
+    position: relative;
+    top: -30px;
+}
+/*内容排布--小方格布局--显示图片--*/
+.t_box {
+    width: 3rem;
+    height: 8.5rem;
+    background: url('../img/bg_box3.png') no-repeat;
+    background-size: 100% 100%;
+    display: inline-block;
+    float: left;
+    position: relative;
+    margin-left: 0.1rem;
+    margin-top: 0.1rem;
+    position: relative;
+    top: 10px;
+    left: 0px;
+    right:20px;
+}
+/*内容排布--小方格布局  占用大小 --*/
+.t_box_little {
+    height: 100%;
+    width: 10%;
+    float: left;
+}
+/*内容排布--大方格布局  占用大小 --*/
+.t_box_big {
+    height: 100%;
+    width: 80%;
+    float: right;
+}
+/*内容排布--大方格布局--显示图片--*/
+.t_boxbig {
+    width: 15.5rem;
+    height: 8.5rem;
+    background: url('../img/bg_box2.png') no-repeat;
+    background-size: 100% 100%;
+    display: inline-block;
+    float: left;
+    position: relative;
+    margin-left: 0.1rem;
+    margin-top: 0.1rem;
+    position: relative;
+    top: 10px;
+    left:-50px;
+}
+/*显示内容布局--布满页面--显示图片*/
+.body_main {
+    background: url('../img/bg.png') no-repeat;
+    background-size: 100% 100%;
+}

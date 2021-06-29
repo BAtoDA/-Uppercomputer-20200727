@@ -1,0 +1,203 @@
+﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{F8F70595-5A31-49DB-ABD8-FC68E56A904B}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>HTML布局学习</RootNamespace>
+    <AssemblyName>HTML布局学习</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort>44316</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="SunnyUI.Common, Version=3.0.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\自定义Uppercomputer-20200727\第三方控件DLL\最新第三方Dll\SunnyUI.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Echarts\customed.js" />
+    <Content Include="Echarts\echarts.common.js" />
+    <Content Include="Echarts\echarts.common.min.js" />
+    <Content Include="Echarts\echarts.esm.js" />
+    <Content Include="Echarts\echarts.esm.min.js" />
+    <Content Include="Echarts\echarts.js" />
+    <Content Include="Echarts\echarts.min.js" />
+    <Content Include="Echarts\echarts.simple.js" />
+    <Content Include="Echarts\echarts.simple.min.js" />
+    <Content Include="Echarts\Echarts\customed.js" />
+    <Content Include="Echarts\Echarts\echarts.common.js" />
+    <Content Include="Echarts\Echarts\echarts.common.min.js" />
+    <Content Include="Echarts\Echarts\echarts.esm.js" />
+    <Content Include="Echarts\Echarts\echarts.esm.min.js" />
+    <Content Include="Echarts\Echarts\echarts.js" />
+    <Content Include="Echarts\Echarts\echarts.min.js" />
+    <Content Include="Echarts\Echarts\echarts.simple.js" />
+    <Content Include="Echarts\Echarts\echarts.simple.min.js" />
+    <Content Include="Echarts\Echarts\extension\bmap.js" />
+    <Content Include="Echarts\Echarts\extension\bmap.min.js" />
+    <Content Include="Echarts\Echarts\extension\dataTool.js" />
+    <Content Include="Echarts\Echarts\extension\dataTool.min.js" />
+    <Content Include="Echarts\extension\bmap.js" />
+    <Content Include="Echarts\extension\bmap.min.js" />
+    <Content Include="Echarts\extension\dataTool.js" />
+    <Content Include="Echarts\extension\dataTool.min.js" />
+    <Content Include="Echarts\jquery-3.5.1.min.js" />
+    <Content Include="JavaScript.js" />
+    <Content Include="Web.config" />
+    <Content Include="WebForm1.aspx" />
+    <Content Include="WebForm2.aspx" />
+    <Content Include="参数设置界面css\主显示区样式.css" />
+    <Content Include="参数设置界面css\参数设置button区域布局.css" />
+    <Content Include="参数页面布局样式.css" />
+    <Content Include="布局样式.css" />
+    <Content Include="折线图显示jsPSOT\weekSheet.css" />
+    <Content Include="折线图显示jsPSOT\周折线图.js" />
+    <Content Include="折线图显示jsPSOT\小时折线图.js" />
+    <Content Include="折线图显示jsPSOT\月折线图.js" />
+    <Content Include="报警视图jsPOST\AbnormalSheet.css" />
+    <Content Include="报警视图jsPOST\AlarmSQL_View.js" />
+    <Content Include="报警视图jsPOST\Alarm_View.js" />
+    <Content Include="数值显示jsPOST\numerical.js" />
+    <Content Include="数值显示jsPOST\numeriheadline.css" />
+    <Content Include="表盘显示jsPOST\停机指针显示.js" />
+    <Content Include="表盘显示jsPOST\小时指针显示.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WebForm1.aspx.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForm1.aspx.designer.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForm2.aspx.cs">
+      <DependentUpon>WebForm2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForm2.aspx.designer.cs">
+      <DependentUpon>WebForm2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="小时产量类序列化\HourClass.cs" />
+    <Compile Include="报警类序列化\Alarm.cs" />
+    <Compile Include="报警类序列化\AlarmSQL.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Echarts\echarts.common.js.map" />
+    <Content Include="Echarts\echarts.esm.js.map" />
+    <Content Include="Echarts\echarts.js.map" />
+    <Content Include="Echarts\echarts.simple.js.map" />
+    <Content Include="Echarts\Echarts\echarts.common.js.map" />
+    <Content Include="Echarts\Echarts\echarts.esm.js.map" />
+    <Content Include="Echarts\Echarts\echarts.js.map" />
+    <Content Include="Echarts\Echarts\echarts.simple.js.map" />
+    <Content Include="Echarts\Echarts\extension\bmap.js.map" />
+    <Content Include="Echarts\Echarts\extension\dataTool.js.map" />
+    <Content Include="Echarts\extension\bmap.js.map" />
+    <Content Include="Echarts\extension\dataTool.js.map" />
+    <None Include="packages.config" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup />
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>56105</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>https://localhost:44316/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>这台计算机上缺少此项目引用的 NuGet 程序包。使用“NuGet 程序包还原”可下载这些程序包。有关更多信息，请参见 http://go.microsoft.com/fwlink/?LinkID=322105。缺少的文件是 {0}。</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

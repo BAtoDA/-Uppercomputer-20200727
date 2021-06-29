@@ -1,0 +1,43 @@
+﻿/*头部标题--字体显示--向右靠*/
+.headline {
+    height: 20%;
+    width: 100%;
+    color: #ffffff;
+    font-size: 30%;
+    text-align: center;
+    position: relative;
+    top: 10px;
+    left: -220px;
+    float: left;
+    font-weight: bold;
+}
+.headline_content {
+    color: #67e0e3;
+    font-size: 50%;
+    text-align: center;
+    position: relative;
+    top: 10px;
+    left: 10px;
+}
+/*头部标题全年产量--字体显示--向右靠*/
+.headline1 {
+    height: 20%;
+    width: 100%;
+    color: #ffffff;
+    font-size: 40%;
+    text-align: center;
+    position: relative;
+    top: 10px;
+    left: -200px;
+    float: left;
+    font-weight: bold;
+}
+
+.headline_content1 {
+    color: #67e0e3;
+    font-size: 80%;
+    text-align: center;
+    position: relative;
+    top: 30px;
+    left: 10px;
+}

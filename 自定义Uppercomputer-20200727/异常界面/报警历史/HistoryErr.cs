@@ -27,13 +27,17 @@ namespace 自定义Uppercomputer_20200727.异常界面.报警历史
         /// <param name="e"></param>
         private async void HistoryErr_Load(object sender, EventArgs e)
         {
+            //显示UI过度
+            UIWaitFormService.ShowWaitForm("开始加载UI...");
             await Task.Run(() =>
             {
                 //从数据获取数据
                 using (UppercomputerEntities2 db = new UppercomputerEntities2())
                 {
+                    this.UIShowText("正在从SQL数据库获取数据");
                     var data = db.Alarmhistory.Where(pi => true).Select(p => p).ToList();
                     var query = (from q in data where DateTime.Parse(q.报警时间.Trim()).ToString("D") == DateTime.Now.ToString("D") select q).ToList();
+                    this.UIShowText("正在分析数据");
                     //填充当天报警次数
                     this.uiLabel2.Text = query.Count.ToString();
                     //填充7天警告次数
@@ -137,7 +141,11 @@ namespace 自定义Uppercomputer_20200727.异常界面.报警历史
             //启用定时刷新
             timer1.Enabled = true;
             timer1.Start();
+            //关闭显示UI窗口
+            UIWaitFormService.HideWaitForm();
         }
+        public void UIShowText(string Value) => UIWaitFormService.SetDescription(Value);
+
         /// <summary>
         /// 定时刷新--加载数据
         /// </summary>

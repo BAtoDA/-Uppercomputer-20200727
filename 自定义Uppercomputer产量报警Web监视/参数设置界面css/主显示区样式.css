@@ -1,0 +1,107 @@
+﻿
+.regard {
+    width: 15rem;
+    height: 8rem;
+    display: inline-block;
+    float: left;
+    position: relative;
+    margin-left: 0.1rem;
+    margin-top: 0.0rem;
+    font-size: 25%;
+    color: azure;
+    text-align: left;
+    position: relative;
+    top: 0px;
+    left: 20px;
+}
+.t_h_bgText {
+    color: #ffffff;
+    font-size: 35%;
+    text-align: center;
+    position: relative;
+    margin-top: 0.3rem;
+    top: -10px;
+    text-align: center;
+}
+.parameter {
+    width: 5rem;
+    height: 8rem;
+    display: inline-block;
+    float: left;
+    position: relative;
+    margin-left: 0.1rem;
+    margin-top: 0.0rem;
+    color: azure;
+    top: 0px;
+    left:80px;
+}
+.parameter1 {
+    width: 5rem;
+    height: 8rem;
+    display: inline-block;
+    float:  inherit;
+    position: relative;
+    margin-left: 0.1rem;
+    margin-top: 0.0rem;
+    color: azure;
+    top: 0px;
+    right: -80px;
+}
+.parameter2 {
+    width: 5rem;
+    height: 8rem;
+    display: inline-block;
+    float: right;
+    position: relative;
+    margin-left: 0.1rem;
+    margin-top: 0.0rem;
+    color: azure;
+    top: 0px;
+    right:-80px;
+}
+/*头部标题--字体显示--布满页面*/
+.t_Abnorma {
+    color: #fff;
+    font-size: 50%;
+    border-top: none;
+    border-bottom: none;
+    border-left: none;
+    border-right: none;
+    width: 15rem;
+    height: 8rem;
+    color: aliceblue;
+    margin-left: 0.1rem;
+    margin-top: 0.1rem;
+}
+/*头部列标题--显示图片--布满页面*/
+.t_h_Abnorma {
+    width: 30%;
+    height: 100%;
+    line-height: 50px;
+    background-size: 100% 100%;
+    text-align: center;
+    color: #67e0e3;
+}
+/*表格内容--显示图片--布满页面*/
+.main_table {
+    width: 100%;
+    height: 100%;
+    line-height: 50px;
+    background-size: 100% 100%;
+    text-align: center;
+    color: darkgray;
+    position: relative;
+    top: 10px;
+    left: 0px;
+    color: #ffffff;
+}
+.t_h_bgText1 {
+    color: #ffffff;
+    font-size: 70%;
+    text-align: center;
+    position: relative;
+    margin-top: 0.1rem;
+    top: -5px;
+    text-align: center;
+    font-weight:bold;
+}

@@ -1,0 +1,12 @@
+﻿/*头部标题--字体显示--向右靠*/
+.weekheadline {
+    height: 3%;
+    width: 100%;
+    color: #ffffff;
+    font-size: 30%;
+    text-align: center;
+    position: relative;
+    top: 10px;
+    left: 0px;
+    font-weight: bold;
+}

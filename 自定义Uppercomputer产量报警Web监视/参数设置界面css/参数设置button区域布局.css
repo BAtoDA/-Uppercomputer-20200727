@@ -1,0 +1,19 @@
+﻿/*内容排布--显示水晶按钮--显示图片--*/
+.Crystalbutton {
+    width: 2.4rem;
+    height: 0.8rem;
+    background: url('../img/Crystalbutton.png') no-repeat;
+    background-size: 100% 100%;
+    display: inline-block;
+    float: left;
+    position: relative;
+    margin-left: 0.1rem;
+    margin-top: 0.5rem;
+    font-size: 25%;
+    color: azure;
+    text-align: center;
+    position: relative;
+    top: 10px;
+    left: 13px;
+/*    background-position: 20px;*/
+}
