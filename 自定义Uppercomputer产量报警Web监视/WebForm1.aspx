@@ -26,6 +26,7 @@
     <!-- 引入 报警显示条 -->
     <link rel="stylesheet" href="报警视图jsPOST/AbnormalSheet.css" />
     <script src="报警视图jsPOST/Alarm_View.js"></script>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
     <title>XXX线数据展示</title>
 </head>
 <body class="t_container">

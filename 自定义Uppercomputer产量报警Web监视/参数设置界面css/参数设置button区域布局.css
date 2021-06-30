@@ -7,7 +7,7 @@
     display: inline-block;
     float: left;
     position: relative;
-    margin-left: 0.1rem;
+    margin-left: 0.0rem;
     margin-top: 0.5rem;
     font-size: 25%;
     color: azure;
@@ -15,5 +15,5 @@
     position: relative;
     top: 10px;
     left: 13px;
-/*    background-position: 20px;*/
+    /*    background-position: 20px;*/
 }

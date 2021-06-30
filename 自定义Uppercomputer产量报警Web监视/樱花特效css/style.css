@@ -1,0 +1,4 @@
+html, body { height: 100%; }
+body { margin: 0; background: #0F2027; background: linear-gradient(to bottom, #0F2027, #080e10); }
+canvas { display: block; }
+.snow { position: absolute; left: 0; top: 0; right: 0; bottom: 0; }

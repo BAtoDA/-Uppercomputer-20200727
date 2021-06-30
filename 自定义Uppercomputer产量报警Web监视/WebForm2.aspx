@@ -6,7 +6,7 @@
 <head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <link rel="stylesheet" href="参数页面布局样式.css" />
+    <link rel="stylesheet" type="text/css" href="参数页面布局样式.css" />
     <link rel="stylesheet" href="参数设置界面css/参数设置button区域布局.css" />
     <link rel="stylesheet" href="参数设置界面css/主显示区样式.css" />
     <script src="报警视图jsPOST/AlarmSQL_View.js"></script>
@@ -19,14 +19,20 @@
     <script src="Echarts/customed.js"></script>
     <script src="JavaScript.js"></script>
     <script src="控件特效样式/Navigation.js"></script>
+    <!-- 引入 樱花特效 -->
+    <link rel="stylesheet" href="樱花特效css/style.css" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no" />
 </head>
 <body class="t_container">
     <form id="form1" runat="server">
+        <div class="snow" count="4000"></div>
+        <script src='樱花特效js/Stats.min.js'></script>
+        <script src="樱花特效js/index.js"></script>
         <header class=" t_h_bg">
             <span class="t_h_bg_frin">数据展示参数设置</span>
         </header>
         <div class="t_box_little">
-            <div class="t_box">
+            <div id="Buttonnavigation" class="t_box">
                 <%--导航栏按钮--%>
                 <asp:Button ID="Button2" runat="server" Text="参数设置" BorderStyle="None" CssClass="Crystalbutton" ToolTip="参数设置" OnClick="Button2_Click" />
                 <asp:Button ID="Button3" runat="server" Text="报警查询" BorderStyle="None" CssClass="Crystalbutton" ToolTip="报警查询" OnClick="Button3_Click" />
@@ -34,14 +40,14 @@
                 <asp:Button ID="Button5" runat="server" Text="产量查询" BorderStyle="None" CssClass="Crystalbutton" ToolTip="产量查询" />
                 <asp:Button ID="Button6" runat="server" Text="产量预设" BorderStyle="None" CssClass="Crystalbutton" ToolTip="产量预设" />
                 <asp:Button ID="Button7" runat="server" Text="关于" BorderStyle="None" CssClass="Crystalbutton" ToolTip="关于" OnClick="Button7_Click" />
-        <script type='text/javascript'>
-            //处理导航栏按钮特效
-            Navigationcss();
-        </script>
+                <script type='text/javascript'>
+                    //处理导航栏按钮特效
+                    Navigationcss();
+                </script>
             </div>
         </div>
         <div class="t_box_big">
-            <div class="t_boxbig">
+            <div id="MainActivity" class="t_boxbig">
                 <%--该控件用于动态生成按钮类型的内容与布局--%>
                 <%--     <header class="t_h_bgText" >
             <span >软件说明</span>
@@ -49,7 +55,7 @@
                 <div runat="server" id="myDiv1" class="regard" >本软件适用于工业自动化作为上位机对下位设备进行监控与控制使用简易通过拖拽控件修改参数实现对设备的监控。
                     后续会持续添加控件实现多元化,更贴合，更方便，更快捷的设计理念目前支持简单常用的控件-支持三菱PLC--MC协议(3E帧)--西门子S7协议MODBUS TCP协议--或者通过宏指令简易的编写代码实现串口--以太网特定协议的通讯。
   关于对其他设备的数据库对接目前可以通过宏指令实现简易的去处理后续会做一个特定的控件去对接实现。</div>--%>
-   <%--             <div style='width: 4rem; height: 8rem; display: inline-block; float: left; position: relative; margin-left: 0.1rem; margin-top: 0.0rem; color: azure; top: 0px; left: 80px;'>
+                <%--             <div style='width: 4rem; height: 8rem; display: inline-block; float: left; position: relative; margin-left: 0.1rem; margin-top: 0.0rem; color: azure; top: 0px; left: 80px;'>
                     <label style='float: left; font-size: 25%; text-align: left; margin-left: 0.1rem; margin-top: 0.3rem;'>
                         参数设置1
                         <input id='parameter1' type='text' value='请输入内容' style='margin-left: 0.0rem; margin-top: 0.3rem; position: relative; top: -2px; font-size: 40%; height: 30px; border-radius: 0.1rem;'></input></label>
@@ -117,7 +123,7 @@
                         tbody6.style.backgroundColor = '#FFF';
                     }
                 </script>--%>
-            <%--                 <div style='color: #fff; font-size: 50%; border-top: none; border-bottom: none; border-left: none; border-right: none; width: 15rem; height: 7.5rem; color: aliceblue; margin-left: 0.1rem; margin-top: 0.1rem;'>
+                <%--                 <div style='color: #fff; font-size: 50%; border-top: none; border-bottom: none; border-left: none; border-right: none; width: 15rem; height: 7.5rem; color: aliceblue; margin-left: 0.1rem; margin-top: 0.1rem;'>
                     <header style='color: #ffffff; font-size: 70%; text-align: center; position: relative; margin-top: 0.1rem; top: -5px; text-align: center; font-weight: bold;'>
                         <span>报警注册事件</span>
                     </header>
@@ -174,7 +180,51 @@
                 <asp:PlaceHolder ID="PlaceHolder1" runat="server"></asp:PlaceHolder>
             </div>
         </div>
-
+        <%--网页自适应代码--%>
+        <script language="javascript">
+            /*alert(document.body.clientWidth + 'x' + document.body.clientHeight);*/
+            function Webselfadaption() {
+                //判断按钮导航栏屏幕宽度 标准是1920*969 已知整体Html 1个rem等于100px
+                if (document.body.clientWidth >= 600 && document.body.clientWidth < 6000) {
+                    var navigation = document.getElementById('Buttonnavigation');
+                    navigation.style.width = (((document.body.clientWidth / 300) / 2) - 0.2) + 'rem';
+                    //改变导航栏按钮宽度
+                    for (var i = 2; i < 8; i++) {
+                        var Name = ('Button' + i.toString()).toString();
+                        var navigationbutton1 = document.getElementById(Name);
+                        navigationbutton1.style.width = (document.body.clientWidth / 800) + 'rem';
+                        navigationbutton1.style.left = (document.body.clientWidth / 7680) + 'rem';
+                    }
+                }
+                //判断高度
+                if (document.body.clientHeight >= 200 && document.body.clientHeight < 3000) {
+                    var navigation = document.getElementById('Buttonnavigation');
+                    navigation.style.height = (document.body.clientHeight / 114) + 'rem';
+                    //改变导航栏按钮宽度
+                    for (var i = 2; i < 8; i++) {
+                        var Name = ('Button' + i.toString()).toString();
+                        var navigationbutton1 = document.getElementById(Name);
+                        navigationbutton1.style.height = (document.body.clientHeight / 1211.25) + 'rem';
+                        navigationbutton1.style.top = (document.body.clientHeight / 9690) + 'rem';
+                        navigationbutton1.style.marginTop = (document.body.clientHeight / 1938) + 'rem';
+                    }
+                }
+                //判断MainActivity主页面
+                if (document.body.clientWidth >= 600 && document.body.clientWidth < 6000) {
+                    var navigation = document.getElementById('MainActivity');
+                    navigation.style.width = (document.body.clientWidth / 123.87)+ 'rem';
+                }
+                //判断高度
+                if (document.body.clientHeight >= 200 && document.body.clientHeight < 3000) {
+                    var navigation = document.getElementById('MainActivity');
+                    navigation.style.height = (document.body.clientHeight / 114) + 'rem';
+                }
+            }
+            //定时刷新获取设备报警视图
+            setInterval(function () {
+                Webselfadaption();
+            }, 300);          
+        </script>
     </form>
 </body>
 </html>
