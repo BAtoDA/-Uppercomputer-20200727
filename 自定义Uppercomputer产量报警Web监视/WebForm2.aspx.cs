@@ -81,23 +81,33 @@ namespace HTML布局学习
         {
             StringBuilder builder = new StringBuilder();
             builder.Append(@" <div style='width: 4rem; height: 8rem; display: inline-block; float: left; position: relative; margin-left: 0.1rem; margin-top: 0.0rem; color: azure; top: 0px; left: 80px;'>
-                    <label style='float: left; font-size: 25%; text-align: left; margin-left: 0.1rem; margin-top: 0.3rem;'>参数设置1
-                        <input id='parameter1' type='text' style='margin-left: 0.0rem; margin-top: 0.3rem; position: relative; top: -2px; font-size: 25%; height: 30px;'></input></label>
-                    <label style='float: left; font-size: 25%; text-align: left; margin-left: 0.1rem; margin-top: 0.3rem;'>参数设置1
-                        <input id='parameter2' type='text' style='margin-left: 0.0rem; margin-top: 0.3rem; position: relative; top: -2px; font-size: 25%; height: 30px;'></input></label>
+                    <label style='float: left; font-size: 25%; text-align: left; margin-left: 0.1rem; margin-top: 0.3rem;'>
+                        参数设置1
+                        <input id='parameter1' type='text' value='请输入内容' style='margin-left: 0.0rem; margin-top: 0.3rem; position: relative; top: -2px; font-size: 50%; height: 33px; border-radius: 0.1rem; font-weight:bold;'></input></label>
+                    <label style='float: left; font-size: 25%; text-align: left; margin-left: 0.1rem; margin-top: 0.3rem;'>
+                        参数设置1
+                        <input id='parameter2' type='text' value='请输入内容' style='margin-left: 0.0rem; margin-top: 0.3rem; position: relative; top: -2px; font-size: 50%; height: 30px; border-radius: 0.1rem; font-weight:bold;'></input></label>
                 </div>
                 <div style='width: 4rem; height: 8rem; display: inline-block; float: inherit; position: relative; margin-left: 0.1rem; margin-top: 0.0rem; color: azure; top: 0px; right: -200px;'>
-                    <label style='float: left; font-size: 25%; text-align: left; margin-left: 0.1rem; margin-top: 0.3rem;'>参数设置1
-                        <input id='parameter3' type='text' style='margin-left: 0.0rem; margin-top: 0.3rem; position: relative; top: -2px; font-size: 25%; height: 30px;'></input></label>
-                    <label style='float: left; font-size: 25%; text-align: left; margin-left: 0.1rem; margin-top: 0.3rem;'>参数设置1
-                        <input id='parameter4' type='text' style='margin-left: 0.0rem; margin-top: 0.3rem; position: relative; top: -2px; font-size: 25%; height: 30px;'></input></label>
+                    <label style='float: left; font-size: 25%; text-align: left; margin-left: 0.1rem; margin-top: 0.3rem;'>
+                        参数设置1
+                        <input id='parameter3' type='text' value='请输入内容' style='margin-left: 0.0rem; margin-top: 0.3rem; position: relative; top: -2px; font-size: 50%; height: 30px; border-radius: 0.1rem; font-weight:bold;'></input></label>
+                    <label style='float: left; font-size: 25%; text-align: left; margin-left: 0.1rem; margin-top: 0.3rem;'>
+                        参数设置1
+                        <input id='parameter4' type='text' value='请输入内容' style='margin-left: 0.0rem; margin-top: 0.3rem; position: relative; top: -2px; font-size: 50%; height: 30px; border-radius: 0.1rem; font-weight:bold;'></input></label>
                 </div>
                 <div style='width: 4rem; height: 8rem; display: inline-block; float: right; position: relative; margin-left: 0.1rem; margin-top: 0.0rem; color: azure; top: 0px; right: 0px;'>
-                    <label style='float: left; font-size: 25%; text-align: left; margin-left: 0.1rem; margin-top: 0.3rem;'>参数设置1
-                        <input id='parameter5' type='text' style='margin-left: 0.0rem; margin-top: 0.3rem; position: relative; top: -2px; font-size: 25%; height: 30px;'></input></label>
-                    <label style='float: left; font-size: 25%; text-align: left; margin-left: 0.1rem; margin-top: 0.3rem;'>参数设置1
-                        <input id='parameter6' type='text' style='margin-left: 0.0rem; margin-top: 0.3rem; position: relative; top: -2px; font-size: 25%; height: 30px;'></input></label>
-                </div>");
+                    <label style='float: left; font-size: 25%; text-align: left; margin-left: 0.1rem; margin-top: 0.3rem;'>
+                        参数设置1
+                        <input id='parameter5' type='text' value='请输入内容' style='margin-left: 0.0rem; margin-top: 0.3rem; position: relative; top: -2px; font-size: 50%; height: 30px; border-radius: 0.1rem; font-weight:bold;'></input></label>
+                    <label style='float: left; font-size: 25%; text-align: left; margin-left: 0.1rem; margin-top: 0.3rem;'>
+                        参数设置1
+                        <input id='parameter6' type='text' value='请输入内容' style='margin-left: 0.0rem; margin-top: 0.3rem; position: relative; top: -2px; font-size: 50%; height: 30px; border-radius: 0.1rem; font-weight:bold;'></input></label>
+                </div>
+                <script type='text/javascript'>
+                   //用于处理文本框特效
+                  Parametertext();
+                </script>");
             DynamicDIV(builder);
             
         }
@@ -138,15 +148,19 @@ namespace HTML布局学习
                 </script>
          <div style='color: #fff; font-size: 50%; border-top: none; border-bottom: none; border-left: none; border-right: none; width: 15rem; height: 0.5rem; color: aliceblue; margin-left: 0.1rem; margin-top: 0.1rem;'>
                      <header style='color: #fff; font-size: 70%; text-align: center; position: relative; margin-top: 0.1rem; top: -5px; text-align: center; font-weight: bold;'>
-                    <button style='color:#fff; float: initial; font-size: 50%; text-align:center; margin-left: 0.0rem; margin-top: 0.0rem; height:0.5rem; width:0.8rem; background:
+                    <button id='previous' style='color:#fff; float: initial; font-size: 50%; text-align:center; margin-left: 0.0rem; margin-top: 0.0rem; height:0.5rem; width:0.8rem; background:
     url(../img/bg_box2.png); no-repeat; background-size: 100% 100%; border:none;  position: relative; left:-2rem;' onclick='previous()'>上一页</button>
-                            <button style='color:#fff; float: initial; font-size: 50%; text-align:center; margin-left: 0.0rem; margin-top: 0.0rem; height:0.5rem; width:0.8rem; background:
+                            <button id='home' style='color:#fff; float: initial; font-size: 50%; text-align:center; margin-left: 0.0rem; margin-top: 0.0rem; height:0.5rem; width:0.8rem; background:
     url(../img/bg_box2.png); no-repeat; background-size: 100% 100%; border:none;  position: relative; left:0rem;' onclick='Home()'>首页</button>
-                    <button style='color:#fff; float: initial; font-size: 50%; text-align:center; margin-left: 0.0rem; margin-top: 0.0rem; height:0.5rem; width:0.8rem; background:
+                    <button id='page' style='color:#fff; float: initial; font-size: 50%; text-align:center; margin-left: 0.0rem; margin-top: 0.0rem; height:0.5rem; width:0.8rem; background:
     url(../img/bg_box2.png); no-repeat; background-size: 100% 100%; border:none;  position: relative; left:2rem;' onclick='next()'>下一页</button>
                   </header>
                 </div>
                 <script type='text/javascript'>
+                 //下方导航栏按钮特效
+                    Tablecss();
+                   //鼠标移到子项 子项变色
+                    Itembackground();
                     //上一页触发方法
                     function previous() {
                         alert('正在请求后端获取上一页数据');
@@ -213,7 +227,94 @@ namespace HTML布局学习
         /// <param name="e"></param>
         protected void Button4_Click(object sender, EventArgs e)
         {
-
+            StringBuilder builder = new StringBuilder();
+            builder.Append(@"<div style='color: #fff; font-size: 50%; border-top: none; border-bottom: none; border-left: none; border-right: none; width: 15rem; height: 7.5rem; color: aliceblue; margin-left: 0.1rem; margin-top: 0.1rem;'>
+                    <header style='color: #ffffff; font-size: 70%; text-align: center; position: relative; margin-top: 0.1rem; top: -5px; text-align: center; font-weight: bold;'>
+                        <span>报警历史查看</span>
+                    </header>
+                    <table style='color: #fff; font-size: 50%; border-top: none; border-bottom: none; border-left: none; border-right: none; width: 15rem; height: 0.8rem; color: aliceblue; margin-left: 0.1rem; margin-top: 0.1rem; position: relative; top: 0rem; background: url(../img/bg_box2.png); no-repeat; background-size: 100% 100%;'
+                        id='Abnorma1'>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>报警时间</th>
+                                <th>处理完成时间</th>
+                                <th>类型</th>
+                                <th>设备</th>
+                                <th>设备_地址</th>
+                                <th>设备_具体地址</th>
+                                <th>报警内容</th>
+                                <th>事件关联ID</th>
+                            </tr>
+                        </thead>
+                        <tbody style='width: 100%; height: 100%; line-height: 50px; background-size: 100% 100%; text-align: center; color: darkgray; position: relative; top: 10px; left: 0px; color: #ffffff;'
+                            id='tbMain1'>
+                        </tbody>
+                    </table>
+                </div>
+                <script type='text/javascript'>
+                    GetAlarmhistory();
+                </script>
+         <div style='color: #fff; font-size: 50%; border-top: none; border-bottom: none; border-left: none; border-right: none; width: 15rem; height: 0.5rem; color: aliceblue; margin-left: 0.1rem; margin-top: 0.1rem;'>
+                     <header style='color: #fff; font-size: 70%; text-align: center; position: relative; margin-top: 0.1rem; top: -5px; text-align: center; font-weight: bold;'>
+                    <button id='previous' style='color:#fff; float: initial; font-size: 50%; text-align:center; margin-left: 0.0rem; margin-top: 0.0rem; height:0.5rem; width:0.8rem; background:
+    url(../img/bg_box2.png); no-repeat; background-size: 100% 100%; border:none;  position: relative; left:-2rem;' onclick='previous()'>上一页</button>
+                            <button id='home' style='color:#fff; float: initial; font-size: 50%; text-align:center; margin-left: 0.0rem; margin-top: 0.0rem; height:0.5rem; width:0.8rem; background:
+    url(../img/bg_box2.png); no-repeat; background-size: 100% 100%; border:none;  position: relative; left:0rem;' onclick='Home()'>首页</button>
+                    <button id='page' style='color:#fff; float: initial; font-size: 50%; text-align:center; margin-left: 0.0rem; margin-top: 0.0rem; height:0.5rem; width:0.8rem; background:
+    url(../img/bg_box2.png); no-repeat; background-size: 100% 100%; border:none;  position: relative; left:2rem;' onclick='next()'>下一页</button>
+                  </header>
+                </div>
+                <script type='text/javascript'>
+                  //下方导航栏按钮特效
+                    Tablecss();
+                    //鼠标移到子项 子项变色
+                    Itembackground();
+                    //上一页触发方法
+                    function previous() {
+                        alert('正在请求后端获取上一页数据');
+                    }
+        function Home()
+        {
+            alert('正在请求后端获取首页数据');
         }
+        function next()
+        {
+            alert('正在请求后端获取下一页数据');
+        }
+                </script>");
+            //动态添加数据到前台
+            DynamicDIV(builder);
+        }
+        /// <summary>
+        /// 报警事件历史数据查询前端直接传入泛型集合对象
+        /// </summary>
+        /// <returns></returns>
+        [WebMethod]
+        public static string Displayhistory()
+        {
+            lock (Info)
+            {
+                List<Alarmhistory> imagelist = new List<Alarmhistory>();//表单集合
+                imagelist.Add(new Alarmhistory()
+                {
+                    ID = 0,
+                    设备 = "aaa",
+                    设备_具体地址 = "22",
+                    设备_地址 = "ee11",
+                    事件关联ID = 1,
+                    处理完成时间 = DateTime.Now.ToString("D"),
+                    报警内容 = "11111",
+                    报警时间 = DateTime.Now.ToString("D"),
+                    类型 = true
+
+                }) ;
+                //序列化JSON返回前端
+                JavaScriptSerializer jsonSerializer = new JavaScriptSerializer();
+                string imageinfoStr = jsonSerializer.Serialize(imagelist);
+                return imageinfoStr;
+            }
+        }
+
     }
 }

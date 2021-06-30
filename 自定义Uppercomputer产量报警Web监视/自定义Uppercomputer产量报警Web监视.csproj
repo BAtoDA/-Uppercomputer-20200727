@@ -113,8 +113,10 @@
     <Content Include="折线图显示jsPSOT\小时折线图.js" />
     <Content Include="折线图显示jsPSOT\月折线图.js" />
     <Content Include="报警视图jsPOST\AbnormalSheet.css" />
+    <Content Include="报警视图jsPOST\Alarmhistory_View.js" />
     <Content Include="报警视图jsPOST\AlarmSQL_View.js" />
     <Content Include="报警视图jsPOST\Alarm_View.js" />
+    <Content Include="控件特效样式\Navigation.js" />
     <Content Include="数值显示jsPOST\numerical.js" />
     <Content Include="数值显示jsPOST\numeriheadline.css" />
     <Content Include="表盘显示jsPOST\停机指针显示.js" />
@@ -138,6 +140,7 @@
     </Compile>
     <Compile Include="小时产量类序列化\HourClass.cs" />
     <Compile Include="报警类序列化\Alarm.cs" />
+    <Compile Include="报警类序列化\Alarmhistory.cs" />
     <Compile Include="报警类序列化\AlarmSQL.cs" />
   </ItemGroup>
   <ItemGroup>

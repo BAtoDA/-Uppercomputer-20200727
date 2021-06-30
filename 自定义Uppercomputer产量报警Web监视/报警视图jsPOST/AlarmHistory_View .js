@@ -1,4 +1,4 @@
-﻿//读取后端报警注册数据查询
+﻿//读取后端报警历史报警内容
 function GetAlarmSQL() {
     $.ajax({
         type: "POST",
@@ -65,4 +65,8 @@ function GetAlarmSQL() {
             alert("error!");
         }
     });
+}
+//操作表格对象方法
+function Alarm() {
+    GetAlarm();//获取后端数据
 }
