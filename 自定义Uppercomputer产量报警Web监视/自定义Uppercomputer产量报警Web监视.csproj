@@ -73,6 +73,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="樱花飘落js\hm.js" />
     <Content Include="樱花特效css\style.css" />
     <Content Include="Echarts\customed.js" />
     <Content Include="Echarts\echarts.common.js" />
