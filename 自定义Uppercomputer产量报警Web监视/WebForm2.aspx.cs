@@ -52,8 +52,8 @@ namespace HTML布局学习
     margin-top: 0.3rem;
     top: -10px;
     text-align: center;'> <span >软件说明</span></header>
-     <div style = 'width: 15rem;
-    height: 7rem;
+     <div style = 'width:96.7%;
+    height: 100%;
     display: inline-block;
     float: left;
     position: relative;
@@ -68,6 +68,16 @@ namespace HTML布局学习
 本软件适用于工业自动化作为上位机对下位设备进行监控与控制使用简易通过拖拽控件修改参数实现对设备的监控。
                     后续会持续添加控件实现多元化, 更贴合，更方便，更快捷的设计理念目前支持简单常用的控件 - 支持三菱PLC--MC协议(3E帧)--西门子S7协议MODBUS TCP协议--或者通过宏指令简易的编写代码实现串口--以太网特定协议的通讯。
   关于对其他设备的数据库对接目前可以通过宏指令实现简易的去处理后续会做一个特定的控件去对接实现。
+<br></br>
+<br></br>
+<br></br>
+<br></br>
+<br></br>
+<br></br>
+<br></br>
+<br></br>
+<br></br>
+<br></br>
 </ div > ");   
             DynamicDIV(sb);
 
@@ -80,33 +90,77 @@ namespace HTML布局学习
         protected void Button2_Click(object sender, EventArgs e)
         {
             StringBuilder builder = new StringBuilder();
-            builder.Append(@" <div style='width: 4rem; height: 8rem; display: inline-block; float: left; position: relative; margin-left: 0.1rem; margin-top: 0.0rem; color: azure; top: 0px; left: 80px;'>
+            builder.Append(@"            <div id='parameterDiv1' style='width: 4rem; height: 8.5rem; display: inline-block; float: left; position: relative; margin-left: 0.1rem; margin-top: 0.0rem; color: azure; top: 0px; left: 80px;'>
                     <label style='float: left; font-size: 25%; text-align: left; margin-left: 0.1rem; margin-top: 0.3rem;'>
                         参数设置1
-                        <input id='parameter1' type='text' value='请输入内容' style='margin-left: 0.0rem; margin-top: 0.3rem; position: relative; top: -2px; font-size: 50%; height: 33px; border-radius: 0.1rem; font-weight:bold;'></input></label>
+                        <input id='parameter1' type='text' value='请输入内容' style='margin-left: 0.0rem; margin-top: 0.3rem; position: relative; top: -2px; font-size: 40%; height: 30px; border-radius: 0.1rem;'></input></label>
                     <label style='float: left; font-size: 25%; text-align: left; margin-left: 0.1rem; margin-top: 0.3rem;'>
                         参数设置1
-                        <input id='parameter2' type='text' value='请输入内容' style='margin-left: 0.0rem; margin-top: 0.3rem; position: relative; top: -2px; font-size: 50%; height: 30px; border-radius: 0.1rem; font-weight:bold;'></input></label>
+                        <input id='parameter2' type='text' value='请输入内容' style='margin-left: 0.0rem; margin-top: 0.3rem; position: relative; top: -2px; font-size: 40%; height: 30px; border-radius: 0.1rem;'></input></label>
                 </div>
-                <div style='width: 4rem; height: 8rem; display: inline-block; float: inherit; position: relative; margin-left: 0.1rem; margin-top: 0.0rem; color: azure; top: 0px; right: -200px;'>
+                <div id='parameterDiv2' style='width: 4rem; height: 8.5rem; display: inline-block; float: inherit; position: relative; margin-left: 0.1rem; margin-top: 0.0rem; color: azure; top: 0px; right: -200px;'>
                     <label style='float: left; font-size: 25%; text-align: left; margin-left: 0.1rem; margin-top: 0.3rem;'>
                         参数设置1
-                        <input id='parameter3' type='text' value='请输入内容' style='margin-left: 0.0rem; margin-top: 0.3rem; position: relative; top: -2px; font-size: 50%; height: 30px; border-radius: 0.1rem; font-weight:bold;'></input></label>
+                        <input id='parameter3' type='text' value='请输入内容' style='margin-left: 0.0rem; margin-top: 0.3rem; position: relative; top: -2px; font-size: 40%; height: 30px; border-radius: 0.1rem;'></input></label>
                     <label style='float: left; font-size: 25%; text-align: left; margin-left: 0.1rem; margin-top: 0.3rem;'>
                         参数设置1
-                        <input id='parameter4' type='text' value='请输入内容' style='margin-left: 0.0rem; margin-top: 0.3rem; position: relative; top: -2px; font-size: 50%; height: 30px; border-radius: 0.1rem; font-weight:bold;'></input></label>
+                        <input id='parameter4' type='text' value='请输入内容' style='margin-left: 0.0rem; margin-top: 0.3rem; position: relative; top: -2px; font-size: 40%; height: 30px; border-radius: 0.1rem;'></input></label>
                 </div>
-                <div style='width: 4rem; height: 8rem; display: inline-block; float: right; position: relative; margin-left: 0.1rem; margin-top: 0.0rem; color: azure; top: 0px; right: 0px;'>
+                <div id='parameterDiv3' style='width: 4rem; height: 8.5rem; display: inline-block; float: right; position: relative; margin-left: 0.1rem; margin-top: 0.0rem; color: azure; top: 0px; right: 0px;'>
                     <label style='float: left; font-size: 25%; text-align: left; margin-left: 0.1rem; margin-top: 0.3rem;'>
                         参数设置1
-                        <input id='parameter5' type='text' value='请输入内容' style='margin-left: 0.0rem; margin-top: 0.3rem; position: relative; top: -2px; font-size: 50%; height: 30px; border-radius: 0.1rem; font-weight:bold;'></input></label>
+                        <input id='parameter5' type='text' value='请输入内容' style='margin-left: 0.0rem; margin-top: 0.3rem; position: relative; top: -2px; font-size: 40%; height: 30px; border-radius: 0.1rem;'></input></label>
                     <label style='float: left; font-size: 25%; text-align: left; margin-left: 0.1rem; margin-top: 0.3rem;'>
                         参数设置1
-                        <input id='parameter6' type='text' value='请输入内容' style='margin-left: 0.0rem; margin-top: 0.3rem; position: relative; top: -2px; font-size: 50%; height: 30px; border-radius: 0.1rem; font-weight:bold;'></input></label>
+                        <input id='parameter6' type='text' value='请输入内容' style='margin-left: 0.0rem; margin-top: 0.3rem; position: relative; top: -2px; font-size: 40%; height: 30px; border-radius: 0.1rem;'></input></label>
                 </div>
                 <script type='text/javascript'>
+                    function paramete() {
+                        //区块一自适应
+                        var parameterDiv = document.getElementById('parameterDiv1');
+
+                        //判断按钮导航栏屏幕宽度 标准是1920*969 已知整体Html 1个rem等于100px
+                        if (document.body.clientWidth >= 600 && document.body.clientWidth < 6000) {
+                            parameterDiv.style.width = (document.body.clientWidth / 480) + 'rem';
+                            parameterDiv.style.marginLeft = (document.body.clientHeight / 9690) + 'rem';
+                            parameterDiv.style.left = (document.body.clientHeight / 1200) + 'rem';
+                        }
+                        //判断高度
+                        if (document.body.clientHeight > 200 && document.body.clientHeight < 3000) {
+                           parameterDiv.style.height = (document.body.clientHeight / 114) + 'rem';
+                        }
+                        //区块二自适应
+                        var parameterDiv = document.getElementById('parameterDiv2');
+
+                        //判断按钮导航栏屏幕宽度 标准是1920*969 已知整体Html 1个rem等于100px
+                        if (document.body.clientWidth >= 600 && document.body.clientWidth < 6000) {
+                            parameterDiv.style.width = (document.body.clientWidth / 480) + 'rem';
+                            parameterDiv.style.marginLeft = (document.body.clientHeight / 9690) + 'rem';
+                            parameterDiv.style.right = '-' + (document.body.clientHeight / 480) + 'rem';
+                        }
+                        //判断高度
+                        if (document.body.clientHeight > 200 && document.body.clientHeight < 3000) {
+                            parameterDiv.style.height = (document.body.clientHeight / 114) + 'rem';
+                        }
+                        //区块三自适应
+                        var parameterDiv = document.getElementById('parameterDiv3');
+
+                        //判断按钮导航栏屏幕宽度 标准是1920*969 已知整体Html 1个rem等于100px
+                        if (document.body.clientWidth >= 600 && document.body.clientWidth < 6000) {
+                            parameterDiv.style.width = (document.body.clientWidth / 480) + 'rem';
+                            parameterDiv.style.marginLeft = (document.body.clientHeight / 9690) + 'rem';
+                        }
+                        //判断高度
+                        if (document.body.clientHeight > 200 && document.body.clientHeight < 3000) {
+                            parameterDiv.style.height = (document.body.clientHeight / 114) + 'rem';
+                        }
+                    }
                    //用于处理文本框特效
                   Parametertext();
+           //定时刷新自适应代码
+          setInterval(function () {
+                paramete();
+             }, 300);     
                 </script>");
             DynamicDIV(builder);
             
@@ -119,11 +173,11 @@ namespace HTML布局学习
         protected void Button3_Click(object sender, EventArgs e)
         {
             StringBuilder builder = new StringBuilder();
-            builder.Append(@"<div style='color: #fff; font-size: 50%; border-top: none; border-bottom: none; border-left: none; border-right: none; width: 15rem; height: 7.5rem; color: aliceblue; margin-left: 0.1rem; margin-top: 0.1rem;'>
+            builder.Append(@"<div style='color: #fff; font-size: 50%; border-top: none; border-bottom: none; border-left: none; border-right: none; width: 98.7%; height: 90%; color: aliceblue; margin-left: 0.1rem; margin-top: 0.1rem;'>
                     <header style='color: #ffffff; font-size: 70%; text-align: center; position: relative; margin-top: 0.1rem; top: -5px; text-align: center; font-weight: bold;'>
                         <span>报警注册事件</span>
                     </header>
-                    <table style='color: #fff; font-size: 50%; border-top: none; border-bottom: none; border-left: none; border-right: none; width: 15rem; height: 0.8rem; color: aliceblue; margin-left: 0.1rem; margin-top: 0.1rem; position: relative; top: 0rem; background: url(../img/bg_box2.png); no-repeat; background-size: 100% 100%;'
+                    <table style='color: #fff; font-size: 50%; border-top: none; border-bottom: none; border-left: none; border-right: none; width: 98.7%; height: 0.8rem; color: aliceblue; margin-left: 0.1rem; margin-top: 0.1rem; position: relative; top: 0rem; background: url(../img/bg_box2.png); no-repeat; background-size: 100% 100%;'
                         id='Abnorma1'>
                         <thead>
                             <tr>
@@ -146,13 +200,13 @@ namespace HTML布局学习
                 <script type='text/javascript'>
                     GetAlarmSQL();
                 </script>
-         <div style='color: #fff; font-size: 50%; border-top: none; border-bottom: none; border-left: none; border-right: none; width: 15rem; height: 0.5rem; color: aliceblue; margin-left: 0.1rem; margin-top: 0.1rem;'>
+         <div style='color: #fff; font-size: 50%; border-top: none; border-bottom: none; border-left: none; border-right: none;  width:100%; height:15%;  color: aliceblue; margin-left: 0.1rem; margin-top: 0.1rem;'>
                      <header style='color: #fff; font-size: 70%; text-align: center; position: relative; margin-top: 0.1rem; top: -5px; text-align: center; font-weight: bold;'>
-                    <button id='previous' style='color:#fff; float: initial; font-size: 50%; text-align:center; margin-left: 0.0rem; margin-top: 0.0rem; height:0.5rem; width:0.8rem; background:
+                    <button id='previous' style='color:#fff; float: initial; font-size: 50%; text-align:center; margin-left: 0.0rem; margin-top: 0.2rem; height:0.6rem; width:1rem; background:
     url(../img/bg_box2.png); no-repeat; background-size: 100% 100%; border:none;  position: relative; left:-2rem;' onclick='previous()'>上一页</button>
-                            <button id='home' style='color:#fff; float: initial; font-size: 50%; text-align:center; margin-left: 0.0rem; margin-top: 0.0rem; height:0.5rem; width:0.8rem; background:
+                            <button id='home' style='color:#fff; float: initial; font-size: 50%; text-align:center; margin-left: 0.0rem; margin-top: 0.2rem; height:0.6rem; width:1rem; background:
     url(../img/bg_box2.png); no-repeat; background-size: 100% 100%; border:none;  position: relative; left:0rem;' onclick='Home()'>首页</button>
-                    <button id='page' style='color:#fff; float: initial; font-size: 50%; text-align:center; margin-left: 0.0rem; margin-top: 0.0rem; height:0.5rem; width:0.8rem; background:
+                    <button id='page' style='color:#fff; float: initial; font-size: 50%; text-align:center; margin-left: 0.0rem; margin-top: 0.2rem; height:0.6rem; width:1rem; background:
     url(../img/bg_box2.png); no-repeat; background-size: 100% 100%; border:none;  position: relative; left:2rem;' onclick='next()'>下一页</button>
                   </header>
                 </div>
@@ -188,32 +242,22 @@ namespace HTML布局学习
             lock (Info)
             {
                 List<AlarmSQL> imagelist = new List<AlarmSQL>();//表单集合
-                imagelist.Add(new AlarmSQL()
+                for (int i = 0; i < 12; i++)
                 {
-                    ID = 0,
-                    位触发条件 = "1",
-                    字触发条件 = ">",
-                    字触发条件_具体 = "22",
-                    报警内容 = "dd",
-                    类型 = 1,
-                    设备 = "aaa",
-                    设备_具体地址 = "22",
-                    设备_地址 = "ee"
+                    imagelist.Add(new AlarmSQL()
+                    {
+                        ID = i,
+                        位触发条件 = "1",
+                        字触发条件 = ">",
+                        字触发条件_具体 = "22",
+                        报警内容 = "dd",
+                        类型 = 1,
+                        设备 = "aaa",
+                        设备_具体地址 = "22",
+                        设备_地址 = "ee"
 
-                });
-                imagelist.Add(new AlarmSQL()
-                {
-                    ID = 0,
-                    位触发条件 = "1",
-                    字触发条件 = ">",
-                    字触发条件_具体 = "22",
-                    报警内容 = "dd",
-                    类型 = 1,
-                    设备 = "aaa",
-                    设备_具体地址 = "22",
-                    设备_地址 = "ee"
-
-                });
+                    });
+                }
                 //序列化JSON返回前端
                 JavaScriptSerializer jsonSerializer = new JavaScriptSerializer();
                 string imageinfoStr = jsonSerializer.Serialize(imagelist);
@@ -228,11 +272,11 @@ namespace HTML布局学习
         protected void Button4_Click(object sender, EventArgs e)
         {
             StringBuilder builder = new StringBuilder();
-            builder.Append(@"<div style='color: #fff; font-size: 50%; border-top: none; border-bottom: none; border-left: none; border-right: none; width: 15rem; height: 7.5rem; color: aliceblue; margin-left: 0.1rem; margin-top: 0.1rem;'>
+            builder.Append(@"<div style='color: #fff; font-size: 50%; border-top: none; border-bottom: none; border-left: none; border-right: none; width: 98.7%; height: 90%; color: aliceblue; margin-left: 0.1rem; margin-top: 0.1rem;'>
                     <header style='color: #ffffff; font-size: 70%; text-align: center; position: relative; margin-top: 0.1rem; top: -5px; text-align: center; font-weight: bold;'>
                         <span>报警历史查看</span>
                     </header>
-                    <table style='color: #fff; font-size: 50%; border-top: none; border-bottom: none; border-left: none; border-right: none; width: 15rem; height: 0.8rem; color: aliceblue; margin-left: 0.1rem; margin-top: 0.1rem; position: relative; top: 0rem; background: url(../img/bg_box2.png); no-repeat; background-size: 100% 100%;'
+                    <table style='color: #fff; font-size: 50%; border-top: none; border-bottom: none; border-left: none; border-right: none; width: 98.7%; height: 0.8rem; color: aliceblue; margin-left: 0.1rem; margin-top: 0.1rem; position: relative; top: 0rem; background: url(../img/bg_box2.png); no-repeat; background-size: 100% 100%;'
                         id='Abnorma1'>
                         <thead>
                             <tr>
@@ -255,13 +299,13 @@ namespace HTML布局学习
                 <script type='text/javascript'>
                     GetAlarmhistory();
                 </script>
-         <div style='color: #fff; font-size: 50%; border-top: none; border-bottom: none; border-left: none; border-right: none; width: 15rem; height: 0.5rem; color: aliceblue; margin-left: 0.1rem; margin-top: 0.1rem;'>
+         <div style='color: #fff; font-size: 50%; border-top: none; border-bottom: none; border-left: none; border-right: none; width:100%; height:15%; color: aliceblue; margin-left: 0.1rem; margin-top: 0.1rem;'>
                      <header style='color: #fff; font-size: 70%; text-align: center; position: relative; margin-top: 0.1rem; top: -5px; text-align: center; font-weight: bold;'>
-                    <button id='previous' style='color:#fff; float: initial; font-size: 50%; text-align:center; margin-left: 0.0rem; margin-top: 0.0rem; height:0.5rem; width:0.8rem; background:
+                    <button id='previous' style='color:#fff; float: initial; font-size: 50%; text-align:center; margin-left: 0.0rem; margin-top: 0.2rem; height:0.6rem; width:1rem; background:
     url(../img/bg_box2.png); no-repeat; background-size: 100% 100%; border:none;  position: relative; left:-2rem;' onclick='previous()'>上一页</button>
-                            <button id='home' style='color:#fff; float: initial; font-size: 50%; text-align:center; margin-left: 0.0rem; margin-top: 0.0rem; height:0.5rem; width:0.8rem; background:
+                            <button id='home' style='color:#fff; float: initial; font-size: 50%; text-align:center; margin-left: 0.0rem; margin-top: 0.2rem; height:0.6rem; width:1rem; background:
     url(../img/bg_box2.png); no-repeat; background-size: 100% 100%; border:none;  position: relative; left:0rem;' onclick='Home()'>首页</button>
-                    <button id='page' style='color:#fff; float: initial; font-size: 50%; text-align:center; margin-left: 0.0rem; margin-top: 0.0rem; height:0.5rem; width:0.8rem; background:
+                    <button id='page' style='color:#fff; float: initial; font-size: 50%; text-align:center; margin-left: 0.0rem; margin-top: 0.2rem; height:0.6rem; width:1rem; background:
     url(../img/bg_box2.png); no-repeat; background-size: 100% 100%; border:none;  position: relative; left:2rem;' onclick='next()'>下一页</button>
                   </header>
                 </div>

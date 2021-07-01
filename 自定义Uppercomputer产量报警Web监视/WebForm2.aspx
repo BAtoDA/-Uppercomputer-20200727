@@ -55,7 +55,7 @@
                 <div runat="server" id="myDiv1" class="regard" >本软件适用于工业自动化作为上位机对下位设备进行监控与控制使用简易通过拖拽控件修改参数实现对设备的监控。
                     后续会持续添加控件实现多元化,更贴合，更方便，更快捷的设计理念目前支持简单常用的控件-支持三菱PLC--MC协议(3E帧)--西门子S7协议MODBUS TCP协议--或者通过宏指令简易的编写代码实现串口--以太网特定协议的通讯。
   关于对其他设备的数据库对接目前可以通过宏指令实现简易的去处理后续会做一个特定的控件去对接实现。</div>--%>
-                <%--             <div style='width: 4rem; height: 8rem; display: inline-block; float: left; position: relative; margin-left: 0.1rem; margin-top: 0.0rem; color: azure; top: 0px; left: 80px;'>
+       <%--           <div id='parameterDiv1' style='width: 4rem; height: 8rem; display: inline-block; float: left; position: relative; margin-left: 0.1rem; margin-top: 0.0rem; color: azure; top: 0px; left: 80px;'>
                     <label style='float: left; font-size: 25%; text-align: left; margin-left: 0.1rem; margin-top: 0.3rem;'>
                         参数设置1
                         <input id='parameter1' type='text' value='请输入内容' style='margin-left: 0.0rem; margin-top: 0.3rem; position: relative; top: -2px; font-size: 40%; height: 30px; border-radius: 0.1rem;'></input></label>
@@ -63,7 +63,7 @@
                         参数设置1
                         <input id='parameter2' type='text' value='请输入内容' style='margin-left: 0.0rem; margin-top: 0.3rem; position: relative; top: -2px; font-size: 40%; height: 30px; border-radius: 0.1rem;'></input></label>
                 </div>
-                <div style='width: 4rem; height: 8rem; display: inline-block; float: inherit; position: relative; margin-left: 0.1rem; margin-top: 0.0rem; color: azure; top: 0px; right: -200px;'>
+                <div id='parameterDiv2' style='width: 4rem; height: 8rem; display: inline-block; float: inherit; position: relative; margin-left: 0.1rem; margin-top: 0.0rem; color: azure; top: 0px; right: -200px;'>
                     <label style='float: left; font-size: 25%; text-align: left; margin-left: 0.1rem; margin-top: 0.3rem;'>
                         参数设置1
                         <input id='parameter3' type='text' value='请输入内容' style='margin-left: 0.0rem; margin-top: 0.3rem; position: relative; top: -2px; font-size: 40%; height: 30px; border-radius: 0.1rem;'></input></label>
@@ -71,7 +71,7 @@
                         参数设置1
                         <input id='parameter4' type='text' value='请输入内容' style='margin-left: 0.0rem; margin-top: 0.3rem; position: relative; top: -2px; font-size: 40%; height: 30px; border-radius: 0.1rem;'></input></label>
                 </div>
-                <div style='width: 4rem; height: 8rem; display: inline-block; float: right; position: relative; margin-left: 0.1rem; margin-top: 0.0rem; color: azure; top: 0px; right: 0px;'>
+                <div id='parameterDiv3' style='width: 4rem; height: 8rem; display: inline-block; float: right; position: relative; margin-left: 0.1rem; margin-top: 0.0rem; color: azure; top: 0px; right: 0px;'>
                     <label style='float: left; font-size: 25%; text-align: left; margin-left: 0.1rem; margin-top: 0.3rem;'>
                         参数设置1
                         <input id='parameter5' type='text' value='请输入内容' style='margin-left: 0.0rem; margin-top: 0.3rem; position: relative; top: -2px; font-size: 40%; height: 30px; border-radius: 0.1rem;'></input></label>
@@ -80,54 +80,58 @@
                         <input id='parameter6' type='text' value='请输入内容' style='margin-left: 0.0rem; margin-top: 0.3rem; position: relative; top: -2px; font-size: 40%; height: 30px; border-radius: 0.1rem;'></input></label>
                 </div>
                 <script type='text/javascript'>
-                    var tbody1 = document.getElementById('parameter1');
-                    tbody1.onmouseenter = function () {
-                        tbody1.style.backgroundColor = '#FFFFB0';
+                    function paramete() {
+                        //区块一自适应
+                        var parameterDiv = document.getElementById('parameterDiv1');
+
+                        //判断按钮导航栏屏幕宽度 标准是1920*969 已知整体Html 1个rem等于100px
+                        if (document.body.clientWidth >= 600 && document.body.clientWidth < 6000) {
+                            parameterDiv.style.width = (document.body.clientWidth / 480) + 'rem';
+                            parameterDiv.style.marginLeft = (document.body.clientHeight / 9690) + 'rem';
+                            parameterDiv.style.left = (document.body.clientHeight / 1200) + 'rem';
+                        }
+                        //判断高度
+                        if (document.body.clientHeight > 200 && document.body.clientHeight < 3000) {
+                            parameterDiv.style.height = (document.body.clientHeight / 121.125) + 'rem';
+                        }
+                        //区块二自适应
+                        var parameterDiv = document.getElementById('parameterDiv2');
+
+                        //判断按钮导航栏屏幕宽度 标准是1920*969 已知整体Html 1个rem等于100px
+                        if (document.body.clientWidth >= 600 && document.body.clientWidth < 6000) {
+                            parameterDiv.style.width = (document.body.clientWidth / 480) + 'rem';
+                            parameterDiv.style.marginLeft = (document.body.clientHeight / 9690) + 'rem';
+                            parameterDiv.style.right = '-' + (document.body.clientHeight / 480) + 'rem';
+                        }
+                        //判断高度
+                        if (document.body.clientHeight > 200 && document.body.clientHeight < 3000) {
+                            parameterDiv.style.height = (document.body.clientHeight / 121.125) + 'rem';
+                        }
+                        //区块三自适应
+                        var parameterDiv = document.getElementById('parameterDiv3');
+
+                        //判断按钮导航栏屏幕宽度 标准是1920*969 已知整体Html 1个rem等于100px
+                        if (document.body.clientWidth >= 600 && document.body.clientWidth < 6000) {
+                            parameterDiv.style.width = (document.body.clientWidth / 480) + 'rem';
+                            parameterDiv.style.marginLeft = (document.body.clientHeight / 9690) + 'rem';
+                        }
+                        //判断高度
+                        if (document.body.clientHeight > 200 && document.body.clientHeight < 3000) {
+                            parameterDiv.style.height = (document.body.clientHeight / 121.125) + 'rem';
+                        }
                     }
-                    tbody1.onmouseleave = function () {
-                        tbody1.style.backgroundColor = '#FFF';
-                    }
-                    var tbody2 = document.getElementById('parameter2');
-                    tbody2.onmouseenter = function () {
-                        tbody2.style.backgroundColor = '#FFFFB0';
-                    }
-                    tbody2.onmouseleave = function () {
-                        tbody2.style.backgroundColor = '#FFF';
-                    }
-                    var tbody3 = document.getElementById('parameter3');
-                    tbody3.onmouseenter = function () {
-                        tbody3.style.backgroundColor = '#FFFFB0';
-                    }
-                    tbody3.onmouseleave = function () {
-                        tbody3.style.backgroundColor = '#FFF';
-                    }
-                    var tbody4 = document.getElementById('parameter4');
-                    tbody4.onmouseenter = function () {
-                        tbody4.style.backgroundColor = '#FFFFB0';
-                    }
-                    tbody4.onmouseleave = function () {
-                        tbody4.style.backgroundColor = '#FFF';
-                    }
-                    var tbody5 = document.getElementById('parameter5');
-                    tbody5.onmouseenter = function () {
-                        tbody5.style.backgroundColor = '#FFFFB0';
-                    }
-                    tbody5.onmouseleave = function () {
-                        tbody5.style.backgroundColor = '#FFF';
-                    }
-                    var tbody6 = document.getElementById('parameter6');
-                    tbody6.onmouseenter = function () {
-                        tbody6.style.backgroundColor = '#FFFFB0';
-                    }
-                    tbody6.onmouseleave = function () {
-                        tbody6.style.backgroundColor = '#FFF';
-                    }
+             //用于处理文本框特效
+                  Parametertext();
+          //定时刷新自适应代码
+          setInterval(function () {
+                paramete();
+             }, 300);     
                 </script>--%>
-                <%--                 <div style='color: #fff; font-size: 50%; border-top: none; border-bottom: none; border-left: none; border-right: none; width: 15rem; height: 7.5rem; color: aliceblue; margin-left: 0.1rem; margin-top: 0.1rem;'>
+     <%--           <div id='Tablediv' style='color: #fff; font-size: 50%; border-top: none; border-bottom: none; border-left: none; border-right: none; width: 98.7%; height: 90%; color: aliceblue; margin-left: 0.1rem; margin-top: 0.1rem;'>
                     <header style='color: #ffffff; font-size: 70%; text-align: center; position: relative; margin-top: 0.1rem; top: -5px; text-align: center; font-weight: bold;'>
                         <span>报警注册事件</span>
                     </header>
-                    <table style='color: #fff; font-size: 50%; border-top: none; border-bottom: none; border-left: none; border-right: none; width: 15rem; height: 0.8rem; color: aliceblue; margin-left: 0.1rem; margin-top: 0.1rem; position: relative; top: 0rem; background: url(../img/bg_box2.png); no-repeat; background-size: 100% 100%;'
+                    <table style='color: #fff; font-size: 50%; border-top: none; border-bottom: none; border-left: none; border-right: none; width: 98.7%; height: 0.8rem; color: aliceblue; margin-left: 0.1rem; margin-top: 0.1rem; position: relative; top: 0rem; background: url(../img/bg_box2.png); no-repeat; background-size: 100% 100%;'
                         id='Abnorma1'>
                         <thead>
                             <tr>
@@ -142,7 +146,7 @@
                                 <th>报警内容</th>
                             </tr>
                         </thead>
-                        <tbody style='width: 100%; height: 100%; line-height: 50px; background-size: 100% 100%; text-align: center; color: darkgray; position: relative; top: 10px; left: 0px; color: #ffffff;'
+                        <tbody style='width: 98.7%; height: 100%; line-height: 50px; background-size: 100% 100%; text-align: center; color: darkgray; position: relative; top: 10px; left: 0px; color: #ffffff;'
                             id='tbMain'>
                         </tbody>
                     </table>
@@ -150,15 +154,18 @@
                 <script type='text/javascript'>
                     GetAlarmSQL();
                 </script>
-                <div style='color: #fff; font-size: 50%; border-top: none; border-bottom: none; border-left: none; border-right: none; width: 15rem; height: 0.5rem; color: aliceblue; margin-left: 0.1rem; margin-top: 0.1rem;'>
-                     <header style='color: #fff; font-size: 70%; text-align: center; position: relative; margin-top: 0.1rem; top: -5px; text-align: center; font-weight: bold;'>
-                    <button id='previous' style='color:#fff; float: initial; font-size: 50%; text-align:center; margin-left: 0.0rem; margin-top: 0.0rem; height:0.5rem; width:0.8rem; background:
-    url(../img/bg_box2.png); no-repeat; background-size: 100% 100%; border:none;  position: relative; left:-2rem;' onclick='previous()'>上一页</button>
-                    <button id='home' style='color:#fff; float: initial; font-size: 50%; text-align:center; margin-left: 0.0rem; margin-top: 0.0rem; height:0.5rem; width:0.8rem; background:
-    url(../img/bg_box2.png); no-repeat; background-size: 100% 100%; border:none;  position: relative; left:0rem;' onclick='Home()'>首页</button>
-                    <button id='page' style='color:#fff; float: initial; font-size: 50%; text-align:center; margin-left: 0.0rem; margin-top: 0.0rem; height:0.5rem; width:0.8rem; background:
-    url(../img/bg_box2.png); no-repeat; background-size: 100% 100%; border:none;  position: relative; left:2rem;' onclick='next()'>下一页</button>
-                  </header>
+                <div style='color: #fff; font-size: 50%; border-top: none; border-bottom: none; border-left: none; border-right: none; width:100%; height:15%; color: aliceblue; margin-left: 0.1rem; margin-top: 0.1rem; float: inline-end; position: relative; top: -0rem;'>
+                    <header style='color: #fff; font-size: 70%; text-align: center; position: relative; margin-top: 0.1rem; top: -5px; text-align: center; font-weight: bold;'>
+                        <button id='previous' style='color: #fff; float: initial; font-size: 50%; text-align: center; margin-left: 0.0rem; margin-top: 0.0rem; height: 0.5rem; width: 0.8rem; background: url(../img/bg_box2.png); no-repeat; background-size: 100% 100%; border: none; position: relative; left: -2rem;'
+                            onclick='previous()'>
+                            上一页</button>
+                        <button id='home' style='color: #fff; float: initial; font-size: 50%; text-align: center; margin-left: 0.0rem; margin-top: 0.0rem; height: 0.5rem; width: 0.8rem; background: url(../img/bg_box2.png); no-repeat; background-size: 100% 100%; border: none; position: relative; left: 0rem;'
+                            onclick='Home()'>
+                            首页</button>
+                        <button id='page' style='color: #fff; float: initial; font-size: 50%; text-align: center; margin-left: 0.0rem; margin-top: 0.0rem; height: 0.5rem; width: 0.8rem; background: url(../img/bg_box2.png); no-repeat; background-size: 100% 100%; border: none; position: relative; left: 2rem;'
+                            onclick='next()'>
+                            下一页</button>
+                    </header>
                 </div>
                 <script type='text/javascript'>
                     //下方导航栏按钮特效
@@ -176,7 +183,6 @@
                         alert("正在请求后端获取下一页数据");
                     }
                 </script>--%>
-
                 <asp:PlaceHolder ID="PlaceHolder1" runat="server"></asp:PlaceHolder>
             </div>
         </div>
@@ -209,21 +215,21 @@
                         navigationbutton1.style.marginTop = (document.body.clientHeight / 1938) + 'rem';
                     }
                 }
-                //判断MainActivity主页面
-                if (document.body.clientWidth >= 600 && document.body.clientWidth < 6000) {
-                    var navigation = document.getElementById('MainActivity');
-                    navigation.style.width = (document.body.clientWidth / 123.87)+ 'rem';
-                }
-                //判断高度
-                if (document.body.clientHeight >= 200 && document.body.clientHeight < 3000) {
-                    var navigation = document.getElementById('MainActivity');
-                    navigation.style.height = (document.body.clientHeight / 114) + 'rem';
-                }
+                ////判断MainActivity主页面
+                //if (document.body.clientWidth >= 600 && document.body.clientWidth < 6000) {
+                //    var navigation = document.getElementById('MainActivity');
+                //    navigation.style.width = (document.body.clientWidth / 123.87) + 'rem';
+                //}
+                ////判断高度
+                //if (document.body.clientHeight >= 200 && document.body.clientHeight < 3000) {
+                //    var navigation = document.getElementById('MainActivity');
+                //    navigation.style.height = (document.body.clientHeight / 114) + 'rem';
+                //}
             }
-            //定时刷新获取设备报警视图
+            //定时刷新自适应代码
             setInterval(function () {
                 Webselfadaption();
-            }, 300);          
+            }, 300);
         </script>
     </form>
 </body>
