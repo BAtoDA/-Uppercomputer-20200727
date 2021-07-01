@@ -38,7 +38,7 @@
                 <asp:Button ID="Button3" runat="server" Text="报警查询" BorderStyle="None" CssClass="Crystalbutton" ToolTip="报警查询" OnClick="Button3_Click" />
                 <asp:Button ID="Button4" runat="server" Text="报警历史" BorderStyle="None" CssClass="Crystalbutton" ToolTip="报警历史" OnClick="Button4_Click" />
                 <asp:Button ID="Button5" runat="server" Text="产量查询" BorderStyle="None" CssClass="Crystalbutton" ToolTip="产量查询" />
-                <asp:Button ID="Button6" runat="server" Text="产量预设" BorderStyle="None" CssClass="Crystalbutton" ToolTip="产量预设" />
+                <asp:Button ID="Button6" runat="server" Text="页面监控" BorderStyle="None" CssClass="Crystalbutton" ToolTip="产量预设" />
                 <asp:Button ID="Button7" runat="server" Text="关于" BorderStyle="None" CssClass="Crystalbutton" ToolTip="关于" OnClick="Button7_Click" />
                 <script type='text/javascript'>
                     //处理导航栏按钮特效
