@@ -403,67 +403,88 @@ namespace HTML布局学习
         {
             //把页面监控界面推送到前台中
             StringBuilder builder = new StringBuilder();
-            builder.Append(@"<div id='Tablediv' style='color: #fff; font-size: 50%; border-top: none; border-bottom: none; border-left: none; border-right: none; width: 98.7%; height: 7.5rem; color: aliceblue; margin-left: 0.1rem; margin-top: 0.1rem;'>
+            builder.Append(@"<div id='Tabledivee' style='color: #fff; font-size: 50%; border-top: none; border-bottom: none; border-left: none; border-right: none; width: 98.7%; height: 8.5rem; color: aliceblue; margin-left: 0.1rem; margin-top: 0.1rem;'>
                     <header style='color: #ffffff; font-size: 70%; text-align: center; position: relative; margin-top: 0.1rem; top: -5px; text-align: center; font-weight: bold;'>
-                        <span>报警历史查看</span>
+                        <span>界面介绍</span>
                     </header>
-                    <table style='color: #fff; font-size: 50%; border-top: none; border-bottom: none; border-left: none; border-right: none; width: 98.7%; height: 0.8rem; color: aliceblue; margin-left: 0.1rem; margin-top: 0.1rem; position: relative; top: 0rem; background: url(../img/bg_box2.png); no-repeat; background-size: 100% 100%;'
-                        id='Abnorma1'>
-                        <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>报警时间</th>
-                                <th>处理完成时间</th>
-                                <th>类型</th>
-                                <th>设备</th>
-                                <th>设备_地址</th>
-                                <th>设备_具体地址</th>
-                                <th>报警内容</th>
-                                <th>事件关联ID</th>
-                            </tr>
-                        </thead>
-                        <tbody style='width: 100%; height: 100%; line-height: 50px; background-size: 100% 100%; text-align: center; color: darkgray; position: relative; top: 10px; left: 0px; color: #ffffff;'
-                            id='tbMain1'>
-                        </tbody>
-                    </table>
+                    <div style='width: 45%; height: 70%; display: inline-block; float: left; position: relative; margin-left: 0.1rem; margin-top: 0.1rem; color: azure; top: 0rem; left: 0px;'>
+                        <header style='color: #ffffff; font-size: 70%; text-align: center; position: relative; margin-top: 0.1rem; top: -5px; text-align: center; font-weight: bold;'>
+                            <span>产量监控界面</span>
+                        </header>
+                        <div style='width: 75%; height: 60%; display: inline-block; float: left; position: relative; margin-left: 0.1rem; margin-top: 0.1rem; color: azure; top: 0rem; left: 0.65rem; background: url(../img/bg_box3.png); no-repeat; background-size: 100% 100%; border: none;'>
+                            <video id='video_id1' style='position: relative; top: -0.11rem;' width='100%;' height='100%;' controls='controls'>
+                                你的浏览器不能支持HTML5视频
+                                <source src='../网页播放的视频/source1.mp4' type='video/mp4'>
+                            </video>
+                            <p style='font-size: 40%;'>
+                                本界面主要用于：预设当班目标产量,当月目标产量,全年目标产量, 判断当班当天是否完成任务 配合MES系统制定目标有计划的进行生产‘排产’ 
+                                内置小时产量动态图表与本周产量动态显示，当月生产数量查询，支持初步查看设备状态与是否进入报警状态和报警发生时间，内容，是否处理等。
+                            </p>
+                            <div style='color: #fff; font-size: 100%; border-top: none; border-bottom: none; border-left: none; border-right: none; width: 100%; height: 15%; color: aliceblue; margin-left: 0.1rem; margin-top: 0.1rem; float: inline-end; position: relative; top: -0rem;'>
+                                <header style='color: #fff; font-size: 70%; text-align: center; position: relative; margin-top: 0.1rem; top: -5px; text-align: center; font-weight: bold;'>
+                                    <button id='yield' style='color: #fff; float: initial; font-size: 70%; font-weight: 900; text-align: center; margin-right: 0%; margin-top: 0.2rem; height: 0.8rem; width: 2.5rem; background: url(../img/bg_box2.png); no-repeat; background-size: 100% 100%; border: none; position: relative; left: 0rem;'
+                                        onclick='GOyield()'>
+                                        进入产量监控页面</button>
+                                </header>
+                            </div>
+                        </div>
+                    </div>
+                    <div style='width: 45%; height: 70%; display: inline-block; float: right; position: relative; margin-left: 0.1rem; margin-top: 0.1rem; color: azure; top: 0.0rem; left: 0px;'>
+                        <header style='color: #ffffff; font-size: 70%; text-align: center; position: relative; margin-top: 0.1rem; top: -5px; text-align: center; font-weight: bold;'>
+                            <span>异常监控界面</span>
+                        </header>
+                        <div style='width: 75%; height: 60%; display: inline-block; float: left; position: relative; margin-left: 0.1rem; margin-top: 0.1rem; color: azure; top: -5px; left: 0.65rem; background: url(../img/bg_box3.png); no-repeat; background-size: 100% 100%; border: none;'>
+                            <video id='video_id2' style='position: relative; top: -0.11rem;' width='100%;' height='100%;' src='../网页播放的视频/source2.mp4' controls='controls'>
+                                你的浏览器不能支持HTML5视频
+                                 <source src='../网页播放的视频/source2.mp4' type='video/mp4'>
+                            </video>
+                            <p style='font-size: 40%;'>
+                                本界面主要用于：当天报警次数，7天报警次数，当月报警次数，支持用户对报警处理用时进行监控内置当天报警处理用时，7天报警处理用时
+                                ，当月报警处理用时，并且把出现次数最多的异常内容显示给用户这样可使用户快速找到设备问题所在提高生产效率。
+                            </p>
+                            <div style='color: #fff; font-size: 100%; border-top: none; border-bottom: none; border-left: none; border-right: none; width: 100%; height: 15%; color: aliceblue; margin-left: 0.1rem; margin-top: 0.1rem; float: inline-end; position: relative; top: 0.32rem;'>
+                                <header style='color: #fff; font-size: 70%; text-align: center; position: relative; margin-top: 0.1rem; top: -5px; text-align: center; font-weight: bold;'>
+                                    <button id='Alarm' style='color: #fff;  float: initial; font-size: 70%; font-weight: 900; text-align: center; margin-right: 0%; margin-top: 0.2rem; height: 0.8rem; width: 2.5rem; background: url(../img/bg_box2.png); no-repeat; background-size: 100% 100%; border: none; position: relative; left: 0rem;'
+                                        onclick='GOAlarm()'  >
+                                        进入异常监控页面</button>
+                                </header>
+                            </div>
+                        </div>
+                    </div>
+                    <script type='text/javascript'>
+                        //按钮特效
+                        var yieldButton = document.getElementById('yield');
+                        yieldButton.onmouseleave = function () {
+                            yieldButton.style.opacity = 10;
+                        }
+                        yieldButton.onmouseenter = function () {
+                            yieldButton.style.opacity = 0.7;
+                        }
+                        var AlamButton = document.getElementById('Alarm');
+                        AlamButton.onmouseleave = function () {
+                            AlamButton.style.opacity = 10;
+                        }
+                        AlamButton.onmouseenter = function () {
+                            AlamButton.style.opacity = 0.7;
+                        }
+                        //打开产量监控界面
+                        function GOyield() {
+                            window.open('WebForm1.aspx');
+                        }
+                        //打开异常监控界面
+                        function GOAlarm() {
+                            window.open('WebForm1.aspx');
+                        }
+                    </script>
                 </div>
                 <script type='text/javascript'>
-                    GetAlarmhistory();
-                </script>
-         <div style='color: #fff; font-size: 50%; border-top: none; border-bottom: none; border-left: none; border-right: none; width:100%; height:15%; color: aliceblue; margin-left: 0.1rem; margin-top: 0.1rem;'>
-                     <header style='color: #fff; font-size: 70%; text-align: center; position: relative; margin-top: 0.1rem; top: -5px; text-align: center; font-weight: bold;'>
-                    <button id='previous' style='color:#fff; float: initial; font-size: 50%; text-align:center; margin-left: 0.0rem; margin-top: 0.0rem; height:0.6rem; width:1rem; background:
-    url(../img/bg_box2.png); no-repeat; background-size: 100% 100%; border:none;  position: relative; left:-2rem;' onclick='previous()'>上一页</button>
-                            <button id='home' style='color:#fff; float: initial; font-size: 50%; text-align:center; margin-left: 0.0rem; margin-top: 0.0rem; height:0.6rem; width:1rem; background:
-    url(../img/bg_box2.png); no-repeat; background-size: 100% 100%; border:none;  position: relative; left:0rem;' onclick='Home()'>首页</button>
-                    <button id='page' style='color:#fff; float: initial; font-size: 50%; text-align:center; margin-left: 0.0rem; margin-top: 0.0rem; height:0.6rem; width:1rem; background:
-    url(../img/bg_box2.png); no-repeat; background-size: 100% 100%; border:none;  position: relative; left:2rem;' onclick='next()'>下一页</button>
-                  </header>
-                </div>
-                <script type='text/javascript'>
-                  //下方导航栏按钮特效
-                    Tablecss();
-                    //鼠标移到子项 子项变色
-                    Itembackground();
-                    //上一页触发方法
-                    function previous() {
-                        alert('正在请求后端获取上一页数据');
-                    }
-        function Home()
-        {
-            alert('正在请求后端获取首页数据');
-        }
-        function next()
-        {
-            alert('正在请求后端获取下一页数据');
-        }
-         //定时刷新自适应代码
+                    //定时刷新自适应代码
                     setInterval(function () {
                         //判断表格Div主页面自适应高度
-                        var navigation = document.getElementById('Tablediv');
+                        var navigation = document.getElementById('Tabledivee');
                         //判断高度
                         if (document.body.clientHeight >= 200 && document.body.clientHeight < 3000) {
-                            navigation.style.height = (document.body.clientHeight / 125.03225806451612903225806451613) + 'rem';
+                            navigation.style.height = (document.body.clientHeight / 116.7469879518072289156626506024) + 'rem';
                             navigation.style.marginTop = (document.body.clientHeight / 9690) + 'rem';
                         }
                     }, 300);

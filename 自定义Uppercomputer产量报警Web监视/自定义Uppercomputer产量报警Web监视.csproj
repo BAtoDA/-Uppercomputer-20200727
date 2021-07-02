@@ -74,6 +74,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="WebForm1.aspx" />
+    <Content Include="参数页面自适应js\Selfadaption.js" />
     <Content Include="布局样式.css" />
     <Content Include="樱花飘落js\hm.js" />
     <Content Include="樱花特效css\style.css" />

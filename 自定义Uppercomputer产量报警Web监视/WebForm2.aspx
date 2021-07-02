@@ -320,30 +320,24 @@
                         }
                     }, 300);
                 </script>--%>
-                <%--   页面管理界面--%>
-                <div id='Tabledivee' style='color: #fff; font-size: 50%; border-top: none; border-bottom: none; border-left: none; border-right: none; width: 98.7%; height: 8.5rem; color: aliceblue; margin-left: 0.1rem; margin-top: 0.1rem;'>
-                    <%-- 布局标题显示区--%>
+
+      <%--          <div id='Tabledivee' style='color: #fff; font-size: 50%; border-top: none; border-bottom: none; border-left: none; border-right: none; width: 98.7%; height: 8.5rem; color: aliceblue; margin-left: 0.1rem; margin-top: 0.1rem;'>
                     <header style='color: #ffffff; font-size: 70%; text-align: center; position: relative; margin-top: 0.1rem; top: -5px; text-align: center; font-weight: bold;'>
                         <span>界面介绍</span>
                     </header>
-                    <%-- 布局双边视频展示--一边百分之50宽度  100高度--%>
                     <div style='width: 45%; height: 70%; display: inline-block; float: left; position: relative; margin-left: 0.1rem; margin-top: 0.1rem; color: azure; top: 0rem; left: 0px;'>
-                        <%--第一个布局的标题--%>
                         <header style='color: #ffffff; font-size: 70%; text-align: center; position: relative; margin-top: 0.1rem; top: -5px; text-align: center; font-weight: bold;'>
                             <span>产量监控界面</span>
                         </header>
                         <div style='width: 75%; height: 60%; display: inline-block; float: left; position: relative; margin-left: 0.1rem; margin-top: 0.1rem; color: azure; top: 0rem; left: 0.65rem; background: url(../img/bg_box3.png); no-repeat; background-size: 100% 100%; border: none;'>
-                            <%--  第一个布局的视频播放控件布局--%>
                             <video id='video_id1' style='position: relative; top: -0.11rem;' width='100%;' height='100%;' controls='controls'>
                                 你的浏览器不能支持HTML5视频
-                                <source src='../网页播放的视频/source1.mp4' type="video/mp4">
+                                <source src='../网页播放的视频/source1.mp4' type='video/mp4'>
                             </video>
-                            <%--下方是描述文字--%>
                             <p style='font-size: 40%;'>
                                 本界面主要用于：预设当班目标产量,当月目标产量,全年目标产量, 判断当班当天是否完成任务 配合MES系统制定目标有计划的进行生产‘排产’ 
                                 内置小时产量动态图表与本周产量动态显示，当月生产数量查询，支持初步查看设备状态与是否进入报警状态和报警发生时间，内容，是否处理等。
                             </p>
-                            <%-- 底部进入产量监控按钮--%>
                             <div style='color: #fff; font-size: 100%; border-top: none; border-bottom: none; border-left: none; border-right: none; width: 100%; height: 15%; color: aliceblue; margin-left: 0.1rem; margin-top: 0.1rem; float: inline-end; position: relative; top: -0rem;'>
                                 <header style='color: #fff; font-size: 70%; text-align: center; position: relative; margin-top: 0.1rem; top: -5px; text-align: center; font-weight: bold;'>
                                     <button id='yield' style='color: #fff; float: initial; font-size: 70%; font-weight: 900; text-align: center; margin-right: 0%; margin-top: 0.2rem; height: 0.8rem; width: 2.5rem; background: url(../img/bg_box2.png); no-repeat; background-size: 100% 100%; border: none; position: relative; left: 0rem;'
@@ -353,24 +347,19 @@
                             </div>
                         </div>
                     </div>
-                    <%-- 布局双边视频展示--一边百分之50宽度  100高度--%>
                     <div style='width: 45%; height: 70%; display: inline-block; float: right; position: relative; margin-left: 0.1rem; margin-top: 0.1rem; color: azure; top: 0.0rem; left: 0px;'>
-                        <%--第一个布局的标题--%>
                         <header style='color: #ffffff; font-size: 70%; text-align: center; position: relative; margin-top: 0.1rem; top: -5px; text-align: center; font-weight: bold;'>
                             <span>异常监控界面</span>
                         </header>
                         <div style='width: 75%; height: 60%; display: inline-block; float: left; position: relative; margin-left: 0.1rem; margin-top: 0.1rem; color: azure; top: -5px; left: 0.65rem; background: url(../img/bg_box3.png); no-repeat; background-size: 100% 100%; border: none;'>
-                            <%--  第一个布局的视频播放控件布局--%>
                             <video id='video_id2' style='position: relative; top: -0.11rem;' width='100%;' height='100%;' src='../网页播放的视频/source2.mp4' controls='controls'>
                                 你的浏览器不能支持HTML5视频
-                                 <source src='../网页播放的视频/source2.mp4' type="video/mp4">
+                                 <source src='../网页播放的视频/source2.mp4' type='video/mp4'>
                             </video>
-                            <%--下方是描述文字--%>
                             <p style='font-size: 40%;'>
                                 本界面主要用于：当天报警次数，7天报警次数，当月报警次数，支持用户对报警处理用时进行监控内置当天报警处理用时，7天报警处理用时
                                 ，当月报警处理用时，并且把出现次数最多的异常内容显示给用户这样可使用户快速找到设备问题所在提高生产效率。
                             </p>
-                            <%-- 底部进入产量监控按钮--%>
                             <div style='color: #fff; font-size: 100%; border-top: none; border-bottom: none; border-left: none; border-right: none; width: 100%; height: 15%; color: aliceblue; margin-left: 0.1rem; margin-top: 0.1rem; float: inline-end; position: relative; top: 0.32rem;'>
                                 <header style='color: #fff; font-size: 70%; text-align: center; position: relative; margin-top: 0.1rem; top: -5px; text-align: center; font-weight: bold;'>
                                     <button id='Alarm' style='color: #fff;  float: initial; font-size: 70%; font-weight: 900; text-align: center; margin-right: 0%; margin-top: 0.2rem; height: 0.8rem; width: 2.5rem; background: url(../img/bg_box2.png); no-repeat; background-size: 100% 100%; border: none; position: relative; left: 0rem;'
@@ -380,7 +369,6 @@
                             </div>
                         </div>
                     </div>
-                 <%--   整页面监控js代码用于处理按钮事件--%>
                     <script type='text/javascript'>
                         //按钮特效
                         var yieldButton = document.getElementById('yield');
@@ -418,13 +406,12 @@
                             navigation.style.marginTop = (document.body.clientHeight / 9690) + 'rem';
                         }
                     }, 300);
-                </script>
+                </script>--%>
                 <asp:PlaceHolder ID="PlaceHolder1" runat="server"></asp:PlaceHolder>
             </div>
         </div>
         <%--网页自适应代码--%>
         <script language="javascript">
-            /*alert(document.body.clientWidth + 'x' + document.body.clientHeight);*/
             function Webselfadaption() {
                 //判断按钮导航栏屏幕宽度 标准是1920*969 已知整体Html 1个rem等于100px
                 if (document.body.clientWidth >= 600 && document.body.clientWidth < 6000) {
