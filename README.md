@@ -59,7 +59,8 @@
  下一步计划：  
  1.计划新增数据展示Web网页(主要用于展示报警,产量等主要数据).      
                                                              版本更新预览     
- ![image](https://user-images.githubusercontent.com/60955669/122644630-c9e4d600-d148-11eb-9892-f3504c6e8db2.png)
+ ![image](https://user-images.githubusercontent.com/60955669/124279732-6ca24900-db7a-11eb-9456-cc8aa2fbf158.png)   
+![image](https://user-images.githubusercontent.com/60955669/122644630-c9e4d600-d148-11eb-9892-f3504c6e8db2.png)
 ![image](https://user-images.githubusercontent.com/60955669/122644638-d10be400-d148-11eb-8f65-a36b0539c2ff.png)
 ![image](https://user-images.githubusercontent.com/60955669/122644644-df5a0000-d148-11eb-9ee8-410203d1b832.png)
 ![image](https://user-images.githubusercontent.com/60955669/122644652-ea149500-d148-11eb-841f-a0f155b066e5.png)
