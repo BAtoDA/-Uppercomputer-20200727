@@ -73,6 +73,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="WebForm1.aspx" />
+    <Content Include="布局样式.css" />
     <Content Include="樱花飘落js\hm.js" />
     <Content Include="樱花特效css\style.css" />
     <Content Include="Echarts\customed.js" />
@@ -106,12 +108,10 @@
     <Content Include="樱花特效js\index.js" />
     <Content Include="樱花特效js\Stats.min.js" />
     <Content Include="Web.config" />
-    <Content Include="WebForm1.aspx" />
     <Content Include="WebForm2.aspx" />
     <Content Include="参数设置界面css\主显示区样式.css" />
     <Content Include="参数设置界面css\参数设置button区域布局.css" />
     <Content Include="参数页面布局样式.css" />
-    <Content Include="布局样式.css" />
     <Content Include="折线图显示jsPSOT\weekSheet.css" />
     <Content Include="折线图显示jsPSOT\周折线图.js" />
     <Content Include="折线图显示jsPSOT\小时折线图.js" />

@@ -66,14 +66,14 @@ a {
 /*内容排布--小方格布局  占用大小 --*/
 .t_box_little {
     height: 100%;
-    width: 30%;
+    width: 67%;
     float: left;
 }
 /*内容排布--大方格布局  占用大小 --*/
 .t_box_big {
     height: 100%;
-    width: 70%;
-    float: right;
+    width: 33%;
+    float: left;
 }
 /*内容排布--大方格布局--显示图片--*/
 .t_boxbig {

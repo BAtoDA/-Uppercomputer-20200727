@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="参数设置界面css/主显示区样式.css" />
     <script src="报警视图jsPOST/AlarmSQL_View.js"></script>
     <script src="报警视图jsPOST/Alarmhistory_View.js"></script>
-    <title>页面参数设置</title>
+    <title>数据展示参数</title>
     <!-- 引入jquery前后端互交 -->
     <script src="Echarts/jquery-3.5.1.min.js"></script>
     <!-- 引入 echarts.js -->
@@ -156,7 +156,7 @@
         <script src='樱花特效js/Stats.min.js'></script>
         <script src="樱花特效js/index.js"></script>--%>
         <header class=" t_h_bg">
-            <span class="t_h_bg_frin">数据展示参数设置</span>
+            <span class="t_h_bg_frin">数据展示参数</span>
         </header>
         <div class="t_box_little">
             <div id="Buttonnavigation" class="t_box">
@@ -165,7 +165,7 @@
                 <asp:Button ID="Button3" runat="server" Text="报警查询" BorderStyle="None" CssClass="Crystalbutton" ToolTip="报警查询" OnClick="Button3_Click" />
                 <asp:Button ID="Button4" runat="server" Text="报警历史" BorderStyle="None" CssClass="Crystalbutton" ToolTip="报警历史" OnClick="Button4_Click" />
                 <asp:Button ID="Button5" runat="server" Text="产量查询" BorderStyle="None" CssClass="Crystalbutton" ToolTip="产量查询" />
-                <asp:Button ID="Button6" runat="server" Text="页面监控" BorderStyle="None" CssClass="Crystalbutton" ToolTip="产量预设" />
+                <asp:Button ID="Button6" runat="server" Text="页面监控" BorderStyle="None" CssClass="Crystalbutton" ToolTip="产量预设" OnClick="Button6_Click" />
                 <asp:Button ID="Button7" runat="server" Text="关于" BorderStyle="None" CssClass="Crystalbutton" ToolTip="关于" OnClick="Button7_Click" />
                 <script type='text/javascript'>
                     //处理导航栏按钮特效
@@ -320,6 +320,105 @@
                         }
                     }, 300);
                 </script>--%>
+                <%--   页面管理界面--%>
+                <div id='Tabledivee' style='color: #fff; font-size: 50%; border-top: none; border-bottom: none; border-left: none; border-right: none; width: 98.7%; height: 8.5rem; color: aliceblue; margin-left: 0.1rem; margin-top: 0.1rem;'>
+                    <%-- 布局标题显示区--%>
+                    <header style='color: #ffffff; font-size: 70%; text-align: center; position: relative; margin-top: 0.1rem; top: -5px; text-align: center; font-weight: bold;'>
+                        <span>界面介绍</span>
+                    </header>
+                    <%-- 布局双边视频展示--一边百分之50宽度  100高度--%>
+                    <div style='width: 45%; height: 70%; display: inline-block; float: left; position: relative; margin-left: 0.1rem; margin-top: 0.1rem; color: azure; top: 0rem; left: 0px;'>
+                        <%--第一个布局的标题--%>
+                        <header style='color: #ffffff; font-size: 70%; text-align: center; position: relative; margin-top: 0.1rem; top: -5px; text-align: center; font-weight: bold;'>
+                            <span>产量监控界面</span>
+                        </header>
+                        <div style='width: 75%; height: 60%; display: inline-block; float: left; position: relative; margin-left: 0.1rem; margin-top: 0.1rem; color: azure; top: 0rem; left: 0.65rem; background: url(../img/bg_box3.png); no-repeat; background-size: 100% 100%; border: none;'>
+                            <%--  第一个布局的视频播放控件布局--%>
+                            <video id='video_id1' style='position: relative; top: -0.11rem;' width='100%;' height='100%;' controls='controls'>
+                                你的浏览器不能支持HTML5视频
+                                <source src='../网页播放的视频/source1.mp4' type="video/mp4">
+                            </video>
+                            <%--下方是描述文字--%>
+                            <p style='font-size: 40%;'>
+                                本界面主要用于：预设当班目标产量,当月目标产量,全年目标产量, 判断当班当天是否完成任务 配合MES系统制定目标有计划的进行生产‘排产’ 
+                                内置小时产量动态图表与本周产量动态显示，当月生产数量查询，支持初步查看设备状态与是否进入报警状态和报警发生时间，内容，是否处理等。
+                            </p>
+                            <%-- 底部进入产量监控按钮--%>
+                            <div style='color: #fff; font-size: 100%; border-top: none; border-bottom: none; border-left: none; border-right: none; width: 100%; height: 15%; color: aliceblue; margin-left: 0.1rem; margin-top: 0.1rem; float: inline-end; position: relative; top: -0rem;'>
+                                <header style='color: #fff; font-size: 70%; text-align: center; position: relative; margin-top: 0.1rem; top: -5px; text-align: center; font-weight: bold;'>
+                                    <button id='yield' style='color: #fff; float: initial; font-size: 70%; font-weight: 900; text-align: center; margin-right: 0%; margin-top: 0.2rem; height: 0.8rem; width: 2.5rem; background: url(../img/bg_box2.png); no-repeat; background-size: 100% 100%; border: none; position: relative; left: 0rem;'
+                                        onclick='GOyield()'>
+                                        进入产量监控页面</button>
+                                </header>
+                            </div>
+                        </div>
+                    </div>
+                    <%-- 布局双边视频展示--一边百分之50宽度  100高度--%>
+                    <div style='width: 45%; height: 70%; display: inline-block; float: right; position: relative; margin-left: 0.1rem; margin-top: 0.1rem; color: azure; top: 0.0rem; left: 0px;'>
+                        <%--第一个布局的标题--%>
+                        <header style='color: #ffffff; font-size: 70%; text-align: center; position: relative; margin-top: 0.1rem; top: -5px; text-align: center; font-weight: bold;'>
+                            <span>异常监控界面</span>
+                        </header>
+                        <div style='width: 75%; height: 60%; display: inline-block; float: left; position: relative; margin-left: 0.1rem; margin-top: 0.1rem; color: azure; top: -5px; left: 0.65rem; background: url(../img/bg_box3.png); no-repeat; background-size: 100% 100%; border: none;'>
+                            <%--  第一个布局的视频播放控件布局--%>
+                            <video id='video_id2' style='position: relative; top: -0.11rem;' width='100%;' height='100%;' src='../网页播放的视频/source2.mp4' controls='controls'>
+                                你的浏览器不能支持HTML5视频
+                                 <source src='../网页播放的视频/source2.mp4' type="video/mp4">
+                            </video>
+                            <%--下方是描述文字--%>
+                            <p style='font-size: 40%;'>
+                                本界面主要用于：当天报警次数，7天报警次数，当月报警次数，支持用户对报警处理用时进行监控内置当天报警处理用时，7天报警处理用时
+                                ，当月报警处理用时，并且把出现次数最多的异常内容显示给用户这样可使用户快速找到设备问题所在提高生产效率。
+                            </p>
+                            <%-- 底部进入产量监控按钮--%>
+                            <div style='color: #fff; font-size: 100%; border-top: none; border-bottom: none; border-left: none; border-right: none; width: 100%; height: 15%; color: aliceblue; margin-left: 0.1rem; margin-top: 0.1rem; float: inline-end; position: relative; top: 0.32rem;'>
+                                <header style='color: #fff; font-size: 70%; text-align: center; position: relative; margin-top: 0.1rem; top: -5px; text-align: center; font-weight: bold;'>
+                                    <button id='Alarm' style='color: #fff;  float: initial; font-size: 70%; font-weight: 900; text-align: center; margin-right: 0%; margin-top: 0.2rem; height: 0.8rem; width: 2.5rem; background: url(../img/bg_box2.png); no-repeat; background-size: 100% 100%; border: none; position: relative; left: 0rem;'
+                                        onclick='GOAlarm()'  >
+                                        进入异常监控页面</button>
+                                </header>
+                            </div>
+                        </div>
+                    </div>
+                 <%--   整页面监控js代码用于处理按钮事件--%>
+                    <script type='text/javascript'>
+                        //按钮特效
+                        var yieldButton = document.getElementById('yield');
+                        yieldButton.onmouseleave = function () {
+                            yieldButton.style.opacity = 10;
+                        }
+                        yieldButton.onmouseenter = function () {
+                            yieldButton.style.opacity = 0.7;
+                        }
+                        var AlamButton = document.getElementById('Alarm');
+                        AlamButton.onmouseleave = function () {
+                            AlamButton.style.opacity = 10;
+                        }
+                        AlamButton.onmouseenter = function () {
+                            AlamButton.style.opacity = 0.7;
+                        }
+                        //打开产量监控界面
+                        function GOyield() {
+                            window.open('WebForm1.aspx');
+                        }
+                        //打开异常监控界面
+                        function GOAlarm() {
+                            window.open('WebForm1.aspx');
+                        }
+                    </script>
+                </div>
+                <script type='text/javascript'>
+                    //定时刷新自适应代码
+                    setInterval(function () {
+                        //判断表格Div主页面自适应高度
+                        var navigation = document.getElementById('Tabledivee');
+                        //判断高度
+                        if (document.body.clientHeight >= 200 && document.body.clientHeight < 3000) {
+                            navigation.style.height = (document.body.clientHeight / 116.7469879518072289156626506024) + 'rem';
+                            navigation.style.marginTop = (document.body.clientHeight / 9690) + 'rem';
+                        }
+                    }, 300);
+                </script>
                 <asp:PlaceHolder ID="PlaceHolder1" runat="server"></asp:PlaceHolder>
             </div>
         </div>
@@ -368,7 +467,7 @@
                 Webselfadaption();
                 isFullscreenForNoScroll();
             }, 300);
-            
+
             function isFullscreenForNoScroll() {
                 var explorer = window.navigator.userAgent.toLowerCase();
                 if (explorer.indexOf('chrome') > 0) {//webkit
@@ -382,7 +481,7 @@
                             success:
                                 function (data) {
                                     if (data.d.toString() == "true") {
-                                       // alert(data.d + '进入全屏');
+                                        // alert(data.d + '进入全屏');
                                         $.ajax({//改写后端值--表示已经处理完成任务
                                             type: "post",
                                             url: "WebForm2.aspx/Fullscreene",
@@ -392,7 +491,7 @@
                                             async: false,
                                             success:
                                                 function (data) {
-                                                   // alert(data.d + '改写值完成');
+                                                    // alert(data.d + '改写值完成');
                                                     location.reload();//重新刷新网页
                                                 }
                                         });
@@ -409,7 +508,7 @@
                             success:
                                 function (data) {
                                     if (data.d.toString() != "true") {
-                                      //  alert(data.d + '退出全屏');
+                                        //  alert(data.d + '退出全屏');
                                         $.ajax({//改写后端值--表示已经处理完成任务
                                             type: "post",
                                             url: "WebForm2.aspx/Fullscreene",
