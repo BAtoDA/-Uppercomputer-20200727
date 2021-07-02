@@ -484,7 +484,7 @@ namespace HTML布局学习
                         var navigation = document.getElementById('Tabledivee');
                         //判断高度
                         if (document.body.clientHeight >= 200 && document.body.clientHeight < 3000) {
-                            navigation.style.height = (document.body.clientHeight / 116.7469879518072289156626506024) + 'rem';
+                            navigation.style.height = (document.body.clientHeight / 115.1) + 'rem';
                             navigation.style.marginTop = (document.body.clientHeight / 9690) + 'rem';
                         }
                     }, 300);
