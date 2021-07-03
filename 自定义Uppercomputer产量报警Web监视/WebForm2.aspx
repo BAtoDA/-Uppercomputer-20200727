@@ -153,10 +153,6 @@
             </div>
         </div>
 
-        <%-- 雪花飘落特效--%>
-        <%--   <div class="snow" count="4000"></div>
-        <script src='樱花特效js/Stats.min.js'></script>
-        <script src="樱花特效js/index.js"></script>--%>
         <header class=" t_h_bg">
             <span class="t_h_bg_frin">数据展示参数</span>
         </header>
@@ -166,7 +162,7 @@
                 <asp:Button ID="Button2" runat="server" Text="参数设置" BorderStyle="None" CssClass="Crystalbutton" ToolTip="参数设置" OnClick="Button2_Click" />
                 <asp:Button ID="Button3" runat="server" Text="报警查询" BorderStyle="None" CssClass="Crystalbutton" ToolTip="报警查询" OnClick="Button3_Click" />
                 <asp:Button ID="Button4" runat="server" Text="报警历史" BorderStyle="None" CssClass="Crystalbutton" ToolTip="报警历史" OnClick="Button4_Click" />
-                <asp:Button ID="Button5" runat="server" Text="产量查询" BorderStyle="None" CssClass="Crystalbutton" ToolTip="产量查询" />
+                <asp:Button ID="Button5" runat="server" Text="产量查询" BorderStyle="None" CssClass="Crystalbutton" ToolTip="产量查询" OnClick="Button5_Click" />
                 <asp:Button ID="Button6" runat="server" Text="页面监控" BorderStyle="None" CssClass="Crystalbutton" ToolTip="产量预设" OnClick="Button6_Click" />
                 <asp:Button ID="Button7" runat="server" Text="关于" BorderStyle="None" CssClass="Crystalbutton" ToolTip="关于" OnClick="Button7_Click" />
                 <script type='text/javascript'>
@@ -178,12 +174,53 @@
         <div class="t_box_big">
             <div id="MainActivity" class="t_boxbig">
                 <%--该控件用于动态生成按钮类型的内容与布局--%>
-                <%--     <header class="t_h_bgText" >
-            <span >软件说明</span>
-             </header>
-                <div runat="server" id="myDiv1" class="regard" >本软件适用于工业自动化作为上位机对下位设备进行监控与控制使用简易通过拖拽控件修改参数实现对设备的监控。
-                    后续会持续添加控件实现多元化,更贴合，更方便，更快捷的设计理念目前支持简单常用的控件-支持三菱PLC--MC协议(3E帧)--西门子S7协议MODBUS TCP协议--或者通过宏指令简易的编写代码实现串口--以太网特定协议的通讯。
-  关于对其他设备的数据库对接目前可以通过宏指令实现简易的去处理后续会做一个特定的控件去对接实现。</div>--%>
+     <%--   <header style = 'color: #ffffff;
+    font-size: 35%;
+    text-align: center;
+    position: relative;
+    margin-top: 0.3rem;
+    top: -10px;
+    text-align: center;'> <span >软件说明</span> <button id='pageE' style='color: #fff; float: right; font-size: 50%; text-align: center; margin-left: 0.0rem; margin-top: 0.0rem; height: 0.5rem; width: 1rem; background: url(../img/bg_box2.png); no-repeat; background-size: 100% 100%; border: none; position: relative; left: -1.5%;'
+                            onclick='Close()'>关闭</button>  </header>
+     <div id='Tablediv' style = 'width:96.7%;
+    height: 7.5rem;
+    display: inline-block;
+    float: left;
+    position: relative;
+    margin-left: 0.1rem;
+    margin-top: 0.1rem;
+    font-size: 25%;
+    color: azure;
+    text-align: left;
+    position: relative;
+    top: 0px;
+    left: 20px;' >
+本软件适用于工业自动化作为上位机对下位设备进行监控与控制使用简易通过拖拽控件修改参数实现对设备的监控。后续会持续添加控件实现多元化, 更贴合，更方便，更快捷的设计理念目前支持简单常用的控件 - 支持三菱PLC--MC协议(3E帧)--西门子S7协议MODBUS TCP协议--或者通过宏指令简易的编写代码实现串口--以太网特定协议的通讯。关于对其他设备的数据库对接目前可以通过宏指令实现简易的去处理后续会做一个特定的控件去对接实现。
+<script type='text/javascript'>
+    //关闭页面按钮特效
+    var yieldButton = document.getElementById('pageE');
+    yieldButton.onmouseleave = function () {
+        yieldButton.style.opacity = 10;
+    }
+    yieldButton.onmouseenter = function () {
+        yieldButton.style.opacity = 0.7;
+    }
+    //关闭本页面
+    function Close() {
+        location.reload();//重新刷新网页
+    }
+    //定时刷新自适应代码
+    setInterval(function () {
+        //判断表格Div主页面自适应高度
+        var navigation = document.getElementById('Tablediv');
+        //判断高度
+        if (document.body.clientHeight >= 200 && document.body.clientHeight < 3000) {
+            navigation.style.height = (document.body.clientHeight / 126.04415584415584415584415584416) + 'rem';
+            navigation.style.marginTop = (document.body.clientHeight / 9690) + 'rem';
+        }
+    }, 300);
+</script>
+</ div >--%>
                 <%--           <div id='parameterDiv1' style='width: 4rem; height: 8rem; display: inline-block; float: left; position: relative; margin-left: 0.1rem; margin-top: 0.0rem; color: azure; top: 0px; left: 80px;'>
                     <label style='float: left; font-size: 25%; text-align: left; margin-left: 0.1rem; margin-top: 0.3rem;'>
                         参数设置1
@@ -259,6 +296,8 @@
                 <%--      <div id='Tablediv' style='color: #fff; font-size: 50%; border-top: none; border-bottom: none; border-left: none; border-right: none; width: 98.7%; height: 7.5rem; color: aliceblue; margin-left: 0.1rem; margin-top: 0.1rem;'>
                     <header style='color: #ffffff; font-size: 70%; text-align: center; position: relative; margin-top: 0.1rem; top: -5px; text-align: center; font-weight: bold;'>
                         <span>报警注册事件</span>
+                    <button id='pageE' style='color: #fff; float: right; font-size: 50%; text-align: center; margin-left: 0.0rem; margin-top: 0.0rem; height: 0.5rem; width: 1rem; background: url(../img/bg_box2.png); no-repeat; background-size: 100% 100%; border: none; position: relative; left: -1.5%;'
+                         onclick='Close()'>关闭</button>
                     </header>
                     <table style='color: #fff; font-size: 50%; border-top: none; border-bottom: none; border-left: none; border-right: none; width: 98.7%; height: 0.8rem; color: aliceblue; margin-left: 0.1rem; margin-top: 0.1rem; position: relative; top: 0rem; background: url(../img/bg_box2.png); no-repeat; background-size: 100% 100%;'
                         id='Abnorma1'>
@@ -301,6 +340,18 @@
                     Tablecss();
                     //鼠标移到子项 子项变色s
                     Itembackground();
+                        //关闭页面按钮特效
+    var yieldButton = document.getElementById('pageE');
+    yieldButton.onmouseleave = function () {
+        yieldButton.style.opacity = 10;
+    }
+    yieldButton.onmouseenter = function () {
+        yieldButton.style.opacity = 0.7;
+    }
+    //关闭本页面
+    function Close() {
+        location.reload();//重新刷新网页
+    }
                     //上一页触发方法
                     function previous() {
                         alert("正在请求后端获取上一页数据");

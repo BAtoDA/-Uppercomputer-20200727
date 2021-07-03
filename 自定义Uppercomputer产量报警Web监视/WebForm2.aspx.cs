@@ -55,7 +55,7 @@ namespace HTML布局学习
     position: relative;
     margin-top: 0.3rem;
     top: -10px;
-    text-align: center;'> <span >软件说明</span></header>
+    text-align: center;'> <span >软件说明</span> <button id='pageE' style='color: #fff; float: right; font-size: 50%; text-align: center; margin-left: 0.0rem; margin-top: 0.0rem; height: 0.5rem; width: 1rem; background: url(../img/bg_box2.png); no-repeat; background-size: 100% 100%; border: none; position: relative; left: -1.5%;'onclick='Close()'>关闭</button></header>
      <div id='Tablediv' style = 'width:96.7%;
     height: 7.5rem;
     display: inline-block;
@@ -71,6 +71,19 @@ namespace HTML布局学习
     left: 20px;' >
 本软件适用于工业自动化作为上位机对下位设备进行监控与控制使用简易通过拖拽控件修改参数实现对设备的监控。后续会持续添加控件实现多元化, 更贴合，更方便，更快捷的设计理念目前支持简单常用的控件 - 支持三菱PLC--MC协议(3E帧)--西门子S7协议MODBUS TCP协议--或者通过宏指令简易的编写代码实现串口--以太网特定协议的通讯。关于对其他设备的数据库对接目前可以通过宏指令实现简易的去处理后续会做一个特定的控件去对接实现。
 <script type='text/javascript'>
+ //关闭页面按钮特效
+    //按钮特效
+    var yieldButton = document.getElementById('pageE');
+    yieldButton.onmouseleave = function () {
+        yieldButton.style.opacity = 10;
+    }
+    yieldButton.onmouseenter = function () {
+        yieldButton.style.opacity = 0.7;
+    }
+    //关闭本页面
+    function Close() {
+        location.reload();//重新刷新网页
+    }
      //定时刷新自适应代码
                     setInterval(function () {
                         //判断表格Div主页面自适应高度
@@ -180,6 +193,8 @@ namespace HTML布局学习
             builder.Append(@"<div id='Tablediv' style='color: #fff; font-size: 50%; border-top: none; border-bottom: none; border-left: none; border-right: none; width: 98.7%; height: 7.5rem; color: aliceblue; margin-left: 0.1rem; margin-top: 0.1rem;'>
                     <header style='color: #ffffff; font-size: 70%; text-align: center; position: relative; margin-top: 0.1rem; top: -5px; text-align: center; font-weight: bold;'>
                         <span>报警注册事件</span>
+  <button id='pageE' style='color: #fff; float: right; font-size: 50%; text-align: center; margin-left: 0.0rem; margin-top: 0.0rem; height: 0.5rem; width: 1rem; background: url(../img/bg_box2.png); no-repeat; background-size: 100% 100%; border: none; position: relative; left: -1.5%;'
+                         onclick='Close()'>关闭</button>
                     </header>
                     <table style='color: #fff; font-size: 50%; border-top: none; border-bottom: none; border-left: none; border-right: none; width: 98.7%; height: 0.8rem; color: aliceblue; margin-left: 0.1rem; margin-top: 0.1rem; position: relative; top: 0rem; background: url(../img/bg_box2.png); no-repeat; background-size: 100% 100%;'
                         id='Abnorma1'>
@@ -219,6 +234,18 @@ namespace HTML布局学习
                     Tablecss();
                    //鼠标移到子项 子项变色
                     Itembackground();
+    //关闭页面按钮特效
+    var yieldButton = document.getElementById('pageE');
+    yieldButton.onmouseleave = function () {
+        yieldButton.style.opacity = 10;
+    }
+    yieldButton.onmouseenter = function () {
+        yieldButton.style.opacity = 0.7;
+    }
+    //关闭本页面
+    function Close() {
+        location.reload();//重新刷新网页
+    }
                     //上一页触发方法
                     function previous() {
                         alert('正在请求后端获取上一页数据');
@@ -289,6 +316,8 @@ namespace HTML布局学习
             builder.Append(@"<div id='Tablediv' style='color: #fff; font-size: 50%; border-top: none; border-bottom: none; border-left: none; border-right: none; width: 98.7%; height: 7.5rem; color: aliceblue; margin-left: 0.1rem; margin-top: 0.1rem;'>
                     <header style='color: #ffffff; font-size: 70%; text-align: center; position: relative; margin-top: 0.1rem; top: -5px; text-align: center; font-weight: bold;'>
                         <span>报警历史查看</span>
+  <button id='pageE' style='color: #fff; float: right; font-size: 50%; text-align: center; margin-left: 0.0rem; margin-top: 0.0rem; height: 0.5rem; width: 1rem; background: url(../img/bg_box2.png); no-repeat; background-size: 100% 100%; border: none; position: relative; left: -1.5%;'
+                         onclick='Close()'>关闭</button>
                     </header>
                     <table style='color: #fff; font-size: 50%; border-top: none; border-bottom: none; border-left: none; border-right: none; width: 98.7%; height: 0.8rem; color: aliceblue; margin-left: 0.1rem; margin-top: 0.1rem; position: relative; top: 0rem; background: url(../img/bg_box2.png); no-repeat; background-size: 100% 100%;'
                         id='Abnorma1'>
@@ -328,6 +357,18 @@ namespace HTML布局学习
                     Tablecss();
                     //鼠标移到子项 子项变色
                     Itembackground();
+       //关闭页面按钮特效
+    var yieldButton = document.getElementById('pageE');
+    yieldButton.onmouseleave = function () {
+        yieldButton.style.opacity = 10;
+    }
+    yieldButton.onmouseenter = function () {
+        yieldButton.style.opacity = 0.7;
+    }
+    //关闭本页面
+    function Close() {
+        location.reload();//重新刷新网页
+    }
                     //上一页触发方法
                     function previous() {
                         alert('正在请求后端获取上一页数据');
@@ -406,6 +447,8 @@ namespace HTML布局学习
             builder.Append(@"<div id='Tabledivee' style='color: #fff; font-size: 50%; border-top: none; border-bottom: none; border-left: none; border-right: none; width: 98.7%; height: 8.5rem; color: aliceblue; margin-left: 0.1rem; margin-top: 0.1rem;'>
                     <header style='color: #ffffff; font-size: 70%; text-align: center; position: relative; margin-top: 0.1rem; top: -5px; text-align: center; font-weight: bold;'>
                         <span>界面介绍</span>
+  <button id='pageE' style='color: #fff; float: right; font-size: 50%; text-align: center; margin-left: 0.0rem; margin-top: 0.0rem; height: 0.5rem; width: 1rem; background: url(../img/bg_box2.png); no-repeat; background-size: 100% 100%; border: none; position: relative; left: -1.5%;'
+                         onclick='Close()'>关闭</button>
                     </header>
                     <div style='width: 45%; height: 70%; display: inline-block; float: left; position: relative; margin-left: 0.1rem; margin-top: 0.1rem; color: azure; top: 0rem; left: 0px;'>
                         <header style='color: #ffffff; font-size: 70%; text-align: center; position: relative; margin-top: 0.1rem; top: -5px; text-align: center; font-weight: bold;'>
@@ -478,6 +521,18 @@ namespace HTML布局学习
                     </script>
                 </div>
                 <script type='text/javascript'>
+       //关闭页面按钮特效
+    var yieldButton = document.getElementById('pageE');
+    yieldButton.onmouseleave = function () {
+        yieldButton.style.opacity = 10;
+    }
+    yieldButton.onmouseenter = function () {
+        yieldButton.style.opacity = 0.7;
+    }
+    //关闭本页面
+    function Close() {
+        location.reload();//重新刷新网页
+    }
                     //定时刷新自适应代码
                     setInterval(function () {
                         //判断表格Div主页面自适应高度
@@ -492,6 +547,93 @@ namespace HTML布局学习
             //动态添加数据到前台
             DynamicDIV(builder);
 
+        }
+        /// <summary>
+        /// 用户点击产量监控界面
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void Button5_Click(object sender, EventArgs e)
+        {
+            StringBuilder builder = new StringBuilder();
+            builder.Append(@"<div id='Tablediv' style='color: #fff; font-size: 50%; border-top: none; border-bottom: none; border-left: none; border-right: none; width: 98.7%; height: 7.5rem; color: aliceblue; margin-left: 0.1rem; margin-top: 0.1rem;'>
+                    <header style='color: #ffffff; font-size: 70%; text-align: center; position: relative; margin-top: 0.1rem; top: -5px; text-align: center; font-weight: bold;'>
+                        <span>产量历史查看</span>
+  <button id='pageE' style='color: #fff; float: right; font-size: 50%; text-align: center; margin-left: 0.0rem; margin-top: 0.0rem; height: 0.5rem; width: 1rem; background: url(../img/bg_box2.png); no-repeat; background-size: 100% 100%; border: none; position: relative; left: -1.5%;'
+                         onclick='Close()'>关闭</button>
+                    </header>
+                    <table style='color: #fff; font-size: 50%; border-top: none; border-bottom: none; border-left: none; border-right: none; width: 98.7%; height: 0.8rem; color: aliceblue; margin-left: 0.1rem; margin-top: 0.1rem; position: relative; top: 0rem; background: url(../img/bg_box2.png); no-repeat; background-size: 100% 100%;'
+                        id='Abnorma1'>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>生产时间</th>
+                                <th>当天产量</th>
+                                <th>当天目标</th>
+                                <th>异常次数</th>
+                                <th>异常时长</th>
+                            </tr>
+                        </thead>
+                        <tbody style='width: 100%; height: 100%; line-height: 50px; background-size: 100% 100%; text-align: center; color: darkgray; position: relative; top: 10px; left: 0px; color: #ffffff;'
+                            id='tbMaincl'>
+                        </tbody>
+                    </table>
+                </div>
+                <script type='text/javascript'>
+                    GetAlarmhistory();
+                </script>
+         <div style='color: #fff; font-size: 50%; border-top: none; border-bottom: none; border-left: none; border-right: none; width:100%; height:15%; color: aliceblue; margin-left: 0.1rem; margin-top: 0.1rem;'>
+                     <header style='color: #fff; font-size: 70%; text-align: center; position: relative; margin-top: 0.1rem; top: -5px; text-align: center; font-weight: bold;'>
+                    <button id='previous' style='color:#fff; float: initial; font-size: 50%; text-align:center; margin-left: 0.0rem; margin-top: 0.0rem; height:0.6rem; width:1rem; background:
+    url(../img/bg_box2.png); no-repeat; background-size: 100% 100%; border:none;  position: relative; left:-2rem;' onclick='previous()'>上一页</button>
+                            <button id='home' style='color:#fff; float: initial; font-size: 50%; text-align:center; margin-left: 0.0rem; margin-top: 0.0rem; height:0.6rem; width:1rem; background:
+    url(../img/bg_box2.png); no-repeat; background-size: 100% 100%; border:none;  position: relative; left:0rem;' onclick='Home()'>首页</button>
+                    <button id='page' style='color:#fff; float: initial; font-size: 50%; text-align:center; margin-left: 0.0rem; margin-top: 0.0rem; height:0.6rem; width:1rem; background:
+    url(../img/bg_box2.png); no-repeat; background-size: 100% 100%; border:none;  position: relative; left:2rem;' onclick='next()'>下一页</button>
+                  </header>
+                </div>
+                <script type='text/javascript'>
+                  //下方导航栏按钮特效
+                    Tablecss();
+                    //鼠标移到子项 子项变色
+                    Itembackground();
+       //关闭页面按钮特效
+    var yieldButton = document.getElementById('pageE');
+    yieldButton.onmouseleave = function () {
+        yieldButton.style.opacity = 10;
+    }
+    yieldButton.onmouseenter = function () {
+        yieldButton.style.opacity = 0.7;
+    }
+    //关闭本页面
+    function Close() {
+        location.reload();//重新刷新网页
+    }
+                    //上一页触发方法
+                    function previous() {
+                        alert('正在请求后端获取上一页数据');
+                    }
+        function Home()
+        {
+            alert('正在请求后端获取首页数据');
+        }
+        function next()
+        {
+            alert('正在请求后端获取下一页数据');
+        }
+         //定时刷新自适应代码
+                    setInterval(function () {
+                        //判断表格Div主页面自适应高度
+                        var navigation = document.getElementById('Tablediv');
+                        //判断高度
+                        if (document.body.clientHeight >= 200 && document.body.clientHeight < 3000) {
+                            navigation.style.height = (document.body.clientHeight / 125.03225806451612903225806451613) + 'rem';
+                            navigation.style.marginTop = (document.body.clientHeight / 9690) + 'rem';
+                        }
+                    }, 300);
+                </script>");
+            //动态添加数据到前台
+            DynamicDIV(builder);
         }
     }
 }

@@ -76,6 +76,11 @@
     <Content Include="WebForm1.aspx" />
     <Content Include="参数页面自适应js\Selfadaption.js" />
     <Content Include="布局样式.css" />
+    <Content Include="报警页面web\WebForm3.aspx" />
+    <Content Include="报警页面web\报警界面布局样式.css" />
+    <Content Include="报警页面web\樱花特效css\style.css" />
+    <Content Include="报警页面web\樱花特效js\index.js" />
+    <Content Include="报警页面web\樱花特效js\Stats.min.js" />
     <Content Include="樱花飘落js\hm.js" />
     <Content Include="樱花特效css\style.css" />
     <Content Include="Echarts\customed.js" />
@@ -147,6 +152,13 @@
     <Compile Include="报警类序列化\Alarm.cs" />
     <Compile Include="报警类序列化\Alarmhistory.cs" />
     <Compile Include="报警类序列化\AlarmSQL.cs" />
+    <Compile Include="报警页面web\WebForm3.aspx.cs">
+      <DependentUpon>WebForm3.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="报警页面web\WebForm3.aspx.designer.cs">
+      <DependentUpon>WebForm3.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Echarts\echarts.common.js.map" />
