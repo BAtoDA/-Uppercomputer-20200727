@@ -84,6 +84,17 @@ html{
 .scroll_top{
     height: 25px;
 }
+.message_scroll1 {
+    border: rgba(12,122,200,0.5) 1px solid;
+    background-color: rgba(20,66,125,0.12);
+    height: 90px;
+    cursor: pointer;
+    margin-bottom: 6px;
+}
+
+.scroll_top1 {
+    height: 25px;
+}
 .scroll_title{
     float: left;
     background-image: url("../img/pushmessage_class.png");

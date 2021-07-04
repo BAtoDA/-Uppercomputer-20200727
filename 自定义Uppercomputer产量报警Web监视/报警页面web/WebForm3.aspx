@@ -38,7 +38,8 @@
         </div>
         <%--布局一个用于展示滚动报警的数据的div--%>
         <div class="t_box">
-                <header style="font-size: 30%; text-align: center; float: initial; position: relative; top: 0%; color: #ffffff;">设备异常监控</header>
+            <header style="font-size: 30%; text-align: center; float: initial; position: relative; top: 0%; color: #ffffff;">设备异常监控</header>
+            <div style="width: 100%; height: 50%; position: relative; top: 0%;">
             <div class="dataAllBorder01 cage_cl" style="margin-top: 1.5% !important; height: 32%; position: relative;">
                 <div class="dataAllBorder02" style="padding: 1.2%; overflow: hidden">
 
@@ -85,10 +86,53 @@
                                 <a class="localize_msg">xxx视频网站</a>
                             </div>
                         </div>
-                        <div class="message_scroll">
-                            <div class="scroll_top">
+                    </div>
+
+                </div>
+                <%--<div class="scroll_tool_outbox">
+                    <div class="scroll_tool_box">
+                        <a class="scroll_tool" href="#">查看历史推送</a>
+                    </div>
+                </div>--%>
+                </div>
+                </div>
+                   <div style="width: 100%; height: 50%; position: relative; top: -5%;">
+                        <header style="font-size: 30%; text-align: center; float: initial; position: relative; top: -2%; color: #ffffff;">设备历史异常</header>
+                       <div class="dataAllBorder02" style="padding: 1.2%; overflow: hidden">
+
+                    <div class="message_scroll_box1">
+                        <div class="message_scroll1">
+                            <div class="scroll_top1">
                                 <span class="scroll_title">数据流量警示</span>
                                 <span class="scroll_level scroll_level01">一级</span>
+                                <a class="localize"></a>
+                                <span class="scroll_timer">17-09-13/9:52</span>
+                            </div>
+                            <div class="msg_cage">
+                                <a class="localize_title">下载大量视频</a>
+                            </div>
+                            <div class="msg_cage">
+                                <a class="localize_msg">xxx视频网站</a>
+                            </div>
+                        </div>
+                        <div class="message_scroll1">
+                            <div class="scroll_top1">
+                                <span class="scroll_title">数据流量警示</span>
+                                <span class="scroll_level scroll_level03">三级</span>
+                                <a class="localize"></a>
+                                <span class="scroll_timer">17-09-13/9:52</span>
+                            </div>
+                            <div class="msg_cage">
+                                <a class="localize_title">下载大量视频</a>
+                            </div>
+                            <div class="msg_cage">
+                                <a class="localize_msg">xxx视频网站</a>
+                            </div>
+                        </div>
+                        <div class="message_scroll1">
+                            <div class="scroll_top1">
+                                <span class="scroll_title">数据流量警示</span>
+                                <span class="scroll_level scroll_level02">二级</span>
                                 <a class="localize"></a>
                                 <span class="scroll_timer">17-09-13/9:52</span>
                             </div>
@@ -102,47 +146,54 @@
                     </div>
 
                 </div>
-                <div class="scroll_tool_outbox">
-                    <div class="scroll_tool_box">
-                        <a class="scroll_tool" href="#">查看历史推送</a>
-                    </div>
-                </div>
+                        </div>
             </div>
+
             <script type="text/javascript">
                 function TimeControl() {
-                    $(".message_scroll_box").animate({ marginTop: 96 }, 800,
+                    $(".message_scroll_box").animate({ marginTop: 76 }, 800,
                         function () {
                             $(".message_scroll_box .message_scroll:first").before($(".message_scroll_box .message_scroll:last"));    //在第一个新闻后面插入最后一个新闻
                             $(".message_scroll_box").css({ marginTop: 0 });    //把顶部的边界清零
 
                         });
                 }
-                var T = setInterval(TimeControl, 2300);    //开始定时
+                var T = setInterval(TimeControl, 3000);    //开始定时
                 $(".message_scroll_box").mouseenter(function () {
                     clearInterval(T);    //停止定时
                 })
                     .mouseleave(function () {
-                        T = setInterval(TimeControl, 2500);    //再次定时
+                        T = setInterval(TimeControl, 3800);    //再次定时
                     })
+                function TimeControl1() {
+                    $(".message_scroll_box1").animate({ marginTop: 76 }, 1200,
+                        function () {
+                            $(".message_scroll_box1 .message_scroll1:first").before($(".message_scroll_box1 .message_scroll1:last"));    //在第一个新闻后面插入最后一个新闻
+                            $(".message_scroll_box1").css({ marginTop: 0 });    //把顶部的边界清零
 
+                        });
+                }
+                var T1 = setInterval(TimeControl1, 2000);    //开始定时
+                $(".message_scroll_box1").mouseenter(function () {
+                    clearInterval(T1);    //停止定时
+                })
+                    .mouseleave(function () {
+                        T1 = setInterval(TimeControl1, 2000);    //再次定时
+                    })
             </script>
         </div>
         <%--布局一个用于展示设备节拍速率的数据的div--%>
         <div class="t_box2">
             <header style="font-size: 30%; text-align: center; float: initial; color: #ffffff;">设备监控</header>
             <%--  显示总异常和总时间表--%>
-            <div id="AlarmTime" style="width: 100%; height: 50%;"></div>
+            <div id="AlarmTime" style="width: 100%; height: 53%;"></div>
             <%--  显示设备节拍--%>
             <header style="font-size: 30%; text-align: center; float: initial; position: relative; top: -4%; color: #ffffff;">设备节拍速率</header>
-            <div id="meter" style="width: 100%; height: 70%; position: relative; top: -8%;"></div>
-            <%--  显示设备当前速率--%>
-            <div id="speed" style="width: 50%; height: 40%;"></div>
+            <div id="meter" style="width: 100%; height: 70%; position: relative; top: -10%;"></div>
             <script type="text/javascript"> 
                 AlarmEchartsLoad();
                 //用于显示设备节拍
                 MeterLoad();
-                            //用于显示设备速率
-                            //SpeedLoad();
             </script>
         </div>
         <%--布局一个用于展示当天报警数据的2个小方块--%>

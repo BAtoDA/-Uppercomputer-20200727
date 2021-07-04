@@ -8,7 +8,12 @@ function AlarmEchartsLoad() {
     setTimeout(function () {
 
         option = {
-            legend: {},
+            legend: {
+                textStyle: {
+                    fontSize: 10,
+                    color: "#ffffff"
+                }
+            },
             tooltip: {
                 trigger: 'axis',
                 showContent: false
@@ -22,8 +27,22 @@ function AlarmEchartsLoad() {
                     ['Walnut Brownie', 25.2, 37.1, 41.2, 18, 33.9, 49.1]
                 ]
             },
-            xAxis: { type: 'category' },
-            yAxis: { gridIndex: 0 },
+            textStyle: {
+                fontSize: 10,
+                color: "#ffffff"
+            },
+            xAxis: {
+                type: 'category',
+                axisLabel: {
+                    color: "#ffffff"
+                }
+            },
+            yAxis: {
+                gridIndex: 0,
+                axisLabel: {
+                    color: "#ffffff"
+                }
+            },
             grid: { top: '55%' },
             series: [
                 { type: 'line', smooth: true, seriesLayoutBy: 'row', emphasis: { focus: 'series' } },
@@ -88,7 +107,7 @@ function MeterLoad() {
             endAngle: 0,
             min: 0,
             max: 240,
-            splitNumber: 12,
+            splitNumber: 6,
             itemStyle: {
                 color: '#58D9F9',
                 shadowColor: 'rgba(0,138,255,0.45)',
@@ -129,7 +148,7 @@ function MeterLoad() {
             },
             axisLabel: {
                 distance: 30,
-                color: '#999',
+                color: "#ffffff",
                 fontSize: 20
             },
             title: {
@@ -137,16 +156,16 @@ function MeterLoad() {
             },
             detail: {
                 backgroundColor: '#fff',
-                borderColor: '#999',
+                borderColor: "#ffffff",
                 borderWidth: 2,
-                width: '60%',
+                width: '80%',
                 lineHeight: 40,
                 height: 40,
                 borderRadius: 8,
                 offsetCenter: [0, '35%'],
                 valueAnimation: true,
                 formatter: function (value) {
-                    return '{value|' + value.toFixed(0) + '}{unit|km/h}';
+                    return '{value|' + value.toFixed(0) + '}{unit|Pcs/Min}';
                 },
                 rich: {
                     value: {
@@ -162,7 +181,7 @@ function MeterLoad() {
                 }
             },
             data: [{
-                value: 100
+                value:20
             }]
         }]
     };
