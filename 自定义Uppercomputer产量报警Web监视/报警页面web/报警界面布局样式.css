@@ -48,12 +48,12 @@ a {
 }
 /*内容排布--小方格布局--显示图片--*/
 .t_box {
-    width: 28%;
+    width: 25%;
     height: 8.3rem;
     background: url('../报警页面web/imge/bg_box2.png') no-repeat;
     background-size: 100% 100%;
     display: inline-block;
-    float: left;
+    float: right;
     position: relative;
     margin-left: 0.1rem;
     margin-top: 0.1rem;
@@ -62,12 +62,12 @@ a {
     left: 0px;
 }
 .t_box2 {
-    width: 21%;
+    width: 25%;
     height: 8.3rem;
     background: url('../报警页面web/imge/bg_box2.png') no-repeat;
     background-size: 100% 100%;
     display: inline-block;
-    float: right;
+    float: left;
     position: relative;
     margin-left: 0.1rem;
     margin-top: 0.1rem;
@@ -107,4 +107,62 @@ a {
 .body_main {
     background: url('../报警页面web/imge/map_bg.jpg') no-repeat;
     background-size: 100% 100%;
+}
+/**用于处理靠左的小方格*/
+.pane1 {
+    width: 25%;
+    height: 30%;
+    background: url('../报警页面web/img/leftbg01.png');
+    background-size: 100% 100%;
+    display: inline-block;
+    float: left;
+    position: relative;
+    margin-left: 5%;
+    margin-top: 2%;
+    position: relative;
+    top: 0rem;
+    left: 0px;
+}
+/**用于处理靠中间的小方格*/
+.pane2 {
+    width: 25%;
+    height: 30%;
+    background: url('../报警页面web/img/leftbg01.png');
+    background-size: 100% 100%;
+    display: inline-block;
+    float: inherit;
+    position: relative;
+    margin-left: 5%;
+    margin-top: 2%;
+    position: relative;
+    top: 0rem;
+    right:-3%;
+}
+/**用于处理靠右的小方格*/
+.pane3 {
+    width: 25%;
+    height: 30%;
+    background: url('../报警页面web/img/leftbg01.png');
+    background-size: 100% 100%;
+    display: inline-block;
+    float: right;
+    position: relative;
+    margin-right:5%;
+    margin-top: 2%;
+    position: relative;
+    top: 0rem;
+    left: 0px;
+}
+/**用于处理小方格左侧图标*/
+.paneimge {
+    width: 30%;
+    height: 40%;
+    display: inline-block;
+    float: left;
+    position: relative;
+    margin-right: 0%;
+    margin-top: 0%;
+    position: relative;
+    top: 17%;
+    left: 0px;
 }

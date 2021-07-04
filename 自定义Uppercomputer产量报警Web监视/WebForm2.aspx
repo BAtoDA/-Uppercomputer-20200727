@@ -444,7 +444,7 @@
                         }
                         //打开异常监控界面
                         function GOAlarm() {
-                            window.open('WebForm1.aspx');
+                            window.open('WebForm3.aspx');
                         }
                     </script>
                 </div>

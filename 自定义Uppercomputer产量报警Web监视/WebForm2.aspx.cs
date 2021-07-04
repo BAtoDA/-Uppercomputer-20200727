@@ -516,7 +516,7 @@ namespace HTML布局学习
                         }
                         //打开异常监控界面
                         function GOAlarm() {
-                            window.open('WebForm1.aspx');
+                            window.open('../报警页面web/WebForm3.aspx');
                         }
                     </script>
                 </div>
