@@ -113,6 +113,22 @@ function Tablecss() {
         buuton3.style.opacity = 10;
     }
 }
+function Tablecss1() {
+    var buuton1 = document.getElementById('previous');
+    buuton1.onmouseenter = function () {
+        buuton1.style.opacity = 0.7;
+    }
+    buuton1.onmouseleave = function () {
+        buuton1.style.opacity = 10;
+    }
+    var buuton3 = document.getElementById('page');
+    buuton3.onmouseenter = function () {
+        buuton3.style.opacity = 0.7;
+    }
+    buuton3.onmouseleave = function () {
+        buuton3.style.opacity = 10;
+    }
+}
 //鼠标移到子项 子项变色
 function Itembackground() {
     var Table = document.getElementById('Abnorma1');

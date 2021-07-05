@@ -40,7 +40,7 @@ function Webselfadaption() {
 setInterval(function () {
     Webselfadaption();
     isFullscreenForNoScroll();
-}, 300);
+}, 1000);
 
 function isFullscreenForNoScroll() {
     var explorer = window.navigator.userAgent.toLowerCase();

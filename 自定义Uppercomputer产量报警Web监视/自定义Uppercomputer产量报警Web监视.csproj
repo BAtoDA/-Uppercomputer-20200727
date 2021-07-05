@@ -121,6 +121,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="WebForm1.aspx" />
+    <Content Include="参数设置界面css\参数设置js与后端处理.js" />
     <Content Include="参数页面自适应js\Selfadaption.js" />
     <Content Include="布局样式.css" />
     <Content Include="报警页面web\img\1_03.png" />
@@ -450,7 +451,12 @@
     <Content Include="报警页面web\js\bstable\fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="临时数据库文件\Extent1.db" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\PLC通讯规范接口\PLC通讯规范接口.csproj">
+      <Project>{f61e9338-2d7e-4a93-a7b8-acb591f01c47}</Project>
+      <Name>PLC通讯规范接口</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

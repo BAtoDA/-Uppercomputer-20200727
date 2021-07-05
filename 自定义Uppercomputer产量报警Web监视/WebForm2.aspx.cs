@@ -9,6 +9,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Windows.Forms;
 using HTML布局学习.报警类序列化;
+using PLC通讯规范接口;
 using Sunny.UI;
 
 namespace HTML布局学习
@@ -107,7 +108,7 @@ namespace HTML布局学习
         protected void Button2_Click(object sender, EventArgs e)
         {
             StringBuilder builder = new StringBuilder();
-            builder.Append(@"            <div id='parameterDiv1' style='width: 4rem; height: 8.5rem; display: inline-block; float: left; position: relative; margin-left: 0.1rem; margin-top: 0.0rem; color: azure; top: 0px; left: 80px;'>
+            builder.Append(@"            <div id='parameterDiv1' style='width: 30%; height: 8.5rem; display: inline-block; float: left; position: relative; margin-left: 0.1rem; margin-top: 0.0rem; color: azure; top: 0px; left: 80px;'>
                     <label style='float: left; font-size: 25%; text-align: left; margin-left: 0.1rem; margin-top: 0.3rem;'>
                         参数设置1
                         <input id='parameter1' type='text' value='请输入内容' style='margin-left: 0.0rem; margin-top: 0.3rem; position: relative; top: -2px; font-size: 40%; height: 30px; border-radius: 0.1rem;'></input></label>
@@ -115,7 +116,7 @@ namespace HTML布局学习
                         参数设置1
                         <input id='parameter2' type='text' value='请输入内容' style='margin-left: 0.0rem; margin-top: 0.3rem; position: relative; top: -2px; font-size: 40%; height: 30px; border-radius: 0.1rem;'></input></label>
                 </div>
-                <div id='parameterDiv2' style='width: 4rem; height: 8.5rem; display: inline-block; float: inherit; position: relative; margin-left: 0.1rem; margin-top: 0.0rem; color: azure; top: 0px; right: -200px;'>
+                <div id='parameterDiv2' style='width: 30%; height: 8.5rem; display: inline-block; float: inherit; position: relative; margin-left: 0.1rem; margin-top: 0.0rem; color: azure; top: 0px; right: -200px;'>
                     <label style='float: left; font-size: 25%; text-align: left; margin-left: 0.1rem; margin-top: 0.3rem;'>
                         参数设置1
                         <input id='parameter3' type='text' value='请输入内容' style='margin-left: 0.0rem; margin-top: 0.3rem; position: relative; top: -2px; font-size: 40%; height: 30px; border-radius: 0.1rem;'></input></label>
@@ -123,7 +124,7 @@ namespace HTML布局学习
                         参数设置1
                         <input id='parameter4' type='text' value='请输入内容' style='margin-left: 0.0rem; margin-top: 0.3rem; position: relative; top: -2px; font-size: 40%; height: 30px; border-radius: 0.1rem;'></input></label>
                 </div>
-                <div id='parameterDiv3' style='width: 4rem; height: 8.5rem; display: inline-block; float: right; position: relative; margin-left: 0.1rem; margin-top: 0.0rem; color: azure; top: 0px; right: 0px;'>
+                <div id='parameterDiv3' style='width: 30%; height: 8.5rem; display: inline-block; float: right; position: relative; margin-left: 0.1rem; margin-top: 0.0rem; color: azure; top: 0px; right: 0px;'>
                     <label style='float: left; font-size: 25%; text-align: left; margin-left: 0.1rem; margin-top: 0.3rem;'>
                         参数设置1
                         <input id='parameter5' type='text' value='请输入内容' style='margin-left: 0.0rem; margin-top: 0.3rem; position: relative; top: -2px; font-size: 40%; height: 30px; border-radius: 0.1rem;'></input></label>
@@ -183,6 +184,89 @@ namespace HTML布局学习
             
         }
         /// <summary>
+        /// 前端请求所有PLC类型的名称
+        /// </summary>
+        /// <returns></returns>
+        [WebMethod]
+        public static string PLCload()
+        {
+            string PLCName = string.Empty;
+            foreach(var i in Enum.GetValues(typeof(PLC通讯规范接口.PLC)))
+            {
+                PLCName += $"<li id='{i}'><a>{i}</a></li>";
+            }
+            //下拉菜单选中 
+            return PLCName;
+        }
+        /// <summary>
+        /// 前端请求该PLC D区地址
+        /// </summary>
+        /// <returns></returns>
+        [WebMethod]
+        public static string PLCDLoad(string Data)
+        {
+          return PLCDSelecte(Convert.ToInt32(Enum.Parse(typeof(PLC), Data)));
+        }
+        private static string PLCDSelecte(int data)
+        {
+            string PLCName = string.Empty;
+            switch (data)
+            {
+                case 0:
+                    Enum.GetNames(typeof(Mitsubishi_D)).ToList().ForEach(s1 => { PLCName += $"<li id='{s1}'><a>{s1}</a></li>"; });
+                    break;
+                case 1:
+                    Enum.GetNames(typeof(Siemens_D)).ToList().ForEach(s1 => { PLCName += $"<li id='{s1}'><a>{s1}</a></li>"; });
+                    break;
+                case 2:
+                    Enum.GetNames(typeof(Modbus_TCP_D)).ToList().ForEach(s1 => { PLCName += $"<li id='{s1}'><a>{s1}</a></li>"; });
+                    break;
+                case 3:
+                    Enum.GetNames(typeof(HMI_D)).ToList().ForEach(s1 => { PLCName += $"<li id='{s1}'><a>{s1}</a></li>"; });
+                    break;
+                case 4:
+                case 5:
+                case 6:
+                    Enum.GetNames(typeof(Omron_D)).ToList().ForEach(s1 => { PLCName += $"<li id='{s1}'><a>{s1}</a></li>"; });
+                    break;
+            }
+            return PLCName;
+        }
+        /// <summary>
+        /// 前端请求该PLC M区地址
+        /// </summary>
+        /// <returns></returns>
+        [WebMethod]
+        public static string PLCMLoad(string Data)
+        {
+            return PLCMSelecte(Convert.ToInt32(Enum.Parse(typeof(PLC),Data)));
+        }
+        private static string PLCMSelecte(int data)
+        {
+            string PLCName = string.Empty;
+            switch (data)
+            {
+                case 0:
+                     Enum.GetNames(typeof(Mitsubishi_bit)).ToList().ForEach(s1=> { PLCName += $"<li id='{s1}'><a>{s1}</a></li>"; });
+                    break;
+                case 1:
+                   Enum.GetNames(typeof(Siemens_bit)).ToList().ForEach(s1 => { PLCName += $"<li id='{s1}'><a>{s1}</a></li>"; });
+                    break;
+                case 2:
+                   Enum.GetNames(typeof(Modbus_TCP_bit)).ToList().ForEach(s1 => { PLCName += $"<li id='{s1}'><a>{s1}</a></li>"; });
+                    break;
+                case 3:
+                    Enum.GetNames(typeof(HMI_bit)).ToList().ForEach(s1 => { PLCName += $"<li id='{s1}'><a>{s1}</a></li>"; });
+                    break;
+                case 4:
+                case 5:
+                case 6:
+                    Enum.GetNames(typeof(Omron_bit)).ToList().ForEach(s1 => { PLCName += $"<li id='{s1}'><a>{s1}</a></li>"; });
+                    break;
+            }
+            return PLCName;
+        }
+        /// <summary>
         /// 用户点击报警注册事件查询
         /// </summary>
         /// <param name="sender"></param>
@@ -222,7 +306,7 @@ namespace HTML布局学习
          <div style='color: #fff; font-size: 50%; border-top: none; border-bottom: none; border-left: none; border-right: none;  width:100%; height:15%;  color: aliceblue; margin-left: 0.1rem; margin-top: 0.1rem;'>
                      <header style='color: #fff; font-size: 70%; text-align: center; position: relative; margin-top: 0.1rem; top: -5px; text-align: center; font-weight: bold;'>
                     <button id='previous' style='color:#fff; float: initial; font-size: 50%; text-align:center; margin-left: 0.0rem; margin-top: 0.0rem; height:0.6rem; width:1rem; background:
-    url(../img/bg_box2.png); no-repeat; background-size: 100% 100%; border:none;  position: relative; left:-2rem;' onclick='previous()'>上一页</button>
+    url(../img/bg_box2.png); no-repeat; background-size: 100% 100%; border:none;  position: relative; left:-2rem;' onclick='previouse()'>上一页</button>
                             <button id='home' style='color:#fff; float: initial; font-size: 50%; text-align:center; margin-left: 0.0rem; margin-top: 0.0rem; height:0.6rem; width:1rem; background:
     url(../img/bg_box2.png); no-repeat; background-size: 100% 100%; border:none;  position: relative; left:0rem;' onclick='Home()'>首页</button>
                     <button id='page' style='color:#fff; float: initial; font-size: 50%; text-align:center; margin-left: 0.0rem; margin-top: 0.0rem; height:0.6rem; width:1rem; background:
@@ -247,7 +331,7 @@ namespace HTML布局学习
         location.reload();//重新刷新网页
     }
                     //上一页触发方法
-                    function previous() {
+                    function previouse() {
                         alert('正在请求后端获取上一页数据');
                     }
         function Home()
@@ -345,7 +429,7 @@ namespace HTML布局学习
          <div style='color: #fff; font-size: 50%; border-top: none; border-bottom: none; border-left: none; border-right: none; width:100%; height:15%; color: aliceblue; margin-left: 0.1rem; margin-top: 0.1rem;'>
                      <header style='color: #fff; font-size: 70%; text-align: center; position: relative; margin-top: 0.1rem; top: -5px; text-align: center; font-weight: bold;'>
                     <button id='previous' style='color:#fff; float: initial; font-size: 50%; text-align:center; margin-left: 0.0rem; margin-top: 0.0rem; height:0.6rem; width:1rem; background:
-    url(../img/bg_box2.png); no-repeat; background-size: 100% 100%; border:none;  position: relative; left:-2rem;' onclick='previous()'>上一页</button>
+    url(../img/bg_box2.png); no-repeat; background-size: 100% 100%; border:none;  position: relative; left:-2rem;' onclick='previouse()'>上一页</button>
                             <button id='home' style='color:#fff; float: initial; font-size: 50%; text-align:center; margin-left: 0.0rem; margin-top: 0.0rem; height:0.6rem; width:1rem; background:
     url(../img/bg_box2.png); no-repeat; background-size: 100% 100%; border:none;  position: relative; left:0rem;' onclick='Home()'>首页</button>
                     <button id='page' style='color:#fff; float: initial; font-size: 50%; text-align:center; margin-left: 0.0rem; margin-top: 0.0rem; height:0.6rem; width:1rem; background:
@@ -370,7 +454,7 @@ namespace HTML布局学习
         location.reload();//重新刷新网页
     }
                     //上一页触发方法
-                    function previous() {
+                    function previouse() {
                         alert('正在请求后端获取上一页数据');
                     }
         function Home()
@@ -585,7 +669,7 @@ namespace HTML布局学习
          <div style='color: #fff; font-size: 50%; border-top: none; border-bottom: none; border-left: none; border-right: none; width:100%; height:15%; color: aliceblue; margin-left: 0.1rem; margin-top: 0.1rem;'>
                      <header style='color: #fff; font-size: 70%; text-align: center; position: relative; margin-top: 0.1rem; top: -5px; text-align: center; font-weight: bold;'>
                     <button id='previous' style='color:#fff; float: initial; font-size: 50%; text-align:center; margin-left: 0.0rem; margin-top: 0.0rem; height:0.6rem; width:1rem; background:
-    url(../img/bg_box2.png); no-repeat; background-size: 100% 100%; border:none;  position: relative; left:-2rem;' onclick='previous()'>上一页</button>
+    url(../img/bg_box2.png); no-repeat; background-size: 100% 100%; border:none;  position: relative; left:-2rem;' onclick='previouse()'>上一页</button>
                             <button id='home' style='color:#fff; float: initial; font-size: 50%; text-align:center; margin-left: 0.0rem; margin-top: 0.0rem; height:0.6rem; width:1rem; background:
     url(../img/bg_box2.png); no-repeat; background-size: 100% 100%; border:none;  position: relative; left:0rem;' onclick='Home()'>首页</button>
                     <button id='page' style='color:#fff; float: initial; font-size: 50%; text-align:center; margin-left: 0.0rem; margin-top: 0.0rem; height:0.6rem; width:1rem; background:
@@ -610,7 +694,7 @@ namespace HTML布局学习
         location.reload();//重新刷新网页
     }
                     //上一页触发方法
-                    function previous() {
+                    function previouse() {
                         alert('正在请求后端获取上一页数据');
                     }
         function Home()
