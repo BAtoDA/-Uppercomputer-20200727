@@ -25,6 +25,7 @@ namespace HTML布局学习
         protected void Page_Load(object sender, EventArgs e)
         {
             //初次加载显示的UI
+            Blockprocessing blockprocessing = new Blockprocessing(this.PlaceHolder1);
            // Button2_Click("1",new EventArgs());
         }
         [WebMethod]
@@ -36,7 +37,7 @@ namespace HTML布局学习
         /// 动态生成前台代码 DIV数据显示块
         /// </summary>
         /// <returns></returns>
-        public LiteralControl DynamicDIV(StringBuilder Value)
+        private  LiteralControl DynamicDIV(StringBuilder Value)
         {
             PlaceHolder1.Controls.Clear();        
             LiteralControl literal = new LiteralControl(Value.ToString());
@@ -305,10 +306,10 @@ namespace HTML布局学习
                     </div>
                      <div style='color: #fff; font-size: 50%; border-top: none; border-bottom: none; border-left: none; border-right: none; width: 80%; height: 10%; color: aliceblue; margin-left: 0.1rem; margin-top: 0.1rem; float: left; position: relative; top: 20%;left:-100%; '>
                     <header style='color: #fff; font-size: 70%; text-align: center; position: relative; margin-top: 0.1rem; top: -5px; text-align: center; font-weight: bold;'>
-                        <button id='previous' style='color: #fff; float: initial; font-size: 50%; text-align: center; margin-left: 0.0rem; margin-top: 0.0rem; height: 0.5rem; width: 1rem; background: url(../img/bg_box2.png); no-repeat; background-size: 100% 100%; border: none; position: relative; left: -2rem;'
+                        <button id='previous' type='button' style='color: #fff; float: initial; font-size: 50%; text-align: center; margin-left: 0.0rem; margin-top: 0.0rem; height: 0.5rem; width: 1rem; background: url(../img/bg_box2.png); no-repeat; background-size: 100% 100%; border: none; position: relative; left: -2rem;'
                             onclick='previouse()'>
                             确定提交</button>
-                        <button id='page' style='color: #fff; float: initial; font-size: 50%; text-align: center; margin-left: 0.0rem; margin-top: 0.0rem; height: 0.5rem; width: 1rem; background: url(../img/bg_box2.png); no-repeat; background-size: 100% 100%; border: none; position: relative; left: 2rem;'
+                        <button id='page' type='button' style='color: #fff; float: initial; font-size: 50%; text-align: center; margin-left: 0.0rem; margin-top: 0.0rem; height: 0.5rem; width: 1rem; background: url(../img/bg_box2.png); no-repeat; background-size: 100% 100%; border: none; position: relative; left: 2rem;'
                             onclick='next()'>
                             取消</button>
                     </header>
@@ -572,11 +573,11 @@ namespace HTML布局学习
                 </script>
          <div style='color: #fff; font-size: 50%; border-top: none; border-bottom: none; border-left: none; border-right: none;  width:100%; height:15%;  color: aliceblue; margin-left: 0.1rem; margin-top: 0.1rem;'>
                      <header style='color: #fff; font-size: 70%; text-align: center; position: relative; margin-top: 0.1rem; top: -5px; text-align: center; font-weight: bold;'>
-                    <button id='previous' style='color:#fff; float: initial; font-size: 50%; text-align:center; margin-left: 0.0rem; margin-top: 0.0rem; height:0.6rem; width:1rem; background:
+                    <button id='previous' type='button' style='color:#fff; float: initial; font-size: 50%; text-align:center; margin-left: 0.0rem; margin-top: 0.0rem; height:0.6rem; width:1rem; background:
     url(../img/bg_box2.png); no-repeat; background-size: 100% 100%; border:none;  position: relative; left:-2rem;' onclick='previouse()'>上一页</button>
-                            <button id='home' style='color:#fff; float: initial; font-size: 50%; text-align:center; margin-left: 0.0rem; margin-top: 0.0rem; height:0.6rem; width:1rem; background:
+                            <button id='home' type='button' style='color:#fff; float: initial; font-size: 50%; text-align:center; margin-left: 0.0rem; margin-top: 0.0rem; height:0.6rem; width:1rem; background:
     url(../img/bg_box2.png); no-repeat; background-size: 100% 100%; border:none;  position: relative; left:0rem;' onclick='Home()'>首页</button>
-                    <button id='page' style='color:#fff; float: initial; font-size: 50%; text-align:center; margin-left: 0.0rem; margin-top: 0.0rem; height:0.6rem; width:1rem; background:
+                    <button id='page' type='button' style='color:#fff; float: initial; font-size: 50%; text-align:center; margin-left: 0.0rem; margin-top: 0.0rem; height:0.6rem; width:1rem; background:
     url(../img/bg_box2.png); no-repeat; background-size: 100% 100%; border:none;  position: relative; left:2rem;' onclick='next()'>下一页</button>
                   </header>
                 </div>
@@ -695,11 +696,11 @@ namespace HTML布局学习
                 </script>
          <div style='color: #fff; font-size: 50%; border-top: none; border-bottom: none; border-left: none; border-right: none; width:100%; height:15%; color: aliceblue; margin-left: 0.1rem; margin-top: 0.1rem;'>
                      <header style='color: #fff; font-size: 70%; text-align: center; position: relative; margin-top: 0.1rem; top: -5px; text-align: center; font-weight: bold;'>
-                    <button id='previous' style='color:#fff; float: initial; font-size: 50%; text-align:center; margin-left: 0.0rem; margin-top: 0.0rem; height:0.6rem; width:1rem; background:
+                    <button id='previous' type='button' style='color:#fff; float: initial; font-size: 50%; text-align:center; margin-left: 0.0rem; margin-top: 0.0rem; height:0.6rem; width:1rem; background:
     url(../img/bg_box2.png); no-repeat; background-size: 100% 100%; border:none;  position: relative; left:-2rem;' onclick='previouse()'>上一页</button>
-                            <button id='home' style='color:#fff; float: initial; font-size: 50%; text-align:center; margin-left: 0.0rem; margin-top: 0.0rem; height:0.6rem; width:1rem; background:
+                            <button id='home' type='button' style='color:#fff; float: initial; font-size: 50%; text-align:center; margin-left: 0.0rem; margin-top: 0.0rem; height:0.6rem; width:1rem; background:
     url(../img/bg_box2.png); no-repeat; background-size: 100% 100%; border:none;  position: relative; left:0rem;' onclick='Home()'>首页</button>
-                    <button id='page' style='color:#fff; float: initial; font-size: 50%; text-align:center; margin-left: 0.0rem; margin-top: 0.0rem; height:0.6rem; width:1rem; background:
+                    <button id='page' type='button' style='color:#fff; float: initial; font-size: 50%; text-align:center; margin-left: 0.0rem; margin-top: 0.0rem; height:0.6rem; width:1rem; background:
     url(../img/bg_box2.png); no-repeat; background-size: 100% 100%; border:none;  position: relative; left:2rem;' onclick='next()'>下一页</button>
                   </header>
                 </div>
@@ -816,7 +817,7 @@ namespace HTML布局学习
                             </p>
                             <div style='color: #fff; font-size: 100%; border-top: none; border-bottom: none; border-left: none; border-right: none; width: 100%; height: 15%; color: aliceblue; margin-left: 0.1rem; margin-top: 0.1rem; float: inline-end; position: relative; top: -0rem;'>
                                 <header style='color: #fff; font-size: 70%; text-align: center; position: relative; margin-top: 0.1rem; top: -5px; text-align: center; font-weight: bold;'>
-                                    <button id='yield' style='color: #fff; float: initial; font-size: 70%; font-weight: 900; text-align: center; margin-right: 0%; margin-top: 0.2rem; height: 0.8rem; width: 2.5rem; background: url(../img/bg_box2.png); no-repeat; background-size: 100% 100%; border: none; position: relative; left: 0rem;'
+                                    <button id='yield' type='button' style='color: #fff; float: initial; font-size: 70%; font-weight: 900; text-align: center; margin-right: 0%; margin-top: 0.2rem; height: 0.8rem; width: 2.5rem; background: url(../img/bg_box2.png); no-repeat; background-size: 100% 100%; border: none; position: relative; left: 0rem;'
                                         onclick='GOyield()'>
                                         进入产量监控页面</button>
                                 </header>
@@ -838,7 +839,7 @@ namespace HTML布局学习
                             </p>
                             <div style='color: #fff; font-size: 100%; border-top: none; border-bottom: none; border-left: none; border-right: none; width: 100%; height: 15%; color: aliceblue; margin-left: 0.1rem; margin-top: 0.1rem; float: inline-end; position: relative; top: 0.32rem;'>
                                 <header style='color: #fff; font-size: 70%; text-align: center; position: relative; margin-top: 0.1rem; top: -5px; text-align: center; font-weight: bold;'>
-                                    <button id='Alarm' style='color: #fff;  float: initial; font-size: 70%; font-weight: 900; text-align: center; margin-right: 0%; margin-top: 0.2rem; height: 0.8rem; width: 2.5rem; background: url(../img/bg_box2.png); no-repeat; background-size: 100% 100%; border: none; position: relative; left: 0rem;'
+                                    <button id='Alarm' type='button' style='color: #fff;  float: initial; font-size: 70%; font-weight: 900; text-align: center; margin-right: 0%; margin-top: 0.2rem; height: 0.8rem; width: 2.5rem; background: url(../img/bg_box2.png); no-repeat; background-size: 100% 100%; border: none; position: relative; left: 0rem;'
                                         onclick='GOAlarm()'  >
                                         进入异常监控页面</button>
                                 </header>
@@ -936,11 +937,11 @@ namespace HTML布局学习
                 </script>
          <div style='color: #fff; font-size: 50%; border-top: none; border-bottom: none; border-left: none; border-right: none; width:100%; height:15%; color: aliceblue; margin-left: 0.1rem; margin-top: 0.1rem;'>
                      <header style='color: #fff; font-size: 70%; text-align: center; position: relative; margin-top: 0.1rem; top: -5px; text-align: center; font-weight: bold;'>
-                    <button id='previous' style='color:#fff; float: initial; font-size: 50%; text-align:center; margin-left: 0.0rem; margin-top: 0.0rem; height:0.6rem; width:1rem; background:
+                    <button id='previous' type='button' style='color:#fff; float: initial; font-size: 50%; text-align:center; margin-left: 0.0rem; margin-top: 0.0rem; height:0.6rem; width:1rem; background:
     url(../img/bg_box2.png); no-repeat; background-size: 100% 100%; border:none;  position: relative; left:-2rem;' onclick='previouse()'>上一页</button>
-                            <button id='home' style='color:#fff; float: initial; font-size: 50%; text-align:center; margin-left: 0.0rem; margin-top: 0.0rem; height:0.6rem; width:1rem; background:
+                            <button id='home' type='button' style='color:#fff; float: initial; font-size: 50%; text-align:center; margin-left: 0.0rem; margin-top: 0.0rem; height:0.6rem; width:1rem; background:
     url(../img/bg_box2.png); no-repeat; background-size: 100% 100%; border:none;  position: relative; left:0rem;' onclick='Home()'>首页</button>
-                    <button id='page' style='color:#fff; float: initial; font-size: 50%; text-align:center; margin-left: 0.0rem; margin-top: 0.0rem; height:0.6rem; width:1rem; background:
+                    <button id='page' type='button' style='color:#fff; float: initial; font-size: 50%; text-align:center; margin-left: 0.0rem; margin-top: 0.0rem; height:0.6rem; width:1rem; background:
     url(../img/bg_box2.png); no-repeat; background-size: 100% 100%; border:none;  position: relative; left:2rem;' onclick='next()'>下一页</button>
                   </header>
                 </div>
@@ -963,15 +964,24 @@ namespace HTML布局学习
     }
                     //上一页触发方法
                     function previouse() {
-                        alert('正在请求后端获取上一页数据');
+              //请求上一页数据
+             Outputprevious();
+           //鼠标移到子项 子项变色
+             Itembackground();
                     }
         function Home()
         {
-            alert('正在请求后端获取首页数据');
+            //请求首页数据
+             GetSQLoutput();
+           //鼠标移到子项 子项变色
+             Itembackground();
         }
         function next()
         {
-            alert('正在请求后端获取下一页数据');
+               //请求下一页数据
+             Outputnext();
+           //鼠标移到子项 子项变色
+             Itembackground();
         }
          //定时刷新自适应代码
                     setInterval(function () {
@@ -988,6 +998,14 @@ namespace HTML布局学习
             DynamicDIV(builder);
         }
         /// <summary>
+        /// 产量查询的当前页号
+        /// </summary>
+        static int OutputPageNum = 0;
+        /// <summary>
+        /// 产量保存的数据
+        /// </summary>
+        static List<Tuple<int, List<Scheduletaiyaki>>> Outputtuples;
+        /// <summary>
         /// 前端请求后端获取SQL中存在的产量数据表
         /// </summary>
         /// <returns></returns>
@@ -1001,6 +1019,7 @@ namespace HTML布局学习
                 const int pageSize = 10;
                 //页码 0也就是第一条 
                 int pageNum = 0;
+                OutputPageNum = 0;
                 var data = db.Scheduletaiyakis.ToList();
                 if (data.Count > 0)
                 {
@@ -1012,12 +1031,74 @@ namespace HTML布局学习
                         tuples.Add(new Tuple<int, List<Scheduletaiyaki>>(pageNum, scheduletaiya));
                         pageNum += 1;
                     }
+                    Outputtuples = tuples;
                     //获取到数据返回第一页数据
                     return new JavaScriptSerializer().Serialize(tuples[0].Item2);
                 }
                 //获取不到数据 返回null
                 return new JavaScriptSerializer().Serialize(new Scheduletaiyaki());
             }
+        }
+        /// <summary>
+        /// 前端请求返回产量首页
+        /// </summary>
+        /// <returns></returns>
+        [WebMethod]
+        public static string Outputrefresh()
+        {          
+            return GetSQLoutput();
+        }
+        /// <summary>
+        /// 前端请求返回产量上一页
+        /// </summary>
+        /// <returns></returns>
+        [WebMethod]
+        public static string Outputprevious()
+        {
+            //判断当前页
+            if(OutputPageNum<=0||Outputtuples.Count<=1)
+            {
+                //达到首页
+                return "false";
+            }
+            //进行上一页请求处理
+            OutputPageNum -= 1;
+            return new JavaScriptSerializer().Serialize(Outputtuples[OutputPageNum].Item2);
+        }
+        /// <summary>
+        /// 前端请求返回产量下一页
+        /// </summary>
+        /// <returns></returns>
+        [WebMethod]
+        public static string Outputnext()
+        {
+            //判断当前页
+            if ((OutputPageNum+1) >= Outputtuples.Count )
+            {
+                //达到最后一页
+                return "false";
+            }
+            //进行下一页请求处理
+            OutputPageNum += 1;
+            return new JavaScriptSerializer().Serialize(Outputtuples[OutputPageNum].Item2);
+        }
+    }
+    /// <summary>
+    /// 用于区块处理
+    /// </summary>
+    class Blockprocessing
+    {
+        static PlaceHolder placeHolder;
+        public Blockprocessing(PlaceHolder placeHolder2)
+        {
+            placeHolder = placeHolder2;
+        }
+        public static LiteralControl Blockp(StringBuilder Value)
+        {
+            placeHolder.Controls.Clear();
+            LiteralControl literal = new LiteralControl(Value.ToString());
+            placeHolder.Controls.Add(literal);
+            return literal;
         }
     }
 }
