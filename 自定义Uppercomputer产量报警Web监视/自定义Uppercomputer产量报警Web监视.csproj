@@ -330,6 +330,7 @@
     <Content Include="报警页面web\樱花特效css\style.css" />
     <Content Include="报警页面web\樱花特效js\index.js" />
     <Content Include="报警页面web\樱花特效js\Stats.min.js" />
+    <Content Include="数值显示jsPOST\产量页面处理JS.js" />
     <Content Include="樱花飘落js\hm.js" />
     <Content Include="樱花特效css\style.css" />
     <Content Include="Echarts\customed.js" />

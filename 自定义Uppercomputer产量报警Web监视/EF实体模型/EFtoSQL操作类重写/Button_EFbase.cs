@@ -112,7 +112,7 @@ namespace 自定义Uppercomputer产量报警Web监视.EF实体模型.EFtoSQL操�
                 bool have = false;
                 foreach (dynamic i1 in from pi in (IQueryable<T>)surface where true select pi)
                 {
-                    have = i1.ID.Trim() == ((dynamic)parameter).ID.Trim() ? true : false;
+                    have = i1.ID.ToString().Trim() == ((dynamic)parameter).ID.ToString().Trim() ? true : false;
                 }
                 //表示SQL中不存在该ID数据--允许插入数据
                 if (!have)

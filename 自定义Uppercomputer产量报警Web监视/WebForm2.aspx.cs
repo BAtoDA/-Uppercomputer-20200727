@@ -8,9 +8,11 @@ using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Windows.Forms;
+using HTML布局学习.EF实体模型;
 using HTML布局学习.报警类序列化;
 using PLC通讯规范接口;
 using Sunny.UI;
+using 自定义Uppercomputer产量报警Web监视.EF实体模型;
 
 namespace HTML布局学习
 {
@@ -108,78 +110,232 @@ namespace HTML布局学习
         protected void Button2_Click(object sender, EventArgs e)
         {
             StringBuilder builder = new StringBuilder();
-            builder.Append(@"            <div id='parameterDiv1' style='width: 30%; height: 8.5rem; display: inline-block; float: left; position: relative; margin-left: 0.1rem; margin-top: 0.0rem; color: azure; top: 0px; left: 80px;'>
-                    <label style='float: left; font-size: 25%; text-align: left; margin-left: 0.1rem; margin-top: 0.3rem;'>
-                        参数设置1
-                        <input id='parameter1' type='text' value='请输入内容' style='margin-left: 0.0rem; margin-top: 0.3rem; position: relative; top: -2px; font-size: 40%; height: 30px; border-radius: 0.1rem;'></input></label>
-                    <label style='float: left; font-size: 25%; text-align: left; margin-left: 0.1rem; margin-top: 0.3rem;'>
-                        参数设置1
-                        <input id='parameter2' type='text' value='请输入内容' style='margin-left: 0.0rem; margin-top: 0.3rem; position: relative; top: -2px; font-size: 40%; height: 30px; border-radius: 0.1rem;'></input></label>
+            builder.Append(@" 
+                <style>
+                    ul {
+                        list-style: none;
+                    }
+
+                    a {
+                        text-decoration: none;
+                    }
+                    /*一级菜单样式*/
+                    #nav {
+                        width: 60.2%;
+                        height: 50%;
+                        margin: 0px auto;
+                        background: #3bd5e5;
+                        font-size: 30%;
+                        font-family: 微软雅黑;
+                        float: left;
+                        position: relative;
+                        top: 0.51rem;
+                        text-align: center;
+                    }
+
+                        #nav ul li {
+                            float: left;
+                            /*包含块*/
+                            position: relative;
+                        }
+
+                            #nav ul li a {
+                                display: block;
+                                width: 200px;
+                                height: 40px;
+                                line-height: 40px;
+                                text-align: center;
+                                color: #fff;
+                            }
+
+                                #nav ul li a:hover {
+                                    color: #ffd800;
+                                    background: #970606;
+                                }
+                            /*二级菜单样式*/
+                            #nav ul li ul {
+                                position: absolute;
+                                top: 40px;
+                                left: 0px;
+                                display: none;
+                            }
+
+                                #nav ul li ul li {
+                                    float: none;
+                                }
+
+                                    #nav ul li ul li a {
+                                        background: #3bd5e5;
+                                        border-top: 1px solid #ccc;
+                                    }
+                            /*一级菜单悬停时二级菜单可见*/
+                            #nav ul li:hover ul {
+                                display: block;
+                            }
+                </style>
+                <div id='parameterDiv1' style='width: 30%; height: 8.5rem; display: inline-block; float: left; position: relative; margin-left: 0.1rem; margin-top: 0.0rem; color: azure; top: 0px; left: 80px;'>
+                    <div style='float: left; width: 28%; height: 10%;'>
+                        <p style='float: left; position: relative; top: 20%; font-size: 25%; text-align: left; margin-left: 1%; margin-top: 30%; width: 100%;'>设备类型：</p>
+                    </div>
+                    <div style='float: left; width: 72%; height: 10%; position: relative; z-index: 1'>
+                        <div id='nav'>
+                            <ul>
+                                <li><a id='pitchText1'>Mitsubishi</a>
+                                    <ul id='PLCname'>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div style='float: left; width: 100%; height: 20%;'>
+                        <div style='float: left; width: 40%; height: 100%;'>
+                            <p style='float: left; position: relative; top: 28%; left: -0.05rem; font-size: 25%; text-align: left; margin-left: 0.1rem; margin-top: 11%; width: 100%;'>全年产量目标：</p>
+                        </div>
+                        <div style='float: left; width: 60%; height: 50%; position: relative; z-index: 0;'>
+                            <input id='parameter2' type='text' value='9999' style='margin-left: 0.0rem; width: 50%; margin-top: 0.3rem; position: relative; top: -10px; font-size: 25%; height: 50%; border-radius: 0.1rem;'></input>
+                        </div>
+                    </div>
+                    <div style='float: left; width: 100%; height: 20%; position: relative; top: 18%;'>
+                        <div style='float: left; width: 40%; height: 20%;'>
+                            <p style='float: left; position: relative; top: 28%; left: -0.05rem; font-size: 25%; text-align: left; margin-left: 0.1rem; margin-top: 11%; width: 100%;'>当天产量目标：</p>
+                        </div>
+                        <div style='float: left; width: 60%; height: 50%; position: relative; z-index: 0;'>
+                            <input id='parameter6' type='text' value='9999' style='margin-left: 0.0rem; width: 50%; margin-top: 0.3rem; position: relative; top: -60%; font-size: 25%; height: 50%; border-radius: 0.1rem;'></input>
+                        </div>
+                    </div>
+                    <div style='float: left; width: 100%; height: 20%; position: relative; top: 10%;'>
+                        <div style='float: left; width: 40%; height: 20%;'>
+                            <p style='float: left; position: relative; top: 28%; left: -0.05rem; font-size: 25%; text-align: left; margin-left: 0.1rem; margin-top: 11%; width: 100%;'>当月产量目标：</p>
+                        </div>
+                        <div style='float: left; width: 60%; height: 50%; position: relative; z-index: 0;'>
+                            <input id='parameter7' type='text' value='9999' style='margin-left: 0.0rem; width: 50%; margin-top: 0.3rem; position: relative; top: -60%; font-size: 25%; height: 50%; border-radius: 0.1rem;'></input>
+                        </div>
+                    </div>
                 </div>
-                <div id='parameterDiv2' style='width: 30%; height: 8.5rem; display: inline-block; float: inherit; position: relative; margin-left: 0.1rem; margin-top: 0.0rem; color: azure; top: 0px; right: -200px;'>
-                    <label style='float: left; font-size: 25%; text-align: left; margin-left: 0.1rem; margin-top: 0.3rem;'>
-                        参数设置1
-                        <input id='parameter3' type='text' value='请输入内容' style='margin-left: 0.0rem; margin-top: 0.3rem; position: relative; top: -2px; font-size: 40%; height: 30px; border-radius: 0.1rem;'></input></label>
-                    <label style='float: left; font-size: 25%; text-align: left; margin-left: 0.1rem; margin-top: 0.3rem;'>
-                        参数设置1
-                        <input id='parameter4' type='text' value='请输入内容' style='margin-left: 0.0rem; margin-top: 0.3rem; position: relative; top: -2px; font-size: 40%; height: 30px; border-radius: 0.1rem;'></input></label>
+                <div id='parameterDiv2' style='width: 30%; height: 8.5rem; display: inline-block; float: inherit; position: relative; margin-left: 0.1rem; margin-top: 0.0rem; color: azure; top: 0px; right: -5%;'>
+                    <div style='float: left; width: 28%; height: 10%;'>
+                        <p style='float: left; position: relative; top: 20%; font-size: 25%; text-align: left; margin-left: 0.1rem; margin-top: 30%; width: 100%;'>产量地址：</p>
+                    </div>
+                    <div style='float: left; width: 72%; height: 10%; position: relative; z-index: 1'>
+                        <div id='nav'>
+                            <ul>
+                                <li><a id='pitchText2'>D</a>
+                                    <ul id='PLCDname'>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div style='float: left; width: 100%; height: 20%;'>
+                        <div style='float: left; width: 40%; height: 12%;'>
+                            <p style='float: left; position: relative; top: 28%; left: -0.02rem; font-size: 25%; text-align: left; margin-left: 0.1rem; margin-top: 34%; width: 100%;'>产量具体地址：</p>
+                        </div>
+                        <div style='float: left; width: 60%; height: 50%; position: relative; z-index: 0;'>
+                            <input id='parameter3' type='text' value='0' style='margin-left: 0.0rem; width: 50%; margin-top: 0.3rem; position: relative; top: -10px; font-size: 25%; height: 50%; border-radius: 0.1rem;'></input>
+                        </div>
+                    </div>
+                    <div style='float: left; width: 100%; height: 20%; position: relative; top: 15%;'>
+                        <div style='float: left; width: 28%; height: 10%;'>
+                            <p style='float: left; position: relative; top: 90%; font-size: 25%; text-align: left; margin-left: 0.1rem; margin-top: 30%; width: 100%;'>物料编码：</p>
+                        </div>
+                        <div style='float: left; width: 72%; height: 50%; position: relative; z-index: 1'>
+                            <div id='nav'>
+                                <ul>
+                                    <li><a id='pitchText4'>D</a>
+                                        <ul id='PLCDname1'>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>              
+                    <div style='float: left; width: 100%; height: 20%; position: relative; top: 5%;'>
+                        <div style='float: left; width: 40%; height: 12%;'>
+                            <p style='float: left; position: relative; top: 28%; left: -0.02rem; font-size: 25%; text-align: left; margin-left: 0.1rem; margin-top: 34%; width: 100%;'>编码具体地址：</p>
+                        </div>
+                        <div style='float: left; width: 60%; height: 50%; position: relative; z-index: 0;'>
+                            <input id='parameter8' type='text' value='0' style='margin-left: 0.0rem; width: 50%; margin-top: 0.3rem; position: relative; top: -10px; font-size: 25%; height: 50%; border-radius: 0.1rem;'></input>
+                        </div>
+                    </div>
                 </div>
                 <div id='parameterDiv3' style='width: 30%; height: 8.5rem; display: inline-block; float: right; position: relative; margin-left: 0.1rem; margin-top: 0.0rem; color: azure; top: 0px; right: 0px;'>
-                    <label style='float: left; font-size: 25%; text-align: left; margin-left: 0.1rem; margin-top: 0.3rem;'>
-                        参数设置1
-                        <input id='parameter5' type='text' value='请输入内容' style='margin-left: 0.0rem; margin-top: 0.3rem; position: relative; top: -2px; font-size: 40%; height: 30px; border-radius: 0.1rem;'></input></label>
-                    <label style='float: left; font-size: 25%; text-align: left; margin-left: 0.1rem; margin-top: 0.3rem;'>
-                        参数设置1
-                        <input id='parameter6' type='text' value='请输入内容' style='margin-left: 0.0rem; margin-top: 0.3rem; position: relative; top: -2px; font-size: 40%; height: 30px; border-radius: 0.1rem;'></input></label>
+                    <div style='float: left; width: 28%; height: 10%;'>
+                        <p style='float: left; position: relative; top: 20%; font-size: 25%; text-align: left; margin-left: 0.1rem; margin-top: 30%; width: 100%;'>速率地址：</p>
+                    </div>
+                    <div style='float: left; width: 72%; height: 10%; position: relative; z-index: 1'>
+                        <div id='nav'>
+                            <ul>
+                                <li><a id='pitchText3'>M</a>
+                                    <ul id='PLCDname2'>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>            
+                    <div style='float: left; width: 100%; height: 20%;'>
+                        <div style='float: left; width: 40%; height: 50%;'>
+                            <p style='float: left; position: relative; top: 28%; font-size: 25%; text-align: left; margin-left: 0.1rem; margin-top: 22%; width: 100%;'>速率具体地址：</p>
+                        </div>
+                        <div style='float: left; width: 60%; height: 50%; position: relative; z-index: 0;'>
+                            <input id='parameter4' type='text' value='0' style='margin-left: 0.0rem; width: 50%; margin-top: 0.3rem; position: relative; top: -10px; font-size: 25%; height: 50%; border-radius: 0.1rem;'></input>
+                        </div>
+                    </div>
+                    <div style='float: left; width: 100%; height: 20%; position: relative; top: 15%;'>
+                        <div style='float: left; width: 28%; height: 10%;'>
+                            <p style='float: left; position: relative; top: 90%; font-size: 25%; text-align: left; margin-left: 0.1rem; margin-top: 30%; width: 100%;'>自动地址：</p>
+                        </div>
+                        <div style='float: left; width: 72%; height: 50%; position: relative; z-index: 1'>
+                            <div id='nav'>
+                                <ul>
+                                    <li><a id='pitchText10'>D</a>
+                                        <ul id='PLCDname10'>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>                   
+                    <div style='float: left; width: 100%; height: 20%; position:relative;top:5%;'>
+                        <div style='float: left; width: 40%; height: 50%;'>
+                            <p style='float: left; position: relative; top: 28%; font-size: 25%; text-align: left; margin-left: 0.1rem; margin-top: 22%; width: 100%;'>自动具体地址：</p>
+                        </div>
+                        <div style='float: left; width: 60%; height: 50%; position: relative; z-index: 0;'>
+                            <input id='parameter11' type='text' value='0' style='margin-left: 0.0rem; width: 50%; margin-top: 0.3rem; position: relative; top: -10px; font-size: 25%; height: 50%; border-radius: 0.1rem;'></input>
+                        </div>
+                    </div>
+                     <div style='color: #fff; font-size: 50%; border-top: none; border-bottom: none; border-left: none; border-right: none; width: 80%; height: 10%; color: aliceblue; margin-left: 0.1rem; margin-top: 0.1rem; float: left; position: relative; top: 20%;left:-100%; '>
+                    <header style='color: #fff; font-size: 70%; text-align: center; position: relative; margin-top: 0.1rem; top: -5px; text-align: center; font-weight: bold;'>
+                        <button id='previous' style='color: #fff; float: initial; font-size: 50%; text-align: center; margin-left: 0.0rem; margin-top: 0.0rem; height: 0.5rem; width: 1rem; background: url(../img/bg_box2.png); no-repeat; background-size: 100% 100%; border: none; position: relative; left: -2rem;'
+                            onclick='previouse()'>
+                            确定提交</button>
+                        <button id='page' style='color: #fff; float: initial; font-size: 50%; text-align: center; margin-left: 0.0rem; margin-top: 0.0rem; height: 0.5rem; width: 1rem; background: url(../img/bg_box2.png); no-repeat; background-size: 100% 100%; border: none; position: relative; left: 2rem;'
+                            onclick='next()'>
+                            取消</button>
+                    </header>
                 </div>
-                <script type='text/javascript'>
-                    function paramete() {
-                        //区块一自适应
-                        var parameterDiv = document.getElementById('parameterDiv1');
-
-                        //判断按钮导航栏屏幕宽度 标准是1920*969 已知整体Html 1个rem等于100px
-                        if (document.body.clientWidth >= 600 && document.body.clientWidth < 6000) {
-                            parameterDiv.style.width = (document.body.clientWidth / 480) + 'rem';
-                            parameterDiv.style.marginLeft = (document.body.clientHeight / 9690) + 'rem';
-                            parameterDiv.style.left = (document.body.clientHeight / 1200) + 'rem';
+                    <script type='text/javascript'>
+                        PLCpost();
+                        PLCpostM1();
+                        PLCpostM();
+                        PLCpostD1();
+                        PLCpostD();
+                        //请求SQL数据库
+                        SQLTOParameter();
+                        //用于处理表格按钮的特效
+                        Tablecss1();
+                        //提交表单方法
+                        function previouse() {
+                            if (confirm('是否提交表单到SQL数据库？')) {
+                                ParameterTOSQL();//修改参数数据
+                            }
+                           
                         }
-                        //判断高度
-                        if (document.body.clientHeight > 200 && document.body.clientHeight < 3000) {
-                           parameterDiv.style.height = (document.body.clientHeight / 114) + 'rem';
+                        function next() {
+                            location.reload();//重新刷新网页
                         }
-                        //区块二自适应
-                        var parameterDiv = document.getElementById('parameterDiv2');
-
-                        //判断按钮导航栏屏幕宽度 标准是1920*969 已知整体Html 1个rem等于100px
-                        if (document.body.clientWidth >= 600 && document.body.clientWidth < 6000) {
-                            parameterDiv.style.width = (document.body.clientWidth / 480) + 'rem';
-                            parameterDiv.style.marginLeft = (document.body.clientHeight / 9690) + 'rem';
-                            parameterDiv.style.right = '-' + (document.body.clientHeight / 480) + 'rem';
-                        }
-                        //判断高度
-                        if (document.body.clientHeight > 200 && document.body.clientHeight < 3000) {
-                            parameterDiv.style.height = (document.body.clientHeight / 114) + 'rem';
-                        }
-                        //区块三自适应
-                        var parameterDiv = document.getElementById('parameterDiv3');
-
-                        //判断按钮导航栏屏幕宽度 标准是1920*969 已知整体Html 1个rem等于100px
-                        if (document.body.clientWidth >= 600 && document.body.clientWidth < 6000) {
-                            parameterDiv.style.width = (document.body.clientWidth / 480) + 'rem';
-                            parameterDiv.style.marginLeft = (document.body.clientHeight / 9690) + 'rem';
-                        }
-                        //判断高度
-                        if (document.body.clientHeight > 200 && document.body.clientHeight < 3000) {
-                            parameterDiv.style.height = (document.body.clientHeight / 114) + 'rem';
-                        }
-                    }
-                   //用于处理文本框特效
-                  Parametertext();
-           //定时刷新自适应代码
-          setInterval(function () {
-                paramete();
-             }, 300);     
-                </script>");
+                    </script>
+                </div> 
+ </div>");
             DynamicDIV(builder);
             
         }
@@ -265,6 +421,117 @@ namespace HTML布局学习
                     break;
             }
             return PLCName;
+        }
+        /// <summary>
+        /// 前端提交表单到SQL数据库中
+        /// </summary>
+        /// <param name="pitchText1">PLC类型菜单</param>
+        /// <param name="parameter2">全年产量目标</param>
+        /// <param name="parameter6">当天产量目标</param>
+        /// <param name="parameter7">当月产量目标</param>
+        /// <param name="pitchText2">产量地址下拉菜单地址</param>
+        /// <param name="parameter3">产量具体地址</param>
+        /// <param name="pitchText4">物料编码下拉菜单</param>
+        /// <param name="parameter8">编码具体地址</param>
+        /// <param name="pitchText3">速率地址下拉菜单</param>
+        /// <param name="parameter4">速率具体地址</param>
+        /// <param name="pitchText10">自动地址下拉菜单</param>
+        /// <param name="parameter11">自动具体地址</param>
+        /// <param name=""></param>
+        /// <returns></returns>
+        [WebMethod]
+        public static bool ParameterTOSQL(string pitchText1,string parameter2,string parameter6,string parameter7,string pitchText2,string parameter3
+            ,string pitchText4,string parameter8,string pitchText3,string parameter4,string pitchText10,string parameter11)
+        {
+            try
+            {
+                //打开SQL数据库
+                using (UppercomputerEntities2 db = new UppercomputerEntities2())
+                {
+                    //查询SQL数据库是否存在改数据
+                    var data = db.ParameterWebs.FirstOrDefault();
+                    if (data != null)
+                    {
+                        //SQl存在数据
+                        data.产量具体地址 = parameter3 ?? "0";
+                        data.产量地址 = pitchText2 ?? "D";
+                        data.当月目标 = Convert.ToInt64(parameter7 ?? "0");
+                        data.当班目标 = Convert.ToInt64(parameter6 ?? "0");
+                        data.自动运行具体地址 = parameter11 ?? "0";
+                        data.自动运行地址 = pitchText10 ?? "M";
+                        data.设备 = pitchText1 ?? "Mitsubishi";
+                        data.设备速率具体地址 = parameter4 ?? "0";
+                        data.设备速率地址 = pitchText3 ?? "D";
+                        data.全年产量目标 = Convert.ToInt64(parameter2 ?? "0");
+                        data.物料编码 = pitchText4 ?? "D";
+                        data.编码具体地址 = parameter8 ?? "0";
+                    }
+                    else
+                    {
+                        //SQL不存在该数据
+                        ParameterWeb web = new ParameterWeb()
+                        {
+                            ID = 1,
+                            产量具体地址 = parameter3 ?? "0",
+                            产量地址 = pitchText2 ?? "D",
+                            当月目标 = Convert.ToInt64(parameter7 ?? "0"),
+                            当班目标 = Convert.ToInt64(parameter6 ?? "0"),
+                            自动运行具体地址 = parameter11 ?? "0",
+                            自动运行地址 = pitchText10 ?? "M",
+                            设备 = pitchText1 ?? "Mitsubishi",
+                            设备速率具体地址 = parameter4 ?? "0",
+                            设备速率地址 = pitchText3 ?? "D",
+                            全年产量目标 = Convert.ToInt64(parameter2 ?? "0"),
+                            物料编码 = pitchText4 ?? "D",
+                            编码具体地址 = parameter8 ?? "0"
+                        };
+
+                        db.ParameterWebs.Add(web);
+                    }
+                    //保存在SQL中
+                    db.SaveChanges();
+                    return true;
+                }
+            }
+            catch
+            {
+                return false;
+            }
+        }
+        /// <summary>
+        /// 前端请求获取保存在SQL中的参数设置数据
+        /// </summary>
+        /// <returns></returns>
+        [WebMethod]
+        public static string SQLTOParameter()
+        {
+            using (UppercomputerEntities2 db = new UppercomputerEntities2())
+            {
+                var data = db.ParameterWebs.FirstOrDefault();
+                if (data != null)
+                {
+                    return new JavaScriptSerializer().Serialize(data);//序列化参数设置对象
+                }
+                //SQL不存在该数据
+                ParameterWeb web = new ParameterWeb()
+                {
+                    ID = 1,
+                    产量具体地址 = "0",
+                    产量地址 = "D",
+                    当月目标 = Convert.ToInt64("0"),
+                    当班目标 = Convert.ToInt64("0"),
+                    自动运行具体地址 = "0",
+                    自动运行地址 = "M",
+                    设备 = "Mitsubishi",
+                    设备速率具体地址 = "0",
+                    设备速率地址 = "D",
+                    全年产量目标 = Convert.ToInt64("0"),
+                    物料编码 = "D",
+                    编码具体地址 = "0"
+                };
+                return new JavaScriptSerializer().Serialize(web);
+            }
+
         }
         /// <summary>
         /// 用户点击报警注册事件查询
@@ -664,7 +931,8 @@ namespace HTML布局学习
                     </table>
                 </div>
                 <script type='text/javascript'>
-                    GetAlarmhistory();
+                     //请求后端获取SQL中的产量表
+                    GetSQLoutput();
                 </script>
          <div style='color: #fff; font-size: 50%; border-top: none; border-bottom: none; border-left: none; border-right: none; width:100%; height:15%; color: aliceblue; margin-left: 0.1rem; margin-top: 0.1rem;'>
                      <header style='color: #fff; font-size: 70%; text-align: center; position: relative; margin-top: 0.1rem; top: -5px; text-align: center; font-weight: bold;'>
@@ -718,6 +986,38 @@ namespace HTML布局学习
                 </script>");
             //动态添加数据到前台
             DynamicDIV(builder);
+        }
+        /// <summary>
+        /// 前端请求后端获取SQL中存在的产量数据表
+        /// </summary>
+        /// <returns></returns>
+        [WebMethod]
+        public static string GetSQLoutput()
+        {
+            //打开SQL数据库
+            using (UppercomputerEntities2 db = new UppercomputerEntities2())
+            {
+                //每页条数   
+                const int pageSize = 10;
+                //页码 0也就是第一条 
+                int pageNum = 0;
+                var data = db.Scheduletaiyakis.ToList();
+                if (data.Count > 0)
+                {
+                    //创建泛型集合保存数据
+                    List<Tuple<int, List<Scheduletaiyaki>>> tuples = new List<Tuple<int, List<Scheduletaiyaki>>>();
+                    while (pageNum * pageSize < data.Count)
+                    {
+                        var scheduletaiya = data.Skip(pageNum * pageSize).Take(pageSize).ToList();
+                        tuples.Add(new Tuple<int, List<Scheduletaiyaki>>(pageNum, scheduletaiya));
+                        pageNum += 1;
+                    }
+                    //获取到数据返回第一页数据
+                    return new JavaScriptSerializer().Serialize(tuples[0].Item2);
+                }
+                //获取不到数据 返回null
+                return new JavaScriptSerializer().Serialize(new Scheduletaiyaki());
+            }
         }
     }
 }
