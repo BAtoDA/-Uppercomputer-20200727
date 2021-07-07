@@ -1,0 +1,168 @@
+﻿/*简单初始化*/
+html {
+    font-size: 100px; /*设置html字体大小以便rem*/
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+}
+
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+}
+/*主页面布局方式--自动*/
+.t_main {
+    text-align: center;
+}
+/*头部标题底层--显示图片--布满页面*/
+.t_container {
+    width: 100%;
+    height: 100%;
+    background: url('../img/bg_body.jpg') no-repeat;
+    background-size: 100% 100%;
+}
+/*头部标题--显示图片--布满页面*/
+.t_h_bg {
+    width: 100%;
+    height: 2%;   
+    background: url('../报警页面web/imge/title.png') no-repeat;
+    background-size: 100% 100%;
+    text-align: center;
+}
+/*头部标题--字体显示--布满页面*/
+.t_h_bg_frin {
+    color: #ffffff;
+    font-size: 50%;
+    text-align: center;
+    position: relative;
+    top: 0px;
+}
+/*内容排布--小方格布局--显示图片--*/
+.t_box {
+    width: 25%;
+    height: 8.3rem;
+    background: url('../报警页面web/imge/bg_box2.png') no-repeat;
+    background-size: 100% 100%;
+    display: inline-block;
+    float: right;
+    position: relative;
+    margin-left: 0.1rem;
+    margin-top: 0.1rem;
+    position: relative;
+    top: 0.3rem;
+    left: 0px;
+}
+.t_box2 {
+    width: 25%;
+    height: 8.3rem;
+    background: url('../报警页面web/imge/bg_box2.png') no-repeat;
+    background-size: 100% 100%;
+    display: inline-block;
+    float: left;
+    position: relative;
+    margin-left: 0.1rem;
+    margin-top: 0.1rem;
+    margin-right:0.1rem;
+    position: relative;
+    top: 0.3rem;
+    left: 0px;
+}
+/*内容排布--小方格布局  占用大小 --*/
+.t_box_little {
+    height: 100%;
+    width: 67%;
+    float: left;
+}
+/*内容排布--大方格布局  占用大小 --*/
+.t_box_big {
+    height: 100%;
+    width: 33%;
+    float: left;
+}
+/*内容排布--大方格布局--显示图片--*/
+.t_boxbig {
+    width: 47.5%;
+    height: 4.1rem;
+    background: url('../报警页面web/imge/bg_box3.png') no-repeat;
+    background-size: 100% 100%;
+    display: inline-block;
+    float: left;
+    position: relative;
+    margin-left: 0.1rem;
+    margin-top: 0.1rem;
+    position: relative;
+    top: 0.3rem;
+    left: 4px;
+}
+/*显示内容布局--布满页面--显示图片*/
+.body_main {
+    background: url('../报警页面web/imge/map_bg.jpg') no-repeat;
+    background-size: 100% 100%;
+}
+/**用于处理靠左的小方格*/
+.pane1 {
+    width: 25%;
+    height: 30%;
+    background: url('../报警页面web/img/leftbg01.png');
+    background-size: 100% 100%;
+    display: inline-block;
+    float: left;
+    position: relative;
+    margin-left: 5%;
+    margin-top: 2%;
+    position: relative;
+    top: 0rem;
+    left: 0px;
+}
+/**用于处理靠中间的小方格*/
+.pane2 {
+    width: 25%;
+    height: 30%;
+    background: url('../报警页面web/img/leftbg01.png');
+    background-size: 100% 100%;
+    display: inline-block;
+    float: inherit;
+    position: relative;
+    margin-left: 5%;
+    margin-top: 2%;
+    position: relative;
+    top: 0rem;
+    right:-3%;
+}
+/**用于处理靠右的小方格*/
+.pane3 {
+    width: 25%;
+    height: 30%;
+    background: url('../报警页面web/img/leftbg01.png');
+    background-size: 100% 100%;
+    display: inline-block;
+    float: right;
+    position: relative;
+    margin-right:5%;
+    margin-top: 2%;
+    position: relative;
+    top: 0rem;
+    left: 0px;
+}
+/**用于处理小方格左侧图标*/
+.paneimge {
+    width: 30%;
+    height: 40%;
+    display: inline-block;
+    float: left;
+    position: relative;
+    margin-right: 0%;
+    margin-top: 0%;
+    position: relative;
+    top: 17%;
+    left: 0px;
+}

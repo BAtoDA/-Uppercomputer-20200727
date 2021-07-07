@@ -34,7 +34,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no" />
     <!-- 引入 樱花特效 -->
     <meta content="en-us" http-equiv="Content-Language" />
-    <meta name="viewport" content="width=device-width, initial-scale=0.9" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=2.0, user-scalable=yes" />
     <script src="../樱花飘落js/hm.js"></script>
     <script type="text/javascript">
         var d = new Date()
@@ -468,13 +468,31 @@
                         }
                     </script>--%>
                <%-- </div>--%>
+                <script type="text/javascript">
+                    //测试代码 识别是否 电脑与手机
+                    function IsPC() {
+                        var userAgentInfo = navigator.userAgent;
+                        console.log(navigator.userAgent);
+                        var Agents = new Array("Android", "iPhone", "SymbianOS", "Windows Phone", "iPad", "iPod");
+                        var flag = true;
+                        for (var v = 0; v < Agents.length; v++) {
+                            if (userAgentInfo.indexOf(Agents[v]) > 0) { flag = false; alert("你的设备是：" + Agents[v] + "你手机宽度;" + document.body.clientWidth+"你的手机高度:" + document.body.clientHeight); break; }
+                        }
+                        return flag;
+                    }
+
+                    if (IsPC()) {
+                    } else {
+                        window.open('WebForm22.aspx');
+                    }
+                </script>
                 <script type='text/javascript'>
                     function paramete() {
                         //区块一自适应
                         var parameterDiv = document.getElementById('parameterDiv1');
 
                         //判断按钮导航栏屏幕宽度 标准是1920*969 已知整体Html 1个rem等于100px
-                        if (document.body.clientWidth >= 600 && document.body.clientWidth < 6000) {
+                        if (document.body.clientWidth >= 100 && document.body.clientWidth < 6000) {
                             //parameterDiv.style.width = (document.body.clientWidth / 480) + 'rem';
                             //parameterDiv.style.marginLeft = (document.body.clientHeight / 9690) + 'rem';
                             //parameterDiv.style.left = (document.body.clientHeight / 1200) + 'rem';
@@ -487,7 +505,7 @@
                         var parameterDiv = document.getElementById('parameterDiv2');
 
                         //判断按钮导航栏屏幕宽度 标准是1920*969 已知整体Html 1个rem等于100px
-                        if (document.body.clientWidth >= 600 && document.body.clientWidth < 6000) {
+                        if (document.body.clientWidth >= 100 && document.body.clientWidth < 6000) {
                             //parameterDiv.style.width = (document.body.clientWidth / 480) + 'rem';
                             //parameterDiv.style.marginLeft = (document.body.clientHeight / 9690) + 'rem';
                             //parameterDiv.style.right = '-' + (document.body.clientHeight / 480) + 'rem';
@@ -500,7 +518,7 @@
                         var parameterDiv = document.getElementById('parameterDiv3');
 
                         //判断按钮导航栏屏幕宽度 标准是1920*969 已知整体Html 1个rem等于100px
-                        if (document.body.clientWidth >= 600 && document.body.clientWidth < 6000) {
+                        if (document.body.clientWidth >= 100 && document.body.clientWidth < 6000) {
                             //parameterDiv.style.width = (document.body.clientWidth / 480) + 'rem';
                             //parameterDiv.style.marginLeft = (document.body.clientHeight / 9690) + 'rem';
                         }

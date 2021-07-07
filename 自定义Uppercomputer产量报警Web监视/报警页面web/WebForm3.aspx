@@ -6,30 +6,31 @@
 <head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <!-- 引入jquery前后端互交 -->
-    <script src="../Echarts/jquery-3.5.1.min.js"></script>
+    <script src="Echarts/jquery-3.5.1.min.js"></script>
     <!-- 引入 echarts.js -->
-    <script src="../Echarts/echarts.js"></script>
-    <script src="../Echarts/customed.js"></script>
-    <script src="../JavaScript.js"></script>
-    <script src="../js/jquery.js" type="text/javascript"></script>
+    <script src="Echarts/echarts.js"></script>
+    <script src="Echarts/customed.js"></script>
+    <script src="JavaScript.js"></script>
+    <script src="js/jquery.js" type="text/javascript"></script>
     <%--引入布局样式--%>
-    <link rel="stylesheet" href="~/报警界面布局样式.css" />
+    <link rel="stylesheet" href="报警界面布局样式.css" />
     <!-- 引入 雪花飘落特效 -->
-    <link rel="stylesheet" href="~/樱花特效css/style.css" />
+    <link rel="stylesheet" href="樱花特效css/style.css" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no" />
-    <link href="~/Security_operation.css" rel="stylesheet" type="text/css" />
+    <link href="Security_operation.css" rel="stylesheet" type="text/css" />
     <title>报警界面监控</title>
     <%-- 引入加载处理用时图表--%>
-    <script src="../报警显示图标js/Alarmecharts.js"></script>
+    <script src="报警显示图标js/Alarmecharts.js"></script>
     <%-- 引入加载报警次数和处理总时图表--%>
-    <script src="../报警异常次数和总时长/AlarmTimeJs.js"></script>
+    <script src="报警异常次数和总时长/AlarmTimeJs.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=2.0, user-scalable=yes" />
 </head>
 <body class="body_main">
     <form id="form1" runat="server">
         <%-- 雪花飘落特效--%>
         <div class="snow" count="4000"></div>
-        <script src='../樱花特效js/Stats.min.js'></script>
-        <script src="../樱花特效js/index.js"></script>
+        <script src='樱花特效js/Stats.min.js'></script>
+        <script src="樱花特效js/index.js"></script>
         <%-- 布局标题--%>
         <div class="t_h_bg">
             <header class="t_h_bg_frin">

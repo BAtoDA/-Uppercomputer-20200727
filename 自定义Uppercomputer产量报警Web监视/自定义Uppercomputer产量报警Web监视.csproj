@@ -121,11 +121,39 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="WebForm1.aspx" />
+    <Content Include="WebForm22.aspx" />
     <Content Include="参数设置界面css\参数设置js与后端处理.js" />
     <Content Include="参数页面自适应js\Selfadaption.js" />
     <Content Include="布局样式.css" />
     <Content Include="报警视图jsPOST\报警历史页面前后端处理js.js" />
     <Content Include="报警视图jsPOST\报警注册查询页面后端处理js.js" />
+    <Content Include="报警页面web\Echarts\customed.js" />
+    <Content Include="报警页面web\Echarts\echarts.common.js" />
+    <Content Include="报警页面web\Echarts\echarts.common.min.js" />
+    <Content Include="报警页面web\Echarts\echarts.esm.js" />
+    <Content Include="报警页面web\Echarts\echarts.esm.min.js" />
+    <Content Include="报警页面web\Echarts\echarts.js" />
+    <Content Include="报警页面web\Echarts\echarts.min.js" />
+    <Content Include="报警页面web\Echarts\echarts.simple.js" />
+    <Content Include="报警页面web\Echarts\echarts.simple.min.js" />
+    <Content Include="报警页面web\Echarts\Echarts\customed.js" />
+    <Content Include="报警页面web\Echarts\Echarts\echarts.common.js" />
+    <Content Include="报警页面web\Echarts\Echarts\echarts.common.min.js" />
+    <Content Include="报警页面web\Echarts\Echarts\echarts.esm.js" />
+    <Content Include="报警页面web\Echarts\Echarts\echarts.esm.min.js" />
+    <Content Include="报警页面web\Echarts\Echarts\echarts.js" />
+    <Content Include="报警页面web\Echarts\Echarts\echarts.min.js" />
+    <Content Include="报警页面web\Echarts\Echarts\echarts.simple.js" />
+    <Content Include="报警页面web\Echarts\Echarts\echarts.simple.min.js" />
+    <Content Include="报警页面web\Echarts\Echarts\extension\bmap.js" />
+    <Content Include="报警页面web\Echarts\Echarts\extension\bmap.min.js" />
+    <Content Include="报警页面web\Echarts\Echarts\extension\dataTool.js" />
+    <Content Include="报警页面web\Echarts\Echarts\extension\dataTool.min.js" />
+    <Content Include="报警页面web\Echarts\extension\bmap.js" />
+    <Content Include="报警页面web\Echarts\extension\bmap.min.js" />
+    <Content Include="报警页面web\Echarts\extension\dataTool.js" />
+    <Content Include="报警页面web\Echarts\extension\dataTool.min.js" />
+    <Content Include="报警页面web\Echarts\jquery-3.5.1.min.js" />
     <Content Include="报警页面web\img\1_03.png" />
     <Content Include="报警页面web\img\bg.png" />
     <Content Include="报警页面web\img\bg01.png" />
@@ -162,6 +190,7 @@
     <Content Include="报警页面web\img\zoom_inon_01.png" />
     <Content Include="报警页面web\img\zoom_inon_02.png" />
     <Content Include="报警页面web\img\临时.png" />
+    <Content Include="报警页面web\JavaScript.js" />
     <Content Include="报警页面web\js\artDialog\artDialog.js" />
     <Content Include="报警页面web\js\artDialog\artDialog.source.js" />
     <Content Include="报警页面web\js\artDialog\jquery.artDialog.js" />
@@ -407,6 +436,13 @@
     <Compile Include="WebForm2.aspx.designer.cs">
       <DependentUpon>WebForm2.aspx</DependentUpon>
     </Compile>
+    <Compile Include="WebForm22.aspx.cs">
+      <DependentUpon>WebForm22.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForm22.aspx.designer.cs">
+      <DependentUpon>WebForm22.aspx</DependentUpon>
+    </Compile>
     <Compile Include="小时产量类序列化\HourClass.cs" />
     <Compile Include="报警类序列化\Alarm.cs" />
     <Compile Include="报警类序列化\Alarmhistory.cs" />
@@ -453,6 +489,18 @@
     <Content Include="报警页面web\js\bstable\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="报警页面web\js\bstable\fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="临时数据库文件\Extent1.db" />
+    <Content Include="报警页面web\Echarts\echarts.common.js.map" />
+    <Content Include="报警页面web\Echarts\echarts.esm.js.map" />
+    <Content Include="报警页面web\Echarts\echarts.js.map" />
+    <Content Include="报警页面web\Echarts\echarts.simple.js.map" />
+    <Content Include="报警页面web\Echarts\Echarts\echarts.common.js.map" />
+    <Content Include="报警页面web\Echarts\Echarts\echarts.esm.js.map" />
+    <Content Include="报警页面web\Echarts\Echarts\echarts.js.map" />
+    <Content Include="报警页面web\Echarts\Echarts\echarts.simple.js.map" />
+    <Content Include="报警页面web\Echarts\Echarts\extension\bmap.js.map" />
+    <Content Include="报警页面web\Echarts\Echarts\extension\dataTool.js.map" />
+    <Content Include="报警页面web\Echarts\extension\bmap.js.map" />
+    <Content Include="报警页面web\Echarts\extension\dataTool.js.map" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PLC通讯规范接口\PLC通讯规范接口.csproj">

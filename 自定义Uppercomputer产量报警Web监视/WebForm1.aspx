@@ -28,7 +28,7 @@
     <script src="../报警视图jsPOST/Alarm_View.js"></script>
     <!-- 引入 雪花飘落特效 -->
     <link rel="stylesheet" href="~/樱花特效css/style.css" />
-    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=2.0, user-scalable=yes" />
     <title>XXX线数据展示</title>
 </head>
 <body class="t_container">
