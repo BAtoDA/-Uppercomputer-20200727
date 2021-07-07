@@ -482,8 +482,9 @@
                     }
 
                     if (IsPC()) {
+                        location.replace('手机访问页面/手机产量页面.aspx');
                     } else {
-                        window.open('WebForm22.aspx');
+                        location.replace('手机访问页面/手机产量页面.aspx');
                     }
                 </script>
                 <script type='text/javascript'>

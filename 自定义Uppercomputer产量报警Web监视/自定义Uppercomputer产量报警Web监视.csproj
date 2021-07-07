@@ -120,8 +120,72 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="img\1_03.png" />
+    <Content Include="img\aHR0cDovL3d3dy55M3EubmV0L3FmeS1jb250ZW50L3VwbG9hZHMvMjAyMS8wNi82ZWE2YTY0YjM1Y2E3MDMwMWM5MTIxMDZiNzMyNzI0MS0yMTB4MjEwLnBuZw_p_p100_p_3D_p_p100_p_3D.png" />
+    <Content Include="img\aHR0cDovL3d3dy55M3EubmV0L3FmeS1jb250ZW50L3VwbG9hZHMvMjAyMS8wNi8wYTAwMzU0ODkxM2FmZmZlMGZjNzMyMTFiNDZkYmQzOS0yMTB4MjEwLnBuZw_p_p100_p_3D_p_p100_p_3D.png" />
+    <Content Include="img\aHR0cDovL3d3dy55M3EubmV0L3FmeS1jb250ZW50L3VwbG9hZHMvMjAyMS8wNi8yYTQ1ZGEwOWQ1NzcwNWJkNzA3ZDY5YTBlYmVmMWM1Zi0yMTB4MjEwLnBuZw_p_p100_p_3D_p_p100_p_3D.png" />
+    <Content Include="img\bg.png" />
+    <Content Include="img\bg01.png" />
+    <Content Include="img\bg_body.jpg" />
+    <Content Include="img\bg_box2.png" />
+    <Content Include="img\bg_box3.png" />
+    <Content Include="img\bg_title.png" />
+    <Content Include="img\car_guiji.png" />
+    <Content Include="img\chose_btn.png" />
+    <Content Include="img\chrome.jpg" />
+    <Content Include="img\Crystalbutton.png" />
+    <Content Include="img\data_bg - 副本 - 副本.png" />
+    <Content Include="img\data_bg.png" />
+    <Content Include="img\data_bg22.png" />
+    <Content Include="img\data_icon.png" />
+    <Content Include="img\down.png" />
+    <Content Include="img\first_title.png" />
+    <Content Include="img\i01.png" />
+    <Content Include="img\i02.png" />
+    <Content Include="img\images\pic_ico_01.png" />
+    <Content Include="img\images\pic_ico_02.png" />
+    <Content Include="img\images\pic_ico_03.png" />
+    <Content Include="img\index_bg.png" />
+    <Content Include="img\leftbg01.png" />
+    <Content Include="img\left_nav.png" />
+    <Content Include="img\map_tool_bg.png" />
+    <Content Include="img\map_tool_re.png" />
+    <Content Include="img\paenimge1.png" />
+    <Content Include="img\paenimge2.png" />
+    <Content Include="img\paenimge3.png" />
+    <Content Include="img\pic0.png" />
+    <Content Include="img\pic_ico.png" />
+    <Content Include="img\pushmessage_class.png" />
+    <Content Include="img\pushmessage_level01.png" />
+    <Content Include="img\pushmessage_level02.png" />
+    <Content Include="img\pushmessage_level03.png" />
+    <Content Include="img\pushmessage_localize_01.png" />
+    <Content Include="img\pushmessage_localize_02.png" />
+    <Content Include="img\search_eddit.png" />
+    <Content Include="img\search_location.png" />
+    <Content Include="img\second_title.png" />
+    <Content Include="img\tit01s.png" />
+    <Content Include="img\tool.png" />
+    <Content Include="img\tool_bg.png" />
+    <Content Include="img\top.png" />
+    <Content Include="img\t_bg.png" />
+    <Content Include="img\t_border.png" />
+    <Content Include="img\t_header.png" />
+    <Content Include="img\weher01.png" />
+    <Content Include="img\zoom_inon_01.png" />
+    <Content Include="img\zoom_inon_02.png" />
+    <Content Include="img\临时.png" />
+    <Content Include="img\文本框1.jpg" />
+    <Content Include="img\黑色花纹边框.jpg" />
     <Content Include="WebForm1.aspx" />
-    <Content Include="WebForm22.aspx" />
+    <Content Include="手机访问页面\图片\bg.png" />
+    <Content Include="手机访问页面\图片\bg_body.jpg" />
+    <Content Include="手机访问页面\图片\bg_box2.png" />
+    <Content Include="手机访问页面\图片\bg_box3.png" />
+    <Content Include="手机访问页面\图片\bg_title.png" />
+    <Content Include="手机访问页面\图片\t_bg.png" />
+    <Content Include="手机访问页面\图片\t_border.png" />
+    <Content Include="手机访问页面\手机产量页面.aspx" />
     <Content Include="参数设置界面css\参数设置js与后端处理.js" />
     <Content Include="参数页面自适应js\Selfadaption.js" />
     <Content Include="布局样式.css" />
@@ -436,12 +500,12 @@
     <Compile Include="WebForm2.aspx.designer.cs">
       <DependentUpon>WebForm2.aspx</DependentUpon>
     </Compile>
-    <Compile Include="WebForm22.aspx.cs">
-      <DependentUpon>WebForm22.aspx</DependentUpon>
+    <Compile Include="手机访问页面\手机产量页面.aspx.cs">
+      <DependentUpon>手机产量页面.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="WebForm22.aspx.designer.cs">
-      <DependentUpon>WebForm22.aspx</DependentUpon>
+    <Compile Include="手机访问页面\手机产量页面.aspx.designer.cs">
+      <DependentUpon>手机产量页面.aspx</DependentUpon>
     </Compile>
     <Compile Include="小时产量类序列化\HourClass.cs" />
     <Compile Include="报警类序列化\Alarm.cs" />
