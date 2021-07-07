@@ -8,6 +8,7 @@ using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Windows.Forms;
+using System.Xml;
 using HTML布局学习.EF实体模型;
 using HTML布局学习.报警类序列化;
 using PLC通讯规范接口;
@@ -26,7 +27,40 @@ namespace HTML布局学习
         {
             //初次加载显示的UI
             Blockprocessing blockprocessing = new Blockprocessing(this.PlaceHolder1);
-           // Button2_Click("1",new EventArgs());
+            //UpdateConnectionString("SqliteTest", @AppDomain.CurrentDomain.BaseDirectory.ToString() + "临时数据库文件\\Extent1.db");
+        }
+        /// <summary>  
+        /// 修改config文件(ConnectionString节点)  
+        /// </summary>  
+        /// <param name="name">键</param>  
+        /// <param name="value">要修改成的值</param>  
+        public static void UpdateConnectionString(string name, string value)
+        {
+            XmlDocument doc = new XmlDocument();
+            //获得配置文件的全路径   
+            string strFileName = AppDomain.CurrentDomain.BaseDirectory.ToString() + "Web.config";
+            doc.Load(strFileName);
+            //找出名称为“add”的所有元素   
+            XmlNodeList nodes = doc.GetElementsByTagName("add");
+            for (int i = 0; i < nodes.Count; i++)
+            {
+                //获得将当前元素的key属性   
+                XmlAttribute _name = nodes[i].Attributes["name"];
+                //根据元素的第一个属性来判断当前的元素是不是目标元素   
+                if (_name != null)
+                {
+                    if (_name.Value == name)
+                    {
+                        //对目标元素中的第二个属性赋值   
+                        _name = nodes[i].Attributes["connectionString"];
+
+                        _name.Value = value;
+                        break;
+                    }
+                }
+            }
+            //保存上面的修改   
+            doc.Save(strFileName);
         }
         [WebMethod]
         public void mess()
@@ -600,15 +634,23 @@ namespace HTML布局学习
     }
                     //上一页触发方法
                     function previouse() {
-                        alert('正在请求后端获取上一页数据');
+                      Alarmregisterprevious();
+                      //鼠标移到子项 子项变色
+                      Itembackground();
                     }
         function Home()
         {
-            alert('正在请求后端获取首页数据');
+           //回首页
+            GetAlarmSQL();
+           //鼠标移到子项 子项变色
+           Itembackground();
         }
         function next()
         {
-            alert('正在请求后端获取下一页数据');
+              //下一页
+               Alarmregisternext();
+               //鼠标移到子项 子项变色
+                Itembackground();
         }
         //定时刷新自适应代码
                     setInterval(function () {
@@ -624,7 +666,6 @@ namespace HTML布局学习
             //动态添加数据到前台
             DynamicDIV(builder);
         }
-        static object Info = new object();
         /// <summary>
         /// 报警事件注册查询前端直接传入泛型集合对象
         /// </summary>
@@ -632,30 +673,74 @@ namespace HTML布局学习
         [WebMethod]
         public static string DisplayImagesInfo()
         {
-            lock (Info)
+            //打开SQL数据库
+            using (UppercomputerEntities2 db = new UppercomputerEntities2())
             {
-                List<AlarmSQL> imagelist = new List<AlarmSQL>();//表单集合
-                for (int i = 0; i < 12; i++)
+                //每页条数   
+                const int pageSize = 10;
+                //页码 0也就是第一条 
+                int pageNum = 0;
+                AlarmregisterPageNum = 0;
+                var data = db.Event_message.ToList();
+                if (data.Count > 0)
                 {
-                    imagelist.Add(new AlarmSQL()
+                    //创建泛型集合保存数据
+                    List<Tuple<int, List<Event_message>>> tuples = new List<Tuple<int, List<Event_message>>>();
+                    while (pageNum * pageSize < data.Count)
                     {
-                        ID = i,
-                        位触发条件 = "1",
-                        字触发条件 = ">",
-                        字触发条件_具体 = "22",
-                        报警内容 = "dd",
-                        类型 = 1,
-                        设备 = "aaa",
-                        设备_具体地址 = "22",
-                        设备_地址 = "ee"
-
-                    });
+                        var scheduletaiya = data.Skip(pageNum * pageSize).Take(pageSize).ToList();
+                        tuples.Add(new Tuple<int, List<Event_message>>(pageNum, scheduletaiya));
+                        pageNum += 1;
+                    }
+                    Alarmregistertuples = tuples;
+                    //获取到数据返回第一页数据
+                    return new JavaScriptSerializer().Serialize(tuples[0].Item2);
                 }
-                //序列化JSON返回前端
-                JavaScriptSerializer jsonSerializer = new JavaScriptSerializer();
-                string imageinfoStr = jsonSerializer.Serialize(imagelist);
-                return imageinfoStr;
+                //获取不到数据 返回null
+                return new JavaScriptSerializer().Serialize(new Event_message());
             }
+        }
+        /// <summary>
+        /// 报警注册事件查询的当前页号
+        /// </summary>
+        static int AlarmregisterPageNum = 0;
+        /// <summary>
+        /// 报警注册事件保存的数据
+        /// </summary>
+        static List<Tuple<int, List<Event_message>>> Alarmregistertuples;
+        /// <summary>
+        /// 报警注册事件页面请求上一页
+        /// </summary>
+        /// <returns></returns>
+        [WebMethod]
+        public static string Alarmregisterprevious()
+        {
+            //判断当前页
+            if (AlarmregisterPageNum <= 0 || Alarmregistertuples.Count <= 1)
+            {
+                //达到首页
+                return "false";
+            }
+            //进行上一页请求处理
+            AlarmregisterPageNum -= 1;
+            return new JavaScriptSerializer().Serialize(Alarmregistertuples[AlarmregisterPageNum].Item2);
+        }
+        /// <summary>
+        /// 报警注册事件页面请求下一页
+        /// </summary>
+        /// <returns></returns>
+        [WebMethod]
+        public static string Alarmregisternext()
+        {
+            //判断当前页
+            if ((AlarmregisterPageNum + 1) >= Alarmregistertuples.Count)
+            {
+                //达到最后一页
+                return "false";
+            }
+            //进行下一页请求处理
+            AlarmregisterPageNum += 1;
+            return new JavaScriptSerializer().Serialize(Alarmregistertuples[AlarmregisterPageNum].Item2);
         }
         /// <summary>
         /// 用户点击了报警历史
@@ -692,6 +777,7 @@ namespace HTML布局学习
                     </table>
                 </div>
                 <script type='text/javascript'>
+                    //请求数据首页
                     GetAlarmhistory();
                 </script>
          <div style='color: #fff; font-size: 50%; border-top: none; border-bottom: none; border-left: none; border-right: none; width:100%; height:15%; color: aliceblue; margin-left: 0.1rem; margin-top: 0.1rem;'>
@@ -723,15 +809,22 @@ namespace HTML布局学习
     }
                     //上一页触发方法
                     function previouse() {
-                        alert('正在请求后端获取上一页数据');
+                    Alarmprevious();
+                   //鼠标移到子项 子项变色
+                    Itembackground();
                     }
         function Home()
         {
-            alert('正在请求后端获取首页数据');
+          //请求数据首页
+          GetAlarmhistory();
+         //鼠标移到子项 子项变色
+          Itembackground();
         }
         function next()
         {
-            alert('正在请求后端获取下一页数据');
+            Alarmnext();
+           //鼠标移到子项 子项变色
+           Itembackground();
         }
          //定时刷新自适应代码
                     setInterval(function () {
@@ -748,40 +841,96 @@ namespace HTML布局学习
             DynamicDIV(builder);
         }
         /// <summary>
+        /// 报警页面查询的当前页号
+        /// </summary>
+        static int AlarmPageNum = 0;
+        /// <summary>
+        /// 报警页面保存的数据
+        /// </summary>
+        static List<Tuple<int, List<Alarmhistories>>> Alarmtuples;
+        /// <summary>
         /// 报警事件历史数据查询前端直接传入泛型集合对象
         /// </summary>
         /// <returns></returns>
         [WebMethod]
         public static string Displayhistory()
         {
-            lock (Info)
+            //打开SQL数据库
+            using (UppercomputerEntities2 db = new UppercomputerEntities2())
             {
-                List<Alarmhistory> imagelist = new List<Alarmhistory>();//表单集合
-                imagelist.Add(new Alarmhistory()
+                //每页条数   
+                const int pageSize = 5;
+                //页码 0也就是第一条 
+                int pageNum = 0;
+                AlarmPageNum = 0;
+                var data = db.Alarmhistory.ToList();
+                if (data.Count > 0)
                 {
-                    ID = 0,
-                    设备 = "aaa",
-                    设备_具体地址 = "22",
-                    设备_地址 = "ee11",
-                    事件关联ID = 1,
-                    处理完成时间 = DateTime.Now.ToString("D"),
-                    报警内容 = "11111",
-                    报警时间 = DateTime.Now.ToString("D"),
-                    类型 = true
-
-                }) ;
-                //序列化JSON返回前端
-                JavaScriptSerializer jsonSerializer = new JavaScriptSerializer();
-                string imageinfoStr = jsonSerializer.Serialize(imagelist);
-                return imageinfoStr;
+                    //创建泛型集合保存数据
+                    List<Tuple<int, List<Alarmhistories>>> tuples = new List<Tuple<int, List<Alarmhistories>>>();
+                    while (pageNum * pageSize < data.Count)
+                    {
+                        var scheduletaiya = data.Skip(pageNum * pageSize).Take(pageSize).ToList();
+                        tuples.Add(new Tuple<int, List<Alarmhistories>>(pageNum, scheduletaiya));
+                        pageNum += 1;
+                    }
+                    Alarmtuples = tuples;
+                    //获取到数据返回第一页数据
+                    return new JavaScriptSerializer().Serialize(tuples[0].Item2);
+                }
+                //获取不到数据 返回null
+                return new JavaScriptSerializer().Serialize(new Alarmhistories());
             }
         }
+        /// <summary>
+        /// 报警历史页面请求上一页
+        /// </summary>
+        /// <returns></returns>
+        [WebMethod]
+        public static string Alarmprevious()
+        {
+            //判断当前页
+            if (AlarmPageNum <= 0 || Alarmtuples.Count <= 1)
+            {
+                //达到首页
+                return "false";
+            }
+            //进行上一页请求处理
+            AlarmPageNum -= 1;
+            return new JavaScriptSerializer().Serialize(Alarmtuples[AlarmPageNum].Item2);
+        }
+        /// <summary>
+        /// 报警历史页面请求下一页
+        /// </summary>
+        /// <returns></returns>
+        [WebMethod]
+        public static string Alarmnext()
+        {
+            //判断当前页
+            if ((AlarmPageNum + 1) >= Alarmtuples.Count)
+            {
+                //达到最后一页
+                return "false";
+            }
+            //进行下一页请求处理
+            AlarmPageNum += 1;
+            return new JavaScriptSerializer().Serialize(Alarmtuples[AlarmPageNum].Item2);
+        }
+        /// <summary>
+        /// 页面自适应状态修改
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
         [WebMethod]
         public static string Fullscreene(bool name)
         {
             Fullscreen = name;
             return new JavaScriptSerializer().Serialize(Fullscreen);
         }
+        /// <summary>
+        /// 页面自适应状态读取
+        /// </summary>
+        /// <returns></returns>
         [WebMethod]
         public static string Fullscreenee()
         {

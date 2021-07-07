@@ -1,5 +1,6 @@
 ﻿//读取后端报警注册数据查询
-function GetAlarmSQL() {
+function GetAlarmSQL()
+{
     $.ajax({
         type: "POST",
         contentType: "application/json",
@@ -13,11 +14,10 @@ function GetAlarmSQL() {
             var tbody = document.getElementById('tbMain');
             //进行删除操作
             var len = tbody.rows.length;
-            for (var i = 1; i < len; i++) {
+            for (var i = 0; i < len; i++) {
                 tbody.deleteRow(0);//也可以写成table.deleteRow(0);  
             }     
             $.each(dataObj, function (i, item) {
-           /*     $("#imageslist").append("<li><img alt=\"" + item.AlarmPage + "\" src=\"" + item.AlarmTime + "\"/></li>");*/
                 var row = document.createElement('tr');//创建行
                 //添加ID
                 var idCell = document.createElement('td');//创建第一列id
@@ -55,7 +55,6 @@ function GetAlarmSQL() {
                 var idCell = document.createElement('td');//创建第一列id
                 idCell.innerHTML = item.报警内容;//填充数据
                 row.appendChild(idCell);//加入行，下面类似
-                //添加是否处理报警--废弃
                 //添加行
                 tbody.appendChild(row);
             })

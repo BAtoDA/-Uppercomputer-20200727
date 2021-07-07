@@ -5,29 +5,29 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <link rel="stylesheet" href="布局样式.css" />
+    <link rel="stylesheet" href="~/布局样式.css" />
     <!-- 引入数值显示 -->
-    <link rel="stylesheet" href="数值显示jsPOST/numeriheadline.css" />
-    <script src="数值显示jsPOST/numerical.js"></script>
+    <link rel="stylesheet" href="~/数值显示jsPOST/numeriheadline.css" />
+    <script src="../数值显示jsPOST/numerical.js"></script>
     <!-- 引入jquery前后端互交 -->
-    <script src="Echarts/jquery-3.5.1.min.js"></script>
+    <script src="../Echarts/jquery-3.5.1.min.js"></script>
     <!-- 引入 echarts.js -->
-    <script src="Echarts/Echarts/echarts.js"></script>
-    <script src="Echarts/customed.js"></script>
-    <script src="JavaScript.js"></script>
+    <script src="../Echarts/Echarts/echarts.js"></script>
+    <script src="../Echarts/customed.js"></script>
+    <script src="../JavaScript.js"></script>
     <!-- 引入 周折线图 -->
-    <script src="折线图显示jsPSOT/周折线图.js"></script>
-    <script src="折线图显示jsPSOT/小时折线图.js"></script>
-    <script src="折线图显示jsPSOT/月折线图.js"></script>
-    <link rel="stylesheet" href="折线图显示jsPSOT/weekSheet.css" />
+    <script src="../折线图显示jsPSOT/周折线图.js"></script>
+    <script src="../折线图显示jsPSOT/小时折线图.js"></script>
+    <script src="../折线图显示jsPSOT/月折线图.js"></script>
+    <link rel="stylesheet" href="~/折线图显示jsPSOT/weekSheet.css" />
     <!-- 引入 小时与设备异常次数指针表盘 -->
-    <script src="表盘显示jsPOST/小时指针显示.js"></script>
-    <script src="表盘显示jsPOST/停机指针显示.js"></script>
+    <script src="../表盘显示jsPOST/小时指针显示.js"></script>
+    <script src="../表盘显示jsPOST/停机指针显示.js"></script>
     <!-- 引入 报警显示条 -->
-    <link rel="stylesheet" href="报警视图jsPOST/AbnormalSheet.css" />
-    <script src="报警视图jsPOST/Alarm_View.js"></script>
+    <link rel="stylesheet" href="~/报警视图jsPOST/AbnormalSheet.css" />
+    <script src="../报警视图jsPOST/Alarm_View.js"></script>
     <!-- 引入 雪花飘落特效 -->
-    <link rel="stylesheet" href="樱花特效css/style.css" />
+    <link rel="stylesheet" href="~/樱花特效css/style.css" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no" />
     <title>XXX线数据展示</title>
 </head>
@@ -35,8 +35,8 @@
     <form id="form1" runat="server">
         <%-- 雪花飘落特效--%>
         <div class="snow" count="4000"></div>
-        <script src='樱花特效js/Stats.min.js'></script>
-        <script src="樱花特效js/index.js"></script>
+        <script src='../樱花特效js/Stats.min.js'></script>
+        <script src="../樱花特效js/index.js"></script>
         <header class=" t_h_bg">
             <span class="t_h_bg_frin">XXX线数据展示</span>
         </header>

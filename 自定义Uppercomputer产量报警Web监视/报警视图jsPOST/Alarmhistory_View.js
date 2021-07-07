@@ -13,11 +13,10 @@ function GetAlarmhistory() {
             var tbody = document.getElementById('tbMain1');
             //进行删除操作
             var len = tbody.rows.length;
-            for (var i = 1; i < len; i++) {
+            for (var i = 0; i < len; i++) {
                 tbody.deleteRow(0);//也可以写成table.deleteRow(0);  
             }
             $.each(dataObj, function (i, item) {
-           /*     $("#imageslist").append("<li><img alt=\"" + item.AlarmPage + "\" src=\"" + item.AlarmTime + "\"/></li>");*/
                 var row = document.createElement('tr');//创建行
                 //添加ID
                 var idCell = document.createElement('td');//创建第一列id

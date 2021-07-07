@@ -6,32 +6,36 @@
 <head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <link rel="stylesheet" type="text/css" href="参数页面布局样式.css" />
-    <link rel="stylesheet" href="参数设置界面css/参数设置button区域布局.css" />
-    <link rel="stylesheet" href="参数设置界面css/主显示区样式.css" />
-    <script src="报警视图jsPOST/AlarmSQL_View.js"></script>
-    <script src="报警视图jsPOST/Alarmhistory_View.js"></script>
+    <link rel="stylesheet" type="text/css" href="~/参数页面布局样式.css" />
+    <link rel="stylesheet" href="~/参数设置界面css/参数设置button区域布局.css" />
+    <link rel="stylesheet" href="~/参数设置界面css/主显示区样式.css" />
+    <script src="../报警视图jsPOST/AlarmSQL_View.js"></script>
+    <script src="../报警视图jsPOST/Alarmhistory_View.js"></script>
     <title>数据展示参数</title>
     <!-- 引入jquery前后端互交 -->
-    <script src="Echarts/jquery-3.5.1.min.js"></script>
+    <script src="../Echarts/jquery-3.5.1.min.js"></script>
     <!-- 引入 echarts.js -->
-    <script src="Echarts/Echarts/echarts.js"></script>
-    <script src="Echarts/customed.js"></script>
-    <script src="JavaScript.js"></script>
-    <script src="控件特效样式/Navigation.js"></script>
+    <script src="../Echarts/Echarts/echarts.js"></script>
+    <script src="../Echarts/customed.js"></script>
+    <script src="../JavaScript.js"></script>
+    <script src="../控件特效样式/Navigation.js"></script>
     <!-- 页面自适应 -->
-    <script src="参数页面自适应js/Selfadaption.js"></script>
+    <script src="../参数页面自适应js/Selfadaption.js"></script>
      <!-- 引入 参数设置js处理与后端互交-->
-    <script src="参数设置界面css/参数设置js与后端处理.js"></script>
+    <script src="../参数设置界面css/参数设置js与后端处理.js"></script>
      <!-- 引入 产量设置界面js处理与后端互交-->
-    <script src="数值显示jsPOST/产量页面处理JS.js"></script>
+    <script src="../数值显示jsPOST/产量页面处理JS.js"></script>
+     <!-- 引入 报警历史js处理与后端互交-->
+    <script src="../报警视图jsPOST/报警历史页面前后端处理js.js"></script>
+    <!-- 引入 报警事件注册js处理与后端互交-->
+    <script src="../报警视图jsPOST/报警注册查询页面后端处理js.js"></script>
     <!-- 引入 雪花飘落特效 -->
-    <link rel="stylesheet" href="樱花特效css/style.css" />
+    <link rel="stylesheet" href="~/樱花特效css/style.css" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no" />
     <!-- 引入 樱花特效 -->
     <meta content="en-us" http-equiv="Content-Language" />
     <meta name="viewport" content="width=device-width, initial-scale=0.9" />
-    <script src="樱花飘落js/hm.js"></script>
+    <script src="../樱花飘落js/hm.js"></script>
     <script type="text/javascript">
         var d = new Date()
         var time = d.getHours()

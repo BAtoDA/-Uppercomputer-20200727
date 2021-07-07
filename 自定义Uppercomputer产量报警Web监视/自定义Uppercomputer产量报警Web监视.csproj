@@ -124,6 +124,8 @@
     <Content Include="参数设置界面css\参数设置js与后端处理.js" />
     <Content Include="参数页面自适应js\Selfadaption.js" />
     <Content Include="布局样式.css" />
+    <Content Include="报警视图jsPOST\报警历史页面前后端处理js.js" />
+    <Content Include="报警视图jsPOST\报警注册查询页面后端处理js.js" />
     <Content Include="报警页面web\img\1_03.png" />
     <Content Include="报警页面web\img\bg.png" />
     <Content Include="报警页面web\img\bg01.png" />
