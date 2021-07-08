@@ -476,15 +476,15 @@
                         var Agents = new Array("Android", "iPhone", "SymbianOS", "Windows Phone", "iPad", "iPod");
                         var flag = true;
                         for (var v = 0; v < Agents.length; v++) {
-                            if (userAgentInfo.indexOf(Agents[v]) > 0) { flag = false; alert("你的设备是：" + Agents[v] + "你手机宽度;" + document.body.clientWidth+"你的手机高度:" + document.body.clientHeight); break; }
+                            if (userAgentInfo.indexOf(Agents[v]) > 0) { flag = false; alert("由于你的设备是：" + Agents[v] + " 所以你无法设置页面参数！！更多体验请使用电脑版访问。"); break; }
                         }
                         return flag;
                     }
 
                     if (IsPC()) {
-                        //location.replace('手机访问页面/手机报警页面.aspx');
+                        /*location.replace('手机访问页面/手机主页面.aspx');*/
                     } else {
-                        location.replace('手机访问页面/手机产量页面.aspx');
+                        location.replace('手机访问页面/手机主页面.aspx');
                     }
                 </script>
                 <script type='text/javascript'>
