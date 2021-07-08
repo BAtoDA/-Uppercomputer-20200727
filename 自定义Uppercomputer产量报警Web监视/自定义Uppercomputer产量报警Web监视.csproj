@@ -178,17 +178,50 @@
     <Content Include="img\文本框1.jpg" />
     <Content Include="img\黑色花纹边框.jpg" />
     <Content Include="WebForm1.aspx" />
+    <Content Include="手机访问页面\7天产量图表\7天产量Echarts.js" />
+    <Content Include="手机访问页面\Echarts\customed.js" />
+    <Content Include="手机访问页面\Echarts\echarts.common.js" />
+    <Content Include="手机访问页面\Echarts\echarts.common.min.js" />
+    <Content Include="手机访问页面\Echarts\echarts.esm.js" />
+    <Content Include="手机访问页面\Echarts\echarts.esm.min.js" />
+    <Content Include="手机访问页面\Echarts\echarts.js" />
+    <Content Include="手机访问页面\Echarts\echarts.min.js" />
+    <Content Include="手机访问页面\Echarts\echarts.simple.js" />
+    <Content Include="手机访问页面\Echarts\echarts.simple.min.js" />
+    <Content Include="手机访问页面\Echarts\Echarts\customed.js" />
+    <Content Include="手机访问页面\Echarts\Echarts\echarts.common.js" />
+    <Content Include="手机访问页面\Echarts\Echarts\echarts.common.min.js" />
+    <Content Include="手机访问页面\Echarts\Echarts\echarts.esm.js" />
+    <Content Include="手机访问页面\Echarts\Echarts\echarts.esm.min.js" />
+    <Content Include="手机访问页面\Echarts\Echarts\echarts.js" />
+    <Content Include="手机访问页面\Echarts\Echarts\echarts.min.js" />
+    <Content Include="手机访问页面\Echarts\Echarts\echarts.simple.js" />
+    <Content Include="手机访问页面\Echarts\Echarts\echarts.simple.min.js" />
+    <Content Include="手机访问页面\Echarts\Echarts\extension\bmap.js" />
+    <Content Include="手机访问页面\Echarts\Echarts\extension\bmap.min.js" />
+    <Content Include="手机访问页面\Echarts\Echarts\extension\dataTool.js" />
+    <Content Include="手机访问页面\Echarts\Echarts\extension\dataTool.min.js" />
+    <Content Include="手机访问页面\Echarts\extension\bmap.js" />
+    <Content Include="手机访问页面\Echarts\extension\bmap.min.js" />
+    <Content Include="手机访问页面\Echarts\extension\dataTool.js" />
+    <Content Include="手机访问页面\Echarts\extension\dataTool.min.js" />
+    <Content Include="手机访问页面\Echarts\jquery-3.5.1.min.js" />
     <Content Include="手机访问页面\图片\bg.png" />
     <Content Include="手机访问页面\图片\bg_body.jpg" />
     <Content Include="手机访问页面\图片\bg_box2.png" />
     <Content Include="手机访问页面\图片\bg_box3.png" />
     <Content Include="手机访问页面\图片\bg_title.png" />
+    <Content Include="手机访问页面\图片\pic_ico_01.png" />
+    <Content Include="手机访问页面\图片\pic_ico_02.png" />
+    <Content Include="手机访问页面\图片\pic_ico_03.png" />
     <Content Include="手机访问页面\图片\t_bg.png" />
     <Content Include="手机访问页面\图片\t_border.png" />
+    <Content Include="手机访问页面\手机报警页面.aspx" />
     <Content Include="手机访问页面\手机产量页面.aspx" />
     <Content Include="参数设置界面css\参数设置js与后端处理.js" />
     <Content Include="参数页面自适应js\Selfadaption.js" />
     <Content Include="布局样式.css" />
+    <Content Include="手机访问页面\设备速率图标\设备速率Echarts.js" />
     <Content Include="报警视图jsPOST\报警历史页面前后端处理js.js" />
     <Content Include="报警视图jsPOST\报警注册查询页面后端处理js.js" />
     <Content Include="报警页面web\Echarts\customed.js" />
@@ -500,6 +533,13 @@
     <Compile Include="WebForm2.aspx.designer.cs">
       <DependentUpon>WebForm2.aspx</DependentUpon>
     </Compile>
+    <Compile Include="手机访问页面\手机报警页面.aspx.cs">
+      <DependentUpon>手机报警页面.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="手机访问页面\手机报警页面.aspx.designer.cs">
+      <DependentUpon>手机报警页面.aspx</DependentUpon>
+    </Compile>
     <Compile Include="手机访问页面\手机产量页面.aspx.cs">
       <DependentUpon>手机产量页面.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -565,6 +605,18 @@
     <Content Include="报警页面web\Echarts\Echarts\extension\dataTool.js.map" />
     <Content Include="报警页面web\Echarts\extension\bmap.js.map" />
     <Content Include="报警页面web\Echarts\extension\dataTool.js.map" />
+    <Content Include="手机访问页面\Echarts\Echarts\echarts.common.js.map" />
+    <Content Include="手机访问页面\Echarts\Echarts\echarts.esm.js.map" />
+    <Content Include="手机访问页面\Echarts\Echarts\echarts.js.map" />
+    <Content Include="手机访问页面\Echarts\Echarts\echarts.simple.js.map" />
+    <Content Include="手机访问页面\Echarts\Echarts\extension\bmap.js.map" />
+    <Content Include="手机访问页面\Echarts\Echarts\extension\dataTool.js.map" />
+    <Content Include="手机访问页面\Echarts\echarts.common.js.map" />
+    <Content Include="手机访问页面\Echarts\echarts.esm.js.map" />
+    <Content Include="手机访问页面\Echarts\echarts.js.map" />
+    <Content Include="手机访问页面\Echarts\echarts.simple.js.map" />
+    <Content Include="手机访问页面\Echarts\extension\bmap.js.map" />
+    <Content Include="手机访问页面\Echarts\extension\dataTool.js.map" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PLC通讯规范接口\PLC通讯规范接口.csproj">

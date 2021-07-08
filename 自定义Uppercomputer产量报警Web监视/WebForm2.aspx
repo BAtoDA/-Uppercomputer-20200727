@@ -482,7 +482,7 @@
                     }
 
                     if (IsPC()) {
-                        location.replace('手机访问页面/手机产量页面.aspx');
+                        //location.replace('手机访问页面/手机报警页面.aspx');
                     } else {
                         location.replace('手机访问页面/手机产量页面.aspx');
                     }
