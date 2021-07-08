@@ -57,9 +57,12 @@
  2021年6月26日优化报警监控界面 采用异步加载方式处理比较多的数据。
  2021年6月27日修复EF偶然出现查询为NULL问题。
  下一步计划：  
- 1.计划新增数据展示Web网页(主要用于展示报警,产量等主要数据).       
- 
+ 1.计划新增数据展示Web网页(主要用于展示报警,产量等主要数据)。        
+ 2.新增支持手机版的Web网页(简单的展示处理 报警等主要数据)。  
+    
                                                              版本更新预览         
+![71b6686bb6b78c475536666ea971bf7](https://user-images.githubusercontent.com/60955669/124881728-452c0000-e002-11eb-9548-44336fe3b7bb.jpg)
+![d8564cd1a413dd5711634598cb8ac16](https://user-images.githubusercontent.com/60955669/124881731-46f5c380-e002-11eb-9493-f972e75bcdca.jpg)
  ![image](https://user-images.githubusercontent.com/60955669/124279732-6ca24900-db7a-11eb-9456-cc8aa2fbf158.png)   
 ![image](https://user-images.githubusercontent.com/60955669/122644630-c9e4d600-d148-11eb-9892-f3504c6e8db2.png)
 ![image](https://user-images.githubusercontent.com/60955669/122644638-d10be400-d148-11eb-8f65-a36b0539c2ff.png)
