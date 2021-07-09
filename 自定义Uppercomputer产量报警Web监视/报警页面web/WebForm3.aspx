@@ -41,7 +41,7 @@
         <div class="t_box">
             <header style="font-size: 30%; text-align: center; float: initial; position: relative; top: 0%; color: #ffffff;">设备异常监控</header>
             <div style="width: 100%; height: 50%; position: relative; top: 0%;">
-            <div class="dataAllBorder01 cage_cl" style="margin-top: 1.5% !important; height: 32%; position: relative;">
+            <div class="dataAllBorder01 cage_cl" style="margin-top: 1.5% !important; height: 35%; position: relative;">
                 <div class="dataAllBorder02" style="padding: 1.2%; overflow: hidden">
 
                     <div class="message_scroll_box">
@@ -52,12 +52,7 @@
                                 <a class="localize"></a>
                                 <span class="scroll_timer">17-09-13/9:52</span>
                             </div>
-                            <div class="msg_cage">
-                                <a class="localize_title">下载大量视频</a>
-                            </div>
-                            <div class="msg_cage">
-                                <a class="localize_msg">xxx视频网站</a>
-                            </div>
+                            <header class="mess_cage">dddd</header>
                         </div>
                         <div class="message_scroll">
                             <div class="scroll_top">
@@ -66,12 +61,8 @@
                                 <a class="localize"></a>
                                 <span class="scroll_timer">17-09-13/9:52</span>
                             </div>
-                            <div class="msg_cage">
-                                <a class="localize_title">下载大量视频</a>
-                            </div>
-                            <div class="msg_cage">
-                                <a class="localize_msg">xxx视频网站</a>
-                            </div>
+                              <header class="mess_cage">dddd</header>
+   
                         </div>
                         <div class="message_scroll">
                             <div class="scroll_top">
@@ -80,12 +71,8 @@
                                 <a class="localize"></a>
                                 <span class="scroll_timer">17-09-13/9:52</span>
                             </div>
-                            <div class="msg_cage">
-                                <a class="localize_title">下载大量视频</a>
-                            </div>
-                            <div class="msg_cage">
-                                <a class="localize_msg">xxx视频网站</a>
-                            </div>
+                            <header class="mess_cage">dddd</header>
+         
                         </div>
                     </div>
 
@@ -109,12 +96,7 @@
                                 <a class="localize"></a>
                                 <span class="scroll_timer">17-09-13/9:52</span>
                             </div>
-                            <div class="msg_cage">
-                                <a class="localize_title">下载大量视频</a>
-                            </div>
-                            <div class="msg_cage">
-                                <a class="localize_msg">xxx视频网站</a>
-                            </div>
+                              <header class="mess_cage">dddd</header>
                         </div>
                         <div class="message_scroll1">
                             <div class="scroll_top1">
@@ -123,12 +105,7 @@
                                 <a class="localize"></a>
                                 <span class="scroll_timer">17-09-13/9:52</span>
                             </div>
-                            <div class="msg_cage">
-                                <a class="localize_title">下载大量视频</a>
-                            </div>
-                            <div class="msg_cage">
-                                <a class="localize_msg">xxx视频网站</a>
-                            </div>
+                               <header class="mess_cage">dddd</header>
                         </div>
                         <div class="message_scroll1">
                             <div class="scroll_top1">
@@ -137,12 +114,7 @@
                                 <a class="localize"></a>
                                 <span class="scroll_timer">17-09-13/9:52</span>
                             </div>
-                            <div class="msg_cage">
-                                <a class="localize_title">下载大量视频</a>
-                            </div>
-                            <div class="msg_cage">
-                                <a class="localize_msg">xxx视频网站</a>
-                            </div>
+                          <header class="mess_cage">dddd</header>
                         </div>
                     </div>
 

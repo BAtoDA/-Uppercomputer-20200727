@@ -321,6 +321,8 @@ namespace 自定义Uppercomputer_20200727.修改参数界面
         }
         private int[] point_or_Size(string Name)//分割-来自数据库的-位置与大小数据
         {
+            if (Name == null)
+                Name = "81-31";
             string[] segmentation;//定义分割数组
             try
             {               

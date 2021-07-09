@@ -966,7 +966,7 @@ namespace HTML布局学习
                             </p>
                             <div style='color: #fff; font-size: 100%; border-top: none; border-bottom: none; border-left: none; border-right: none; width: 100%; height: 15%; color: aliceblue; margin-left: 0.1rem; margin-top: 0.1rem; float: inline-end; position: relative; top: -0rem;'>
                                 <header style='color: #fff; font-size: 70%; text-align: center; position: relative; margin-top: 0.1rem; top: -5px; text-align: center; font-weight: bold;'>
-                                    <button id='yield' type='button' style='color: #fff; float: initial; font-size: 70%; font-weight: 900; text-align: center; margin-right: 0%; margin-top: 0.2rem; height: 0.8rem; width: 2.5rem; background: url(../img/bg_box2.png); no-repeat; background-size: 100% 100%; border: none; position: relative; left: 0rem;'
+                                    <button id='yieldq' type='button' style='color: #fff; float: initial; font-size: 70%; font-weight: 900; text-align: center; margin-right: 0%; margin-top: 0.2rem; height: 0.8rem; width: 2.5rem; background: url(../img/bg_box2.png); no-repeat; background-size: 100% 100%; border: none; position: relative; left: 0rem;'
                                         onclick='GOyield()'>
                                         进入产量监控页面</button>
                                 </header>
@@ -997,12 +997,12 @@ namespace HTML布局学习
                     </div>
                     <script type='text/javascript'>
                         //按钮特效
-                        var yieldButton = document.getElementById('yield');
-                        yieldButton.onmouseleave = function () {
-                            yieldButton.style.opacity = 10;
+                        var yieldButton1 = document.getElementById('yieldq');
+                        yieldButton1.onmouseleave = function () {
+                           yieldButton1.style.opacity = 10;
                         }
-                        yieldButton.onmouseenter = function () {
-                            yieldButton.style.opacity = 0.7;
+                        yieldButton1.onmouseenter = function () {
+                            yieldButton1.style.opacity = 0.7;
                         }
                         var AlamButton = document.getElementById('Alarm');
                         AlamButton.onmouseleave = function () {

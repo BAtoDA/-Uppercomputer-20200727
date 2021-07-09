@@ -148,15 +148,30 @@ html{
     float: right;
     margin-right: 5px;
 }
-.msg_cage{
+.msg_cage {
     padding-left: 10px;
     padding-right: 6px;
-    height: 18px;
-    overflow: hidden;
-    margin-top: 8px;
+    width:100%;
+    height: 30%;
+    float:left;
+/*    overflow: hidden;*/
+    margin-top: -0%;
 }
-.localize_title{
-    color: #2c85d2;
+.mess_cage {
+    position: relative;
+    top: -5%;
+    color: #ffffff;
+    font-size: 60%;
+    text-align: center;
+}
+.localize_title {
+    color: #fff;
+    font-size: 20%;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    text-align: center;
+    margin-top: 35%;
 }
 .localize_msg{
     font-size: 14px;

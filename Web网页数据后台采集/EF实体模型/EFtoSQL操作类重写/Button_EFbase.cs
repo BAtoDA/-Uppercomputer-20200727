@@ -4,9 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using 自定义Uppercomputer_20200727.Nlog;
 
-namespace 自定义Uppercomputer_20200727.EF实体模型.EFtoSQL操作类重写
+namespace Web网页数据后台采集.EF实体模型.EFtoSQL操作类重写
 {
     /// <summary>
     /// 用于EF类操作EF实体模型---to SQL数据库
@@ -21,7 +20,7 @@ namespace 自定义Uppercomputer_20200727.EF实体模型.EFtoSQL操作类重写
             mutex = new Mutex();//实例化互斥锁(Mutex)    
             EFsurface();
         }
-        public static List<dynamic> EFbase { get; set; }
+        public  List<dynamic> EFbase { get; set; }
         /// <summary>
         /// 默认添加EF中所有的表属性对象 
         /// </summary>
@@ -34,59 +33,11 @@ namespace 自定义Uppercomputer_20200727.EF实体模型.EFtoSQL操作类重写
                 EFbase = new List<dynamic>()
                 {
 #region SQL参数表
-                db.AnalogMeter_parameter,
-                    db.Button_colour,
-                    db.Button_parameter,
-                    db.Control_layer,
-                    db.control_location,
-                    db.doughnut_Chart_parameter,
                     db.Event_message,
-                    db.function_key_parameter,
-                    db.General_parameters_of_picture,
-                    db.GroupBox_parameter,
-                    db.histogram_Chart_parameter,
-                    db.HScrollBar_parameter,
-                    db.ihatetheqrcode_parameter,
-                    db.ImageButton_parameter,
-                    db.label_parameter,
-                    db.LedBulb_parameter,
-                    db.LedDisplay_parameter,
-                    db.numerical_parameter,
-                    db.oscillogram_Chart_parameter,
-                    db.picture_parameter,
-                    db.PLC_macroinstruction,
-                    db.PLC_parameter,
-                    db.Profile,
-                    db.pull_down_menu_parameter,
-                    db.pull_down_menuName,
-                    db.RadioButton_parameter,
-                    db.ScrollingText_parameter,
-                    db.Switch_parameter,
-                    db.Tag_common_parameters,
-                    db.AnalogMeter_Class,
-                    db.Button_Class,
-                    db.doughnut_Chart_Class,
-                    db.function_key_Class,
-                    db.GroupBox_Class,
-                    db.histogram_Chart_Class,
-                    db.HScrollBar_Class,
-                    db.ihatetheqrcode_Class,
-                    db.ImageButton_Class,
-                    db.label_Class,
-                    db.LedBulb_Class,
-                    db.LedDisplay_Class,
-                    db.numerical_Class,
-                    db.oscillogram_Chart_Class,
-                    db.picture_Class,
-                    db.pull_down_menu_Class,
-                    db.RadioButton_Class,
-                    db.ScrollingText_Class,
-                    db.Switch_Class,
-                    db.Conveyor_parameter,
-                    db.Conveyor_Class,
-                    db.Valve_parameter,
-                    db.Valve_Class,
-                    db.Alarmhistory
+                    db.Alarmhistory,
+                    db.Scheduletaiyakis,
+                    db.ParameterWebs,
+                    db.HourOutputs
 #endregion
             };
                 //mutex.ReleaseMutex();
@@ -107,7 +58,7 @@ namespace 自定义Uppercomputer_20200727.EF实体模型.EFtoSQL操作类重写
                 var entities2 = new Button_EFbase();
                 entities2.EFsurface();
                 //查询泛型约束 需要修改的表
-                var surface = Button_EFbase.EFbase.Where(pi => pi.GetType().GenericTypeArguments[0].Name == typeof(T).Name).FirstOrDefault();
+                var surface = entities2.EFbase.Where(pi => pi.GetType().GenericTypeArguments[0].Name == typeof(T).Name).FirstOrDefault();
                 //查询SQL数据
                 foreach (dynamic i1 in from pi in (IQueryable<T>)surface where true select pi)
                 {
@@ -161,7 +112,7 @@ namespace 自定义Uppercomputer_20200727.EF实体模型.EFtoSQL操作类重写
                 bool have = false;
                 foreach (dynamic i1 in from pi in (IQueryable<T>)surface where true select pi)
                 {
-                    have = i1.ID.Trim() == ((dynamic)parameter).ID.Trim() ? true : false;
+                    have = i1.ID.ToString().Trim() == ((dynamic)parameter).ID.ToString().Trim() ? true : false;
                 }
                 //表示SQL中不存在该ID数据--允许插入数据
                 if (!have)
@@ -472,56 +423,53 @@ namespace 自定义Uppercomputer_20200727.EF实体模型.EFtoSQL操作类重写
         /// <param name="ID">查询条件内容</param>
         /// <param name="Parameter">需要修改的内容</param>
         /// <returns></returns>
-        public string Button_Parameter_modification<T>(string ID, T Parameter)
+        public string Button_Parameter_modification<T>(string ID,T Parameter)
         {
-            mutex.WaitOne(5000);
-            lock (this)
+          //  mutex.WaitOne(5000);
+            //获取实体模型对象
+            var db = new Button_EFbase().EFsurface();
+            //查询泛型约束 需要修改的表
+            var surface = EFbase.Where(pi => pi.GetType().GenericTypeArguments[0].Name == typeof(T).Name).FirstOrDefault();
+            //查询SQL数据
+            foreach (dynamic i1 in from pi in (IQueryable<T>)surface where true select pi)
             {
-                //获取实体模型对象
-                var db = new Button_EFbase().EFsurface();
-                //查询泛型约束 需要修改的表
-                var surface = EFbase.Where(pi => pi.GetType().GenericTypeArguments[0].Name == typeof(T).Name).FirstOrDefault();
-                //查询SQL数据
-                foreach (dynamic i1 in from pi in (IQueryable<T>)surface where true select pi)
+                if (i1.ID.Trim() == ID.Trim())
                 {
-                    if (i1.ID.Trim() == ID.Trim())
+                    string id = i1.ID;//先获取旧的ID
+                    string Form = "";
+                    try
                     {
-                        string id = i1.ID;//先获取旧的ID
-                        string Form = "";
-                        try
-                        {
-                            Form = i1.FORM.Trim();
-                        }
-                        catch
-                        {
-                            Form = i1.FROM.Trim();
-                        }
-                        //反射获取泛型的属性
-                        var Properties = i1.GetType().GetProperties();
-                        var propertyInfos = Parameter.GetType().GetProperties();
-                        //遍历属性
-                        for (int i = 0; i < propertyInfos.Length; i++)
-                        {
-                            //不修改ID 与FORM的数据
-                            if (Properties[i].GetType().Name != "ID" && Properties[i].GetType().Name != "FORM" && Properties[i].GetType().Name != "FROM")
-                                Properties[i].SetValue(i1, propertyInfos[i].GetValue(Parameter));
-                        }
-                        i1.ID = id;
-                        try
-                        {
-                            i1.FORM = Form;
-                        }
-                        catch
-                        {
-                            i1.FROM = Form;
-                        }
-                        db.SaveChanges();
-                        return "OK";
-                        mutex.ReleaseMutex();
+                        Form = i1.FORM.Trim();
                     }
+                    catch
+                    {
+                        Form = i1.FROM.Trim();
+                    }
+                    //反射获取泛型的属性
+                    var Properties = i1.GetType().GetProperties();
+                    var propertyInfos = Parameter.GetType().GetProperties();
+                    //遍历属性
+                    for (int i = 0; i < propertyInfos.Length; i++)
+                    {
+                        //不修改ID 与FORM的数据
+                        if (Properties[i].GetType().Name != "ID" && Properties[i].GetType().Name != "FORM"&& Properties[i].GetType().Name != "FROM")
+                            Properties[i].SetValue(i1, propertyInfos[i].GetValue(Parameter));
+                    }
+                    i1.ID = id;
+                    try
+                    {
+                        i1.FORM = Form;
+                    }
+                    catch
+                    {
+                        i1.FROM= Form;
+                    }
+                    db.SaveChanges();
+                  //  mutex.ReleaseMutex();
+                    return "OK"; 
                 }
-                return "NG";
             }
+            return "NG";
         }
     }
 }

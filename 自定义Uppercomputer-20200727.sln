@@ -27,6 +27,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "服务器端", "服务器�
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "自定义Uppercomputer产量报警Web监视", "自定义Uppercomputer产量报警Web监视\自定义Uppercomputer产量报警Web监视.csproj", "{F8F70595-5A31-49DB-ABD8-FC68E56A904B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web网页数据后台采集", "Web网页数据后台采集\Web网页数据后台采集.csproj", "{76BDEB13-BDEC-4820-9180-7199DC809346}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -79,6 +81,10 @@ Global
 		{F8F70595-5A31-49DB-ABD8-FC68E56A904B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F8F70595-5A31-49DB-ABD8-FC68E56A904B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F8F70595-5A31-49DB-ABD8-FC68E56A904B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{76BDEB13-BDEC-4820-9180-7199DC809346}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{76BDEB13-BDEC-4820-9180-7199DC809346}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{76BDEB13-BDEC-4820-9180-7199DC809346}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{76BDEB13-BDEC-4820-9180-7199DC809346}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

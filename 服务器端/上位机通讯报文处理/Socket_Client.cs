@@ -17,11 +17,11 @@ namespace 服务器端.上位机通讯报文处理
         /// <summary>
         /// 实例化一个套接字
         /// </summary>
-        Socket socket { get; set; } = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+        protected Socket socket { get; set; } = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
         /// <summary>
         /// 实例化一个IP地址与端口
         /// </summary>
-        IPEndPoint IPEnd { get; set; } = new IPEndPoint(IPAddress.Parse("127.0.0.1"), int.Parse("4999"));
+        protected IPEndPoint IPEnd { get; set; } = new IPEndPoint(IPAddress.Parse("127.0.0.1"), int.Parse("4999"));
         /// <summary>
         /// 指示着是否访问成功
         /// </summary>
@@ -34,6 +34,7 @@ namespace 服务器端.上位机通讯报文处理
         {
             this.IPEnd = iPEnd;
             mutex = new Mutex();
+            IPEnd.Port = 9500;
             socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
         }
         /// <summary>

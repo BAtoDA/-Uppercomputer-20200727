@@ -641,6 +641,10 @@
       <Project>{f61e9338-2d7e-4a93-a7b8-acb591f01c47}</Project>
       <Name>PLC通讯规范接口</Name>
     </ProjectReference>
+    <ProjectReference Include="..\服务器端\服务器端.csproj">
+      <Project>{82FF19C7-1FF5-4E27-BB5E-415BAB43643B}</Project>
+      <Name>服务器端</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
