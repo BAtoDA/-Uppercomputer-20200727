@@ -15,5 +15,6 @@ namespace Web网页数据后台采集.EF实体模型
         public int ID { get; set; }
         public string 生产时间 { get; set; }
         public int 生产数量 { get; set; }
+        public bool 班次 { get; set; }
     }
 }

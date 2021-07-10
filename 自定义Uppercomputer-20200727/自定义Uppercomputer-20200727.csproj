@@ -370,6 +370,7 @@
     <Compile Include="EF实体模型\Valve_parameter.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="EF实体模型\WebFWAlarmTable.cs" />
     <Compile Include="EF实体模型\工业图形控件参数\Conveyor_EF.cs" />
     <Compile Include="EF实体模型\工业图形控件参数\Valve_EF.cs" />
     <Compile Include="EF实体模型\数据库连接字符串读取\XML.cs" />

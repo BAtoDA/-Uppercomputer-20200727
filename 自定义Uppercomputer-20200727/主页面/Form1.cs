@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Data;
 using System.Linq;
 using System.Windows.Forms;
@@ -317,18 +318,6 @@ namespace 自定义Uppercomputer_20200727
                     Event.Remove(i);
                 }
             }
-            ////表中没有数据
-            //if (diffArr.Count ==0)
-            //{
-            //    foreach (var i in EventMessages)
-            //    {
-            //        i.处理完成时间 = DateTime.Now.ToString("f");
-            //        //上传到SQL
-            //        // db.Button_Parameter_Add(i, 0);
-            //    }
-            //    EventMessages.Clear();
-            //    Event.Clear();
-            //}
         }
         /// <summary>
         /// 登录事件刷新方法 不可删除
@@ -336,7 +325,31 @@ namespace 自定义Uppercomputer_20200727
         /// <param name="register_Event_1"></param>
         public void DataGridView(ConcurrentBag<自定义Uppercomputer_20200727.EF实体模型.Event_message> register_Event_1)//显示已经登录的事件
         {
-            if (this.IsHandleCreated != true) return;//判断创建是否加载完成            
+            if (this.IsHandleCreated != true) return;//判断创建是否加载完成
+            //动态刷新到SQL中用于显示Web网页
+            using(UppercomputerEntities2 db=new UppercomputerEntities2())
+            {
+              foreach(var i in db.WebFWAlarmTables.Where(x=>true).Select(x=>x))
+                {
+                    db.WebFWAlarmTables.Remove(i);
+                }
+              foreach(var lx in register_Event_1)
+                {
+                    db.WebFWAlarmTables.Add(new WebFWAlarmTable()
+                    {
+                        ID = 0,
+                        事件关联ID = 0,
+                        处理完成时间 = "00000",
+                        报警内容 = lx.报警内容,
+                        报警时间 = DateTime.Now.ToString("f"),
+                        类型 = Convert.ToBoolean(lx.类型),
+                        设备 = lx.设备,
+                        设备_具体地址 = lx.设备_具体地址,
+                        设备地址 = lx.设备_地址
+                    });
+                }
+                db.SaveChanges();
+            }
         }
     }
 }

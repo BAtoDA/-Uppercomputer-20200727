@@ -28,6 +28,8 @@ namespace Web网页数据后台采集
             while (true)
             {
                 pLCChatRoom.GetPLCoutput();
+                pLCChatRoom.OutputWeb();
+                pLCChatRoom.AlarmWeb();
             }
         }
     }

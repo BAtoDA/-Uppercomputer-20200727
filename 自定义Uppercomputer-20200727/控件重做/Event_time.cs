@@ -319,20 +319,24 @@ namespace 自定义Uppercomputer_20200727.控件重做
             {
                 lock (this)
                 {
-                    event_Messages = new ConcurrentBag<EF实体模型.Event_message>();
-                    //找出不同的元素(即交集的补集)
-                    var diffArr = register_Event.Where(c => !Event_quantity.Contains(c)).ToList();
-                    var diffArr1 = Event_quantity.Where(c => !register_Event.Contains(c)).ToList();
-                    //开始把事件显示到表中
-                    if ((diffArr.Count == 0 && diffArr1.Count == 0) || (register_Event.Count == 0 && Event_quantity.Count == 0)) return;
+                    try
+                    {
+                        event_Messages = new ConcurrentBag<EF实体模型.Event_message>();
+                        //找出不同的元素(即交集的补集)
+                        var diffArr = register_Event.Where(c => !Event_quantity.Contains(c)).ToList();
+                        var diffArr1 = Event_quantity.Where(c => !register_Event.Contains(c)).ToList();
+                        //开始把事件显示到表中
+                        if ((diffArr.Count == 0 && diffArr1.Count == 0) || (register_Event.Count == 0 && Event_quantity.Count == 0)) return;
 
-                    //遍历完成启动事件
-                    if (History != null)
-                        this.History.Invoke(diffArr.Count == 0 ? diffArr1 : diffArr, new EventArgs());
-                    foreach (var i in register_Event) event_Messages.Add(i);
-                    ((dynamic)form_run).DataGridView(event_Messages);//事件显示登录
-                    Event_quantity = new ConcurrentBag<EF实体模型.Event_message>();
-                    register_Event.ForEach(s1 => { Event_quantity.Add(s1); });//记录保持     
+                        //遍历完成启动事件
+                        if (History != null)
+                            this.History.Invoke(diffArr.Count == 0 ? diffArr1 : diffArr, new EventArgs());
+                        foreach (var i in register_Event) event_Messages.Add(i);
+                        ((dynamic)form_run).DataGridView(event_Messages);//事件显示登录
+                        Event_quantity = new ConcurrentBag<EF实体模型.Event_message>();
+                        register_Event.ForEach(s1 => { Event_quantity.Add(s1); });//记录保持
+                    }
+                    catch { }
                 }
             });
         }
@@ -589,17 +593,21 @@ namespace 自定义Uppercomputer_20200727.控件重做
                     }
                     break;
             }
-            event_Messages = new ConcurrentBag<EF实体模型.Event_message>();
-            //找出不同的元素(即交集的补集)
-            var diffArr = register_Event.Where(c => !Event_quantity.Contains(c)).ToList();
-            var diffArr1 = Event_quantity.Where(c => !register_Event.Contains(c)).ToList();
-            //开始把事件显示到表中
-            if ((diffArr.Count == 0 && diffArr1.Count == 0) || (register_Event.Count == 0 && Event_quantity.Count == 0)) return;
+            try
+            {
+                event_Messages = new ConcurrentBag<EF实体模型.Event_message>();
+                //找出不同的元素(即交集的补集)
+                var diffArr = register_Event.Where(c => !Event_quantity.Contains(c)).ToList();
+                var diffArr1 = Event_quantity.Where(c => !register_Event.Contains(c)).ToList();
+                //开始把事件显示到表中
+                if ((diffArr.Count == 0 && diffArr1.Count == 0) || (register_Event.Count == 0 && Event_quantity.Count == 0)) return;
 
-            foreach (var i in register_Event) event_Messages.Add(i);
-            scrollingText_event(scrollingText,event_Messages);//事件显示登录
-            Event_quantity = new ConcurrentBag<EF实体模型.Event_message>();
-            register_Event.ForEach(s1 => { Event_quantity.Add(s1); });//记录保持      
+                foreach (var i in register_Event) event_Messages.Add(i);
+                scrollingText_event(scrollingText, event_Messages);//事件显示登录
+                Event_quantity = new ConcurrentBag<EF实体模型.Event_message>();
+                register_Event.ForEach(s1 => { Event_quantity.Add(s1); });//记录保持
+            }
+            catch { }
         }
         /// <summary>
         /// 填充报警内容

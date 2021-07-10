@@ -17,6 +17,9 @@ using Omron_bit = 服务器端.上位机通讯报文处理.Omron_bit;
 using Omron_D = 服务器端.上位机通讯报文处理.Omron_D;
 using Web网页数据后台采集.EF实体模型;
 using System.Linq;
+using Mitsubishi_bit = 服务器端.上位机通讯报文处理.Mitsubishi_bit;
+using Siemens_bit = 服务器端.上位机通讯报文处理.Siemens_bit;
+using Modbus_TCP_bit = 服务器端.上位机通讯报文处理.Modbus_TCP_bit;
 
 namespace Web网页数据后台采集.PLC通讯部分
 {
@@ -185,7 +188,7 @@ namespace Web网页数据后台采集.PLC通讯部分
                             DataSQL.当天目标 = (int)parameterWeb.当班目标;
                             DataSQL.当天产量 = Convert.ToInt32((PLC)Enum.Parse(typeof(PLC), parameterWeb.设备.Trim())==PLC.HMI?Hmidata: data.Content);
                             DataSQL.异常次数 = query.Count;
-                            DataSQL.异常时长 = MonthlyErr(query).ToString();
+                            DataSQL.异常时长 = MonthlyErrQ(query).ToString();
 
                         }
                         else
@@ -197,7 +200,7 @@ namespace Web网页数据后台采集.PLC通讯部分
                             scheduletaiyaki.当天目标 = (int)parameterWeb.当班目标;
                             scheduletaiyaki.当天产量 = Convert.ToInt32((PLC)Enum.Parse(typeof(PLC), parameterWeb.设备.Trim()) == PLC.HMI ? Hmidata : data.Content);
                             scheduletaiyaki.异常次数 = query.Count;
-                            scheduletaiyaki.异常时长 = MonthlyErr(query).ToString();
+                            scheduletaiyaki.异常时长 = MonthlyErrQ(query).ToString();
                             scheduletaiyaki.ID = 0;
                             db.Scheduletaiyakis.Add(scheduletaiyaki);
                         }
@@ -211,6 +214,7 @@ namespace Web网页数据后台采集.PLC通讯部分
                             //当前小时有数据
                             DataSQLHort.生产数量 = DataSQLUPHort != null ? Convert.ToInt32((PLC)Enum.Parse(typeof(PLC), parameterWeb.设备.Trim()) == PLC.HMI ? Hmidata : data.Content) - (DataSQLUPHort != null ? DataSQLUPHort.生产数量 > 0 ? DataSQLUPHort.生产数量 : 0 : 0) : Convert.ToInt32((PLC)Enum.Parse(typeof(PLC), parameterWeb.设备.Trim()) == PLC.HMI ? Hmidata : data.Content);
                             DataSQLHort.生产数量 = DataSQLHort.生产数量 < 1 ? Convert.ToInt32((PLC)Enum.Parse(typeof(PLC), parameterWeb.设备.Trim()) == PLC.HMI ? Hmidata : data.Content) : DataSQLHort.生产数量;
+                            DataSQLHort.班次 = DateTime.Now.Hour > 18 ? true : false;
                         }
                         else
                         {
@@ -219,7 +223,8 @@ namespace Web网页数据后台采集.PLC通讯部分
                             {
                                 ID = 0,
                                 生产数量 = Convert.ToInt32((PLC)Enum.Parse(typeof(PLC), parameterWeb.设备.Trim()) == PLC.HMI ? Hmidata : data.Content),
-                                生产时间 = DateTime.Now.ToString("f")
+                                生产时间 = DateTime.Now.ToString("f"),
+                                班次 = DateTime.Now.Hour > 18 ? true : false
                             };
                             db.HourOutputs.Add(hourOutput);
                         }
@@ -232,7 +237,7 @@ namespace Web网页数据后台采集.PLC通讯部分
         /// <summary>
         /// 计算的报警处理用时
         /// </summary>
-        private TimeSpan MonthlyErr(List<Alarmhistories> Querydata)
+        private TimeSpan MonthlyErrQ(List<Alarmhistories> Querydata)
         {
             TimeSpan time = new TimeSpan();
             Querydata.ForEach(P =>
@@ -241,5 +246,264 @@ namespace Web网页数据后台采集.PLC通讯部分
             });
             return time;
         }
+        /// <summary>
+        /// 用于处理产量WeboutputCollection表的数据 上传到SQL
+        /// </summary>
+        public void OutputWeb()
+        {
+            using (UppercomputerEntities2 db = new UppercomputerEntities2())
+            {
+                ///假定8:00---到18:00为晚班  18：00到次日7:00为晚班
+                var HourTabel = (from p in db.HourOutputs.ToList() where (DateTime.Now - DateTime.Parse(p.生产时间.Trim())).Days == 0 select p).ToList().GroupBy(x => x.班次).OrderBy(x => x.Key).Select(q => new Nightshift { nightshift = q.Key, NightshiftTabel = q }).ToList();
+                //判断当天是白班还是晚班
+                var NightshiftoutputTabel = HourTabel.Where(p => p.nightshift == DateTime.Now.Hour > 18 ? true : false).FirstOrDefault();
+                //计算集合的和 
+                var Nightshiftoutput = NightshiftoutputTabel != null ? NightshiftoutputTabel.NightshiftTabel.Sum(x => x.生产数量) : 0;
+                //获取生产数据集合
+                var Tabel = db.Scheduletaiyakis.ToList();
+                //获取本月生产数量
+                var ScheduletaiyakiTabel = (from p in Tabel where DateTime.Now.ToString("Y") == DateTime.Parse(p.生产时间.Trim()).ToString("Y") select p).Sum(x => x.当天产量);
+                //获取全年产量
+                var YearTabel = (from p in Tabel where DateTime.Now.ToString("yyyy") == DateTime.Parse(p.生产时间.Trim()).ToString("yyyy") select p).Sum(x => x.当天产量);
+                //获取设备状态
+                if (this.Socket_ready & parameterWeb != null)
+                {
+                    dynamic data = new object();
+                    dynamic Hmidata = new object();
+                    dynamic Materialcoding = new object();
+                    dynamic MaterialHmidata = new object();
+                    switch (Enum.Parse(typeof(PLC), parameterWeb.设备.Trim()) ?? PLC.Mitsubishi)
+                    {
+                        case PLC.Mitsubishi:
+                            //读取设备状态
+                            data = this.ReadPLCBool(this.GetType().Name, (Mitsubishi_bit)Enum.Parse(typeof(Mitsubishi_bit), parameterWeb.自动运行地址.Trim()), parameterWeb.自动运行具体地址.Trim(), 1);
+                            //读取设备速率
+                            Materialcoding = this.ReadPLCD(this.GetType().Name, (Mitsubishi_D)Enum.Parse(typeof(Mitsubishi_D), parameterWeb.设备速率地址.Trim()), 服务器端.上位机通讯报文处理.numerical_format.Signed_32_Bit, parameterWeb.设备速率具体地址.Trim(), 1);
+                            break;
+                        case PLC.Siemens:
+                            //读取设备状态
+                            data = this.ReadPLCBool(this.GetType().Name, (Siemens_bit)Enum.Parse(typeof(Siemens_bit), parameterWeb.自动运行地址.Trim()), parameterWeb.自动运行具体地址.Trim(), 1);
+                            //读取设备速率
+                            Materialcoding = this.ReadPLCD(this.GetType().Name, (Siemens_D)Enum.Parse(typeof(Siemens_D), parameterWeb.设备速率地址.Trim()), 服务器端.上位机通讯报文处理.numerical_format.Signed_32_Bit, parameterWeb.设备速率具体地址.Trim(), 1);
+                            break;
+                        case PLC.Modbus_TCP:
+                            //读取设备状态
+                            data = this.ReadPLCBool(this.GetType().Name, (Modbus_TCP_bit)Enum.Parse(typeof(Modbus_TCP_bit), parameterWeb.自动运行地址.Trim()), parameterWeb.自动运行具体地址.Trim(), 1);
+                            //读取设备速率
+                            Materialcoding = this.ReadPLCD(this.GetType().Name, (Modbus_TCP_D)Enum.Parse(typeof(Modbus_TCP_D), parameterWeb.设备速率地址.Trim()), 服务器端.上位机通讯报文处理.numerical_format.Signed_32_Bit, parameterWeb.设备速率具体地址.Trim(), 1);
+                            break;
+                        case PLC.HMI:
+                            //读取设备状态
+                            data = this.ReadHmi_Bool(this.GetType().Name, Convert.ToInt32(parameterWeb.自动运行具体地址.Trim()), 1);
+                            Hmidata = data.IsSuccess ? data.Content[0] : false;
+                            //读取设备速率
+                            Materialcoding = this.ReadHmiD<int>(this.GetType().Name, Convert.ToInt32(parameterWeb.设备速率具体地址.Trim()), 1, HmiType.Int32);
+                            MaterialHmidata = Materialcoding.IsSuccess ? Materialcoding.Content[0] : 0;
+                            break;
+                        case PLC.OmronTCP:
+                        case PLC.OmronCIP:
+                        case PLC.OmronUDP:
+                            //读取设备状态
+                            data = this.ReadPLCBool(this.GetType().Name, (Omron_bit)Enum.Parse(typeof(Omron_bit), parameterWeb.自动运行地址.Trim()), parameterWeb.自动运行具体地址.Trim(), 1);
+                            //读取设备速率
+                            Materialcoding = this.ReadPLCD(this.GetType().Name, (Omron_D)Enum.Parse(typeof(Omron_D), parameterWeb.设备速率地址.Trim()), 服务器端.上位机通讯报文处理.numerical_format.Signed_32_Bit, parameterWeb.设备速率具体地址.Trim(), 1);
+                            break;
+                    }
+                    var Collections = db.WeboutputCollections.FirstOrDefault();
+                    if (Collections != null)
+                    {
+                        //数据存在数据
+                        Collections.停机次数 = 0;
+                        Collections.全年产量 = YearTabel;
+                        Collections.当月产量 = ScheduletaiyakiTabel;
+                        Collections.当班产量 = Nightshiftoutput;
+                        Collections.设备状态 = (PLC)Enum.Parse(typeof(PLC), parameterWeb.设备.Trim()) == PLC.HMI ? Hmidata : data.Content;
+                        Collections.设备速率 = Convert.ToInt32((PLC)Enum.Parse(typeof(PLC), parameterWeb.设备.Trim()) == PLC.HMI ? MaterialHmidata : Materialcoding.Content);
+                        Collections.采集软件状态 = true;
+                        Collections.采集软件在线时间 = DateTime.Now.ToString("f");
+                    }
+                    else
+                    {
+                        //数据不存在数据
+                        WeboutputCollection weboutput = new WeboutputCollection()
+                        {
+                            ID = 0,
+                            停机次数 = 0,
+                            全年产量 = YearTabel,
+                            当月产量 = ScheduletaiyakiTabel,
+                            当班产量 = Nightshiftoutput,
+                            设备状态 = (PLC)Enum.Parse(typeof(PLC), parameterWeb.设备.Trim()) == PLC.HMI ? Hmidata : data.Content,
+                            设备速率 = Convert.ToInt32((PLC)Enum.Parse(typeof(PLC), parameterWeb.设备.Trim()) == PLC.HMI ? MaterialHmidata : Materialcoding.Content),
+                            采集软件在线时间 = DateTime.Now.ToString("f"),
+                            采集软件状态 = true
+                        };
+                        db.WeboutputCollections.Add(weboutput);
+                    }
+                    db.SaveChanges();
+                }
+            }
+        }
+        /// <summary>
+        /// 用于处理报警WebpoliceCollection表的数据 上传到SQL
+        /// </summary>
+        public void AlarmWeb()
+        {
+            //从数据获取数据
+            using (UppercomputerEntities2 db = new UppercomputerEntities2())
+            {
+                var data = db.Alarmhistory.ToList();
+                var query = (from q in data where DateTime.Parse(q.报警时间.Trim()).ToString("D") == DateTime.Now.ToString("D") select q).ToList();
+
+                //填充7天警告次数
+                var query1 = (from q in data where (DateTime.Parse(DateTime.Now.ToString("F")) - DateTime.Parse(q.报警时间.Trim())).Days >= 0 && (DateTime.Parse(DateTime.Now.ToString("F")) - DateTime.Parse(q.报警时间.Trim())).Days <= 7 select q).ToList();
+
+                //查询月度警告次数
+                var Monthly = (from q in data where (DateTime.Parse(DateTime.Now.ToString("Y")) == DateTime.Parse(DateTime.Parse(q.报警时间.Trim()).ToString("Y"))) select q).ToList();
+                //填充月底报警次数
+                //_ = Monthly.Count.ToString();//填充月底报警次数
+                //生成分析7天警告报表
+                //把7天结果LINQ分组
+                var grouping = query1.GroupBy(pi => DateTime.Parse(pi.报警时间.Trim()).Date).Select(group => new StoreInfo
+                {
+                    StoreID = group.Key,
+                    List = group.ToList()
+                }).ToList();
+                //获取后7天的日期
+                string[] Days = new string[7];
+                for (int i = 0; i < Days.Length; i++)
+                    Days[i] = DateTime.Now.AddDays(Convert.ToInt16($"-{i}")).ToString(); //当前时间减去7天
+                //计算每天处理异常的总时间
+                List<Tuple<int, string>> Histogramdata = new List<Tuple<int, string>>();
+                DateTime dateTime = DateTime.Parse(DateTime.Now.ToString("yyyy - MM - dd"));
+                int quantity = 0;
+                foreach (var i in Days)
+                {
+                    dateTime = DateTime.Parse(DateTime.Now.ToString("yyyy - MM - dd"));
+                    quantity = 0;
+                    var group = grouping.Where(pi => pi.StoreID.ToString("D") == DateTime.Parse(i.Trim()).ToString("D")).Select(pi => pi).FirstOrDefault();
+                    if (group != null)
+                    {
+                        var grouptime = group.List.Where(pi => DateTime.Parse(pi.报警时间.Trim()).ToString("D") == DateTime.Parse(i.Trim()).ToString("D")).Select(P => new { DatetimeName = DateTime.Parse(P.处理完成时间.Trim()) - DateTime.Parse(P.报警时间.Trim()) }).ToList();
+                        //求和时间
+                        grouptime.ForEach(s =>
+                        {
+                            dateTime += s.DatetimeName;
+                        });
+                        quantity = grouptime.Count;
+                    }
+                    Histogramdata.Add(new Tuple<int, string>(quantity, dateTime.ToString("T")));
+                }
+                //填充警告处理用时
+                //_= Histogramdata[0].Item2;//当天用时
+                //处理7天用时
+                TimeSpan dateTim = MonthlyErr(query1, query1.Count);
+                //_= $"{(24 * dateTim.Days) + dateTim.Hours}:{dateTim.Minutes}:{dateTim.Seconds}";
+                //填充月度处理用时
+                TimeSpan dateTim1 = new TimeSpan();
+                MonthlyErr(Monthly).ForEach(s =>
+                {
+                    dateTim1 += TimeSpan.Parse(s.Item2.Trim());
+                });
+                //_= $"{(24 * dateTim1.Days) + dateTim1.Hours}:{dateTim1.Minutes}:{dateTim1.Seconds}";
+                //填充表格数据
+                var Webpolice= db.WebpoliceCollections.FirstOrDefault();
+                if (Webpolice != null)
+                {
+                    //SQL中存在数据
+                    Webpolice.今日报警次数 = query.Count;//填充当天报警次数
+                    Webpolice.今日处理用时 = Histogramdata[0].Item2;//当天用时
+                    Webpolice.week报警次数 = query1.Count; //填充7天警告次数
+                    Webpolice.week处理用时 = $"{(24 * dateTim.Days) + dateTim.Hours}:{dateTim.Minutes}:{dateTim.Seconds}"; //处理7天用时
+                    Webpolice.本月报警次数 = Monthly.Count;//填充月底报警次数
+                    Webpolice.本月处理用时 = $"{(24 * dateTim1.Days) + dateTim1.Hours}:{dateTim1.Minutes}:{dateTim1.Seconds}"; //填充月度处理用时
+                    Webpolice.采集软件在线时间 = DateTime.Now.ToString("f");
+
+                }
+                else
+                {
+                    //SQL不存在数据
+                    WebpoliceCollection webpolice = new WebpoliceCollection()
+                    {
+                        今日报警次数 = query.Count,//填充当天报警次数
+                        今日处理用时 = Histogramdata[0].Item2,//当天用时
+                        week报警次数 = query1.Count, //填充7天警告次数
+                        week处理用时 = $"{(24 * dateTim.Days) + dateTim.Hours}:{dateTim.Minutes}:{dateTim.Seconds}", //处理7天用时
+                        本月报警次数 = Monthly.Count,//填充月底报警次数
+                        本月处理用时 = $"{(24 * dateTim1.Days) + dateTim1.Hours}:{dateTim1.Minutes}:{dateTim1.Seconds}", //填充月度处理用时
+                        采集软件在线时间 = DateTime.Now.ToString("f"),
+                        ID = 0
+                    };
+                    db.WebpoliceCollections.Add(webpolice);
+                }
+                db.SaveChanges();
+            }
+        }
+        /// <summary>
+        /// 计算的报警处理用时
+        /// </summary>
+        private TimeSpan MonthlyErr(List<Alarmhistories> Querydata, int index)
+        {
+            TimeSpan time = new TimeSpan();
+            Querydata.ForEach(P =>
+            {
+                time += DateTime.Parse(P.处理完成时间.Trim()) - DateTime.Parse(P.报警时间.Trim());
+            });
+            return time;
+        }
+        /// <summary>
+        /// 计算30天的报警处理用时
+        /// </summary>
+        private List<Tuple<int, string>> MonthlyErr(List<Alarmhistories> Querydata)
+        {
+            //把30天结果LINQ分组
+            var grouping = Querydata.GroupBy(pi => DateTime.Parse(pi.报警时间.Trim()).Date).Select(group => new StoreInfo
+            {
+                StoreID = group.Key,
+                List = group.ToList()
+            }).ToList();
+            //获取后30天的日期
+            string[] Days = new string[30];
+            for (int i = 0; i < Days.Length; i++)
+                Days[i] = DateTime.Now.AddDays(Convert.ToInt16($"-{i}")).ToString(); //当前时间减去30天
+            //计算每天处理异常的总时间
+            List<Tuple<int, string>> Histogramdata = new List<Tuple<int, string>>();
+            TimeSpan dateTime = new TimeSpan();
+            int quantity = 0;
+            foreach (var i in Days)
+            {
+                dateTime = new TimeSpan();
+                quantity = 0;
+                var group = grouping.Where(pi => pi.StoreID.ToString("D") == DateTime.Parse(i.Trim()).ToString("D")).Select(pi => pi).FirstOrDefault();
+                if (group != null)
+                {
+                    var grouptime = group.List.Where(pi => DateTime.Parse(pi.报警时间.Trim()).ToString("D") == DateTime.Parse(i.Trim()).ToString("D")).Select(P => new { DatetimeName = DateTime.Parse(P.处理完成时间.Trim()) - DateTime.Parse(P.报警时间.Trim()) }).ToList();
+                    //求和时间
+                    grouptime.ForEach(s =>
+                    {
+                        dateTime += s.DatetimeName;
+                    });
+                    quantity = grouptime.Count;
+                }
+                Histogramdata.Add(new Tuple<int, string>(quantity, dateTime.ToString("T")));
+            }
+            return Histogramdata;
+        }
+    }
+    [Serializable]
+    class Nightshift
+    {
+        public bool nightshift { get; set; }
+        public IGrouping<bool,HourOutput> NightshiftTabel { get; set; }
+    }
+    public class StoreInfo
+    {
+        public DateTime StoreID { get; set; }
+        public List<Alarmhistories> List { get; set; }
+
+    }
+    public class StoreInfoErr
+    {
+        public string ErrID { get; set; }
+        public IGrouping<string, Alarmhistories> List { get; set; }
     }
 }

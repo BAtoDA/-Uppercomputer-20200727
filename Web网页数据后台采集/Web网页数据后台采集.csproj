@@ -102,6 +102,8 @@
     <Compile Include="EF实体模型\HourOutput.cs" />
     <Compile Include="EF实体模型\ParameterWeb.cs" />
     <Compile Include="EF实体模型\Scheduletaiyaki.cs" />
+    <Compile Include="EF实体模型\WeboutputCollection.cs" />
+    <Compile Include="EF实体模型\WebpoliceCollection.cs" />
     <Compile Include="PLC通讯部分\PLCChatRoom.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
