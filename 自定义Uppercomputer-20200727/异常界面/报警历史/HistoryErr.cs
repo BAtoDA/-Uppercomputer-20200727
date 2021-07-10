@@ -35,7 +35,7 @@ namespace 自定义Uppercomputer_20200727.异常界面.报警历史
                 using (UppercomputerEntities2 db = new UppercomputerEntities2())
                 {
                     this.UIShowText("正在从SQL数据库获取数据");
-                    var data = db.Alarmhistory.Where(pi => true).Select(p => p).ToList();
+                    var data = db.Alarmhistory.ToList();
                     var query = (from q in data where DateTime.Parse(q.报警时间.Trim()).ToString("D") == DateTime.Now.ToString("D") select q).ToList();
                     this.UIShowText("正在分析数据");
                     //填充当天报警次数
@@ -70,7 +70,7 @@ namespace 自定义Uppercomputer_20200727.异常界面.报警历史
                         this.uiComboBox2.Text = "全部";
                         this.uiComboBox3.Text = "全部";
                     //填充报警注册内容
-                    var Gridviwe2 = db.Event_message.Where(pi => true).ToList();
+                    var Gridviwe2 = db.Event_message.ToList();
                         Gridviwe2.ForEach(s =>
                     {
                         s.位触发条件 = s.位触发条件.Trim();
@@ -94,7 +94,7 @@ namespace 自定义Uppercomputer_20200727.异常界面.报警历史
                     string[] Days = new string[7];
                     for (int i = 0; i < Days.Length; i++)
                         Days[i] = DateTime.Now.AddDays(Convert.ToInt16($"-{i}")).ToString(); //当前时间减去7天
-                                                                                             //计算每天处理异常的总时间
+                    //计算每天处理异常的总时间
                     List<Tuple<int, string>> Histogramdata = new List<Tuple<int, string>>();
                     DateTime dateTime = DateTime.Parse(DateTime.Now.ToString("yyyy - MM - dd"));
                     int quantity = 0;
@@ -123,7 +123,7 @@ namespace 自定义Uppercomputer_20200727.异常界面.报警历史
 
                     //填充警告处理用时
                     this.uiLabel16.Text = Histogramdata[0].Item2;//当天用时
-                                                                 //处理7天用时
+                   //处理7天用时
                     TimeSpan dateTim = MonthlyErr(query1, query1.Count);
                     this.uiLabel14.Text = $"{(24 * dateTim.Days) + dateTim.Hours}:{dateTim.Minutes}:{dateTim.Seconds}";
                     //填充月度处理用时
@@ -156,7 +156,7 @@ namespace 自定义Uppercomputer_20200727.异常界面.报警历史
             //从数据获取数据
             using (UppercomputerEntities2 db = new UppercomputerEntities2())
             {
-                var data = db.Alarmhistory.Where(pi => true).Select(p => p).ToList();
+                var data = db.Alarmhistory.ToList();
                 var query = (from q in data where DateTime.Parse(q.报警时间.Trim()).ToString("D") == DateTime.Now.ToString("D") select q).ToList();
                 //填充当天报警次数
                 this.uiLabel2.Text = query.Count.ToString();

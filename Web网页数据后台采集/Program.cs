@@ -13,18 +13,22 @@ namespace Web网页数据后台采集
     {
         static void Main(string[] args)
         {
-            PLCChatRoom pLCChatRoom = new PLCChatRoom(new System.Net.IPEndPoint(IPAddress.Parse(PLCChatRoom.GetSocketIP()[0]), 9500));
-            pLCChatRoom.Readmessage += ((send1,e1) =>
-              {
-                  Console.WriteLine($"读取设备：{send1}");
-              });
-            pLCChatRoom.Writemessage += ((send2, e2) =>
-              {
-                  Console.WriteLine($"写入设备：{send2}");
-              });
-            var Open= pLCChatRoom.Open();
-            Console.WriteLine($"链接设备：{Open.IsSuccess}");
-            pLCChatRoom.GetPLCoutput();
+         
+                PLCChatRoom pLCChatRoom = new PLCChatRoom(new System.Net.IPEndPoint(IPAddress.Parse(PLCChatRoom.GetSocketIP()[0]), 9500));
+                pLCChatRoom.Readmessage += ((send1, e1) =>
+                  {
+                      Console.WriteLine($"读取设备：{send1.ToString().Trim()}");
+                  });
+                pLCChatRoom.Writemessage += ((send2, e2) =>
+                  {
+                      Console.WriteLine($"写入设备：{send2.ToString().Trim()}");
+                  });
+                var Open = pLCChatRoom.Open();
+                Console.WriteLine($"链接设备：{Open.IsSuccess}");
+            while (true)
+            {
+                pLCChatRoom.GetPLCoutput();
+            }
         }
     }
 }
