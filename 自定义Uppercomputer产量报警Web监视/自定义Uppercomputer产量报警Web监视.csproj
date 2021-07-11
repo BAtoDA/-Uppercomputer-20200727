@@ -553,6 +553,7 @@
     <Compile Include="WebForm2.aspx.designer.cs">
       <DependentUpon>WebForm2.aspx</DependentUpon>
     </Compile>
+    <Compile Include="后端实现类\Alarmpage.cs" />
     <Compile Include="后端实现类\Outputpage.cs" />
     <Compile Include="手机访问页面\手机主页面.aspx.cs">
       <DependentUpon>手机主页面.aspx</DependentUpon>

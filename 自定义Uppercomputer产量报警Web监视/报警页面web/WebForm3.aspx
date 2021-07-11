@@ -140,7 +140,7 @@
                     })
                 function TimeControl1() {
                     $(".message_scroll_box1").animate({ marginTop: 76 }, 1200,
-                        function () {
+                        //function () {
                             $(".message_scroll_box1 .message_scroll1:first").before($(".message_scroll_box1 .message_scroll1:last"));    //在第一个新闻后面插入最后一个新闻
                             $(".message_scroll_box1").css({ marginTop: 0 });    //把顶部的边界清零
 
@@ -205,9 +205,6 @@
             <script type="text/javascript">
                 //定时刷新自适应代码
                 setInterval(function () {
-                    var MonthAlarmDat = document.getElementById('MonthAlarmData');
-
-                    MonthAlarmDat.innerHTML = "5555";
 
                 }, 2000);
                 AlarmchartsLoad();//加载报警图表
@@ -250,12 +247,6 @@
             <script type="text/javascript">
                 //定时刷新自适应代码
                 setInterval(function () {
-                    var MonthAlarmDat = document.getElementById('MonthDisposeData');
-                    MonthAlarmDat.innerHTML = "00:99:99";
-                    var DaysDisposeDat = document.getElementById('DaysDisposeData');
-                    DaysDisposeDat.innerHTML = "00:99:99";
-                    var TodayDisposeDat = document.getElementById('TodayDisposeData');
-                    TodayDisposeDat.innerHTML = "00:99:99";
 
                 }, 2000);
                 //加载图表

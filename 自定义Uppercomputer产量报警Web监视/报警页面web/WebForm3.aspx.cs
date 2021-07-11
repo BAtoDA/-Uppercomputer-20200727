@@ -2,8 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Script.Serialization;
+using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using HTML布局学习.后端实现类;
 using 自定义Uppercomputer产量报警Web监视.EF实体模型;
 
 namespace HTML布局学习.报警页面web
@@ -12,13 +15,28 @@ namespace HTML布局学习.报警页面web
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            //测试后端SQL数据库代码
-            using(UppercomputerEntities2 db=new UppercomputerEntities2())
+            Alarmpage alarmpage = new Alarmpage();
+        }
+        static object lex = new object();
+        [WebMethod]
+        public static string Alarmnumber()
+        {
+            lock(lex)
             {
-                var data = db.Event_message.GroupBy(pi => pi.类型).OrderBy(pi => pi.Key).Select(x => new eventtolist() { id = x.Key, _Messages = x }).ToList();
-                var data1 = db.Alarmhistory.Where(p => p.ID == 0).FirstOrDefault();
-                var data2 = db.HourOutputs.FirstOrDefault();
-              
+                return Alarmpage.Alarmnumber();
+            }
+        }
+        static object lq = new object();
+        /// <summary>
+        /// 上传报警用时与报警次数
+        /// </summary>
+        /// <returns></returns>
+        [WebMethod]
+        public static string MonthDisposeData()
+        {
+            lock (lex)
+            {
+                return new JavaScriptSerializer().Serialize(Alarmpage.webpoliceCollection !=null ? Alarmpage.webpoliceCollection : new EF实体模型.WebpoliceCollection() { ID = 0, week处理用时 = "00:00:00", week报警次数 = 0, 今日处理用时 = "00:00:00", 今日报警次数 = 0, 本月处理用时 = "00:00:00", 本月报警次数 = 0, 采集软件在线时间 = "0" });
             }
 
         }
@@ -29,4 +47,5 @@ namespace HTML布局学习.报警页面web
         public int id { get; set; }
         public IGrouping<int,Event_message> _Messages { get; set; }
     }
+
 }

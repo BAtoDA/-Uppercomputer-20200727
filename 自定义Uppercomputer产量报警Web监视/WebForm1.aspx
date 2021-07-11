@@ -53,9 +53,10 @@
             </div>
 
             <div class="t_box">
+                <script type="text/javascript"> $(".t_box").css({ height: (document.body.clientHeight / 346.07142857142857142857142857143) + 'rem' });    </script>
                 <div class="weekheadline">周生产数据</div>
                 <%-- 使用ECharts生成周折线图--%>
-                <div id="mainweek" class="echart" style="width: 100%; height: 3rem;"></div>
+                <div id="mainweek" class="echart" style="width: 100%; height: 100%"></div>
             </div>
 
             <div class="t_box">
@@ -67,9 +68,10 @@
             </div>
 
             <div class="t_box">
+                 <script type="text/javascript"> $(".t_box").css({ height: (document.body.clientHeight / 346.07142857142857142857142857143) + 'rem' });    </script>
                 <div class="weekheadline">每时生产数据</div>
                 <%-- 使用ECharts生成周折线图--%>
-                <div id="mainhour" class="echart" style="width: 100%; height: 3rem;"></div>
+                <div id="mainhour" class="echart" style="width: 100%; height: 100%;"></div>
             </div>
 
             <div class="t_box">
@@ -78,9 +80,10 @@
             </div>
 
             <div class="t_box">
+                 <script type="text/javascript"> $(".t_box").css({ height: (document.body.clientHeight / 346.07142857142857142857142857143) + 'rem' });    </script>
                 <div class="weekheadline">每月生产数据</div>
                 <%-- 使用ECharts生成周折线图--%>
-                <div id="mainmonth" class="echart" style="width: 100%; height: 2.8rem;"></div>
+                <div id="mainmonth" class="echart" style="width: 100%; height: 100%;"></div>
             </div>
         </div>
 
@@ -91,6 +94,7 @@
                 <div id="mainabnormal" style="width: 50%; height: 4.5rem; float: left;"></div>
             </div>
             <div class="t_boxbig">
+                 <script type="text/javascript">  $(".t_boxbig").css({ height: (document.body.clientHeight / 228) + 'rem' });    </script>
                 <div class="t_Abnorma">
                     <table class="t_Abnorma">
                         <thead class="t_h_Abnorma">
@@ -112,12 +116,133 @@
             setInterval(function () {
                 //使用AJAX Post请求获取后端数据
                 numerical_Post();
-
+                //网页自适应
+                $(".t_box").css({ height: (document.body.clientHeight / 346.07142857142857142857142857143) + 'rem' });    
+                $(".t_boxbig").css({ height: (document.body.clientHeight / 228) + 'rem' });
             }, 1000);
             //定时刷新获取设备报警视图
             setInterval(function () {
                 Alarm();
+                isFullscreenForNoScroll();
             }, 1000);
+            function isFullscreenForNoScroll() {
+                var explorer = window.navigator.userAgent.toLowerCase();
+                if (explorer.indexOf('chrome') > 0) {//webkit
+                    if (document.body.scrollHeight === window.screen.height && document.body.scrollWidth === window.screen.width) {
+                        $.ajax({//改读后端值--表示已经处理完成任务
+                            type: "post",
+                            url: "WebForm1.aspx/Fullscreenee",
+                            contentType: "application/json;charset=utf - 8",
+                            dataType: "json",
+                            async: false,
+                            success:
+                                function (data) {
+                                    if (data.d.toString() == "true") {
+                                        // alert(data.d + '进入全屏');
+                                        $.ajax({//改写后端值--表示已经处理完成任务
+                                            type: "post",
+                                            url: "WebForm1.aspx/Fullscreene",
+                                            contentType: "application/json;charset=utf - 8",
+                                            dataType: "json",
+                                            data: "{ 'name':false}",
+                                            async: false,
+                                            success:
+                                                function (data) {
+                                                    // alert(data.d + '改写值完成');
+                                                    location.reload();//重新刷新网页
+                                                }
+                                        });
+                                    }
+                                }
+                        });
+                    } else {
+                        $.ajax({//改读后端值--表示已经处理完成任务
+                            type: "post",
+                            url: "WebForm1.aspx/Fullscreenee",
+                            contentType: "application/json;charset=utf - 8",
+                            dataType: "json",
+                            async: false,
+                            success:
+                                function (data) {
+                                    if (data.d.toString() != "true") {
+                                        //  alert(data.d + '退出全屏');
+                                        $.ajax({//改写后端值--表示已经处理完成任务
+                                            type: "post",
+                                            url: "WebForm1.aspx/Fullscreene",
+                                            contentType: "application/json;charset=utf - 8",
+                                            dataType: "json",
+                                            data: "{ 'name':true}",
+                                            async: false,
+                                            success:
+                                                function (data) {
+                                                    //alert(data.d + '退出全屏 改写值完成');
+                                                    location.reload();//重新刷新网页
+                                                }
+                                        });
+                                    }
+                                }
+                        });
+
+
+                    }
+                } else {//IE 9+  fireFox
+                    if (window.outerHeight === window.screen.height && window.outerWidth === window.screen.width) {
+                        $.ajax({//改读后端值--表示已经处理完成任务
+                            type: "post",
+                            url: "WebForm1.aspx/Fullscreenee",
+                            contentType: "application/json;charset=utf - 8",
+                            dataType: "json",
+                            async: false,
+                            success:
+                                function (data) {
+                                    if (data.d.toString() == "true") {
+                                        // alert(data.d + '进入全屏');
+                                        $.ajax({//改写后端值--表示已经处理完成任务
+                                            type: "post",
+                                            url: "WebForm1.aspx/Fullscreene",
+                                            contentType: "application/json;charset=utf - 8",
+                                            dataType: "json",
+                                            data: "{ 'name':false}",
+                                            async: false,
+                                            success:
+                                                function (data) {
+                                                    // alert(data.d + '改写值完成');
+                                                    location.reload();//重新刷新网页
+                                                }
+                                        });
+                                    }
+                                }
+                        });
+                    } else {
+                        $.ajax({//改读后端值--表示已经处理完成任务
+                            type: "post",
+                            url: "WebForm1.aspx/Fullscreenee",
+                            contentType: "application/json;charset=utf - 8",
+                            dataType: "json",
+                            async: false,
+                            success:
+                                function (data) {
+                                    if (data.d.toString() != "true") {
+                                        //  alert(data.d + '退出全屏');
+                                        $.ajax({//改写后端值--表示已经处理完成任务
+                                            type: "post",
+                                            url: "WebForm1.aspx/Fullscreene",
+                                            contentType: "application/json;charset=utf - 8",
+                                            dataType: "json",
+                                            data: "{ 'name':true}",
+                                            async: false,
+                                            success:
+                                                function (data) {
+                                                    //alert(data.d + '退出全屏 改写值完成');
+                                                    location.reload();//重新刷新网页
+                                                }
+                                        });
+                                    }
+                                }
+                        });
+                    }
+                }
+            }
         </script>
     </form>
 </body>

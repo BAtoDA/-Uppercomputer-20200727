@@ -16,6 +16,10 @@ namespace HTML布局学习
 {
     public partial class WebForm1 : System.Web.UI.Page
     {
+        /// <summary>
+        /// 该值指示着是否进入全屏模式
+        /// </summary>
+        public static bool Fullscreen { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
             Outputpage outputpage = new Outputpage();
@@ -200,6 +204,25 @@ namespace HTML布局学习
                 return imageinfoStr;
             }
         }
-
+        /// <summary>
+        /// 页面自适应状态修改
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        [WebMethod]
+        public static string Fullscreene(bool name)
+        {
+            Fullscreen = name;
+            return new JavaScriptSerializer().Serialize(Fullscreen);
+        }
+        /// <summary>
+        /// 页面自适应状态读取
+        /// </summary>
+        /// <returns></returns>
+        [WebMethod]
+        public static string Fullscreenee()
+        {
+            return new JavaScriptSerializer().Serialize(Fullscreen);
+        }
     }
 }
