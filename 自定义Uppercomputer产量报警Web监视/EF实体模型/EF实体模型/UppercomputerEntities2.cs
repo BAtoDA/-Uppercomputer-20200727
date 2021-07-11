@@ -98,6 +98,9 @@ namespace 自定义Uppercomputer产量报警Web监视.EF实体模型
         public virtual DbSet<HourOutput> HourOutputs { get; set; }
         public virtual DbSet<ParameterWeb> ParameterWebs { get; set; }
         public virtual DbSet<Scheduletaiyaki> Scheduletaiyakis { get; set; }
+        public virtual DbSet<WebFWAlarmTable> WebFWAlarmTables { get; set; }
+        public virtual DbSet<WeboutputCollection> WeboutputCollections { get; set; }
+        public virtual DbSet<WebpoliceCollection> WebpoliceCollections { get; set; }
         #endregion
     }
 }

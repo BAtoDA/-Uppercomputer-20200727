@@ -206,6 +206,7 @@
     <Content Include="手机访问页面\Echarts\extension\dataTool.js" />
     <Content Include="手机访问页面\Echarts\extension\dataTool.min.js" />
     <Content Include="手机访问页面\Echarts\jquery-3.5.1.min.js" />
+    <Content Include="手机访问页面\产量页面POST处理\numerical.js" />
     <Content Include="手机访问页面\图片\aHR0cDovL3d3dy55M3EubmV0L3FmeS1jb250ZW50L3VwbG9hZHMvMjAyMS8wNi82ZWE2YTY0YjM1Y2E3MDMwMWM5MTIxMDZiNzMyNzI0MS0yMTB4MjEwLnBuZw_p_p100_p_3D_p_p100_p_3D.png" />
     <Content Include="手机访问页面\图片\aHR0cDovL3d3dy55M3EubmV0L3FmeS1jb250ZW50L3VwbG9hZHMvMjAyMS8wNi8wYTAwMzU0ODkxM2FmZmZlMGZjNzMyMTFiNDZkYmQzOS0yMTB4MjEwLnBuZw_p_p100_p_3D_p_p100_p_3D.png" />
     <Content Include="手机访问页面\图片\aHR0cDovL3d3dy55M3EubmV0L3FmeS1jb250ZW50L3VwbG9hZHMvMjAyMS8wNi8yYTQ1ZGEwOWQ1NzcwNWJkNzA3ZDY5YTBlYmVmMWM1Zi0yMTB4MjEwLnBuZw_p_p100_p_3D_p_p100_p_3D.png" />
@@ -529,6 +530,9 @@
     <Compile Include="EF实体模型\HourOutput.cs" />
     <Compile Include="EF实体模型\ParameterWeb.cs" />
     <Compile Include="EF实体模型\Scheduletaiyaki.cs" />
+    <Compile Include="EF实体模型\WebFWAlarmTable.cs" />
+    <Compile Include="EF实体模型\WeboutputCollection.cs" />
+    <Compile Include="EF实体模型\WebpoliceCollection.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -549,6 +553,7 @@
     <Compile Include="WebForm2.aspx.designer.cs">
       <DependentUpon>WebForm2.aspx</DependentUpon>
     </Compile>
+    <Compile Include="后端实现类\Outputpage.cs" />
     <Compile Include="手机访问页面\手机主页面.aspx.cs">
       <DependentUpon>手机主页面.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

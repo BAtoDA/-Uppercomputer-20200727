@@ -65,6 +65,22 @@
             color: '#FFFFFF',
             textBorderColor: '#FFFFFF'
         };
+        setInterval(function () {
+            $.ajax({//定时Post请求访问后端获取周数据
+                type: "Post",
+                url: "手机产量页面.aspx/GetWeekData",
+                contentType: "application/json;charset=utf - 8",
+                dataType: "json",
+                success:
+                    function (data) {
+                        for (let i = 0; i < data.d.length; i++) {
+                            data20[i] = data.d[i];
+                        }
+                    }
+            });
+            // 使用刚指定的配置项和数据显示图表。
+            myChart20.setOption(option20);
+        }, 1000);
         // 使用刚指定的配置项和数据显示图表。
         myChart20.setOption(option20);
     }

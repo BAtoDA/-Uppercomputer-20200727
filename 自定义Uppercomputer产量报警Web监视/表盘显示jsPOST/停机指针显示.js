@@ -20,7 +20,7 @@
                 },
                 data: [{
                     value: 20,
-                    name: '停机次数'
+                    name: '报警次数'
                 }],
                 max: 200,
                 min: 0,

@@ -16,6 +16,8 @@
     <script src="7天产量图表/7天产量Echarts.js"></script>
     <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
     <meta name="viewport" content="width=640, maximum-scale=1.0, user-scalable=no" />
+      <!-- 引入 后端处理js -->
+    <script src="产量页面POST处理/numerical.js"></script>
     <title>产量页面</title>
     <%-- 处理页面大小与比例--%>
     <style>

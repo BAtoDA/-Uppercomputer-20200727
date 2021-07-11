@@ -20,7 +20,7 @@
                 },
                 data: [{
                     value: 20,
-                    name: '小时产量'
+                    name: '当天产量'
                 }],
                 max: 1500,
                 min: 0,
@@ -69,17 +69,13 @@
         setInterval(function () {
             $.ajax({//定时Post请求访问后端获取周数据
                 type: "Post",
-                url: "WebForm1.aspx/Getthroughput",
+                url: "WebForm1.aspx/GetPresent",
                 contentType: "application/json;charset=utf - 8",
                 dataType: "json",
                 success:
                     function (data) {
                         //option30.series[0].data[0].max = data.d + 100;
                         option30.series[0].data[0].value = data.d;
-                    },
-                error:
-                    function (err) {
-                        alert(err);
                     }
             });
             myChart30.setOption(option30, true);

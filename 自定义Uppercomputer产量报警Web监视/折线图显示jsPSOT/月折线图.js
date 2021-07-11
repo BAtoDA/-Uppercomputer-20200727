@@ -3,8 +3,12 @@
     function mainmonth() {
         // 基于准备好的dom，初始化echarts实例
         var myChart201 = echarts.init(document.getElementById('mainmonth'), 'customed');
-        var data20 = [];
-        for (let i = 0; i < 7; ++i) {
+        var data20 = [];//定义每小时数据
+        var Name20 = [];//定义每小时名称
+        var myDate = new Date();//实例化时间
+        for (let i = 0; i < 5; ++i) {
+            Name20.push(myDate.getHours());//获取当前时间
+            Name20[i] += + myDate.getMinutes();
             data20.push(Math.round(Math.random() * 200));
         }
 
@@ -16,7 +20,7 @@
             //},
             xAxis: [{
                 type: "category",
-                data: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sunday"],
+                data: Name20,
                 axisLine: {
                     lineStyle: {
                         color: "rgba(248, 248, 248, 1)"
@@ -66,25 +70,30 @@
             textBorderColor: '#FFFFFF'
         };
         setInterval(function () {
-            $.ajax({//定时Post请求访问后端获取周数据
-                type: "Post",
-                url: "WebForm1.aspx/GetWeekData",
-                contentType: "application/json;charset=utf - 8",
-                dataType: "json",
-                success:
-                    function (data) {
-                        for (let i = 0; i < data.d.length; i++) {
-                            data20[i] = data.d[i];
-                        }
-                    },
-                error:
-                    function (err) {
-                        alert(err);
-                    }
+            $.ajax({
+                type: "POST",
+                contentType: "application/json",
+                url: 'WebForm1.aspx/Yearyield',
+                dataType: 'json',
+                async: true,//async翻译为异步的，false表示同步，会等待执行完成，true为异步
+                success: function (data) {
+
+                    var dataObj = eval("(" + data.d + ")");
+
+                    $.each(dataObj, function (i, item) {
+                        $("#imageslist").append("<li><img alt=\"" + item.HourData + "\" src=\"" + item.HourName + "\"/></li>");
+                        Name20[i] = item.HourName;
+                        data20[i] = item.HourData;
+                    })
+
+                },
+                error: function () {
+                    // alert("月视图error!");
+                }
             });
             // 使用刚指定的配置项和数据显示图表。
             myChart201.setOption(option20);
-        }, 1000);
+        }, 3500);
         // 使用刚指定的配置项和数据显示图表。
         myChart201.setOption(option20);
     }
