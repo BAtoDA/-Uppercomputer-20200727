@@ -98,21 +98,21 @@
                 <header style="width: 100%; height: 10%; text-align: center; font-size: 40%; color: #ffffff; position: relative; top: 2%;">
                     今日报警
                 </header>
-                <span style="width: 100%; height: 50%; font-size: 40%; color: #4862ed;">999</span>
+                <span id="TodayAlarmData" style="width: 100%; height: 50%; font-size: 40%; color: #4862ed;">999</span>
             </div>
 
             <div style="width: 33%; height: 1.5rem; margin-left: 2%; margin-top: 1%; background: url('图片/leftbg01.png') no-repeat; background-size: 100% 100%; float: inherit; text-align: center;">
                 <header style="width: 100%; height: 10%; text-align: center; font-size: 40%; color: #ffffff; position: relative; top: 2%;">
                     7天报警
                 </header>
-                <span style="width: 100%; height: 50%; font-size: 40%; color: #4862ed;">999</span>
+                <span id="DaysAlarmData" style="width: 100%; height: 50%; font-size: 40%; color: #4862ed;">999</span>
             </div>
 
             <div style="width:30%; height: 1.5rem; margin-left: 2%; margin-top: 1%; background: url('图片/leftbg01.png') no-repeat; background-size: 100% 100%; float: inherit; text-align: center;">
                 <header style="width: 100%; height: 10%; text-align: center; font-size: 40%; color: #ffffff; position: relative; top: 2%;">
                     本月报警
                 </header>
-                <span style="width: 100%; height: 50%; font-size: 40%; color: #4862ed;">999</span>
+                <span id="MonthAlarmData" style="width: 100%; height: 50%; font-size: 40%; color: #4862ed;">999</span>
             </div>
 
         </div>
@@ -129,21 +129,21 @@
                 <header style="width: 100%; height: 10%; text-align: center; font-size: 40%; color: #ffffff; position: relative; top: 2%;">
                     今日用时
                 </header>
-                <span style="width: 100%; height: 50%; font-size: 40%; color: #4862ed;">00:99:99</span>
+                <span id="TodayDisposeData" style="width: 100%; height: 50%; font-size: 40%; color: #4862ed;">00:99:99</span>
             </div>
 
             <div style="width: 33%; height: 1.5rem; margin-left: 2%; margin-top: 1%; background: url('图片/leftbg01.png') no-repeat; background-size: 100% 100%; float: inherit; text-align: center;">
                 <header style="width: 100%; height: 10%; text-align: center; font-size: 40%; color: #ffffff; position: relative; top: 2%;">
                     7天用时
                 </header>
-                <span style="width: 100%; height: 50%; font-size: 40%; color: #4862ed;">00:99:99</span>
+                <span id="DaysDisposeData" style="width: 100%; height: 50%; font-size: 40%; color: #4862ed;">00:99:99</span>
             </div>
 
             <div style="width:30%; height: 1.5rem; margin-left: 2%; margin-top: 1%; background: url('图片/leftbg01.png') no-repeat; background-size: 100% 100%; float: inherit; text-align: center;">
                 <header style="width: 100%; height: 10%; text-align: center; font-size: 40%; color: #ffffff; position: relative; top: 2%;">
                     本月用时
                 </header>
-                <span style="width: 100%; height: 50%; font-size: 40%; color: #4862ed;">00:99:99</span>
+                <span id="MonthDisposeData" style="width: 100%; height: 50%; font-size: 40%; color: #4862ed;">00:99:99</span>
             </div>
           </div>
 

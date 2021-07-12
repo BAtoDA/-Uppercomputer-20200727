@@ -138,6 +138,9 @@
                     .mouseleave(function () {
                         T = setInterval(TimeControl, 3800);    //再次定时
                     })
+
+
+
                 function TimeControl1() {
                     $(".message_scroll_box1").animate({ marginTop: 76 }, 1200,
                         //function () {

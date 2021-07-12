@@ -106,8 +106,8 @@ function MeterLoad() {
             startAngle: 180,
             endAngle: 0,
             min: 0,
-            max: 240,
-            splitNumber: 6,
+            max: 700,
+            splitNumber: 5,
             itemStyle: {
                 color: '#58D9F9',
                 shadowColor: 'rgba(0,138,255,0.45)',
@@ -185,7 +185,23 @@ function MeterLoad() {
             }]
         }]
     };
+    //定时刷新数据
+    setInterval(function () {
+        $.ajax({//定时Post请求访问后端获取周数据
+            type: "Post",
+            url: "WebForm3.aspx/Weboutput",
+            contentType: "application/json;charset=utf - 8",
+            dataType: "json",
+            success:
+                function (data) {
+                    //反序列化
+                    var dataObj = eval("(" + data.d + ")");
+                    option.series[0].data[0].value = dataObj.设备速率;
 
+                }
+        });
+        option && myChart.setOption(option, true);
+    }, 1000);
     option && myChart.setOption(option);
 }
 //用于显示设备速率

@@ -95,7 +95,8 @@ namespace HTML布局学习.后端实现类
                 Weeksurface.Add(new Alarmchart() { Name = "0", Data = 0 });
             }
             var present = System.DateTime.Now;
-            int number = Convert.ToInt32(present.DayOfWeek);//需要往后移动的天数
+            //int number = Convert.ToInt32(present.DayOfWeek);//需要往后移动的天数
+            int number = count;
             if (number == 0)
                 number = count;
             for (int i = 0; i < number; i++)
@@ -106,9 +107,9 @@ namespace HTML布局学习.后端实现类
                 var Date = (from p in alarmhistories where DateTime.Parse(p.报警时间.Trim()).Date == dt22.Date select p).ToList();
                 if (Date.Count > 0)
                 {
-                    Weeksurface[Convert.ToInt32(dt22.DayOfWeek - 1) < 0 ? Weeksurface.Count - 1 : (number - i) - 1].Data = Date.Count;
+                    Weeksurface[i].Data = Date.Count;
                 }
-                Weeksurface[Convert.ToInt32(dt22.DayOfWeek - 1) < 0 ? Weeksurface.Count - 1 : (number - i) - 1].Name = dt22.ToString("M");
+                Weeksurface[i].Name = dt22.ToString("M");
             }
             return Weeksurface;
         }
@@ -160,10 +161,126 @@ namespace HTML布局学习.后端实现类
 
             return Weeksurface;
         }
+        /// <summary>
+        /// 查询7天 报警处理用时  本月报警用时
+        /// </summary>
+        /// <returns></returns>
+        public static string AlarmDispose()
+        {
+            List<Tuple<List<AlarmDisposechart>>> tuples = new List<Tuple<List<AlarmDisposechart>>>();
+            using (UppercomputerEntities2 db = new UppercomputerEntities2())
+            {
+                var data = db.Alarmhistory.ToList();
+                tuples.Add(new Tuple<List<AlarmDisposechart>>(GetAlarmDisposecharts(data, 7)));
+                tuples.Add(new Tuple<List<AlarmDisposechart>>(MonthDisposeData(data)));
+                return new JavaScriptSerializer().Serialize(tuples);
+            }
+        }
+        /// <summary>
+        /// 根据报警表 分析数据 
+        /// </summary>
+        /// <param name="alarmhistories"></param>
+        /// <param name="count"></param>
+        /// <returns></returns>
+        private static List<AlarmDisposechart> GetAlarmDisposecharts(List<Alarmhistories> alarmhistories, int count)
+        {
+            //创建周报警表
+            List<AlarmDisposechart> Weeksurface = new List<AlarmDisposechart>();
+            //默认数据
+            for (int i = 0; i < count; i++)
+            {
+                Weeksurface.Add(new AlarmDisposechart() { Name = "0", Data =0});
+            }
+            var present = System.DateTime.Now;
+            // int number = Convert.ToInt32(present.DayOfWeek);//需要往后移动的天数
+            int number = count;
+            if (number == 0)
+                number = count;
+            for (int i = 0; i < number; i++)
+            {
+                DateTime date2 = DateTime.Parse(System.DateTime.Now.ToString("D") + "00:00");
+                TimeSpan ts2 = new TimeSpan(0, 24*i, 0, 0);
+                DateTime dt22 = date2.Subtract(ts2);
+                TimeSpan Month = new TimeSpan();
+                (from p in alarmhistories where DateTime.Parse(p.报警时间.Trim()).Date == dt22.Date select p).ToList().ForEach(s1 =>
+                {
+                    Month += DateTime.Parse(s1.处理完成时间.Trim()) - DateTime.Parse(s1.报警时间.Trim());
+                });
+                // Weeksurface[i].Data = $"{(Month.Days < 10 ? "0" : Month.Days.ToString())}{Month.Days}:{(Month.Hours < 10 ? "0" : Month.Hours.ToString())}{Month.Hours}:{(Month.Minutes < 10 ? "0" : Month.Minutes.ToString())}{Month.Minutes}";
+                Weeksurface[i].Data =Convert.ToInt32(Month.TotalMinutes);
+                Weeksurface[i].Name = dt22.ToString("M");
+            }
+            return Weeksurface;
+        }
+        /// <summary>
+        /// 获取月产量--生成月度报警表
+        /// </summary>
+        /// <returns></returns>
+        public static List<AlarmDisposechart> MonthDisposeData(List<Alarmhistories> alarmhistories)
+        {
+            //创建月表
+            List<AlarmDisposechart> Weeksurface = new List<AlarmDisposechart>();
+            //月默认数据
+            for (int i = 0; i < 7; i++)
+            {
+                Weeksurface.Add(new AlarmDisposechart() { Name = "0", Data = 0 });
+            }
+            //获取当前时间
+            var present = System.DateTime.Now;
+            int month = (present.Month - 6);
+            int year = System.DateTime.Now.Year;
+            //获取当前月的往后7个月的时间
+            //判断获取的数据是否需要跨年度
+            if ((present.Month - 7) < 0)
+            {
+                //获取后一年的月数
+                month = (present.Month - 7) + 13;
+                //获取后一年的数
+                year = System.DateTime.Now.Year - 1;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                //如果数量大于12  变成当前年1月1号
+                if (month > 12)
+                {
+                    month = 1;
+                    year = System.DateTime.Now.Year;
+                }
+                month = month == 0 ? 1 : month;
+                //获取需要遍历的时间
+                DateTime date2 = DateTime.Parse($"{year}/{month}/1 00:00");
+                TimeSpan Month = new TimeSpan();
+                (from p in alarmhistories where date2.ToString("Y") == DateTime.Parse(p.报警时间.Trim()).ToString("Y") select p).ToList().ForEach(S1=> 
+                {
+                    Month += DateTime.Parse(S1.处理完成时间.Trim()) - DateTime.Parse(S1.报警时间.Trim());
+                });
+                month += 1;
+                //判断获取到的产量表
+                Weeksurface[i].Name = date2.ToString("Y");
+                //Weeksurface[i].Data = $"{(Month.Days<10?"0":Month.Days.ToString())}{Month.Days}:{(Month.Hours < 10 ? "0" : Month.Hours.ToString())}{Month.Hours}:{(Month.Minutes < 10 ? "0" : Month.Minutes.ToString())}{Month.Minutes}";
+                Weeksurface[i].Data = Convert.ToInt32(Month.TotalMinutes);
+            }
+            //当月就显示当前最新的日期
+            Weeksurface[6].Name = present.ToString("Y");
+
+            return Weeksurface;
+        }
 
     }
     [Serializable]
     public class Alarmchart
+    {
+        /// <summary>
+        /// 图表名称
+        /// </summary>
+        public string Name;
+        /// <summary>
+        /// 图表数据
+        /// </summary>
+        public int Data;
+    }
+    [Serializable]
+    public class AlarmDisposechart
     {
         /// <summary>
         /// 图表名称
