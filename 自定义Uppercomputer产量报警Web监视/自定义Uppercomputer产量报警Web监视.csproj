@@ -236,6 +236,7 @@
     <Content Include="手机访问页面\设备速率图标\设备速率Echarts.js" />
     <Content Include="报警视图jsPOST\报警历史页面前后端处理js.js" />
     <Content Include="报警视图jsPOST\报警注册查询页面后端处理js.js" />
+    <Content Include="报警视图jsPOST\滚动报警内容显示\Rollalarm.js" />
     <Content Include="报警页面web\Echarts\customed.js" />
     <Content Include="报警页面web\Echarts\echarts.common.js" />
     <Content Include="报警页面web\Echarts\echarts.common.min.js" />

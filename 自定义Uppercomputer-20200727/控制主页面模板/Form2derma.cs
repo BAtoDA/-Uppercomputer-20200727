@@ -49,6 +49,7 @@ using 自定义Uppercomputer_20200727.运转控制画面;
 using 自定义Uppercomputer_20200727.生产设置画面;
 using 自定义Uppercomputer_20200727.参数设置画面;
 using 自定义Uppercomputer_20200727.控制主页面模板.模板窗口接口;
+using System.Diagnostics;
 
 namespace 自定义Uppercomputer_20200727.控制主页面模板
 {
@@ -994,6 +995,7 @@ namespace 自定义Uppercomputer_20200727.控制主页面模板
             catch { }
         }
         三菱伺服MR_JE控制.Form1 Servo_Form;
+
         /// <summary>
         /// 新增菜单栏点击项事件
         /// </summary>
@@ -1028,6 +1030,26 @@ namespace 自定义Uppercomputer_20200727.控制主页面模板
                     }
                     Servo_Form = new 三菱伺服MR_JE控制.Form1();
                     Servo_Form.Show();
+                    return;
+                case "Web数据采集":
+                    //启动Web数据采集软件
+                    Process[] allProgresse = System.Diagnostics.Process.GetProcessesByName("Web网页数据后台采集");
+                    foreach (Process closeProgress in allProgresse)
+                    {
+                        if (closeProgress.ProcessName.Equals("Web网页数据后台采集"))
+                        {
+                            return;
+                        }
+                    }
+                    Task.Run(() =>
+                    {
+                        ProcessStartInfo info = new ProcessStartInfo();
+                        info.FileName = @System.Environment.CurrentDirectory + "\\Web网页数据后台采集.exe";
+                        info.Arguments = "";
+                        info.WindowStyle = ProcessWindowStyle.Minimized;
+                        Process pro = Process.Start(info);
+                        pro.WaitForExit();
+                    });
                     return;
                 case "关于":
                     toolStripMenuItem15_Click(sender, e);

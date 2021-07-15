@@ -36,6 +36,30 @@ namespace HTML布局学习.后端实现类
             refresh_time.Change(500, 300);
         }
         /// <summary>
+        /// 采集软件是否在线报警锁
+        /// </summary>
+        static object Alarmobject = new object();
+        /// <summary>
+        /// 指示采集软件是否在线
+        /// </summary>
+        public static bool Gatherrun
+        {
+            get
+            {
+                lock (Alarmobject)
+                {
+                    //判断数据采集软件是否掉线--false掉线 true 在线
+                    using (UppercomputerEntities2 db = new UppercomputerEntities2())
+                    {
+                        var Data = db.WeboutputCollections.ToList();
+                        return Data.Count > 0 ? (DateTime.Now - DateTime.Parse(Data[0].采集软件在线时间)).Minutes > 5 ? false : true : false;
+                    }
+                }
+            }
+        }
+
+
+        /// <summary>
         /// 报警表锁
         /// </summary>
         static object lex = new object();

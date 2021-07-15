@@ -99,8 +99,9 @@ namespace 自定义Uppercomputer_20200727.控制主页面模板
             System.Windows.Forms.TreeNode treeNode35 = new System.Windows.Forms.TreeNode("链接设备");
             System.Windows.Forms.TreeNode treeNode36 = new System.Windows.Forms.TreeNode("伺服控制");
             System.Windows.Forms.TreeNode treeNode37 = new System.Windows.Forms.TreeNode("编辑模式");
-            System.Windows.Forms.TreeNode treeNode38 = new System.Windows.Forms.TreeNode("数据查询");
-            System.Windows.Forms.TreeNode treeNode39 = new System.Windows.Forms.TreeNode("关于");
+            System.Windows.Forms.TreeNode treeNode38 = new System.Windows.Forms.TreeNode("Web数据采集");
+            System.Windows.Forms.TreeNode treeNode39 = new System.Windows.Forms.TreeNode("数据查询");
+            System.Windows.Forms.TreeNode treeNode40 = new System.Windows.Forms.TreeNode("关于");
             this.uiPanel1 = new Sunny.UI.UIPanel();
             this.uiHeaderButton13 = new Sunny.UI.UIHeaderButton();
             this.uiHeaderButton12 = new Sunny.UI.UIHeaderButton();
@@ -495,10 +496,12 @@ namespace 自定义Uppercomputer_20200727.控制主页面模板
             treeNode36.Text = "伺服控制";
             treeNode37.Name = "节点5";
             treeNode37.Text = "编辑模式";
-            treeNode38.Name = "节点6";
-            treeNode38.Text = "数据查询";
-            treeNode39.Name = "节点7";
-            treeNode39.Text = "关于";
+            treeNode38.Name = "节点0";
+            treeNode38.Text = "Web数据采集";
+            treeNode39.Name = "节点6";
+            treeNode39.Text = "数据查询";
+            treeNode40.Name = "节点7";
+            treeNode40.Text = "关于";
             this.treeViewEx3.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
             treeNode32,
             treeNode33,
@@ -507,7 +510,8 @@ namespace 自定义Uppercomputer_20200727.控制主页面模板
             treeNode36,
             treeNode37,
             treeNode38,
-            treeNode39});
+            treeNode39,
+            treeNode40});
             this.treeViewEx3.NodeSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(77)))), ((int)(((byte)(59)))));
             this.treeViewEx3.NodeSelectedForeColor = System.Drawing.Color.White;
             this.treeViewEx3.NodeSplitLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));

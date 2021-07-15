@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
@@ -26,6 +27,16 @@ namespace 自定义Uppercomputer_20200727
             //全局异常捕捉
             Application.ApplicationExit += ((send, e) =>
             {
+                Process[] allProgresse = System.Diagnostics.Process.GetProcessesByName("Web网页数据后台采集");
+                foreach (Process closeProgress in allProgresse)
+                {
+                    if (closeProgress.ProcessName.Equals("Web网页数据后台采集"))
+                    {
+                        closeProgress.Kill();
+                        closeProgress.Close();
+                        return;
+                    }
+                }
                 OPENCLOASE = false;
             });
             //处理UI线程异常

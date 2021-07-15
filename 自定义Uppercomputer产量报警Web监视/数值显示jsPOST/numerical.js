@@ -8,10 +8,6 @@
         success:
             function (data) {
                 document.getElementById('Squad_target').innerHTML = data.d;
-            },
-        error:
-            function (err) {
-                alert(err);
             }
     });
     $.ajax({//定时Post请求访问后端获取当班产量
@@ -23,10 +19,6 @@
         success:
             function (data) {
                 document.getElementById('Squad_output').innerHTML = data.d;
-            },
-        error:
-            function (err) {
-                alert(err);
             }
     });
     $.ajax({//定时Post请求访问后端获取当月目标产量
@@ -38,10 +30,6 @@
         success:
             function (data) {
                 document.getElementById('headline_target').innerHTML = data.d;
-            },
-        error:
-            function (err) {
-                alert(err);
             }
     });
     $.ajax({//定时Post请求访问后端获取当月产量
@@ -53,10 +41,6 @@
         success:
             function (data) {
                 document.getElementById('headline_output').innerHTML = data.d;
-            },
-        error:
-            function (err) {
-                alert(err);
             }
     });
     $.ajax({//定时Post请求访问后端获取全年产量
@@ -68,10 +52,6 @@
         success:
             function (data) {
                 document.getElementById('headline1_output').innerHTML = data.d;
-            },
-        error:
-            function (err) {
-                alert(err);
             }
     });
 }

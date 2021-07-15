@@ -74,12 +74,8 @@
                 dataType: "json",
                 success:
                     function (data) {
-                        //option30.series[0].data[0].max = data.d + 100;
                         option30.series[0].data[0].value = data.d;
-                    },
-                error:
-                    function (err) {
-                        alert(err);
+                        myChart30.setOption(option30, true);
                     }
             });
             myChart30.setOption(option30, true);
@@ -90,5 +86,16 @@
         }
         // 使用刚指定的配置项和数据显示图表。
         myChart30.setOption(option30);
+        $.ajax({//定时Post请求访问后端获取周数据
+            type: "Post",
+            url: "手机产量页面.aspx/GetPresent1",
+            contentType: "application/json;charset=utf - 8",
+            dataType: "json",
+            success:
+                function (data) {
+                    option30.series[0].data[0].value = data.d;
+                    myChart30.setOption(option30, true);
+                }
+        });
     }
 });

@@ -81,8 +81,16 @@ namespace 自定义Uppercomputer_20200727.主页面.进程通讯消息处理
         public void SocketLoad()
         {
             //创建Socket服务器
-            socketload = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-            socketload.Bind(this.IPEnd);
+            try
+            {
+                socketload = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+                socketload.Bind(this.IPEnd);
+            }
+            catch
+            {
+                socketload = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+                socketload.Bind(new IPEndPoint(IPAddress.Parse("127.0.0.1"),9500));
+            }
             //监听客户端
             socketload.Listen(10);
             socketload.BeginAccept(new AsyncCallback(Socketcall_back), socketload);

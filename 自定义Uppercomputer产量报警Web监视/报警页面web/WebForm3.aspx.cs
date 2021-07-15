@@ -6,6 +6,7 @@ using System.Web.Script.Serialization;
 using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using HTML布局学习.EF实体模型;
 using HTML布局学习.后端实现类;
 using 自定义Uppercomputer产量报警Web监视.EF实体模型;
 
@@ -67,6 +68,44 @@ namespace HTML布局学习.报警页面web
                 {
                     var webout= db.WeboutputCollections.FirstOrDefault();
                     return new JavaScriptSerializer().Serialize(webout != null ? webout : new EF实体模型.WeboutputCollection() { ID = 0, 停机次数 = 0, 全年产量 = 0, 当月产量 = 0, 当班产量 = 0, 设备状态 = false, 设备速率 = 0, 采集软件在线时间 = "0", 采集软件状态 = false });
+                }
+            }
+        }
+        /// <summary>
+        /// 当前报警锁
+        /// </summary>
+        static object Alarm = new object();
+        /// <summary>
+        /// 当前滚动报警表
+        /// </summary>
+        static List<WebFWAlarmTable> RollAlarmTable = new List<WebFWAlarmTable>();
+        static int Rollndex = 0;
+        /// <summary>
+        /// 用于上传当前报警
+        /// </summary>
+        /// <returns></returns>
+        [WebMethod]
+        public static string PresentRoll()
+        {
+            lock(Alarm)
+            {
+                string Data = string.Empty;
+                using (UppercomputerEntities2 db = new UppercomputerEntities2())
+                {
+                    if (Rollndex > RollAlarmTable.Count||RollAlarmTable.Count<1)
+                    {
+                        RollAlarmTable = db.WebFWAlarmTables.ToList();
+                        Rollndex = 0;
+                    }
+                    //判断是否有数据
+                    if(RollAlarmTable.Count>1&&RollAlarmTable.Count>Rollndex)
+                    {                       
+                       Data = new JavaScriptSerializer().Serialize(RollAlarmTable[Rollndex]);
+                        Rollndex += 1;
+                        return Data;
+                    }
+                    //如果SQL中不存在数据表示设备正常无异常--返回Bool值
+                    return "true";
                 }
             }
         }

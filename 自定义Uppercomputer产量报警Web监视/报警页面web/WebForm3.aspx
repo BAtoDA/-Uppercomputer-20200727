@@ -23,6 +23,8 @@
     <script src="报警显示图标js/Alarmecharts.js"></script>
     <%-- 引入加载报警次数和处理总时图表--%>
     <script src="报警异常次数和总时长/AlarmTimeJs.js"></script>
+    <%-- 引入滚动报警实现--%>
+    <script src="../报警视图jsPOST/滚动报警内容显示/Rollalarm.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=2.0, user-scalable=yes" />
 </head>
 <body class="body_main">
@@ -44,7 +46,7 @@
             <div class="dataAllBorder01 cage_cl" style="margin-top: 1.5% !important; height: 35%; position: relative;">
                 <div class="dataAllBorder02" style="padding: 1.2%; overflow: hidden">
 
-                    <div class="message_scroll_box">
+                    <div id="presenterr1" class="message_scroll_box">
                         <div class="message_scroll">
                             <div class="scroll_top">
                                 <span class="scroll_title">数据流量警示</span>
@@ -54,7 +56,7 @@
                             </div>
                             <header class="mess_cage">dddd</header>
                         </div>
-                        <div class="message_scroll">
+                        <div id="presenterr2" class="message_scroll">
                             <div class="scroll_top">
                                 <span class="scroll_title">数据流量警示</span>
                                 <span class="scroll_level scroll_level03">三级</span>
@@ -64,7 +66,7 @@
                               <header class="mess_cage">dddd</header>
    
                         </div>
-                        <div class="message_scroll">
+                        <div id="presenterr3" class="message_scroll">
                             <div class="scroll_top">
                                 <span class="scroll_title">数据流量警示</span>
                                 <span class="scroll_level scroll_level02">二级</span>
@@ -123,27 +125,33 @@
             </div>
 
             <script type="text/javascript">
-                function TimeControl() {
-                    $(".message_scroll_box").animate({ marginTop: 76 }, 800,
-                        function () {
-                            $(".message_scroll_box .message_scroll:first").before($(".message_scroll_box .message_scroll:last"));    //在第一个新闻后面插入最后一个新闻
-                            $(".message_scroll_box").css({ marginTop: 0 });    //把顶部的边界清零
 
-                        });
-                }
-                var T = setInterval(TimeControl, 3000);    //开始定时
-                $(".message_scroll_box").mouseenter(function () {
-                    clearInterval(T);    //停止定时
-                })
-                    .mouseleave(function () {
-                        T = setInterval(TimeControl, 3800);    //再次定时
-                    })
+                //隐藏后面DIV区块
+               // var presenter3 = document.getElementById('presenterr3').style.visibility = "hidden";//隐藏
 
 
+                //function TimeControl() {
+                //    $(".message_scroll_box").animate({ marginTop: 76 }, 800,
+                //        function () {
+                //            $(".message_scroll_box .message_scroll:first").before($(".message_scroll_box .message_scroll:last"));    //在第一个新闻后面插入最后一个新闻
+                //            $(".message_scroll_box").css({ marginTop: 0 });    //把顶部的边界清零
+
+                //        });
+                //}
+                //var T = setInterval(TimeControl, 3000);    //开始定时
+                //$(".message_scroll_box").mouseenter(function () {
+                //    clearInterval(T);    //停止定时
+                //})
+                //    .mouseleave(function () {
+                //        T = setInterval(TimeControl, 3800);    //再次定时
+                //    })
+
+                //当前滚动报警
+                PresentRoll();
 
                 function TimeControl1() {
                     $(".message_scroll_box1").animate({ marginTop: 76 }, 1200,
-                        //function () {
+                        function () {
                             $(".message_scroll_box1 .message_scroll1:first").before($(".message_scroll_box1 .message_scroll1:last"));    //在第一个新闻后面插入最后一个新闻
                             $(".message_scroll_box1").css({ marginTop: 0 });    //把顶部的边界清零
 
@@ -157,7 +165,6 @@
                         T1 = setInterval(TimeControl1, 2000);    //再次定时
                     })
             </script>
-        </div>
         <%--布局一个用于展示设备节拍速率的数据的div--%>
         <div class="t_box2">
             <header style="font-size: 30%; text-align: center; float: initial; color: #ffffff;">设备监控</header>

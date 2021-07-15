@@ -83,11 +83,9 @@
                         $("#imageslist").append("<li><img alt=\"" + item.HourData + "\" src=\"" + item.HourName + "\"/></li>");
                         Name10[i] = item.HourName;
                         data10[i] = item.HourData;
+                        // 使用刚指定的配置项和数据显示图表。
+                        myChart10.setOption(option10);
                     })
-
-                },
-                error: function () {
-                    //  alert("error!");
                 }
             });
             // 使用刚指定的配置项和数据显示图表。
@@ -95,5 +93,24 @@
         }, 2000);
         // 使用刚指定的配置项和数据显示图表。
         myChart10.setOption(option10);
+        $.ajax({
+            type: "POST",
+            contentType: "application/json",
+            url: 'WebForm1.aspx/Houryield',
+            dataType: 'json',
+            async: true,//async翻译为异步的，false表示同步，会等待执行完成，true为异步
+            success: function (data) {
+
+                var dataObj = eval("(" + data.d + ")");
+
+                $.each(dataObj, function (i, item) {
+                    $("#imageslist").append("<li><img alt=\"" + item.HourData + "\" src=\"" + item.HourName + "\"/></li>");
+                    Name10[i] = item.HourName;
+                    data10[i] = item.HourData;
+                    // 使用刚指定的配置项和数据显示图表。
+                    myChart10.setOption(option10);
+                })
+            }
+        });
     }
 });
