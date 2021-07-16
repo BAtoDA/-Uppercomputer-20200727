@@ -41,132 +41,121 @@
         </div>
         <%--布局一个用于展示滚动报警的数据的div--%>
         <div class="t_box">
+            <script type="text/javascript">   $(".t_box").css({ height: (document.body.clientHeight / 114) + 'rem' });</script>
             <header style="font-size: 30%; text-align: center; float: initial; position: relative; top: 0%; color: #ffffff;">设备异常监控</header>
             <div style="width: 100%; height: 50%; position: relative; top: 0%;">
-            <div class="dataAllBorder01 cage_cl" style="margin-top: 1.5% !important; height: 35%; position: relative;">
-                <div class="dataAllBorder02" style="padding: 1.2%; overflow: hidden">
+                <div class="dataAllBorder01 cage_cl" style="margin-top: 1.5% !important; height: 35%; position: relative;">
+                    <div class="dataAllBorder02" style="padding: 1.2%; overflow: hidden">
 
-                    <div id="presenterr1" class="message_scroll_box">
-                        <div class="message_scroll">
-                            <div class="scroll_top">
-                                <span class="scroll_title">数据流量警示</span>
-                                <span class="scroll_level scroll_level01">一级</span>
-                                <a class="localize"></a>
-                                <span class="scroll_timer">17-09-13/9:52</span>
+                        <div id="presenterr1" class="message_scroll_box">
+                            <div class="message_scroll">
+                                <div class="scroll_top">
+                                    <span id="presenttitle1" class="scroll_title">数据流量警示</span>
+                                    <span id="presentlevel1" class="scroll_level scroll_level01">一级</span>
+                                    <a class="localize"></a>
+                                    <span id="presentTime1" class="scroll_timer">17-09-13/9:52</span>
+                                </div>
+                                <header id="presentValue1" class="mess_cage">dddd</header>
                             </div>
-                            <header class="mess_cage">dddd</header>
-                        </div>
-                        <div id="presenterr2" class="message_scroll">
-                            <div class="scroll_top">
-                                <span class="scroll_title">数据流量警示</span>
-                                <span class="scroll_level scroll_level03">三级</span>
-                                <a class="localize"></a>
-                                <span class="scroll_timer">17-09-13/9:52</span>
+                            <div id="presenterr2" class="message_scroll">
+                                <div class="scroll_top">
+                                    <span id="presenttitle2" class="scroll_title">数据流量警示</span>
+                                    <span id="presentlevel2" class="scroll_level scroll_level03">三级</span>
+                                    <a class="localize"></a>
+                                    <span id="presentTime2" class="scroll_timer">17-09-13/9:52</span>
+                                </div>
+                                <header id="presentValue2" class="mess_cage">dddd</header>
+
                             </div>
-                              <header class="mess_cage">dddd</header>
-   
-                        </div>
-                        <div id="presenterr3" class="message_scroll">
-                            <div class="scroll_top">
-                                <span class="scroll_title">数据流量警示</span>
-                                <span class="scroll_level scroll_level02">二级</span>
-                                <a class="localize"></a>
-                                <span class="scroll_timer">17-09-13/9:52</span>
+                            <div id="presenterr3" class="message_scroll">
+                                <div class="scroll_top">
+                                    <span id="presenttitle3" class="scroll_title">数据流量警示</span>
+                                    <span id="presentlevel3" class="scroll_level scroll_level03">二级</span>
+                                    <a class="localize"></a>
+                                    <span id="presentTime3" class="scroll_timer">17-09-13/9:52</span>
+                                </div>
+                                <header id="presentValue3" class="mess_cage">dddd</header>
+
                             </div>
-                            <header class="mess_cage">dddd</header>
-         
+                            <div id="presenterr4" class="message_scroll">
+                                <div class="scroll_top">
+                                    <span id="presenttitle4" class="scroll_title">数据流量警示</span>
+                                    <span id="presentlevel4" class="scroll_level scroll_level03">二级</span>
+                                    <a class="localize"></a>
+                                    <span id="presentTime4" class="scroll_timer">17-09-13/9:52</span>
+                                </div>
+                                <header id="presentValue4" class="mess_cage">dddd</header>
+
+                            </div>
                         </div>
+
                     </div>
-
-                </div>
-                <%--<div class="scroll_tool_outbox">
+                    <%--<div class="scroll_tool_outbox">
                     <div class="scroll_tool_box">
                         <a class="scroll_tool" href="#">查看历史推送</a>
                     </div>
                 </div>--%>
                 </div>
-                </div>
-                   <div style="width: 100%; height: 50%; position: relative; top: -5%;">
-                        <header style="font-size: 30%; text-align: center; float: initial; position: relative; top: -2%; color: #ffffff;">设备历史异常</header>
-                       <div class="dataAllBorder02" style="padding: 1.2%; overflow: hidden">
+            </div>
+            <div style="width: 100%; height: 50%; position: relative; top: -5%;">
+                <header style="font-size: 30%; text-align: center; float: initial; position: relative; top: -2%; color: #ffffff;">设备历史异常</header>
+                <div class="dataAllBorder02" style="padding: 1.2%; overflow: hidden">
 
                     <div class="message_scroll_box1">
-                        <div class="message_scroll1">
+                        <div id="presenterr10" class="message_scroll1">
                             <div class="scroll_top1">
-                                <span class="scroll_title">数据流量警示</span>
-                                <span class="scroll_level scroll_level01">一级</span>
+                                <span id="presenttitle10" class="scroll_title">数据流量警示</span>
+                                <span id="presentlevel10" class="scroll_level scroll_level01">一级</span>
                                 <a class="localize"></a>
-                                <span class="scroll_timer">17-09-13/9:52</span>
+                                <span id="presentTime10" class="scroll_timer">17-09-13/9:52</span>
                             </div>
-                              <header class="mess_cage">dddd</header>
+                            <header id="presentValue10" class="mess_cage">dddd</header>
                         </div>
-                        <div class="message_scroll1">
+                        <div id="presenterr11" class="message_scroll1">
                             <div class="scroll_top1">
-                                <span class="scroll_title">数据流量警示</span>
-                                <span class="scroll_level scroll_level03">三级</span>
+                                <span id="presenttitle11" class="scroll_title">数据流量警示</span>
+                                <span id="presentlevel11" class="scroll_level scroll_level01">一级</span>
                                 <a class="localize"></a>
-                                <span class="scroll_timer">17-09-13/9:52</span>
+                                <span id="presentTime11" class="scroll_timer">17-09-13/9:52</span>
                             </div>
-                               <header class="mess_cage">dddd</header>
+                            <header id="presentValue11" class="mess_cage">dddd</header>
                         </div>
-                        <div class="message_scroll1">
+                        <div id="presenterr12" class="message_scroll1">
                             <div class="scroll_top1">
-                                <span class="scroll_title">数据流量警示</span>
-                                <span class="scroll_level scroll_level02">二级</span>
+                                <span id="presenttitle12" class="scroll_title">数据流量警示</span>
+                                <span id="presentlevel12" class="scroll_level scroll_level01">一级</span>
                                 <a class="localize"></a>
-                                <span class="scroll_timer">17-09-13/9:52</span>
+                                <span id="presentTime12" class="scroll_timer">17-09-13/9:52</span>
                             </div>
-                          <header class="mess_cage">dddd</header>
+                            <header id="presentValue12" class="mess_cage">dddd</header>
+                        </div>
+                        <div id="presenterr13" class="message_scroll1">
+                            <div class="scroll_top1">
+                                <span id="presenttitle13" class="scroll_title">数据流量警示</span>
+                                <span id="presentlevel13" class="scroll_level scroll_level01">一级</span>
+                                <a class="localize"></a>
+                                <span id="presentTime13" class="scroll_timer">17-09-13/9:52</span>
+                            </div>
+                            <header id="presentValue13" class="mess_cage">dddd</header>
                         </div>
                     </div>
 
                 </div>
-                        </div>
             </div>
+        </div>
 
-            <script type="text/javascript">
-
-                //隐藏后面DIV区块
-               // var presenter3 = document.getElementById('presenterr3').style.visibility = "hidden";//隐藏
-
-
-                //function TimeControl() {
-                //    $(".message_scroll_box").animate({ marginTop: 76 }, 800,
-                //        function () {
-                //            $(".message_scroll_box .message_scroll:first").before($(".message_scroll_box .message_scroll:last"));    //在第一个新闻后面插入最后一个新闻
-                //            $(".message_scroll_box").css({ marginTop: 0 });    //把顶部的边界清零
-
-                //        });
-                //}
-                //var T = setInterval(TimeControl, 3000);    //开始定时
-                //$(".message_scroll_box").mouseenter(function () {
-                //    clearInterval(T);    //停止定时
-                //})
-                //    .mouseleave(function () {
-                //        T = setInterval(TimeControl, 3800);    //再次定时
-                //    })
-
-                //当前滚动报警
-                PresentRoll();
-
-                function TimeControl1() {
-                    $(".message_scroll_box1").animate({ marginTop: 76 }, 1200,
-                        function () {
-                            $(".message_scroll_box1 .message_scroll1:first").before($(".message_scroll_box1 .message_scroll1:last"));    //在第一个新闻后面插入最后一个新闻
-                            $(".message_scroll_box1").css({ marginTop: 0 });    //把顶部的边界清零
-
-                        });
-                }
-                var T1 = setInterval(TimeControl1, 2000);    //开始定时
-                $(".message_scroll_box1").mouseenter(function () {
-                    clearInterval(T1);    //停止定时
-                })
-                    .mouseleave(function () {
-                        T1 = setInterval(TimeControl1, 2000);    //再次定时
-                    })
-            </script>
+        <script type="text/javascript">          
+            //当前滚动报警
+            PresentRoll();
+            PresentRollhistory();
+            var presenterr1 = document.getElementById('presenterr13');
+            presenterr1.style.visibility = "hidden";//隐藏该项
+            var presenterr1 = document.getElementById('presenterr4');
+            presenterr1.style.visibility = "hidden";//隐藏该项              
+        </script>
         <%--布局一个用于展示设备节拍速率的数据的div--%>
         <div class="t_box2">
+           <script type="text/javascript">   $(".t_box2").css({ height: (document.body.clientHeight / 114) + 'rem' });</script>
             <header style="font-size: 30%; text-align: center; float: initial; color: #ffffff;">设备监控</header>
             <%--  显示总异常和总时间表--%>
             <div id="AlarmTime" style="width: 100%; height: 53%;"></div>
@@ -181,6 +170,7 @@
         </div>
         <%--布局一个用于展示当天报警数据的2个小方块--%>
         <div class="t_boxbig">
+             <script type="text/javascript">  $(".t_boxbig").css({ height: (document.body.clientHeight / 230) + 'rem' });</script>
             <%--今日主报警显示--%>
             <div class="pane1">
                 <%--      显示该方格的标题--%>
@@ -224,6 +214,7 @@
             </div>
         </div>
         <div class="t_boxbig">
+            <script type="text/javascript">  $(".t_boxbig").css({ height: (document.body.clientHeight / 230) + 'rem' });</script>
             <div class="pane1">
                 <%--      显示该方格的标题--%>
                 <header id="TodayDispose" style="font-size: 27%; width: 100%; text-align: center; color: #ffffff; width: 100%; height: 10%; margin-top: 1%; float: initial; position: relative; margin-left: 0%;">
@@ -257,7 +248,9 @@
             <script type="text/javascript">
                 //定时刷新自适应代码
                 setInterval(function () {
-
+                    $(".t_box").css({ height: (document.body.clientHeight / 114) + 'rem' });
+                    $(".t_box2").css({ height: (document.body.clientHeight / 114) + 'rem' });
+                    $(".t_boxbig").css({ height: (document.body.clientHeight / 230) + 'rem' });
                 }, 2000);
                 //加载图表
                 DisposeechartsLoad();

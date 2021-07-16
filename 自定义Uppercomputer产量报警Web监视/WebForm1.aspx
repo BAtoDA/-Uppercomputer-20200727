@@ -53,7 +53,7 @@
             </div>
 
             <div class="t_box">
-                <script type="text/javascript"> $(".t_box").css({ height: (document.body.clientHeight / 346.07142857142857142857142857143) + 'rem', width: (document.body.clientWidth / 320) + 'rem'});    </script>
+                <script type="text/javascript"> $(".t_box").css({ height: (document.body.clientHeight / 346.07142857142857142857142857143) + 'rem', width: (document.body.clientWidth / 320) + 'rem' });    </script>
                 <div class="weekheadline">周生产数据</div>
                 <%-- 使用ECharts生成周折线图--%>
                 <div id="mainweek" class="echart" style="width: 100%; height: 100%"></div>
@@ -68,7 +68,7 @@
             </div>
 
             <div class="t_box">
-                 <script type="text/javascript"> $(".t_box").css({ height: (document.body.clientHeight / 346.07142857142857142857142857143) + 'rem', width: (document.body.clientWidth / 320) + 'rem' });    </script>
+                <script type="text/javascript"> $(".t_box").css({ height: (document.body.clientHeight / 346.07142857142857142857142857143) + 'rem', width: (document.body.clientWidth / 320) + 'rem' });    </script>
                 <div class="weekheadline">每时生产数据</div>
                 <%-- 使用ECharts生成周折线图--%>
                 <div id="mainhour" class="echart" style="width: 100%; height: 100%;"></div>
@@ -80,7 +80,7 @@
             </div>
 
             <div class="t_box">
-                 <script type="text/javascript"> $(".t_box").css({ height: (document.body.clientHeight / 346.07142857142857142857142857143) + 'rem', width: (document.body.clientWidth / 320) + 'rem' });    </script>
+                <script type="text/javascript"> $(".t_box").css({ height: (document.body.clientHeight / 346.07142857142857142857142857143) + 'rem', width: (document.body.clientWidth / 320) + 'rem' });    </script>
                 <div class="weekheadline">每月生产数据</div>
                 <%-- 使用ECharts生成周折线图--%>
                 <div id="mainmonth" class="echart" style="width: 100%; height: 100%;"></div>
@@ -94,7 +94,7 @@
                 <div id="mainabnormal" style="width: 50%; height: 4.5rem; float: left;"></div>
             </div>
             <div class="t_boxbig">
-                 <script type="text/javascript">  $(".t_boxbig").css({ height: (document.body.clientHeight / 228) + 'rem', width: (document.body.clientWidth / 282.35) + 'rem' });    </script>
+                <script type="text/javascript">  $(".t_boxbig").css({ height: (document.body.clientHeight / 228) + 'rem', width: (document.body.clientWidth / 282.35) + 'rem' });    </script>
                 <div class="t_Abnorma">
                     <table class="t_Abnorma">
                         <thead class="t_h_Abnorma">
@@ -117,8 +117,8 @@
                 //使用AJAX Post请求获取后端数据
                 numerical_Post();
                 //网页自适应
-                $(".t_box").css({ height: (document.body.clientHeight / 346.07142857142857142857142857143) + 'rem', width: (document.body.clientWidth / 320) + 'rem'});
-                $(".t_boxbig").css({ height: (document.body.clientHeight / 228) + 'rem', width: (document.body.clientWidth / 282.35) + 'rem'});
+                $(".t_box").css({ height: (document.body.clientHeight / 346.07142857142857142857142857143) + 'rem', width: (document.body.clientWidth / 320) + 'rem' });
+                $(".t_boxbig").css({ height: (document.body.clientHeight / 228) + 'rem', width: (document.body.clientWidth / 282.35) + 'rem' });
             }, 500);
             //定时刷新获取设备报警视图
             setInterval(function () {

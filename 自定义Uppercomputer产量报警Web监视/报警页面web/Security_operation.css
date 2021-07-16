@@ -159,10 +159,11 @@ html{
 }
 .mess_cage {
     position: relative;
-    top: -5%;
+    top: 15%;
     color: #ffffff;
-    font-size: 60%;
+    font-size: 25%;
     text-align: center;
+
 }
 .localize_title {
     color: #fff;

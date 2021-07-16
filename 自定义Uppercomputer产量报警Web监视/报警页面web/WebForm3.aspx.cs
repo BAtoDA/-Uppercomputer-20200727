@@ -99,10 +99,82 @@ namespace HTML布局学习.报警页面web
                     }
                     //判断是否有数据
                     if(RollAlarmTable.Count>1&&RollAlarmTable.Count>Rollndex)
-                    {                       
-                       Data = new JavaScriptSerializer().Serialize(RollAlarmTable[Rollndex]);
+                    {
+                        RollAlarmTable[Rollndex].ID = RollAlarmTable.Count - Rollndex;
+                        Data = new JavaScriptSerializer().Serialize(RollAlarmTable[Rollndex]);
                         Rollndex += 1;
                         return Data;
+                    }
+                    //判断采集软件是否掉线状态
+                    if(!Alarmpage.Gatherrun)
+                    {
+                        return new JavaScriptSerializer().Serialize(new WebFWAlarmTable()
+                        {
+                            ID = 0,
+                            事件关联ID = 99,
+                            处理完成时间 = "000",
+                            报警内容 = "数据采集软件离线中",
+                            报警时间 = DateTime.Now.ToString("f"),
+                            类型 = true,
+                            设备 = "内部",
+                            设备地址 = "Web服务器",
+                            设备_具体地址 = "Web"
+                        });
+                    }
+                    //如果SQL中不存在数据表示设备正常无异常--返回Bool值
+                    return "true";
+                }
+            }
+        }
+        /// <summary>
+        /// 当前报警锁
+        /// </summary>
+        static object Alarm1 = new object();
+        /// <summary>
+        /// 当前滚动报警表
+        /// </summary>
+        static List<Alarmhistories> RollAlarmTablehistory = new List<Alarmhistories>();
+        static int Rollndex1 = 0;
+        /// <summary>
+        /// 用于上传当前报警
+        /// </summary>
+        /// <returns></returns>
+        [WebMethod]
+        public static string PresentRollhistory()
+        {
+            lock (Alarm1)
+            {
+                string Data = string.Empty;
+                using (UppercomputerEntities2 db = new UppercomputerEntities2())
+                {
+                    if (Rollndex1 > RollAlarmTablehistory.Count || RollAlarmTablehistory.Count < 1)
+                    {
+                        RollAlarmTablehistory = db.Alarmhistory.ToList();
+                        Rollndex1 = 0;
+                    }
+                    //判断是否有数据
+                    if (RollAlarmTablehistory.Count > 1 && RollAlarmTablehistory.Count > Rollndex1)
+                    {
+                        RollAlarmTablehistory[Rollndex1].ID = RollAlarmTablehistory.Count - Rollndex1;
+                        Data = new JavaScriptSerializer().Serialize(RollAlarmTablehistory[Rollndex1]);
+                        Rollndex1 += 1;
+                        return Data;
+                    }
+                    //判断采集软件是否掉线状态
+                    if (!Alarmpage.Gatherrun)
+                    {
+                        return new JavaScriptSerializer().Serialize(new Alarmhistories()
+                        {
+                            ID = 0,
+                            事件关联ID = 99,
+                            处理完成时间 = "000",
+                            报警内容 = "数据采集软件离线中",
+                            报警时间 = DateTime.Now.ToString("f"),
+                            类型 = true,
+                            设备 = "内部",
+                            设备_具体地址 = "Web",
+                            设备_地址 = "Web"
+                        });
                     }
                     //如果SQL中不存在数据表示设备正常无异常--返回Bool值
                     return "true";
