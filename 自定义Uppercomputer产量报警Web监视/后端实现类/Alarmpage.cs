@@ -52,7 +52,8 @@ namespace HTML布局学习.后端实现类
                     using (UppercomputerEntities2 db = new UppercomputerEntities2())
                     {
                         var Data = db.WeboutputCollections.FirstOrDefault();
-                        return Data!=null ? (DateTime.Now - DateTime.Parse(Data.采集软件在线时间)).Minutes > 5 ? false : true : false;
+                        var DataTime= DateTime.Now - DateTime.Parse(Data.采集软件在线时间);                      
+                        return Data!=null ? (DateTime.Now - DateTime.Parse(Data.采集软件在线时间)).Minutes > 5 || DataTime.Days != 0 ||DataTime.Hours!=0? false : true : false;
                     }
                 }
             }
@@ -288,6 +289,19 @@ namespace HTML布局学习.后端实现类
             Weeksurface[6].Name = present.ToString("Y");
 
             return Weeksurface;
+        }
+        public static string Alarmcompletee()
+        {
+            List<object> tuples = new List<object>();
+            using (UppercomputerEntities2 db = new UppercomputerEntities2())
+            {
+                var data = db.Alarmhistory.ToList();
+                tuples.Add(new Tuple<List<Alarmchart>>(GetAlarmcharts(data, 7)));
+                tuples.Add(new Tuple<List<Alarmchart>>(MonthData(data)));
+                tuples.Add(new Tuple<List<AlarmDisposechart>>(GetAlarmDisposecharts(data, 7)));
+                tuples.Add(new Tuple<List<AlarmDisposechart>>(MonthDisposeData(data)));
+                return new JavaScriptSerializer().Serialize(tuples);
+            }
         }
 
     }

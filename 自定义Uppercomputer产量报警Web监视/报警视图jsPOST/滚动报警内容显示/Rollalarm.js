@@ -1,4 +1,5 @@
 ﻿var Index = 0;
+var valie = 0;
 //处理当前滚动报警
 function PresentRoll() {
     //AXAJ请求获取后端当前报警数据
@@ -25,7 +26,35 @@ function PresentRoll() {
                 }
                 else {
                     //有数据上传
-                    RollIndex(dataObj);
+                    //if (dataObj.ID > 2) {
+                    //    RollIndex(dataObj);
+                    //}
+                    //else {
+                    //遍历数据
+                    $.each(dataObj, function (i, item) {
+                        var presenterr = document.getElementById('presenttitle' + (i + 1));
+                        var presentlevel = document.getElementById('presentlevel' + (i + 1));
+                        var presentTime = document.getElementById('presentTime' + (i + 1));
+                        var presentValue = document.getElementById('presentValue' + (i + 1));
+                        presenterr.innerHTML = item.设备地址 + item.设备_具体地址;
+                        if (item.类型) {
+                            presentlevel.innerHTML = "位触发"
+                        }
+                        else {
+                            presentlevel.innerHTML = "字触发"
+                        }
+                        presentTime.innerHTML = item.报警时间;
+                        presentValue.innerHTML = item.报警内容;
+                        var presenterr1 = document.getElementById('presenterr' + (i+1));
+                        presenterr1.style.visibility = "visible";//显示
+                        valie = dataObj.length;
+                    })
+                    //如果长度不足4隐藏数据
+                    for (var i = valie; i < 4; i++) {
+                        var presenterr1 = document.getElementById('presenterr' + (i+1));
+                        presenterr1.style.visibility = "hidden";//隐藏该项
+                    }
+                   // }
                 }
 
             }
@@ -79,7 +108,7 @@ function RollIndex(Data) {
             presentValue.innerHTML = Data.报警内容;
             //var presenterr1 = document.getElementById('presenterr3');
             //presenterr1.style.visibility = "visible";//显示
-            if (Data.ID > 1) {
+            if (Data.ID >1) {
                 $(".message_scroll_box1").animate({ marginTop: 76 }, 1200,
                     function () {
                         var presenterr1 = document.getElementById('presenterr3');

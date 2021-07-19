@@ -18,7 +18,30 @@ namespace HTML布局学习.报警页面web
         {
             Alarmpage alarmpage = new Alarmpage();
         }
+        /// <summary>
+        /// 7天 本月报警次数锁
+        /// </summary>
+        static object la = new object();
+        /// <summary>
+        /// 上传报警次数与报警时长表
+        /// </summary>
+        /// <returns></returns>
+        [WebMethod]
+        public static string Alarmcomplete()
+        {
+            lock (la)
+            {
+                return Alarmpage.Alarmcompletee();
+            }
+        }
+        /// <summary>
+        /// 7天 本月报警次数锁
+        /// </summary>
         static object lex = new object();
+        /// <summary>
+        /// 上次7天 与本月报警次数
+        /// </summary>
+        /// <returns></returns>
         [WebMethod]
         public static string Alarmnumber()
         {
@@ -37,9 +60,13 @@ namespace HTML布局学习.报警页面web
         {
             lock (lq)
             {
-                return new JavaScriptSerializer().Serialize(Alarmpage.webpoliceCollection !=null ? Alarmpage.webpoliceCollection : new EF实体模型.WebpoliceCollection() { ID = 0, week处理用时 = "00:00:00", week报警次数 = 0, 今日处理用时 = "00:00:00", 今日报警次数 = 0, 本月处理用时 = "00:00:00", 本月报警次数 = 0, 采集软件在线时间 = "0" });
+                var data = Alarmpage.Gatherrun;
+                if(Alarmpage.Gatherrun==false)
+                {
+                    return new JavaScriptSerializer().Serialize(new EF实体模型.WebpoliceCollection() { ID = 0, week处理用时 = "00:00:00", week报警次数 = 0, 今日处理用时 = "00:00:00", 今日报警次数 = 0, 本月处理用时 = "00:00:00", 本月报警次数 = 0, 采集软件在线时间 = "0" });
+                }
+                return new JavaScriptSerializer().Serialize(Alarmpage.webpoliceCollection != null  ? Alarmpage.webpoliceCollection : new EF实体模型.WebpoliceCollection() { ID = 0, week处理用时 = "00:00:00", week报警次数 = 0, 今日处理用时 = "00:00:00", 今日报警次数 = 0, 本月处理用时 = "00:00:00", 本月报警次数 = 0, 采集软件在线时间 = "0" });
             }
-
         }
         static object dispose = new object();
         /// <summary>
@@ -92,16 +119,16 @@ namespace HTML布局学习.报警页面web
                 string Data = string.Empty;
                 using (UppercomputerEntities2 db = new UppercomputerEntities2())
                 {
-                    if (Rollndex > RollAlarmTable.Count||RollAlarmTable.Count<1)
+                    if (Rollndex*4 >= RollAlarmTable.Count||RollAlarmTable.Count<1)
                     {
                         RollAlarmTable = db.WebFWAlarmTables.ToList();
                         Rollndex = 0;
                     }
                     //判断是否有数据
-                    if(RollAlarmTable.Count>1&&RollAlarmTable.Count>Rollndex)
+                    if(RollAlarmTable.Count>0&& Alarmpage.Gatherrun&& Rollndex*4 < RollAlarmTable.Count  )
                     {
-                        RollAlarmTable[Rollndex].ID = RollAlarmTable.Count - Rollndex;
-                        Data = new JavaScriptSerializer().Serialize(RollAlarmTable[Rollndex]);
+                        RollAlarmTable[Rollndex].ID = RollAlarmTable.Count - Rollndex*4;
+                        Data = new JavaScriptSerializer().Serialize(RollAlarmTable.Skip(Rollndex * 4).Take(4).ToList());
                         Rollndex += 1;
                         return Data;
                     }
