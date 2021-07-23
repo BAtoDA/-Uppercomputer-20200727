@@ -25,36 +25,59 @@ function PresentRoll() {
                     presenterr3.style.visibility = "hidden";//隐藏该项
                 }
                 else {
-                    //有数据上传
-                    //if (dataObj.ID > 2) {
-                    //    RollIndex(dataObj);
-                    //}
-                    //else {
-                    //遍历数据
-                    $.each(dataObj, function (i, item) {
-                        var presenterr = document.getElementById('presenttitle' + (i + 1));
-                        var presentlevel = document.getElementById('presentlevel' + (i + 1));
-                        var presentTime = document.getElementById('presentTime' + (i + 1));
-                        var presentValue = document.getElementById('presentValue' + (i + 1));
-                        presenterr.innerHTML = item.设备地址 + item.设备_具体地址;
-                        if (item.类型) {
-                            presentlevel.innerHTML = "位触发"
+                    if (dataObj.length > 0) {
+
+                        //遍历数据
+                        $.each(dataObj, function (i, item) {
+                            var presenterr = document.getElementById('presenttitle' + (i + 1));
+                            var presentlevel = document.getElementById('presentlevel' + (i + 1));
+                            var presentTime = document.getElementById('presentTime' + (i + 1));
+                            var presentValue = document.getElementById('presentValue' + (i + 1));
+                            presenterr.innerHTML = item.设备地址 + item.设备_具体地址;
+                            if (!item.类型) {
+                                presentlevel.innerHTML = "位触发";
+                            }
+                            else {
+                                presentlevel.innerHTML = "字触发";
+                            }
+                            presentTime.innerHTML = item.报警时间;
+                            presentValue.innerHTML = item.报警内容;
+                            var presenterr1 = document.getElementById('presenterr' + (i + 1));
+                            presenterr1.style.visibility = "visible";//显示
+                            valie = dataObj.length;
+                        })
+                        //如果长度不足4隐藏数据
+                        for (var i = valie; i < 4; i++) {
+                            var presenterr1 = document.getElementById('presenterr' + (i + 1));
+                            presenterr1.style.visibility = "hidden";//隐藏该项
+                        }
+                    }
+                    else {
+                        //表明后端返回了错误信息
+                        var presenterr = document.getElementById('presenttitle1');
+                        var presentlevel = document.getElementById('presentlevel1');
+                        var presentTime = document.getElementById('presentTime1');
+                        var presentValue = document.getElementById('presentValue1');
+                        presenterr.innerHTML = dataObj.设备地址 + dataObj.设备_具体地址;
+                        if (!dataObj.类型) {
+                            presentlevel.innerHTML = "位触发";
                         }
                         else {
-                            presentlevel.innerHTML = "字触发"
+                            presentlevel.innerHTML = "字触发";
                         }
-                        presentTime.innerHTML = item.报警时间;
-                        presentValue.innerHTML = item.报警内容;
-                        var presenterr1 = document.getElementById('presenterr' + (i+1));
+                        presentTime.innerHTML = dataObj.报警时间;
+                        presentValue.innerHTML = dataObj.报警内容;
+                        var presenterr1 = document.getElementById('presenterr1');
                         presenterr1.style.visibility = "visible";//显示
-                        valie = dataObj.length;
-                    })
-                    //如果长度不足4隐藏数据
-                    for (var i = valie; i < 4; i++) {
-                        var presenterr1 = document.getElementById('presenterr' + (i+1));
-                        presenterr1.style.visibility = "hidden";//隐藏该项
+
+
+                        var presenterr2 = document.getElementById('presenterr2');
+                        presenterr2.style.visibility = "hidden";//隐藏该项
+                        var presenterr3 = document.getElementById('presenterr3');
+                        presenterr3.style.visibility = "hidden";//隐藏该项
+                        var presenterr3 = document.getElementById('presenterr4');
+                        presenterr3.style.visibility = "hidden";//隐藏该项
                     }
-                   // }
                 }
 
             }
@@ -70,11 +93,11 @@ function RollIndex(Data) {
             var presentTime = document.getElementById('presentTime4');
             var presentValue = document.getElementById('presentValue4');
             presenterr.innerHTML = Data.设备地址 + Data.设备_具体地址;
-            if (Data.类型) {
-                presentlevel.innerHTML = "位触发"
+            if (!Data.类型) {
+                presentlevel.innerHTML = "位触发";
             }
             else {
-                presentlevel.innerHTML = "字触发"
+                presentlevel.innerHTML = "字触发";
             }
             presentTime.innerHTML = Data.报警时间;
             presentValue.innerHTML = Data.报警内容;
@@ -98,11 +121,11 @@ function RollIndex(Data) {
             var presentTime = document.getElementById('presentTime3');
             var presentValue = document.getElementById('presentValue3');
             presenterr.innerHTML = Data.设备地址 + Data.设备_具体地址;
-            if (Data.类型) {
-                presentlevel.innerHTML = "位触发"
+            if (!Data.类型) {
+                presentlevel.innerHTML = "位触发";
             }
             else {
-                presentlevel.innerHTML = "字触发"
+                presentlevel.innerHTML = "字触发";
             }
             presentTime.innerHTML = Data.报警时间;
             presentValue.innerHTML = Data.报警内容;
@@ -126,11 +149,11 @@ function RollIndex(Data) {
             var presentTime = document.getElementById('presentTime2');
             var presentValue = document.getElementById('presentValue2');
             presenterr.innerHTML = Data.设备地址 + Data.设备_具体地址;
-            if (Data.类型) {
-                presentlevel.innerHTML = "位触发"
+            if (!Data.类型) {
+                presentlevel.innerHTML = "位触发";
             }
             else {
-                presentlevel.innerHTML = "字触发"
+                presentlevel.innerHTML = "字触发";
             }
             presentTime.innerHTML = Data.报警时间;
             presentValue.innerHTML = Data.报警内容;
@@ -154,11 +177,11 @@ function RollIndex(Data) {
             var presentTime = document.getElementById('presentTime1');
             var presentValue = document.getElementById('presentValue1');
             presenterr.innerHTML = Data.设备地址 + Data.设备_具体地址;
-            if (Data.类型) {
-                presentlevel.innerHTML = "位触发"
+            if (!Data.类型) {
+                presentlevel.innerHTML = "位触发";
             }
             else {
-                presentlevel.innerHTML = "字触发"
+                presentlevel.innerHTML = "字触发";
             }
             presentTime.innerHTML = Data.报警时间;
             presentValue.innerHTML = Data.报警内容;
@@ -213,6 +236,7 @@ function TimeControl() {
 
 //报警历史滚动报警条
 var Index1 = 0;
+var valie1 = 0;
 //处理当前滚动报警
 function PresentRollhistory() {
     //AXAJ请求获取后端当前报警数据
@@ -239,7 +263,35 @@ function PresentRollhistory() {
                 }
                 else {
                     //有数据上传
-                    RollIndexhistory(dataObj);
+                    if (dataObj.length == undefined) {
+                        RollIndexhistory(dataObj);
+                    }
+                    else {
+                        //遍历数据
+                        $.each(dataObj, function (i, item) {
+                            var presenterr = document.getElementById('presenttitle1' + (i + 1));
+                            var presentlevel = document.getElementById('presentlevel1' + (i + 1));
+                            var presentTime = document.getElementById('presentTime1' + (i + 1));
+                            var presentValue = document.getElementById('presentValue1' + (i + 1));
+                            presenterr.innerHTML = item.设备地址 + item.设备_具体地址;
+                            if (!item.类型) {
+                                presentlevel.innerHTML = "位触发";
+                            }
+                            else {
+                                presentlevel.innerHTML = "字触发";
+                            }
+                            presentTime.innerHTML = item.报警时间;
+                            presentValue.innerHTML = item.报警内容;
+                            var presenterr1 = document.getElementById('presenterr1' + (i + 1));
+                            presenterr1.style.visibility = "visible";//显示
+                            valie1 = dataObj.length;
+                        })
+                        //如果长度不足4隐藏数据
+                        for (var i = valie1; i < 4; i++) {
+                            var presenterr1 = document.getElementById('presenterr1' + (i + 1));
+                            presenterr1.style.visibility = "hidden";//隐藏该项
+                        }
+                    }
                 }
 
             }
@@ -254,11 +306,11 @@ function RollIndexhistory(Data) {
             var presentTime = document.getElementById('presentTime13');
             var presentValue = document.getElementById('presentValue13');
             presenterr.innerHTML = Data.设备_地址 + Data.设备_具体地址;
-            if (Data.类型) {
-                presentlevel.innerHTML = "位触发"
+            if (!Data.类型) {
+                presentlevel.innerHTML = "位触发";
             }
             else {
-                presentlevel.innerHTML = "字触发"
+                presentlevel.innerHTML = "字触发";
             }
             presentTime.innerHTML = Data.报警时间;
             presentValue.innerHTML = Data.报警内容;
@@ -281,11 +333,11 @@ function RollIndexhistory(Data) {
             var presentTime = document.getElementById('presentTime12');
             var presentValue = document.getElementById('presentValue12');
             presenterr.innerHTML = Data.设备_地址 + Data.设备_具体地址;
-            if (Data.类型) {
-                presentlevel.innerHTML = "位触发"
+            if (!Data.类型) {
+                presentlevel.innerHTML = "位触发";
             }
             else {
-                presentlevel.innerHTML = "字触发"
+                presentlevel.innerHTML = "字触发";
             }
             presentTime.innerHTML = Data.报警时间;
             presentValue.innerHTML = Data.报警内容;
@@ -311,11 +363,11 @@ function RollIndexhistory(Data) {
             var presentTime = document.getElementById('presentTime11');
             var presentValue = document.getElementById('presentValue11');
             presenterr.innerHTML = Data.设备_地址 + Data.设备_具体地址;
-            if (Data.类型) {
-                presentlevel.innerHTML = "位触发"
+            if (!Data.类型) {
+                presentlevel.innerHTML = "位触发";
             }
             else {
-                presentlevel.innerHTML = "字触发"
+                presentlevel.innerHTML = "字触发";
             }
             presentTime.innerHTML = Data.报警时间;
             presentValue.innerHTML = Data.报警内容;
@@ -341,11 +393,11 @@ function RollIndexhistory(Data) {
             var presentTime = document.getElementById('presentTime10');
             var presentValue = document.getElementById('presentValue10');
             presenterr.innerHTML = Data.设备_地址 + Data.设备_具体地址;
-            if (Data.类型) {
-                presentlevel.innerHTML = "位触发"
+            if (!Data.类型) {
+                presentlevel.innerHTML = "位触发";
             }
             else {
-                presentlevel.innerHTML = "字触发"
+                presentlevel.innerHTML = "字触发";
             }
             presentTime.innerHTML = Data.报警时间;
             presentValue.innerHTML = Data.报警内容;

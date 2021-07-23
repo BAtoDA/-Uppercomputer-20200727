@@ -94,25 +94,25 @@ namespace 自定义Uppercomputer_20200727
         private void timer1_Tick(object sender, EventArgs e)
         {
             this.timer1.Stop();
-            XmlClick();
             LogUtils.deleteLogFile(@Application.StartupPath);//检查是否有超过2个月的日志 进行删除操作
             //LogUtils日志
             LogUtils.debugWrite(DateTime.Now+"  运行了"+Application.ProductName+"  版本号："+ System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString());
             timer1.Stop();
             //读取数据库文件
             BindingProcessMsg("正在读取XML文件", 10);
-            XML xML = new XML(@Application.StartupPath);
-            var Valiu = xML.Read_XML();//读取配置文件
-            BindingProcessMsg("正在读取数据库配置文件", 15);
-            if (!Valiu.IsNull() && Valiu.Count > 0 && Valiu[0].IsNull() != true)
-            {
-                SQLname = Valiu[0].Item1;
-                SQLdatabase = Valiu[0].Item2;
-                SQLuser = Valiu[0].Item3;
-                SQLpassword = Valiu[0].Item4;
-            }
+            //XML xML = new XML(@Application.StartupPath);
+            //var Valiu = xML.Read_XML();//读取配置文件
+            //BindingProcessMsg("正在读取数据库配置文件", 15);
+            //if (!Valiu.IsNull() && Valiu.Count > 0 && Valiu[0].IsNull() != true)
+            //{
+            //    SQLname = Valiu[0].Item1;
+            //    SQLdatabase = Valiu[0].Item2;
+            //    SQLuser = Valiu[0].Item3;
+            //    SQLpassword = Valiu[0].Item4;
+            //}
 
             BindingProcessMsg("正在读取正在更改数据库配置", 30);
+            XmlClick();
             //开辟设置线程池大小
             System.Threading.ThreadPool.SetMinThreads(64, 64);
             System.Threading.ThreadPool.SetMaxThreads(200, 200);

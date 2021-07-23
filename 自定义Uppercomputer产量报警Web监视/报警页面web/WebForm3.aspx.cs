@@ -163,7 +163,7 @@ namespace HTML布局学习.报警页面web
         static List<Alarmhistories> RollAlarmTablehistory = new List<Alarmhistories>();
         static int Rollndex1 = 0;
         /// <summary>
-        /// 用于上传当前报警
+        /// 用于上传历史报警
         /// </summary>
         /// <returns></returns>
         [WebMethod]
@@ -174,34 +174,31 @@ namespace HTML布局学习.报警页面web
                 string Data = string.Empty;
                 using (UppercomputerEntities2 db = new UppercomputerEntities2())
                 {
-                    if (Rollndex1 > RollAlarmTablehistory.Count || RollAlarmTablehistory.Count < 1)
+                    if (Rollndex1 >= RollAlarmTablehistory.Count || RollAlarmTablehistory.Count < 1)
                     {
                         RollAlarmTablehistory = db.Alarmhistory.ToList();
                         Rollndex1 = 0;
                     }
                     //判断是否有数据
-                    if (RollAlarmTablehistory.Count > 1 && RollAlarmTablehistory.Count > Rollndex1)
+                    if (RollAlarmTablehistory.Count > 4)
                     {
-                        RollAlarmTablehistory[Rollndex1].ID = RollAlarmTablehistory.Count - Rollndex1;
-                        Data = new JavaScriptSerializer().Serialize(RollAlarmTablehistory[Rollndex1]);
-                        Rollndex1 += 1;
-                        return Data;
-                    }
-                    //判断采集软件是否掉线状态
-                    if (!Alarmpage.Gatherrun)
-                    {
-                        return new JavaScriptSerializer().Serialize(new Alarmhistories()
+                        if (RollAlarmTablehistory.Count > 0 && Rollndex1 < RollAlarmTablehistory.Count)
                         {
-                            ID = 0,
-                            事件关联ID = 99,
-                            处理完成时间 = "000",
-                            报警内容 = "数据采集软件离线中",
-                            报警时间 = DateTime.Now.ToString("f"),
-                            类型 = true,
-                            设备 = "内部",
-                            设备_具体地址 = "Web",
-                            设备_地址 = "Web"
-                        });
+                            RollAlarmTablehistory[Rollndex1].ID = RollAlarmTablehistory.Count - Rollndex1;
+                            Data = new JavaScriptSerializer().Serialize(RollAlarmTablehistory[Rollndex1]);
+                            Rollndex1 += 1;
+                            return Data;
+                        }
+                    }
+                    else
+                    {
+                        if(RollAlarmTablehistory.Count > 0 && Rollndex1*4 < RollAlarmTablehistory.Count)
+                        {
+                            RollAlarmTablehistory[Rollndex1].ID = RollAlarmTablehistory.Count - Rollndex1*4;
+                            Data = new JavaScriptSerializer().Serialize(RollAlarmTablehistory.Skip(Rollndex1*4).Take(4).ToList());
+                            Rollndex1 += 1;
+                            return Data;
+                        }
                     }
                     //如果SQL中不存在数据表示设备正常无异常--返回Bool值
                     return "true";

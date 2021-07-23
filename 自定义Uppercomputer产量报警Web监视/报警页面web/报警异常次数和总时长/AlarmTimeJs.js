@@ -86,48 +86,50 @@ function AlarmEchartsLoad() {
                 });
             }
         });
-        //从后端读取数据
-        //定时刷新数据
-        setInterval(function () {
-            $.ajax({//定时Post请求访问后端获取周数据
-                type: "Post",
-                url: "WebForm3.aspx/Alarmcomplete",
-                contentType: "application/json;charset=utf - 8",
-                dataType: "json",
-                success:
-                    function (data) {
-                        //反序列化
-                        var dataObj = eval("(" + data.d + ")");
-                        var le1 = dataObj[0].Item1;
-                        var le2 = dataObj[1].Item1;
-                        var le3 = dataObj[2].Item1;
-                        var le4 = dataObj[3].Item1;
-                        //获取图表之前绑定的数据
-                        var data = option.dataset.source;
-                        //填充默认名称：
-                        data[0][0] = 'product';
-                        data[1][0] = 'Milk Tea';
-                        data[2][0] = 'Matcha Latte';
-                        data[3][0] = 'Cheese Cocoa';
-                        data[4][0] = 'Walnut Brownie';
-                        //填充数据
-                        for (var i = 1; i < le4.length; i++) {
-                            data[0][i] = le4[i - 1].Name;
-                            data[1][i] = le1[i - 1].Data;
-                            data[2][i] = le2[i - 1].Data;
-                            data[3][i] = le3[i - 1].Data;
-                            data[4][i] = le4[i - 1].Data;
-                        }                     
-                        option && myChart.setOption(option);
-                    }
-
-            });
-            //option && myChart.setOption(option);
-        }, 1000);
         myChart.setOption(option);
 
     });
-   
+    //从后端读取数据
+    //定时刷新数据
+    setInterval(function () {
+        $.ajax({//定时Post请求访问后端获取周数据
+            type: "Post",
+            url: "WebForm3.aspx/Alarmcomplete",
+            contentType: "application/json;charset=utf - 8",
+            dataType: "json",
+            success:
+                function (data) {
+                    //反序列化
+                    var dataObj = eval("(" + data.d + ")");
+                    var le1 = dataObj[0].Item1;
+                    var le2 = dataObj[1].Item1;
+                    var le3 = dataObj[2].Item1;
+                    var le4 = dataObj[3].Item1;
+                    //获取图表之前绑定的数据
+                    var data = option.dataset.source;
+                    //填充默认名称：
+                    option.dataset.source[0][0] = 'product';
+                    option.dataset.source[1][0] = 'Milk Tea';
+                    option.dataset.source[2][0] = 'Matcha Latte';
+                    option.dataset.source[3][0] = 'Cheese Cocoa';
+                    option.dataset.source[4][0] = 'Walnut Brownie';
+                    //填充数据
+                    for (var i = 1; i < le4.length; i++) {
+                        option.dataset.source[0][i] = le4[i - 1].Name;
+                        option.dataset.source[1][i] = le4[i - 1].Data;
+                        option.dataset.source[2][i] = le2[i - 1].Data;
+                        option.dataset.source[3][i] = le3[i - 1].Data;
+                        option.dataset.source[4][i] = le4[i - 1].Data;
+                    }
+                    //圆形图属性
+                    var ww = option.series[4];
+                    ww.encode.value = le4[0].Name;
+                    ww.encode.tooltip = le4[0].Name;
+                    myChart.setOption(option, true);
+
+                }
+        });
+    }, 1000);
     option && myChart.setOption(option);
 
 }
