@@ -36,11 +36,13 @@ namespace 自定义Uppercomputer_20200727.控制主页面模板
             Load_Add(parameter_Query_Add.Button_Parameter_Query<GroupBox_Class>(From_Name, "FORM"));
         
         }
-        private async void Conrolt_add(string From_Name, ControlCollection control, List<ImageList> imageLists_1, Form form)
+        private  void Conrolt_add(string From_Name, ControlCollection control, List<ImageList> imageLists_1, Form form)
         {
             Button_EFbase parameter_Query_Add = new Button_EFbase();//创建EF查询对象
             Form_event.BeginInvoke((EventHandler)delegate
             {
+                //    await Task.Run(() =>
+                //{
                 Load_Add(parameter_Query_Add.Button_Parameter_Query<Button_Class>(From_Name, "FORM"));
                 Load_Add(parameter_Query_Add.Button_Parameter_Query<picture_Class>(From_Name, "FORM"));
                 Load_Add(parameter_Query_Add.Button_Parameter_Query<label_Class>(From_Name, "FORM"));

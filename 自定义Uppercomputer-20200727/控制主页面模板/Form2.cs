@@ -618,7 +618,7 @@ namespace 自定义Uppercomputer_20200727
         private const int AW_BLEND = 0x80000;//使用淡入淡出效果
         #endregion
 
-        private  void Form2_Load(object sender, EventArgs e)//加载窗口
+        private  async void Form2_Load(object sender, EventArgs e)//加载窗口
         {
             if (!GetPidByProcess()) return;
             //判断主窗口是否在运行
@@ -626,14 +626,14 @@ namespace 自定义Uppercomputer_20200727
             ToolStripManager.Renderer = new HZH_Controls.Controls.ProfessionalToolStripRendererEx();
             Form2_Leave(this, new EventArgs());
             UI_Schedule("开始加载控件", 30, true);
-            NewMethod();
+            await NewMethod();
             //测试代码
             this.timer2.Enabled = true;
             this.timer2.Start();
             this.timer3.Enabled = true;
             this.timer3.Start();
-            timer3.Interval = 100;
-            asc.RenewControlRect(this);
+            timer3.Interval = 10;
+            //asc.RenewControlRect(this);
             //传递PLC参数到宏指令
             if (!CSEngineTest.PLC.Mitsubishi_axActUtlType.IsNull()) return;
             //LogUtils日志
@@ -648,15 +648,19 @@ namespace 自定义Uppercomputer_20200727
             CSEngineTest.PLC.OmronUdp = new OmronFinsUDP();//实例化接口;
         }
 
-        private async void NewMethod()
+        private async Task NewMethod()
         {
             await Task.Run(() =>
             {
                 From_Load_Add.imageLists_1 = new List<ImageList>() { this.imageList1, this.imageList2, this.imageList3 };
                 using (dynamic load_Add = new From_Load_Add(this.Name, this.Controls, new List<ImageList>() { this.imageList1, this.imageList2, this.imageList3 }, this)) ;//添加报警条
                 using (dynamic add = new From_Load_Add(this.Name, this.Controls, new List<ImageList>() { this.imageList1, this.imageList2, this.imageList3 }, this, true)) ;//添加普通文本
+                asc.RenewControlRect(this);
+               // UI_Schedule("开始正在显示UI", 90, true);
+                return 1;
+
             });
-            UI_Schedule("开始正在显示UI", 90, true);
+          
         }
 
         private void Form2_Shown(object sender, EventArgs e)//添加控件
@@ -674,6 +678,7 @@ namespace 自定义Uppercomputer_20200727
             WinMonitoring.RegisterHotKey(Handle, 103, WinMonitoring.KeyModifiers.Ctrl, Keys.C);
 
             WinMonitoring.RegisterHotKey(Handle, 104, WinMonitoring.KeyModifiers.Ctrl, Keys.V);
+            UI_Schedule("显示完成 后台任务正在运行中", 100, false);
         }
 
         private void toolStripMenuItem2_Click(object sender, EventArgs e)//调用SQL数据查询工具
@@ -800,8 +805,6 @@ namespace 自定义Uppercomputer_20200727
                 i.Enabled = true;
                 i.SendToBack();
             }
-            UI_Schedule("加载完成", 100, true);
-            Thread.Sleep(50);
             UI_Schedule("加载完成", 100, false);
             IsfunctionKey = true;
             this.timer4.Enabled = true;

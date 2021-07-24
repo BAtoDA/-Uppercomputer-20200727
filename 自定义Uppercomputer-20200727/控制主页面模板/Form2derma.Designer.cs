@@ -1020,6 +1020,7 @@ namespace 自定义Uppercomputer_20200727.控制主页面模板
             // 
             // timer4
             // 
+            this.timer4.Interval = 10;
             this.timer4.Tick += new System.EventHandler(this.timer4_Tick);
             // 
             // plCreconnectionTime1

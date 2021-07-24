@@ -21,6 +21,8 @@ using 自定义Uppercomputer_20200727.控件重做.复制粘贴接口;
 using 自定义Uppercomputer_20200727.控件重做.按钮类与宏指令通用类;
 using 自定义Uppercomputer_20200727.控件重做.控件类基;
 using 自定义Uppercomputer_20200727.控件重做.控件类基.按钮__TO__PLC方法;
+using 自定义Uppercomputer_20200727.控件重做.控件安全对象池;
+using System.Diagnostics;
 
 namespace 自定义Uppercomputer_20200727.控件重做
 {
@@ -80,10 +82,36 @@ namespace 自定义Uppercomputer_20200727.控件重做
                 Button_EFbase button_EF = new Button_EFbase();//实例化EF
                 Button_Class = button_EF.Button_Parameter_Query<Button_Class>(this.Parent + "-" + this.Name);//查询控件参数
                 if (Form2.edit_mode || Button_Class.位指示灯.Trim() == "1") return;
-                if (Button_Class.读写不同地址_ON_OFF == 0)
-                    button_PLC.plc(Button_Class.读写设备.Trim(), Button_Class.操作模式.Trim(), Button_Class.读写设备_地址.Trim(),Button_Class.读写设备_地址_具体地址.Trim(), Button_Class.读写不同地址_ON_OFF,Button_Class.写设备_地址_复选.Trim(),Button_Class.写设备_地址_具体地址_复选.Trim());//选择相应PLC 进行写入
-                else
-                    button_PLC.plc(Button_Class.写设备_复选.Trim(), Button_Class.操作模式.Trim(), Button_Class.读写设备_地址.Trim(), Button_Class.读写设备_地址_具体地址.Trim(), Button_Class.读写不同地址_ON_OFF, Button_Class.写设备_地址_复选.Trim(), Button_Class.写设备_地址_具体地址_复选.Trim());//选择相应PLC 进行写入
+                //向对象池申请 
+                var Poss= ObjectPool<Tuple<Stopwatch, System.Windows.Forms.Timer>>.GetObject();
+                //开始测量定时
+                Poss.Item1.Start();
+                //获取控件鼠标松开事件
+                this.MouseUp += ((contr,eq) =>
+                {
+                      Poss.Item1.Stop();
+                });
+                //开始定时处理委托任务
+                Poss.Item2.Enabled = true;
+                Poss.Item2.Interval = Convert.ToInt32(Button_Class.操作安全时间);
+                Poss.Item2.Start();
+                //判断是否到达安全范围
+                Poss.Item2.Tick += ((tick,er) =>
+                {
+                      Poss.Item2.Stop();
+                      Poss.Item1.Stop();
+                      if (Poss.Item1.Elapsed.TotalMilliseconds >= Convert.ToInt32(Button_Class.操作安全时间))
+                      {
+                          if (Button_Class.读写不同地址_ON_OFF == 0)
+                              button_PLC.plc(Button_Class.读写设备.Trim(), Button_Class.操作模式.Trim(), Button_Class.读写设备_地址.Trim(), Button_Class.读写设备_地址_具体地址.Trim(), Button_Class.读写不同地址_ON_OFF, Button_Class.写设备_地址_复选.Trim(), Button_Class.写设备_地址_具体地址_复选.Trim());//选择相应PLC 进行写入
+                          else
+                              button_PLC.plc(Button_Class.写设备_复选.Trim(), Button_Class.操作模式.Trim(), Button_Class.读写设备_地址.Trim(), Button_Class.读写设备_地址_具体地址.Trim(), Button_Class.读写不同地址_ON_OFF, Button_Class.写设备_地址_复选.Trim(), Button_Class.写设备_地址_具体地址_复选.Trim());//选择相应PLC 进行写入
+                      }
+                      //处理完成归还对象
+                      Poss.Item2.Dispose();
+                      ObjectPool<Tuple<Stopwatch, System.Windows.Forms.Timer>>.PutObject(new Tuple<Stopwatch, System.Windows.Forms.Timer>(new Stopwatch(), new System.Windows.Forms.Timer()));
+                });
+             
             });
         }
         /// <方法重写当触发双击>

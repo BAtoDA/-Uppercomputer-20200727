@@ -797,7 +797,7 @@
             // 
             // timer3
             // 
-            this.timer3.Interval = 1000;
+            this.timer3.Interval = 500;
             this.timer3.Tick += new System.EventHandler(this.timer3_Tick);
             // 
             // imageList2
@@ -1265,6 +1265,7 @@
             // 
             // timer4
             // 
+            this.timer4.Interval = 10;
             this.timer4.Tick += new System.EventHandler(this.timer4_Tick);
             // 
             // userControl11

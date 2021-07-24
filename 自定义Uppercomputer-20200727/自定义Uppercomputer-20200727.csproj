@@ -609,6 +609,10 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="控件重做\按钮类与宏指令通用类\numerical_public .cs" />
+    <Compile Include="控件重做\控件安全对象池\ObjectPool.cs" />
+    <Compile Include="控件重做\控件安全对象池\ControlTime.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="控件重做\控件对齐实现\Align_Control.cs" />
     <Compile Include="控件重做\控件移动改变大小实现\Canvas.cs">
       <SubType>UserControl</SubType>

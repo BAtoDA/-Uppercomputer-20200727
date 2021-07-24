@@ -22,6 +22,7 @@ using 自定义Uppercomputer_20200727.控件重做;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using 自定义Uppercomputer_20200727.EF实体模型.EFtoSQL操作类重写;
+using 自定义Uppercomputer_20200727.控件重做.控件安全对象池;
 
 namespace 自定义Uppercomputer_20200727
 {
@@ -96,7 +97,7 @@ namespace 自定义Uppercomputer_20200727
             this.timer1.Stop();
             LogUtils.deleteLogFile(@Application.StartupPath);//检查是否有超过2个月的日志 进行删除操作
             //LogUtils日志
-            LogUtils.debugWrite(DateTime.Now+"  运行了"+Application.ProductName+"  版本号："+ System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString());
+            LogUtils.debugWrite(DateTime.Now + "  运行了" + Application.ProductName + "  版本号：" + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString());
             timer1.Stop();
             //读取数据库文件
             BindingProcessMsg("正在读取XML文件", 10);
@@ -116,8 +117,16 @@ namespace 自定义Uppercomputer_20200727
             //开辟设置线程池大小
             System.Threading.ThreadPool.SetMinThreads(64, 64);
             System.Threading.ThreadPool.SetMaxThreads(200, 200);
+            //设置对象池大小
+            Func<Tuple<Stopwatch, System.Windows.Forms.Timer>> func = new Func<Tuple<Stopwatch, System.Windows.Forms.Timer>>(() =>
+          {
+              return new Tuple<Stopwatch, System.Windows.Forms.Timer>(new Stopwatch(), new System.Windows.Forms.Timer());
+          });
+            ObjectPool<Tuple<Stopwatch, System.Windows.Forms.Timer>> objectPool = new ObjectPool<Tuple<Stopwatch, System.Windows.Forms.Timer>>(
+     5, func);
             _ = new Homepag_class(this);
             BindingProcessMsg("正在设置线程池配置", 60);
+
             System.Windows.Forms.Timer timer = new System.Windows.Forms.Timer();
             timer.Interval = 200;
             timer.Tick += ((object sende1r, EventArgs e1) =>
