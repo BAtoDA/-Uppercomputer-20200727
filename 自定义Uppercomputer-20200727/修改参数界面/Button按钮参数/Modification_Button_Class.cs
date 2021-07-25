@@ -127,9 +127,9 @@ namespace 自定义Uppercomputer_20200727.修改参数界面
         private void SkinComboBox_safety(ref SkinComboBox skinComboBox)//安全控制功能--添加时间
         {
             skinComboBox.Items.Clear();//清除选项
-            for(int i=10;i<101;i++)
+            for(int i=10;i<1001;i++)
             {
-                skinComboBox.Items.Add(i*10);//添加选项
+                skinComboBox.Items.Add(i*1);//添加选项
             }
             skinComboBox.SelectedIndex = 0;
             skinComboBox.SelectedItem = 0;

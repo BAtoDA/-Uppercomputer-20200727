@@ -237,6 +237,16 @@ namespace 自定义Uppercomputer_20200727.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
+        internal static System.Drawing.Bitmap favicon {
+            get {
+                object obj = ResourceManager.GetObject("favicon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
         internal static System.Drawing.Bitmap h1 {
             get {
                 object obj = ResourceManager.GetObject("h1", resourceCulture);
@@ -360,6 +370,36 @@ namespace 自定义Uppercomputer_20200727.Properties {
         internal static System.Drawing.Bitmap 替换运行主页面 {
             get {
                 object obj = ResourceManager.GetObject("替换运行主页面", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap 权限管理 {
+            get {
+                object obj = ResourceManager.GetObject("权限管理", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap 权限管理1 {
+            get {
+                object obj = ResourceManager.GetObject("权限管理1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap 权限管理底色 {
+            get {
+                object obj = ResourceManager.GetObject("权限管理底色", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

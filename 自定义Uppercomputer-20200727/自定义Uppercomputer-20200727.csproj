@@ -835,6 +835,18 @@
     <Compile Include="监视画面\Form6.Designer.cs">
       <DependentUpon>Form6.cs</DependentUpon>
     </Compile>
+    <Compile Include="角色权限管理\jurisdiction.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="角色权限管理\jurisdiction.Designer.cs">
+      <DependentUpon>jurisdiction.cs</DependentUpon>
+    </Compile>
+    <Compile Include="角色权限管理\Userjurisdiction.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="角色权限管理\Userjurisdiction.Designer.cs">
+      <DependentUpon>Userjurisdiction.cs</DependentUpon>
+    </Compile>
     <Compile Include="软件说明\Software_specifications.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -980,7 +992,6 @@
     <EmbeddedResource Include="PLC选择\PLCselect_Form.resx">
       <DependentUpon>PLCselect_Form.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="主页面\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -1130,6 +1141,12 @@
     <EmbeddedResource Include="监视画面\Form6.resx">
       <DependentUpon>Form6.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="角色权限管理\jurisdiction.resx">
+      <DependentUpon>jurisdiction.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="角色权限管理\Userjurisdiction.resx">
+      <DependentUpon>Userjurisdiction.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="软件说明\Software_specifications.resx">
       <DependentUpon>Software_specifications.cs</DependentUpon>
     </EmbeddedResource>
@@ -1239,7 +1256,11 @@
     <None Include="Resources\aHR0cDovL3d3dy55M3EubmV0L3FmeS1jb250ZW50L3VwbG9hZHMvMjAyMS8wNi82ZWE2YTY0YjM1Y2E3MDMwMWM5MTIxMDZiNzMyNzI0MS0yMTB4MjEwLnBuZw_p_p100_p_3D_p_p100_p_3D.png" />
     <None Include="Resources\aHR0cDovL3d3dy55M3EubmV0L3FmeS1jb250ZW50L3VwbG9hZHMvMjAyMS8wNi8wYTAwMzU0ODkxM2FmZmZlMGZjNzMyMTFiNDZkYmQzOS0yMTB4MjEwLnBuZw_p_p100_p_3D_p_p100_p_3D.png" />
     <None Include="Resources\aHR0cDovL3d3dy55M3EubmV0L3FmeS1jb250ZW50L3VwbG9hZHMvMjAyMS8wNi8yYTQ1ZGEwOWQ1NzcwNWJkNzA3ZDY5YTBlYmVmMWM1Zi0yMTB4MjEwLnBuZw_p_p100_p_3D_p_p100_p_3D.png" />
+    <None Include="Resources\favicon.ico" />
     <Content Include="Resources\替换运行主页面.png" />
+    <None Include="Resources\权限管理.jpeg" />
+    <None Include="Resources\权限管理.png" />
+    <None Include="Resources\权限管理底色.png" />
     <Content Include="图库\按钮图标\5834\102.ico" />
     <Content Include="图库\按钮图标\5834\112.ico" />
     <Content Include="图库\按钮图标\5834\12.ico" />

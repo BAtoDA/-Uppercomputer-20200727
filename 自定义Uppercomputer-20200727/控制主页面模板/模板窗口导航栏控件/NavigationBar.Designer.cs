@@ -109,6 +109,8 @@ namespace 自定义Uppercomputer_20200727.控制主页面模板.模板窗口导�
             // 
             // uiNavMenu1
             // 
+            this.uiNavMenu1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.uiNavMenu1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(92)))), ((int)(((byte)(136)))));
             this.uiNavMenu1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.uiNavMenu1.DrawMode = System.Windows.Forms.TreeViewDrawMode.OwnerDrawAll;
@@ -235,6 +237,8 @@ namespace 自定义Uppercomputer_20200727.控制主页面模板.模板窗口导�
             // 
             // optionPalette1
             // 
+            this.optionPalette1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.optionPalette1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(92)))), ((int)(((byte)(136)))));
             this.optionPalette1.Location = new System.Drawing.Point(1, 34);
             this.optionPalette1.Name = "optionPalette1";

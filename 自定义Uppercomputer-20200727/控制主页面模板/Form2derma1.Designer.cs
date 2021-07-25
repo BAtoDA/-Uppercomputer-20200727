@@ -562,7 +562,7 @@ namespace 自定义Uppercomputer_20200727.控制主页面模板
             this.navigationBar1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(92)))), ((int)(((byte)(136)))));
             this.navigationBar1.Location = new System.Drawing.Point(4, 37);
             this.navigationBar1.Name = "navigationBar1";
-            this.navigationBar1.Openingclosing = true;
+            this.navigationBar1.Openingclosing = false;
             this.navigationBar1.Size = new System.Drawing.Size(193, 610);
             this.navigationBar1.TabIndex = 1;
             this.navigationBar1.OptionitemClick += new System.EventHandler(this.navigationBar1_OptionitemClick);
