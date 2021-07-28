@@ -364,6 +364,7 @@
     <Compile Include="EF实体模型\Tag_common_parameters.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="EF实体模型\Userpermission.cs" />
     <Compile Include="EF实体模型\Valve_Class.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -841,11 +842,18 @@
     <Compile Include="角色权限管理\jurisdiction.Designer.cs">
       <DependentUpon>jurisdiction.cs</DependentUpon>
     </Compile>
+    <Compile Include="角色权限管理\UserEFclass.cs" />
     <Compile Include="角色权限管理\Userjurisdiction.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="角色权限管理\Userjurisdiction.Designer.cs">
       <DependentUpon>Userjurisdiction.cs</DependentUpon>
+    </Compile>
+    <Compile Include="软件状态悬浮窗\FloatingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="软件状态悬浮窗\FloatingForm.Designer.cs">
+      <DependentUpon>FloatingForm.cs</DependentUpon>
     </Compile>
     <Compile Include="软件说明\Software_specifications.cs">
       <SubType>Form</SubType>
@@ -1146,6 +1154,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="角色权限管理\Userjurisdiction.resx">
       <DependentUpon>Userjurisdiction.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="软件状态悬浮窗\FloatingForm.resx">
+      <DependentUpon>FloatingForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="软件说明\Software_specifications.resx">
       <DependentUpon>Software_specifications.cs</DependentUpon>

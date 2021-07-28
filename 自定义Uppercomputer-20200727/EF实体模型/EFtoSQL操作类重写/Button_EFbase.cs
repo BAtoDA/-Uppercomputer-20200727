@@ -86,7 +86,8 @@ namespace 自定义Uppercomputer_20200727.EF实体模型.EFtoSQL操作类重写
                     db.Conveyor_Class,
                     db.Valve_parameter,
                     db.Valve_Class,
-                    db.Alarmhistory
+                    db.Alarmhistory,
+                    db.Userpermissions
 #endregion
             };
                 //mutex.ReleaseMutex();

@@ -11,8 +11,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSEngineTest", "C#Dynamic m
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Install_deployment", "Install_deployment\Install_deployment.csproj", "{CF0A3078-0E2B-4A30-A915-DF9B1E1242E4}"
 EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "自定义Uppercomputer-20200727安装部署1", "自定义Uppercomputer-20200727安装部署1\自定义Uppercomputer-20200727安装部署1.vdproj", "{E4DA03C0-DF3A-443D-AC5C-06C2FA326763}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "三菱伺服MR-JE控制", "三菱伺服MR-JE-C控制\三菱伺服MR-JE控制\三菱伺服MR-JE控制.csproj", "{034FA00D-D0AE-48F7-B06E-E3A8C8AA030F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "命令处理", "三菱伺服MR-JE-C控制\命令处理\命令处理.csproj", "{5D77E549-3C6D-4E7F-A015-DEF34820AE53}"
@@ -28,6 +26,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "自定义Uppercomputer产量报警Web监视", "自定义Uppercomputer产量报警Web监视\自定义Uppercomputer产量报警Web监视.csproj", "{F8F70595-5A31-49DB-ABD8-FC68E56A904B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web网页数据后台采集", "Web网页数据后台采集\Web网页数据后台采集.csproj", "{76BDEB13-BDEC-4820-9180-7199DC809346}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup1", "Setup1\Setup1.vdproj", "{09E78A92-C2B9-4EB2-A2C5-2A680D9B94C7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,8 +51,6 @@ Global
 		{CF0A3078-0E2B-4A30-A915-DF9B1E1242E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CF0A3078-0E2B-4A30-A915-DF9B1E1242E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CF0A3078-0E2B-4A30-A915-DF9B1E1242E4}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E4DA03C0-DF3A-443D-AC5C-06C2FA326763}.Debug|Any CPU.ActiveCfg = Debug
-		{E4DA03C0-DF3A-443D-AC5C-06C2FA326763}.Release|Any CPU.ActiveCfg = Release
 		{034FA00D-D0AE-48F7-B06E-E3A8C8AA030F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{034FA00D-D0AE-48F7-B06E-E3A8C8AA030F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{034FA00D-D0AE-48F7-B06E-E3A8C8AA030F}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -85,6 +83,8 @@ Global
 		{76BDEB13-BDEC-4820-9180-7199DC809346}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{76BDEB13-BDEC-4820-9180-7199DC809346}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{76BDEB13-BDEC-4820-9180-7199DC809346}.Release|Any CPU.Build.0 = Release|Any CPU
+		{09E78A92-C2B9-4EB2-A2C5-2A680D9B94C7}.Debug|Any CPU.ActiveCfg = Debug
+		{09E78A92-C2B9-4EB2-A2C5-2A680D9B94C7}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -23,6 +23,7 @@ using System.Collections.Concurrent;
 using System.Collections.Generic;
 using 自定义Uppercomputer_20200727.EF实体模型.EFtoSQL操作类重写;
 using 自定义Uppercomputer_20200727.控件重做.控件安全对象池;
+using 自定义Uppercomputer_20200727.软件状态悬浮窗;
 
 namespace 自定义Uppercomputer_20200727
 {
@@ -64,6 +65,8 @@ namespace 自定义Uppercomputer_20200727
             //监听
             SocketServer socketServer = new SocketServer(new System.Net.IPEndPoint(System.Net.IPAddress.Parse("127.0.0.1"), 9500));
             socketServer.SocketLoad();
+            //显示软件状态监控窗口
+            new FloatingForm().Show();
             //LogUtils日志
             LogUtils.debugWrite("开始加载程序集"+axActUtlType1.Name);
             ActUtlType = this.axActUtlType1;
@@ -257,11 +260,15 @@ namespace 自定义Uppercomputer_20200727
 
         private void Home_FormClosing(object sender, FormClosingEventArgs e)
         {
-            refresh.Stop();
-            refresh.Dispose();
-            event_Time.Stop();
-            if (event_Time.Event_thread != null) event_Time.Event_thread.Abort();//结束任务
-            event_Time.Dispose();
+            if (refresh != null)
+            {
+                refresh.Stop();
+                refresh.Dispose();
+                event_Time.Stop();
+                if (event_Time.Event_thread != null) event_Time.Event_thread.Abort();//结束任务
+                event_Time.Dispose();
+            }
+         
         }
         /// <summary>
         /// 用于记录已经发生的报警--用于显示处理时间

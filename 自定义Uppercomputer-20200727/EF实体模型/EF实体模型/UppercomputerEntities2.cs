@@ -36,7 +36,7 @@ namespace 自定义Uppercomputer_20200727.EF实体模型
         }
         public UppercomputerEntities2():base("SqliteTest")
         {
-            this.Database.CommandTimeout = 2000;
+            this.Database.CommandTimeout = 20000;
         }
         /// <summary>
         /// 创建链接字符串
@@ -147,6 +147,7 @@ namespace 自定义Uppercomputer_20200727.EF实体模型
         public virtual DbSet<Valve_Class> Valve_Class { get; set; }
         public virtual DbSet<Alarmhistories> Alarmhistory { get; set; }
         public virtual DbSet<WebFWAlarmTable> WebFWAlarmTables { get; set; }
+        public virtual DbSet<Userpermission> Userpermissions { get; set; }
         #endregion
     }
 }

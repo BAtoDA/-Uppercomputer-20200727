@@ -72,6 +72,7 @@ namespace 自定义Uppercomputer_20200727.角色权限管理
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 11;
             this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // jurisdiction
             // 
@@ -84,6 +85,8 @@ namespace 自定义Uppercomputer_20200727.角色权限管理
             this.SubText = "权限登录";
             this.Text = "jurisdiction";
             this.Title = "权限管理与登录";
+            this.ButtonLoginClick += new System.EventHandler(this.jurisdiction_ButtonLoginClick);
+            this.ExtendBoxClick += new System.EventHandler(this.jurisdiction_ExtendBoxClick);
             this.Controls.SetChildIndex(this.lblTitle, 0);
             this.Controls.SetChildIndex(this.lblSubText, 0);
             this.Controls.SetChildIndex(this.uiPanel1, 0);

@@ -11,6 +11,7 @@ using CCWin;
 using Sunny.UI;
 using 自定义Uppercomputer_20200727.EF实体模型;
 using 自定义Uppercomputer_20200727.EF实体模型.EFtoSQL操作类重写;
+using 自定义Uppercomputer_20200727.Nlog;
 
 namespace 自定义Uppercomputer_20200727.异常界面.报警历史
 {
@@ -27,6 +28,8 @@ namespace 自定义Uppercomputer_20200727.异常界面.报警历史
         /// <param name="e"></param>
         private async void HistoryErr_Load(object sender, EventArgs e)
         {
+            //LogUtils日志
+            LogUtils.debugWrite("用户点击了报警历史查看");
             //显示UI过度
             UIWaitFormService.ShowWaitForm("开始加载UI...");
             await Task.Run(() =>
@@ -38,6 +41,8 @@ namespace 自定义Uppercomputer_20200727.异常界面.报警历史
                     var data = db.Alarmhistory.ToList();
                     var query = (from q in data where DateTime.Parse(q.报警时间.Trim()).ToString("D") == DateTime.Now.ToString("D") select q).ToList();
                     this.UIShowText("正在分析数据");
+                    //LogUtils日志
+                    LogUtils.debugWrite("报警历史查看报表：正在分析数据中。。");
                     //填充当天报警次数
                     this.uiLabel2.Text = query.Count.ToString();
                     //填充7天警告次数
@@ -143,6 +148,8 @@ namespace 自定义Uppercomputer_20200727.异常界面.报警历史
             timer1.Start();
             //关闭显示UI窗口
             UIWaitFormService.HideWaitForm();
+            //LogUtils日志
+            LogUtils.debugWrite("报警历史查看报表：生成完毕");
         }
         public void UIShowText(string Value) => UIWaitFormService.SetDescription(Value);
 
@@ -153,6 +160,8 @@ namespace 自定义Uppercomputer_20200727.异常界面.报警历史
         /// <param name="e"></param>
         private void HistoryErrTiming()
         {
+            //LogUtils日志
+            LogUtils.debugWrite("报警历史查看报表：后台正在刷新最新数据");
             //从数据获取数据
             using (UppercomputerEntities2 db = new UppercomputerEntities2())
             {
@@ -220,6 +229,8 @@ namespace 自定义Uppercomputer_20200727.异常界面.报警历史
                 //查找重复最多的数据--意味着报警最多的
                 EquipmentErr(Monthly);
             }
+            //LogUtils日志
+            LogUtils.debugWrite("报警历史查看报表：后台刷新数据完毕。。");
         }
         /// <summary>
         /// 计算30天的报警处理用时
@@ -362,8 +373,15 @@ namespace 自定义Uppercomputer_20200727.异常界面.报警历史
         {
             await Task.Run(() =>
             {
-                if (this.Handle != null)
-                    HistoryErrTiming();
+                try
+                {
+                    if (this.Handle != null)
+                        HistoryErrTiming();
+                }
+                catch(Exception ex)
+                {
+                    LogUtils.debugWrite(ex.Message);
+                }
             });
 
         }

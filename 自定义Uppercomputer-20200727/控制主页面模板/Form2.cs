@@ -54,6 +54,7 @@ using 自定义Uppercomputer_20200727.控制主页面模板.控件添加类重�
 using 欧姆龙Fins协议.欧姆龙.报文处理;
 using 自定义Uppercomputer_20200727.数据查询界面;
 using 自定义Uppercomputer_20200727.控制主页面模板.模板窗口接口;
+using 自定义Uppercomputer_20200727.角色权限管理;
 
 namespace 自定义Uppercomputer_20200727
 {
@@ -596,6 +597,12 @@ namespace 自定义Uppercomputer_20200727
                 //LogUtils日志
                 LogUtils.debugWrite("用户添加控件：" + skinButton.Name);
             }
+        }
+        private void toolStripMenuItem27_Click(object sender, EventArgs e)
+        {
+            //打开权限登录界面窗口
+            jurisdiction jurisdiction = new jurisdiction();
+            jurisdiction.ShowDialog();
         }
         private void Form2_MouseMove(object sender, MouseEventArgs e)
         {

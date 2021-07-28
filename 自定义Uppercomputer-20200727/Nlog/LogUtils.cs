@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace 自定义Uppercomputer_20200727.Nlog
 {
@@ -64,11 +65,20 @@ namespace 自定义Uppercomputer_20200727.Nlog
         }
 
         /// <summary>
+        /// 输出日志消息
+        /// </summary>
+        public static event EventHandler DebugEventMessge;
+        /// <summary>
         /// 保存debug级别信息
         /// </summary>
         /// <param name="message"></param>
         public static void debugWrite(string message)
         {
+            //优先输出到软件监控窗口
+            if(DebugEventMessge!=null)
+            {
+                DebugEventMessge.Invoke(message, new EventArgs());
+            }
             log.Debug(message);
         }
 
