@@ -329,7 +329,7 @@ namespace 命令处理
                 Data = result.Content.ToString();//读取到的数据
                 retry = 0;
             }
-            Thread.Sleep(2);
+            Thread.Sleep(10);
             PLC_busy = false;//允许访问
             
         }
@@ -350,7 +350,7 @@ namespace 命令处理
                     Message_run = true;
                 }
             }
-            Thread.Sleep(5);
+            Thread.Sleep(10);
             PLC_busy = false;//允许访问
         }
         #endregion

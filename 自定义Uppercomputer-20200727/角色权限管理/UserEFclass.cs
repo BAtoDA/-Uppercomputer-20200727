@@ -64,7 +64,10 @@ namespace 自定义Uppercomputer_20200727.角色权限管理
             {
                 this.SQLiteDataAdapter.Fill(this.dataTable);//获取表
             }
-            skinDataGridView.DataSource = this.dataTable;//绑定数据源
+            skinDataGridView.BeginInvoke((EventHandler)delegate
+            {
+                skinDataGridView.DataSource = this.dataTable;//绑定数据源
+            });
         }
         /// <summary>
         /// 获取数据库数据--修改表
@@ -83,7 +86,7 @@ namespace 自定义Uppercomputer_20200727.角色权限管理
             {
                 this.SQLiteCommandBuilder = new SQLiteCommandBuilder(this.SQLiteDataAdapter);//
             }
-            this.sqlDataAdapter.Update(this.dataTable);
+            //this.sqlDataAdapter.Update(this.dataTable);
         }
         /// <summary>
         /// 获取数据库数据--删除行
