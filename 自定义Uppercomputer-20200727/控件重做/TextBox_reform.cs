@@ -194,8 +194,8 @@ namespace 自定义Uppercomputer_20200727.控件重做
         {
             lock (this)
             {
-                //try
-                //{
+                try
+                {
                     if (Form2.edit_mode == true || this.Parent == null)
                     {
                         _Class = null;
@@ -213,11 +213,11 @@ namespace 自定义Uppercomputer_20200727.控件重做
                     }
                     if (_Class.ID.IsNull()) return;
                     this.TextBox_state(this, _Class, TextBox.Refresh(_Class.读写设备.Trim(), _Class.资料格式.Trim(), _Class.读写设备_地址.Trim(), _Class.读写设备_地址_具体地址.Trim()));
-                //}
-                //catch
-                //{
+                }
+                catch
+                {
 
-                //}
+                }
             }
         }
         /// <summary>

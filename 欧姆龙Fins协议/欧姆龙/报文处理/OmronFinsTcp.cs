@@ -420,7 +420,7 @@ namespace 欧姆龙Fins协议.欧姆龙.报文处理
                 this.ShowWarningNotifier(PLCerr_content);
                 if (retry == 1)
                     this.ShowErrorNotifier(DateTime.Now.ToString("[HH:mm:ss] ") + $"[{address}] 读取失败{Environment.NewLine}原因：{result.ToMessageShowString()}");
-                if (retry >= 1)
+                if (retry >= 3)
                     err(new Exception("链接PLC异常"));
             }
             else

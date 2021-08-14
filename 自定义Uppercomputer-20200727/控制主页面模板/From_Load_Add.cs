@@ -103,17 +103,20 @@ namespace 自定义Uppercomputer_20200727.控制主页面模板
             //遍历数组
             foreach (Button_Class add in button_Classes)
             {
-                Button_reform reform = new Button_reform();//实例化按钮
-                reform.Size = new Size(point_or_Size(add.size)[0], point_or_Size(add.size)[1]);//设置大小
-                reform.Location = new Point(point_or_Size(add.location)[0], point_or_Size(add.location)[1]);//设置按钮位置
-                reform.Name = add.Control_type.Trim();//设置名称
-                reform.Text = add.Control_state_0_content.Trim();//设置文本
-                reform.ForeColor = Color.FromName(add.Control_state_0_colour.Trim());//获取数据库中颜色名称进行设置
-                reform.Font = new Font(add.Control_state_0_typeface.Trim(),add.Control_state_0_size.ToInt32(), FontStyle.Bold);//设置字体与大小
-                reform.TextAlign = ContentAlignment_1(add.Control_state_0_aligning.Trim());//设置对齐方式
-                reform.BaseColor = Color.FromName(add.colour_0.Trim());//设置样式
-                reform.DownBaseColor = Color.FromName(add.colour_0.Trim());//设置样式
-                Form_event.BeginInvoke((EventHandler)delegate { control.Add(reform); });
+                Form_event.BeginInvoke((EventHandler)delegate
+                {
+                    Button_reform reform = new Button_reform();//实例化按钮
+                    reform.Size = new Size(point_or_Size(add.size)[0], point_or_Size(add.size)[1]);//设置大小
+                    reform.Location = new Point(point_or_Size(add.location)[0], point_or_Size(add.location)[1]);//设置按钮位置
+                    reform.Name = add.Control_type.Trim();//设置名称
+                    reform.Text = add.Control_state_0_content.Trim();//设置文本
+                    reform.ForeColor = Color.FromName(add.Control_state_0_colour.Trim());//获取数据库中颜色名称进行设置
+                    reform.Font = new Font(add.Control_state_0_typeface.Trim(), add.Control_state_0_size.ToInt32(), FontStyle.Bold);//设置字体与大小
+                    reform.TextAlign = ContentAlignment_1(add.Control_state_0_aligning.Trim());//设置对齐方式
+                    reform.BaseColor = Color.FromName(add.colour_0.Trim());//设置样式
+                    reform.DownBaseColor = Color.FromName(add.colour_0.Trim());//设置样式
+                    control.Add(reform);
+                });
             }
         }
         private void Load_Add(List<picture_Class> button_Classes)//填充图片类

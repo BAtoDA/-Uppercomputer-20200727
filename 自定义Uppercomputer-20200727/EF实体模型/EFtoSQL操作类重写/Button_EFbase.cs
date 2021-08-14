@@ -204,23 +204,23 @@ namespace 自定义Uppercomputer_20200727.EF实体模型.EFtoSQL操作类重写
         /// <returns></returns>
         public T Button_Parameter_Query<T>(string ID) where T : new()
         {
-          //  mutex.WaitOne(5000);
+            //  mutex.WaitOne(5000);
             lock (this)
             {
-                //try
-                //{
+                try
+                {
                     _ = new Button_EFbase().EFsurface();
                     //查询泛型约束 需要修改的表
                     var surface = EFbase.Where(pi => pi.GetType().GenericTypeArguments[0].Name == typeof(T).Name).FirstOrDefault();
                     if (surface != null)
                     {
-                        var rew = (IQueryable<T>)surface;                  
-                        if (rew != null && surface!=null)
+                        var rew = (IQueryable<T>)surface;
+                        if (rew != null && surface != null)
                         {
                             //查询SQL数据
-                            foreach (dynamic i1 in rew.Where(p=>true).ToList())
+                            foreach (dynamic i1 in rew.Where(p => true).ToList())
                             {
-                                if (i1.ID!=null&&i1.ID.Trim() == ID.Trim())
+                                if (i1.ID != null && i1.ID.Trim() == ID.Trim())
                                 {
                                     return i1;
                                 }
@@ -229,10 +229,11 @@ namespace 自定义Uppercomputer_20200727.EF实体模型.EFtoSQL操作类重写
                         }
                     }
                     return new T();
+                }
+                catch { return new T(); }
+                // mutex.ReleaseMutex();
             }
-           // mutex.ReleaseMutex();
         }
-
         /// <summary>
         /// 查询窗口参数根据field去判断 根据泛型<T>自动推断需要查询的表
         /// </summary>
@@ -263,9 +264,19 @@ namespace 自定义Uppercomputer_20200727.EF实体模型.EFtoSQL操作类重写
                             case "FORM":
                                 foreach (dynamic i1 in from pi in (IQueryable<T>)surface where true select pi)
                                 {
-                                    if (i1.FORM.Trim() == FORM.Trim())
+                                    try
                                     {
-                                        Data.Add(i1);
+                                        if (i1.FORM.Trim() == FORM.Trim())
+                                        {
+                                            Data.Add(i1);
+                                        }
+                                    }
+                                    catch
+                                    {
+                                        if (i1.FROM.Trim() == FORM.Trim())
+                                        {
+                                            Data.Add(i1);
+                                        }
                                     }
 
                                 }

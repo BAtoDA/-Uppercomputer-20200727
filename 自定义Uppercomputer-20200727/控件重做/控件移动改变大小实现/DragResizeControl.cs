@@ -321,9 +321,9 @@ namespace DragResizeControlWindowsDrawDemo
                             lCtrl.Left = 15;
                             return;
                         }
-                        if (lCtrl.Top < 80)
+                        if (lCtrl.Top < 40)
                         {
-                            lCtrl.Top = 85;
+                            lCtrl.Top = 45;
                             return;
                         }
                         if (lCtrl.Left > formCollection[i].Size.Width-80)

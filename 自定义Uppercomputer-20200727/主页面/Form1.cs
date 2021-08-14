@@ -116,7 +116,7 @@ namespace 自定义Uppercomputer_20200727
             //}
 
             BindingProcessMsg("正在读取正在更改数据库配置", 30);
-            XmlClick();
+           // XmlClick();
             //开辟设置线程池大小
             System.Threading.ThreadPool.SetMinThreads(64, 64);
             System.Threading.ThreadPool.SetMaxThreads(200, 200);

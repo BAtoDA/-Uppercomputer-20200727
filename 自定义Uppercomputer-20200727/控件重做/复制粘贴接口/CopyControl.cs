@@ -20,6 +20,7 @@ namespace 自定义Uppercomputer_20200727.控件重做.复制粘贴接口
         public CopyControl(string ControlName,Form control)
         {
             InitializeComponent();
+
             //添加消息内容
             this.uiLabel1.Text = $"{ControlName}";
             this.Control = control;
@@ -28,6 +29,7 @@ namespace 自定义Uppercomputer_20200727.控件重做.复制粘贴接口
                 this.Size = new Size((int)this.uiLabel1.Font.Size + this.uiLabel1.Size.Width + 40, this.Size.Height);
                 this.Width = (int)this.uiLabel1.Font.Size + this.uiLabel1.Size.Width + 40;
             }
+            this.BringToFront();
         }
 
         private void CopyControl_Load(object sender, EventArgs e)

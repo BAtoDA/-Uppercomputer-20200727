@@ -119,8 +119,8 @@ namespace 自定义Uppercomputer_20200727.PLC选择.MODBUS_TCP监控窗口
             {
                 //利用西门子S7协议实现
                 siemensTcpNet.IpAddress = IPEndPoint.Address.ToString();//获取设置的IP
-                siemensTcpNet.ReceiveTimeOut = 500;//超时时间
-                siemensTcpNet.ConnectTimeOut = 500;
+                siemensTcpNet.ReceiveTimeOut = 1000;//超时时间
+                siemensTcpNet.ConnectTimeOut = 1000;
                 OperateResult connect = siemensTcpNet.ConnectServer();//获取操作结果
                 if (connect.IsSuccess)//判断是否连接成功
                 {
@@ -152,17 +152,21 @@ namespace 自定义Uppercomputer_20200727.PLC选择.MODBUS_TCP监控窗口
         /// <param name="Name"></param>
         /// <param name="id"></param>
         /// <returns></returns>
-        public List<bool> PLC_read_M_bit(string Name, string id)//读取PLC 位状态 --D_bit这类需要自己在表流获取当前位状态--M这类不需要
+        public  List<bool> PLC_read_M_bit(string Name, string id)//读取PLC 位状态 --D_bit这类需要自己在表流获取当前位状态--M这类不需要
         {
             string result = "FALSE";//定义获取数据变量
             lock (this)
             {
                 try
                 {
-                   mutex.WaitOne(100);//加锁
+                  // mutex.WaitOne(100);//加锁
                                         // 读取bool变量
-                    readResultRender(siemensTcpNet.ReadBool(Name.Trim() + id.Trim()), Name.Trim() + id.Trim(), ref result);//读取自定地址变量状态
-                   mutex.ReleaseMutex();//解锁
+                    async Task<OperateResult<bool[]>> AsyucBool() =>  await siemensTcpNet.ReadBoolAsync(Name.Trim() + id.Trim(), 1);
+                    var Resulibool =  AsyucBool().Result;
+                    readResultRender(Resulibool, Name.Trim() + id.Trim(), ref result);//读取自定地址变量状态
+                    result = Resulibool.Content[0].ToString();
+                    //readResultRender(siemensTcpNet.ReadBool(Name.Trim() + id.Trim()), Name.Trim() + id.Trim(), ref result);//读取自定地址变量状态
+                   //mutex.ReleaseMutex();//解锁
                 }
                 catch { }
             }
@@ -195,10 +199,10 @@ namespace 自定义Uppercomputer_20200727.PLC选择.MODBUS_TCP监控窗口
             {
                 try
                 {
-                    mutex.WaitOne(100);//加锁
+                    //mutex.WaitOne(100);//加锁
                                         // 写bool变量
                     writeResultRender(siemensTcpNet.Write(Name.Trim() + id.Trim(), Convert.ToBoolean(button_State.ToInt32())), Name.Trim() + id.Trim());//写入自定地址变量状态
-                    mutex.ReleaseMutex();//解锁
+                    //mutex.ReleaseMutex();//解锁
                 }
                 catch { }
             }
@@ -232,7 +236,7 @@ namespace 自定义Uppercomputer_20200727.PLC选择.MODBUS_TCP监控窗口
             {
                 try
                 {
-                    mutex.WaitOne(100);
+                    //mutex.WaitOne(100);
                     switch (format)
                     {
                         case numerical_format.Signed_16_Bit:
@@ -278,7 +282,7 @@ namespace 自定义Uppercomputer_20200727.PLC选择.MODBUS_TCP监控窗口
                             readResultRender(siemensTcpNet.ReadUInt32(Name.Trim() + id.Trim()), Name.Trim() + id.Trim(), ref result);
                             break;
                     }
-                   mutex.ReleaseMutex();
+                   //mutex.ReleaseMutex();
                 }
                 catch { }
             }
@@ -312,7 +316,7 @@ namespace 自定义Uppercomputer_20200727.PLC选择.MODBUS_TCP监控窗口
             {
                 try
                 {
-                    mutex.WaitOne(100);
+                    //mutex.WaitOne(100);
                     switch (format)
                     {
                         case numerical_format.Signed_16_Bit:
@@ -345,7 +349,7 @@ namespace 自定义Uppercomputer_20200727.PLC选择.MODBUS_TCP监控窗口
                             writeResultRender(siemensTcpNet.Write(Name.Trim() + id.Trim(), int.Parse(content)), Name.Trim() + id.Trim());
                             break;
                     }
-                    mutex.ReleaseMutex();
+                    //mutex.ReleaseMutex();
                 }
                 catch { }
             }
@@ -380,7 +384,7 @@ namespace 自定义Uppercomputer_20200727.PLC选择.MODBUS_TCP监控窗口
             {
                 try
                 {
-                   mutex.WaitOne(100);
+                   //mutex.WaitOne(100);
                     if (Name == "M")
                         Data = Mitsubishi_to_Index_numerical(Name, id.ToInt32(), format, Index.ToInt32(), this);//批量读取寄存器并且返回数据
                     else
@@ -392,7 +396,7 @@ namespace 自定义Uppercomputer_20200727.PLC选择.MODBUS_TCP监控窗口
                             Data = Mitsubishi_to_Index_numerical(Name+DB[0]+".",DB[1].ToInt32(), format, Index.ToInt32(), this,1);//批量读取寄存器并且返回数据
                         }
                     }
-                   mutex.ReleaseMutex();
+                   //mutex.ReleaseMutex();
                 }
                 catch { }
                 return Data;
@@ -456,7 +460,7 @@ namespace 自定义Uppercomputer_20200727.PLC选择.MODBUS_TCP监控窗口
                 this.ShowWarningNotifier(PLCerr_content);
                 if (retry==1)
                     this.ShowErrorNotifier(DateTime.Now.ToString("[HH:mm:ss] ") + $"[{address}] 读取失败{Environment.NewLine}原因：{result.ToMessageShowString()}");
-                if(retry>=1)
+                if(retry>=3)
                     err(new Exception("链接PLC异常"));
             }
         }

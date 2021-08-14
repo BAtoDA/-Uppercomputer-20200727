@@ -84,8 +84,8 @@ namespace 命令处理
             {
                 busTcpClient?.ConnectClose();//切换模式
                 busTcpClient = new ModbusTcpNet(MODBUD_TCP.IPEndPoint.Address.ToString(), MODBUD_TCP.IPEndPoint.Port);//传入IP与端口
-                busTcpClient.ConnectTimeOut = 1000;//X超时时间
-                busTcpClient.ReceiveTimeOut = 1000;
+                busTcpClient.ConnectTimeOut = 2000;//X超时时间
+                busTcpClient.ReceiveTimeOut = 2000;
                 OperateResult connect = busTcpClient.ConnectServer();//是否打开成功？
                 if (connect.IsSuccess)
                 {
@@ -329,7 +329,7 @@ namespace 命令处理
                 Data = result.Content.ToString();//读取到的数据
                 retry = 0;
             }
-            Thread.Sleep(10);
+            Thread.Sleep(20);
             PLC_busy = false;//允许访问
             
         }
@@ -350,7 +350,7 @@ namespace 命令处理
                     Message_run = true;
                 }
             }
-            Thread.Sleep(10);
+            Thread.Sleep(20);
             PLC_busy = false;//允许访问
         }
         #endregion
