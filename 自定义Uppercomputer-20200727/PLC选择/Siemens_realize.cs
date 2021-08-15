@@ -160,7 +160,7 @@ namespace 自定义Uppercomputer_20200727.PLC选择.MODBUS_TCP监控窗口
                 try
                 {
                   // mutex.WaitOne(100);//加锁
-                                        // 读取bool变量
+                  // 读取bool变量
                     async Task<OperateResult<bool[]>> AsyucBool() =>  await siemensTcpNet.ReadBoolAsync(Name.Trim() + id.Trim(), 1);
                     var Resulibool =  AsyucBool().Result;
                     readResultRender(Resulibool, Name.Trim() + id.Trim(), ref result);//读取自定地址变量状态
@@ -200,8 +200,10 @@ namespace 自定义Uppercomputer_20200727.PLC选择.MODBUS_TCP监控窗口
                 try
                 {
                     //mutex.WaitOne(100);//加锁
-                                        // 写bool变量
-                    writeResultRender(siemensTcpNet.Write(Name.Trim() + id.Trim(), Convert.ToBoolean(button_State.ToInt32())), Name.Trim() + id.Trim());//写入自定地址变量状态
+                    // 写bool变量
+                    async Task<OperateResult> WritBool() => await siemensTcpNet.WriteAsync(Name.Trim() + id.Trim(), new bool[] { Convert.ToBoolean(button_State.ToInt32())});
+                    writeResultRender(WritBool().Result, Name.Trim() + id.Trim());//写入自定地址变量状态
+                    //writeResultRender(siemensTcpNet.Write(Name.Trim() + id.Trim(), Convert.ToBoolean(button_State.ToInt32())), Name.Trim() + id.Trim());//写入自定地址变量状态
                     //mutex.ReleaseMutex();//解锁
                 }
                 catch { }
@@ -242,50 +244,53 @@ namespace 自定义Uppercomputer_20200727.PLC选择.MODBUS_TCP监控窗口
                         case numerical_format.Signed_16_Bit:
                         case numerical_format.BCD_16_Bit:
                             // 读取short变量
-                            readResultRender(siemensTcpNet.ReadInt16(Name.Trim() + id.Trim()), Name.Trim() + id.Trim(), ref result);
+                            readResultRender(ReadInt16().Result, Name.Trim() + id.Trim(), ref result);
                             break;
                         case numerical_format.Signed_32_Bit:
                         case numerical_format.BCD_32_Bit:
                             // 读取int变量
-                            readResultRender(siemensTcpNet.ReadInt32(Name.Trim() + id.Trim()), Name.Trim() + id.Trim(), ref result);
+                            readResultRender(ReadInt32().Result, Name.Trim() + id.Trim(), ref result);
                             break;
                         case numerical_format.Binary_16_Bit:
-                            // 读取16位二进制数
-                            String data_1 = Convert.ToString(result.ToInt32(), 2);
-                            readResultRender(siemensTcpNet.ReadInt16(Name.Trim() + id.Trim()), Name.Trim() + id.Trim(), ref result);
-                            break;
+                            // 读取16位二进制数                      
+                            readResultRender(ReadInt16().Result, Name.Trim() + id.Trim(), ref result);
+                            return Convert.ToString(result.ToInt32(), 2);
                         case numerical_format.Binary_32_Bit:
                             // 读取32位二进制数
-                            String data_2 = Convert.ToString(result.ToInt32(), 2);
-                            readResultRender(siemensTcpNet.ReadInt32(Name.Trim() + id.Trim()), Name.Trim() + id.Trim(), ref result);
-                            break;
+                            readResultRender(ReadInt32().Result, Name.Trim() + id.Trim(), ref result);
+                            return Convert.ToString(result.ToInt32(), 2);
                         case numerical_format.Float_32_Bit:
                             // 读取float变量
-                            readResultRender(siemensTcpNet.ReadFloat(Name.Trim() + id.Trim()), Name.Trim() + id.Trim(), ref result);
+                            readResultRender(ReadFloat().Result, Name.Trim() + id.Trim(), ref result);
                             break;
                         case numerical_format.Hex_16_Bit:
                             // 读取short变量
-                            readResultRender(siemensTcpNet.ReadInt16(Name.Trim() + id.Trim()), Name.Trim() + id.Trim(), ref result);
+                            readResultRender(ReadInt16().Result, Name.Trim() + id.Trim(), ref result);
                             result = Convert.ToInt32(result).ToString("X");
                             break;
                         case numerical_format.Hex_32_Bit:
                             // 读取int变量
-                            readResultRender(siemensTcpNet.ReadInt32(Name.Trim() + id.Trim()), Name.Trim() + id.Trim(), ref result);
+                            readResultRender(ReadInt32().Result, Name.Trim() + id.Trim(), ref result);
                             result = Convert.ToInt32(result).ToString("X");
                             break;
                         case numerical_format.Unsigned_16_Bit:
                             // 读取ushort变量
-                            readResultRender(siemensTcpNet.ReadUInt16(Name.Trim() + id.Trim()), Name.Trim() + id.Trim(), ref result);
+                            readResultRender(ReadUInt16().Result, Name.Trim() + id.Trim(), ref result);
                             break;
                         case numerical_format.Unsigned_32_Bit:
                             // 读取uint变量
-                            readResultRender(siemensTcpNet.ReadUInt32(Name.Trim() + id.Trim()), Name.Trim() + id.Trim(), ref result);
+                            readResultRender(ReadUInt32().Result, Name.Trim() + id.Trim(), ref result);
                             break;
-                    }
-                   //mutex.ReleaseMutex();
+                    }                   
+                    //mutex.ReleaseMutex();
                 }
                 catch { }
             }
+            async Task<OperateResult<short>> ReadInt16() => await siemensTcpNet.ReadInt16Async(Name.Trim() + id.Trim());
+            async Task<OperateResult<int>> ReadInt32() => await siemensTcpNet.ReadInt32Async(Name.Trim() + id.Trim());
+            async Task<OperateResult<ushort>> ReadUInt16() => await siemensTcpNet.ReadUInt16Async(Name.Trim() + id.Trim());
+            async Task<OperateResult<uint>> ReadUInt32() => await siemensTcpNet.ReadUInt32Async(Name.Trim() + id.Trim());
+            async Task<OperateResult<float>> ReadFloat() => await siemensTcpNet.ReadFloatAsync(Name.Trim() + id.Trim());
             return result;//返回数据
         }
         /// <summary>
@@ -321,38 +326,43 @@ namespace 自定义Uppercomputer_20200727.PLC选择.MODBUS_TCP监控窗口
                     {
                         case numerical_format.Signed_16_Bit:
                         case numerical_format.BCD_16_Bit:
-                            writeResultRender(siemensTcpNet.Write(Name.Trim() + id.Trim(), short.Parse(content)), Name.Trim() + id.Trim());
+                            writeResultRender(WriteInt16(Name.Trim() + id.Trim(), short.Parse(content)).Result, Name.Trim() + id.Trim());
                             break;
                         case numerical_format.Signed_32_Bit:
                         case numerical_format.BCD_32_Bit:
-                            writeResultRender(siemensTcpNet.Write(Name.Trim() + id.Trim(), int.Parse(content)), Name.Trim() + id.Trim());
+                            writeResultRender(WriteInt32(Name.Trim() + id.Trim(), int.Parse(content)).Result, Name.Trim() + id.Trim());
                             break;
                         case numerical_format.Binary_16_Bit:
-                            writeResultRender(siemensTcpNet.Write(Name.Trim() + id.Trim(), short.Parse(Convert.ToInt32(content, 2).ToString())), Name.Trim() + id.Trim());
+                            writeResultRender(WriteInt16(Name.Trim() + id.Trim(), short.Parse(Convert.ToInt32(content, 2).ToString())).Result, Name.Trim() + id.Trim());
                             break;
                         case numerical_format.Binary_32_Bit:
-                            writeResultRender(siemensTcpNet.Write(Name.Trim() + id.Trim(), int.Parse(Convert.ToInt32(content, 2).ToString())), Name.Trim() + id.Trim());
+                            writeResultRender(WriteInt32(Name.Trim() + id.Trim(), int.Parse(Convert.ToInt32(content, 2).ToString())).Result, Name.Trim() + id.Trim());
                             break;
                         case numerical_format.Float_32_Bit:
-                            writeResultRender(siemensTcpNet.Write(Name.Trim() + id.Trim(), float.Parse(content)), Name.Trim() + id.Trim());
+                            writeResultRender(WriteFloat(Name.Trim() + id.Trim(), float.Parse(content)).Result, Name.Trim() + id.Trim());
                             break;
                         case numerical_format.Hex_16_Bit:
-                            writeResultRender(siemensTcpNet.Write(Name.Trim() + id.Trim(), short.Parse(Convert.ToInt32(content, 16).ToString())), Name.Trim() + id.Trim());
+                            writeResultRender(WriteInt16(Name.Trim() + id.Trim(), short.Parse(Convert.ToInt32(content, 16).ToString())).Result, Name.Trim() + id.Trim());
                             break;
                         case numerical_format.Hex_32_Bit:
-                            writeResultRender(siemensTcpNet.Write(Name.Trim() + id.Trim(), int.Parse(Convert.ToInt32(content, 16).ToString())), Name.Trim() + id.Trim());
+                            writeResultRender(WriteInt32(Name.Trim() + id.Trim(), int.Parse(Convert.ToInt32(content, 16).ToString())).Result, Name.Trim() + id.Trim());
                             break;
                         case numerical_format.Unsigned_16_Bit:
-                            writeResultRender(siemensTcpNet.Write(Name.Trim() + id.Trim(), int.Parse(content)), Name.Trim() + id.Trim());
+                            writeResultRender(WriteUInt16(Name.Trim() + id.Trim(), ushort.Parse(content)).Result, Name.Trim() + id.Trim());
                             break;
                         case numerical_format.Unsigned_32_Bit:
-                            writeResultRender(siemensTcpNet.Write(Name.Trim() + id.Trim(), int.Parse(content)), Name.Trim() + id.Trim());
+                            writeResultRender(WriteUInt32(Name.Trim() + id.Trim(), uint.Parse(content)).Result, Name.Trim() + id.Trim());
                             break;
                     }
                     //mutex.ReleaseMutex();
                 }
                 catch { }
             }
+            async Task<OperateResult> WriteInt16(string Address,short Data) => await siemensTcpNet.WriteAsync(Address,Data);
+            async Task<OperateResult> WriteInt32(string Address, int Data) => await siemensTcpNet.WriteAsync(Address, Data);
+            async Task<OperateResult> WriteUInt16(string Address, ushort Data) => await siemensTcpNet.WriteAsync(Address, Data);
+            async Task<OperateResult> WriteUInt32(string Address, uint Data) => await siemensTcpNet.WriteAsync(Address, Data);
+            async Task<OperateResult> WriteFloat(string Address, float Data) => await siemensTcpNet.WriteAsync(Address, Data);
             return result;//返回数据
         }
         /// <summary>

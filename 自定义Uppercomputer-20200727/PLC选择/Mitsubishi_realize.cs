@@ -269,14 +269,12 @@ namespace 自定义Uppercomputer_20200727.PLC选择
                             break;
                         case numerical_format.Binary_16_Bit:
                             // 读取16位二进制数
-                            String data_1 = Convert.ToString(result.ToInt32(), 2);
                             readResultRender(melsec_net.ReadInt16(Name.Trim() + id.Trim()), Name.Trim() + id.Trim(), ref result);
-                            break;
+                            return Convert.ToString(result.ToInt32(), 2);
                         case numerical_format.Binary_32_Bit:
                             // 读取32位二进制数
-                            String data_2 = Convert.ToString(result.ToInt32(), 2);
                             readResultRender(melsec_net.ReadInt32(Name.Trim() + id.Trim()), Name.Trim() + id.Trim(), ref result);
-                            break;
+                            return Convert.ToString(result.ToInt32(), 2);
                         case numerical_format.Float_32_Bit:
                             // 读取float变量
                             readResultRender(melsec_net.ReadFloat(Name.Trim() + id.Trim()), Name.Trim() + id.Trim(), ref result);
@@ -361,10 +359,10 @@ namespace 自定义Uppercomputer_20200727.PLC选择
                             writeResultRender(melsec_net.Write(Name.Trim() + id.Trim(), int.Parse(Convert.ToInt32(content, 16).ToString())), Name.Trim() + id.Trim());
                             break;
                         case numerical_format.Unsigned_16_Bit:
-                            writeResultRender(melsec_net.Write(Name.Trim() + id.Trim(), int.Parse(content)), Name.Trim() + id.Trim());
+                            writeResultRender(melsec_net.Write(Name.Trim() + id.Trim(), ushort.Parse(content)), Name.Trim() + id.Trim());
                             break;
                         case numerical_format.Unsigned_32_Bit:
-                            writeResultRender(melsec_net.Write(Name.Trim() + id.Trim(), int.Parse(content)), Name.Trim() + id.Trim());
+                            writeResultRender(melsec_net.Write(Name.Trim() + id.Trim(), uint.Parse(content)), Name.Trim() + id.Trim());
                             break;
                     }
                     mutex.ReleaseMutex();

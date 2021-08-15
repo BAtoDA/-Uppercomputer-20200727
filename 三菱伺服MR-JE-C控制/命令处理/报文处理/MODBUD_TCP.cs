@@ -65,6 +65,7 @@ namespace 命令处理
             MODBUD_TCP.IPEndPoint = iPEndPoint;//实例化IP地址
             this.pattern = pattern;
             PLC_busy = false;
+            PLC_ready = false;
             mutex = new Mutex();//实例化互斥锁(Mutex)
         }
         /// <summary>
@@ -83,6 +84,7 @@ namespace 命令处理
             try
             {
                 busTcpClient?.ConnectClose();//切换模式
+                PLC_ready = false;
                 busTcpClient = new ModbusTcpNet(MODBUD_TCP.IPEndPoint.Address.ToString(), MODBUD_TCP.IPEndPoint.Port);//传入IP与端口
                 busTcpClient.ConnectTimeOut = 2000;//X超时时间
                 busTcpClient.ReceiveTimeOut = 2000;
@@ -91,6 +93,7 @@ namespace 命令处理
                 {
                     PLC_ready = true;//PLC开放正常
                     PLC_busy = false;//允许访问
+                    MessageBox.Show("已链接到伺服");
                     return "链接PLC正常";//已连接到服务器        
                 }
                 else
@@ -329,7 +332,7 @@ namespace 命令处理
                 Data = result.Content.ToString();//读取到的数据
                 retry = 0;
             }
-            Thread.Sleep(20);
+            Thread.Sleep(5);
             PLC_busy = false;//允许访问
             
         }
@@ -350,7 +353,7 @@ namespace 命令处理
                     Message_run = true;
                 }
             }
-            Thread.Sleep(20);
+            Thread.Sleep(5);
             PLC_busy = false;//允许访问
         }
         #endregion

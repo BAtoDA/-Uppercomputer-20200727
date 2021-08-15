@@ -278,14 +278,12 @@ namespace 自定义Uppercomputer_20200727.PLC选择
                             break;
                         case numerical_format.Binary_16_Bit:
                             // 读取16位二进制数
-                            String data_1 = Convert.ToString(result.ToInt32(), 2);
-                            readResultRender(busTcpClient.ReadInt16(id), id, ref data_1);
-                            break;
+                            readResultRender(busTcpClient.ReadInt16(id), id, ref result);
+                            return Convert.ToString(result.ToInt32(), 2);
                         case numerical_format.Binary_32_Bit:
                             // 读取32位二进制数
-                            String data_2 = Convert.ToString(result.ToInt32(), 2);
-                            readResultRender(busTcpClient.ReadInt32(id), id, ref data_2);
-                            break;
+                            readResultRender(busTcpClient.ReadInt32(id), id, ref result);
+                            return Convert.ToString(result.ToInt32(), 2);
                         case numerical_format.Float_32_Bit:
                             // 读取float变量
                             readResultRender(busTcpClient.ReadFloat(id), id, ref result);

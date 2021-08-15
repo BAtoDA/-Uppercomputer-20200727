@@ -43,7 +43,7 @@ namespace 三菱伺服MR_JE控制.通讯链接界面
             }
             command = new Command(new System.Net.IPEndPoint(IPAddress.Parse(this.skinTextBox1.Text), int.Parse(skinTextBox2.Text)));
             command.Servo_Open();
-            if (command.Servo_ready)
+            if (MODBUD_TCP.IPLC_interface_PLC_ready)
                 skinButton1.Text = "已链接伺服";
             else
                 skinButton1.Text = "未链接伺服";
